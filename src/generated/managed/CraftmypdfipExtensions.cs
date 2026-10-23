@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
     public class CraftmypdfipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> Create(Expression<Func<string>> bodydata, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<bool>> bodyisCmyk = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> Create(Expression<Func<string>> bodydata, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<bool>> bodyisCmyk = null)
         {
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
             var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
             var __workflow_bodyisCmyk = WorkflowExpression.Compile(bodyisCmyk, nameof(bodyisCmyk), required: false);
-            return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
+            return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create";
                 var apiCallHttpMethod = "post";
@@ -65,14 +65,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> CreateMerge(Expression<Func<JToken[]>> bodytemplates, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<string>> bodypaging = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> CreateMerge(Expression<Func<JToken[]>> bodytemplates, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<string>> bodypaging = null)
         {
             var __workflow_bodytemplates = WorkflowExpression.Compile(bodytemplates, nameof(bodytemplates), required: true);
             var __workflow_bodyexportType = WorkflowExpression.Compile(bodyexportType, nameof(bodyexportType), required: false);
             var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
             var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
             var __workflow_bodypaging = WorkflowExpression.Compile(bodypaging, nameof(bodypaging), required: false);
-            return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
+            return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create-merge";
                 var apiCallHttpMethod = "post";
@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseListTemplate> ListTemplates(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ResponseListTemplate, ApiConnectionActionConfiguration> ListTemplates(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<ResponseListTemplate>(() =>
+            return new DeferredBodyAction<ResponseListTemplate, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list-templates";
                 var apiCallHttpMethod = "get";
@@ -133,11 +133,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> NewTemplateFrom(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration> NewTemplateFrom(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            return new DeferredBodyAction<ResponseSuccessCreateNewTemplate>(() =>
+            return new DeferredBodyAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/new-template-from";
                 var apiCallHttpMethod = "post";
@@ -162,12 +162,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseUpdateTemplate> UpdateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyjson = null)
+        public IBodyWorkflowAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyjson = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyjson = WorkflowExpression.Compile(bodyjson, nameof(bodyjson), required: false);
-            return new DeferredBodyAction<ResponseUpdateTemplate>(() =>
+            return new DeferredBodyAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/update-template";
                 var apiCallHttpMethod = "post";
@@ -198,10 +198,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> DeleteTemplate(Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<ResponseSuccessDeleteTemplate, ApiConnectionActionConfiguration> DeleteTemplate(Expression<Func<string>> templateId)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            return new DeferredBodyAction<ResponseSuccessDeleteTemplate>(() =>
+            return new DeferredBodyAction<ResponseSuccessDeleteTemplate, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/delete-template";
                 var apiCallHttpMethod = "get";
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> CreateEditorSession(Expression<Func<string>> bodytemplateId, Expression<Func<bool>> bodycanSave = null, Expression<Func<bool>> bodycanCreatePDF = null, Expression<Func<bool>> bodycanViewSettings = null, Expression<Func<bool>> bodycanPreview = null, Expression<Func<bool>> bodycanEditJSON = null, Expression<Func<bool>> bodycanShowHeader = null, Expression<Func<int>> bodyjsonMode = null, Expression<Func<string>> bodybackURL = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration> CreateEditorSession(Expression<Func<string>> bodytemplateId, Expression<Func<bool>> bodycanSave = null, Expression<Func<bool>> bodycanCreatePDF = null, Expression<Func<bool>> bodycanViewSettings = null, Expression<Func<bool>> bodycanPreview = null, Expression<Func<bool>> bodycanEditJSON = null, Expression<Func<bool>> bodycanShowHeader = null, Expression<Func<int>> bodyjsonMode = null, Expression<Func<string>> bodybackURL = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodycanSave = WorkflowExpression.Compile(bodycanSave, nameof(bodycanSave), required: false);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var __workflow_bodycanShowHeader = WorkflowExpression.Compile(bodycanShowHeader, nameof(bodycanShowHeader), required: false);
             var __workflow_bodyjsonMode = WorkflowExpression.Compile(bodyjsonMode, nameof(bodyjsonMode), required: false);
             var __workflow_bodybackURL = WorkflowExpression.Compile(bodybackURL, nameof(bodybackURL), required: false);
-            return new DeferredBodyAction<ResponseSuccessCreateNewEditorSession>(() =>
+            return new DeferredBodyAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create-editor-session";
                 var apiCallHttpMethod = "post";
@@ -298,11 +298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseListTransactions> ListTransactions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ResponseListTransactions, ApiConnectionActionConfiguration> ListTransactions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<ResponseListTransactions>(() =>
+            return new DeferredBodyAction<ResponseListTransactions, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list-transactions";
                 var apiCallHttpMethod = "get";
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseAccountInformation> GetAccountInfo()
+        public IBodyWorkflowAction<ResponseAccountInformation, ApiConnectionActionConfiguration> GetAccountInfo()
         {
             var apiCallPath = "/get-account-info";
             var apiCallHttpMethod = "get";
@@ -325,12 +325,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> MergePdfs(Expression<Func<JToken[]>> bodyurls, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<JToken[]>> bodyurls, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
         {
             var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
             var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
             var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
+            return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/merge-pdfs";
                 var apiCallHttpMethod = "post";
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> AddWatermark(Expression<Func<string>> bodyurl, Expression<Func<string>> bodytext, Expression<Func<int>> bodyfontSize = null, Expression<Func<int>> bodyopacity = null, Expression<Func<int>> bodyrotation = null, Expression<Func<string>> bodyhexColor = null, Expression<Func<string>> bodyfontFamily = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> AddWatermark(Expression<Func<string>> bodyurl, Expression<Func<string>> bodytext, Expression<Func<int>> bodyfontSize = null, Expression<Func<int>> bodyopacity = null, Expression<Func<int>> bodyrotation = null, Expression<Func<string>> bodyhexColor = null, Expression<Func<string>> bodyfontFamily = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
             var __workflow_bodyfontFamily = WorkflowExpression.Compile(bodyfontFamily, nameof(bodyfontFamily), required: false);
             var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
             var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
+            return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-watermark";
                 var apiCallHttpMethod = "post";

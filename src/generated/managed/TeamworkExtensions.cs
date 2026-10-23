@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
     public class TeamworkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<ListProjectsResponse> ListProjects()
+        public IBodyWorkflowAction<ListProjectsResponse, ApiConnectionActionConfiguration> ListProjects()
         {
             var apiCallPath = "/projects.json";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<CreateProjectResponse> CreateProject(Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyprojectdescription = null, Expression<Func<string>> bodyprojectcategoryId = null, Expression<Func<string>> bodyprojectcompanyId = null, Expression<Func<string>> bodyprojectnewCompany = null, Expression<Func<string>> bodyprojectstartDate = null, Expression<Func<string>> bodyprojectendDate = null, Expression<Func<string>> bodyprojecttags = null)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyprojectdescription = null, Expression<Func<string>> bodyprojectcategoryId = null, Expression<Func<string>> bodyprojectcompanyId = null, Expression<Func<string>> bodyprojectnewCompany = null, Expression<Func<string>> bodyprojectstartDate = null, Expression<Func<string>> bodyprojectendDate = null, Expression<Func<string>> bodyprojecttags = null)
         {
             var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
             var __workflow_bodyprojectdescription = WorkflowExpression.Compile(bodyprojectdescription, nameof(bodyprojectdescription), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_bodyprojectstartDate = WorkflowExpression.Compile(bodyprojectstartDate, nameof(bodyprojectstartDate), required: false);
             var __workflow_bodyprojectendDate = WorkflowExpression.Compile(bodyprojectendDate, nameof(bodyprojectendDate), required: false);
             var __workflow_bodyprojecttags = WorkflowExpression.Compile(bodyprojecttags, nameof(bodyprojecttags), required: false);
-            return new DeferredBodyAction<CreateProjectResponse>(() =>
+            return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/projects.json";
                 var apiCallHttpMethod = "post";
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<GetProjectResponse, ApiConnectionActionConfiguration> GetProject(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<GetProjectResponse>(() =>
+            return new DeferredBodyAction<GetProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}.json", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -117,11 +117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<ListTasksResponse> ListTasks(Expression<Func<string>> projectId, Expression<Func<string>> taskListId)
+        public IBodyWorkflowAction<ListTasksResponse, ApiConnectionActionConfiguration> ListTasks(Expression<Func<string>> projectId, Expression<Func<string>> taskListId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
-            return new DeferredBodyAction<ListTasksResponse>(() =>
+            return new DeferredBodyAction<ListTasksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasklists/{0}/tasks.json", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<UpsertTaskResponse> CreateTask(Expression<Func<string>> projectId, Expression<Func<string>> taskListId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedMinutes = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
+        public IBodyWorkflowAction<UpsertTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> projectId, Expression<Func<string>> taskListId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedMinutes = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_bodytodoItemnotifyPeople = WorkflowExpression.Compile(bodytodoItemnotifyPeople, nameof(bodytodoItemnotifyPeople), required: false);
             var __workflow_bodytodoItemisPrivate = WorkflowExpression.Compile(bodytodoItemisPrivate, nameof(bodytodoItemisPrivate), required: false);
             var __workflow_bodytodoItemtags = WorkflowExpression.Compile(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
-            return new DeferredBodyAction<UpsertTaskResponse>(() =>
+            return new DeferredBodyAction<UpsertTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasklists/{0}/tasks.json", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -239,10 +239,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<GetTaskResponse> GetTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetTaskResponse, ApiConnectionActionConfiguration> GetTask(Expression<Func<string>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<GetTaskResponse>(() =>
+            return new DeferredBodyAction<GetTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}.json", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<UpsertTaskResponse> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedTime = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
+        public IBodyWorkflowAction<UpsertTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedTime = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_bodytodoItemname = WorkflowExpression.Compile(bodytodoItemname, nameof(bodytodoItemname), required: false);
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_bodytodoItemnotifyPeople = WorkflowExpression.Compile(bodytodoItemnotifyPeople, nameof(bodytodoItemnotifyPeople), required: false);
             var __workflow_bodytodoItemisPrivate = WorkflowExpression.Compile(bodytodoItemisPrivate, nameof(bodytodoItemisPrivate), required: false);
             var __workflow_bodytodoItemtags = WorkflowExpression.Compile(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
-            return new DeferredBodyAction<UpsertTaskResponse>(() =>
+            return new DeferredBodyAction<UpsertTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}.json", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -357,10 +357,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<DeleteTaskResponse, ApiConnectionActionConfiguration> DeleteTask(Expression<Func<string>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<DeleteTaskResponse>(() =>
+            return new DeferredBodyAction<DeleteTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}.json", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -370,10 +370,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<ListUsersResponse> ListUsers(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<ListUsersResponse, ApiConnectionActionConfiguration> ListUsers(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<ListUsersResponse>(() =>
+            return new DeferredBodyAction<ListUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/people.json", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodypersonemailAddress = null, Expression<Func<string>> bodypersonfirstName = null, Expression<Func<string>> bodypersonlastName = null, Expression<Func<string>> bodypersoncompanyId = null, Expression<Func<string>> bodypersonjobTitle = null, Expression<Func<string>> bodypersonhome = null, Expression<Func<string>> bodypersonmobile = null, Expression<Func<string>> bodypersonoffice = null, Expression<Func<string>> bodypersonofficeExtension = null, Expression<Func<string>> bodypersonfax = null, Expression<Func<string>> bodypersonusername = null)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodypersonemailAddress = null, Expression<Func<string>> bodypersonfirstName = null, Expression<Func<string>> bodypersonlastName = null, Expression<Func<string>> bodypersoncompanyId = null, Expression<Func<string>> bodypersonjobTitle = null, Expression<Func<string>> bodypersonhome = null, Expression<Func<string>> bodypersonmobile = null, Expression<Func<string>> bodypersonoffice = null, Expression<Func<string>> bodypersonofficeExtension = null, Expression<Func<string>> bodypersonfax = null, Expression<Func<string>> bodypersonusername = null)
         {
             var __workflow_bodypersonemailAddress = WorkflowExpression.Compile(bodypersonemailAddress, nameof(bodypersonemailAddress), required: false);
             var __workflow_bodypersonfirstName = WorkflowExpression.Compile(bodypersonfirstName, nameof(bodypersonfirstName), required: false);
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_bodypersonofficeExtension = WorkflowExpression.Compile(bodypersonofficeExtension, nameof(bodypersonofficeExtension), required: false);
             var __workflow_bodypersonfax = WorkflowExpression.Compile(bodypersonfax, nameof(bodypersonfax), required: false);
             var __workflow_bodypersonusername = WorkflowExpression.Compile(bodypersonusername, nameof(bodypersonusername), required: false);
-            return new DeferredBodyAction<CreateUserResponse>(() =>
+            return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/people.json";
                 var apiCallHttpMethod = "post";
@@ -487,10 +487,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> personId)
+        public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> personId)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
-            return new DeferredBodyAction<GetUserResponse>(() =>
+            return new DeferredBodyAction<GetUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/people/{0}.json", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class TeamworkTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> WebhookCreateProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook1/webhooks.json";
             var apiCallHttpMethod = "post";
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> WebhookCreateTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook2/webhooks.json";
             var apiCallHttpMethod = "post";
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> WebhookCreateUser(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook3/webhooks.json";
             var apiCallHttpMethod = "post";

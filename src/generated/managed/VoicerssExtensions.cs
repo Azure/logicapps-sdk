@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
     public class VoicerssActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicerss")]
-        public IWorkflowAction ConvertTTS(Expression<Func<string>> hl, Expression<Func<string>> src, Expression<Func<cInput>> c = null, Expression<Func<string>> f = null, Expression<Func<string>> v = null, Expression<Func<int>> r = null, Expression<Func<bool>> ssml = null, Expression<Func<bool>> b64 = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConvertTTS(Expression<Func<string>> hl, Expression<Func<string>> src, Expression<Func<cInput>> c = null, Expression<Func<string>> f = null, Expression<Func<string>> v = null, Expression<Func<int>> r = null, Expression<Func<bool>> ssml = null, Expression<Func<bool>> b64 = null)
         {
             var __workflow_hl = WorkflowExpression.Compile(hl, nameof(hl), required: true);
             var __workflow_src = WorkflowExpression.Compile(src, nameof(src), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
             var __workflow_r = WorkflowExpression.Compile(r, nameof(r), required: false);
             var __workflow_ssml = WorkflowExpression.Compile(ssml, nameof(ssml), required: false);
             var __workflow_b64 = WorkflowExpression.Compile(b64, nameof(b64), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";

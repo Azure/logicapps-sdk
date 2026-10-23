@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
     public class OnenoteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<CreateSectionInNotebookResponse> CreateSectionInNotebook(Expression<Func<string>> notebookKey, Expression<Func<string>> bodynameOfTheNewSection = null)
+        public IBodyWorkflowAction<CreateSectionInNotebookResponse, ApiConnectionActionConfiguration> CreateSectionInNotebook(Expression<Func<string>> notebookKey, Expression<Func<string>> bodynameOfTheNewSection = null)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_bodynameOfTheNewSection = WorkflowExpression.Compile(bodynameOfTheNewSection, nameof(bodynameOfTheNewSection), required: false);
-            return new DeferredBodyAction<CreateSectionInNotebookResponse>(() =>
+            return new DeferredBodyAction<CreateSectionInNotebookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notebooks/Dynamic/sections";
                 var apiCallHttpMethod = "post";
@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<Page> CreatePageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageContent = null)
+        public IBodyWorkflowAction<Page, ApiConnectionActionConfiguration> CreatePageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageContent = null)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_pageContent = WorkflowExpression.Compile(pageContent, nameof(pageContent), required: false);
-            return new DeferredBodyAction<Page>(() =>
+            return new DeferredBodyAction<Page, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sections/Dynamic/pages";
                 var apiCallHttpMethod = "post";
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<GetPagesInSectionResponse> GetPagesInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId)
+        public IBodyWorkflowAction<GetPagesInSectionResponse, ApiConnectionActionConfiguration> GetPagesInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
-            return new DeferredBodyAction<GetPagesInSectionResponse>(() =>
+            return new DeferredBodyAction<GetPagesInSectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sections/Dynamic/pages";
                 var apiCallHttpMethod = "get";
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<Page> CreatePageInQuickNotes(Expression<Func<string>> pageContent = null)
+        public IBodyWorkflowAction<Page, ApiConnectionActionConfiguration> CreatePageInQuickNotes(Expression<Func<string>> pageContent = null)
         {
             var __workflow_pageContent = WorkflowExpression.Compile(pageContent, nameof(pageContent), required: false);
-            return new DeferredBodyAction<Page>(() =>
+            return new DeferredBodyAction<Page, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages";
                 var apiCallHttpMethod = "post";
@@ -88,12 +88,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IWorkflowAction DeletePage(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeletePage(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages";
                 var apiCallHttpMethod = "delete";
@@ -106,12 +106,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<string> GetPageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetPageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/Dynamic/content";
                 var apiCallHttpMethod = "get";
@@ -125,13 +125,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<string> UpdatePageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId, Expression<Func<updatesInputItem[]>> updates = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdatePageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId, Expression<Func<updatesInputItem[]>> updates = null)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_updates = WorkflowExpression.Compile(updates, nameof(updates), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/Dynamic/content";
                 var apiCallHttpMethod = "patch";
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<Notebook[]> GetNotebooks()
+        public IBodyWorkflowAction<Notebook[], ApiConnectionActionConfiguration> GetNotebooks()
         {
             var apiCallPath = "/notebooks";
             var apiCallHttpMethod = "get";
@@ -154,10 +154,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<GetSectionsInNotebookResponse> GetSectionsInNotebook(Expression<Func<string>> notebookKey)
+        public IBodyWorkflowAction<GetSectionsInNotebookResponse, ApiConnectionActionConfiguration> GetSectionsInNotebook(Expression<Func<string>> notebookKey)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
-            return new DeferredBodyAction<GetSectionsInNotebookResponse>(() =>
+            return new DeferredBodyAction<GetSectionsInNotebookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notebooks/notebookKey/sections";
                 var apiCallHttpMethod = "get";
@@ -170,10 +170,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
 
     public class OnenoteTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook(Expression<Func<string>> notebookKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionResponse, ApiConnectionTriggerConfiguration> OnNewSectionInNotebook(Expression<Func<string>> notebookKey, FlowRecurrence recurrence = null)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
-            return new DeferredBodyTrigger<NewSectionResponse>(() =>
+            return new DeferredBodyTrigger<NewSectionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger1/notebooks/notebookKey/sections";
                 var apiCallHttpMethod = "get";
@@ -183,10 +183,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             });
         }
 
-        public IBodyWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook(Expression<Func<string>> notebookKey, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionGroupResponse, ApiConnectionTriggerConfiguration> OnNewSectionGroupInNotebook(Expression<Func<string>> notebookKey, FlowRecurrence recurrence = null)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
-            return new DeferredBodyTrigger<NewSectionGroupResponse>(() =>
+            return new DeferredBodyTrigger<NewSectionGroupResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger2/notebooks/notebookKey/sectiongroups";
                 var apiCallHttpMethod = "get";
@@ -196,11 +196,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
             });
         }
 
-        public IBodyWorkflowTrigger<NewPageResponse> OnNewPageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewPageResponse, ApiConnectionTriggerConfiguration> OnNewPageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, FlowRecurrence recurrence = null)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
-            return new DeferredBodyTrigger<NewPageResponse>(() =>
+            return new DeferredBodyTrigger<NewPageResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger3/sections/Dynamic/pages";
                 var apiCallHttpMethod = "get";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
     public class JirasearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jirasearch")]
-        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch(Expression<Func<string>> jql, Expression<Func<string>> hostname, Expression<Func<string>> fields, Expression<Func<string>> expand = null, Expression<Func<int>> startAt = null, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<SimpleSearchResponse, ApiConnectionActionConfiguration> SimpleSearch(Expression<Func<string>> jql, Expression<Func<string>> hostname, Expression<Func<string>> fields, Expression<Func<string>> expand = null, Expression<Func<int>> startAt = null, Expression<Func<int>> maxResults = null)
         {
             var __workflow_jql = WorkflowExpression.Compile(jql, nameof(jql), required: true);
             var __workflow_hostname = WorkflowExpression.Compile(hostname, nameof(hostname), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             var __workflow_startAt = WorkflowExpression.Compile(startAt, nameof(startAt), required: false);
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
-            return new DeferredBodyAction<SimpleSearchResponse>(() =>
+            return new DeferredBodyAction<SimpleSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/rest/api/2/search";
                 var apiCallHttpMethod = "get";

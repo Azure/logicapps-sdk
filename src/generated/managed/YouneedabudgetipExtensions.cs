@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youneedabudgetip
     public class YouneedabudgetipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youneedabudgetip")]
-        public IBodyWorkflowAction<UserResponse> GetUser()
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> GetUser()
         {
             var apiCallPath = "/user";
             var apiCallHttpMethod = "get";

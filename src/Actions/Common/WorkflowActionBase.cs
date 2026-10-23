@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -16,14 +16,21 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// and its <see cref="IWorkflowAction.RunAfterConfig"/> is updated to reference this action.
     /// </para>
     /// <para>
-    /// Subclasses must implement <see cref="GetActionDefinition"/> to produce the
+    /// Subclasses must implement <see cref="BuildActionDefinition"/> to produce the
     /// <see cref="FlowTemplateAction"/> that represents this action in the serialized workflow definition.
+    /// The public <see cref="GetActionDefinition"/> method then applies common action configuration.
     /// </para>
     /// </remarks>
     /// <seealso cref="IWorkflowAction"/>
-    /// <seealso cref="WorkflowTriggerBase"/>
-    public abstract class WorkflowActionBase : IWorkflowAction
+    public abstract class WorkflowActionBase<TConfiguration> :
+        IWorkflowAction<TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
+        internal WorkflowActionBase()
+        {
+            this.Configuration = new TConfiguration();
+        }
+
         /// <summary>
         /// Gets or sets the name of the action.
         /// </summary>
@@ -35,16 +42,38 @@ namespace Microsoft.Azure.Workflows.Sdk
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
         /// <summary>
+        /// Gets the run-after configuration mapping parent action names to required statuses.
+        /// </summary>
+        public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
+
+        public TConfiguration Configuration { get; }
+
+        /// <summary>
         /// Gets the action definition as a FlowTemplateAction.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public abstract FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null);
+        public FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        {
+            var definition = this.BuildActionDefinition(flowName, flowKind)
+                ?? throw new InvalidOperationException($"Action '{this.Name}' returned a null definition.");
+
+            WorkflowOperationConfiguration.ApplyActionConfiguration(
+                this.Configuration,
+                definition,
+                flowKind);
+
+            return definition;
+        }
 
         /// <summary>
-        /// Gets the run-after configuration mapping parent action names to required statuses.
+        /// Builds the operation-specific action definition.
         /// </summary>
-        public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
+        /// <param name="flowName">The flow name.</param>
+        /// <param name="flowKind">The flow kind.</param>
+        internal abstract FlowTemplateAction BuildActionDefinition(
+            string flowName,
+            FlowKind? flowKind = null);
 
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)

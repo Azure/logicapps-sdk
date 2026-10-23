@@ -4,10 +4,26 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
+
+    public sealed class HttpActionConfiguration :
+        IRetryPolicyConfiguration,
+        ITrackedPropertiesConfiguration,
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
     /// <summary>
     /// The HTTP action to send HTTP requests to external services.
     /// </summary>
-    public class HttpAction : WorkflowActionBase
+    public class HttpAction : WorkflowActionBase<HttpActionConfiguration>
     {
         /// <summary>
         /// Gets the URI of the HTTP request.
@@ -62,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {

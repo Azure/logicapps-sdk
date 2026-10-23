@@ -4,14 +4,24 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
     using System.Net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
+    public sealed class ResponseActionConfiguration :
+        ITrackedPropertiesConfiguration,
+        ISecureInputsAndOutputsConfiguration
+    {
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+    }
+
     /// <summary>
     /// The response action to return a response with specific status code, headers, and body from the workflow.
     /// </summary>
-    public class ResponseAction : WorkflowActionBase
+    public class ResponseAction : WorkflowActionBase<ResponseActionConfiguration>
     {
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
@@ -61,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {

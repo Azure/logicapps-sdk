@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
     public class PowerappsnotificationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerappsnotification")]
-        public IWorkflowAction SendPushNotification(Expression<Func<string[]>> payloadrecipients = null, Expression<Func<string>> payloadmessage = null, Expression<Func<bool>> payloadopenApp = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendPushNotification(Expression<Func<string[]>> payloadrecipients = null, Expression<Func<string>> payloadmessage = null, Expression<Func<bool>> payloadopenApp = null)
         {
             var __workflow_payloadrecipients = WorkflowExpression.Compile(payloadrecipients, nameof(payloadrecipients), required: false);
             var __workflow_payloadmessage = WorkflowExpression.Compile(payloadmessage, nameof(payloadmessage), required: false);
             var __workflow_payloadopenApp = WorkflowExpression.Compile(payloadopenApp, nameof(payloadopenApp), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";
                 var apiCallHttpMethod = "post";

@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
     public class RobohashipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
+        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             var __workflow_set = WorkflowExpression.Compile(set, nameof(set), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_bgset = WorkflowExpression.Compile(bgset, nameof(bgset), required: false);
             var __workflow_gravatar = WorkflowExpression.Compile(gravatar, nameof(gravatar), required: false);
-            return new DeferredBodyAction<ImageGetResponse>(() =>
+            return new DeferredBodyAction<ImageGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_text.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
     public class SmsforapplicationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport[]> ListJobs(Expression<Func<bool>> jobIdsOnly, Expression<Func<string>> fromTs = null, Expression<Func<string>> toTs = null, Expression<Func<bool>> open = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<JobReport[], ApiConnectionActionConfiguration> ListJobs(Expression<Func<bool>> jobIdsOnly, Expression<Func<string>> fromTs = null, Expression<Func<string>> toTs = null, Expression<Func<bool>> open = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
         {
             var __workflow_jobIdsOnly = WorkflowExpression.Compile(jobIdsOnly, nameof(jobIdsOnly), required: true);
             var __workflow_fromTs = WorkflowExpression.Compile(fromTs, nameof(fromTs), required: false);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
             var __workflow_open = WorkflowExpression.Compile(open, nameof(open), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<JobReport[]>(() =>
+            return new DeferredBodyAction<JobReport[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/jobs";
                 var apiCallHttpMethod = "get";
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport> GetJob(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<JobReport, ApiConnectionActionConfiguration> GetJob(Expression<Func<string>> jobId)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            return new DeferredBodyAction<JobReport>(() =>
+            return new DeferredBodyAction<JobReport, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/jobs/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<RecipientReport[]> ListRecipients(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<RecipientReport[], ApiConnectionActionConfiguration> ListRecipients(Expression<Func<string>> jobId)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            return new DeferredBodyAction<RecipientReport[]>(() =>
+            return new DeferredBodyAction<RecipientReport[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms";
                 var apiCallHttpMethod = "get";
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<VersionInfoResponse> Get()
+        public IBodyWorkflowAction<VersionInfoResponse, ApiConnectionActionConfiguration> Get()
         {
             var apiCallPath = "/version";
             var apiCallHttpMethod = "get";

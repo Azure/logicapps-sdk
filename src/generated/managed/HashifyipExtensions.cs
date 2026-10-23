@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
     public class HashifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4GETResponse> MD4GET(Expression<Func<string>> value)
+        public IBodyWorkflowAction<MD4GETResponse, ApiConnectionActionConfiguration> MD4GET(Expression<Func<string>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
-            return new DeferredBodyAction<MD4GETResponse>(() =>
+            return new DeferredBodyAction<MD4GETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/md4/hex";
                 var apiCallHttpMethod = "get";
@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4POSTResponse> MD4POST(Expression<Func<string>> value, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<MD4POSTResponse, ApiConnectionActionConfiguration> MD4POST(Expression<Func<string>> value, Expression<Func<string>> body = null)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MD4POSTResponse>(() =>
+            return new DeferredBodyAction<MD4POSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/md4/hex";
                 var apiCallHttpMethod = "post";
@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4POSTFileResponse> MD4POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
+        public IBodyWorkflowAction<MD4POSTFileResponse, ApiConnectionActionConfiguration> MD4POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<MD4POSTFileResponse>(() =>
+            return new DeferredBodyAction<MD4POSTFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/md4/base64";
                 var apiCallHttpMethod = "post";
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5GETResponse> MD5GET(Expression<Func<string>> value)
+        public IBodyWorkflowAction<MD5GETResponse, ApiConnectionActionConfiguration> MD5GET(Expression<Func<string>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
-            return new DeferredBodyAction<MD5GETResponse>(() =>
+            return new DeferredBodyAction<MD5GETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/md5/hex";
                 var apiCallHttpMethod = "get";
@@ -71,11 +71,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5POSTResponse> MD5POST(Expression<Func<string>> value, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<MD5POSTResponse, ApiConnectionActionConfiguration> MD5POST(Expression<Func<string>> value, Expression<Func<string>> body = null)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MD5POSTResponse>(() =>
+            return new DeferredBodyAction<MD5POSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/md5/hex";
                 var apiCallHttpMethod = "post";
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5POSTFileResponse> MD5POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
+        public IBodyWorkflowAction<MD5POSTFileResponse, ApiConnectionActionConfiguration> MD5POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<MD5POSTFileResponse>(() =>
+            return new DeferredBodyAction<MD5POSTFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/md5/base64";
                 var apiCallHttpMethod = "post";
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway256POSTResponse> Highway256POST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<Highway256POSTResponse, ApiConnectionActionConfiguration> Highway256POST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_xHashifyKey = WorkflowExpression.Compile(xHashifyKey, nameof(xHashifyKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<Highway256POSTResponse>(() =>
+            return new DeferredBodyAction<Highway256POSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway/base64url";
                 var apiCallHttpMethod = "post";
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway256RandomPOSTResponse> Highway256RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<Highway256RandomPOSTResponse, ApiConnectionActionConfiguration> Highway256RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_xHashifyKey = WorkflowExpression.Compile(xHashifyKey, nameof(xHashifyKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<Highway256RandomPOSTResponse>(() =>
+            return new DeferredBodyAction<Highway256RandomPOSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway/base32";
                 var apiCallHttpMethod = "post";
@@ -142,13 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway64RandomPOSTResponse> Highway64RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<Highway64RandomPOSTResponse, ApiConnectionActionConfiguration> Highway64RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_xHashifyKey = WorkflowExpression.Compile(xHashifyKey, nameof(xHashifyKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<Highway64RandomPOSTResponse>(() =>
+            return new DeferredBodyAction<Highway64RandomPOSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway-64/base32";
                 var apiCallHttpMethod = "post";
@@ -162,11 +162,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway128GETResponse> Highway128GET(Expression<Func<string>> value, Expression<Func<string>> key)
+        public IBodyWorkflowAction<Highway128GETResponse, ApiConnectionActionConfiguration> Highway128GET(Expression<Func<string>> value, Expression<Func<string>> key)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<Highway128GETResponse>(() =>
+            return new DeferredBodyAction<Highway128GETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway-128/hex";
                 var apiCallHttpMethod = "get";
@@ -178,13 +178,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway128RandomPOSTResponse> Highway128RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<Highway128RandomPOSTResponse, ApiConnectionActionConfiguration> Highway128RandomPOST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_xHashifyKey = WorkflowExpression.Compile(xHashifyKey, nameof(xHashifyKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<Highway128RandomPOSTResponse>(() =>
+            return new DeferredBodyAction<Highway128RandomPOSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway-128/hex";
                 var apiCallHttpMethod = "post";
@@ -198,11 +198,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway128RandomGETResponse> Highway128RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
+        public IBodyWorkflowAction<Highway128RandomGETResponse, ApiConnectionActionConfiguration> Highway128RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<Highway128RandomGETResponse>(() =>
+            return new DeferredBodyAction<Highway128RandomGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway128";
                 var apiCallHttpMethod = "get";
@@ -214,11 +214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway64RandomGETResponse> Highway64RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
+        public IBodyWorkflowAction<Highway64RandomGETResponse, ApiConnectionActionConfiguration> Highway64RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<Highway64RandomGETResponse>(() =>
+            return new DeferredBodyAction<Highway64RandomGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway64";
                 var apiCallHttpMethod = "get";
@@ -230,13 +230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway64POSTResponse> Highway64POST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<Highway64POSTResponse, ApiConnectionActionConfiguration> Highway64POST(Expression<Func<string>> key, Expression<Func<string>> contentType, Expression<Func<string>> xHashifyKey, Expression<Func<string>> body = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_xHashifyKey = WorkflowExpression.Compile(xHashifyKey, nameof(xHashifyKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<Highway64POSTResponse>(() =>
+            return new DeferredBodyAction<Highway64POSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway64";
                 var apiCallHttpMethod = "post";
@@ -250,11 +250,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<Highway256RandomGETResponse> Highway256RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
+        public IBodyWorkflowAction<Highway256RandomGETResponse, ApiConnectionActionConfiguration> Highway256RandomGET(Expression<Func<string>> value, Expression<Func<string>> key)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<Highway256RandomGETResponse>(() =>
+            return new DeferredBodyAction<Highway256RandomGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hash/highway";
                 var apiCallHttpMethod = "get";
@@ -266,11 +266,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<SHA1GETResponse> SHA1GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
+        public IBodyWorkflowAction<SHA1GETResponse, ApiConnectionActionConfiguration> SHA1GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_digestFormat = WorkflowExpression.Compile(digestFormat, nameof(digestFormat), required: true);
-            return new DeferredBodyAction<SHA1GETResponse>(() =>
+            return new DeferredBodyAction<SHA1GETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha1/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -281,12 +281,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<M200> SHA1POSTForm(Expression<Func<string>> xHashifyProcess, Expression<Func<string>> digestFormat, Expression<Func<string>> file)
+        public IBodyWorkflowAction<M200, ApiConnectionActionConfiguration> SHA1POSTForm(Expression<Func<string>> xHashifyProcess, Expression<Func<string>> digestFormat, Expression<Func<string>> file)
         {
             var __workflow_xHashifyProcess = WorkflowExpression.Compile(xHashifyProcess, nameof(xHashifyProcess), required: true);
             var __workflow_digestFormat = WorkflowExpression.Compile(digestFormat, nameof(digestFormat), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<M200>(() =>
+            return new DeferredBodyAction<M200, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha1/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -297,11 +297,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<SHA256GETResponse> SHA256GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
+        public IBodyWorkflowAction<SHA256GETResponse, ApiConnectionActionConfiguration> SHA256GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_digestFormat = WorkflowExpression.Compile(digestFormat, nameof(digestFormat), required: true);
-            return new DeferredBodyAction<SHA256GETResponse>(() =>
+            return new DeferredBodyAction<SHA256GETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha256/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -312,12 +312,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<SHA256BodyPOSTResponse> SHA256BodyPOST(Expression<Func<string>> value, Expression<Func<string>> digestFormat, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<SHA256BodyPOSTResponse, ApiConnectionActionConfiguration> SHA256BodyPOST(Expression<Func<string>> value, Expression<Func<string>> digestFormat, Expression<Func<string>> body = null)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_digestFormat = WorkflowExpression.Compile(digestFormat, nameof(digestFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SHA256BodyPOSTResponse>(() =>
+            return new DeferredBodyAction<SHA256BodyPOSTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha256/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<StatusCheckResponse> StatusCheck()
+        public IBodyWorkflowAction<StatusCheckResponse, ApiConnectionActionConfiguration> StatusCheck()
         {
             var apiCallPath = "/status";
             var apiCallHttpMethod = "get";
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<M200[]> Methods()
+        public IBodyWorkflowAction<M200[], ApiConnectionActionConfiguration> Methods()
         {
             var apiCallPath = "/methods";
             var apiCallHttpMethod = "get";
@@ -347,10 +347,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<M200> Keygen(Expression<Func<string>> keyLength)
+        public IBodyWorkflowAction<M200, ApiConnectionActionConfiguration> Keygen(Expression<Func<string>> keyLength)
         {
             var __workflow_keyLength = WorkflowExpression.Compile(keyLength, nameof(keyLength), required: true);
-            return new DeferredBodyAction<M200>(() =>
+            return new DeferredBodyAction<M200, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keygen/{0}", __workflow_keyLength.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

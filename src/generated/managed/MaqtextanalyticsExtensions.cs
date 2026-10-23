@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
     public class MaqtextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
+        public IBodyWorkflowAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
         {
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<SentimentClassifierResponseItem[]>(() =>
+            return new DeferredBodyAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/SentimentClassifier";
                 var apiCallHttpMethod = "post";
@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
+        public IBodyWorkflowAction<PIIScrubberResponse, ApiConnectionActionConfiguration> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
         {
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             var __workflow_bodyentityList = WorkflowExpression.Compile(bodyentityList, nameof(bodyentityList), required: false);
-            return new DeferredBodyAction<PIIScrubberResponse>(() =>
+            return new DeferredBodyAction<PIIScrubberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/PIIScrubber";
                 var apiCallHttpMethod = "post";
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
+        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodykeyphrasesCount = WorkflowExpression.Compile(bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
             var __workflow_bodydiversityThreshold = WorkflowExpression.Compile(bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
             var __workflow_bodyaliasThreshold = WorkflowExpression.Compile(bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
-            return new DeferredBodyAction<KeyPhraseExtractorResponseItem[]>(() =>
+            return new DeferredBodyAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/KeyPhrase";
                 var apiCallHttpMethod = "post";

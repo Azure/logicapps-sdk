@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsapubliccomment
     public class GsapubliccommentActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsapubliccomment")]
-        public IBodyWorkflowAction<GetCommentsResponse> GetComments()
+        public IBodyWorkflowAction<GetCommentsResponse, ApiConnectionActionConfiguration> GetComments()
         {
             var apiCallPath = "/comments";
             var apiCallHttpMethod = "get";

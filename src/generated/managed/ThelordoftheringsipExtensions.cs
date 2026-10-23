@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
     public class ThelordoftheringsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<BookListResponse> BookList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<BookListResponse, ApiConnectionActionConfiguration> BookList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<BookListResponse>(() =>
+            return new DeferredBodyAction<BookListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/book";
                 var apiCallHttpMethod = "get";
@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<BookGetResponse> BookGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<BookGetResponse, ApiConnectionActionConfiguration> BookGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<BookGetResponse>(() =>
+            return new DeferredBodyAction<BookGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/book/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -61,14 +61,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<BookGetChaptersResponse> BookGetChapters(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<BookGetChaptersResponse, ApiConnectionActionConfiguration> BookGetChapters(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<BookGetChaptersResponse>(() =>
+            return new DeferredBodyAction<BookGetChaptersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/book/{0}/chapter", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -86,13 +86,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<MovieListResponse> MovieList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<MovieListResponse, ApiConnectionActionConfiguration> MovieList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<MovieListResponse>(() =>
+            return new DeferredBodyAction<MovieListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/movie";
                 var apiCallHttpMethod = "get";
@@ -110,14 +110,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<MovieGetResponse> MovieGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<MovieGetResponse, ApiConnectionActionConfiguration> MovieGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<MovieGetResponse>(() =>
+            return new DeferredBodyAction<MovieGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/movie/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -135,14 +135,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<MovieGetQuoteResponse> MovieGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<MovieGetQuoteResponse, ApiConnectionActionConfiguration> MovieGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<MovieGetQuoteResponse>(() =>
+            return new DeferredBodyAction<MovieGetQuoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/movie/{0}/quote", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -160,13 +160,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<CharacterListResponse> CharacterList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<CharacterListResponse, ApiConnectionActionConfiguration> CharacterList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<CharacterListResponse>(() =>
+            return new DeferredBodyAction<CharacterListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/character";
                 var apiCallHttpMethod = "get";
@@ -184,14 +184,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<CharacterGetResponse> CharacterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<CharacterGetResponse, ApiConnectionActionConfiguration> CharacterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<CharacterGetResponse>(() =>
+            return new DeferredBodyAction<CharacterGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/character/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -209,14 +209,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<CharacterGetQuoteResponse> CharacterGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<CharacterGetQuoteResponse, ApiConnectionActionConfiguration> CharacterGetQuote(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<CharacterGetQuoteResponse>(() =>
+            return new DeferredBodyAction<CharacterGetQuoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/character/{0}/quote", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -234,13 +234,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<QuoteListResponse> QuoteList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<QuoteListResponse, ApiConnectionActionConfiguration> QuoteList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<QuoteListResponse>(() =>
+            return new DeferredBodyAction<QuoteListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/quote";
                 var apiCallHttpMethod = "get";
@@ -258,14 +258,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<QuoteGetResponse> QuoteGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<QuoteGetResponse, ApiConnectionActionConfiguration> QuoteGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<QuoteGetResponse>(() =>
+            return new DeferredBodyAction<QuoteGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/quote/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -283,13 +283,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<ChapterListResponse> ChapterList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<ChapterListResponse, ApiConnectionActionConfiguration> ChapterList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<ChapterListResponse>(() =>
+            return new DeferredBodyAction<ChapterListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chapter";
                 var apiCallHttpMethod = "get";
@@ -307,14 +307,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
-        public IBodyWorkflowAction<ChapterGetResponse> ChapterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
+        public IBodyWorkflowAction<ChapterGetResponse, ApiConnectionActionConfiguration> ChapterGet(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<int>> offset = null, Expression<Func<string>> sorting = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sorting = WorkflowExpression.Compile(sorting, nameof(sorting), required: false);
-            return new DeferredBodyAction<ChapterGetResponse>(() =>
+            return new DeferredBodyAction<ChapterGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chapter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

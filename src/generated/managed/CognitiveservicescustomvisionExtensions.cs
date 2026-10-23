@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
     public class CognitiveservicescustomvisionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
+        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> ClassifyImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<PredictImageResponseV3>(() =>
+            return new DeferredBodyAction<PredictImageResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/image", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
+        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> ClassifyImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
             var __workflow_bodyimageURL = WorkflowExpression.Compile(bodyimageURL, nameof(bodyimageURL), required: true);
-            return new DeferredBodyAction<PredictImageResponseV3>(() =>
+            return new DeferredBodyAction<PredictImageResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/url", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> DetectImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
+        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> DetectImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<PredictImageResponseV3>(() =>
+            return new DeferredBodyAction<PredictImageResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/image", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -68,12 +68,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> DetectImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
+        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> DetectImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
             var __workflow_bodyimageURL = WorkflowExpression.Compile(bodyimageURL, nameof(bodyimageURL), required: true);
-            return new DeferredBodyAction<PredictImageResponseV3>(() =>
+            return new DeferredBodyAction<PredictImageResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/url", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

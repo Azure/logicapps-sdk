@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
     public class MittoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
-        public IBodyWorkflowAction<SmsResponse> SmsRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string>> requestreceiver, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
+        public IBodyWorkflowAction<SmsResponse, ApiConnectionActionConfiguration> SmsRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string>> requestreceiver, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
             var __workflow_requestsender = WorkflowExpression.Compile(requestsender, nameof(requestsender), required: true);
             var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             var __workflow_requesttextType = WorkflowExpression.Compile(requesttextType, nameof(requesttextType), required: false);
             var __workflow_requestuserDataHeader = WorkflowExpression.Compile(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
             var __workflow_requestvalidityInMinutes = WorkflowExpression.Compile(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
-            return new DeferredBodyAction<SmsResponse>(() =>
+            return new DeferredBodyAction<SmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms.json";
                 var apiCallHttpMethod = "post";
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
-        public IBodyWorkflowAction<SmsBulkResponse> SmsBulkRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string[]>> requestreceivers, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
+        public IBodyWorkflowAction<SmsBulkResponse, ApiConnectionActionConfiguration> SmsBulkRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string[]>> requestreceivers, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
             var __workflow_requestsender = WorkflowExpression.Compile(requestsender, nameof(requestsender), required: true);
             var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
             var __workflow_requesttextType = WorkflowExpression.Compile(requesttextType, nameof(requesttextType), required: false);
             var __workflow_requestuserDataHeader = WorkflowExpression.Compile(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
             var __workflow_requestvalidityInMinutes = WorkflowExpression.Compile(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
-            return new DeferredBodyAction<SmsBulkResponse>(() =>
+            return new DeferredBodyAction<SmsBulkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/smsbulk.json";
                 var apiCallHttpMethod = "post";

@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
     public class XcgatepreviewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<LoginAuthResponse> LoginAuth(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserCd = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<LoginAuthResponse, ApiConnectionActionConfiguration> LoginAuth(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserCd = null, Expression<Func<string>> bodypassword = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
             var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
             var __workflow_bodyuserCd = WorkflowExpression.Compile(bodyuserCd, nameof(bodyuserCd), required: false);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            return new DeferredBodyAction<LoginAuthResponse>(() =>
+            return new DeferredBodyAction<LoginAuthResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webapi/login/auth";
                 var apiCallHttpMethod = "post";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionFindResponse> ActionFind(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string[]>> bodyreportCdList = null, Expression<Func<string>> bodyfindstatement = null, Expression<Func<bodyfindstatementListInputItem[]>> bodyfindstatementList = null, Expression<Func<bodysortListInputItem[]>> bodysortList = null, Expression<Func<string>> bodypageSize = null, Expression<Func<string>> bodypageNo = null, Expression<Func<bodyrequestListInputItem[]>> bodyrequestList = null, Expression<Func<string>> bodyenableEpoch = null)
+        public IBodyWorkflowAction<ActionFindResponse, ApiConnectionActionConfiguration> ActionFind(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string[]>> bodyreportCdList = null, Expression<Func<string>> bodyfindstatement = null, Expression<Func<bodyfindstatementListInputItem[]>> bodyfindstatementList = null, Expression<Func<bodysortListInputItem[]>> bodysortList = null, Expression<Func<string>> bodypageSize = null, Expression<Func<string>> bodypageNo = null, Expression<Func<bodyrequestListInputItem[]>> bodyrequestList = null, Expression<Func<string>> bodyenableEpoch = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
             var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
             var __workflow_bodypageNo = WorkflowExpression.Compile(bodypageNo, nameof(bodypageNo), required: false);
             var __workflow_bodyrequestList = WorkflowExpression.Compile(bodyrequestList, nameof(bodyrequestList), required: false);
             var __workflow_bodyenableEpoch = WorkflowExpression.Compile(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
-            return new DeferredBodyAction<ActionFindResponse>(() =>
+            return new DeferredBodyAction<ActionFindResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webapi/action/find";
                 var apiCallHttpMethod = "post";
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionGetResponse> ActionGet(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string>> bodyreportCd = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytrxCdx = null, Expression<Func<string>> bodyenableEpoch = null)
+        public IBodyWorkflowAction<ActionGetResponse, ApiConnectionActionConfiguration> ActionGet(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string>> bodyreportCd = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytrxCdx = null, Expression<Func<string>> bodyenableEpoch = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
             var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             var __workflow_bodytrxCdx = WorkflowExpression.Compile(bodytrxCdx, nameof(bodytrxCdx), required: false);
             var __workflow_bodyenableEpoch = WorkflowExpression.Compile(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
-            return new DeferredBodyAction<ActionGetResponse>(() =>
+            return new DeferredBodyAction<ActionGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webapi/action/get";
                 var apiCallHttpMethod = "post";

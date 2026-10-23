@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     public class FreshbooksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense[]> ListExpenses(Expression<Func<string>> accountid)
+        public IBodyWorkflowAction<Expense[], ApiConnectionActionConfiguration> ListExpenses(Expression<Func<string>> accountid)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            return new DeferredBodyAction<Expense[]>(() =>
+            return new DeferredBodyAction<Expense[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        public IBodyWorkflowAction<Expense, ApiConnectionActionConfiguration> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_bodyexpenseamountamount = WorkflowExpression.Compile(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: true);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_bodyexpensedate = WorkflowExpression.Compile(bodyexpensedate, nameof(bodyexpensedate), required: false);
             var __workflow_bodyexpensevendor = WorkflowExpression.Compile(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
             var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
-            return new DeferredBodyAction<Expense>(() =>
+            return new DeferredBodyAction<Expense, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_bodyexpensedate = WorkflowExpression.Compile(bodyexpensedate, nameof(bodyexpensedate), required: false);
             var __workflow_bodyexpensevendor = WorkflowExpression.Compile(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
             var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", __workflow_accountid.WithUrlEncoding(1), __workflow_expenseid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -195,11 +195,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", __workflow_accountid.WithUrlEncoding(1), __workflow_expenseid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Client> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
+        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_bodyclientfirstName = WorkflowExpression.Compile(bodyclientfirstName, nameof(bodyclientfirstName), required: false);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_bodyclientpostalCode = WorkflowExpression.Compile(bodyclientpostalCode, nameof(bodyclientpostalCode), required: false);
             var __workflow_bodyclientcountry = WorkflowExpression.Compile(bodyclientcountry, nameof(bodyclientcountry), required: false);
             var __workflow_bodyclientprovince = WorkflowExpression.Compile(bodyclientprovince, nameof(bodyclientprovince), required: false);
-            return new DeferredBodyAction<Client>(() =>
+            return new DeferredBodyAction<Client, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/users/clients", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -342,10 +342,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
     public class FreshbooksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Invoice[], ApiConnectionTriggerConfiguration> TrigUpdatedInvoice(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            return new DeferredBodyTrigger<Invoice[]>(() =>
+            return new DeferredBodyTrigger<Invoice[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -356,10 +356,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             });
         }
 
-        public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Expense[], ApiConnectionTriggerConfiguration> TrigUpdatedExpense(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            return new DeferredBodyTrigger<Expense[]>(() =>
+            return new DeferredBodyTrigger<Expense[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -369,10 +369,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             });
         }
 
-        public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Payment[], ApiConnectionTriggerConfiguration> TrigUpdatedPayment(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            return new DeferredBodyTrigger<Payment[]>(() =>
+            return new DeferredBodyTrigger<Payment[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/payments/payments", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

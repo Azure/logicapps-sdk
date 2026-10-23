@@ -30,5 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public string SplitOn { get; set; }
+
+        /// <summary>
+        /// Gets or sets trigger correlation configuration.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public FlowTemplateCorrelation Correlation { get; set; }
     }
 }

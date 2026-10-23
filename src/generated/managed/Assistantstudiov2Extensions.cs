@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
     public class Assistantstudiov2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        public IWorkflowAction CreateActionCard(Expression<Func<string>> organization, Expression<Func<string>> bodycardname, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<object>> bodydynamicproperties, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateActionCard(Expression<Func<string>> organization, Expression<Func<string>> bodycardname, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<object>> bodydynamicproperties, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
         {
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
             var __workflow_bodycardname = WorkflowExpression.Compile(bodycardname, nameof(bodycardname), required: true);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
             var __workflow_ownerid = WorkflowExpression.Compile(ownerid, nameof(ownerid), required: false);
             var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
             var __workflow_expirydate = WorkflowExpression.Compile(expirydate, nameof(expirydate), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/data/v9.0/msdyn_ActionCardCreate";
                 var apiCallHttpMethod = "post";
@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        public IBodyWorkflowAction<string> CreateCustomActionDefinition(Expression<Func<string>> organization, Expression<Func<string>> entityname, Expression<Func<string>> customaction, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateCustomActionDefinition(Expression<Func<string>> organization, Expression<Func<string>> entityname, Expression<Func<string>> customaction, Expression<Func<object>> body = null)
         {
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
             var __workflow_entityname = WorkflowExpression.Compile(entityname, nameof(entityname), required: true);
             var __workflow_customaction = WorkflowExpression.Compile(customaction, nameof(customaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/data/v9.0/msdyn_CreateCustomActionDefinition";
                 var apiCallHttpMethod = "post";

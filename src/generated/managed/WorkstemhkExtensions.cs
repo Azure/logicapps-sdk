@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
     public class WorkstemhkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _001addFixedSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _001addFixedSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodypayrollItemId = WorkflowExpression.Compile(bodypayrollItemId, nameof(bodypayrollItemId), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodytotalLimitAmount = WorkflowExpression.Compile(bodytotalLimitAmount, nameof(bodytotalLimitAmount), required: false);
             var __workflow_bodypaidAmount = WorkflowExpression.Compile(bodypaidAmount, nameof(bodypaidAmount), required: false);
             var __workflow_bodysurplusAmount = WorkflowExpression.Compile(bodysurplusAmount, nameof(bodysurplusAmount), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/addFixedSalaryData";
                 var apiCallHttpMethod = "post";
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3TenantResp> _001getCompanyInfo()
+        public IBodyWorkflowAction<ResultV3TenantResp, ApiConnectionActionConfiguration> _001getCompanyInfo()
         {
             var apiCallPath = "/v3/company/getCompanyInfo";
             var apiCallHttpMethod = "get";
@@ -88,10 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _002deleteFixedSalaryDataById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _002deleteFixedSalaryDataById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/deleteFixedSalaryDataById";
                 var apiCallHttpMethod = "post";
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV3SysEnterpriseUserResp> _002getUserList()
+        public IBodyWorkflowAction<ResultListV3SysEnterpriseUserResp, ApiConnectionActionConfiguration> _002getUserList()
         {
             var apiCallPath = "/v3/company/getUserList";
             var apiCallHttpMethod = "get";
@@ -111,10 +111,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> _003getUserInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp, ApiConnectionActionConfiguration> _003getUserInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3SysEnterpriseUserResp>(() =>
+            return new DeferredBodyAction<ResultV3SysEnterpriseUserResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getUserInfoById";
                 var apiCallHttpMethod = "get";
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _003updateFixedSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _003updateFixedSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodypayrollItemId = WorkflowExpression.Compile(bodypayrollItemId, nameof(bodypayrollItemId), required: false);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodytotalLimitAmount = WorkflowExpression.Compile(bodytotalLimitAmount, nameof(bodytotalLimitAmount), required: false);
             var __workflow_bodypaidAmount = WorkflowExpression.Compile(bodypaidAmount, nameof(bodypaidAmount), required: false);
             var __workflow_bodysurplusAmount = WorkflowExpression.Compile(bodysurplusAmount, nameof(bodysurplusAmount), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/updateFixedSalaryDataById";
                 var apiCallHttpMethod = "post";
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _004addLocationInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylongitude, Expression<Func<double>> bodylatitude, Expression<Func<string>> bodyareaCode, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _004addLocationInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylongitude, Expression<Func<double>> bodylatitude, Expression<Func<string>> bodyareaCode, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyattendanceAddressCode = WorkflowExpression.Compile(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodymapType = WorkflowExpression.Compile(bodymapType, nameof(bodymapType), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/addLocationInfo";
                 var apiCallHttpMethod = "post";
@@ -272,10 +272,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV3PayrollFixedResp> _004getFixedSalaryDataByEmployeeId(Expression<Func<string>> employeeId)
+        public IBodyWorkflowAction<ResultListV3PayrollFixedResp, ApiConnectionActionConfiguration> _004getFixedSalaryDataByEmployeeId(Expression<Func<string>> employeeId)
         {
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
-            return new DeferredBodyAction<ResultListV3PayrollFixedResp>(() =>
+            return new DeferredBodyAction<ResultListV3PayrollFixedResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getFixedSalaryDataByEmployeeId";
                 var apiCallHttpMethod = "get";
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _005addVariableSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodypayrollDate, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydataType = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _005addVariableSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodypayrollDate, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydataType = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodypayrollItemId = WorkflowExpression.Compile(bodypayrollItemId, nameof(bodypayrollItemId), required: true);
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodypayrollDate = WorkflowExpression.Compile(bodypayrollDate, nameof(bodypayrollDate), required: true);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
             var __workflow_bodydataType = WorkflowExpression.Compile(bodydataType, nameof(bodydataType), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/addVariableSalaryData";
                 var apiCallHttpMethod = "post";
@@ -331,10 +331,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _005deleteLocationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _005deleteLocationById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/deleteLocationById";
                 var apiCallHttpMethod = "post";
@@ -345,10 +345,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _006deleteVariableSalaryDataById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _006deleteVariableSalaryDataById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/deleteVariableSalaryDataById";
                 var apiCallHttpMethod = "post";
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _006updateLocationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyaddress = null, Expression<Func<double>> bodylongitude = null, Expression<Func<double>> bodylatitude = null, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null, Expression<Func<string>> bodyareaCode = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _006updateLocationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyaddress = null, Expression<Func<double>> bodylongitude = null, Expression<Func<double>> bodylatitude = null, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null, Expression<Func<string>> bodyareaCode = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodymapType = WorkflowExpression.Compile(bodymapType, nameof(bodymapType), required: false);
             var __workflow_bodyareaCode = WorkflowExpression.Compile(bodyareaCode, nameof(bodyareaCode), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/updateLocationById";
                 var apiCallHttpMethod = "post";
@@ -458,12 +458,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3AttAddressResp> _007getLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3AttAddressResp, ApiConnectionActionConfiguration> _007getLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3AttAddressResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3AttAddressResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getLocationList";
                 var apiCallHttpMethod = "get";
@@ -479,12 +479,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _007updateVariableSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _007updateVariableSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodymoney = WorkflowExpression.Compile(bodymoney, nameof(bodymoney), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/updateVariableSalaryDataById";
                 var apiCallHttpMethod = "post";
@@ -515,10 +515,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3AttAddressResp> _008getLocationInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3AttAddressResp, ApiConnectionActionConfiguration> _008getLocationInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3AttAddressResp>(() =>
+            return new DeferredBodyAction<ResultV3AttAddressResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getLocationInfoById";
                 var apiCallHttpMethod = "get";
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> _008getVariableSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> payrollDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp, ApiConnectionActionConfiguration> _008getVariableSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> payrollDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_payrollItemIdFilter = WorkflowExpression.Compile(payrollItemIdFilter, nameof(payrollItemIdFilter), required: false);
             var __workflow_calculateSalaryTypeFilter = WorkflowExpression.Compile(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
             var __workflow_bizLabelIds = WorkflowExpression.Compile(bizLabelIds, nameof(bizLabelIds), required: false);
-            return new DeferredBodyAction<ResultIPageV3PayrollNonFixedResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3PayrollNonFixedResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getVariableSalaryDataList";
                 var apiCallHttpMethod = "get";
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _009addExternalSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodybusinessSalaryItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodyoccurrenceDate, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _009addExternalSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodybusinessSalaryItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodyoccurrenceDate, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodybusinessSalaryItemId = WorkflowExpression.Compile(bodybusinessSalaryItemId, nameof(bodybusinessSalaryItemId), required: true);
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
             var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/addExternalSalaryData";
                 var apiCallHttpMethod = "post";
@@ -626,10 +626,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3AttRuleResp> _009getLocationAttendanceRulesById(Expression<Func<string>> workLocationId)
+        public IBodyWorkflowAction<ResultV3AttRuleResp, ApiConnectionActionConfiguration> _009getLocationAttendanceRulesById(Expression<Func<string>> workLocationId)
         {
             var __workflow_workLocationId = WorkflowExpression.Compile(workLocationId, nameof(workLocationId), required: true);
-            return new DeferredBodyAction<ResultV3AttRuleResp>(() =>
+            return new DeferredBodyAction<ResultV3AttRuleResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getLocationAttendanceRulesById";
                 var apiCallHttpMethod = "get";
@@ -640,13 +640,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _010addDepartmentInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _010addDepartmentInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydepartmentCode = WorkflowExpression.Compile(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/addDepartmentInfo";
                 var apiCallHttpMethod = "post";
@@ -683,10 +683,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _010deleteExternalSalaryDataById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _010deleteExternalSalaryDataById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/deleteExternalSalaryDataById";
                 var apiCallHttpMethod = "post";
@@ -697,10 +697,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _011deleteDepartmentById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _011deleteDepartmentById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/deleteDepartmentById";
                 var apiCallHttpMethod = "post";
@@ -711,7 +711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _011updateExternalSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyemployeeId = null, Expression<Func<string>> bodybusinessSalaryItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _011updateExternalSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyemployeeId = null, Expression<Func<string>> bodybusinessSalaryItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyoccurrenceDate = WorkflowExpression.Compile(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
             var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/updateExternalSalaryDataById";
                 var apiCallHttpMethod = "post";
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> _012getExternalSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> businessSalaryItemFilter = null, Expression<Func<string>> occurrenceDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> labelFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp, ApiConnectionActionConfiguration> _012getExternalSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> businessSalaryItemFilter = null, Expression<Func<string>> occurrenceDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> labelFilter = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_moneyFilter = WorkflowExpression.Compile(moneyFilter, nameof(moneyFilter), required: false);
             var __workflow_calculateSalaryTypeFilter = WorkflowExpression.Compile(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
             var __workflow_labelFilter = WorkflowExpression.Compile(labelFilter, nameof(labelFilter), required: false);
-            return new DeferredBodyAction<ResultIPageV3ExternalPayrollResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3ExternalPayrollResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getExternalSalaryDataList";
                 var apiCallHttpMethod = "get";
@@ -827,14 +827,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _012updateDepartmentById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _012updateDepartmentById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodydepartmentCode = WorkflowExpression.Compile(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/updateDepartmentById";
                 var apiCallHttpMethod = "post";
@@ -877,12 +877,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3DepartmentResp> _013getDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3DepartmentResp, ApiConnectionActionConfiguration> _013getDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3DepartmentResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3DepartmentResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getDepartmentList";
                 var apiCallHttpMethod = "get";
@@ -898,13 +898,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> _013getPayrollRunList(Expression<Func<string>> status, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp, ApiConnectionActionConfiguration> _013getPayrollRunList(Expression<Func<string>> status, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3PayrollPlanResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3PayrollPlanResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getPayrollRunList";
                 var apiCallHttpMethod = "get";
@@ -921,12 +921,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _014addPositionInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _014addPositionInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodypositionCode = WorkflowExpression.Compile(bodypositionCode, nameof(bodypositionCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/addPositionInfo";
                 var apiCallHttpMethod = "post";
@@ -957,12 +957,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> _014getPayrollRunDataList(Expression<Func<string>> planId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp, ApiConnectionActionConfiguration> _014getPayrollRunDataList(Expression<Func<string>> planId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_planId = WorkflowExpression.Compile(planId, nameof(planId), required: true);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3PayrollPlanDetailResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3PayrollPlanDetailResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getPayrollRunDataList";
                 var apiCallHttpMethod = "get";
@@ -977,10 +977,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _015deletePositionById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _015deletePositionById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/deletePositionById";
                 var apiCallHttpMethod = "post";
@@ -991,10 +991,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> _015getPayrollDetailsInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp, ApiConnectionActionConfiguration> _015getPayrollDetailsInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultListV3PayrollPlanDetailResp>(() =>
+            return new DeferredBodyAction<ResultListV3PayrollPlanDetailResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getPayrollDetailsInfoById";
                 var apiCallHttpMethod = "get";
@@ -1005,12 +1005,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> _016getPayrollPolicyList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> q = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollRegResp, ApiConnectionActionConfiguration> _016getPayrollPolicyList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> q = null)
         {
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
-            return new DeferredBodyAction<ResultIPageV3PayrollRegResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3PayrollRegResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getPayrollPolicyList";
                 var apiCallHttpMethod = "get";
@@ -1026,13 +1026,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _016updatePositionById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _016updatePositionById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodypositionCode = WorkflowExpression.Compile(bodypositionCode, nameof(bodypositionCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/updatePositionById";
                 var apiCallHttpMethod = "post";
@@ -1069,10 +1069,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3PayrollRegResp> _017getPayrollPolicyInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3PayrollRegResp, ApiConnectionActionConfiguration> _017getPayrollPolicyInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3PayrollRegResp>(() =>
+            return new DeferredBodyAction<ResultV3PayrollRegResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getPayrollPolicyInfoById";
                 var apiCallHttpMethod = "get";
@@ -1083,12 +1083,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3PositionResp> _017getPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3PositionResp, ApiConnectionActionConfiguration> _017getPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3PositionResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3PositionResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getPositionList";
                 var apiCallHttpMethod = "get";
@@ -1104,12 +1104,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _018addCostCenterInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _018addCostCenterInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodycostCenterCode = WorkflowExpression.Compile(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/addCostCenterInfo";
                 var apiCallHttpMethod = "post";
@@ -1140,7 +1140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> _018getPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> nameFilter = null, Expression<Func<string>> paymentTypeFilter = null, Expression<Func<string>> payrollItemTypeId = null, Expression<Func<string>> statusFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollItemResp, ApiConnectionActionConfiguration> _018getPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> nameFilter = null, Expression<Func<string>> paymentTypeFilter = null, Expression<Func<string>> payrollItemTypeId = null, Expression<Func<string>> statusFilter = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -1149,7 +1149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_paymentTypeFilter = WorkflowExpression.Compile(paymentTypeFilter, nameof(paymentTypeFilter), required: false);
             var __workflow_payrollItemTypeId = WorkflowExpression.Compile(payrollItemTypeId, nameof(payrollItemTypeId), required: false);
             var __workflow_statusFilter = WorkflowExpression.Compile(statusFilter, nameof(statusFilter), required: false);
-            return new DeferredBodyAction<ResultIPageV3PayrollItemResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3PayrollItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getPayItemList";
                 var apiCallHttpMethod = "get";
@@ -1173,10 +1173,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _019deleteCostCenterById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _019deleteCostCenterById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/deleteCostCenterById";
                 var apiCallHttpMethod = "post";
@@ -1187,10 +1187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3PayrollItemResp> _019getPayItemInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3PayrollItemResp, ApiConnectionActionConfiguration> _019getPayItemInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3PayrollItemResp>(() =>
+            return new DeferredBodyAction<ResultV3PayrollItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getPayItemInfoById";
                 var apiCallHttpMethod = "get";
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeResp> _01addEmployeeInfo(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
+        public IBodyWorkflowAction<ResultV3AddEmployeeResp, ApiConnectionActionConfiguration> _01addEmployeeInfo(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
         {
             var __workflow_bodyentryDate = WorkflowExpression.Compile(bodyentryDate, nameof(bodyentryDate), required: true);
             var __workflow_bodyenglishName = WorkflowExpression.Compile(bodyenglishName, nameof(bodyenglishName), required: true);
@@ -1250,7 +1250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyregularType = WorkflowExpression.Compile(bodyregularType, nameof(bodyregularType), required: false);
             var __workflow_bodyinsurePlanName = WorkflowExpression.Compile(bodyinsurePlanName, nameof(bodyinsurePlanName), required: false);
             var __workflow_bodybizLabelIds = WorkflowExpression.Compile(bodybizLabelIds, nameof(bodybizLabelIds), required: false);
-            return new DeferredBodyAction<ResultV3AddEmployeeResp>(() =>
+            return new DeferredBodyAction<ResultV3AddEmployeeResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/addEmployeeInfo";
                 var apiCallHttpMethod = "post";
@@ -1537,14 +1537,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _01addLeaveBalanceAdjustInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<string>> bodycause, Expression<Func<string>> bodyadjust)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _01addLeaveBalanceAdjustInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<string>> bodycause, Expression<Func<string>> bodyadjust)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodyholidayType = WorkflowExpression.Compile(bodyholidayType, nameof(bodyholidayType), required: true);
             var __workflow_bodyoccurrenceTime = WorkflowExpression.Compile(bodyoccurrenceTime, nameof(bodyoccurrenceTime), required: true);
             var __workflow_bodycause = WorkflowExpression.Compile(bodycause, nameof(bodycause), required: true);
             var __workflow_bodyadjust = WorkflowExpression.Compile(bodyadjust, nameof(bodyadjust), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/addLeaveBalanceAdjustInfo";
                 var apiCallHttpMethod = "post";
@@ -1571,7 +1571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _01addRosterInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyattendDay, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _01addRosterInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyattendDay, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodyattendDay = WorkflowExpression.Compile(bodyattendDay, nameof(bodyattendDay), required: true);
@@ -1588,7 +1588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodytierRate = WorkflowExpression.Compile(bodytierRate, nameof(bodytierRate), required: false);
             var __workflow_bodyscheduledAmount = WorkflowExpression.Compile(bodyscheduledAmount, nameof(bodyscheduledAmount), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/addRosterInfo";
                 var apiCallHttpMethod = "post";
@@ -1679,14 +1679,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3CalAttendanceResp> _01attendanceSummaryCalculate(Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<string[]>> bodyemployeeIds = null, Expression<Func<string[]>> bodydepartmentIds = null, Expression<Func<string[]>> bodypositionIds = null)
+        public IBodyWorkflowAction<ResultV3CalAttendanceResp, ApiConnectionActionConfiguration> _01attendanceSummaryCalculate(Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<string[]>> bodyemployeeIds = null, Expression<Func<string[]>> bodydepartmentIds = null, Expression<Func<string[]>> bodypositionIds = null)
         {
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
             var __workflow_bodyemployeeIds = WorkflowExpression.Compile(bodyemployeeIds, nameof(bodyemployeeIds), required: false);
             var __workflow_bodydepartmentIds = WorkflowExpression.Compile(bodydepartmentIds, nameof(bodydepartmentIds), required: false);
             var __workflow_bodypositionIds = WorkflowExpression.Compile(bodypositionIds, nameof(bodypositionIds), required: false);
-            return new DeferredBodyAction<ResultV3CalAttendanceResp>(() =>
+            return new DeferredBodyAction<ResultV3CalAttendanceResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/attendanceSummaryCalculate";
                 var apiCallHttpMethod = "post";
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3BizAttendanceConfigureResp> _01getAttendanceConfigurationList()
+        public IBodyWorkflowAction<ResultV3BizAttendanceConfigureResp, ApiConnectionActionConfiguration> _01getAttendanceConfigurationList()
         {
             var apiCallPath = "/v3/settings/getAttendanceConfigurationList";
             var apiCallHttpMethod = "get";
@@ -1734,12 +1734,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> _01getExpenseTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp, ApiConnectionActionConfiguration> _01getExpenseTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3BizReimbursementTypeResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3BizReimbursementTypeResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/expense/getExpenseTypeList";
                 var apiCallHttpMethod = "get";
@@ -1755,12 +1755,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> _020getExternalPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp, ApiConnectionActionConfiguration> _020getExternalPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3ExternalPayItemResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3ExternalPayItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getExternalPayItemList";
                 var apiCallHttpMethod = "get";
@@ -1776,13 +1776,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _020updateCostCenterById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _020updateCostCenterById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodycostCenterCode = WorkflowExpression.Compile(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/updateCostCenterById";
                 var apiCallHttpMethod = "post";
@@ -1819,12 +1819,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3CostCenterResp> _021getCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3CostCenterResp, ApiConnectionActionConfiguration> _021getCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3CostCenterResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3CostCenterResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getCostCenterList";
                 var apiCallHttpMethod = "get";
@@ -1840,10 +1840,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3ExternalPayItemResp> _021getExternalPayItemInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3ExternalPayItemResp, ApiConnectionActionConfiguration> _021getExternalPayItemInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3ExternalPayItemResp>(() =>
+            return new DeferredBodyAction<ResultV3ExternalPayItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getExternalPayItemInfoById";
                 var apiCallHttpMethod = "get";
@@ -1854,13 +1854,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _022addTagInfo(Expression<Func<string>> bodylabelName, Expression<Func<string>> bodylabelCode = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _022addTagInfo(Expression<Func<string>> bodylabelName, Expression<Func<string>> bodylabelCode = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
         {
             var __workflow_bodylabelName = WorkflowExpression.Compile(bodylabelName, nameof(bodylabelName), required: true);
             var __workflow_bodylabelCode = WorkflowExpression.Compile(bodylabelCode, nameof(bodylabelCode), required: false);
             var __workflow_bodylabelStatus = WorkflowExpression.Compile(bodylabelStatus, nameof(bodylabelStatus), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/addTagInfo";
                 var apiCallHttpMethod = "post";
@@ -1897,7 +1897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _022addWorkPatternInfo(Expression<Func<string>> bodyname, Expression<Func<double>> bodyworkHoursForDay, Expression<Func<double>> bodyworkHoursForWeek, Expression<Func<double>> bodyworkHoursForYear, Expression<Func<double>> bodytotalHours, Expression<Func<string>> bodycycleType, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<V3TermsSettingInsert[]>> bodysettingList = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _022addWorkPatternInfo(Expression<Func<string>> bodyname, Expression<Func<double>> bodyworkHoursForDay, Expression<Func<double>> bodyworkHoursForWeek, Expression<Func<double>> bodyworkHoursForYear, Expression<Func<double>> bodytotalHours, Expression<Func<string>> bodycycleType, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<V3TermsSettingInsert[]>> bodysettingList = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyworkHoursForDay = WorkflowExpression.Compile(bodyworkHoursForDay, nameof(bodyworkHoursForDay), required: true);
@@ -1915,7 +1915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyweekSalaryType = WorkflowExpression.Compile(bodyweekSalaryType, nameof(bodyweekSalaryType), required: false);
             var __workflow_bodyisThisWeek = WorkflowExpression.Compile(bodyisThisWeek, nameof(bodyisThisWeek), required: false);
             var __workflow_bodysettingList = WorkflowExpression.Compile(bodysettingList, nameof(bodysettingList), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/addWorkPatternInfo";
                 var apiCallHttpMethod = "post";
@@ -2004,10 +2004,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _023deleteTagById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _023deleteTagById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/deleteTagById";
                 var apiCallHttpMethod = "post";
@@ -2018,7 +2018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _023updateWorkPatternById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyworkHoursForDay = null, Expression<Func<double>> bodyworkHoursForWeek = null, Expression<Func<double>> bodyworkHoursForYear = null, Expression<Func<double>> bodytotalHours = null, Expression<Func<string>> bodycycleType = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<string>> bodytermsWorkDefaultId = null, Expression<Func<V3TermsSettingUpdate[]>> bodysettingList = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _023updateWorkPatternById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyworkHoursForDay = null, Expression<Func<double>> bodyworkHoursForWeek = null, Expression<Func<double>> bodyworkHoursForYear = null, Expression<Func<double>> bodytotalHours = null, Expression<Func<string>> bodycycleType = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<string>> bodytermsWorkDefaultId = null, Expression<Func<V3TermsSettingUpdate[]>> bodysettingList = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyadvancedSetting = WorkflowExpression.Compile(bodyadvancedSetting, nameof(bodyadvancedSetting), required: false);
@@ -2038,7 +2038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyisThisWeek = WorkflowExpression.Compile(bodyisThisWeek, nameof(bodyisThisWeek), required: false);
             var __workflow_bodytermsWorkDefaultId = WorkflowExpression.Compile(bodytermsWorkDefaultId, nameof(bodytermsWorkDefaultId), required: false);
             var __workflow_bodysettingList = WorkflowExpression.Compile(bodysettingList, nameof(bodysettingList), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/updateWorkPatternById";
                 var apiCallHttpMethod = "post";
@@ -2159,10 +2159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _024deleteWorkPatternById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _024deleteWorkPatternById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/deleteWorkPatternById";
                 var apiCallHttpMethod = "post";
@@ -2173,14 +2173,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _024updateTagById(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _024updateTagById(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodylabelCode = WorkflowExpression.Compile(bodylabelCode, nameof(bodylabelCode), required: false);
             var __workflow_bodylabelName = WorkflowExpression.Compile(bodylabelName, nameof(bodylabelName), required: false);
             var __workflow_bodylabelStatus = WorkflowExpression.Compile(bodylabelStatus, nameof(bodylabelStatus), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/updateTagById";
                 var apiCallHttpMethod = "post";
@@ -2223,12 +2223,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LabelResp> _025getTagList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3LabelResp, ApiConnectionActionConfiguration> _025getTagList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3LabelResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LabelResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getTagList";
                 var apiCallHttpMethod = "get";
@@ -2244,12 +2244,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> _025getWorkPatternList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp, ApiConnectionActionConfiguration> _025getWorkPatternList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3WorkPatternSummaryResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3WorkPatternSummaryResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getWorkPatternList";
                 var apiCallHttpMethod = "get";
@@ -2265,12 +2265,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3DeviceResp> _026getDeviceList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3DeviceResp, ApiConnectionActionConfiguration> _026getDeviceList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3DeviceResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3DeviceResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/company/getDeviceList";
                 var apiCallHttpMethod = "get";
@@ -2286,10 +2286,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3WorkPatternResp> _026getWorkPatternInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3WorkPatternResp, ApiConnectionActionConfiguration> _026getWorkPatternInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3WorkPatternResp>(() =>
+            return new DeferredBodyAction<ResultV3WorkPatternResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/payroll/getWorkPatternInfoById";
                 var apiCallHttpMethod = "get";
@@ -2300,7 +2300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> _02addExpenseApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyreimbursementType, Expression<Func<string>> bodyreimbursementDate, Expression<Func<string>> bodyreimbursementName, Expression<Func<double>> bodyamount, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp, ApiConnectionActionConfiguration> _02addExpenseApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyreimbursementType, Expression<Func<string>> bodyreimbursementDate, Expression<Func<string>> bodyreimbursementName, Expression<Func<double>> bodyamount, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodyreimbursementType = WorkflowExpression.Compile(bodyreimbursementType, nameof(bodyreimbursementType), required: true);
@@ -2308,7 +2308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyreimbursementName = WorkflowExpression.Compile(bodyreimbursementName, nameof(bodyreimbursementName), required: true);
             var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultV3BizReimbursementInsertResp>(() =>
+            return new DeferredBodyAction<ResultV3BizReimbursementInsertResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/expense/addExpenseApplicationInfo";
                 var apiCallHttpMethod = "post";
@@ -2341,7 +2341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _02batchSaveRosterInfo(Expression<Func<string[]>> bodyemployeeIds, Expression<Func<string[]>> bodydates, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<bool>> bodyreplaceOriginal = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _02batchSaveRosterInfo(Expression<Func<string[]>> bodyemployeeIds, Expression<Func<string[]>> bodydates, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<bool>> bodyreplaceOriginal = null)
         {
             var __workflow_bodyemployeeIds = WorkflowExpression.Compile(bodyemployeeIds, nameof(bodyemployeeIds), required: true);
             var __workflow_bodydates = WorkflowExpression.Compile(bodydates, nameof(bodydates), required: true);
@@ -2356,7 +2356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyhourlyRate = WorkflowExpression.Compile(bodyhourlyRate, nameof(bodyhourlyRate), required: false);
             var __workflow_bodycostCenterId = WorkflowExpression.Compile(bodycostCenterId, nameof(bodycostCenterId), required: false);
             var __workflow_bodyreplaceOriginal = WorkflowExpression.Compile(bodyreplaceOriginal, nameof(bodyreplaceOriginal), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/batchSaveRosterInfo";
                 var apiCallHttpMethod = "post";
@@ -2435,10 +2435,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _02deleteEmployeeById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _02deleteEmployeeById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/deleteAllData";
                 var apiCallHttpMethod = "post";
@@ -2449,10 +2449,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _02deleteLeaveBalanceAdjustmentById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _02deleteLeaveBalanceAdjustmentById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/deleteLeaveBalanceAdjustmentById";
                 var apiCallHttpMethod = "post";
@@ -2463,7 +2463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> _02getAttendanceSummaryList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> unit, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> attendCalculationFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> labelFilter = null, Expression<Func<string>> payrollRegulationFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> attendanceTypeFilter = null, Expression<Func<string>> shiftTypeFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3AttendanceListResp, ApiConnectionActionConfiguration> _02getAttendanceSummaryList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> unit, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> attendCalculationFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> labelFilter = null, Expression<Func<string>> payrollRegulationFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> attendanceTypeFilter = null, Expression<Func<string>> shiftTypeFilter = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -2482,7 +2482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_calculateSalaryTypeFilter = WorkflowExpression.Compile(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
             var __workflow_attendanceTypeFilter = WorkflowExpression.Compile(attendanceTypeFilter, nameof(attendanceTypeFilter), required: false);
             var __workflow_shiftTypeFilter = WorkflowExpression.Compile(shiftTypeFilter, nameof(shiftTypeFilter), required: false);
-            return new DeferredBodyAction<ResultIPageV3AttendanceListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3AttendanceListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getAttendanceSummaryList";
                 var apiCallHttpMethod = "get";
@@ -2523,7 +2523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryResp> _02getDataDictionaryList()
+        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryResp, ApiConnectionActionConfiguration> _02getDataDictionaryList()
         {
             var apiCallPath = "/v3/settings/getDataDictionaryList";
             var apiCallHttpMethod = "get";
@@ -2532,10 +2532,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _03deleteExpenseApplicationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _03deleteExpenseApplicationById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/expense/deleteExpenseApplicationById";
                 var apiCallHttpMethod = "post";
@@ -2546,10 +2546,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _03deleteRosterById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _03deleteRosterById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/deleteRosterById";
                 var apiCallHttpMethod = "post";
@@ -2560,10 +2560,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> _03GetDataDictionaryDetailsInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp, ApiConnectionActionConfiguration> _03GetDataDictionaryDetailsInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultListV3BizCustomizeDictionaryItemResp>(() =>
+            return new DeferredBodyAction<ResultListV3BizCustomizeDictionaryItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/settings/getDataDictionaryDetailsInfoById";
                 var apiCallHttpMethod = "get";
@@ -2574,13 +2574,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> _03getEmployeeDailyAttendanceList(Expression<Func<string>> employeeId, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> attendStatusFilter = null)
+        public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp, ApiConnectionActionConfiguration> _03getEmployeeDailyAttendanceList(Expression<Func<string>> employeeId, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> attendStatusFilter = null)
         {
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
             var __workflow_attendStatusFilter = WorkflowExpression.Compile(attendStatusFilter, nameof(attendStatusFilter), required: false);
-            return new DeferredBodyAction<ResultListV3AttendanceDetailListResp>(() =>
+            return new DeferredBodyAction<ResultListV3AttendanceDetailListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getEmployeeDailyAttendanceList";
                 var apiCallHttpMethod = "get";
@@ -2595,13 +2595,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> _03getLeaveBalanceAdjustmentList(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp, ApiConnectionActionConfiguration> _03getLeaveBalanceAdjustmentList(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
             var __workflow_holidayType = WorkflowExpression.Compile(holidayType, nameof(holidayType), required: true);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3LeaveHolidayBalanceResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LeaveHolidayBalanceResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeaveBalanceAdjustmentList";
                 var apiCallHttpMethod = "get";
@@ -2617,7 +2617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _03updateEmployeeById(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _03updateEmployeeById(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
         {
             var __workflow_bodyentryDate = WorkflowExpression.Compile(bodyentryDate, nameof(bodyentryDate), required: true);
             var __workflow_bodyenglishName = WorkflowExpression.Compile(bodyenglishName, nameof(bodyenglishName), required: true);
@@ -2666,7 +2666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyregularType = WorkflowExpression.Compile(bodyregularType, nameof(bodyregularType), required: false);
             var __workflow_bodyinsurePlanName = WorkflowExpression.Compile(bodyinsurePlanName, nameof(bodyinsurePlanName), required: false);
             var __workflow_bodybizLabelIds = WorkflowExpression.Compile(bodybizLabelIds, nameof(bodybizLabelIds), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/updateEmployeeById";
                 var apiCallHttpMethod = "post";
@@ -2953,7 +2953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3AddMobileCardResp> _04addAttendanceDataInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodydate, Expression<Func<string>> bodymode, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
+        public IBodyWorkflowAction<ResultV3AddMobileCardResp, ApiConnectionActionConfiguration> _04addAttendanceDataInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodydate, Expression<Func<string>> bodymode, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
@@ -2966,7 +2966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodylocationName = WorkflowExpression.Compile(bodylocationName, nameof(bodylocationName), required: false);
             var __workflow_bodyworkLocationId = WorkflowExpression.Compile(bodyworkLocationId, nameof(bodyworkLocationId), required: false);
             var __workflow_bodydeviceId = WorkflowExpression.Compile(bodydeviceId, nameof(bodydeviceId), required: false);
-            return new DeferredBodyAction<ResultV3AddMobileCardResp>(() =>
+            return new DeferredBodyAction<ResultV3AddMobileCardResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/addAttendanceDataInfo";
                 var apiCallHttpMethod = "post";
@@ -3037,14 +3037,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _04calculationLeaveBalance(Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisForceCal = null, Expression<Func<string[]>> bodyemployeeIdsList = null, Expression<Func<string[]>> bodyposition = null, Expression<Func<string[]>> bodydept = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04calculationLeaveBalance(Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisForceCal = null, Expression<Func<string[]>> bodyemployeeIdsList = null, Expression<Func<string[]>> bodyposition = null, Expression<Func<string[]>> bodydept = null)
         {
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             var __workflow_bodyisForceCal = WorkflowExpression.Compile(bodyisForceCal, nameof(bodyisForceCal), required: false);
             var __workflow_bodyemployeeIdsList = WorkflowExpression.Compile(bodyemployeeIdsList, nameof(bodyemployeeIdsList), required: false);
             var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
             var __workflow_bodydept = WorkflowExpression.Compile(bodydept, nameof(bodydept), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/calculationLeaveBalance";
                 var apiCallHttpMethod = "post";
@@ -3091,11 +3091,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> _04getCustomizeUserFieldList(Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp, ApiConnectionActionConfiguration> _04getCustomizeUserFieldList(Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3BizEmployeeCustomizationResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3BizEmployeeCustomizationResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/settings/getCustomizeUserFieldList";
                 var apiCallHttpMethod = "get";
@@ -3109,7 +3109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> _04getEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> sex = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> calculateSalaryType = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> regularType = null)
+        public IBodyWorkflowAction<ResultIPageV3EmployeeListResp, ApiConnectionActionConfiguration> _04getEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> sex = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> calculateSalaryType = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> regularType = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -3124,7 +3124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_costCenterId = WorkflowExpression.Compile(costCenterId, nameof(costCenterId), required: false);
             var __workflow_payrollRegulationId = WorkflowExpression.Compile(payrollRegulationId, nameof(payrollRegulationId), required: false);
             var __workflow_regularType = WorkflowExpression.Compile(regularType, nameof(regularType), required: false);
-            return new DeferredBodyAction<ResultIPageV3EmployeeListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3EmployeeListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/getEmployeeList";
                 var apiCallHttpMethod = "get";
@@ -3160,7 +3160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _04updateExpenseApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreimbursementType = null, Expression<Func<string>> bodyreimbursementDate = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04updateExpenseApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreimbursementType = null, Expression<Func<string>> bodyreimbursementDate = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyreimbursementType = WorkflowExpression.Compile(bodyreimbursementType, nameof(bodyreimbursementType), required: false);
@@ -3168,7 +3168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyreimbursementName = WorkflowExpression.Compile(bodyreimbursementName, nameof(bodyreimbursementName), required: false);
             var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/expense/updateExpenseApplicationById";
                 var apiCallHttpMethod = "post";
@@ -3217,7 +3217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _04updateRosterInfoById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04updateRosterInfoById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyshiftIn = WorkflowExpression.Compile(bodyshiftIn, nameof(bodyshiftIn), required: true);
@@ -3233,7 +3233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodytierRate = WorkflowExpression.Compile(bodytierRate, nameof(bodytierRate), required: false);
             var __workflow_bodyscheduledAmount = WorkflowExpression.Compile(bodyscheduledAmount, nameof(bodyscheduledAmount), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/updateRosterInfoById";
                 var apiCallHttpMethod = "post";
@@ -3322,10 +3322,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _05deleteAttendanceDataById(Expression<Func<string>> ids)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _05deleteAttendanceDataById(Expression<Func<string>> ids)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/deleteAttendanceDataById";
                 var apiCallHttpMethod = "post";
@@ -3336,10 +3336,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> _05getCustomizeUserFieldInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp, ApiConnectionActionConfiguration> _05getCustomizeUserFieldInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3BizEmployeeCustomizationResp>(() =>
+            return new DeferredBodyAction<ResultV3BizEmployeeCustomizationResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/settings/getCustomizeUserFieldInfoById";
                 var apiCallHttpMethod = "get";
@@ -3350,10 +3350,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3EmployeeInfoResp> _05getEmployeeInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3EmployeeInfoResp, ApiConnectionActionConfiguration> _05getEmployeeInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3EmployeeInfoResp>(() =>
+            return new DeferredBodyAction<ResultV3EmployeeInfoResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/getEmployeeInfoById";
                 var apiCallHttpMethod = "get";
@@ -3364,7 +3364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> _05GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> dateFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp, ApiConnectionActionConfiguration> _05GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> dateFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_departmentFilter = WorkflowExpression.Compile(departmentFilter, nameof(departmentFilter), required: false);
@@ -3374,7 +3374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_reimbursementStatusFilter = WorkflowExpression.Compile(reimbursementStatusFilter, nameof(reimbursementStatusFilter), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3BizReimbursementResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3BizReimbursementResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/expense/getExpenseApplicationList";
                 var apiCallHttpMethod = "get";
@@ -3400,7 +3400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> _05getLeaveBalanceList(Expression<Func<string>> holidayType, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> regularTypeFilter = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> sexFilter = null, Expression<Func<string>> leaveHolidayBalanceStatusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
+        public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp, ApiConnectionActionConfiguration> _05getLeaveBalanceList(Expression<Func<string>> holidayType, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> regularTypeFilter = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> sexFilter = null, Expression<Func<string>> leaveHolidayBalanceStatusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
         {
             var __workflow_holidayType = WorkflowExpression.Compile(holidayType, nameof(holidayType), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -3415,7 +3415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_calculateSalaryTypeFilter = WorkflowExpression.Compile(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
             var __workflow_hireTypeFilter = WorkflowExpression.Compile(hireTypeFilter, nameof(hireTypeFilter), required: false);
             var __workflow_bizLabelIds = WorkflowExpression.Compile(bizLabelIds, nameof(bizLabelIds), required: false);
-            return new DeferredBodyAction<ResultIPageV3LeaveBalanceResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LeaveBalanceResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeaveBalanceList";
                 var apiCallHttpMethod = "get";
@@ -3450,7 +3450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3RosterListResp> _05getRosterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> dateType = null)
+        public IBodyWorkflowAction<ResultIPageV3RosterListResp, ApiConnectionActionConfiguration> _05getRosterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> dateType = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -3459,7 +3459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: false);
             var __workflow_attendStatus = WorkflowExpression.Compile(attendStatus, nameof(attendStatus), required: false);
             var __workflow_dateType = WorkflowExpression.Compile(dateType, nameof(dateType), required: false);
-            return new DeferredBodyAction<ResultIPageV3RosterListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3RosterListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getRosterList";
                 var apiCallHttpMethod = "get";
@@ -3483,12 +3483,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> _06getApproveProcessList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp, ApiConnectionActionConfiguration> _06getApproveProcessList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3LeaveWorkFlowDefinitionResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LeaveWorkFlowDefinitionResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/settings/getApproveProcessList";
                 var apiCallHttpMethod = "get";
@@ -3504,10 +3504,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> _06GetExpenseApplicationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp, ApiConnectionActionConfiguration> _06GetExpenseApplicationById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3BizReimbursementDetailResp>(() =>
+            return new DeferredBodyAction<ResultV3BizReimbursementDetailResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/expense/getExpenseApplicationById";
                 var apiCallHttpMethod = "get";
@@ -3518,11 +3518,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> _06GetLeaveBalanceInfoById(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType)
+        public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp, ApiConnectionActionConfiguration> _06GetLeaveBalanceInfoById(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType)
         {
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
             var __workflow_holidayType = WorkflowExpression.Compile(holidayType, nameof(holidayType), required: true);
-            return new DeferredBodyAction<ResultV3LeaveBalanceDetailResp>(() =>
+            return new DeferredBodyAction<ResultV3LeaveBalanceDetailResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeaveBalanceInfoById";
                 var apiCallHttpMethod = "get";
@@ -3534,10 +3534,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3RosterInfoResp> _06getRosterInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3RosterInfoResp, ApiConnectionActionConfiguration> _06getRosterInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3RosterInfoResp>(() =>
+            return new DeferredBodyAction<ResultV3RosterInfoResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getRosterInfoById";
                 var apiCallHttpMethod = "get";
@@ -3548,13 +3548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _06resign(Expression<Func<string>> bodyid, Expression<Func<string>> bodylastWorkingDate, Expression<Func<string>> bodyreasonsLeave, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _06resign(Expression<Func<string>> bodyid, Expression<Func<string>> bodylastWorkingDate, Expression<Func<string>> bodyreasonsLeave, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodylastWorkingDate = WorkflowExpression.Compile(bodylastWorkingDate, nameof(bodylastWorkingDate), required: true);
             var __workflow_bodyreasonsLeave = WorkflowExpression.Compile(bodyreasonsLeave, nameof(bodyreasonsLeave), required: true);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/resign";
                 var apiCallHttpMethod = "post";
@@ -3583,7 +3583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _06updateAttendanceDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _06updateAttendanceDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
@@ -3596,7 +3596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodylocationName = WorkflowExpression.Compile(bodylocationName, nameof(bodylocationName), required: false);
             var __workflow_bodyworkLocationId = WorkflowExpression.Compile(bodyworkLocationId, nameof(bodyworkLocationId), required: false);
             var __workflow_bodydeviceId = WorkflowExpression.Compile(bodydeviceId, nameof(bodydeviceId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/updateAttendanceDataById";
                 var apiCallHttpMethod = "post";
@@ -3675,7 +3675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> _07addEmployeeHistory(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodytakeEffectType, Expression<Func<string>> bodytakeEffectDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
+        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp, ApiConnectionActionConfiguration> _07addEmployeeHistory(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodytakeEffectType, Expression<Func<string>> bodytakeEffectDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodyentryDate = WorkflowExpression.Compile(bodyentryDate, nameof(bodyentryDate), required: true);
@@ -3694,7 +3694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyworkDate = WorkflowExpression.Compile(bodyworkDate, nameof(bodyworkDate), required: false);
             var __workflow_bodycause = WorkflowExpression.Compile(bodycause, nameof(bodycause), required: false);
             var __workflow_bodymajorWorkLocationId = WorkflowExpression.Compile(bodymajorWorkLocationId, nameof(bodymajorWorkLocationId), required: false);
-            return new DeferredBodyAction<ResultV3AddEmployeeHistoryResp>(() =>
+            return new DeferredBodyAction<ResultV3AddEmployeeHistoryResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/addEmployeeHistory";
                 var apiCallHttpMethod = "post";
@@ -3797,7 +3797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> _07addLeaveApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp, ApiConnectionActionConfiguration> _07addLeaveApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodyholidayType = WorkflowExpression.Compile(bodyholidayType, nameof(bodyholidayType), required: true);
@@ -3810,7 +3810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyholidayDate = WorkflowExpression.Compile(bodyholidayDate, nameof(bodyholidayDate), required: false);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultV3LeaveHolidayInsertResp>(() =>
+            return new DeferredBodyAction<ResultV3LeaveHolidayInsertResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/addLeaveApplicationInfo";
                 var apiCallHttpMethod = "post";
@@ -3885,7 +3885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _07addShitTemplateInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _07addShitTemplateInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyshiftIn = WorkflowExpression.Compile(bodyshiftIn, nameof(bodyshiftIn), required: true);
@@ -3893,7 +3893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodydateType = WorkflowExpression.Compile(bodydateType, nameof(bodydateType), required: false);
             var __workflow_bodyattendanceAddressId = WorkflowExpression.Compile(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
             var __workflow_bodymealTime = WorkflowExpression.Compile(bodymealTime, nameof(bodymealTime), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/addShitTemplateInfo";
                 var apiCallHttpMethod = "post";
@@ -3934,7 +3934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> _07getAttendanceDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<ResultIPageV3MobileCardListResp, ApiConnectionActionConfiguration> _07getAttendanceDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -3948,7 +3948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_calculateSalaryTypeFilter = WorkflowExpression.Compile(calculateSalaryTypeFilter, nameof(calculateSalaryTypeFilter), required: false);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            return new DeferredBodyAction<ResultIPageV3MobileCardListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3MobileCardListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getAttendanceDataList";
                 var apiCallHttpMethod = "get";
@@ -3982,10 +3982,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteEmployeeHistoryById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _08deleteEmployeeHistoryById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/deleteEmployeeHistoryById";
                 var apiCallHttpMethod = "post";
@@ -3996,10 +3996,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteLeaveApplicationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _08deleteLeaveApplicationById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/deleteLeaveApplicationById";
                 var apiCallHttpMethod = "post";
@@ -4010,10 +4010,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteShiftTemplateById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _08deleteShiftTemplateById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/deleteShiftTemplateById";
                 var apiCallHttpMethod = "post";
@@ -4024,10 +4024,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3MobileCardInfoResp> _08getAttendanceDataInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3MobileCardInfoResp, ApiConnectionActionConfiguration> _08getAttendanceDataInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3MobileCardInfoResp>(() =>
+            return new DeferredBodyAction<ResultV3MobileCardInfoResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getAttendanceDataInfoById";
                 var apiCallHttpMethod = "get";
@@ -4038,12 +4038,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> _09getAttendanceItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp, ApiConnectionActionConfiguration> _09getAttendanceItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3AttendanceItemListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3AttendanceItemListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getAttendanceItemList";
                 var apiCallHttpMethod = "get";
@@ -4059,7 +4059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateEmployeeHistoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateEmployeeHistoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
@@ -4077,7 +4077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyworkDate = WorkflowExpression.Compile(bodyworkDate, nameof(bodyworkDate), required: false);
             var __workflow_bodycause = WorkflowExpression.Compile(bodycause, nameof(bodycause), required: false);
             var __workflow_bodymajorWorkLocationId = WorkflowExpression.Compile(bodymajorWorkLocationId, nameof(bodymajorWorkLocationId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/updateEmployeeHistoryById";
                 var apiCallHttpMethod = "post";
@@ -4178,7 +4178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateLeaveApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateLeaveApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyholidayType = WorkflowExpression.Compile(bodyholidayType, nameof(bodyholidayType), required: false);
@@ -4191,7 +4191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyholidayDate = WorkflowExpression.Compile(bodyholidayDate, nameof(bodyholidayDate), required: false);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/updateLeaveApplicationById";
                 var apiCallHttpMethod = "post";
@@ -4270,7 +4270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateShiftTemplateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateShiftTemplateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
@@ -4280,7 +4280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyattendanceAddressId = WorkflowExpression.Compile(bodyattendanceAddressId, nameof(bodyattendanceAddressId), required: false);
             var __workflow_bodymealTime = WorkflowExpression.Compile(bodymealTime, nameof(bodymealTime), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/updateShiftTemplateById";
                 var apiCallHttpMethod = "post";
@@ -4329,7 +4329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3AddTimesheetResp> _10addTimesheetInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultV3AddTimesheetResp, ApiConnectionActionConfiguration> _10addTimesheetInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -4342,7 +4342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyattendanceItemId = WorkflowExpression.Compile(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
             var __workflow_bodycostCenterId = WorkflowExpression.Compile(bodycostCenterId, nameof(bodycostCenterId), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultV3AddTimesheetResp>(() =>
+            return new DeferredBodyAction<ResultV3AddTimesheetResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/addTimesheetInfo";
                 var apiCallHttpMethod = "post";
@@ -4405,12 +4405,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> _10getEmployeeHistoryList(Expression<Func<string>> employeeId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp, ApiConnectionActionConfiguration> _10getEmployeeHistoryList(Expression<Func<string>> employeeId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3EmployeeHistoryListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3EmployeeHistoryListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/employee/getEmployeeHistoryList";
                 var apiCallHttpMethod = "get";
@@ -4425,7 +4425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> _10getLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> holidayTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> recordStatusFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> startDateFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp, ApiConnectionActionConfiguration> _10getLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> holidayTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> recordStatusFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> startDateFilter = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -4439,7 +4439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_attendCalculationId = WorkflowExpression.Compile(attendCalculationId, nameof(attendCalculationId), required: false);
             var __workflow_bizLabelIds = WorkflowExpression.Compile(bizLabelIds, nameof(bizLabelIds), required: false);
             var __workflow_startDateFilter = WorkflowExpression.Compile(startDateFilter, nameof(startDateFilter), required: false);
-            return new DeferredBodyAction<ResultIPageV3LeaveHolidayResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LeaveHolidayResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeaveApplicationList";
                 var apiCallHttpMethod = "get";
@@ -4473,7 +4473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> _10getShiftTemplateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendanceAddressId = null, Expression<Func<string>> dateType = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp, ApiConnectionActionConfiguration> _10getShiftTemplateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendanceAddressId = null, Expression<Func<string>> dateType = null, Expression<Func<string>> status = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -4481,7 +4481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_attendanceAddressId = WorkflowExpression.Compile(attendanceAddressId, nameof(attendanceAddressId), required: false);
             var __workflow_dateType = WorkflowExpression.Compile(dateType, nameof(dateType), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<ResultIPageV3ShiftTemplateListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3ShiftTemplateListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getShiftTemplateList";
                 var apiCallHttpMethod = "get";
@@ -4503,7 +4503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _11addOpenShiftInfo(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _11addOpenShiftInfo(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
@@ -4517,7 +4517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodymealTime = WorkflowExpression.Compile(bodymealTime, nameof(bodymealTime), required: false);
             var __workflow_bodycostCenterId = WorkflowExpression.Compile(bodycostCenterId, nameof(bodycostCenterId), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/addOpenShiftInfo";
                 var apiCallHttpMethod = "post";
@@ -4582,10 +4582,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _11deleteTimesheetById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _11deleteTimesheetById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/deleteTimesheetById";
                 var apiCallHttpMethod = "post";
@@ -4596,10 +4596,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> _11getLeaveApplicationInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp, ApiConnectionActionConfiguration> _11getLeaveApplicationInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3LeaveHolidayDetailResp>(() =>
+            return new DeferredBodyAction<ResultV3LeaveHolidayDetailResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeaveApplicationInfoById";
                 var apiCallHttpMethod = "get";
@@ -4610,10 +4610,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _12deleteOpenShiftById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _12deleteOpenShiftById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/deleteOpenShiftById";
                 var apiCallHttpMethod = "post";
@@ -4624,10 +4624,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV3LeaveProcessResp> _12getLeaveApplicationApproveProcessById(Expression<Func<string>> recordId)
+        public IBodyWorkflowAction<ResultListV3LeaveProcessResp, ApiConnectionActionConfiguration> _12getLeaveApplicationApproveProcessById(Expression<Func<string>> recordId)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            return new DeferredBodyAction<ResultListV3LeaveProcessResp>(() =>
+            return new DeferredBodyAction<ResultListV3LeaveProcessResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeaveApplicationApproveProcessById";
                 var apiCallHttpMethod = "get";
@@ -4638,7 +4638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _12updateTimesheetById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _12updateTimesheetById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -4651,7 +4651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyattendanceItemId = WorkflowExpression.Compile(bodyattendanceItemId, nameof(bodyattendanceItemId), required: false);
             var __workflow_bodycostCenterId = WorkflowExpression.Compile(bodycostCenterId, nameof(bodycostCenterId), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/updateTimesheetById";
                 var apiCallHttpMethod = "post";
@@ -4714,14 +4714,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> _13getLeaveTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> shortName = null)
+        public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp, ApiConnectionActionConfiguration> _13getLeaveTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> shortName = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_shortName = WorkflowExpression.Compile(shortName, nameof(shortName), required: false);
-            return new DeferredBodyAction<ResultIPageV3LeaveTypeResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LeaveTypeResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeaveTypeList";
                 var apiCallHttpMethod = "get";
@@ -4741,7 +4741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> _13getTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> addressCardId = null, Expression<Func<string>> typeFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3TimesheetListResp, ApiConnectionActionConfiguration> _13getTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> addressCardId = null, Expression<Func<string>> typeFilter = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -4756,7 +4756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_addressCardId = WorkflowExpression.Compile(addressCardId, nameof(addressCardId), required: false);
             var __workflow_typeFilter = WorkflowExpression.Compile(typeFilter, nameof(typeFilter), required: false);
-            return new DeferredBodyAction<ResultIPageV3TimesheetListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3TimesheetListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getTimesheetList";
                 var apiCallHttpMethod = "get";
@@ -4792,7 +4792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _13updateOpenShiftById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _13updateOpenShiftById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
@@ -4806,7 +4806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodymealTime = WorkflowExpression.Compile(bodymealTime, nameof(bodymealTime), required: false);
             var __workflow_bodycostCenterId = WorkflowExpression.Compile(bodycostCenterId, nameof(bodycostCenterId), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/updateOpenShiftById";
                 var apiCallHttpMethod = "post";
@@ -4871,13 +4871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> _14getLeavePolicyList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null)
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp, ApiConnectionActionConfiguration> _14getLeavePolicyList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
-            return new DeferredBodyAction<ResultIPageV3LeavePolicyResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LeavePolicyResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeavePolicyList";
                 var apiCallHttpMethod = "get";
@@ -4895,7 +4895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> _14getOpenShiftList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> projectId = null, Expression<Func<string>> locationId = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp, ApiConnectionActionConfiguration> _14getOpenShiftList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> projectId = null, Expression<Func<string>> locationId = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> date = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -4904,7 +4904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: false);
             var __workflow_costCenterId = WorkflowExpression.Compile(costCenterId, nameof(costCenterId), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
-            return new DeferredBodyAction<ResultIPageV3OpenShiftListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3OpenShiftListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getOpenShiftList";
                 var apiCallHttpMethod = "get";
@@ -4928,10 +4928,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3TimesheetInfoResp> _14getTimesheetInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3TimesheetInfoResp, ApiConnectionActionConfiguration> _14getTimesheetInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3TimesheetInfoResp>(() =>
+            return new DeferredBodyAction<ResultV3TimesheetInfoResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getTimesheetInfoById";
                 var apiCallHttpMethod = "get";
@@ -4942,7 +4942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> _15addCalendarRemarkInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp, ApiConnectionActionConfiguration> _15addCalendarRemarkInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodyemployeeStatus = WorkflowExpression.Compile(bodyemployeeStatus, nameof(bodyemployeeStatus), required: true);
@@ -4955,7 +4955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyexpectWorkLocation = WorkflowExpression.Compile(bodyexpectWorkLocation, nameof(bodyexpectWorkLocation), required: false);
             var __workflow_bodyexpectWorkTimeTemplate = WorkflowExpression.Compile(bodyexpectWorkTimeTemplate, nameof(bodyexpectWorkTimeTemplate), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultV3AddCalendarRemarkInfoResp>(() =>
+            return new DeferredBodyAction<ResultV3AddCalendarRemarkInfoResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/addCalendarRemarkInfo";
                 var apiCallHttpMethod = "post";
@@ -5018,10 +5018,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> _15getLeavePolicyInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp, ApiConnectionActionConfiguration> _15getLeavePolicyInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3LeavePolicyDetailResp>(() =>
+            return new DeferredBodyAction<ResultV3LeavePolicyDetailResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeavePolicyInfoById";
                 var apiCallHttpMethod = "get";
@@ -5032,10 +5032,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> _15getOpenShiftInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3OpenShiftInfoResp, ApiConnectionActionConfiguration> _15getOpenShiftInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3OpenShiftInfoResp>(() =>
+            return new DeferredBodyAction<ResultV3OpenShiftInfoResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getOpenShiftInfoById";
                 var apiCallHttpMethod = "get";
@@ -5046,12 +5046,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _16addProjectCategoryInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _16addProjectCategoryInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectCategoryInfo";
                 var apiCallHttpMethod = "post";
@@ -5082,10 +5082,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _16deleteCalendarRemarkById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _16deleteCalendarRemarkById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/deleteCalendarRemarkById";
                 var apiCallHttpMethod = "post";
@@ -5096,7 +5096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> _16getLeavePolicyTypeList(Expression<Func<string>> regulationId, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> holidayId = null, Expression<Func<string>> generationFrequency = null)
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp, ApiConnectionActionConfiguration> _16getLeavePolicyTypeList(Expression<Func<string>> regulationId, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> holidayId = null, Expression<Func<string>> generationFrequency = null)
         {
             var __workflow_regulationId = WorkflowExpression.Compile(regulationId, nameof(regulationId), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -5105,7 +5105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_holidayId = WorkflowExpression.Compile(holidayId, nameof(holidayId), required: false);
             var __workflow_generationFrequency = WorkflowExpression.Compile(generationFrequency, nameof(generationFrequency), required: false);
-            return new DeferredBodyAction<ResultIPageV3LeavePolicyTypeResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3LeavePolicyTypeResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/leave/getLeavePolicyTypeList";
                 var apiCallHttpMethod = "get";
@@ -5128,10 +5128,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _17deleteProjectCategoryById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _17deleteProjectCategoryById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/deleteProjectCategoryById";
                 var apiCallHttpMethod = "post";
@@ -5142,7 +5142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _17updateCalendarRemarkById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _17updateCalendarRemarkById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
@@ -5156,7 +5156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyexpectWorkLocation = WorkflowExpression.Compile(bodyexpectWorkLocation, nameof(bodyexpectWorkLocation), required: false);
             var __workflow_bodyexpectWorkTimeTemplate = WorkflowExpression.Compile(bodyexpectWorkTimeTemplate, nameof(bodyexpectWorkTimeTemplate), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/updateCalendarRemarkById";
                 var apiCallHttpMethod = "post";
@@ -5221,14 +5221,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> _18getCalendarRemarkList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp, ApiConnectionActionConfiguration> _18getCalendarRemarkList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_employeeIds = WorkflowExpression.Compile(employeeIds, nameof(employeeIds), required: false);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            return new DeferredBodyAction<ResultIPageV3StatusFlagListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3StatusFlagListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendance/getCalendarRemarkList";
                 var apiCallHttpMethod = "get";
@@ -5248,13 +5248,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _18updateProjectCategoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _18updateProjectCategoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/updateProjectCategoryById";
                 var apiCallHttpMethod = "post";
@@ -5287,12 +5287,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> _19getProjectCategoryList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp, ApiConnectionActionConfiguration> _19getProjectCategoryList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3ScheduleProjectCategoryListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3ScheduleProjectCategoryListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectCategoryList";
                 var apiCallHttpMethod = "get";
@@ -5308,7 +5308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _20addProjectInfo(Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _20addProjectInfo(Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
         {
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
@@ -5316,7 +5316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
             var __workflow_bodyminRate = WorkflowExpression.Compile(bodyminRate, nameof(bodyminRate), required: false);
             var __workflow_bodymaxRate = WorkflowExpression.Compile(bodymaxRate, nameof(bodymaxRate), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectInfo";
                 var apiCallHttpMethod = "post";
@@ -5357,10 +5357,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _21deleteProjectById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _21deleteProjectById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/deleteProjectById";
                 var apiCallHttpMethod = "post";
@@ -5371,7 +5371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _22updateProjectById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _22updateProjectById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
@@ -5380,7 +5380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
             var __workflow_bodyminRate = WorkflowExpression.Compile(bodyminRate, nameof(bodyminRate), required: false);
             var __workflow_bodymaxRate = WorkflowExpression.Compile(bodymaxRate, nameof(bodymaxRate), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/updateProjectById";
                 var apiCallHttpMethod = "post";
@@ -5423,12 +5423,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectListResp> _23getProjectList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ProjectListResp, ApiConnectionActionConfiguration> _23getProjectList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3ProjectListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3ProjectListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectList";
                 var apiCallHttpMethod = "get";
@@ -5444,10 +5444,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV3ProjectInfoResp> _24getProjectInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3ProjectInfoResp, ApiConnectionActionConfiguration> _24getProjectInfoById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultV3ProjectInfoResp>(() =>
+            return new DeferredBodyAction<ResultV3ProjectInfoResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectInfoById";
                 var apiCallHttpMethod = "get";
@@ -5458,7 +5458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _25addProjectCertificateInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyprojectId, Expression<Func<double>> bodyshiftHours, Expression<Func<double>> bodyworkedHours, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null, Expression<Func<string>> bodyreason = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _25addProjectCertificateInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyprojectId, Expression<Func<double>> bodyshiftHours, Expression<Func<double>> bodyworkedHours, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null, Expression<Func<string>> bodyreason = null)
         {
             var __workflow_bodyemployeeId = WorkflowExpression.Compile(bodyemployeeId, nameof(bodyemployeeId), required: true);
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
@@ -5467,7 +5467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodytier = WorkflowExpression.Compile(bodytier, nameof(bodytier), required: false);
             var __workflow_bodytierRate = WorkflowExpression.Compile(bodytierRate, nameof(bodytierRate), required: false);
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectCertificateInfo";
                 var apiCallHttpMethod = "post";
@@ -5510,12 +5510,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _26updateProjectCertificateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _26updateProjectCertificateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodytier = WorkflowExpression.Compile(bodytier, nameof(bodytier), required: false);
             var __workflow_bodytierRate = WorkflowExpression.Compile(bodytierRate, nameof(bodytierRate), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/updateProjectCertificateById";
                 var apiCallHttpMethod = "post";
@@ -5546,7 +5546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> _27getProjectCertificateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> projectId = null)
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp, ApiConnectionActionConfiguration> _27getProjectCertificateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> projectId = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5557,7 +5557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_hireType = WorkflowExpression.Compile(hireType, nameof(hireType), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
-            return new DeferredBodyAction<ResultIPageV3ProjectCertificateListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3ProjectCertificateListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectCertificateList";
                 var apiCallHttpMethod = "get";
@@ -5585,13 +5585,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _28addProjectCertificateHours(Expression<Func<string>> bodyprojectCertificateId, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<double>> bodybalance, Expression<Func<string>> bodyreason)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _28addProjectCertificateHours(Expression<Func<string>> bodyprojectCertificateId, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<double>> bodybalance, Expression<Func<string>> bodyreason)
         {
             var __workflow_bodyprojectCertificateId = WorkflowExpression.Compile(bodyprojectCertificateId, nameof(bodyprojectCertificateId), required: true);
             var __workflow_bodyoccurrenceTime = WorkflowExpression.Compile(bodyoccurrenceTime, nameof(bodyoccurrenceTime), required: true);
             var __workflow_bodybalance = WorkflowExpression.Compile(bodybalance, nameof(bodybalance), required: true);
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/addProjectCertificateHours";
                 var apiCallHttpMethod = "post";
@@ -5616,10 +5616,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> _29deleteProjectCertificateHoursById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _29deleteProjectCertificateHoursById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/deleteProjectCertificateHoursById";
                 var apiCallHttpMethod = "post";
@@ -5630,12 +5630,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> _30getProjectCertificateHourList(Expression<Func<string>> projectCertificateId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp, ApiConnectionActionConfiguration> _30getProjectCertificateHourList(Expression<Func<string>> projectCertificateId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_projectCertificateId = WorkflowExpression.Compile(projectCertificateId, nameof(projectCertificateId), required: true);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV3ProjectCertificateHoursListResp>(() =>
+            return new DeferredBodyAction<ResultIPageV3ProjectCertificateHoursListResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/attendCalculation/getProjectCertificateHourList";
                 var apiCallHttpMethod = "get";
@@ -5650,7 +5650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2AttendanceResp> GetAttendCalculationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<ResultIPageV2AttendanceResp, ApiConnectionActionConfiguration> GetAttendCalculationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> type = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5659,7 +5659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: false);
             var __workflow_attendStatus = WorkflowExpression.Compile(attendStatus, nameof(attendStatus), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<ResultIPageV2AttendanceResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2AttendanceResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/attendance/list";
                 var apiCallHttpMethod = "get";
@@ -5683,14 +5683,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2CostCenterResp> GetCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> costCenterCode = null)
+        public IBodyWorkflowAction<ResultIPageV2CostCenterResp, ApiConnectionActionConfiguration> GetCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> costCenterCode = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_costCenterCode = WorkflowExpression.Compile(costCenterCode, nameof(costCenterCode), required: false);
-            return new DeferredBodyAction<ResultIPageV2CostCenterResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2CostCenterResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/getCostCenterList";
                 var apiCallHttpMethod = "get";
@@ -5710,7 +5710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2DepartmentResp> GetDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> departmentCode = null, Expression<Func<string>> parentId = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2DepartmentResp, ApiConnectionActionConfiguration> GetDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> departmentCode = null, Expression<Func<string>> parentId = null, Expression<Func<string>> status = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5719,7 +5719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_departmentCode = WorkflowExpression.Compile(departmentCode, nameof(departmentCode), required: false);
             var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<ResultIPageV2DepartmentResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2DepartmentResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/department/list";
                 var apiCallHttpMethod = "get";
@@ -5743,7 +5743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2EmployeeResp> GetEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> englishName = null, Expression<Func<string>> chineseName = null, Expression<Func<string>> email = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phone = null, Expression<Func<string>> code = null, Expression<Func<int>> status = null, Expression<Func<string>> education = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> hireType = null, Expression<Func<string>> bankCode = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> workDate = null)
+        public IBodyWorkflowAction<ResultIPageV2EmployeeResp, ApiConnectionActionConfiguration> GetEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> englishName = null, Expression<Func<string>> chineseName = null, Expression<Func<string>> email = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phone = null, Expression<Func<string>> code = null, Expression<Func<int>> status = null, Expression<Func<string>> education = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> hireType = null, Expression<Func<string>> bankCode = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> workDate = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5763,7 +5763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_costCenterId = WorkflowExpression.Compile(costCenterId, nameof(costCenterId), required: false);
             var __workflow_payrollRegulationId = WorkflowExpression.Compile(payrollRegulationId, nameof(payrollRegulationId), required: false);
             var __workflow_workDate = WorkflowExpression.Compile(workDate, nameof(workDate), required: false);
-            return new DeferredBodyAction<ResultIPageV2EmployeeResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2EmployeeResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/employee/list";
                 var apiCallHttpMethod = "get";
@@ -5809,7 +5809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2ExpenseResp> GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<string>> reimbursementName = null, Expression<Func<string>> departmentFilter = null)
+        public IBodyWorkflowAction<ResultIPageV2ExpenseResp, ApiConnectionActionConfiguration> GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<string>> reimbursementName = null, Expression<Func<string>> departmentFilter = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5818,7 +5818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_reimbursementStatusFilter = WorkflowExpression.Compile(reimbursementStatusFilter, nameof(reimbursementStatusFilter), required: false);
             var __workflow_reimbursementName = WorkflowExpression.Compile(reimbursementName, nameof(reimbursementName), required: false);
             var __workflow_departmentFilter = WorkflowExpression.Compile(departmentFilter, nameof(departmentFilter), required: false);
-            return new DeferredBodyAction<ResultIPageV2ExpenseResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2ExpenseResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/getExpenseApplicationList";
                 var apiCallHttpMethod = "get";
@@ -5842,7 +5842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> GetExtPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> employeeCode = null, Expression<Func<string>> businessSalaryItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> businessSalaryItemFilter = null)
+        public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp, ApiConnectionActionConfiguration> GetExtPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> employeeCode = null, Expression<Func<string>> businessSalaryItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> businessSalaryItemFilter = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5852,7 +5852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_businessSalaryItemId = WorkflowExpression.Compile(businessSalaryItemId, nameof(businessSalaryItemId), required: false);
             var __workflow_employeeIdFilter = WorkflowExpression.Compile(employeeIdFilter, nameof(employeeIdFilter), required: false);
             var __workflow_businessSalaryItemFilter = WorkflowExpression.Compile(businessSalaryItemFilter, nameof(businessSalaryItemFilter), required: false);
-            return new DeferredBodyAction<ResultIPageV2ExternalPayItemResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2ExternalPayItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/getExtPayItemData";
                 var apiCallHttpMethod = "get";
@@ -5878,14 +5878,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> GetExtPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> paymentType = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp, ApiConnectionActionConfiguration> GetExtPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> paymentType = null, Expression<Func<string>> status = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_paymentType = WorkflowExpression.Compile(paymentType, nameof(paymentType), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<ResultIPageV2ExtPayItemResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2ExtPayItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/getExtPayItemList";
                 var apiCallHttpMethod = "get";
@@ -5905,14 +5905,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> GetFixedPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null)
+        public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp, ApiConnectionActionConfiguration> GetFixedPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: false);
             var __workflow_payrollItemId = WorkflowExpression.Compile(payrollItemId, nameof(payrollItemId), required: false);
-            return new DeferredBodyAction<ResultIPageV2FixedPayItemResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2FixedPayItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/getFixedPayItemData";
                 var apiCallHttpMethod = "get";
@@ -5932,7 +5932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2LabelResp> GetLabelList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> labelCode = null, Expression<Func<string>> labelName = null, Expression<Func<int>> labelStatus = null)
+        public IBodyWorkflowAction<ResultIPageV2LabelResp, ApiConnectionActionConfiguration> GetLabelList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> labelCode = null, Expression<Func<string>> labelName = null, Expression<Func<int>> labelStatus = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5940,7 +5940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_labelCode = WorkflowExpression.Compile(labelCode, nameof(labelCode), required: false);
             var __workflow_labelName = WorkflowExpression.Compile(labelName, nameof(labelName), required: false);
             var __workflow_labelStatus = WorkflowExpression.Compile(labelStatus, nameof(labelStatus), required: false);
-            return new DeferredBodyAction<ResultIPageV2LabelResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2LabelResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/label/list";
                 var apiCallHttpMethod = "get";
@@ -5962,7 +5962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> GetLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> holidayType = null, Expression<Func<string>> status = null, Expression<Func<string>> holidayDate = null)
+        public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp, ApiConnectionActionConfiguration> GetLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> holidayType = null, Expression<Func<string>> status = null, Expression<Func<string>> holidayDate = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -5971,7 +5971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_holidayType = WorkflowExpression.Compile(holidayType, nameof(holidayType), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_holidayDate = WorkflowExpression.Compile(holidayDate, nameof(holidayDate), required: false);
-            return new DeferredBodyAction<ResultIPageV2LeaveApplicationResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2LeaveApplicationResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/leave/list";
                 var apiCallHttpMethod = "get";
@@ -5995,14 +5995,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2PayItemResp> GetPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2PayItemResp, ApiConnectionActionConfiguration> GetPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> status = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<ResultIPageV2PayItemResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2PayItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/getPayItemList";
                 var apiCallHttpMethod = "get";
@@ -6022,12 +6022,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> GetPayrunList(Expression<Func<string>> status, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp, ApiConnectionActionConfiguration> GetPayrunList(Expression<Func<string>> status, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ResultIPageV2PayrollPlanResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2PayrollPlanResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/getPayrunList";
                 var apiCallHttpMethod = "get";
@@ -6042,14 +6042,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2PositionResp> GetPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> positionCode = null)
+        public IBodyWorkflowAction<ResultIPageV2PositionResp, ApiConnectionActionConfiguration> GetPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> positionCode = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_positionCode = WorkflowExpression.Compile(positionCode, nameof(positionCode), required: false);
-            return new DeferredBodyAction<ResultIPageV2PositionResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2PositionResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/getPositionList";
                 var apiCallHttpMethod = "get";
@@ -6069,7 +6069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultListV2RosterResp> GetRosterDataList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> englishName = null, Expression<Func<string>> code = null, Expression<Func<string>> surnameEnglish = null, Expression<Func<string>> personalNameEnglish = null)
+        public IBodyWorkflowAction<ResultListV2RosterResp, ApiConnectionActionConfiguration> GetRosterDataList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> englishName = null, Expression<Func<string>> code = null, Expression<Func<string>> surnameEnglish = null, Expression<Func<string>> personalNameEnglish = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -6084,7 +6084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
             var __workflow_surnameEnglish = WorkflowExpression.Compile(surnameEnglish, nameof(surnameEnglish), required: false);
             var __workflow_personalNameEnglish = WorkflowExpression.Compile(personalNameEnglish, nameof(personalNameEnglish), required: false);
-            return new DeferredBodyAction<ResultListV2RosterResp>(() =>
+            return new DeferredBodyAction<ResultListV2RosterResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/getRosterDataList";
                 var apiCallHttpMethod = "get";
@@ -6118,7 +6118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultV2TenantResp> GetTenantInfo()
+        public IBodyWorkflowAction<ResultV2TenantResp, ApiConnectionActionConfiguration> GetTenantInfo()
         {
             var apiCallPath = "/v2/tenant/getById";
             var apiCallHttpMethod = "get";
@@ -6127,7 +6127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2TimesheetResp> GetTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> type = null, Expression<Func<string>> date = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2TimesheetResp, ApiConnectionActionConfiguration> GetTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> type = null, Expression<Func<string>> date = null, Expression<Func<string>> status = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -6136,7 +6136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<ResultIPageV2TimesheetResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2TimesheetResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/timesheet/list";
                 var apiCallHttpMethod = "get";
@@ -6160,7 +6160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> GetVarPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> payrollPlanId = null)
+        public IBodyWorkflowAction<ResultIPageV2VarPayItemResp, ApiConnectionActionConfiguration> GetVarPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> payrollPlanId = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -6170,7 +6170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_employeeIdFilter = WorkflowExpression.Compile(employeeIdFilter, nameof(employeeIdFilter), required: false);
             var __workflow_payrollItemIdFilter = WorkflowExpression.Compile(payrollItemIdFilter, nameof(payrollItemIdFilter), required: false);
             var __workflow_payrollPlanId = WorkflowExpression.Compile(payrollPlanId, nameof(payrollPlanId), required: false);
-            return new DeferredBodyAction<ResultIPageV2VarPayItemResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2VarPayItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/getVarPayItemData";
                 var apiCallHttpMethod = "get";
@@ -6196,7 +6196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> GetWorkLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> attendanceAddressCode = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2WorkLocationResp, ApiConnectionActionConfiguration> GetWorkLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> attendanceAddressCode = null, Expression<Func<string>> status = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
@@ -6204,7 +6204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_attendanceAddressCode = WorkflowExpression.Compile(attendanceAddressCode, nameof(attendanceAddressCode), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<ResultIPageV2WorkLocationResp>(() =>
+            return new DeferredBodyAction<ResultIPageV2WorkLocationResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/workLocation/list";
                 var apiCallHttpMethod = "get";
@@ -6226,12 +6226,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateCardById(Expression<Func<string>> bodyid, Expression<Func<bool>> bodyisInValid = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateCardById(Expression<Func<string>> bodyid, Expression<Func<bool>> bodyisInValid = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyisInValid = WorkflowExpression.Compile(bodyisInValid, nameof(bodyisInValid), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/attendance/updateCardById";
                 var apiCallHttpMethod = "post";
@@ -6262,13 +6262,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateCostCenterInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateCostCenterInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodycostCenterCode = WorkflowExpression.Compile(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/updateCostCenterInfo";
                 var apiCallHttpMethod = "post";
@@ -6305,14 +6305,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateDepartmentInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodyparentId = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateDepartmentInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodyparentId = null, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodydepartmentCode = WorkflowExpression.Compile(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/department/updateById";
                 var apiCallHttpMethod = "post";
@@ -6355,7 +6355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateEmployeeInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyenglishName = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodybankCard = null, Expression<Func<string>> bodynickName = null, Expression<Func<string>> bodyeducation = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyregionCode = null, Expression<Func<string>> bodyidentityCardHk = null, Expression<Func<string>> bodypassportNumber = null, Expression<Func<string>> bodypassportIssuingPlace = null, Expression<Func<string>> bodyspouseName = null, Expression<Func<string>> bodyspouseIdentityCardHk = null, Expression<Func<string>> bodyspousePassportNumber = null, Expression<Func<string>> bodyspousePassportIssuingPlace = null, Expression<Func<string>> bodypostalAddress = null, Expression<Func<string>> bodyemployerName = null, Expression<Func<string>> bodyhometown = null, Expression<Func<string>> bodynation = null, Expression<Func<string>> bodypoliticalStatus = null, Expression<Func<string>> bodyhighestEducation = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyprobation = null, Expression<Func<bool>> bodyisDisabled = null, Expression<Func<bool>> bodyisForeignNationality = null, Expression<Func<string>> bodydomicileLocation = null, Expression<Func<string>> bodycertificateType = null, Expression<Func<string>> bodycertificateNumber = null, Expression<Func<bool>> bodyisMartyrDependents = null, Expression<Func<string>> bodyoccupationTaxNumber = null, Expression<Func<string>> bodynonLocalBlueCardNumber = null, Expression<Func<bool>> bodyisForeignEmployees = null, Expression<Func<string>> bodyweeklyLeaveWorkAgreement = null, Expression<Func<string>> bodyemployeeType = null, Expression<Func<string>> bodyjobLevel = null, Expression<Func<string>> bodypost = null, Expression<Func<string>> bodysalaryScale = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodyrecruitmentSource = null, Expression<Func<string>> bodygraduatedSchool = null, Expression<Func<string>> bodyprofession = null, Expression<Func<string>> bodyappellation = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyhomePhone = null, Expression<Func<string>> bodyofficePhone = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyprovince = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodypostcode = null, Expression<Func<string>> bodycontractEndDate = null, Expression<Func<string>> bodytaxIdentity = null, Expression<Func<string>> bodyotherIncomeName = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateEmployeeInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyenglishName = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodybankCard = null, Expression<Func<string>> bodynickName = null, Expression<Func<string>> bodyeducation = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyregionCode = null, Expression<Func<string>> bodyidentityCardHk = null, Expression<Func<string>> bodypassportNumber = null, Expression<Func<string>> bodypassportIssuingPlace = null, Expression<Func<string>> bodyspouseName = null, Expression<Func<string>> bodyspouseIdentityCardHk = null, Expression<Func<string>> bodyspousePassportNumber = null, Expression<Func<string>> bodyspousePassportIssuingPlace = null, Expression<Func<string>> bodypostalAddress = null, Expression<Func<string>> bodyemployerName = null, Expression<Func<string>> bodyhometown = null, Expression<Func<string>> bodynation = null, Expression<Func<string>> bodypoliticalStatus = null, Expression<Func<string>> bodyhighestEducation = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyprobation = null, Expression<Func<bool>> bodyisDisabled = null, Expression<Func<bool>> bodyisForeignNationality = null, Expression<Func<string>> bodydomicileLocation = null, Expression<Func<string>> bodycertificateType = null, Expression<Func<string>> bodycertificateNumber = null, Expression<Func<bool>> bodyisMartyrDependents = null, Expression<Func<string>> bodyoccupationTaxNumber = null, Expression<Func<string>> bodynonLocalBlueCardNumber = null, Expression<Func<bool>> bodyisForeignEmployees = null, Expression<Func<string>> bodyweeklyLeaveWorkAgreement = null, Expression<Func<string>> bodyemployeeType = null, Expression<Func<string>> bodyjobLevel = null, Expression<Func<string>> bodypost = null, Expression<Func<string>> bodysalaryScale = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodyrecruitmentSource = null, Expression<Func<string>> bodygraduatedSchool = null, Expression<Func<string>> bodyprofession = null, Expression<Func<string>> bodyappellation = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyhomePhone = null, Expression<Func<string>> bodyofficePhone = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyprovince = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodypostcode = null, Expression<Func<string>> bodycontractEndDate = null, Expression<Func<string>> bodytaxIdentity = null, Expression<Func<string>> bodyotherIncomeName = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyenglishName = WorkflowExpression.Compile(bodyenglishName, nameof(bodyenglishName), required: false);
@@ -6423,7 +6423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodycontractEndDate = WorkflowExpression.Compile(bodycontractEndDate, nameof(bodycontractEndDate), required: false);
             var __workflow_bodytaxIdentity = WorkflowExpression.Compile(bodytaxIdentity, nameof(bodytaxIdentity), required: false);
             var __workflow_bodyotherIncomeName = WorkflowExpression.Compile(bodyotherIncomeName, nameof(bodyotherIncomeName), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/employee/updateById";
                 var apiCallHttpMethod = "post";
@@ -6832,13 +6832,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateExpenseApplication(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateExpenseApplication(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_bodyreimbursementName = WorkflowExpression.Compile(bodyreimbursementName, nameof(bodyreimbursementName), required: false);
             var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/updateExpenseApplication";
                 var apiCallHttpMethod = "post";
@@ -6879,7 +6879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateExternalSalary(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodycode = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateExternalSalary(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodycode = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
@@ -6887,7 +6887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyoccurrenceDate = WorkflowExpression.Compile(bodyoccurrenceDate, nameof(bodyoccurrenceDate), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
             var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/updateExternalSalary";
                 var apiCallHttpMethod = "post";
@@ -6940,14 +6940,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateFixedSalary(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateFixedSalary(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodypayrollItemId = WorkflowExpression.Compile(bodypayrollItemId, nameof(bodypayrollItemId), required: false);
             var __workflow_bodymoney = WorkflowExpression.Compile(bodymoney, nameof(bodymoney), required: false);
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/updateFixedSalary";
                 var apiCallHttpMethod = "post";
@@ -6990,13 +6990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateLabelInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateLabelInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodylabelCode = WorkflowExpression.Compile(bodylabelCode, nameof(bodylabelCode), required: false);
             var __workflow_bodylabelName = WorkflowExpression.Compile(bodylabelName, nameof(bodylabelName), required: false);
             var __workflow_bodylabelStatus = WorkflowExpression.Compile(bodylabelStatus, nameof(bodylabelStatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/label/update";
                 var apiCallHttpMethod = "post";
@@ -7033,7 +7033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateLeaveApplication(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateLeaveApplication(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyholidayType = WorkflowExpression.Compile(bodyholidayType, nameof(bodyholidayType), required: false);
@@ -7046,7 +7046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
             var __workflow_bodyholidayDate = WorkflowExpression.Compile(bodyholidayDate, nameof(bodyholidayDate), required: false);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/leave/updateById";
                 var apiCallHttpMethod = "post";
@@ -7125,13 +7125,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdatePositionInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdatePositionInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodypositionCode = WorkflowExpression.Compile(bodypositionCode, nameof(bodypositionCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/updatePositionInfo";
                 var apiCallHttpMethod = "post";
@@ -7168,7 +7168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateRosterData(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyacrossTheNight = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateRosterData(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyacrossTheNight = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyshiftIn = WorkflowExpression.Compile(bodyshiftIn, nameof(bodyshiftIn), required: false);
@@ -7179,7 +7179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
             var __workflow_bodydateType = WorkflowExpression.Compile(bodydateType, nameof(bodydateType), required: false);
             var __workflow_bodyacrossTheNight = WorkflowExpression.Compile(bodyacrossTheNight, nameof(bodyacrossTheNight), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenants/updateRosterData";
                 var apiCallHttpMethod = "post";
@@ -7246,12 +7246,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateRosterItem(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateRosterItem(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/attendance/updateRosterItem";
                 var apiCallHttpMethod = "post";
@@ -7282,7 +7282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateShiftTemplate(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodylunchStartTime = null, Expression<Func<string>> bodylunchEndTime = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateShiftTemplate(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodylunchStartTime = null, Expression<Func<string>> bodylunchEndTime = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -7293,7 +7293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodydateType = WorkflowExpression.Compile(bodydateType, nameof(bodydateType), required: false);
             var __workflow_bodylunchStartTime = WorkflowExpression.Compile(bodylunchStartTime, nameof(bodylunchStartTime), required: false);
             var __workflow_bodylunchEndTime = WorkflowExpression.Compile(bodylunchEndTime, nameof(bodylunchEndTime), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/attendance/updateShiftTemplate";
                 var apiCallHttpMethod = "post";
@@ -7360,7 +7360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateTenantInfo(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodybusinessRegistrationNumber = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchCode = null, Expression<Func<string>> bodybankAccountNo = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateTenantInfo(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodybusinessRegistrationNumber = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchCode = null, Expression<Func<string>> bodybankAccountNo = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodybusinessRegistrationNumber = WorkflowExpression.Compile(bodybusinessRegistrationNumber, nameof(bodybusinessRegistrationNumber), required: false);
@@ -7368,7 +7368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodybankName = WorkflowExpression.Compile(bodybankName, nameof(bodybankName), required: false);
             var __workflow_bodybankBranchCode = WorkflowExpression.Compile(bodybankBranchCode, nameof(bodybankBranchCode), required: false);
             var __workflow_bodybankAccountNo = WorkflowExpression.Compile(bodybankAccountNo, nameof(bodybankAccountNo), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tenant/updateById";
                 var apiCallHttpMethod = "post";
@@ -7421,7 +7421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateTimesheet(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisCrossTheSky = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodymealTime = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateTimesheet(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisCrossTheSky = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodymealTime = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
@@ -7429,7 +7429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
             var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
             var __workflow_bodymealTime = WorkflowExpression.Compile(bodymealTime, nameof(bodymealTime), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/timesheet/updateById";
                 var apiCallHttpMethod = "post";
@@ -7478,12 +7478,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateVarSalary(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateVarSalary(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodymoney = WorkflowExpression.Compile(bodymoney, nameof(bodymoney), required: false);
             var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/payroll/updateVarSalary";
                 var apiCallHttpMethod = "post";
@@ -7514,7 +7514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateWorkLocation(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyregion = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyareaCode = null)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateWorkLocation(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyregion = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyareaCode = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -7522,7 +7522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
             var __workflow_bodyattendanceAddressCode = WorkflowExpression.Compile(bodyattendanceAddressCode, nameof(bodyattendanceAddressCode), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyareaCode = WorkflowExpression.Compile(bodyareaCode, nameof(bodyareaCode), required: false);
-            return new DeferredBodyAction<ResultBoolean>(() =>
+            return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/workLocation/updateById";
                 var apiCallHttpMethod = "post";

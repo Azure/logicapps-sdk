@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
     public class DandelionipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<EntityGetResponse> EntityGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null, Expression<Func<int>> topEntities = null, Expression<Func<int>> minConfidence = null, Expression<Func<int>> minLength = null, Expression<Func<bool>> socialHashtag = null, Expression<Func<bool>> socialMention = null, Expression<Func<string>> include = null, Expression<Func<string>> extraTypes = null, Expression<Func<string>> country = null, Expression<Func<double>> epsilon = null)
+        public IBodyWorkflowAction<EntityGetResponse, ApiConnectionActionConfiguration> EntityGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null, Expression<Func<int>> topEntities = null, Expression<Func<int>> minConfidence = null, Expression<Func<int>> minLength = null, Expression<Func<bool>> socialHashtag = null, Expression<Func<bool>> socialMention = null, Expression<Func<string>> include = null, Expression<Func<string>> extraTypes = null, Expression<Func<string>> country = null, Expression<Func<double>> epsilon = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var __workflow_extraTypes = WorkflowExpression.Compile(extraTypes, nameof(extraTypes), required: false);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_epsilon = WorkflowExpression.Compile(epsilon, nameof(epsilon), required: false);
-            return new DeferredBodyAction<EntityGetResponse>(() =>
+            return new DeferredBodyAction<EntityGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datatxt/nex/v1";
                 var apiCallHttpMethod = "get";
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<SimilarityGetResponse> SimilarityGet(Expression<Func<string>> text1 = null, Expression<Func<string>> html1 = null, Expression<Func<string>> htmlFragment1 = null, Expression<Func<string>> text2 = null, Expression<Func<string>> html2 = null, Expression<Func<string>> htmlFragment2 = null, Expression<Func<string>> lang = null, Expression<Func<bowInput>> bow = null)
+        public IBodyWorkflowAction<SimilarityGetResponse, ApiConnectionActionConfiguration> SimilarityGet(Expression<Func<string>> text1 = null, Expression<Func<string>> html1 = null, Expression<Func<string>> htmlFragment1 = null, Expression<Func<string>> text2 = null, Expression<Func<string>> html2 = null, Expression<Func<string>> htmlFragment2 = null, Expression<Func<string>> lang = null, Expression<Func<bowInput>> bow = null)
         {
             var __workflow_text1 = WorkflowExpression.Compile(text1, nameof(text1), required: false);
             var __workflow_html1 = WorkflowExpression.Compile(html1, nameof(html1), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var __workflow_htmlFragment2 = WorkflowExpression.Compile(htmlFragment2, nameof(htmlFragment2), required: false);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             var __workflow_bow = WorkflowExpression.Compile(bow, nameof(bow), required: false);
-            return new DeferredBodyAction<SimilarityGetResponse>(() =>
+            return new DeferredBodyAction<SimilarityGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datatxt/sim/v1";
                 var apiCallHttpMethod = "get";
@@ -99,13 +99,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<LanguageGetResponse> LanguageGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<bool>> clean = null)
+        public IBodyWorkflowAction<LanguageGetResponse, ApiConnectionActionConfiguration> LanguageGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<bool>> clean = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: false);
             var __workflow_htmlFragment = WorkflowExpression.Compile(htmlFragment, nameof(htmlFragment), required: false);
             var __workflow_clean = WorkflowExpression.Compile(clean, nameof(clean), required: false);
-            return new DeferredBodyAction<LanguageGetResponse>(() =>
+            return new DeferredBodyAction<LanguageGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datatxt/li/v1";
                 var apiCallHttpMethod = "get";
@@ -123,13 +123,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<SentimentGetResponse> SentimentGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null)
+        public IBodyWorkflowAction<SentimentGetResponse, ApiConnectionActionConfiguration> SentimentGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: false);
             var __workflow_htmlFragment = WorkflowExpression.Compile(htmlFragment, nameof(htmlFragment), required: false);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
-            return new DeferredBodyAction<SentimentGetResponse>(() =>
+            return new DeferredBodyAction<SentimentGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datatxt/sent/v1";
                 var apiCallHttpMethod = "get";
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<WikipediaGetResponse> WikipediaGet(Expression<Func<string>> text, Expression<Func<langInput>> lang, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<queryInput>> query = null, Expression<Func<string>> include = null)
+        public IBodyWorkflowAction<WikipediaGetResponse, ApiConnectionActionConfiguration> WikipediaGet(Expression<Func<string>> text, Expression<Func<langInput>> lang, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<queryInput>> query = null, Expression<Func<string>> include = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: false);
-            return new DeferredBodyAction<WikipediaGetResponse>(() =>
+            return new DeferredBodyAction<WikipediaGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datagraph/wikisearch/v1";
                 var apiCallHttpMethod = "get";

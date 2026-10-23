@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
     public class DatablendActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<GroupSearch> GroupsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null)
+        public IBodyWorkflowAction<GroupSearch, ApiConnectionActionConfiguration> GroupsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null)
         {
             var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
             var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
             var __workflow_bodyorders = WorkflowExpression.Compile(bodyorders, nameof(bodyorders), required: false);
-            return new DeferredBodyAction<GroupSearch>(() =>
+            return new DeferredBodyAction<GroupSearch, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/groups/search";
                 var apiCallHttpMethod = "post";
@@ -72,10 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<QueryExecutionResults> GetQueryExecutionById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<QueryExecutionResults, ApiConnectionActionConfiguration> GetQueryExecutionById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<QueryExecutionResults>(() =>
+            return new DeferredBodyAction<QueryExecutionResults, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/query-executions/{0}/results", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowExecutionsSearch> WorkflowExecutionsSearch(Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
+        public IBodyWorkflowAction<WorkflowExecutionsSearch, ApiConnectionActionConfiguration> WorkflowExecutionsSearch(Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
         {
             var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
             var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
             var __workflow_bodypredicatepath = WorkflowExpression.Compile(bodypredicatepath, nameof(bodypredicatepath), required: false);
             var __workflow_bodypredicatevalue = WorkflowExpression.Compile(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
             var __workflow_bodypredicatecomparator = WorkflowExpression.Compile(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
-            return new DeferredBodyAction<WorkflowExecutionsSearch>(() =>
+            return new DeferredBodyAction<WorkflowExecutionsSearch, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflow-executions/search";
                 var apiCallHttpMethod = "post";
@@ -194,10 +194,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowExecutions> WorkflowExecutions(Expression<Func<string>> bodyparentid = null)
+        public IBodyWorkflowAction<WorkflowExecutions, ApiConnectionActionConfiguration> WorkflowExecutions(Expression<Func<string>> bodyparentid = null)
         {
             var __workflow_bodyparentid = WorkflowExpression.Compile(bodyparentid, nameof(bodyparentid), required: false);
-            return new DeferredBodyAction<WorkflowExecutions>(() =>
+            return new DeferredBodyAction<WorkflowExecutions, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflow-executions";
                 var apiCallHttpMethod = "post";
@@ -228,14 +228,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowsSearch> WorkflowsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
+        public IBodyWorkflowAction<WorkflowsSearch, ApiConnectionActionConfiguration> WorkflowsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
         {
             var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
             var __workflow_bodyorders = WorkflowExpression.Compile(bodyorders, nameof(bodyorders), required: false);
             var __workflow_bodypredicatepath = WorkflowExpression.Compile(bodypredicatepath, nameof(bodypredicatepath), required: false);
             var __workflow_bodypredicatevalue = WorkflowExpression.Compile(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
             var __workflow_bodypredicatecomparator = WorkflowExpression.Compile(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
-            return new DeferredBodyAction<WorkflowsSearch>(() =>
+            return new DeferredBodyAction<WorkflowsSearch, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflows/search";
                 var apiCallHttpMethod = "post";

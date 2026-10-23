@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     public class BoldsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> title, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
+        public IBodyWorkflowAction<SendDocumentFromTemplateResponse, ApiConnectionActionConfiguration> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> title, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_isSandbox = WorkflowExpression.Compile(isSandbox, nameof(isSandbox), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             var __workflow_enableReassign = WorkflowExpression.Compile(enableReassign, nameof(enableReassign), required: false);
             var __workflow_enableAutoReminder = WorkflowExpression.Compile(enableAutoReminder, nameof(enableAutoReminder), required: false);
             var __workflow_signers = WorkflowExpression.Compile(signers, nameof(signers), required: false);
-            return new DeferredBodyAction<SendDocumentFromTemplateResponse>(() =>
+            return new DeferredBodyAction<SendDocumentFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/template/send";
                 var apiCallHttpMethod = "post";
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IWorkflowAction DownloadDocument(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_onBehalfOf = WorkflowExpression.Compile(onBehalfOf, nameof(onBehalfOf), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/document/download";
                 var apiCallHttpMethod = "get";
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IWorkflowAction DownloadAuditTrail(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DownloadAuditTrail(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_onBehalfOf = WorkflowExpression.Compile(onBehalfOf, nameof(onBehalfOf), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/document/downloadAuditLog";
                 var apiCallHttpMethod = "get";
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<DocumentPropertiesResponse> GetDocumentStatus(Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<DocumentPropertiesResponse, ApiConnectionActionConfiguration> GetDocumentStatus(Expression<Func<string>> documentId)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<DocumentPropertiesResponse>(() =>
+            return new DeferredBodyAction<DocumentPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/document/properties";
                 var apiCallHttpMethod = "get";
@@ -116,11 +116,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 
     public class BoldsignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode, FlowRecurrence recurrence = null)
         {
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
             var __workflow_bodyadminMode = WorkflowExpression.Compile(bodyadminMode, nameof(bodyadminMode), required: true);
-            return new DeferredBodyTrigger<AddWebHooksResponse>(() =>
+            return new DeferredBodyTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
                 var apiCallHttpMethod = "post";

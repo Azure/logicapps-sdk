@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ukbankholidays
     public class UkbankholidaysActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ukbankholidays")]
-        public IBodyWorkflowAction<AllKingdomHolidaysResponse> AllKingdomHolidays()
+        public IBodyWorkflowAction<AllKingdomHolidaysResponse, ApiConnectionActionConfiguration> AllKingdomHolidays()
         {
             var apiCallPath = "/bank-holidays.json";
             var apiCallHttpMethod = "get";

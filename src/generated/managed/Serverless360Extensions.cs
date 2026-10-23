@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
     public class Serverless360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction ArchiveActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360StageActivityId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360StageActivityId)
         {
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
             var __workflow_sL360BusinessTransaction = WorkflowExpression.Compile(sL360BusinessTransaction, nameof(sL360BusinessTransaction), required: true);
             var __workflow_sL360CurrentStage = WorkflowExpression.Compile(sL360CurrentStage, nameof(sL360CurrentStage), required: true);
             var __workflow_sL360StageActivityId = WorkflowExpression.Compile(sL360StageActivityId, nameof(sL360StageActivityId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ArchiveActivity";
                 var apiCallHttpMethod = "post";
@@ -55,13 +55,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction LogExceptionActivity(Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360ExceptionMessage, Expression<Func<string>> sL360ExceptionCode, Expression<Func<string>> sL360BusinessProcess)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LogExceptionActivity(Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360ExceptionMessage, Expression<Func<string>> sL360ExceptionCode, Expression<Func<string>> sL360BusinessProcess)
         {
             var __workflow_sL360StageActivityId = WorkflowExpression.Compile(sL360StageActivityId, nameof(sL360StageActivityId), required: true);
             var __workflow_sL360ExceptionMessage = WorkflowExpression.Compile(sL360ExceptionMessage, nameof(sL360ExceptionMessage), required: true);
             var __workflow_sL360ExceptionCode = WorkflowExpression.Compile(sL360ExceptionCode, nameof(sL360ExceptionCode), required: true);
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/LogExceptionActivity";
                 var apiCallHttpMethod = "post";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IBodyWorkflowAction<StartActivityResponse> StartActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360MainActivityId = null, Expression<Func<string>> sL360PreviousStage = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null, Expression<Func<string>> sL360BatchId = null)
+        public IBodyWorkflowAction<StartActivityResponse, ApiConnectionActionConfiguration> StartActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360MainActivityId = null, Expression<Func<string>> sL360PreviousStage = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null, Expression<Func<string>> sL360BatchId = null)
         {
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
             var __workflow_sL360BusinessTransaction = WorkflowExpression.Compile(sL360BusinessTransaction, nameof(sL360BusinessTransaction), required: true);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
             var __workflow_sL360PreviousStage = WorkflowExpression.Compile(sL360PreviousStage, nameof(sL360PreviousStage), required: false);
             var __workflow_sL360ArchiveMessage = WorkflowExpression.Compile(sL360ArchiveMessage, nameof(sL360ArchiveMessage), required: false);
             var __workflow_sL360BatchId = WorkflowExpression.Compile(sL360BatchId, nameof(sL360BatchId), required: false);
-            return new DeferredBodyAction<StartActivityResponse>(() =>
+            return new DeferredBodyAction<StartActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/StartActivity";
                 var apiCallHttpMethod = "post";
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction UpdateActivity(Expression<Func<string>> sL360MainActivityId, Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<sL360StatusInput>> sL360Status = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<string>> sL360MainActivityId, Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<sL360StatusInput>> sL360Status = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null)
         {
             var __workflow_sL360MainActivityId = WorkflowExpression.Compile(sL360MainActivityId, nameof(sL360MainActivityId), required: true);
             var __workflow_sL360StageActivityId = WorkflowExpression.Compile(sL360StageActivityId, nameof(sL360StageActivityId), required: true);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
             var __workflow_sL360CurrentStage = WorkflowExpression.Compile(sL360CurrentStage, nameof(sL360CurrentStage), required: true);
             var __workflow_sL360Status = WorkflowExpression.Compile(sL360Status, nameof(sL360Status), required: false);
             var __workflow_sL360ArchiveMessage = WorkflowExpression.Compile(sL360ArchiveMessage, nameof(sL360ArchiveMessage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateActivity";
                 var apiCallHttpMethod = "post";

@@ -4,10 +4,26 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
+
+    public sealed class CustomCodeActionConfiguration :
+        IRetryPolicyConfiguration,
+        ITrackedPropertiesConfiguration,
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>
-    public class CSharpScriptCode : WorkflowActionBase
+    public class CSharpScriptCode : WorkflowActionBase<CustomCodeActionConfiguration>
     {
         /// <summary>
         /// Gets or sets the name.
@@ -35,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             ScriptExecutor.SaveCustomCodeMethodInfo(
                 workflowName: flowName,

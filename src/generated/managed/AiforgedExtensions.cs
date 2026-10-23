@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
     public class AiforgedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsUserViewModel> AccountGetCurrentUser(Expression<Func<string>> xApiVersion)
+        public IBodyWorkflowAction<AIForgedViewModelsUserViewModel, ApiConnectionActionConfiguration> AccountGetCurrentUser(Expression<Func<string>> xApiVersion)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
-            return new DeferredBodyAction<AIForgedViewModelsUserViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsUserViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Account/GetCurrentUser";
                 var apiCallHttpMethod = "get";
@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<string> AccountGetApiKey(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountGetApiKey(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Account/GetAPIKey";
                 var apiCallHttpMethod = "get";
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> ClassesGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel, ApiConnectionActionConfiguration> ClassesGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Classes/Get";
                 var apiCallHttpMethod = "get";
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> ClassesGetByProject(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[], ApiConnectionActionConfiguration> ClassesGetByProject(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Classes/GetByProject";
                 var apiCallHttpMethod = "get";
@@ -77,12 +77,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> ClassesGetByUser(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[], ApiConnectionActionConfiguration> ClassesGetByUser(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Classes/GetByUser";
                 var apiCallHttpMethod = "get";
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentGetDocument(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration> DocumentGetDocument(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/Get";
                 var apiCallHttpMethod = "get";
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentGetHierarchy(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration> DocumentGetHierarchy(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetHierarchy";
                 var apiCallHttpMethod = "get";
@@ -131,11 +131,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentDelete(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration> DocumentDelete(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/Delete";
                 var apiCallHttpMethod = "delete";
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetPreviews(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration> DocumentGetPreviews(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetPreviews";
                 var apiCallHttpMethod = "get";
@@ -171,12 +171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetImages(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<int>> stpdId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[], ApiConnectionActionConfiguration> DocumentGetImages(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<int>> stpdId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentDataViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentDataViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetImages";
                 var apiCallHttpMethod = "get";
@@ -191,11 +191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<object> DocumentGetBlobById(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DocumentGetBlobById(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetBlobById";
                 var apiCallHttpMethod = "get";
@@ -208,11 +208,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<object> DocumentDeleteBlob(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DocumentDeleteBlob(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/DeleteBlob";
                 var apiCallHttpMethod = "delete";
@@ -225,13 +225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentClassify(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<object>> file = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration> DocumentClassify(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<object>> file = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/Classify";
                 var apiCallHttpMethod = "post";
@@ -246,13 +246,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentExtractAndVerify(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<object>> file = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration> DocumentExtractAndVerify(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<object>> file = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/ExtractAndVerify";
                 var apiCallHttpMethod = "post";
@@ -267,13 +267,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> DocumentGetClassification(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> docId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel, ApiConnectionActionConfiguration> DocumentGetClassification(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> docId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetClassification";
                 var apiCallHttpMethod = "get";
@@ -290,11 +290,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration> ParamDefGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ParamDef/Get";
                 var apiCallHttpMethod = "get";
@@ -307,11 +307,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGetParentService(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration> ParamDefGetParentService(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ParamDef/GetParentService";
                 var apiCallHttpMethod = "get";
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGetHierachy(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> includeCount = null, Expression<Func<bool>> includeSettings = null, Expression<Func<bool>> includeChildren = null)
+        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration> ParamDefGetHierachy(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> includeCount = null, Expression<Func<bool>> includeSettings = null, Expression<Func<bool>> includeChildren = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var __workflow_includeCount = WorkflowExpression.Compile(includeCount, nameof(includeCount), required: false);
             var __workflow_includeSettings = WorkflowExpression.Compile(includeSettings, nameof(includeSettings), required: false);
             var __workflow_includeChildren = WorkflowExpression.Compile(includeChildren, nameof(includeChildren), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ParamDef/GetHierachy";
                 var apiCallHttpMethod = "get";
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> ParametersGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<categoryInput>> category = null, Expression<Func<groupingInput>> grouping = null, Expression<Func<bool>> includeverification = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[], ApiConnectionActionConfiguration> ParametersGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<categoryInput>> category = null, Expression<Func<groupingInput>> grouping = null, Expression<Func<bool>> includeverification = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
             var __workflow_grouping = WorkflowExpression.Compile(grouping, nameof(grouping), required: false);
             var __workflow_includeverification = WorkflowExpression.Compile(includeverification, nameof(includeverification), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Parameters/Get";
                 var apiCallHttpMethod = "get";
@@ -386,13 +386,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> ParametersGetHierarchy(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> includeverification = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[], ApiConnectionActionConfiguration> ParametersGetHierarchy(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> includeverification = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
             var __workflow_includeverification = WorkflowExpression.Compile(includeverification, nameof(includeverification), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Parameters/GetHierarchy";
                 var apiCallHttpMethod = "get";
@@ -410,11 +410,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> ParametersDelete(Expression<Func<string>> xApiVersion, Expression<Func<int>> paramid = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel, ApiConnectionActionConfiguration> ParametersDelete(Expression<Func<string>> xApiVersion, Expression<Func<int>> paramid = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_paramid = WorkflowExpression.Compile(paramid, nameof(paramid), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Parameters/Delete";
                 var apiCallHttpMethod = "delete";
@@ -427,11 +427,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> ParametersGetByVerification(Expression<Func<string>> xApiVersion, Expression<Func<int>> verificationId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel, ApiConnectionActionConfiguration> ParametersGetByVerification(Expression<Func<string>> xApiVersion, Expression<Func<int>> verificationId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_verificationId = WorkflowExpression.Compile(verificationId, nameof(verificationId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Parameters/GetByVerification";
                 var apiCallHttpMethod = "get";
@@ -444,11 +444,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocParamSummary[]> ParametersGetSummary(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocParamSummary[], ApiConnectionActionConfiguration> ParametersGetSummary(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocParamSummary[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocParamSummary[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Parameters/GetSummary";
                 var apiCallHttpMethod = "get";
@@ -461,11 +461,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentExtraction[]> ParametersExtract(Expression<Func<string>> xApiVersion, Expression<Func<int>> docid = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentExtraction[], ApiConnectionActionConfiguration> ParametersExtract(Expression<Func<string>> xApiVersion, Expression<Func<int>> docid = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_docid = WorkflowExpression.Compile(docid, nameof(docid), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentExtraction[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentExtraction[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Parameters/Extract";
                 var apiCallHttpMethod = "get";
@@ -478,11 +478,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel[]> ProjectGetByUser(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel[], ApiConnectionActionConfiguration> ProjectGetByUser(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Project/GetByUser";
                 var apiCallHttpMethod = "get";
@@ -495,12 +495,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> ProjectGetUserProject(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel, ApiConnectionActionConfiguration> ProjectGetUserProject(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Project/GetUserProject";
                 var apiCallHttpMethod = "get";
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> ProjectGetHierachies(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<int>> groupId = null, Expression<Func<bool>> includeCount = null, Expression<Func<bool>> onlyServices = null, Expression<Func<bool>> includeSettings = null, Expression<Func<bool>> includeChildren = null)
+        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[], ApiConnectionActionConfiguration> ProjectGetHierachies(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<int>> groupId = null, Expression<Func<bool>> includeCount = null, Expression<Func<bool>> onlyServices = null, Expression<Func<bool>> includeSettings = null, Expression<Func<bool>> includeChildren = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var __workflow_onlyServices = WorkflowExpression.Compile(onlyServices, nameof(onlyServices), required: false);
             var __workflow_includeSettings = WorkflowExpression.Compile(includeSettings, nameof(includeSettings), required: false);
             var __workflow_includeChildren = WorkflowExpression.Compile(includeChildren, nameof(includeChildren), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Project/GetHierachies";
                 var apiCallHttpMethod = "get";
@@ -557,12 +557,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> ProjectGetByName(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<string>> projectName = null)
+        public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel, ApiConnectionActionConfiguration> ProjectGetByName(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<string>> projectName = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
             var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Project/GetByName";
                 var apiCallHttpMethod = "get";
@@ -577,14 +577,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> ProjectGetServices(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stlfilter = null, Expression<Func<string>> enginefilter = null)
+        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[], ApiConnectionActionConfiguration> ProjectGetServices(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stlfilter = null, Expression<Func<string>> enginefilter = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_stlfilter = WorkflowExpression.Compile(stlfilter, nameof(stlfilter), required: false);
             var __workflow_enginefilter = WorkflowExpression.Compile(enginefilter, nameof(enginefilter), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Project/GetServices";
                 var apiCallHttpMethod = "get";
@@ -603,11 +603,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ServicesGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration> ServicesGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Services/Get";
                 var apiCallHttpMethod = "get";
@@ -620,10 +620,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<string> SystemGetSystemDate(Expression<Func<string>> xApiVersion)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SystemGetSystemDate(Expression<Func<string>> xApiVersion)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/System/GetSystemDate";
                 var apiCallHttpMethod = "get";
@@ -634,10 +634,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<JToken> SystemGetSystemInfo(Expression<Func<string>> xApiVersion)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SystemGetSystemInfo(Expression<Func<string>> xApiVersion)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/System/GetSystemInfo";
                 var apiCallHttpMethod = "get";
@@ -648,10 +648,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDataTypeViewModel[]> SystemGetDataTypes(Expression<Func<string>> xApiVersion)
+        public IBodyWorkflowAction<AIForgedViewModelsDataTypeViewModel[], ApiConnectionActionConfiguration> SystemGetDataTypes(Expression<Func<string>> xApiVersion)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
-            return new DeferredBodyAction<AIForgedViewModelsDataTypeViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDataTypeViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/System/GetDataTypes";
                 var apiCallHttpMethod = "get";
@@ -662,10 +662,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsEnumDataViewModel[]> SystemGetEnumData(Expression<Func<string>> xApiVersion)
+        public IBodyWorkflowAction<AIForgedViewModelsEnumDataViewModel[], ApiConnectionActionConfiguration> SystemGetEnumData(Expression<Func<string>> xApiVersion)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
-            return new DeferredBodyAction<AIForgedViewModelsEnumDataViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsEnumDataViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/System/GetEnumData";
                 var apiCallHttpMethod = "get";
@@ -676,11 +676,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> VerificationGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> verificationId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel, ApiConnectionActionConfiguration> VerificationGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> verificationId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_verificationId = WorkflowExpression.Compile(verificationId, nameof(verificationId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Verification/Get";
                 var apiCallHttpMethod = "get";
@@ -693,12 +693,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel[]> VerificationGetAll(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> parameterId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel[], ApiConnectionActionConfiguration> VerificationGetAll(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> parameterId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
             var __workflow_parameterId = WorkflowExpression.Compile(parameterId, nameof(parameterId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Verification/GetAll";
                 var apiCallHttpMethod = "get";
@@ -713,13 +713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> VerificationGetLatest(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> parameterId = null, Expression<Func<int>> pdId = null)
+        public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel, ApiConnectionActionConfiguration> VerificationGetLatest(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> parameterId = null, Expression<Func<int>> pdId = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
             var __workflow_parameterId = WorkflowExpression.Compile(parameterId, nameof(parameterId), required: false);
             var __workflow_pdId = WorkflowExpression.Compile(pdId, nameof(pdId), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Verification/GetLatest";
                 var apiCallHttpMethod = "get";
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<object> VerificationGetShred(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> docId = null, Expression<Func<int>> parId = null, Expression<Func<int>> verificationId = null, Expression<Func<bool>> inline = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> VerificationGetShred(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> docId = null, Expression<Func<int>> parId = null, Expression<Func<int>> verificationId = null, Expression<Func<bool>> inline = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var __workflow_parId = WorkflowExpression.Compile(parId, nameof(parId), required: false);
             var __workflow_verificationId = WorkflowExpression.Compile(verificationId, nameof(verificationId), required: false);
             var __workflow_inline = WorkflowExpression.Compile(inline, nameof(inline), required: false);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Verification/GetShred";
                 var apiCallHttpMethod = "get";
@@ -766,14 +766,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> VerificationGetSummary(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<int>> pdId = null, Expression<Func<bool>> latestOnly = null)
+        public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[], ApiConnectionActionConfiguration> VerificationGetSummary(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<int>> pdId = null, Expression<Func<bool>> latestOnly = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
             var __workflow_pdId = WorkflowExpression.Compile(pdId, nameof(pdId), required: false);
             var __workflow_latestOnly = WorkflowExpression.Compile(latestOnly, nameof(latestOnly), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsVerificationSummary[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsVerificationSummary[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Verification/GetSummary";
                 var apiCallHttpMethod = "get";
@@ -793,13 +793,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> VerificationGetHeatmap(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> latestOnly = null)
+        public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[], ApiConnectionActionConfiguration> VerificationGetHeatmap(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> latestOnly = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
             var __workflow_latestOnly = WorkflowExpression.Compile(latestOnly, nameof(latestOnly), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsVerificationSummary[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsVerificationSummary[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Verification/GetHeatmap";
                 var apiCallHttpMethod = "get";
@@ -817,13 +817,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<object> DocumentGetBlob(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DocumentGetBlob(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetBlob";
                 var apiCallHttpMethod = "get";
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetData(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string>> text = null, Expression<Func<int>> blobid = null, Expression<Func<int>> pageindex = null, Expression<Func<int>> imagesCount = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[], ApiConnectionActionConfiguration> DocumentGetData(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string>> text = null, Expression<Func<int>> blobid = null, Expression<Func<int>> pageindex = null, Expression<Func<int>> imagesCount = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var __workflow_blobid = WorkflowExpression.Compile(blobid, nameof(blobid), required: false);
             var __workflow_pageindex = WorkflowExpression.Compile(pageindex, nameof(pageindex), required: false);
             var __workflow_imagesCount = WorkflowExpression.Compile(imagesCount, nameof(imagesCount), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentDataViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentDataViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetData";
                 var apiCallHttpMethod = "get";
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<usageInput>> usage = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<usageInput>> usage = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var __workflow_resultIndex = WorkflowExpression.Compile(resultIndex, nameof(resultIndex), required: false);
             var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: false);
             var __workflow_docGuid = WorkflowExpression.Compile(docGuid, nameof(docGuid), required: false);
-            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel[]>(() =>
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/GetExtended";
                 var apiCallHttpMethod = "get";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Didyoumeanthisip
     public class DidyoumeanthisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "didyoumeanthisip")]
-        public IBodyWorkflowAction<CheckResponse> Check(Expression<Func<string>> q)
+        public IBodyWorkflowAction<CheckResponse, ApiConnectionActionConfiguration> Check(Expression<Func<string>> q)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
-            return new DeferredBodyAction<CheckResponse>(() =>
+            return new DeferredBodyAction<CheckResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/did_you_mean_this";
                 var apiCallHttpMethod = "get";

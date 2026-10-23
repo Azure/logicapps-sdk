@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
     public class HuggingfaceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<JToken> ModelID(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ModelID(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -80,12 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<FillMaskPostResponseItem[]> FillMask(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<FillMaskPostResponseItem[], ApiConnectionActionConfiguration> FillMask(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<FillMaskPostResponseItem[]>(() =>
+            return new DeferredBodyAction<FillMaskPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bert-base-uncased";
                 var apiCallHttpMethod = "post";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<SummarizationPostResponseItem[]> Summarization(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<SummarizationPostResponseItem[], ApiConnectionActionConfiguration> Summarization(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             var __workflow_bodyparametersdoSample = WorkflowExpression.Compile(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<SummarizationPostResponseItem[]>(() =>
+            return new DeferredBodyAction<SummarizationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-cnn";
                 var apiCallHttpMethod = "post";
@@ -236,11 +236,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<AnswerPostResponse> Answer(Expression<Func<string>> bodyinputsquestion = null, Expression<Func<string>> bodyinputscontext = null)
+        public IBodyWorkflowAction<AnswerPostResponse, ApiConnectionActionConfiguration> Answer(Expression<Func<string>> bodyinputsquestion = null, Expression<Func<string>> bodyinputscontext = null)
         {
             var __workflow_bodyinputsquestion = WorkflowExpression.Compile(bodyinputsquestion, nameof(bodyinputsquestion), required: false);
             var __workflow_bodyinputscontext = WorkflowExpression.Compile(bodyinputscontext, nameof(bodyinputscontext), required: false);
-            return new DeferredBodyAction<AnswerPostResponse>(() =>
+            return new DeferredBodyAction<AnswerPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deepset/roberta-base-squad2";
                 var apiCallHttpMethod = "post";
@@ -277,13 +277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<double[]> SentenceSimilarity(Expression<Func<string>> bodyinputssourceSentence = null, Expression<Func<string[]>> bodyinputssentences = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<double[], ApiConnectionActionConfiguration> SentenceSimilarity(Expression<Func<string>> bodyinputssourceSentence = null, Expression<Func<string[]>> bodyinputssentences = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputssourceSentence = WorkflowExpression.Compile(bodyinputssourceSentence, nameof(bodyinputssourceSentence), required: false);
             var __workflow_bodyinputssentences = WorkflowExpression.Compile(bodyinputssentences, nameof(bodyinputssentences), required: false);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<double[]>(() =>
+            return new DeferredBodyAction<double[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sentence-transformers/all-MiniLM-L6-v2";
                 var apiCallHttpMethod = "post";
@@ -340,12 +340,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> TextClassification(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][], ApiConnectionActionConfiguration> TextClassification(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TextClassificationPostResponseItemItem[][]>(() =>
+            return new DeferredBodyAction<TextClassificationPostResponseItemItem[][], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
                 var apiCallHttpMethod = "post";
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextGenerationPostResponseItem[]> TextGeneration(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextGenerationPostResponseItem[], ApiConnectionActionConfiguration> TextGeneration(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             var __workflow_bodyparametersdoSample = WorkflowExpression.Compile(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TextGenerationPostResponseItem[]>(() =>
+            return new DeferredBodyAction<TextGenerationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gpt2";
                 var apiCallHttpMethod = "post";
@@ -496,13 +496,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> TokenClassification(Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyparametersaggregationStrategy = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TokenClassificationPostResponseItem[], ApiConnectionActionConfiguration> TokenClassification(Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyparametersaggregationStrategy = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
             var __workflow_bodyparametersaggregationStrategy = WorkflowExpression.Compile(bodyparametersaggregationStrategy, nameof(bodyparametersaggregationStrategy), required: false);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TokenClassificationPostResponseItem[]>(() =>
+            return new DeferredBodyAction<TokenClassificationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
                 var apiCallHttpMethod = "post";
@@ -555,12 +555,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TranslationPostResponseItem[]> Translation(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TranslationPostResponseItem[], ApiConnectionActionConfiguration> Translation(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TranslationPostResponseItem[]>(() =>
+            return new DeferredBodyAction<TranslationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/t5-base";
                 var apiCallHttpMethod = "post";
@@ -599,14 +599,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ZeroShotPostResponse> ZeroShot(Expression<Func<string>> bodyinputs = null, Expression<Func<string[]>> bodyparameterscandidateLabels = null, Expression<Func<bool>> bodyparametersmultiLabel = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ZeroShotPostResponse, ApiConnectionActionConfiguration> ZeroShot(Expression<Func<string>> bodyinputs = null, Expression<Func<string[]>> bodyparameterscandidateLabels = null, Expression<Func<bool>> bodyparametersmultiLabel = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             var __workflow_bodyparameterscandidateLabels = WorkflowExpression.Compile(bodyparameterscandidateLabels, nameof(bodyparameterscandidateLabels), required: false);
             var __workflow_bodyparametersmultiLabel = WorkflowExpression.Compile(bodyparametersmultiLabel, nameof(bodyparametersmultiLabel), required: false);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<ZeroShotPostResponse>(() =>
+            return new DeferredBodyAction<ZeroShotPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-mnli";
                 var apiCallHttpMethod = "post";
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ConversationalPostResponse> Conversational(Expression<Func<string[]>> bodyinputspastUserInputs = null, Expression<Func<string[]>> bodyinputsgeneratedResponses = null, Expression<Func<string>> bodyinputstext = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ConversationalPostResponse, ApiConnectionActionConfiguration> Conversational(Expression<Func<string[]>> bodyinputspastUserInputs = null, Expression<Func<string[]>> bodyinputsgeneratedResponses = null, Expression<Func<string>> bodyinputstext = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
             var __workflow_bodyinputspastUserInputs = WorkflowExpression.Compile(bodyinputspastUserInputs, nameof(bodyinputspastUserInputs), required: false);
             var __workflow_bodyinputsgeneratedResponses = WorkflowExpression.Compile(bodyinputsgeneratedResponses, nameof(bodyinputsgeneratedResponses), required: false);
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
             var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
             var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
             var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<ConversationalPostResponse>(() =>
+            return new DeferredBodyAction<ConversationalPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/microsoft/DialoGPT-large";
                 var apiCallHttpMethod = "post";

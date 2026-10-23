@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </remarks>
     /// <seealso cref="IOutputWorkflowTrigger{T}"/>
     /// <seealso cref="IBodyWorkflowTrigger{T}"/>
-    /// <seealso cref="WorkflowTriggerBase"/>
     /// <seealso cref="WorkflowFactory"/>
     public interface IWorkflowTrigger : IWorkflowOperation
     {
@@ -39,7 +38,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// serialized into the workflow's JSON definition.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> representing the trigger's type, inputs, and configuration.</returns>
-        FlowTemplateTrigger GetTriggerDefinition();
+        FlowTemplateTrigger GetTriggerDefinition(FlowKind? flowKind = null);
+    }
+
+    public interface IWorkflowTrigger<out TConfiguration> :
+        IWorkflowTrigger,
+        IWorkflowOperation<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
     }
 
     /// <summary>
@@ -65,6 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         T TriggerOutput { get; }
     }
 
+    public interface IOutputWorkflowTrigger<T, out TConfiguration> :
+        IOutputWorkflowTrigger<T>,
+        IWorkflowTrigger<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
+    }
+
     /// <summary>
     /// Represents a workflow trigger that produces a strongly-typed body output, typically used
     /// for triggers where the incoming payload has a body (e.g., HTTP request triggers).
@@ -77,5 +90,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// to build workflow expressions that reference the trigger's body content at runtime.
         /// </summary>
         T TriggerBody { get; }
+    }
+
+    public interface IBodyWorkflowTrigger<T, out TConfiguration> :
+        IBodyWorkflowTrigger<T>,
+        IWorkflowTrigger<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
     }
 }

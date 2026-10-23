@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     public class CarsxeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<SpecGetResponse> SpecGet(Expression<Func<string>> vin)
+        public IBodyWorkflowAction<SpecGetResponse, ApiConnectionActionConfiguration> SpecGet(Expression<Func<string>> vin)
         {
             var __workflow_vin = WorkflowExpression.Compile(vin, nameof(vin), required: true);
-            return new DeferredBodyAction<SpecGetResponse>(() =>
+            return new DeferredBodyAction<SpecGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/specs";
                 var apiCallHttpMethod = "get";
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<ValueGetResponse> ValueGet(Expression<Func<string>> vin)
+        public IBodyWorkflowAction<ValueGetResponse, ApiConnectionActionConfiguration> ValueGet(Expression<Func<string>> vin)
         {
             var __workflow_vin = WorkflowExpression.Compile(vin, nameof(vin), required: true);
-            return new DeferredBodyAction<ValueGetResponse>(() =>
+            return new DeferredBodyAction<ValueGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/marketvalue";
                 var apiCallHttpMethod = "get";
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<HistoryGetResponse> HistoryGet(Expression<Func<string>> vin)
+        public IBodyWorkflowAction<HistoryGetResponse, ApiConnectionActionConfiguration> HistoryGet(Expression<Func<string>> vin)
         {
             var __workflow_vin = WorkflowExpression.Compile(vin, nameof(vin), required: true);
-            return new DeferredBodyAction<HistoryGetResponse>(() =>
+            return new DeferredBodyAction<HistoryGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/history";
                 var apiCallHttpMethod = "get";
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<PlateDecodeResponse> PlateDecode(Expression<Func<string>> plate, Expression<Func<string>> state, Expression<Func<countryInput>> country = null)
+        public IBodyWorkflowAction<PlateDecodeResponse, ApiConnectionActionConfiguration> PlateDecode(Expression<Func<string>> plate, Expression<Func<string>> state, Expression<Func<countryInput>> country = null)
         {
             var __workflow_plate = WorkflowExpression.Compile(plate, nameof(plate), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<PlateDecodeResponse>(() =>
+            return new DeferredBodyAction<PlateDecodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/platedecoder";
                 var apiCallHttpMethod = "get";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> make, Expression<Func<string>> model, Expression<Func<int>> year = null, Expression<Func<string>> trim = null, Expression<Func<string>> color = null, Expression<Func<bool>> transparent = null, Expression<Func<angleInput>> angle = null, Expression<Func<photoTypeInput>> photoType = null, Expression<Func<sizeInput>> size = null, Expression<Func<licenseInput>> license = null)
+        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<string>> make, Expression<Func<string>> model, Expression<Func<int>> year = null, Expression<Func<string>> trim = null, Expression<Func<string>> color = null, Expression<Func<bool>> transparent = null, Expression<Func<angleInput>> angle = null, Expression<Func<photoTypeInput>> photoType = null, Expression<Func<sizeInput>> size = null, Expression<Func<licenseInput>> license = null)
         {
             var __workflow_make = WorkflowExpression.Compile(make, nameof(make), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
             var __workflow_photoType = WorkflowExpression.Compile(photoType, nameof(photoType), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_license = WorkflowExpression.Compile(license, nameof(license), required: false);
-            return new DeferredBodyAction<ImageGetResponse>(() =>
+            return new DeferredBodyAction<ImageGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/images";
                 var apiCallHttpMethod = "get";
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<PlateRecogResponse> PlateRecog(Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<PlateRecogResponse, ApiConnectionActionConfiguration> PlateRecog(Expression<Func<string>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PlateRecogResponse>(() =>
+            return new DeferredBodyAction<PlateRecogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/platerecognition";
                 var apiCallHttpMethod = "post";
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<CodeGetResponse> CodeGet(Expression<Func<string>> code)
+        public IBodyWorkflowAction<CodeGetResponse, ApiConnectionActionConfiguration> CodeGet(Expression<Func<string>> code)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
-            return new DeferredBodyAction<CodeGetResponse>(() =>
+            return new DeferredBodyAction<CodeGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/obdcodesdecoder";
                 var apiCallHttpMethod = "get";

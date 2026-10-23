@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
     public class KnowledgelakeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
-        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
+        public IBodyWorkflowAction<ImportJobsPostResponse, ApiConnectionActionConfiguration> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
         {
             var __workflow_batchimportData = WorkflowExpression.Compile(batchimportData, nameof(batchimportData), required: true);
             var __workflow_batchnameForImport = WorkflowExpression.Compile(batchnameForImport, nameof(batchnameForImport), required: true);
             var __workflow_batchsecurityToken = WorkflowExpression.Compile(batchsecurityToken, nameof(batchsecurityToken), required: true);
             var __workflow_batchrPAEnvironment = WorkflowExpression.Compile(batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
-            return new DeferredBodyAction<ImportJobsPostResponse>(() =>
+            return new DeferredBodyAction<ImportJobsPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ImportJobs";
                 var apiCallHttpMethod = "post";

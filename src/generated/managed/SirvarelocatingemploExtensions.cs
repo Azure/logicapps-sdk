@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
     public class SirvarelocatingemploActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<GetRelocationsResponse> GetRelocations()
+        public IBodyWorkflowAction<GetRelocationsResponse, ApiConnectionActionConfiguration> GetRelocations()
         {
             var apiCallPath = "/relocation";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage(Expression<Func<string>> relocationId)
+        public IBodyWorkflowAction<GetRelocationPackageResponse, ApiConnectionActionConfiguration> GetRelocationPackage(Expression<Func<string>> relocationId)
         {
             var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
-            return new DeferredBodyAction<GetRelocationPackageResponse>(() =>
+            return new DeferredBodyAction<GetRelocationPackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/package/{0}", __workflow_relocationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
+        public IBodyWorkflowAction<GetCounselorContactInformationResponse, ApiConnectionActionConfiguration> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
         {
             var __workflow_includePicture = WorkflowExpression.Compile(includePicture, nameof(includePicture), required: true);
             var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
-            return new DeferredBodyAction<GetCounselorContactInformationResponse>(() =>
+            return new DeferredBodyAction<GetCounselorContactInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/relocation/counselor/{0}", __workflow_relocationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
         {
             var __workflow_bodyrelocationId = WorkflowExpression.Compile(bodyrelocationId, nameof(bodyrelocationId), required: true);
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
-            return new DeferredBodyAction<AskSirvaBotAboutTopicResponse>(() =>
+            return new DeferredBodyAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/topic";
                 var apiCallHttpMethod = "post";

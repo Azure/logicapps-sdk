@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
     public class NasaivlibraryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<string>> center = null, Expression<Func<string>> description = null, Expression<Func<string>> description508 = null, Expression<Func<string>> keywords = null, Expression<Func<string>> location = null, Expression<Func<string>> mediaType = null, Expression<Func<string>> nasaId = null, Expression<Func<int>> page = null, Expression<Func<string>> photographer = null, Expression<Func<string>> secondaryCreator = null, Expression<Func<string>> title = null, Expression<Func<int>> yearStart = null, Expression<Func<int>> yearEnd = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> q = null, Expression<Func<string>> center = null, Expression<Func<string>> description = null, Expression<Func<string>> description508 = null, Expression<Func<string>> keywords = null, Expression<Func<string>> location = null, Expression<Func<string>> mediaType = null, Expression<Func<string>> nasaId = null, Expression<Func<int>> page = null, Expression<Func<string>> photographer = null, Expression<Func<string>> secondaryCreator = null, Expression<Func<string>> title = null, Expression<Func<int>> yearStart = null, Expression<Func<int>> yearEnd = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_center = WorkflowExpression.Compile(center, nameof(center), required: false);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_yearStart = WorkflowExpression.Compile(yearStart, nameof(yearStart), required: false);
             var __workflow_yearEnd = WorkflowExpression.Compile(yearEnd, nameof(yearEnd), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
-        public IBodyWorkflowAction<GetMediaAssetManifestResponse> GetMediaAssetManifest(Expression<Func<string>> nasaId)
+        public IBodyWorkflowAction<GetMediaAssetManifestResponse, ApiConnectionActionConfiguration> GetMediaAssetManifest(Expression<Func<string>> nasaId)
         {
             var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
-            return new DeferredBodyAction<GetMediaAssetManifestResponse>(() =>
+            return new DeferredBodyAction<GetMediaAssetManifestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/asset/{0}", __workflow_nasaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
-        public IBodyWorkflowAction<GetMediaAssetMetadataLocationResponse> GetMediaAssetMetadataLocation(Expression<Func<string>> nasaId)
+        public IBodyWorkflowAction<GetMediaAssetMetadataLocationResponse, ApiConnectionActionConfiguration> GetMediaAssetMetadataLocation(Expression<Func<string>> nasaId)
         {
             var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
-            return new DeferredBodyAction<GetMediaAssetMetadataLocationResponse>(() =>
+            return new DeferredBodyAction<GetMediaAssetMetadataLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/metadata/{0}", __workflow_nasaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -92,10 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
-        public IBodyWorkflowAction<GetVideoAssetCaptionsLocationResponse> GetVideoAssetCaptionsLocation(Expression<Func<string>> nasaId)
+        public IBodyWorkflowAction<GetVideoAssetCaptionsLocationResponse, ApiConnectionActionConfiguration> GetVideoAssetCaptionsLocation(Expression<Func<string>> nasaId)
         {
             var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
-            return new DeferredBodyAction<GetVideoAssetCaptionsLocationResponse>(() =>
+            return new DeferredBodyAction<GetVideoAssetCaptionsLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/captions/{0}", __workflow_nasaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
-        public IBodyWorkflowAction<GetMediaAlbumContentsResponse> GetMediaAlbumContents(Expression<Func<string>> albumName, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetMediaAlbumContentsResponse, ApiConnectionActionConfiguration> GetMediaAlbumContents(Expression<Func<string>> albumName, Expression<Func<int>> page = null)
         {
             var __workflow_albumName = WorkflowExpression.Compile(albumName, nameof(albumName), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<GetMediaAlbumContentsResponse>(() =>
+            return new DeferredBodyAction<GetMediaAlbumContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/album/{0}", __workflow_albumName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

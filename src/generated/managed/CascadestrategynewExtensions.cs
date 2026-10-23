@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
     public class CascadestrategynewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodymeasureValue, Expression<Func<string>> measureId)
+        public IBodyWorkflowAction<UpdateMeasure2Response, ApiConnectionActionConfiguration> UpdateMeasure2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodymeasureValue, Expression<Func<string>> measureId)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
             var __workflow_bodymeasureValue = WorkflowExpression.Compile(bodymeasureValue, nameof(bodymeasureValue), required: true);
             var __workflow_measureId = WorkflowExpression.Compile(measureId, nameof(measureId), required: true);
-            return new DeferredBodyAction<UpdateMeasure2Response>(() =>
+            return new DeferredBodyAction<UpdateMeasure2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/measures/{0}", __workflow_measureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<string>> measureId, Expression<Func<bodyhistoricalDataInputItem[]>> bodyhistoricalData = null)
+        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response, ApiConnectionActionConfiguration> UpdateMeasureHistoricalValue2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<string>> measureId, Expression<Func<bodyhistoricalDataInputItem[]>> bodyhistoricalData = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
             var __workflow_measureId = WorkflowExpression.Compile(measureId, nameof(measureId), required: true);
             var __workflow_bodyhistoricalData = WorkflowExpression.Compile(bodyhistoricalData, nameof(bodyhistoricalData), required: false);
-            return new DeferredBodyAction<UpdateMeasureHistoricalValue2Response>(() =>
+            return new DeferredBodyAction<UpdateMeasureHistoricalValue2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/measures/historical/{0}", __workflow_measureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -74,13 +74,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodyactionValue, Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<UpdateAction2Response, ApiConnectionActionConfiguration> UpdateAction2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodyactionValue, Expression<Func<string>> actionId)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
             var __workflow_bodyactionValue = WorkflowExpression.Compile(bodyactionValue, nameof(bodyactionValue), required: true);
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            return new DeferredBodyAction<UpdateAction2Response>(() =>
+            return new DeferredBodyAction<UpdateAction2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";

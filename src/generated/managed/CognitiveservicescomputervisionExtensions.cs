@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     public class CognitiveservicescomputervisionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DetectResponse> DetectObjects(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<DetectResponse, ApiConnectionActionConfiguration> DetectObjects(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<DetectResponse>(() =>
+            return new DeferredBodyAction<DetectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vision/v2.0/detect";
                 var apiCallHttpMethod = "post";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<AreaOfInterestResponse, ApiConnectionActionConfiguration> GetAreaOfInterest(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<AreaOfInterestResponse>(() =>
+            return new DeferredBodyAction<AreaOfInterestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vision/v2.0/areaOfInterest";
                 var apiCallHttpMethod = "post";
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AnalyzeResponse> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<AnalyzeResponse>(() =>
+            return new DeferredBodyAction<AnalyzeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/analyze", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -65,14 +65,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse> DescribeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<DescribeResponse>(() =>
+            return new DeferredBodyAction<DescribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/describe", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse> DescribeImageContent(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> image = null)
+        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageContent(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<DescribeResponse>(() =>
+            return new DeferredBodyAction<DescribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageContent", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -109,13 +109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> imageURLimageURL = null)
+        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> imageURLimageURL = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_imageURLimageURL = WorkflowExpression.Compile(imageURLimageURL, nameof(imageURLimageURL), required: false);
-            return new DeferredBodyAction<DescribeResponse>(() =>
+            return new DeferredBodyAction<DescribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageURL", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<string> GetThumbnail(Expression<Func<string>> subdomainName, Expression<Func<double>> width, Expression<Func<double>> height, Expression<Func<formatInput>> format, Expression<Func<bool>> smartCropping = null, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetThumbnail(Expression<Func<string>> subdomainName, Expression<Func<double>> width, Expression<Func<double>> height, Expression<Func<formatInput>> format, Expression<Func<bool>> smartCropping = null, Expression<Func<object>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: true);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_smartCropping = WorkflowExpression.Compile(smartCropping, nameof(smartCropping), required: false);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -167,12 +167,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRJsonResponse> OCR(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<OCRJsonResponse, ApiConnectionActionConfiguration> OCR(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<OCRJsonResponse>(() =>
+            return new DeferredBodyAction<OCRJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -186,12 +186,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRTextResponse> OCRText(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<OCRTextResponse, ApiConnectionActionConfiguration> OCRText(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<OCRTextResponse>(() =>
+            return new DeferredBodyAction<OCRTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -205,13 +205,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DomainModelResponse> RecognizeDomainSpecificContent(Expression<Func<string>> subdomainName, Expression<Func<modelInput>> model, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<DomainModelResponse, ApiConnectionActionConfiguration> RecognizeDomainSpecificContent(Expression<Func<string>> subdomainName, Expression<Func<modelInput>> model, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<DomainModelResponse>(() =>
+            return new DeferredBodyAction<DomainModelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", __workflow_subdomainName.WithUrlEncoding(2), __workflow_model.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -223,12 +223,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<TagResponse> TagImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<TagResponse, ApiConnectionActionConfiguration> TagImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<TagResponse>(() =>
+            return new DeferredBodyAction<TagResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/tag", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";

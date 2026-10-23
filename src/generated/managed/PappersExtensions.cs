@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
     public class PappersActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<CompanyFormat> CompanyGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> companyNumber, Expression<Func<fieldsInput>> fields = null)
+        public IBodyWorkflowAction<CompanyFormat, ApiConnectionActionConfiguration> CompanyGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> companyNumber, Expression<Func<fieldsInput>> fields = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<CompanyFormat>(() =>
+            return new DeferredBodyAction<CompanyFormat, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/company";
                 var apiCallHttpMethod = "get";
@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<SearchResponse> SearchGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> q, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> SearchGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> q, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<DocumentGetResponse> DocumentGet(Expression<Func<string>> token)
+        public IBodyWorkflowAction<DocumentGetResponse, ApiConnectionActionConfiguration> DocumentGet(Expression<Func<string>> token)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
-            return new DeferredBodyAction<DocumentGetResponse>(() =>
+            return new DeferredBodyAction<DocumentGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/download-file";
                 var apiCallHttpMethod = "get";

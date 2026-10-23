@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
     public class XbridgerdocumentmanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2ModernPageResponse> Convert2ModernPage(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestsiteUrl, Expression<Func<string>> requestpageTitle, Expression<Func<string>> requestauthor, Expression<Func<string>> requestfolderPath = null, Expression<Func<string>> requestbannerImageUrl = null)
+        public IBodyWorkflowAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration> Convert2ModernPage(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestsiteUrl, Expression<Func<string>> requestpageTitle, Expression<Func<string>> requestauthor, Expression<Func<string>> requestfolderPath = null, Expression<Func<string>> requestbannerImageUrl = null)
         {
             var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
             var __workflow_requestsiteUrl = WorkflowExpression.Compile(requestsiteUrl, nameof(requestsiteUrl), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
             var __workflow_requestauthor = WorkflowExpression.Compile(requestauthor, nameof(requestauthor), required: true);
             var __workflow_requestfolderPath = WorkflowExpression.Compile(requestfolderPath, nameof(requestfolderPath), required: false);
             var __workflow_requestbannerImageUrl = WorkflowExpression.Compile(requestbannerImageUrl, nameof(requestbannerImageUrl), required: false);
-            return new DeferredBodyAction<Convert2ModernPageResponse>(() =>
+            return new DeferredBodyAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ConvertWord2ModernPage";
                 var apiCallHttpMethod = "post";
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2NonModernPageResponse> Convert2NonModernPage(Expression<Func<string>> requestfileContent)
+        public IBodyWorkflowAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration> Convert2NonModernPage(Expression<Func<string>> requestfileContent)
         {
             var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
-            return new DeferredBodyAction<Convert2NonModernPageResponse>(() =>
+            return new DeferredBodyAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ConvertWord2StaticHMTLPage";
                 var apiCallHttpMethod = "post";
@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExportList2PDFResponse> ExportList2PDF(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdata, Expression<Func<string>> requestfieldArray)
+        public IBodyWorkflowAction<ExportList2PDFResponse, ApiConnectionActionConfiguration> ExportList2PDF(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdata, Expression<Func<string>> requestfieldArray)
         {
             var __workflow_requestdocumentTitle = WorkflowExpression.Compile(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
             var __workflow_requestdata = WorkflowExpression.Compile(requestdata, nameof(requestdata), required: true);
             var __workflow_requestfieldArray = WorkflowExpression.Compile(requestfieldArray, nameof(requestfieldArray), required: true);
-            return new DeferredBodyAction<ExportList2PDFResponse>(() =>
+            return new DeferredBodyAction<ExportList2PDFResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Export2PDFFromFlow";
                 var apiCallHttpMethod = "post";
@@ -107,10 +107,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExtractWordImagesResponse> ExtractWordImages(Expression<Func<string>> requestfileContent)
+        public IBodyWorkflowAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration> ExtractWordImages(Expression<Func<string>> requestfileContent)
         {
             var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
-            return new DeferredBodyAction<ExtractWordImagesResponse>(() =>
+            return new DeferredBodyAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Extractworddocimages";
                 var apiCallHttpMethod = "post";
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<PDFMergeResponse> PDFMerge(Expression<Func<string>> requestfileContentArray)
+        public IBodyWorkflowAction<PDFMergeResponse, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<string>> requestfileContentArray)
         {
             var __workflow_requestfileContentArray = WorkflowExpression.Compile(requestfileContentArray, nameof(requestfileContentArray), required: true);
-            return new DeferredBodyAction<PDFMergeResponse>(() =>
+            return new DeferredBodyAction<PDFMergeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/PDFMerge";
                 var apiCallHttpMethod = "post";
@@ -151,10 +151,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordMergeResponse> WordMerge(Expression<Func<string>> requestfileContentArray)
+        public IBodyWorkflowAction<WordMergeResponse, ApiConnectionActionConfiguration> WordMerge(Expression<Func<string>> requestfileContentArray)
         {
             var __workflow_requestfileContentArray = WorkflowExpression.Compile(requestfileContentArray, nameof(requestfileContentArray), required: true);
-            return new DeferredBodyAction<WordMergeResponse>(() =>
+            return new DeferredBodyAction<WordMergeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordMerge";
                 var apiCallHttpMethod = "post";
@@ -173,11 +173,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordtopdfResponse> Wordtopdf(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestfileName)
+        public IBodyWorkflowAction<WordtopdfResponse, ApiConnectionActionConfiguration> Wordtopdf(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestfileName)
         {
             var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
             var __workflow_requestfileName = WorkflowExpression.Compile(requestfileName, nameof(requestfileName), required: true);
-            return new DeferredBodyAction<WordtopdfResponse>(() =>
+            return new DeferredBodyAction<WordtopdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Wordtopdf";
                 var apiCallHttpMethod = "post";

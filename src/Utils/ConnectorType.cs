@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Workflows.Sdk;
 
-public class ApiConnectionActionInput(string path, string method, string connectionId) : RetryableActionInput
+public class ApiConnectionActionInput(string path, string method, string connectionId)
 {
     #region IApiConnectionActionInput implementation
 

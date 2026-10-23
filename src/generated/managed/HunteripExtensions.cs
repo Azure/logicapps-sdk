@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
     public class HunteripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<DomainResponse> Domain(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> seniority = null, Expression<Func<string>> department = null)
+        public IBodyWorkflowAction<DomainResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> seniority = null, Expression<Func<string>> department = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_seniority = WorkflowExpression.Compile(seniority, nameof(seniority), required: false);
             var __workflow_department = WorkflowExpression.Compile(department, nameof(department), required: false);
-            return new DeferredBodyAction<DomainResponse>(() =>
+            return new DeferredBodyAction<DomainResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/domain-search";
                 var apiCallHttpMethod = "get";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<EmailResponse> Email(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> fullName = null, Expression<Func<int>> maxDuration = null)
+        public IBodyWorkflowAction<EmailResponse, ApiConnectionActionConfiguration> Email(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> fullName = null, Expression<Func<int>> maxDuration = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
             var __workflow_fullName = WorkflowExpression.Compile(fullName, nameof(fullName), required: false);
             var __workflow_maxDuration = WorkflowExpression.Compile(maxDuration, nameof(maxDuration), required: false);
-            return new DeferredBodyAction<EmailResponse>(() =>
+            return new DeferredBodyAction<EmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email-finder";
                 var apiCallHttpMethod = "get";
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<AuthorResponse> Author(Expression<Func<string>> url, Expression<Func<int>> maxDuration = null)
+        public IBodyWorkflowAction<AuthorResponse, ApiConnectionActionConfiguration> Author(Expression<Func<string>> url, Expression<Func<int>> maxDuration = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_maxDuration = WorkflowExpression.Compile(maxDuration, nameof(maxDuration), required: false);
-            return new DeferredBodyAction<AuthorResponse>(() =>
+            return new DeferredBodyAction<AuthorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/author-finder";
                 var apiCallHttpMethod = "get";
@@ -92,10 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<EmailVerifyResponse> EmailVerify(Expression<Func<string>> email)
+        public IBodyWorkflowAction<EmailVerifyResponse, ApiConnectionActionConfiguration> EmailVerify(Expression<Func<string>> email)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            return new DeferredBodyAction<EmailVerifyResponse>(() =>
+            return new DeferredBodyAction<EmailVerifyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email-verifier";
                 var apiCallHttpMethod = "get";
@@ -106,12 +106,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<EmailCountResponse> EmailCount(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<EmailCountResponse, ApiConnectionActionConfiguration> EmailCount(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<typeInput>> type = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<EmailCountResponse>(() =>
+            return new DeferredBodyAction<EmailCountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email-count";
                 var apiCallHttpMethod = "get";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
     public class SinchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bool>> bodydeliveryReport = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bool>> bodydeliveryReport = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             var __workflow_bodydeliveryReport = WorkflowExpression.Compile(bodydeliveryReport, nameof(bodydeliveryReport), required: false);
             var __workflow_bodycallbackUrl = WorkflowExpression.Compile(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
             var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
-            return new DeferredBodyAction<SendSmsResponse>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/int-power-automate/send-message";
                 var apiCallHttpMethod = "post";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<GetSenderIdResponse> GetSenderId()
+        public IBodyWorkflowAction<GetSenderIdResponse, ApiConnectionActionConfiguration> GetSenderId()
         {
             var apiCallPath = "/v1/int-crm/integrations/account/sender-id";
             var apiCallHttpMethod = "get";
@@ -84,10 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<Message> GetMessageStatus(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> GetMessageStatus(Expression<Func<string>> messageId)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<Message>(() =>
+            return new DeferredBodyAction<Message, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/messages/{0}", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IWorkflowAction SendRCS(Expression<Func<object>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendRCS(Expression<Func<object>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/int-power-automate/message";
                 var apiCallHttpMethod = "post";
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
     public class SinchTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger MessageArrived(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MessageArrived(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/messages";
             var apiCallHttpMethod = "post";
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GetDeliveryReceipt(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GetDeliveryReceipt(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/deliveryreports";
             var apiCallHttpMethod = "post";

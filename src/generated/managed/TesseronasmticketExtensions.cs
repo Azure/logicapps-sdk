@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
     public class TesseronasmticketActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<CreateTicketResponse> CreateTicket(Expression<Func<int>> bodyticketType, Expression<Func<string>> bodyticketHeader, Expression<Func<string>> bodyticketText, Expression<Func<int>> bodyenterpriseId, Expression<Func<int>> bodyentranceType, Expression<Func<int>> bodyareaId, Expression<Func<bool>> bodyreleasedOption, Expression<Func<bool>> bodyprivateOption, Expression<Func<bool>> bodyinternalOption, Expression<Func<bodyurgencyTypeInput>> bodyurgencyType, Expression<Func<bodyeffectsTypeInput>> bodyeffectsType, Expression<Func<int>> bodycontactId = null, Expression<Func<int[]>> bodyrelatedAssetIds = null, Expression<Func<bodyfieldGroupsInputItem[]>> bodyfieldGroups = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodyserviceContractId = null, Expression<Func<int>> bodydelegatedTicketEditor = null)
+        public IBodyWorkflowAction<CreateTicketResponse, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<int>> bodyticketType, Expression<Func<string>> bodyticketHeader, Expression<Func<string>> bodyticketText, Expression<Func<int>> bodyenterpriseId, Expression<Func<int>> bodyentranceType, Expression<Func<int>> bodyareaId, Expression<Func<bool>> bodyreleasedOption, Expression<Func<bool>> bodyprivateOption, Expression<Func<bool>> bodyinternalOption, Expression<Func<bodyurgencyTypeInput>> bodyurgencyType, Expression<Func<bodyeffectsTypeInput>> bodyeffectsType, Expression<Func<int>> bodycontactId = null, Expression<Func<int[]>> bodyrelatedAssetIds = null, Expression<Func<bodyfieldGroupsInputItem[]>> bodyfieldGroups = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodyserviceContractId = null, Expression<Func<int>> bodydelegatedTicketEditor = null)
         {
             var __workflow_bodyticketType = WorkflowExpression.Compile(bodyticketType, nameof(bodyticketType), required: true);
             var __workflow_bodyticketHeader = WorkflowExpression.Compile(bodyticketHeader, nameof(bodyticketHeader), required: true);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
             var __workflow_bodyserviceContractId = WorkflowExpression.Compile(bodyserviceContractId, nameof(bodyserviceContractId), required: false);
             var __workflow_bodydelegatedTicketEditor = WorkflowExpression.Compile(bodydelegatedTicketEditor, nameof(bodydelegatedTicketEditor), required: false);
-            return new DeferredBodyAction<CreateTicketResponse>(() =>
+            return new DeferredBodyAction<CreateTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CreateTicket";
                 var apiCallHttpMethod = "post";
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<CreateTicketPositionResponse> CreateTicketPosition(Expression<Func<string>> bodyreferenceNumber, Expression<Func<string>> bodyticketPositionText, Expression<Func<bodyticketPositionTypeInput>> bodyticketPositionType, Expression<Func<bodyticketPositionVisibilityInput>> bodyticketPositionVisibility, Expression<Func<bodyfieldGroupsInputItem2[]>> bodyfieldGroups = null, Expression<Func<string>> bodyparkTicketparkUntil = null, Expression<Func<bodyparkTicketparkingReasonInput>> bodyparkTicketparkingReason = null, Expression<Func<string>> bodyparkTicketparkingPositionText = null, Expression<Func<bodyparkTicketafterParkingActionInput>> bodyparkTicketafterParkingAction = null)
+        public IBodyWorkflowAction<CreateTicketPositionResponse, ApiConnectionActionConfiguration> CreateTicketPosition(Expression<Func<string>> bodyreferenceNumber, Expression<Func<string>> bodyticketPositionText, Expression<Func<bodyticketPositionTypeInput>> bodyticketPositionType, Expression<Func<bodyticketPositionVisibilityInput>> bodyticketPositionVisibility, Expression<Func<bodyfieldGroupsInputItem2[]>> bodyfieldGroups = null, Expression<Func<string>> bodyparkTicketparkUntil = null, Expression<Func<bodyparkTicketparkingReasonInput>> bodyparkTicketparkingReason = null, Expression<Func<string>> bodyparkTicketparkingPositionText = null, Expression<Func<bodyparkTicketafterParkingActionInput>> bodyparkTicketafterParkingAction = null)
         {
             var __workflow_bodyreferenceNumber = WorkflowExpression.Compile(bodyreferenceNumber, nameof(bodyreferenceNumber), required: true);
             var __workflow_bodyticketPositionText = WorkflowExpression.Compile(bodyticketPositionText, nameof(bodyticketPositionText), required: true);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
             var __workflow_bodyparkTicketparkingReason = WorkflowExpression.Compile(bodyparkTicketparkingReason, nameof(bodyparkTicketparkingReason), required: false);
             var __workflow_bodyparkTicketparkingPositionText = WorkflowExpression.Compile(bodyparkTicketparkingPositionText, nameof(bodyparkTicketparkingPositionText), required: false);
             var __workflow_bodyparkTicketafterParkingAction = WorkflowExpression.Compile(bodyparkTicketafterParkingAction, nameof(bodyparkTicketafterParkingAction), required: false);
-            return new DeferredBodyAction<CreateTicketPositionResponse>(() =>
+            return new DeferredBodyAction<CreateTicketPositionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CreateTicketPosition";
                 var apiCallHttpMethod = "post";
@@ -194,11 +194,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<AddAssetRelationResponse> AddAssetRelation(Expression<Func<string>> bodyreferenceNumber, Expression<Func<int[]>> bodyrelatedAssetIds)
+        public IBodyWorkflowAction<AddAssetRelationResponse, ApiConnectionActionConfiguration> AddAssetRelation(Expression<Func<string>> bodyreferenceNumber, Expression<Func<int[]>> bodyrelatedAssetIds)
         {
             var __workflow_bodyreferenceNumber = WorkflowExpression.Compile(bodyreferenceNumber, nameof(bodyreferenceNumber), required: true);
             var __workflow_bodyrelatedAssetIds = WorkflowExpression.Compile(bodyrelatedAssetIds, nameof(bodyrelatedAssetIds), required: true);
-            return new DeferredBodyAction<AddAssetRelationResponse>(() =>
+            return new DeferredBodyAction<AddAssetRelationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddAssetRelation";
                 var apiCallHttpMethod = "post";
@@ -219,10 +219,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetTicketResponse> GetTicket(Expression<Func<string>> bodyreferenceNumber)
+        public IBodyWorkflowAction<GetTicketResponse, ApiConnectionActionConfiguration> GetTicket(Expression<Func<string>> bodyreferenceNumber)
         {
             var __workflow_bodyreferenceNumber = WorkflowExpression.Compile(bodyreferenceNumber, nameof(bodyreferenceNumber), required: true);
-            return new DeferredBodyAction<GetTicketResponse>(() =>
+            return new DeferredBodyAction<GetTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetTicket";
                 var apiCallHttpMethod = "post";
@@ -241,10 +241,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<SearchTicketResponse> SearchTicket(Expression<Func<string>> bodyreferencenumber)
+        public IBodyWorkflowAction<SearchTicketResponse, ApiConnectionActionConfiguration> SearchTicket(Expression<Func<string>> bodyreferencenumber)
         {
             var __workflow_bodyreferencenumber = WorkflowExpression.Compile(bodyreferencenumber, nameof(bodyreferencenumber), required: true);
-            return new DeferredBodyAction<SearchTicketResponse>(() =>
+            return new DeferredBodyAction<SearchTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SearchTicket";
                 var apiCallHttpMethod = "post";
@@ -263,12 +263,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<SearchTicketbyParameterResponse> SearchTicketbyParameter(Expression<Func<string>> bodysearchParam, Expression<Func<int>> bodytake, Expression<Func<int>> bodyskip)
+        public IBodyWorkflowAction<SearchTicketbyParameterResponse, ApiConnectionActionConfiguration> SearchTicketbyParameter(Expression<Func<string>> bodysearchParam, Expression<Func<int>> bodytake, Expression<Func<int>> bodyskip)
         {
             var __workflow_bodysearchParam = WorkflowExpression.Compile(bodysearchParam, nameof(bodysearchParam), required: true);
             var __workflow_bodytake = WorkflowExpression.Compile(bodytake, nameof(bodytake), required: true);
             var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: true);
-            return new DeferredBodyAction<SearchTicketbyParameterResponse>(() =>
+            return new DeferredBodyAction<SearchTicketbyParameterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SearchTicketByParameter";
                 var apiCallHttpMethod = "post";
@@ -291,12 +291,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse> GetTicketFieldGroupConfig(Expression<Func<int>> bodyticketTypeId, Expression<Func<string>> bodyticketId = null, Expression<Func<string>> bodyfieldGroupSettingsId = null)
+        public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse, ApiConnectionActionConfiguration> GetTicketFieldGroupConfig(Expression<Func<int>> bodyticketTypeId, Expression<Func<string>> bodyticketId = null, Expression<Func<string>> bodyfieldGroupSettingsId = null)
         {
             var __workflow_bodyticketTypeId = WorkflowExpression.Compile(bodyticketTypeId, nameof(bodyticketTypeId), required: true);
             var __workflow_bodyticketId = WorkflowExpression.Compile(bodyticketId, nameof(bodyticketId), required: false);
             var __workflow_bodyfieldGroupSettingsId = WorkflowExpression.Compile(bodyfieldGroupSettingsId, nameof(bodyfieldGroupSettingsId), required: false);
-            return new DeferredBodyAction<GetTicketFieldGroupConfigResponse>(() =>
+            return new DeferredBodyAction<GetTicketFieldGroupConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetTicketFieldGroupConfig";
                 var apiCallHttpMethod = "post";
@@ -327,14 +327,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllTicketTypesResponse> GetAllTicketTypes(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
+        public IBodyWorkflowAction<GetAllTicketTypesResponse, ApiConnectionActionConfiguration> GetAllTicketTypes(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
         {
             var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: true);
             var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: true);
             var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: true);
             var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: false);
             var __workflow_bodyorderByAsc = WorkflowExpression.Compile(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
-            return new DeferredBodyAction<GetAllTicketTypesResponse>(() =>
+            return new DeferredBodyAction<GetAllTicketTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetAllTicketTypes";
                 var apiCallHttpMethod = "post";
@@ -369,14 +369,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllAreasResponse> GetAllAreas(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
+        public IBodyWorkflowAction<GetAllAreasResponse, ApiConnectionActionConfiguration> GetAllAreas(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
         {
             var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: true);
             var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: true);
             var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: true);
             var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: false);
             var __workflow_bodyorderByAsc = WorkflowExpression.Compile(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
-            return new DeferredBodyAction<GetAllAreasResponse>(() =>
+            return new DeferredBodyAction<GetAllAreasResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetAllAreas";
                 var apiCallHttpMethod = "post";
@@ -411,14 +411,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllStartingAreasResponse> GetAllStartingAreas(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
+        public IBodyWorkflowAction<GetAllStartingAreasResponse, ApiConnectionActionConfiguration> GetAllStartingAreas(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
         {
             var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: true);
             var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: true);
             var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: true);
             var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: false);
             var __workflow_bodyorderByAsc = WorkflowExpression.Compile(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
-            return new DeferredBodyAction<GetAllStartingAreasResponse>(() =>
+            return new DeferredBodyAction<GetAllStartingAreasResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetAllStartAreas";
                 var apiCallHttpMethod = "post";

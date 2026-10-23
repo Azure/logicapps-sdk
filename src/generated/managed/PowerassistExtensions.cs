@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
     public class PowerassistActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortResponse> ArraySort(Expression<Func<JToken[]>> bodyarray)
+        public IBodyWorkflowAction<ArraySortResponse, ApiConnectionActionConfiguration> ArraySort(Expression<Func<JToken[]>> bodyarray)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
-            return new DeferredBodyAction<ArraySortResponse>(() =>
+            return new DeferredBodyAction<ArraySortResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/sort";
                 var apiCallHttpMethod = "post";
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse(Expression<Func<JToken[]>> bodyarray)
+        public IBodyWorkflowAction<ArrayReverseResponse, ApiConnectionActionConfiguration> ArrayReverse(Expression<Func<JToken[]>> bodyarray)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
-            return new DeferredBodyAction<ArrayReverseResponse>(() =>
+            return new DeferredBodyAction<ArrayReverseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/reverse";
                 var apiCallHttpMethod = "post";
@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bool>> bodydescending)
+        public IBodyWorkflowAction<ArraySortByPropertyResponse, ApiConnectionActionConfiguration> ArraySortByProperty(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bool>> bodydescending)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
             var __workflow_bodydescending = WorkflowExpression.Compile(bodydescending, nameof(bodydescending), required: true);
-            return new DeferredBodyAction<ArraySortByPropertyResponse>(() =>
+            return new DeferredBodyAction<ArraySortByPropertyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/sortByProperty";
                 var apiCallHttpMethod = "post";
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayFilterResponse, ApiConnectionActionConfiguration> ArrayFilter(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
             var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
-            return new DeferredBodyAction<ArrayFilterResponse>(() =>
+            return new DeferredBodyAction<ArrayFilterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/filter";
                 var apiCallHttpMethod = "post";
@@ -136,12 +136,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayPrependResponse, ApiConnectionActionConfiguration> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
-            return new DeferredBodyAction<ArrayPrependResponse>(() =>
+            return new DeferredBodyAction<ArrayPrependResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/prepend";
                 var apiCallHttpMethod = "post";
@@ -178,14 +178,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayAnyResponse, ApiConnectionActionConfiguration> ArrayAny(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
             var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
-            return new DeferredBodyAction<ArrayAnyResponse>(() =>
+            return new DeferredBodyAction<ArrayAnyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/any";
                 var apiCallHttpMethod = "post";
@@ -230,14 +230,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayEveryResponse, ApiConnectionActionConfiguration> ArrayEvery(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
             var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
-            return new DeferredBodyAction<ArrayEveryResponse>(() =>
+            return new DeferredBodyAction<ArrayEveryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/every";
                 var apiCallHttpMethod = "post";
@@ -282,14 +282,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayRemoveFirstResponse, ApiConnectionActionConfiguration> ArrayRemoveFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
             var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
-            return new DeferredBodyAction<ArrayRemoveFirstResponse>(() =>
+            return new DeferredBodyAction<ArrayRemoveFirstResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/removeFirst";
                 var apiCallHttpMethod = "post";
@@ -334,11 +334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName = null)
+        public IBodyWorkflowAction<ArrayGroupByResponse, ApiConnectionActionConfiguration> ArrayGroupBy(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: false);
-            return new DeferredBodyAction<ArrayGroupByResponse>(() =>
+            return new DeferredBodyAction<ArrayGroupByResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/groupBy";
                 var apiCallHttpMethod = "post";
@@ -363,14 +363,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayFindFirstResponse, ApiConnectionActionConfiguration> ArrayFindFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
             var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
-            return new DeferredBodyAction<ArrayFindFirstResponse>(() =>
+            return new DeferredBodyAction<ArrayFindFirstResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/findFirst";
                 var apiCallHttpMethod = "post";
@@ -415,10 +415,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<RoundResponse> Round(Expression<Func<double>> bodynumber)
+        public IBodyWorkflowAction<RoundResponse, ApiConnectionActionConfiguration> Round(Expression<Func<double>> bodynumber)
         {
             var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
-            return new DeferredBodyAction<RoundResponse>(() =>
+            return new DeferredBodyAction<RoundResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/math/round";
                 var apiCallHttpMethod = "post";
@@ -437,10 +437,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathCeilResponse> MathCeil(Expression<Func<double>> bodynumber)
+        public IBodyWorkflowAction<MathCeilResponse, ApiConnectionActionConfiguration> MathCeil(Expression<Func<double>> bodynumber)
         {
             var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
-            return new DeferredBodyAction<MathCeilResponse>(() =>
+            return new DeferredBodyAction<MathCeilResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/math/ceil";
                 var apiCallHttpMethod = "post";
@@ -459,10 +459,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathFloorResponse> MathFloor(Expression<Func<double>> bodynumber)
+        public IBodyWorkflowAction<MathFloorResponse, ApiConnectionActionConfiguration> MathFloor(Expression<Func<double>> bodynumber)
         {
             var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
-            return new DeferredBodyAction<MathFloorResponse>(() =>
+            return new DeferredBodyAction<MathFloorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/math/floor";
                 var apiCallHttpMethod = "post";
@@ -481,10 +481,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathAverageResponse> MathAverage(Expression<Func<double[]>> bodynumbers)
+        public IBodyWorkflowAction<MathAverageResponse, ApiConnectionActionConfiguration> MathAverage(Expression<Func<double[]>> bodynumbers)
         {
             var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
-            return new DeferredBodyAction<MathAverageResponse>(() =>
+            return new DeferredBodyAction<MathAverageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/math/average";
                 var apiCallHttpMethod = "post";
@@ -503,10 +503,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathMedianResponse> MathMedian(Expression<Func<JToken[]>> bodynumbers)
+        public IBodyWorkflowAction<MathMedianResponse, ApiConnectionActionConfiguration> MathMedian(Expression<Func<JToken[]>> bodynumbers)
         {
             var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
-            return new DeferredBodyAction<MathMedianResponse>(() =>
+            return new DeferredBodyAction<MathMedianResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/math/median";
                 var apiCallHttpMethod = "post";
@@ -525,10 +525,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathModeResponse> MathMode(Expression<Func<JToken[]>> bodynumbers)
+        public IBodyWorkflowAction<MathModeResponse, ApiConnectionActionConfiguration> MathMode(Expression<Func<JToken[]>> bodynumbers)
         {
             var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
-            return new DeferredBodyAction<MathModeResponse>(() =>
+            return new DeferredBodyAction<MathModeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/math/mode";
                 var apiCallHttpMethod = "post";
@@ -547,10 +547,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathRandomResponse> MathRandom(Expression<Func<int>> bodymaximum)
+        public IBodyWorkflowAction<MathRandomResponse, ApiConnectionActionConfiguration> MathRandom(Expression<Func<int>> bodymaximum)
         {
             var __workflow_bodymaximum = WorkflowExpression.Compile(bodymaximum, nameof(bodymaximum), required: true);
-            return new DeferredBodyAction<MathRandomResponse>(() =>
+            return new DeferredBodyAction<MathRandomResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/math/random";
                 var apiCallHttpMethod = "post";
@@ -569,12 +569,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodysearchValue, Expression<Func<string>> bodyreplaceValue)
+        public IBodyWorkflowAction<StringReplaceAllResponse, ApiConnectionActionConfiguration> StringReplaceAll(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodysearchValue, Expression<Func<string>> bodyreplaceValue)
         {
             var __workflow_bodysourceString = WorkflowExpression.Compile(bodysourceString, nameof(bodysourceString), required: true);
             var __workflow_bodysearchValue = WorkflowExpression.Compile(bodysearchValue, nameof(bodysearchValue), required: true);
             var __workflow_bodyreplaceValue = WorkflowExpression.Compile(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
-            return new DeferredBodyAction<StringReplaceAllResponse>(() =>
+            return new DeferredBodyAction<StringReplaceAllResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/replaceAll";
                 var apiCallHttpMethod = "post";
@@ -597,12 +597,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplaceValue)
+        public IBodyWorkflowAction<StringRegexReplaceResponse, ApiConnectionActionConfiguration> StringRegexReplace(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplaceValue)
         {
             var __workflow_bodysourceString = WorkflowExpression.Compile(bodysourceString, nameof(bodysourceString), required: true);
             var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
             var __workflow_bodyreplaceValue = WorkflowExpression.Compile(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
-            return new DeferredBodyAction<StringRegexReplaceResponse>(() =>
+            return new DeferredBodyAction<StringRegexReplaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/regexReplace";
                 var apiCallHttpMethod = "post";
@@ -625,10 +625,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCapitalizeResponse, ApiConnectionActionConfiguration> StringCapitalize(Expression<Func<string>> bodystring)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
-            return new DeferredBodyAction<StringCapitalizeResponse>(() =>
+            return new DeferredBodyAction<StringCapitalizeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/capitalize";
                 var apiCallHttpMethod = "post";
@@ -647,11 +647,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimResponse> StringTrim(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimResponse, ApiConnectionActionConfiguration> StringTrim(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
-            return new DeferredBodyAction<StringTrimResponse>(() =>
+            return new DeferredBodyAction<StringTrimResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/trim";
                 var apiCallHttpMethod = "post";
@@ -676,11 +676,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimStartResponse, ApiConnectionActionConfiguration> StringTrimStart(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
-            return new DeferredBodyAction<StringTrimStartResponse>(() =>
+            return new DeferredBodyAction<StringTrimStartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/trimStart";
                 var apiCallHttpMethod = "post";
@@ -705,11 +705,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimEndResponse, ApiConnectionActionConfiguration> StringTrimEnd(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
-            return new DeferredBodyAction<StringTrimEndResponse>(() =>
+            return new DeferredBodyAction<StringTrimEndResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/trimEnd";
                 var apiCallHttpMethod = "post";
@@ -734,10 +734,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringSlugifyResponse, ApiConnectionActionConfiguration> StringSlugify(Expression<Func<string>> bodystring)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
-            return new DeferredBodyAction<StringSlugifyResponse>(() =>
+            return new DeferredBodyAction<StringSlugifyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/slugify";
                 var apiCallHttpMethod = "post";
@@ -756,11 +756,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordsResponse> StringWords(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordsResponse, ApiConnectionActionConfiguration> StringWords(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
-            return new DeferredBodyAction<StringWordsResponse>(() =>
+            return new DeferredBodyAction<StringWordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/words";
                 var apiCallHttpMethod = "post";
@@ -785,11 +785,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordCountResponse> StringWordCount(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordCountResponse, ApiConnectionActionConfiguration> StringWordCount(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
-            return new DeferredBodyAction<StringWordCountResponse>(() =>
+            return new DeferredBodyAction<StringWordCountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/wordCount";
                 var apiCallHttpMethod = "post";
@@ -814,10 +814,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringStripHtmlResponse, ApiConnectionActionConfiguration> StringStripHtml(Expression<Func<string>> bodystring)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
-            return new DeferredBodyAction<StringStripHtmlResponse>(() =>
+            return new DeferredBodyAction<StringStripHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/stripHtml";
                 var apiCallHttpMethod = "post";
@@ -836,10 +836,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanResponse> StringClean(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCleanResponse, ApiConnectionActionConfiguration> StringClean(Expression<Func<string>> bodystring)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
-            return new DeferredBodyAction<StringCleanResponse>(() =>
+            return new DeferredBodyAction<StringCleanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/clean";
                 var apiCallHttpMethod = "post";
@@ -858,10 +858,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration> StringCleanDiacritics(Expression<Func<string>> bodystring)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
-            return new DeferredBodyAction<StringCleanDiacriticsResponse>(() =>
+            return new DeferredBodyAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/cleanDiacritics";
                 var apiCallHttpMethod = "post";
@@ -880,10 +880,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration> StringEscapeHtml(Expression<Func<string>> bodystring)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
-            return new DeferredBodyAction<StringEscapeHtmlResponse>(() =>
+            return new DeferredBodyAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/escapeHtml";
                 var apiCallHttpMethod = "post";
@@ -902,10 +902,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration> StringUnescapeHtml(Expression<Func<string>> bodystring)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
-            return new DeferredBodyAction<StringUnescapeHtmlResponse>(() =>
+            return new DeferredBodyAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/unescapeHtml";
                 var apiCallHttpMethod = "post";
@@ -924,12 +924,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances(Expression<Func<string>> bodystring, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
+        public IBodyWorkflowAction<StringCountInstancesResponse, ApiConnectionActionConfiguration> StringCountInstances(Expression<Func<string>> bodystring, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodysubstring = WorkflowExpression.Compile(bodysubstring, nameof(bodysubstring), required: true);
             var __workflow_bodyignoreCase = WorkflowExpression.Compile(bodyignoreCase, nameof(bodyignoreCase), required: false);
-            return new DeferredBodyAction<StringCountInstancesResponse>(() =>
+            return new DeferredBodyAction<StringCountInstancesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/countInstances";
                 var apiCallHttpMethod = "post";
@@ -966,11 +966,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringChopResponse> StringChop(Expression<Func<string>> bodystring, Expression<Func<int>> bodyinterval)
+        public IBodyWorkflowAction<StringChopResponse, ApiConnectionActionConfiguration> StringChop(Expression<Func<string>> bodystring, Expression<Func<int>> bodyinterval)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodyinterval = WorkflowExpression.Compile(bodyinterval, nameof(bodyinterval), required: true);
-            return new DeferredBodyAction<StringChopResponse>(() =>
+            return new DeferredBodyAction<StringChopResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/chop";
                 var apiCallHttpMethod = "post";
@@ -991,10 +991,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsStringResponse, ApiConnectionActionConfiguration> TypesIsString(Expression<Func<object>> bodyvalue)
         {
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
-            return new DeferredBodyAction<TypesIsStringResponse>(() =>
+            return new DeferredBodyAction<TypesIsStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/types/isString";
                 var apiCallHttpMethod = "post";
@@ -1013,11 +1013,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber(Expression<Func<object>> bodyvalue, Expression<Func<bool>> bodyincludeNumbersInStrings)
+        public IBodyWorkflowAction<TypesIsNumberResponse, ApiConnectionActionConfiguration> TypesIsNumber(Expression<Func<object>> bodyvalue, Expression<Func<bool>> bodyincludeNumbersInStrings)
         {
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             var __workflow_bodyincludeNumbersInStrings = WorkflowExpression.Compile(bodyincludeNumbersInStrings, nameof(bodyincludeNumbersInStrings), required: true);
-            return new DeferredBodyAction<TypesIsNumberResponse>(() =>
+            return new DeferredBodyAction<TypesIsNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/types/isNumber";
                 var apiCallHttpMethod = "post";
@@ -1038,10 +1038,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse, ApiConnectionActionConfiguration> TypesIsNullOrEmpty(Expression<Func<object>> bodyvalue)
         {
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
-            return new DeferredBodyAction<TypesIsNullOrEmptyResponse>(() =>
+            return new DeferredBodyAction<TypesIsNullOrEmptyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/types/isNullOrEmpty";
                 var apiCallHttpMethod = "post";
@@ -1060,10 +1060,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsArrayResponse, ApiConnectionActionConfiguration> TypesIsArray(Expression<Func<object>> bodyvalue)
         {
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
-            return new DeferredBodyAction<TypesIsArrayResponse>(() =>
+            return new DeferredBodyAction<TypesIsArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/types/isArray";
                 var apiCallHttpMethod = "post";
@@ -1082,10 +1082,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsObjectResponse, ApiConnectionActionConfiguration> TypesIsObject(Expression<Func<object>> bodyvalue)
         {
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
-            return new DeferredBodyAction<TypesIsObjectResponse>(() =>
+            return new DeferredBodyAction<TypesIsObjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/types/isObject";
                 var apiCallHttpMethod = "post";
@@ -1104,10 +1104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<ValidateEmailResponse, ApiConnectionActionConfiguration> ValidateEmail(Expression<Func<string>> bodyemail)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            return new DeferredBodyAction<ValidateEmailResponse>(() =>
+            return new DeferredBodyAction<ValidateEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/email";
                 var apiCallHttpMethod = "post";
@@ -1126,11 +1126,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex(Expression<Func<string>> bodystring, Expression<Func<string>> bodypattern)
+        public IBodyWorkflowAction<ValidateRegexResponse, ApiConnectionActionConfiguration> ValidateRegex(Expression<Func<string>> bodystring, Expression<Func<string>> bodypattern)
         {
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
-            return new DeferredBodyAction<ValidateRegexResponse>(() =>
+            return new DeferredBodyAction<ValidateRegexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/regex";
                 var apiCallHttpMethod = "post";

@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
     public class GetmyinvoicesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "getmyinvoices")]
-        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyapiKey)
+        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse, ApiConnectionActionConfiguration> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyapiKey)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
-            return new DeferredBodyAction<GetInvoiceFromGetMyInvoicesResponse>(() =>
+            return new DeferredBodyAction<GetInvoiceFromGetMyInvoicesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
                 var apiCallHttpMethod = "post";

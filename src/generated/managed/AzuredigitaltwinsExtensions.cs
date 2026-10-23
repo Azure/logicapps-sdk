@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
     public class AzuredigitaltwinsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<AddModelsResponseItem[]> AddModels(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<AddModelsResponseItem[], ApiConnectionActionConfiguration> AddModels(Expression<Func<bodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AddModelsResponseItem[]>(() =>
+            return new DeferredBodyAction<AddModelsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/models";
                 var apiCallHttpMethod = "post";
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<ListModelsResponse> ListModels(Expression<Func<string>> dependenciesFor = null, Expression<Func<string>> includeModelDefinition = null, Expression<Func<string>> continuationToken = null)
+        public IBodyWorkflowAction<ListModelsResponse, ApiConnectionActionConfiguration> ListModels(Expression<Func<string>> dependenciesFor = null, Expression<Func<string>> includeModelDefinition = null, Expression<Func<string>> continuationToken = null)
         {
             var __workflow_dependenciesFor = WorkflowExpression.Compile(dependenciesFor, nameof(dependenciesFor), required: false);
             var __workflow_includeModelDefinition = WorkflowExpression.Compile(includeModelDefinition, nameof(includeModelDefinition), required: false);
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
-            return new DeferredBodyAction<ListModelsResponse>(() =>
+            return new DeferredBodyAction<ListModelsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/models";
                 var apiCallHttpMethod = "get";
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction DeleteModel(Expression<Func<string>> modelid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteModel(Expression<Func<string>> modelid)
         {
             var __workflow_modelid = WorkflowExpression.Compile(modelid, nameof(modelid), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}", __workflow_modelid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<GetModelByIdResponse> GetModelById(Expression<Func<string>> modelid, Expression<Func<string>> includeModelDefinition = null)
+        public IBodyWorkflowAction<GetModelByIdResponse, ApiConnectionActionConfiguration> GetModelById(Expression<Func<string>> modelid, Expression<Func<string>> includeModelDefinition = null)
         {
             var __workflow_modelid = WorkflowExpression.Compile(modelid, nameof(modelid), required: true);
             var __workflow_includeModelDefinition = WorkflowExpression.Compile(includeModelDefinition, nameof(includeModelDefinition), required: false);
-            return new DeferredBodyAction<GetModelByIdResponse>(() =>
+            return new DeferredBodyAction<GetModelByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}", __workflow_modelid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction UpdateModel(Expression<Func<string>> modelid, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateModel(Expression<Func<string>> modelid, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_modelid = WorkflowExpression.Compile(modelid, nameof(modelid), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}", __workflow_modelid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -108,10 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<TwinResult> GetTwinById(Expression<Func<string>> twinid)
+        public IBodyWorkflowAction<TwinResult, ApiConnectionActionConfiguration> GetTwinById(Expression<Func<string>> twinid)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
-            return new DeferredBodyAction<TwinResult>(() =>
+            return new DeferredBodyAction<TwinResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -122,10 +122,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction DeleteTwin(Expression<Func<string>> twinid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTwin(Expression<Func<string>> twinid)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -136,11 +136,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<TwinResult> AddTwin(Expression<Func<string>> twinid, Expression<Func<string>> bodyvalue = null)
+        public IBodyWorkflowAction<TwinResult, ApiConnectionActionConfiguration> AddTwin(Expression<Func<string>> twinid, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredBodyAction<TwinResult>(() =>
+            return new DeferredBodyAction<TwinResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -164,11 +164,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction UpdateTwin(Expression<Func<string>> twinid, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTwin(Expression<Func<string>> twinid, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -192,11 +192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<GetComponentResult> GetComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath)
+        public IBodyWorkflowAction<GetComponentResult, ApiConnectionActionConfiguration> GetComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_componentPath = WorkflowExpression.Compile(componentPath, nameof(componentPath), required: true);
-            return new DeferredBodyAction<GetComponentResult>(() =>
+            return new DeferredBodyAction<GetComponentResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/components/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_componentPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -207,12 +207,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction UpdateComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_componentPath = WorkflowExpression.Compile(componentPath, nameof(componentPath), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/components/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_componentPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -236,11 +236,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<TwinRelationship> GetRelationshipById(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId)
+        public IBodyWorkflowAction<TwinRelationship, ApiConnectionActionConfiguration> GetRelationshipById(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
-            return new DeferredBodyAction<TwinRelationship>(() =>
+            return new DeferredBodyAction<TwinRelationship, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -251,11 +251,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction DeleteRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -266,12 +266,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<TwinRelationship> AddRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<string>> bodyvalue = null)
+        public IBodyWorkflowAction<TwinRelationship, ApiConnectionActionConfiguration> AddRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredBodyAction<TwinRelationship>(() =>
+            return new DeferredBodyAction<TwinRelationship, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -295,12 +295,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction UpdateRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -324,11 +324,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<ListIncomingRelationshipsResponse> ListIncomingRelationships(Expression<Func<string>> twinid, Expression<Func<string>> continuationToken = null)
+        public IBodyWorkflowAction<ListIncomingRelationshipsResponse, ApiConnectionActionConfiguration> ListIncomingRelationships(Expression<Func<string>> twinid, Expression<Func<string>> continuationToken = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
-            return new DeferredBodyAction<ListIncomingRelationshipsResponse>(() =>
+            return new DeferredBodyAction<ListIncomingRelationshipsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/incomingrelationships", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -341,13 +341,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction SendTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_telemetrySourceTime = WorkflowExpression.Compile(telemetrySourceTime, nameof(telemetrySourceTime), required: false);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/telemetry", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -374,14 +374,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction SendComponentTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendComponentTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_componentPath = WorkflowExpression.Compile(componentPath, nameof(componentPath), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_telemetrySourceTime = WorkflowExpression.Compile(telemetrySourceTime, nameof(telemetrySourceTime), required: false);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/components/{1}/telemetry", __workflow_twinid.WithUrlEncoding(1), __workflow_componentPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -408,11 +408,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<ListRelationshipsResponse> ListRelationships(Expression<Func<string>> twinid, Expression<Func<string>> continuationToken = null)
+        public IBodyWorkflowAction<ListRelationshipsResponse, ApiConnectionActionConfiguration> ListRelationships(Expression<Func<string>> twinid, Expression<Func<string>> continuationToken = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
-            return new DeferredBodyAction<ListRelationshipsResponse>(() =>
+            return new DeferredBodyAction<ListRelationshipsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -425,11 +425,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<QueryResult> QueryTwins(Expression<Func<string>> bodyquery = null, Expression<Func<string>> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryResult, ApiConnectionActionConfiguration> QueryTwins(Expression<Func<string>> bodyquery = null, Expression<Func<string>> bodycontinuationToken = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             var __workflow_bodycontinuationToken = WorkflowExpression.Compile(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
-            return new DeferredBodyAction<QueryResult>(() =>
+            return new DeferredBodyAction<QueryResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query";
                 var apiCallHttpMethod = "post";

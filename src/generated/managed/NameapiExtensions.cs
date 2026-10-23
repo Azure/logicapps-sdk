@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     public class NameapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<ParseNameResponse> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
+        public IBodyWorkflowAction<ParseNameResponse, ApiConnectionActionConfiguration> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
         {
             var __workflow_bodyinputPersonpersonNamepersonNames = WorkflowExpression.Compile(bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
             var __workflow_bodyinputPersongender = WorkflowExpression.Compile(bodyinputPersongender, nameof(bodyinputPersongender), required: false);
-            return new DeferredBodyAction<ParseNameResponse>(() =>
+            return new DeferredBodyAction<ParseNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v5.3/parser/personnameparser";
                 var apiCallHttpMethod = "post";
@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<DetectDeaResponse> DetectDea(Expression<Func<string>> emailAddress)
+        public IBodyWorkflowAction<DetectDeaResponse, ApiConnectionActionConfiguration> DetectDea(Expression<Func<string>> emailAddress)
         {
             var __workflow_emailAddress = WorkflowExpression.Compile(emailAddress, nameof(emailAddress), required: true);
-            return new DeferredBodyAction<DetectDeaResponse>(() =>
+            return new DeferredBodyAction<DetectDeaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
                 var apiCallHttpMethod = "get";

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascalert
 
     public class AscalertTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASCAlertTriggerSubscribe(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASCAlertTriggerSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Microsoft.Security/Alert/subscribe";
             var apiCallHttpMethod = "post";

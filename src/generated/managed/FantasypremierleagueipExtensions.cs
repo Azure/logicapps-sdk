@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
     public class FantasypremierleagueipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<ManagerUsersHistoryResponse> ManagerUsersHistory(Expression<Func<string>> managerId)
+        public IBodyWorkflowAction<ManagerUsersHistoryResponse, ApiConnectionActionConfiguration> ManagerUsersHistory(Expression<Func<string>> managerId)
         {
             var __workflow_managerId = WorkflowExpression.Compile(managerId, nameof(managerId), required: true);
-            return new DeferredBodyAction<ManagerUsersHistoryResponse>(() =>
+            return new DeferredBodyAction<ManagerUsersHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/entry/{0}/history/", __workflow_managerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<ManagerUsersBasicInformationResponse> ManagerUsersBasicInformation(Expression<Func<string>> managerId)
+        public IBodyWorkflowAction<ManagerUsersBasicInformationResponse, ApiConnectionActionConfiguration> ManagerUsersBasicInformation(Expression<Func<string>> managerId)
         {
             var __workflow_managerId = WorkflowExpression.Compile(managerId, nameof(managerId), required: true);
-            return new DeferredBodyAction<ManagerUsersBasicInformationResponse>(() =>
+            return new DeferredBodyAction<ManagerUsersBasicInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/entry/{0}/", __workflow_managerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<GameWeekLiveDataResponse> GameWeekLiveData(Expression<Func<string>> eventId)
+        public IBodyWorkflowAction<GameWeekLiveDataResponse, ApiConnectionActionConfiguration> GameWeekLiveData(Expression<Func<string>> eventId)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            return new DeferredBodyAction<GameWeekLiveDataResponse>(() =>
+            return new DeferredBodyAction<GameWeekLiveDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/event/{0}/live/", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<PlayersDetailedDataResponse> PlayersDetailedData(Expression<Func<string>> elementId)
+        public IBodyWorkflowAction<PlayersDetailedDataResponse, ApiConnectionActionConfiguration> PlayersDetailedData(Expression<Func<string>> elementId)
         {
             var __workflow_elementId = WorkflowExpression.Compile(elementId, nameof(elementId), required: true);
-            return new DeferredBodyAction<PlayersDetailedDataResponse>(() =>
+            return new DeferredBodyAction<PlayersDetailedDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/element-summary/{0}/", __workflow_elementId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<CurrentYearFixturesResponseItem[]> CurrentYearFixtures()
+        public IBodyWorkflowAction<CurrentYearFixturesResponseItem[], ApiConnectionActionConfiguration> CurrentYearFixtures()
         {
             var apiCallPath = "/api/fixtures/";
             var apiCallHttpMethod = "get";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<GeneralInformationResponse> GeneralInformation()
+        public IBodyWorkflowAction<GeneralInformationResponse, ApiConnectionActionConfiguration> GeneralInformation()
         {
             var apiCallPath = "/api/bootstrap-static/";
             var apiCallHttpMethod = "get";
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
-        public IBodyWorkflowAction<ClassicLeagueStandingsResponse> ClassicLeagueStandings(Expression<Func<string>> leagueId)
+        public IBodyWorkflowAction<ClassicLeagueStandingsResponse, ApiConnectionActionConfiguration> ClassicLeagueStandings(Expression<Func<string>> leagueId)
         {
             var __workflow_leagueId = WorkflowExpression.Compile(leagueId, nameof(leagueId), required: true);
-            return new DeferredBodyAction<ClassicLeagueStandingsResponse>(() =>
+            return new DeferredBodyAction<ClassicLeagueStandingsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/leagues-classic/{0}/standings/", __workflow_leagueId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

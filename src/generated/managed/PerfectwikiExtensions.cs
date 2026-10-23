@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
     public class PerfectwikiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perfectwiki")]
-        public IWorkflowAction GetCurrentUser()
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCurrentUser()
         {
             var apiCallPath = "/chatgpt/users/session";
             var apiCallHttpMethod = "get";
@@ -21,11 +21,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perfectwiki")]
-        public IWorkflowAction QueryKnowledgebase(Expression<Func<string>> q, Expression<Func<string>> chatId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> QueryKnowledgebase(Expression<Func<string>> q, Expression<Func<string>> chatId)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_chatId = WorkflowExpression.Compile(chatId, nameof(chatId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chatgpt/organization/bot";
                 var apiCallHttpMethod = "post";

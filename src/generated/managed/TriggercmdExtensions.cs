@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
     public class TriggercmdActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
-        public IBodyWorkflowAction<string> RunCommand(Expression<Func<string>> bodycomputer, Expression<Func<string>> bodytrigger, Expression<Func<string>> bodyParams = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RunCommand(Expression<Func<string>> bodycomputer, Expression<Func<string>> bodytrigger, Expression<Func<string>> bodyParams = null)
         {
             var __workflow_bodycomputer = WorkflowExpression.Compile(bodycomputer, nameof(bodycomputer), required: true);
             var __workflow_bodytrigger = WorkflowExpression.Compile(bodytrigger, nameof(bodytrigger), required: true);
             var __workflow_bodyParams = WorkflowExpression.Compile(bodyParams, nameof(bodyParams), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/oauth/flow/trigger";
                 var apiCallHttpMethod = "post";

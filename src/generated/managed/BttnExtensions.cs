@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
     public class BttnActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IBodyWorkflowAction<BttnListData[]> ListBttns()
+        public IBodyWorkflowAction<BttnListData[], ApiConnectionActionConfiguration> ListBttns()
         {
             var apiCallPath = "/bttns";
             var apiCallHttpMethod = "get";
@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IWorkflowAction ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<callbackBodyflowResultInput>> callbackBodyflowResult = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<callbackBodyflowResultInput>> callbackBodyflowResult = null)
         {
             var __workflow_callbackId = WorkflowExpression.Compile(callbackId, nameof(callbackId), required: true);
             var __workflow_callbackBodyflowResult = WorkflowExpression.Compile(callbackBodyflowResult, nameof(callbackBodyflowResult), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/callback/{0}", __workflow_callbackId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IBodyWorkflowAction<BttnApiInfo> GetBttnInfo(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BttnApiInfo, ApiConnectionActionConfiguration> GetBttnInfo(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BttnApiInfo>(() =>
+            return new DeferredBodyAction<BttnApiInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/info", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IBodyWorkflowAction<BttnApiCounter> GetBttnCounter(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BttnApiCounter, ApiConnectionActionConfiguration> GetBttnCounter(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BttnApiCounter>(() =>
+            return new DeferredBodyAction<BttnApiCounter, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/counter", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
 
     public class BttnTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RegisterWebhook(Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RegisterWebhook(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hook";
                 var apiCallHttpMethod = "post";

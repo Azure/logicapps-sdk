@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
     public class EgainActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
-        public IWorkflowAction KbSearch(Expression<Func<string>> portalId, Expression<Func<string>> q, Expression<Func<string>> lang, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<string>> acceptLanguage, Expression<Func<string>> accept, Expression<Func<string>> attribute = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> pagesize = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> KbSearch(Expression<Func<string>> portalId, Expression<Func<string>> q, Expression<Func<string>> lang, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<string>> acceptLanguage, Expression<Func<string>> accept, Expression<Func<string>> attribute = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> pagesize = null)
         {
             var __workflow_portalId = WorkflowExpression.Compile(portalId, nameof(portalId), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             var __workflow_attribute = WorkflowExpression.Compile(attribute, nameof(attribute), required: false);
             var __workflow_pagenum = WorkflowExpression.Compile(pagenum, nameof(pagenum), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/knowledge/portalmgr/v3/internal/portals/{0}/search/kb", __workflow_portalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
-        public IWorkflowAction Generative(Expression<Func<string>> q, Expression<Func<int>> portalId, Expression<Func<string>> languageCode, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<int>> departmentId = null, Expression<Func<int>> userId = null, Expression<Func<int>> personalizationProfileId = null, Expression<Func<string>> accept = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Generative(Expression<Func<string>> q, Expression<Func<int>> portalId, Expression<Func<string>> languageCode, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<int>> departmentId = null, Expression<Func<int>> userId = null, Expression<Func<int>> personalizationProfileId = null, Expression<Func<string>> accept = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_portalId = WorkflowExpression.Compile(portalId, nameof(portalId), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
             var __workflow_personalizationProfileId = WorkflowExpression.Compile(personalizationProfileId, nameof(personalizationProfileId), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/core/aiservices/v3/internal/instantanswers/generative";
                 var apiCallHttpMethod = "get";
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egain")]
-        public IWorkflowAction Search(Expression<Func<string>> portalId, Expression<Func<string>> languageCode, Expression<Func<string>> q, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<int>> personalizationProfileId = null, Expression<Func<string>> accept = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Search(Expression<Func<string>> portalId, Expression<Func<string>> languageCode, Expression<Func<string>> q, Expression<Func<string>> authToken, Expression<Func<string>> baseUrl, Expression<Func<string>> shortName, Expression<Func<int>> personalizationProfileId = null, Expression<Func<string>> accept = null)
         {
             var __workflow_portalId = WorkflowExpression.Compile(portalId, nameof(portalId), required: true);
             var __workflow_languageCode = WorkflowExpression.Compile(languageCode, nameof(languageCode), required: true);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             var __workflow_shortName = WorkflowExpression.Compile(shortName, nameof(shortName), required: true);
             var __workflow_personalizationProfileId = WorkflowExpression.Compile(personalizationProfileId, nameof(personalizationProfileId), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/core/aiservices/v3/internal/instantanswers/{0}/search", __workflow_portalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

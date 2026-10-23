@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
     public class DataflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
-        public IBodyWorkflowAction<DataflowModel> RefreshDataflow(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
+        public IBodyWorkflowAction<DataflowModel, ApiConnectionActionConfiguration> RefreshDataflow(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
         {
             var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
             var __workflow_groupIdForRefreshDataflow = WorkflowExpression.Compile(groupIdForRefreshDataflow, nameof(groupIdForRefreshDataflow), required: true);
             var __workflow_dataflowIdForRefreshDataflow = WorkflowExpression.Compile(dataflowIdForRefreshDataflow, nameof(dataflowIdForRefreshDataflow), required: true);
-            return new DeferredBodyAction<DataflowModel>(() =>
+            return new DeferredBodyAction<DataflowModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", __workflow_groupIdForRefreshDataflow.WithUrlEncoding(1), __workflow_dataflowIdForRefreshDataflow.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
 
     public class DataflowsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RefreshModel, ApiConnectionTriggerConfiguration> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
             var __workflow_groupIdForOnRefreshComplete = WorkflowExpression.Compile(groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
             var __workflow_dataflowIdForOnRefreshComplete = WorkflowExpression.Compile(dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
-            return new DeferredBodyTrigger<RefreshModel>(() =>
+            return new DeferredBodyTrigger<RefreshModel, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", __workflow_groupIdForOnRefreshComplete.WithUrlEncoding(1), __workflow_dataflowIdForOnRefreshComplete.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

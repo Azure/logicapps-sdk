@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
     public class ZreportsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
-        public IBodyWorkflowAction<GetStoresResponseItem[]> GetStores()
+        public IBodyWorkflowAction<GetStoresResponseItem[], ApiConnectionActionConfiguration> GetStores()
         {
             var apiCallPath = "/stores";
             var apiCallHttpMethod = "get";
@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
-        public IWorkflowAction UploadDocument(Expression<Func<string>> brandId, Expression<Func<string>> storeId, Expression<Func<object>> document)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> brandId, Expression<Func<string>> storeId, Expression<Func<object>> document)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             var __workflow_storeId = WorkflowExpression.Compile(storeId, nameof(storeId), required: true);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/documents", __workflow_brandId.WithUrlEncoding(1), __workflow_storeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
     public class ZreportsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             var __workflow_bodystoreIds = WorkflowExpression.Compile(bodystoreIds, nameof(bodystoreIds), required: false);
-            return new DeferredBodyTrigger<CreateWebhookResponseBody>(() =>
+            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/despatch-advice-hooks", __workflow_brandId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             var __workflow_bodystoreIds = WorkflowExpression.Compile(bodystoreIds, nameof(bodystoreIds), required: false);
-            return new DeferredBodyTrigger<CreateWebhookResponseBody>(() =>
+            return new DeferredBodyTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/invoice-hooks", __workflow_brandId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
     public class BitskoutActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ListPluginsResponseItem[]> ListPlugins()
+        public IBodyWorkflowAction<ListPluginsResponseItem[], ApiConnectionActionConfiguration> ListPlugins()
         {
             var apiCallPath = "/powerauto/plugins";
             var apiCallHttpMethod = "get";
@@ -21,11 +21,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginForFileResponse> RunPluginForFile(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<RunPluginForFileResponse, ApiConnectionActionConfiguration> RunPluginForFile(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyplugin = WorkflowExpression.Compile(bodyplugin, nameof(bodyplugin), required: false);
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<RunPluginForFileResponse>(() =>
+            return new DeferredBodyAction<RunPluginForFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerauto/run_file";
                 var apiCallHttpMethod = "post";
@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginTextResponse> RunPluginText(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<RunPluginTextResponse, ApiConnectionActionConfiguration> RunPluginText(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodyplugin = WorkflowExpression.Compile(bodyplugin, nameof(bodyplugin), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<RunPluginTextResponse>(() =>
+            return new DeferredBodyAction<RunPluginTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerauto/run_text";
                 var apiCallHttpMethod = "post";
@@ -87,10 +87,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> ExtractDataFromInvoice(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration> ExtractDataFromInvoice(Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<ExtractDataFromInvoiceResponse>(() =>
+            return new DeferredBodyAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/invoices";
                 var apiCallHttpMethod = "post";
@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> ExtractDataPurchaseOrders(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration> ExtractDataPurchaseOrders(Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<ExtractDataPurchaseOrdersResponse>(() =>
+            return new DeferredBodyAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/purchase_order";
                 var apiCallHttpMethod = "post";
@@ -139,10 +139,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBillofLadingResponse> ExtractDataBillofLading(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration> ExtractDataBillofLading(Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<ExtractDataBillofLadingResponse>(() =>
+            return new DeferredBodyAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/bill_of_lading";
                 var apiCallHttpMethod = "post";
@@ -165,10 +165,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataCVResponse> ExtractDataCV(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataCVResponse, ApiConnectionActionConfiguration> ExtractDataCV(Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<ExtractDataCVResponse>(() =>
+            return new DeferredBodyAction<ExtractDataCVResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/cv";
                 var apiCallHttpMethod = "post";
@@ -191,11 +191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<DetectDocumentTypeResponse, ApiConnectionActionConfiguration> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_doctype = WorkflowExpression.Compile(doctype, nameof(doctype), required: true);
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<DetectDocumentTypeResponse>(() =>
+            return new DeferredBodyAction<DetectDocumentTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions/doctype_{0}", __workflow_doctype.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -218,10 +218,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> ExtractDataBusinessCards(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration> ExtractDataBusinessCards(Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<ExtractDataBusinessCardsResponse>(() =>
+            return new DeferredBodyAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/business_cards";
                 var apiCallHttpMethod = "post";
@@ -244,10 +244,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractQRCodeResponse> ExtractQRCode(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration> ExtractQRCode(Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<ExtractQRCodeResponse>(() =>
+            return new DeferredBodyAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/qrcodes";
                 var apiCallHttpMethod = "post";
@@ -270,10 +270,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> ExtractBarcodeFromFile(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration> ExtractBarcodeFromFile(Expression<Func<string>> bodyfileUrl = null)
         {
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            return new DeferredBodyAction<ExtractBarcodeFromFileResponse>(() =>
+            return new DeferredBodyAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/barcodes";
                 var apiCallHttpMethod = "post";
@@ -296,10 +296,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectResponseColdEmailResponse> DetectResponseColdEmail(Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration> DetectResponseColdEmail(Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<DetectResponseColdEmailResponse>(() =>
+            return new DeferredBodyAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/cold_response";
                 var apiCallHttpMethod = "post";
@@ -322,10 +322,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataHAROResponse> ExtractDataHARO(Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration> ExtractDataHARO(Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<ExtractDataHAROResponse>(() =>
+            return new DeferredBodyAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/haro";
                 var apiCallHttpMethod = "post";

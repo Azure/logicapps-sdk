@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
     public class OrdnancesurveyplacesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<FindResponse> Find(Expression<Func<string>> query, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<double>> minmatch = null, Expression<Func<int>> matchprecision = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
+        public IBodyWorkflowAction<FindResponse, ApiConnectionActionConfiguration> Find(Expression<Func<string>> query, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<double>> minmatch = null, Expression<Func<int>> matchprecision = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_matchprecision = WorkflowExpression.Compile(matchprecision, nameof(matchprecision), required: false);
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
-            return new DeferredBodyAction<FindResponse>(() =>
+            return new DeferredBodyAction<FindResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/find";
                 var apiCallHttpMethod = "get";
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<PostcodeResponse> Postcode(Expression<Func<string>> postcode, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
+        public IBodyWorkflowAction<PostcodeResponse, ApiConnectionActionConfiguration> Postcode(Expression<Func<string>> postcode, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
         {
             var __workflow_postcode = WorkflowExpression.Compile(postcode, nameof(postcode), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
-            return new DeferredBodyAction<PostcodeResponse>(() =>
+            return new DeferredBodyAction<PostcodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/postcode";
                 var apiCallHttpMethod = "get";
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<UPRNResponse> UPRN(Expression<Func<int>> uprn, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
+        public IBodyWorkflowAction<UPRNResponse, ApiConnectionActionConfiguration> UPRN(Expression<Func<int>> uprn, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
         {
             var __workflow_uprn = WorkflowExpression.Compile(uprn, nameof(uprn), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
-            return new DeferredBodyAction<UPRNResponse>(() =>
+            return new DeferredBodyAction<UPRNResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/uprn";
                 var apiCallHttpMethod = "get";
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<NearestResponse> Nearest(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<NearestResponse, ApiConnectionActionConfiguration> Nearest(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
             var __workflow_point = WorkflowExpression.Compile(point, nameof(point), required: true);
             var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
             var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
-            return new DeferredBodyAction<NearestResponse>(() =>
+            return new DeferredBodyAction<NearestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/nearest";
                 var apiCallHttpMethod = "get";
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<BBoxResponse> BBox(Expression<Func<string>> bbox, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<BBoxResponse, ApiConnectionActionConfiguration> BBox(Expression<Func<string>> bbox, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
             var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
             var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
-            return new DeferredBodyAction<BBoxResponse>(() =>
+            return new DeferredBodyAction<BBoxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/bbox";
                 var apiCallHttpMethod = "get";
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<RadiusResponse> Radius(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<RadiusResponse, ApiConnectionActionConfiguration> Radius(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
             var __workflow_point = WorkflowExpression.Compile(point, nameof(point), required: true);
             var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
             var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
-            return new DeferredBodyAction<RadiusResponse>(() =>
+            return new DeferredBodyAction<RadiusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/radius";
                 var apiCallHttpMethod = "get";
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<PolygonResponse> Polygon(Expression<Func<string>> contentType, Expression<Func<string>> bodytype, Expression<Func<string>> bodygeometry, Expression<Func<int>> referencepoint = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> dataset = null, Expression<Func<int>> offset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<PolygonResponse, ApiConnectionActionConfiguration> Polygon(Expression<Func<string>> contentType, Expression<Func<string>> bodytype, Expression<Func<string>> bodygeometry, Expression<Func<int>> referencepoint = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> dataset = null, Expression<Func<int>> offset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
             var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
-            return new DeferredBodyAction<PolygonResponse>(() =>
+            return new DeferredBodyAction<PolygonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/polygon";
                 var apiCallHttpMethod = "post";

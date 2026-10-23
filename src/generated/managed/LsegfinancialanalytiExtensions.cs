@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     public class LsegfinancialanalytiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> bodyname, Expression<Func<int>> bodypriority = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> bodyname, Expression<Func<int>> bodypriority = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            return new DeferredBodyAction<CreateJobResponse>(() =>
+            return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/create-job";
                 var apiCallHttpMethod = "post";
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<JobStatusResponse> JobStatus(Expression<Func<string>> jobName)
+        public IBodyWorkflowAction<JobStatusResponse, ApiConnectionActionConfiguration> JobStatus(Expression<Func<string>> jobName)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
-            return new DeferredBodyAction<JobStatusResponse>(() =>
+            return new DeferredBodyAction<JobStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/job-status";
                 var apiCallHttpMethod = "get";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<int>> bodyprepayRate = null, Expression<Func<bool>> bodyretrieveOas = null, Expression<Func<bodyoptionModelInput>> bodyoptionModel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<int>> bodyprepayRate = null, Expression<Func<bool>> bodyretrieveOas = null, Expression<Func<bodyoptionModelInput>> bodyoptionModel = null)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
             var __workflow_bodyprepayRate = WorkflowExpression.Compile(bodyprepayRate, nameof(bodyprepayRate), required: false);
             var __workflow_bodyretrieveOas = WorkflowExpression.Compile(bodyretrieveOas, nameof(bodyretrieveOas), required: false);
             var __workflow_bodyoptionModel = WorkflowExpression.Compile(bodyoptionModel, nameof(bodyoptionModel), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/bulk-py-analytics";
                 var apiCallHttpMethod = "post";
@@ -130,12 +130,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
             var __workflow_bodyrequestId = WorkflowExpression.Compile(bodyrequestId, nameof(bodyrequestId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/bulk-indic-data";
                 var apiCallHttpMethod = "post";
@@ -156,11 +156,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<string>> bodysecuritiesList)
+        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse, ApiConnectionActionConfiguration> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<string>> bodysecuritiesList)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_bodysecuritiesList = WorkflowExpression.Compile(bodysecuritiesList, nameof(bodysecuritiesList), required: true);
-            return new DeferredBodyAction<UploadSecuritiesListDefaultResponse>(() =>
+            return new DeferredBodyAction<UploadSecuritiesListDefaultResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/upload-securities-list";
                 var apiCallHttpMethod = "post";
@@ -180,10 +180,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction CloseJob(Expression<Func<string>> jobName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CloseJob(Expression<Func<string>> jobName)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/close-job";
                 var apiCallHttpMethod = "post";
@@ -194,12 +194,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<RetrieveBulkResultsResponse> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<outputFormatInput>> outputFormat, Expression<Func<string>> bodypayload)
+        public IBodyWorkflowAction<RetrieveBulkResultsResponse, ApiConnectionActionConfiguration> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<outputFormatInput>> outputFormat, Expression<Func<string>> bodypayload)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_outputFormat = WorkflowExpression.Compile(outputFormat, nameof(outputFormat), required: true);
             var __workflow_bodypayload = WorkflowExpression.Compile(bodypayload, nameof(bodypayload), required: true);
-            return new DeferredBodyAction<RetrieveBulkResultsResponse>(() =>
+            return new DeferredBodyAction<RetrieveBulkResultsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
                 var apiCallHttpMethod = "post";

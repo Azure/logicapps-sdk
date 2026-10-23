@@ -7,7 +7,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an action that performs a service provider operation in a workflow.
     /// </summary>
-    public class ServiceProviderAction : WorkflowActionBase
+    public class ServiceProviderAction<TConfiguration> :
+        WorkflowActionBase<TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
         /// <summary>
         /// Service provider action input containing the details of the API call.
@@ -15,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         private readonly ServiceProviderOperationInput serviceProviderActionInput;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProviderAction"/> class.
+        /// Initializes a new service provider action.
         /// </summary>
         /// <param name="serviceProviderActionInput">The service provider action input.</param>
         internal ServiceProviderAction(ServiceProviderOperationInput serviceProviderActionInput)
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {
@@ -43,13 +45,16 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// operation manifest declares outputs with a <c>body</c> property (i.e., <c>outputs.properties.body</c>).
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public class ServiceProviderAction<T> : ServiceProviderAction, IBodyWorkflowAction<T>
+    public class ServiceProviderBodyAction<T, TConfiguration> :
+        ServiceProviderAction<TConfiguration>,
+        IBodyWorkflowAction<T, TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProviderAction{T}"/> class.
+        /// Initializes a new service provider body action.
         /// </summary>
         /// <param name="serviceProviderActionInput">The service provider action input.</param>
-        internal ServiceProviderAction(ServiceProviderOperationInput serviceProviderActionInput)
+        internal ServiceProviderBodyAction(ServiceProviderOperationInput serviceProviderActionInput)
             : base(serviceProviderActionInput)
         {
         }
@@ -66,7 +71,10 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// properties directly (i.e., <c>outputs.properties</c> exists but has no <c>body</c> key).
     /// </summary>
     /// <typeparam name="T">The type of the output value returned by the action.</typeparam>
-    public class ServiceProviderOutputAction<T> : ServiceProviderAction, IOutputWorkflowAction<T>
+    public class ServiceProviderOutputAction<T, TConfiguration> :
+        ServiceProviderAction<TConfiguration>,
+        IOutputWorkflowAction<T, TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderOutputAction{T}"/> class.

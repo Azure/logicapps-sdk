@@ -4,14 +4,24 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
     using Microsoft.Azure.Workflows.Sdk.Entities;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
+    public sealed class AgentActionConfiguration :
+        IRetryPolicyConfiguration,
+        ITrackedPropertiesConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+    }
+
     /// <summary>
     /// The agent entity that represents a model deployment and its settings.
     /// </summary>
-    public class AgentAction : WorkflowActionBase
+    public class AgentAction : WorkflowActionBase<AgentActionConfiguration>
     {
         /// <summary>
         /// Gets or sets the agent model type.
@@ -72,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {

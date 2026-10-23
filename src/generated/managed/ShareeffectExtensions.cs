@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
     public class ShareeffectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermResponse> AddUpdateTerm(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
+        public IBodyWorkflowAction<AddUpdateTermResponse, ApiConnectionActionConfiguration> AddUpdateTerm(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
         {
             var __workflow_bodyisavailable = WorkflowExpression.Compile(bodyisavailable, nameof(bodyisavailable), required: true);
             var __workflow_bodytermlabel = WorkflowExpression.Compile(bodytermlabel, nameof(bodytermlabel), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var __workflow_bodytermsset = WorkflowExpression.Compile(bodytermsset, nameof(bodytermsset), required: true);
             var __workflow_bodyotherlabels = WorkflowExpression.Compile(bodyotherlabels, nameof(bodyotherlabels), required: false);
             var __workflow_bodyparentterm = WorkflowExpression.Compile(bodyparentterm, nameof(bodyparentterm), required: false);
-            return new DeferredBodyAction<AddUpdateTermResponse>(() =>
+            return new DeferredBodyAction<AddUpdateTermResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddUpdateTerm";
                 var apiCallHttpMethod = "post";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> AddUpdateTermByKeyValue(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodykeyvalue, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
+        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse, ApiConnectionActionConfiguration> AddUpdateTermByKeyValue(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodykeyvalue, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
         {
             var __workflow_bodyisavailable = WorkflowExpression.Compile(bodyisavailable, nameof(bodyisavailable), required: true);
             var __workflow_bodykeyvalue = WorkflowExpression.Compile(bodykeyvalue, nameof(bodykeyvalue), required: true);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
             var __workflow_bodytermsset = WorkflowExpression.Compile(bodytermsset, nameof(bodytermsset), required: true);
             var __workflow_bodyotherlabels = WorkflowExpression.Compile(bodyotherlabels, nameof(bodyotherlabels), required: false);
             var __workflow_bodyparentterm = WorkflowExpression.Compile(bodyparentterm, nameof(bodyparentterm), required: false);
-            return new DeferredBodyAction<AddUpdateTermByKeyValueResponse>(() =>
+            return new DeferredBodyAction<AddUpdateTermByKeyValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddUpdateTermByKeyvalue";
                 var apiCallHttpMethod = "post";
@@ -105,10 +105,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> GetTermByKeyValue(Expression<Func<string>> searchValue)
+        public IBodyWorkflowAction<GetTermByKeyValueResponseItem[], ApiConnectionActionConfiguration> GetTermByKeyValue(Expression<Func<string>> searchValue)
         {
             var __workflow_searchValue = WorkflowExpression.Compile(searchValue, nameof(searchValue), required: true);
-            return new DeferredBodyAction<GetTermByKeyValueResponseItem[]>(() =>
+            return new DeferredBodyAction<GetTermByKeyValueResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetTermsByProperty";
                 var apiCallHttpMethod = "get";
@@ -120,10 +120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GetTermByLabelResponseItem[]> GetTermByLabel(Expression<Func<string>> searchValue)
+        public IBodyWorkflowAction<GetTermByLabelResponseItem[], ApiConnectionActionConfiguration> GetTermByLabel(Expression<Func<string>> searchValue)
         {
             var __workflow_searchValue = WorkflowExpression.Compile(searchValue, nameof(searchValue), required: true);
-            return new DeferredBodyAction<GetTermByLabelResponseItem[]>(() =>
+            return new DeferredBodyAction<GetTermByLabelResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetTermsByTermLabel";
                 var apiCallHttpMethod = "get";
@@ -134,11 +134,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<UploadTemplateResponse> UploadTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytemplate)
+        public IBodyWorkflowAction<UploadTemplateResponse, ApiConnectionActionConfiguration> UploadTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytemplate)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: true);
-            return new DeferredBodyAction<UploadTemplateResponse>(() =>
+            return new DeferredBodyAction<UploadTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uploadtemplate";
                 var apiCallHttpMethod = "post";
@@ -159,11 +159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<bodyoutputformatInput>> bodyoutputformat)
+        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<bodyoutputformatInput>> bodyoutputformat)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodyoutputformat = WorkflowExpression.Compile(bodyoutputformat, nameof(bodyoutputformat), required: true);
-            return new DeferredBodyAction<GenerateDocumentResponse>(() =>
+            return new DeferredBodyAction<GenerateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GenerateDocument";
                 var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
     public class ThegoodapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<TreesGetResponse> TreesGet()
+        public IBodyWorkflowAction<TreesGetResponse, ApiConnectionActionConfiguration> TreesGet()
         {
             var apiCallPath = "/plant/trees";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<PlantPostResponse> Plant(Expression<Func<int>> bodycount = null)
+        public IBodyWorkflowAction<PlantPostResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<int>> bodycount = null)
         {
             var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
-            return new DeferredBodyAction<PlantPostResponse>(() =>
+            return new DeferredBodyAction<PlantPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/plant/trees";
                 var apiCallHttpMethod = "post";

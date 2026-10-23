@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------
+// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -27,15 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="method">The HTTP method to use for the request (optional).</param>
         /// <param name="requestBodyJsonSchema">The request body JSON schema (optional).</param>
         /// <param name="relativePath">The relative path (optional).</param>
-        public IOutputWorkflowTrigger<HttpRequestTriggerOutput> CreateHttpTrigger(
+        public IOutputWorkflowTrigger<HttpRequestTriggerOutput, HttpRequestTriggerConfiguration> CreateHttpTrigger(
             HttpMethod method = null,
             JToken requestBodyJsonSchema = null,
             string relativePath = null)
         {
-            return new HttpRequestTrigger(
-                method: method,
-                requestBodyJsonSchema: requestBodyJsonSchema,
-                relativePath: relativePath);
+            return new DeferredOutputTrigger<HttpRequestTriggerOutput, HttpRequestTriggerConfiguration>(
+                () => new HttpRequestTrigger(
+                    method: method,
+                    requestBodyJsonSchema: requestBodyJsonSchema,
+                    relativePath: relativePath));
         }
 
         /// <summary>
@@ -54,17 +55,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="startTime">The start time for the recurrence schedule. Defaults to UTC now.</param>
         /// <param name="timeZone">The time zone for the recurrence schedule. Defaults to UTC.</param>
         /// <returns>An output workflow trigger for the recurrence.</returns>
-        public IWorkflowTrigger CreateRecurrenceTrigger(
+        public IWorkflowTrigger<RecurrenceTriggerConfiguration> CreateRecurrenceTrigger(
             FlowRecurrenceFrequency frequency = FlowRecurrenceFrequency.Minute,
             int interval = 1,
             DateTime? startTime = null,
             TimeZoneInfo timeZone = null)
         {
-            return new RecurrenceTrigger(
-                frequency: frequency,
-                interval: interval,
-                startTime: startTime,
-                timeZone: timeZone ?? TimeZoneInfo.Utc);
+            return new DeferredWorkflowTrigger<RecurrenceTriggerConfiguration>(
+                () => new RecurrenceTrigger(
+                    frequency: frequency,
+                    interval: interval,
+                    startTime: startTime,
+                    timeZone: timeZone ?? TimeZoneInfo.Utc));
         }
     }
+
 }

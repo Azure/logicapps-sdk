@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
     public class AdoboardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListAccount> ListAccounts(Expression<Func<string>> memberId)
+        public IBodyWorkflowAction<VstsListAccount, ApiConnectionActionConfiguration> ListAccounts(Expression<Func<string>> memberId)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
-            return new DeferredBodyAction<VstsListAccount>(() =>
+            return new DeferredBodyAction<VstsListAccount, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_apis/Accounts";
                 var apiCallHttpMethod = "get";
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<Profile> GetProfile(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Profile, ApiConnectionActionConfiguration> GetProfile(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Profile>(() =>
+            return new DeferredBodyAction<Profile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_apis/profile/profiles/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListProject> ListProjects(Expression<Func<string>> account)
+        public IBodyWorkflowAction<VstsListProject, ApiConnectionActionConfiguration> ListProjects(Expression<Func<string>> account)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
-            return new DeferredBodyAction<VstsListProject>(() =>
+            return new DeferredBodyAction<VstsListProject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/_apis/projects", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem, ApiConnectionActionConfiguration> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
+            return new DeferredBodyAction<VstsListQueryHierarchyItem, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/_apis/wit/queries", __workflow_account.WithUrlEncoding(1), __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes(Expression<Func<string>> account, Expression<Func<string>> project)
+        public IBodyWorkflowAction<VstsListWorkItemType, ApiConnectionActionConfiguration> ListWorkItemTypes(Expression<Func<string>> account, Expression<Func<string>> project)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyAction<VstsListWorkItemType>(() =>
+            return new DeferredBodyAction<VstsListWorkItemType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/_apis/wit/workitemtypes", __workflow_account.WithUrlEncoding(1), __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -80,12 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> ids)
+        public IBodyWorkflowAction<VstsListListWorkItemResponse, ApiConnectionActionConfiguration> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> ids)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
-            return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
+            return new DeferredBodyAction<VstsListListWorkItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/_apis/wit/workitems", __workflow_account.WithUrlEncoding(1), __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -96,12 +96,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem, ApiConnectionActionConfiguration> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
+            return new DeferredBodyAction<VstsListQueryHierarchyItem, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/_apis/wit/queries/{2}", __workflow_account.WithUrlEncoding(1), __workflow_project.WithUrlEncoding(1), __workflow_folderPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -111,12 +111,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListJObject> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId)
+        public IBodyWorkflowAction<VstsListJObject, ApiConnectionActionConfiguration> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_queryId = WorkflowExpression.Compile(queryId, nameof(queryId), required: true);
-            return new DeferredBodyAction<VstsListJObject>(() =>
+            return new DeferredBodyAction<VstsListJObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/_apis/wit/wiql/{2}", __workflow_account.WithUrlEncoding(1), __workflow_project.WithUrlEncoding(1), __workflow_queryId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -126,13 +126,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListSubject> GetSubject(Expression<Func<string>> account, Expression<Func<string>> subjectQueryDetailssearchTerm, Expression<Func<string[]>> subjectQueryDetailssubjectKind, Expression<Func<string>> subjectQueryDetailsscopeDescriptor = null)
+        public IBodyWorkflowAction<VstsListSubject, ApiConnectionActionConfiguration> GetSubject(Expression<Func<string>> account, Expression<Func<string>> subjectQueryDetailssearchTerm, Expression<Func<string[]>> subjectQueryDetailssubjectKind, Expression<Func<string>> subjectQueryDetailsscopeDescriptor = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_subjectQueryDetailssearchTerm = WorkflowExpression.Compile(subjectQueryDetailssearchTerm, nameof(subjectQueryDetailssearchTerm), required: true);
             var __workflow_subjectQueryDetailssubjectKind = WorkflowExpression.Compile(subjectQueryDetailssubjectKind, nameof(subjectQueryDetailssubjectKind), required: true);
             var __workflow_subjectQueryDetailsscopeDescriptor = WorkflowExpression.Compile(subjectQueryDetailsscopeDescriptor, nameof(subjectQueryDetailsscopeDescriptor), required: false);
-            return new DeferredBodyAction<VstsListSubject>(() =>
+            return new DeferredBodyAction<VstsListSubject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/_apis/graph/subjectquery", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -159,14 +159,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<JToken> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<int>> workItempriority = null, Expression<Func<KeyValuePair[]>> workItemotherFields = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<int>> workItempriority = null, Expression<Func<KeyValuePair[]>> workItemotherFields = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_workItempriority = WorkflowExpression.Compile(workItempriority, nameof(workItempriority), required: false);
             var __workflow_workItemotherFields = WorkflowExpression.Compile(workItemotherFields, nameof(workItemotherFields), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/_apis/wit/workitems/{2}", __workflow_account.WithUrlEncoding(1), __workflow_project.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";

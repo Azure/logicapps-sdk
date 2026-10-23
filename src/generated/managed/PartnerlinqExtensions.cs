@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
     public class PartnerlinqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
-        public IBodyWorkflowAction<PartnerLinqGetResponse> PartnerLinqGet(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tennatId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId)
+        public IBodyWorkflowAction<PartnerLinqGetResponse, ApiConnectionActionConfiguration> PartnerLinqGet(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tennatId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_process = WorkflowExpression.Compile(process, nameof(process), required: true);
             var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
-            return new DeferredBodyAction<PartnerLinqGetResponse>(() =>
+            return new DeferredBodyAction<PartnerLinqGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/FUNC_HTTP_DATA_SEND";
                 var apiCallHttpMethod = "get";
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
-        public IBodyWorkflowAction<PartnerLinqPostResponse> PartnerLinq(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tenantId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<PartnerLinqPostResponse, ApiConnectionActionConfiguration> PartnerLinq(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tenantId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId, Expression<Func<string>> bodydata = null)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
             var __workflow_process = WorkflowExpression.Compile(process, nameof(process), required: true);
             var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<PartnerLinqPostResponse>(() =>
+            return new DeferredBodyAction<PartnerLinqPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/FUNC_HTTP_DATA_RECEIVE";
                 var apiCallHttpMethod = "post";

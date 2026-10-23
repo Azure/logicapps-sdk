@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     public class FbimostwantedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListWantedResponse> ListWanted(Expression<Func<posterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<fieldOfficesInput>> fieldOffices = null, Expression<Func<personClassificationInput>> personClassification = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListWantedResponse, ApiConnectionActionConfiguration> ListWanted(Expression<Func<posterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<fieldOfficesInput>> fieldOffices = null, Expression<Func<personClassificationInput>> personClassification = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
         {
             var __workflow_posterClassification = WorkflowExpression.Compile(posterClassification, nameof(posterClassification), required: false);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sortOn = WorkflowExpression.Compile(sortOn, nameof(sortOn), required: false);
             var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
-            return new DeferredBodyAction<ListWantedResponse>(() =>
+            return new DeferredBodyAction<ListWantedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/@wanted";
                 var apiCallHttpMethod = "get";
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<WantedPerson> GetWantedPerson(Expression<Func<string>> id)
+        public IBodyWorkflowAction<WantedPerson, ApiConnectionActionConfiguration> GetWantedPerson(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<WantedPerson>(() =>
+            return new DeferredBodyAction<WantedPerson, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/@wanted-person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListArtCrimesResponse, ApiConnectionActionConfiguration> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_crimeCategory = WorkflowExpression.Compile(crimeCategory, nameof(crimeCategory), required: false);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sortOn = WorkflowExpression.Compile(sortOn, nameof(sortOn), required: false);
             var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
-            return new DeferredBodyAction<ListArtCrimesResponse>(() =>
+            return new DeferredBodyAction<ListArtCrimesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/@artcrimes";
                 var apiCallHttpMethod = "get";
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ArtCrime> GetArtCrime(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ArtCrime, ApiConnectionActionConfiguration> GetArtCrime(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ArtCrime>(() =>
+            return new DeferredBodyAction<ArtCrime, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/@artcrimes/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

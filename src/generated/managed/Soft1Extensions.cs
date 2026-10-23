@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     public class Soft1Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IWorkflowAction Microservice(Expression<Func<string>> bodybody, Expression<Func<string>> bodyendpoint)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Microservice(Expression<Func<string>> bodybody, Expression<Func<string>> bodyendpoint)
         {
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyendpoint = WorkflowExpression.Compile(bodyendpoint, nameof(bodyendpoint), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/custom";
                 var apiCallHttpMethod = "post";
@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetCFNCUSDOCResponse> GetCFNCUSDOC(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetCFNCUSDOCResponse, ApiConnectionActionConfiguration> GetCFNCUSDOC(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetCFNCUSDOCResponse>(() =>
+            return new DeferredBodyAction<GetCFNCUSDOCResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getCFNCUSDOC";
                 var apiCallHttpMethod = "post";
@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetCfnsupdocResponse> GetCfnsupdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetCfnsupdocResponse, ApiConnectionActionConfiguration> GetCfnsupdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetCfnsupdocResponse>(() =>
+            return new DeferredBodyAction<GetCfnsupdocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getCfnsupdoc";
                 var apiCallHttpMethod = "post";
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetChequeResponse> GetCheque(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetChequeResponse, ApiConnectionActionConfiguration> GetCheque(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetChequeResponse>(() =>
+            return new DeferredBodyAction<GetChequeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getCheque";
                 var apiCallHttpMethod = "post";
@@ -161,12 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetContactResponse, ApiConnectionActionConfiguration> GetContact(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetContactResponse>(() =>
+            return new DeferredBodyAction<GetContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getContact";
                 var apiCallHttpMethod = "post";
@@ -202,12 +202,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetCustomerResponse> GetCustomer(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetCustomerResponse, ApiConnectionActionConfiguration> GetCustomer(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetCustomerResponse>(() =>
+            return new DeferredBodyAction<GetCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getCustomer";
                 var apiCallHttpMethod = "post";
@@ -243,12 +243,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetDraftEntryResponse> GetDraftEntry(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetDraftEntryResponse, ApiConnectionActionConfiguration> GetDraftEntry(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetDraftEntryResponse>(() =>
+            return new DeferredBodyAction<GetDraftEntryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getDraftEntry";
                 var apiCallHttpMethod = "post";
@@ -284,12 +284,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetExpenseResponse> GetExpense(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetExpenseResponse, ApiConnectionActionConfiguration> GetExpense(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetExpenseResponse>(() =>
+            return new DeferredBodyAction<GetExpenseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getExpense";
                 var apiCallHttpMethod = "post";
@@ -325,12 +325,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetExpensesDocResponse> GetExpensesDoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodylOCATEINFO = null)
+        public IBodyWorkflowAction<GetExpensesDocResponse, ApiConnectionActionConfiguration> GetExpensesDoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodylOCATEINFO = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: false);
-            return new DeferredBodyAction<GetExpensesDocResponse>(() =>
+            return new DeferredBodyAction<GetExpensesDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getExpensesDoc";
                 var apiCallHttpMethod = "post";
@@ -380,12 +380,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetItedocResponse> GetItedoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetItedocResponse, ApiConnectionActionConfiguration> GetItedoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetItedocResponse>(() =>
+            return new DeferredBodyAction<GetItedocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getItedoc";
                 var apiCallHttpMethod = "post";
@@ -421,12 +421,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetItemResponse> GetItem(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetItemResponse, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetItemResponse>(() =>
+            return new DeferredBodyAction<GetItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getItem";
                 var apiCallHttpMethod = "post";
@@ -462,12 +462,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetProjectResponse, ApiConnectionActionConfiguration> GetProject(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetProjectResponse>(() =>
+            return new DeferredBodyAction<GetProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getProject";
                 var apiCallHttpMethod = "post";
@@ -503,12 +503,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetPurdocResponse> GetPurdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetPurdocResponse, ApiConnectionActionConfiguration> GetPurdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetPurdocResponse>(() =>
+            return new DeferredBodyAction<GetPurdocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getPurdoc";
                 var apiCallHttpMethod = "post";
@@ -544,12 +544,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSaldocResponse> GetSaldoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetSaldocResponse, ApiConnectionActionConfiguration> GetSaldoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetSaldocResponse>(() =>
+            return new DeferredBodyAction<GetSaldocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getSaldoc";
                 var apiCallHttpMethod = "post";
@@ -585,12 +585,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetServiceResponse> GetService(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetServiceResponse, ApiConnectionActionConfiguration> GetService(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetServiceResponse>(() =>
+            return new DeferredBodyAction<GetServiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getService";
                 var apiCallHttpMethod = "post";
@@ -626,12 +626,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSOEMAILResponse> GetSOEMAIL(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetSOEMAILResponse, ApiConnectionActionConfiguration> GetSOEMAIL(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetSOEMAILResponse>(() =>
+            return new DeferredBodyAction<GetSOEMAILResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getSoemail";
                 var apiCallHttpMethod = "post";
@@ -667,12 +667,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetMeetingResponse> GetMeeting(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetMeetingResponse, ApiConnectionActionConfiguration> GetMeeting(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetMeetingResponse>(() =>
+            return new DeferredBodyAction<GetMeetingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getSomeeting";
                 var apiCallHttpMethod = "post";
@@ -708,12 +708,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSOTASKResponse> GetSOTASK(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetSOTASKResponse, ApiConnectionActionConfiguration> GetSOTASK(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetSOTASKResponse>(() =>
+            return new DeferredBodyAction<GetSOTASKResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getSotask";
                 var apiCallHttpMethod = "post";
@@ -749,12 +749,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSupplierResponse> GetSupplier(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetSupplierResponse, ApiConnectionActionConfiguration> GetSupplier(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: true);
             var __workflow_bodylOCATEINFO = WorkflowExpression.Compile(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
-            return new DeferredBodyAction<GetSupplierResponse>(() =>
+            return new DeferredBodyAction<GetSupplierResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getSupplier";
                 var apiCallHttpMethod = "post";
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSystemParamsResponse> GetSystemParams()
+        public IBodyWorkflowAction<GetSystemParamsResponse, ApiConnectionActionConfiguration> GetSystemParams()
         {
             var apiCallPath = "/getSystemParams";
             var apiCallHttpMethod = "post";
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCFNCUSDOC(Expression<Func<string>> bodyvaluecFNCUSDOCsERIES, Expression<Func<string>> bodyvaluecFNCUSDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOLLECTOR = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOMMENTS = null, Expression<Func<string>> bodyvaluecFNCUSDOCproject = null, Expression<Func<string>> bodyvaluecFNCUSDOCsALESMAN = null, Expression<Func<string>> bodyvaluecFNCUSDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetCFNCUSDOC(Expression<Func<string>> bodyvaluecFNCUSDOCsERIES, Expression<Func<string>> bodyvaluecFNCUSDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOLLECTOR = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOMMENTS = null, Expression<Func<string>> bodyvaluecFNCUSDOCproject = null, Expression<Func<string>> bodyvaluecFNCUSDOCsALESMAN = null, Expression<Func<string>> bodyvaluecFNCUSDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodyvaluecFNCUSDOCsERIES = WorkflowExpression.Compile(bodyvaluecFNCUSDOCsERIES, nameof(bodyvaluecFNCUSDOCsERIES), required: true);
             var __workflow_bodyvaluecFNCUSDOCtRDR = WorkflowExpression.Compile(bodyvaluecFNCUSDOCtRDR, nameof(bodyvaluecFNCUSDOCtRDR), required: true);
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluecHEQUELINES = WorkflowExpression.Compile(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setCfncusdoc";
                 var apiCallHttpMethod = "post";
@@ -931,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCfnsupdoc(Expression<Func<string>> bodyvaluecFNSUPDOCsERIES, Expression<Func<string>> bodyvaluecFNSUPDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem2[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNSUPDOCpRJC = null, Expression<Func<string>> bodyvaluecFNSUPDOCrEMARKS = null, Expression<Func<string>> bodyvaluecFNSUPDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetCfnsupdoc(Expression<Func<string>> bodyvaluecFNSUPDOCsERIES, Expression<Func<string>> bodyvaluecFNSUPDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem2[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNSUPDOCpRJC = null, Expression<Func<string>> bodyvaluecFNSUPDOCrEMARKS = null, Expression<Func<string>> bodyvaluecFNSUPDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodyvaluecFNSUPDOCsERIES = WorkflowExpression.Compile(bodyvaluecFNSUPDOCsERIES, nameof(bodyvaluecFNSUPDOCsERIES), required: true);
             var __workflow_bodyvaluecFNSUPDOCtRDR = WorkflowExpression.Compile(bodyvaluecFNSUPDOCtRDR, nameof(bodyvaluecFNSUPDOCtRDR), required: true);
@@ -943,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluecHEQUELINES = WorkflowExpression.Compile(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setCfnsupdoc";
                 var apiCallHttpMethod = "post";
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCheque(Expression<Func<string>> bodyvaluecHEQUEbalance, Expression<Func<string>> bodyvaluecHEQUEchequeNumber, Expression<Func<string>> bodyvaluecHEQUEstatus, Expression<Func<string>> bodyvaluecHEQUEvalue, Expression<Func<string>> bodyvaluecHEQUEissueDate, Expression<Func<string>> bodyvaluecHEQUEdueDate, Expression<Func<string>> bodyvaluecHEQUEseries, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecHEQUEbank = null, Expression<Func<string>> bodyvaluecHEQUEissuerAddress = null, Expression<Func<string>> bodyvaluecHEQUEissuerName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTelephone = null, Expression<Func<string>> bodyvaluecHEQUEreceiptDate = null, Expression<Func<string>> bodyvaluecHEQUEholderAddress = null, Expression<Func<string>> bodyvaluecHEQUEholderName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTRNo = null, Expression<Func<string>> bodyvaluecHEQUEcomments = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetCheque(Expression<Func<string>> bodyvaluecHEQUEbalance, Expression<Func<string>> bodyvaluecHEQUEchequeNumber, Expression<Func<string>> bodyvaluecHEQUEstatus, Expression<Func<string>> bodyvaluecHEQUEvalue, Expression<Func<string>> bodyvaluecHEQUEissueDate, Expression<Func<string>> bodyvaluecHEQUEdueDate, Expression<Func<string>> bodyvaluecHEQUEseries, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecHEQUEbank = null, Expression<Func<string>> bodyvaluecHEQUEissuerAddress = null, Expression<Func<string>> bodyvaluecHEQUEissuerName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTelephone = null, Expression<Func<string>> bodyvaluecHEQUEreceiptDate = null, Expression<Func<string>> bodyvaluecHEQUEholderAddress = null, Expression<Func<string>> bodyvaluecHEQUEholderName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTRNo = null, Expression<Func<string>> bodyvaluecHEQUEcomments = null)
         {
             var __workflow_bodyvaluecHEQUEbalance = WorkflowExpression.Compile(bodyvaluecHEQUEbalance, nameof(bodyvaluecHEQUEbalance), required: true);
             var __workflow_bodyvaluecHEQUEchequeNumber = WorkflowExpression.Compile(bodyvaluecHEQUEchequeNumber, nameof(bodyvaluecHEQUEchequeNumber), required: true);
@@ -1057,7 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluecHEQUEholderName = WorkflowExpression.Compile(bodyvaluecHEQUEholderName, nameof(bodyvaluecHEQUEholderName), required: false);
             var __workflow_bodyvaluecHEQUEissuerTRNo = WorkflowExpression.Compile(bodyvaluecHEQUEissuerTRNo, nameof(bodyvaluecHEQUEissuerTRNo), required: false);
             var __workflow_bodyvaluecHEQUEcomments = WorkflowExpression.Compile(bodyvaluecHEQUEcomments, nameof(bodyvaluecHEQUEcomments), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setCheque";
                 var apiCallHttpMethod = "post";
@@ -1179,7 +1179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetContact(Expression<Func<string>> bodyvaluepRSNOUTcode, Expression<Func<string>> bodyvaluepRSNOUTname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluepRSNOUTaddress = null, Expression<Func<string>> bodyvaluepRSNOUTtRNo = null, Expression<Func<string>> bodyvaluepRSNOUTgeographicalAreas = null, Expression<Func<string>> bodyvaluepRSNOUTbIRTHDATE = null, Expression<Func<string>> bodyvaluepRSNOUTcity = null, Expression<Func<string>> bodyvaluepRSNOUTcountry = null, Expression<Func<string>> bodyvaluepRSNOUTarea = null, Expression<Func<string>> bodyvaluepRSNOUTprefecture = null, Expression<Func<string>> bodyvaluepRSNOUTeducationLevel = null, Expression<Func<string>> bodyvaluepRSNOUTemail = null, Expression<Func<string>> bodyvaluepRSNOUTemail2 = null, Expression<Func<string>> bodyvaluepRSNOUTfax = null, Expression<Func<string>> bodyvaluepRSNOUTiDCardNo = null, Expression<Func<string>> bodyvaluepRSNOUTtaxOffice = null, Expression<Func<string>> bodyvaluepRSNOUTmobileTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTsurname = null, Expression<Func<string>> bodyvaluepRSNOUTfatherSName = null, Expression<Func<string>> bodyvaluepRSNOUTmotherSName = null, Expression<Func<string>> bodyvaluepRSNOUTnameOfSpouse = null, Expression<Func<string>> bodyvaluepRSNOUTnationality = null, Expression<Func<string>> bodyvaluepRSNOUTtel1 = null, Expression<Func<string>> bodyvaluepRSNOUTtel2 = null, Expression<Func<string>> bodyvaluepRSNOUTinternalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTpersonalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTcomments = null, Expression<Func<bodyvaluepRSNOUTgenderInput>> bodyvaluepRSNOUTgender = null, Expression<Func<string>> bodyvaluepRSNOUTwebPage = null, Expression<Func<string>> bodyvaluepRSNOUTzip = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetContact(Expression<Func<string>> bodyvaluepRSNOUTcode, Expression<Func<string>> bodyvaluepRSNOUTname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluepRSNOUTaddress = null, Expression<Func<string>> bodyvaluepRSNOUTtRNo = null, Expression<Func<string>> bodyvaluepRSNOUTgeographicalAreas = null, Expression<Func<string>> bodyvaluepRSNOUTbIRTHDATE = null, Expression<Func<string>> bodyvaluepRSNOUTcity = null, Expression<Func<string>> bodyvaluepRSNOUTcountry = null, Expression<Func<string>> bodyvaluepRSNOUTarea = null, Expression<Func<string>> bodyvaluepRSNOUTprefecture = null, Expression<Func<string>> bodyvaluepRSNOUTeducationLevel = null, Expression<Func<string>> bodyvaluepRSNOUTemail = null, Expression<Func<string>> bodyvaluepRSNOUTemail2 = null, Expression<Func<string>> bodyvaluepRSNOUTfax = null, Expression<Func<string>> bodyvaluepRSNOUTiDCardNo = null, Expression<Func<string>> bodyvaluepRSNOUTtaxOffice = null, Expression<Func<string>> bodyvaluepRSNOUTmobileTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTsurname = null, Expression<Func<string>> bodyvaluepRSNOUTfatherSName = null, Expression<Func<string>> bodyvaluepRSNOUTmotherSName = null, Expression<Func<string>> bodyvaluepRSNOUTnameOfSpouse = null, Expression<Func<string>> bodyvaluepRSNOUTnationality = null, Expression<Func<string>> bodyvaluepRSNOUTtel1 = null, Expression<Func<string>> bodyvaluepRSNOUTtel2 = null, Expression<Func<string>> bodyvaluepRSNOUTinternalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTpersonalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTcomments = null, Expression<Func<bodyvaluepRSNOUTgenderInput>> bodyvaluepRSNOUTgender = null, Expression<Func<string>> bodyvaluepRSNOUTwebPage = null, Expression<Func<string>> bodyvaluepRSNOUTzip = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
         {
             var __workflow_bodyvaluepRSNOUTcode = WorkflowExpression.Compile(bodyvaluepRSNOUTcode, nameof(bodyvaluepRSNOUTcode), required: true);
             var __workflow_bodyvaluepRSNOUTname = WorkflowExpression.Compile(bodyvaluepRSNOUTname, nameof(bodyvaluepRSNOUTname), required: true);
@@ -1214,7 +1214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluepRSNOUTwebPage = WorkflowExpression.Compile(bodyvaluepRSNOUTwebPage, nameof(bodyvaluepRSNOUTwebPage), required: false);
             var __workflow_bodyvaluepRSNOUTzip = WorkflowExpression.Compile(bodyvaluepRSNOUTzip, nameof(bodyvaluepRSNOUTzip), required: false);
             var __workflow_bodyvaluexTRDOCDATA = WorkflowExpression.Compile(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setContact";
                 var apiCallHttpMethod = "post";
@@ -1446,7 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCustomer(Expression<Func<string>> bodyvaluecUSTOMERcode, Expression<Func<string>> bodyvaluecUSTOMERname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryAddress = null, Expression<Func<string>> bodyvaluecUSTOMERtRNo = null, Expression<Func<string>> bodyvaluecUSTOMERgeographicalAreas = null, Expression<Func<string>> bodyvaluecUSTOMERcity = null, Expression<Func<int>> bodyvaluecUSTOMERdiscount = null, Expression<Func<string>> bodyvaluecUSTOMERlocationArea = null, Expression<Func<string>> bodyvaluecUSTOMEReMail = null, Expression<Func<string>> bodyvaluecUSTOMERfax = null, Expression<Func<string>> bodyvaluecUSTOMERtaxOffice = null, Expression<Func<string>> bodyvaluecUSTOMERprofession = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryTelephone = null, Expression<Func<string>> bodyvaluecUSTOMERcomments = null, Expression<Func<bodyvaluecUSTOMERtaxCategoryInput>> bodyvaluecUSTOMERtaxCategory = null, Expression<Func<string>> bodyvaluecUSTOMERzip = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetCustomer(Expression<Func<string>> bodyvaluecUSTOMERcode, Expression<Func<string>> bodyvaluecUSTOMERname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryAddress = null, Expression<Func<string>> bodyvaluecUSTOMERtRNo = null, Expression<Func<string>> bodyvaluecUSTOMERgeographicalAreas = null, Expression<Func<string>> bodyvaluecUSTOMERcity = null, Expression<Func<int>> bodyvaluecUSTOMERdiscount = null, Expression<Func<string>> bodyvaluecUSTOMERlocationArea = null, Expression<Func<string>> bodyvaluecUSTOMEReMail = null, Expression<Func<string>> bodyvaluecUSTOMERfax = null, Expression<Func<string>> bodyvaluecUSTOMERtaxOffice = null, Expression<Func<string>> bodyvaluecUSTOMERprofession = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryTelephone = null, Expression<Func<string>> bodyvaluecUSTOMERcomments = null, Expression<Func<bodyvaluecUSTOMERtaxCategoryInput>> bodyvaluecUSTOMERtaxCategory = null, Expression<Func<string>> bodyvaluecUSTOMERzip = null)
         {
             var __workflow_bodyvaluecUSTOMERcode = WorkflowExpression.Compile(bodyvaluecUSTOMERcode, nameof(bodyvaluecUSTOMERcode), required: true);
             var __workflow_bodyvaluecUSTOMERname = WorkflowExpression.Compile(bodyvaluecUSTOMERname, nameof(bodyvaluecUSTOMERname), required: true);
@@ -1466,7 +1466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluecUSTOMERcomments = WorkflowExpression.Compile(bodyvaluecUSTOMERcomments, nameof(bodyvaluecUSTOMERcomments), required: false);
             var __workflow_bodyvaluecUSTOMERtaxCategory = WorkflowExpression.Compile(bodyvaluecUSTOMERtaxCategory, nameof(bodyvaluecUSTOMERtaxCategory), required: false);
             var __workflow_bodyvaluecUSTOMERzip = WorkflowExpression.Compile(bodyvaluecUSTOMERzip, nameof(bodyvaluecUSTOMERzip), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setCustomer";
                 var apiCallHttpMethod = "post";
@@ -1608,7 +1608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetDraftEntry(Expression<Func<string>> bodyvaluesODRAFTcode, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesODRAFTaddress = null, Expression<Func<string>> bodyvaluesODRAFTtRNo = null, Expression<Func<string>> bodyvaluesODRAFTcity = null, Expression<Func<string>> bodyvaluesODRAFTcountry = null, Expression<Func<string>> bodyvaluesODRAFTarea = null, Expression<Func<string>> bodyvaluesODRAFTprefecture = null, Expression<Func<string>> bodyvaluesODRAFTcategory = null, Expression<Func<string>> bodyvaluesODRAFTcompanyEmail = null, Expression<Func<string>> bodyvaluesODRAFTbusinessEmail = null, Expression<Func<string>> bodyvaluesODRAFTpersonalEmail = null, Expression<Func<string>> bodyvaluesODRAFTiDCardNo = null, Expression<Func<string>> bodyvaluesODRAFTactivity = null, Expression<Func<string>> bodyvaluesODRAFTmobileTelephone = null, Expression<Func<string>> bodyvaluesODRAFTnameTitle = null, Expression<Func<string>> bodyvaluesODRAFTfirstName = null, Expression<Func<string>> bodyvaluesODRAFTsurname = null, Expression<Func<string>> bodyvaluesODRAFTzip = null, Expression<Func<string>> bodyvaluesODRAFTbusinessTelephone = null, Expression<Func<string>> bodyvaluesODRAFTinternalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTpersonalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTcomments = null, Expression<Func<string>> bodyvaluesODRAFTtitle = null, Expression<Func<string>> bodyvaluesODRAFTwebPage = null, Expression<Func<string>> bodyvaluesODRAFTzip2 = null, Expression<Func<string>> bodyvaluesODRAFTLNKbranch = null, Expression<Func<string>> bodyvaluesODRAFTLNKbusinessUnit = null, Expression<Func<string>> bodyvaluesODRAFTLNKdepartment = null, Expression<Func<string>> bodyvaluesODRAFTLNKproject = null, Expression<Func<string>> bodyvaluesODRAFTLNKsource = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetDraftEntry(Expression<Func<string>> bodyvaluesODRAFTcode, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesODRAFTaddress = null, Expression<Func<string>> bodyvaluesODRAFTtRNo = null, Expression<Func<string>> bodyvaluesODRAFTcity = null, Expression<Func<string>> bodyvaluesODRAFTcountry = null, Expression<Func<string>> bodyvaluesODRAFTarea = null, Expression<Func<string>> bodyvaluesODRAFTprefecture = null, Expression<Func<string>> bodyvaluesODRAFTcategory = null, Expression<Func<string>> bodyvaluesODRAFTcompanyEmail = null, Expression<Func<string>> bodyvaluesODRAFTbusinessEmail = null, Expression<Func<string>> bodyvaluesODRAFTpersonalEmail = null, Expression<Func<string>> bodyvaluesODRAFTiDCardNo = null, Expression<Func<string>> bodyvaluesODRAFTactivity = null, Expression<Func<string>> bodyvaluesODRAFTmobileTelephone = null, Expression<Func<string>> bodyvaluesODRAFTnameTitle = null, Expression<Func<string>> bodyvaluesODRAFTfirstName = null, Expression<Func<string>> bodyvaluesODRAFTsurname = null, Expression<Func<string>> bodyvaluesODRAFTzip = null, Expression<Func<string>> bodyvaluesODRAFTbusinessTelephone = null, Expression<Func<string>> bodyvaluesODRAFTinternalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTpersonalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTcomments = null, Expression<Func<string>> bodyvaluesODRAFTtitle = null, Expression<Func<string>> bodyvaluesODRAFTwebPage = null, Expression<Func<string>> bodyvaluesODRAFTzip2 = null, Expression<Func<string>> bodyvaluesODRAFTLNKbranch = null, Expression<Func<string>> bodyvaluesODRAFTLNKbusinessUnit = null, Expression<Func<string>> bodyvaluesODRAFTLNKdepartment = null, Expression<Func<string>> bodyvaluesODRAFTLNKproject = null, Expression<Func<string>> bodyvaluesODRAFTLNKsource = null)
         {
             var __workflow_bodyvaluesODRAFTcode = WorkflowExpression.Compile(bodyvaluesODRAFTcode, nameof(bodyvaluesODRAFTcode), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
@@ -1642,7 +1642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluesODRAFTLNKdepartment = WorkflowExpression.Compile(bodyvaluesODRAFTLNKdepartment, nameof(bodyvaluesODRAFTLNKdepartment), required: false);
             var __workflow_bodyvaluesODRAFTLNKproject = WorkflowExpression.Compile(bodyvaluesODRAFTLNKproject, nameof(bodyvaluesODRAFTLNKproject), required: false);
             var __workflow_bodyvaluesODRAFTLNKsource = WorkflowExpression.Compile(bodyvaluesODRAFTLNKsource, nameof(bodyvaluesODRAFTLNKsource), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setDraftEntry";
                 var apiCallHttpMethod = "post";
@@ -1880,7 +1880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetExpense(Expression<Func<string>> bodyvaluelINEITEMcode, Expression<Func<bodyvaluelINEITEMinvoicingCategoryInput>> bodyvaluelINEITEMinvoicingCategory, Expression<Func<string>> bodyvaluelINEITEMname, Expression<Func<string>> bodyvaluelINEITEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluelINEITEMcommercialCategory = null, Expression<Func<bodyvaluelINEITEMtypeInput>> bodyvaluelINEITEMtype = null, Expression<Func<string>> bodyvaluelINEITEMcomments = null, Expression<Func<bodyvaluelINEITEMfeeValueInput>> bodyvaluelINEITEMfeeValue = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetExpense(Expression<Func<string>> bodyvaluelINEITEMcode, Expression<Func<bodyvaluelINEITEMinvoicingCategoryInput>> bodyvaluelINEITEMinvoicingCategory, Expression<Func<string>> bodyvaluelINEITEMname, Expression<Func<string>> bodyvaluelINEITEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluelINEITEMcommercialCategory = null, Expression<Func<bodyvaluelINEITEMtypeInput>> bodyvaluelINEITEMtype = null, Expression<Func<string>> bodyvaluelINEITEMcomments = null, Expression<Func<bodyvaluelINEITEMfeeValueInput>> bodyvaluelINEITEMfeeValue = null)
         {
             var __workflow_bodyvaluelINEITEMcode = WorkflowExpression.Compile(bodyvaluelINEITEMcode, nameof(bodyvaluelINEITEMcode), required: true);
             var __workflow_bodyvaluelINEITEMinvoicingCategory = WorkflowExpression.Compile(bodyvaluelINEITEMinvoicingCategory, nameof(bodyvaluelINEITEMinvoicingCategory), required: true);
@@ -1892,7 +1892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluelINEITEMtype = WorkflowExpression.Compile(bodyvaluelINEITEMtype, nameof(bodyvaluelINEITEMtype), required: false);
             var __workflow_bodyvaluelINEITEMcomments = WorkflowExpression.Compile(bodyvaluelINEITEMcomments, nameof(bodyvaluelINEITEMcomments), required: false);
             var __workflow_bodyvaluelINEITEMfeeValue = WorkflowExpression.Compile(bodyvaluelINEITEMfeeValue, nameof(bodyvaluelINEITEMfeeValue), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setExpense";
                 var apiCallHttpMethod = "post";
@@ -1978,7 +1978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetExpensesDoc(Expression<Func<string>> bodyvaluelINSUPDOCseries, Expression<Func<string>> bodyvaluelINSUPDOCsupplier, Expression<Func<bodyvalueunnamedInputItem[]>> bodyvalueunnamed = null, Expression<Func<string>> bodyvaluelINSUPDOCproject = null, Expression<Func<string>> bodyvaluelINSUPDOCcomments = null, Expression<Func<string>> bodyvaluelINSUPDOCtRNDATE = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetExpensesDoc(Expression<Func<string>> bodyvaluelINSUPDOCseries, Expression<Func<string>> bodyvaluelINSUPDOCsupplier, Expression<Func<bodyvalueunnamedInputItem[]>> bodyvalueunnamed = null, Expression<Func<string>> bodyvaluelINSUPDOCproject = null, Expression<Func<string>> bodyvaluelINSUPDOCcomments = null, Expression<Func<string>> bodyvaluelINSUPDOCtRNDATE = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodyvaluelINSUPDOCseries = WorkflowExpression.Compile(bodyvaluelINSUPDOCseries, nameof(bodyvaluelINSUPDOCseries), required: true);
             var __workflow_bodyvaluelINSUPDOCsupplier = WorkflowExpression.Compile(bodyvaluelINSUPDOCsupplier, nameof(bodyvaluelINSUPDOCsupplier), required: true);
@@ -1988,7 +1988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluelINSUPDOCtRNDATE = WorkflowExpression.Compile(bodyvaluelINSUPDOCtRNDATE, nameof(bodyvaluelINSUPDOCtRNDATE), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setExpensesDoc";
                 var apiCallHttpMethod = "post";
@@ -2070,7 +2070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetItedoc(Expression<Func<string>> bodyvalueiTEDOCseries, Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEDOCreason = null, Expression<Func<string>> bodyvalueiTEDOCrEMARKS = null, Expression<Func<string>> bodyvalueiTEDOCtRNDATE = null, Expression<Func<bodyvalueiTELINESInputItem[]>> bodyvalueiTELINES = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetItedoc(Expression<Func<string>> bodyvalueiTEDOCseries, Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEDOCreason = null, Expression<Func<string>> bodyvalueiTEDOCrEMARKS = null, Expression<Func<string>> bodyvalueiTEDOCtRNDATE = null, Expression<Func<bodyvalueiTELINESInputItem[]>> bodyvalueiTELINES = null)
         {
             var __workflow_bodyvalueiTEDOCseries = WorkflowExpression.Compile(bodyvalueiTEDOCseries, nameof(bodyvalueiTEDOCseries), required: true);
             var __workflow_bodyvaluemTRDOCwarehouse = WorkflowExpression.Compile(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
@@ -2080,7 +2080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvalueiTEDOCrEMARKS = WorkflowExpression.Compile(bodyvalueiTEDOCrEMARKS, nameof(bodyvalueiTEDOCrEMARKS), required: false);
             var __workflow_bodyvalueiTEDOCtRNDATE = WorkflowExpression.Compile(bodyvalueiTEDOCtRNDATE, nameof(bodyvalueiTEDOCtRNDATE), required: false);
             var __workflow_bodyvalueiTELINES = WorkflowExpression.Compile(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setItedoc";
                 var apiCallHttpMethod = "post";
@@ -2170,7 +2170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetItem(Expression<Func<string>> bodyvalueiTEMcode, Expression<Func<string>> bodyvalueiTEMbaseUnitOfMeasure, Expression<Func<string>> bodyvalueiTEMname, Expression<Func<string>> bodyvalueiTEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEMcommercialCategory = null, Expression<Func<string>> bodyvalueiTEMitemGroup = null, Expression<Func<string>> bodyvalueiTEMretailPrice = null, Expression<Func<string>> bodyvalueiTEMwholesalePrice = null, Expression<Func<string>> bodyvalueiTEMcomments = null, Expression<Func<string>> bodyvalueiTEMdiscount1 = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetItem(Expression<Func<string>> bodyvalueiTEMcode, Expression<Func<string>> bodyvalueiTEMbaseUnitOfMeasure, Expression<Func<string>> bodyvalueiTEMname, Expression<Func<string>> bodyvalueiTEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEMcommercialCategory = null, Expression<Func<string>> bodyvalueiTEMitemGroup = null, Expression<Func<string>> bodyvalueiTEMretailPrice = null, Expression<Func<string>> bodyvalueiTEMwholesalePrice = null, Expression<Func<string>> bodyvalueiTEMcomments = null, Expression<Func<string>> bodyvalueiTEMdiscount1 = null)
         {
             var __workflow_bodyvalueiTEMcode = WorkflowExpression.Compile(bodyvalueiTEMcode, nameof(bodyvalueiTEMcode), required: true);
             var __workflow_bodyvalueiTEMbaseUnitOfMeasure = WorkflowExpression.Compile(bodyvalueiTEMbaseUnitOfMeasure, nameof(bodyvalueiTEMbaseUnitOfMeasure), required: true);
@@ -2184,7 +2184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvalueiTEMwholesalePrice = WorkflowExpression.Compile(bodyvalueiTEMwholesalePrice, nameof(bodyvalueiTEMwholesalePrice), required: false);
             var __workflow_bodyvalueiTEMcomments = WorkflowExpression.Compile(bodyvalueiTEMcomments, nameof(bodyvalueiTEMcomments), required: false);
             var __workflow_bodyvalueiTEMdiscount1 = WorkflowExpression.Compile(bodyvalueiTEMdiscount1, nameof(bodyvalueiTEMdiscount1), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setItem";
                 var apiCallHttpMethod = "post";
@@ -2282,7 +2282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetProject(Expression<Func<string>> bodyvaluepRJCcode, Expression<Func<string>> bodyvaluepRJCname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvaluepRJCaCTSTATUSInput>> bodyvaluepRJCaCTSTATUS = null, Expression<Func<string>> bodyvaluepRJCfINALDATE = null, Expression<Func<string>> bodyvaluepRJCfROMDATE = null, Expression<Func<bodyvaluepRJCpRJCRMInput>> bodyvaluepRJCpRJCRM = null, Expression<Func<string>> bodyvaluepRJCcomments = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetProject(Expression<Func<string>> bodyvaluepRJCcode, Expression<Func<string>> bodyvaluepRJCname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvaluepRJCaCTSTATUSInput>> bodyvaluepRJCaCTSTATUS = null, Expression<Func<string>> bodyvaluepRJCfINALDATE = null, Expression<Func<string>> bodyvaluepRJCfROMDATE = null, Expression<Func<bodyvaluepRJCpRJCRMInput>> bodyvaluepRJCpRJCRM = null, Expression<Func<string>> bodyvaluepRJCcomments = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
         {
             var __workflow_bodyvaluepRJCcode = WorkflowExpression.Compile(bodyvaluepRJCcode, nameof(bodyvaluepRJCcode), required: true);
             var __workflow_bodyvaluepRJCname = WorkflowExpression.Compile(bodyvaluepRJCname, nameof(bodyvaluepRJCname), required: true);
@@ -2294,7 +2294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluepRJCpRJCRM = WorkflowExpression.Compile(bodyvaluepRJCpRJCRM, nameof(bodyvaluepRJCpRJCRM), required: false);
             var __workflow_bodyvaluepRJCcomments = WorkflowExpression.Compile(bodyvaluepRJCcomments, nameof(bodyvaluepRJCcomments), required: false);
             var __workflow_bodyvaluexTRDOCDATA = WorkflowExpression.Compile(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setProject";
                 var apiCallHttpMethod = "post";
@@ -2388,7 +2388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetPurdoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluepURDOCsERIES, Expression<Func<string>> bodyvaluepURDOCsOCURRENCY, Expression<Func<string>> bodyvaluepURDOCtRDR, Expression<Func<bodyvalueiTELINESInputItem2[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluepURDOCdISC1PRC = null, Expression<Func<string>> bodyvaluepURDOCpAYMENT = null, Expression<Func<string>> bodyvaluepURDOCpRJC = null, Expression<Func<string>> bodyvaluepURDOCrEMARKS = null, Expression<Func<string>> bodyvaluepURDOCsUMAMNT = null, Expression<Func<string>> bodyvaluepURDOCtRNDATE = null, Expression<Func<bodyvaluesRVLINESInputItem[]>> bodyvaluesRVLINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetPurdoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluepURDOCsERIES, Expression<Func<string>> bodyvaluepURDOCsOCURRENCY, Expression<Func<string>> bodyvaluepURDOCtRDR, Expression<Func<bodyvalueiTELINESInputItem2[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluepURDOCdISC1PRC = null, Expression<Func<string>> bodyvaluepURDOCpAYMENT = null, Expression<Func<string>> bodyvaluepURDOCpRJC = null, Expression<Func<string>> bodyvaluepURDOCrEMARKS = null, Expression<Func<string>> bodyvaluepURDOCsUMAMNT = null, Expression<Func<string>> bodyvaluepURDOCtRNDATE = null, Expression<Func<bodyvaluesRVLINESInputItem[]>> bodyvaluesRVLINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodyvaluemTRDOCwarehouse = WorkflowExpression.Compile(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
             var __workflow_bodyvaluepURDOCsERIES = WorkflowExpression.Compile(bodyvaluepURDOCsERIES, nameof(bodyvaluepURDOCsERIES), required: true);
@@ -2404,7 +2404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluesRVLINES = WorkflowExpression.Compile(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setPurdoc";
                 var apiCallHttpMethod = "post";
@@ -2522,7 +2522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSaldoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluesALDOCpayment, Expression<Func<string>> bodyvaluesALDOCseries, Expression<Func<string>> bodyvaluesALDOCcurrency, Expression<Func<string>> bodyvaluesALDOCcustomer, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvalueiTELINESInputItem22[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluesALDOCdiscount = null, Expression<Func<string>> bodyvaluesALDOCdiscountValue = null, Expression<Func<string>> bodyvaluesALDOCnetAmount = null, Expression<Func<string>> bodyvaluesALDOCproject = null, Expression<Func<string>> bodyvaluesALDOCcomments = null, Expression<Func<string>> bodyvaluesALDOCtotal = null, Expression<Func<string>> bodyvaluesALDOCtRNDATE = null, Expression<Func<string>> bodyvaluesALDOCvAT = null, Expression<Func<bodyvaluesRVLINESInputItem2[]>> bodyvaluesRVLINES = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSaldoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluesALDOCpayment, Expression<Func<string>> bodyvaluesALDOCseries, Expression<Func<string>> bodyvaluesALDOCcurrency, Expression<Func<string>> bodyvaluesALDOCcustomer, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvalueiTELINESInputItem22[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluesALDOCdiscount = null, Expression<Func<string>> bodyvaluesALDOCdiscountValue = null, Expression<Func<string>> bodyvaluesALDOCnetAmount = null, Expression<Func<string>> bodyvaluesALDOCproject = null, Expression<Func<string>> bodyvaluesALDOCcomments = null, Expression<Func<string>> bodyvaluesALDOCtotal = null, Expression<Func<string>> bodyvaluesALDOCtRNDATE = null, Expression<Func<string>> bodyvaluesALDOCvAT = null, Expression<Func<bodyvaluesRVLINESInputItem2[]>> bodyvaluesRVLINES = null)
         {
             var __workflow_bodyvaluemTRDOCwarehouse = WorkflowExpression.Compile(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
             var __workflow_bodyvaluesALDOCpayment = WorkflowExpression.Compile(bodyvaluesALDOCpayment, nameof(bodyvaluesALDOCpayment), required: true);
@@ -2541,7 +2541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluesALDOCtRNDATE = WorkflowExpression.Compile(bodyvaluesALDOCtRNDATE, nameof(bodyvaluesALDOCtRNDATE), required: false);
             var __workflow_bodyvaluesALDOCvAT = WorkflowExpression.Compile(bodyvaluesALDOCvAT, nameof(bodyvaluesALDOCvAT), required: false);
             var __workflow_bodyvaluesRVLINES = WorkflowExpression.Compile(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setSaldoc";
                 var apiCallHttpMethod = "post";
@@ -2673,7 +2673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetService(Expression<Func<string>> bodyvaluesERVICEcode, Expression<Func<string>> bodyvaluesERVICEbaseUnitOfMeasure, Expression<Func<string>> bodyvaluesERVICEname, Expression<Func<string>> bodyvaluesERVICEvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesERVICEcommercialCategory = null, Expression<Func<string>> bodyvaluesERVICEserviceGroup = null, Expression<Func<string>> bodyvaluesERVICEretailPrice = null, Expression<Func<string>> bodyvaluesERVICEwholesalePrice = null, Expression<Func<string>> bodyvaluesERVICEcomments = null, Expression<Func<string>> bodyvaluesERVICEdiscount1 = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetService(Expression<Func<string>> bodyvaluesERVICEcode, Expression<Func<string>> bodyvaluesERVICEbaseUnitOfMeasure, Expression<Func<string>> bodyvaluesERVICEname, Expression<Func<string>> bodyvaluesERVICEvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesERVICEcommercialCategory = null, Expression<Func<string>> bodyvaluesERVICEserviceGroup = null, Expression<Func<string>> bodyvaluesERVICEretailPrice = null, Expression<Func<string>> bodyvaluesERVICEwholesalePrice = null, Expression<Func<string>> bodyvaluesERVICEcomments = null, Expression<Func<string>> bodyvaluesERVICEdiscount1 = null)
         {
             var __workflow_bodyvaluesERVICEcode = WorkflowExpression.Compile(bodyvaluesERVICEcode, nameof(bodyvaluesERVICEcode), required: true);
             var __workflow_bodyvaluesERVICEbaseUnitOfMeasure = WorkflowExpression.Compile(bodyvaluesERVICEbaseUnitOfMeasure, nameof(bodyvaluesERVICEbaseUnitOfMeasure), required: true);
@@ -2687,7 +2687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluesERVICEwholesalePrice = WorkflowExpression.Compile(bodyvaluesERVICEwholesalePrice, nameof(bodyvaluesERVICEwholesalePrice), required: false);
             var __workflow_bodyvaluesERVICEcomments = WorkflowExpression.Compile(bodyvaluesERVICEcomments, nameof(bodyvaluesERVICEcomments), required: false);
             var __workflow_bodyvaluesERVICEdiscount1 = WorkflowExpression.Compile(bodyvaluesERVICEdiscount1, nameof(bodyvaluesERVICEdiscount1), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setService";
                 var apiCallHttpMethod = "post";
@@ -2785,7 +2785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSOEMAIL(Expression<Func<string>> bodyvaluesOACTIONsERIES, Expression<Func<bodyvaluesOACTIONaCTSTATUSInput>> bodyvaluesOACTIONaCTSTATUS = null, Expression<Func<string>> bodyvaluesOACTIONcOMMENTS = null, Expression<Func<string>> bodyvaluesOACTIONtRNDATE = null, Expression<Func<string>> bodyvaluesOMAILfROMADDRESS = null, Expression<Func<string>> bodyvaluesOMAILfROMNAME = null, Expression<Func<string>> bodyvaluesOMAILsOBCC = null, Expression<Func<string>> bodyvaluesOMAILsOBODY = null, Expression<Func<string>> bodyvaluesOMAILsOCC = null, Expression<Func<string>> bodyvaluesOMAILsOTO = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSOEMAIL(Expression<Func<string>> bodyvaluesOACTIONsERIES, Expression<Func<bodyvaluesOACTIONaCTSTATUSInput>> bodyvaluesOACTIONaCTSTATUS = null, Expression<Func<string>> bodyvaluesOACTIONcOMMENTS = null, Expression<Func<string>> bodyvaluesOACTIONtRNDATE = null, Expression<Func<string>> bodyvaluesOMAILfROMADDRESS = null, Expression<Func<string>> bodyvaluesOMAILfROMNAME = null, Expression<Func<string>> bodyvaluesOMAILsOBCC = null, Expression<Func<string>> bodyvaluesOMAILsOBODY = null, Expression<Func<string>> bodyvaluesOMAILsOCC = null, Expression<Func<string>> bodyvaluesOMAILsOTO = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodyvaluesOACTIONsERIES = WorkflowExpression.Compile(bodyvaluesOACTIONsERIES, nameof(bodyvaluesOACTIONsERIES), required: true);
             var __workflow_bodyvaluesOACTIONaCTSTATUS = WorkflowExpression.Compile(bodyvaluesOACTIONaCTSTATUS, nameof(bodyvaluesOACTIONaCTSTATUS), required: false);
@@ -2800,7 +2800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluexTRDOCDATA = WorkflowExpression.Compile(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setSomail";
                 var apiCallHttpMethod = "post";
@@ -2924,7 +2924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetMeeting(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetMeeting(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodydATAsOACTIONsERIES = WorkflowExpression.Compile(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
             var __workflow_bodydATAsOACTIONoperator = WorkflowExpression.Compile(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
@@ -2943,7 +2943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodydATAxTRDOCDATA = WorkflowExpression.Compile(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setSomeeting";
                 var apiCallHttpMethod = "post";
@@ -3083,7 +3083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSOTASK(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSOTASK(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodydATAsOACTIONsERIES = WorkflowExpression.Compile(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
             var __workflow_bodydATAsOACTIONoperator = WorkflowExpression.Compile(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
@@ -3102,7 +3102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodydATAxTRDOCDATA = WorkflowExpression.Compile(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setSotask";
                 var apiCallHttpMethod = "post";
@@ -3242,7 +3242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSupplier(Expression<Func<string>> bodyvaluesUPPLIERcODE, Expression<Func<string>> bodyvaluesUPPLIERnAME, Expression<Func<bodyvaluesUPBANKACCInputItem[]>> bodyvaluesUPBANKACC = null, Expression<Func<string>> bodyvaluesUPPLIERaDDRESS = null, Expression<Func<string>> bodyvaluesUPPLIERaFM = null, Expression<Func<string>> bodyvaluesUPPLIERcITY = null, Expression<Func<string>> bodyvaluesUPPLIERdISTRICT = null, Expression<Func<string>> bodyvaluesUPPLIEReMAIL = null, Expression<Func<string>> bodyvaluesUPPLIERfAX = null, Expression<Func<string>> bodyvaluesUPPLIERiRSDATA = null, Expression<Func<string>> bodyvaluesUPPLIERjOBTYPETRD = null, Expression<Func<string>> bodyvaluesUPPLIERpHONE01 = null, Expression<Func<string>> bodyvaluesUPPLIERrEMARKS = null, Expression<Func<string>> bodyvaluesUPPLIERzIP = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSupplier(Expression<Func<string>> bodyvaluesUPPLIERcODE, Expression<Func<string>> bodyvaluesUPPLIERnAME, Expression<Func<bodyvaluesUPBANKACCInputItem[]>> bodyvaluesUPBANKACC = null, Expression<Func<string>> bodyvaluesUPPLIERaDDRESS = null, Expression<Func<string>> bodyvaluesUPPLIERaFM = null, Expression<Func<string>> bodyvaluesUPPLIERcITY = null, Expression<Func<string>> bodyvaluesUPPLIERdISTRICT = null, Expression<Func<string>> bodyvaluesUPPLIEReMAIL = null, Expression<Func<string>> bodyvaluesUPPLIERfAX = null, Expression<Func<string>> bodyvaluesUPPLIERiRSDATA = null, Expression<Func<string>> bodyvaluesUPPLIERjOBTYPETRD = null, Expression<Func<string>> bodyvaluesUPPLIERpHONE01 = null, Expression<Func<string>> bodyvaluesUPPLIERrEMARKS = null, Expression<Func<string>> bodyvaluesUPPLIERzIP = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodyvaluesUPPLIERcODE = WorkflowExpression.Compile(bodyvaluesUPPLIERcODE, nameof(bodyvaluesUPPLIERcODE), required: true);
             var __workflow_bodyvaluesUPPLIERnAME = WorkflowExpression.Compile(bodyvaluesUPPLIERnAME, nameof(bodyvaluesUPPLIERnAME), required: true);
@@ -3260,7 +3260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluesUPPLIERzIP = WorkflowExpression.Compile(bodyvaluesUPPLIERzIP, nameof(bodyvaluesUPPLIERzIP), required: false);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
             var __workflow_bodykEY = WorkflowExpression.Compile(bodykEY, nameof(bodykEY), required: false);
-            return new DeferredBodyAction<SetData200response>(() =>
+            return new DeferredBodyAction<SetData200response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setSupplier";
                 var apiCallHttpMethod = "post";
@@ -3392,11 +3392,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class Soft1Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger Webhook(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Webhook(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
             var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook";
                 var apiCallHttpMethod = "post";
@@ -3433,11 +3433,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             });
         }
 
-        public IWorkflowTrigger WebhookOnDelete(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookOnDelete(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
             var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/onDelete";
                 var apiCallHttpMethod = "post";
@@ -3474,11 +3474,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             });
         }
 
-        public IWorkflowTrigger WebhookOnInsert(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookOnInsert(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
             var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/onInsert";
                 var apiCallHttpMethod = "post";
@@ -3515,11 +3515,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             });
         }
 
-        public IWorkflowTrigger WebhookOnUpdate(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookOnUpdate(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
             var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/onUpdate";
                 var apiCallHttpMethod = "post";

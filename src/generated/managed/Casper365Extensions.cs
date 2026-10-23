@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
     public class Casper365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IBodyWorkflowAction<Course[]> CourseGet(Expression<Func<string>> course = null)
+        public IBodyWorkflowAction<Course[], ApiConnectionActionConfiguration> CourseGet(Expression<Func<string>> course = null)
         {
             var __workflow_course = WorkflowExpression.Compile(course, nameof(course), required: false);
-            return new DeferredBodyAction<Course[]>(() =>
+            return new DeferredBodyAction<Course[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Course";
                 var apiCallHttpMethod = "get";
@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IBodyWorkflowAction<bool> Course(Expression<Func<string>> courseaudience = null, Expression<Func<string>> coursecourseName = null, Expression<Func<string>> coursedos = null, Expression<Func<string>> courseemail = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> Course(Expression<Func<string>> courseaudience = null, Expression<Func<string>> coursecourseName = null, Expression<Func<string>> coursedos = null, Expression<Func<string>> courseemail = null)
         {
             var __workflow_courseaudience = WorkflowExpression.Compile(courseaudience, nameof(courseaudience), required: false);
             var __workflow_coursecourseName = WorkflowExpression.Compile(coursecourseName, nameof(coursecourseName), required: false);
             var __workflow_coursedos = WorkflowExpression.Compile(coursedos, nameof(coursedos), required: false);
             var __workflow_courseemail = WorkflowExpression.Compile(courseemail, nameof(courseemail), required: false);
-            return new DeferredBodyAction<bool>(() =>
+            return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Course";
                 var apiCallHttpMethod = "post";
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IWorkflowAction LogEnd(Expression<Func<string>> identifier = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LogEnd(Expression<Func<string>> identifier = null)
         {
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Log/End";
                 var apiCallHttpMethod = "post";
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IWorkflowAction LogStart(Expression<Func<string>> identifier = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LogStart(Expression<Func<string>> identifier = null)
         {
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Log/Start";
                 var apiCallHttpMethod = "post";
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IBodyWorkflowAction<Student> StudentGet(Expression<Func<string>> studentId = null)
+        public IBodyWorkflowAction<Student, ApiConnectionActionConfiguration> StudentGet(Expression<Func<string>> studentId = null)
         {
             var __workflow_studentId = WorkflowExpression.Compile(studentId, nameof(studentId), required: false);
-            return new DeferredBodyAction<Student>(() =>
+            return new DeferredBodyAction<Student, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Student";
                 var apiCallHttpMethod = "get";
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IWorkflowAction Student(Expression<Func<string>> studentacadCareer = null, Expression<Func<string>> studentacadOrgDescr = null, Expression<Func<string>> studentacadProgram = null, Expression<Func<string>> studentaddress1 = null, Expression<Func<string>> studentaddress2 = null, Expression<Func<string>> studentaddress3 = null, Expression<Func<string>> studentaddress4 = null, Expression<Func<string>> studentbarcode = null, Expression<Func<string>> studentbirthCountryCode = null, Expression<Func<string>> studentcellTel = null, Expression<Func<string>> studentcity = null, Expression<Func<double>> studentcollegeAccountNo = null, Expression<Func<string>> studentcountry = null, Expression<Func<string>> studentcountryCitizen = null, Expression<Func<string>> studentcountryCitizen2 = null, Expression<Func<string>> studentcrsid = null, Expression<Func<string>> studentdegree = null, Expression<Func<string>> studentdob = null, Expression<Func<string>> studentdos = null, Expression<Func<string>> studentdosEmail = null, Expression<Func<string>> studentdosEmployeeId = null, Expression<Func<string>> studentemail = null, Expression<Func<string>> studentemailAddr = null, Expression<Func<string>> studentemailPersonal = null, Expression<Func<string>> studentendDate = null, Expression<Func<string>> studentenqGrp = null, Expression<Func<string>> studentfirstNames = null, Expression<Func<string>> studentgradTutor = null, Expression<Func<string>> studentgradTutorEmail = null, Expression<Func<string>> studentgradTutorEmployeeId = null, Expression<Func<string>> studentgrp = null, Expression<Func<string>> studentgrpId = null, Expression<Func<string>> studenthomeAddress1 = null, Expression<Func<string>> studenthomeAddress2 = null, Expression<Func<string>> studenthomeAddress3 = null, Expression<Func<string>> studenthomeAddress4 = null, Expression<Func<string>> studenthomeAddress5 = null, Expression<Func<string>> studenthomeCountry = null, Expression<Func<string>> studenthomePostal = null, Expression<Func<string>> studenthomeState = null, Expression<Func<string>> studenthomeTel = null, Expression<Func<string>> studentmatriculation = null, Expression<Func<string>> studentmobileTel = null, Expression<Func<string>> studentnationality = null, Expression<Func<string>> studentpostal = null, Expression<Func<string>> studentprinSuper = null, Expression<Func<string>> studentprinSuperEmail = null, Expression<Func<string>> studentprinSuperEmployeeId = null, Expression<Func<string>> studentsex = null, Expression<Func<string>> studentstartDate = null, Expression<Func<string>> studentstudentFeesClass = null, Expression<Func<string>> studentstudyYear = null, Expression<Func<string>> studentsubject = null, Expression<Func<string>> studentsubjectDescr = null, Expression<Func<string>> studentsuperEmail = null, Expression<Func<string>> studentsurname = null, Expression<Func<string>> studenttitle = null, Expression<Func<string>> studenttutor = null, Expression<Func<string>> studenttutorEmail = null, Expression<Func<string>> studenttutorEmployeeId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Student(Expression<Func<string>> studentacadCareer = null, Expression<Func<string>> studentacadOrgDescr = null, Expression<Func<string>> studentacadProgram = null, Expression<Func<string>> studentaddress1 = null, Expression<Func<string>> studentaddress2 = null, Expression<Func<string>> studentaddress3 = null, Expression<Func<string>> studentaddress4 = null, Expression<Func<string>> studentbarcode = null, Expression<Func<string>> studentbirthCountryCode = null, Expression<Func<string>> studentcellTel = null, Expression<Func<string>> studentcity = null, Expression<Func<double>> studentcollegeAccountNo = null, Expression<Func<string>> studentcountry = null, Expression<Func<string>> studentcountryCitizen = null, Expression<Func<string>> studentcountryCitizen2 = null, Expression<Func<string>> studentcrsid = null, Expression<Func<string>> studentdegree = null, Expression<Func<string>> studentdob = null, Expression<Func<string>> studentdos = null, Expression<Func<string>> studentdosEmail = null, Expression<Func<string>> studentdosEmployeeId = null, Expression<Func<string>> studentemail = null, Expression<Func<string>> studentemailAddr = null, Expression<Func<string>> studentemailPersonal = null, Expression<Func<string>> studentendDate = null, Expression<Func<string>> studentenqGrp = null, Expression<Func<string>> studentfirstNames = null, Expression<Func<string>> studentgradTutor = null, Expression<Func<string>> studentgradTutorEmail = null, Expression<Func<string>> studentgradTutorEmployeeId = null, Expression<Func<string>> studentgrp = null, Expression<Func<string>> studentgrpId = null, Expression<Func<string>> studenthomeAddress1 = null, Expression<Func<string>> studenthomeAddress2 = null, Expression<Func<string>> studenthomeAddress3 = null, Expression<Func<string>> studenthomeAddress4 = null, Expression<Func<string>> studenthomeAddress5 = null, Expression<Func<string>> studenthomeCountry = null, Expression<Func<string>> studenthomePostal = null, Expression<Func<string>> studenthomeState = null, Expression<Func<string>> studenthomeTel = null, Expression<Func<string>> studentmatriculation = null, Expression<Func<string>> studentmobileTel = null, Expression<Func<string>> studentnationality = null, Expression<Func<string>> studentpostal = null, Expression<Func<string>> studentprinSuper = null, Expression<Func<string>> studentprinSuperEmail = null, Expression<Func<string>> studentprinSuperEmployeeId = null, Expression<Func<string>> studentsex = null, Expression<Func<string>> studentstartDate = null, Expression<Func<string>> studentstudentFeesClass = null, Expression<Func<string>> studentstudyYear = null, Expression<Func<string>> studentsubject = null, Expression<Func<string>> studentsubjectDescr = null, Expression<Func<string>> studentsuperEmail = null, Expression<Func<string>> studentsurname = null, Expression<Func<string>> studenttitle = null, Expression<Func<string>> studenttutor = null, Expression<Func<string>> studenttutorEmail = null, Expression<Func<string>> studenttutorEmployeeId = null)
         {
             var __workflow_studentacadCareer = WorkflowExpression.Compile(studentacadCareer, nameof(studentacadCareer), required: false);
             var __workflow_studentacadOrgDescr = WorkflowExpression.Compile(studentacadOrgDescr, nameof(studentacadOrgDescr), required: false);
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
             var __workflow_studenttutor = WorkflowExpression.Compile(studenttutor, nameof(studenttutor), required: false);
             var __workflow_studenttutorEmail = WorkflowExpression.Compile(studenttutorEmail, nameof(studenttutorEmail), required: false);
             var __workflow_studenttutorEmployeeId = WorkflowExpression.Compile(studenttutorEmployeeId, nameof(studenttutorEmployeeId), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Student";
                 var apiCallHttpMethod = "post";
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IBodyWorkflowAction<bool> StudentIsBrowserAppGet()
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> StudentIsBrowserAppGet()
         {
             var apiCallPath = "/Student/IsBrowserApp";
             var apiCallHttpMethod = "get";

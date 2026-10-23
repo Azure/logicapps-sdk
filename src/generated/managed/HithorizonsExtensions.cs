@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
     public class HithorizonsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        public IBodyWorkflowAction<CompanyDetailResultApiResponse> CompanyGet(Expression<Func<string>> hitHorizonsId)
+        public IBodyWorkflowAction<CompanyDetailResultApiResponse, ApiConnectionActionConfiguration> CompanyGet(Expression<Func<string>> hitHorizonsId)
         {
             var __workflow_hitHorizonsId = WorkflowExpression.Compile(hitHorizonsId, nameof(hitHorizonsId), required: true);
-            return new DeferredBodyAction<CompanyDetailResultApiResponse>(() =>
+            return new DeferredBodyAction<CompanyDetailResultApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Company/Get";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearch(Expression<Func<string>> dUNSNumber = null, Expression<Func<string>> companyName = null, Expression<Func<string>> nationalId = null, Expression<Func<string>> addressUnstructured = null, Expression<Func<string>> addressStreet = null, Expression<Func<string>> city = null, Expression<Func<string>> stateProvince = null, Expression<Func<string>> country = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<CompanySearchResponseApiResponse, ApiConnectionActionConfiguration> CompanySearch(Expression<Func<string>> dUNSNumber = null, Expression<Func<string>> companyName = null, Expression<Func<string>> nationalId = null, Expression<Func<string>> addressUnstructured = null, Expression<Func<string>> addressStreet = null, Expression<Func<string>> city = null, Expression<Func<string>> stateProvince = null, Expression<Func<string>> country = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
         {
             var __workflow_dUNSNumber = WorkflowExpression.Compile(dUNSNumber, nameof(dUNSNumber), required: false);
             var __workflow_companyName = WorkflowExpression.Compile(companyName, nameof(companyName), required: false);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             var __workflow_showBranches = WorkflowExpression.Compile(showBranches, nameof(showBranches), required: false);
             var __workflow_companyTypes = WorkflowExpression.Compile(companyTypes, nameof(companyTypes), required: false);
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
-            return new DeferredBodyAction<CompanySearchResponseApiResponse>(() =>
+            return new DeferredBodyAction<CompanySearchResponseApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Company/Search";
                 var apiCallHttpMethod = "get";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearchUnstructured(Expression<Func<string>> ids = null, Expression<Func<string>> name = null, Expression<Func<string>> address = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<CompanySearchResponseApiResponse, ApiConnectionActionConfiguration> CompanySearchUnstructured(Expression<Func<string>> ids = null, Expression<Func<string>> name = null, Expression<Func<string>> address = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
             var __workflow_showBranches = WorkflowExpression.Compile(showBranches, nameof(showBranches), required: false);
             var __workflow_companyTypes = WorkflowExpression.Compile(companyTypes, nameof(companyTypes), required: false);
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
-            return new DeferredBodyAction<CompanySearchResponseApiResponse>(() =>
+            return new DeferredBodyAction<CompanySearchResponseApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Company/SearchUnstructured";
                 var apiCallHttpMethod = "get";

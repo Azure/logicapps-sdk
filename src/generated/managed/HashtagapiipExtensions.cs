@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
     public class HashtagapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<HashtagsSimilarGetResponse> HashtagsSimilarGet(Expression<Func<string>> keyword)
+        public IBodyWorkflowAction<HashtagsSimilarGetResponse, ApiConnectionActionConfiguration> HashtagsSimilarGet(Expression<Func<string>> keyword)
         {
             var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: true);
-            return new DeferredBodyAction<HashtagsSimilarGetResponse>(() =>
+            return new DeferredBodyAction<HashtagsSimilarGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tag/predict";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<HashtagsTrendingGetResponse> HashtagsTrendingGet()
+        public IBodyWorkflowAction<HashtagsTrendingGetResponse, ApiConnectionActionConfiguration> HashtagsTrendingGet()
         {
             var apiCallPath = "/tag/trending";
             var apiCallHttpMethod = "get";
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<HashtagsTopGetResponse> HashtagsTopGet()
+        public IBodyWorkflowAction<HashtagsTopGetResponse, ApiConnectionActionConfiguration> HashtagsTopGet()
         {
             var apiCallPath = "/tag/top";
             var apiCallHttpMethod = "get";
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<PostCountGetResponse> PostCountGet(Expression<Func<string>> tag)
+        public IBodyWorkflowAction<PostCountGetResponse, ApiConnectionActionConfiguration> PostCountGet(Expression<Func<string>> tag)
         {
             var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
-            return new DeferredBodyAction<PostCountGetResponse>(() =>
+            return new DeferredBodyAction<PostCountGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tag/count";
                 var apiCallHttpMethod = "get";
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags(Expression<Func<string>> bodyimage)
+        public IBodyWorkflowAction<ImageHashtagsPostResponse, ApiConnectionActionConfiguration> ImageHashtags(Expression<Func<string>> bodyimage)
         {
             var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: true);
-            return new DeferredBodyAction<ImageHashtagsPostResponse>(() =>
+            return new DeferredBodyAction<ImageHashtagsPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tag/generate";
                 var apiCallHttpMethod = "post";
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CategoriesGetResponse> CategoriesGet()
+        public IBodyWorkflowAction<CategoriesGetResponse, ApiConnectionActionConfiguration> CategoriesGet()
         {
             var apiCallPath = "/categories";
             var apiCallHttpMethod = "get";
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CategoryGetResponse, ApiConnectionActionConfiguration> CategoryGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CategoryGetResponse>(() =>
+            return new DeferredBodyAction<CategoryGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/categories/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -102,10 +102,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CategoryTagsGetResponse, ApiConnectionActionConfiguration> CategoryTagsGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CategoryTagsGetResponse>(() =>
+            return new DeferredBodyAction<CategoryTagsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/categories/{0}/tags", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CountriesGetResponse> CountriesGet()
+        public IBodyWorkflowAction<CountriesGetResponse, ApiConnectionActionConfiguration> CountriesGet()
         {
             var apiCallPath = "/trending/countries";
             var apiCallHttpMethod = "get";
@@ -124,10 +124,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet(Expression<Func<string>> countryName)
+        public IBodyWorkflowAction<CountryTagsGetResponse, ApiConnectionActionConfiguration> CountryTagsGet(Expression<Func<string>> countryName)
         {
             var __workflow_countryName = WorkflowExpression.Compile(countryName, nameof(countryName), required: true);
-            return new DeferredBodyAction<CountryTagsGetResponse>(() =>
+            return new DeferredBodyAction<CountryTagsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trending/{0}/tags", __workflow_countryName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

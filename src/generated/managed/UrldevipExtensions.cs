@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
     public class UrldevipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
+        public IBodyWorkflowAction<LinkPostResponse, ApiConnectionActionConfiguration> Link(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodyttl = WorkflowExpression.Compile(bodyttl, nameof(bodyttl), required: false);
-            return new DeferredBodyAction<LinkPostResponse>(() =>
+            return new DeferredBodyAction<LinkPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create/";
                 var apiCallHttpMethod = "post";
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<bool> LinkDelete(Expression<Func<string>> bodykey = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<string>> bodykey = null)
         {
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            return new DeferredBodyAction<bool>(() =>
+            return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/destroy/";
                 var apiCallHttpMethod = "post";
@@ -67,11 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
+        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
         {
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             var __workflow_bodyttl = WorkflowExpression.Compile(bodyttl, nameof(bodyttl), required: false);
-            return new DeferredBodyAction<MessagePostResponse>(() =>
+            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages/create/";
                 var apiCallHttpMethod = "post";

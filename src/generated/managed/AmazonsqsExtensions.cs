@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
     public class AmazonsqsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IBodyWorkflowAction<QueueMessageMetadata> SendMessageToQueue(Expression<Func<int>> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, Expression<Func<string>> sendMessageOperationInputmessageContent = null)
+        public IBodyWorkflowAction<QueueMessageMetadata, ApiConnectionActionConfiguration> SendMessageToQueue(Expression<Func<int>> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, Expression<Func<string>> sendMessageOperationInputmessageContent = null)
         {
             var __workflow_sendMessageOperationInputmessageVisibilityDelayInSeconds = WorkflowExpression.Compile(sendMessageOperationInputmessageVisibilityDelayInSeconds, nameof(sendMessageOperationInputmessageVisibilityDelayInSeconds), required: false);
             var __workflow_sendMessageOperationInputmessageContent = WorkflowExpression.Compile(sendMessageOperationInputmessageContent, nameof(sendMessageOperationInputmessageContent), required: false);
-            return new DeferredBodyAction<QueueMessageMetadata>(() =>
+            return new DeferredBodyAction<QueueMessageMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/message";
                 var apiCallHttpMethod = "put";
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IWorkflowAction DeleteMessageFromQueue(Expression<Func<string>> messageReceiptHandle)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteMessageFromQueue(Expression<Func<string>> messageReceiptHandle)
         {
             var __workflow_messageReceiptHandle = WorkflowExpression.Compile(messageReceiptHandle, nameof(messageReceiptHandle), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/message";
                 var apiCallHttpMethod = "delete";
@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 
     public class AmazonsqsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue(Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage, ApiConnectionTriggerConfiguration> GetMessageFromQueue(Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
         {
             var __workflow_messageVisibilityTimeoutSeconds = WorkflowExpression.Compile(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
             var __workflow_requestWaitTimeoutSeconds = WorkflowExpression.Compile(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
             var __workflow_messageAttributeNames = WorkflowExpression.Compile(messageAttributeNames, nameof(messageAttributeNames), required: false);
-            return new DeferredBodyTrigger<QueueMessage>(() =>
+            return new DeferredBodyTrigger<QueueMessage, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/message";
                 var apiCallHttpMethod = "get";
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
             });
         }
 
-        public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage[], ApiConnectionTriggerConfiguration> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
         {
             var __workflow_maximumNumberOfMessages = WorkflowExpression.Compile(maximumNumberOfMessages, nameof(maximumNumberOfMessages), required: false);
             var __workflow_messageVisibilityTimeoutSeconds = WorkflowExpression.Compile(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
             var __workflow_requestWaitTimeoutSeconds = WorkflowExpression.Compile(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
             var __workflow_messageAttributeNames = WorkflowExpression.Compile(messageAttributeNames, nameof(messageAttributeNames), required: false);
-            return new DeferredBodyTrigger<QueueMessage[]>(() =>
+            return new DeferredBodyTrigger<QueueMessage[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "get";

@@ -1,9 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -14,14 +16,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
     public class ConfluentKafkaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
-        public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null)
+        public IBodyWorkflowAction<SendMessageOutput, SendMessageActionConfiguration> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_messageKey = WorkflowExpression.Compile(messageKey, nameof(messageKey), required: false);
             var __workflow_headers = WorkflowExpression.Compile(headers, nameof(headers), required: false);
             var __workflow_schemaSubjectName = WorkflowExpression.Compile(schemaSubjectName, nameof(schemaSubjectName), required: false);
-            return new DeferredBodyAction<SendMessageOutput>(() =>
+            return new DeferredBodyAction<SendMessageOutput, SendMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["TopicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -46,21 +48,28 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "SendMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<SendMessageOutput, SendMessageActionConfiguration>(serviceProviderInput);
             });
         }
     }
 
+    public sealed class SendMessageActionConfiguration : ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
     public class ConfluentKafkaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageInputAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageInputProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null)
+        public IBodyWorkflowTrigger<ReceiveMessageOutput, ReceiveMessageTriggerConfiguration> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageInputAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageInputProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null)
         {
             var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: true);
             var __workflow_consumerGroup = WorkflowExpression.Compile(consumerGroup, nameof(consumerGroup), required: false);
             var __workflow_authenticationMode = WorkflowExpression.Compile(authenticationMode, nameof(authenticationMode), required: false);
             var __workflow_protocol = WorkflowExpression.Compile(protocol, nameof(protocol), required: false);
             var __workflow_avroSchema = WorkflowExpression.Compile(avroSchema, nameof(avroSchema), required: false);
-            return new DeferredBodyTrigger<ReceiveMessageOutput>(() =>
+            return new DeferredBodyTrigger<ReceiveMessageOutput, ReceiveMessageTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["Topic"] = ExpressionConverter.ConvertO(__workflow_topic);
@@ -101,9 +110,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "ReceiveMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveMessageOutput, ReceiveMessageTriggerConfiguration>(serviceProviderInput);
             });
         }
+    }
+
+    public sealed class ReceiveMessageTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class ReceiveMessageOutput
@@ -126,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         public string HeaderValue { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ReceiveMessageInputAuthenticationModeType
     {
         Plain,
@@ -134,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         ScramSha512
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ReceiveMessageInputProtocolType
     {
         Ssl,

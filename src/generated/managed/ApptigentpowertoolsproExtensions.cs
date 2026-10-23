@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
     public class ApptigentpowertoolsproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apptigentpowertoolspro")]
-        public IWorkflowAction CompositeImage(Expression<Func<positionInput>> position, Expression<Func<double>> opacity, Expression<Func<object>> background, Expression<Func<object>> foreground, Expression<Func<double>> horizontal = null, Expression<Func<double>> vertical = null, Expression<Func<string>> filename = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CompositeImage(Expression<Func<positionInput>> position, Expression<Func<double>> opacity, Expression<Func<object>> background, Expression<Func<object>> foreground, Expression<Func<double>> horizontal = null, Expression<Func<double>> vertical = null, Expression<Func<string>> filename = null)
         {
             var __workflow_position = WorkflowExpression.Compile(position, nameof(position), required: true);
             var __workflow_opacity = WorkflowExpression.Compile(opacity, nameof(opacity), required: true);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
             var __workflow_horizontal = WorkflowExpression.Compile(horizontal, nameof(horizontal), required: false);
             var __workflow_vertical = WorkflowExpression.Compile(vertical, nameof(vertical), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CompositeImage";
                 var apiCallHttpMethod = "post";

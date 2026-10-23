@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
     public class EmtatlasaimsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline(Expression<Func<string>> baseUrl, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ListBaseline[], ApiConnectionActionConfiguration> ListAssetsConfigurationBaseline(Expression<Func<string>> baseUrl, Expression<Func<string>> status = null)
         {
             var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<ListBaseline[]>(() =>
+            return new DeferredBodyAction<ListBaseline[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/aimsapi/assets/configuration/base_line/";
                 var apiCallHttpMethod = "get";
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline(Expression<Func<string>> baselineId, Expression<Func<string>> baseUrl)
+        public IBodyWorkflowAction<ListBaseline, ApiConnectionActionConfiguration> GetAssetsConfigurationBaseline(Expression<Func<string>> baselineId, Expression<Func<string>> baseUrl)
         {
             var __workflow_baselineId = WorkflowExpression.Compile(baselineId, nameof(baselineId), required: true);
             var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
-            return new DeferredBodyAction<ListBaseline>(() =>
+            return new DeferredBodyAction<ListBaseline, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", __workflow_baselineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<AssetSearchResult> AssetsSearch(Expression<Func<string>> baseUrl, Expression<Func<string>> bodycontractId = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodymodifiedDategreaterThan = null, Expression<Func<string>> bodymodifiedDatelessThan = null, Expression<Func<string>> bodysortKey = null, Expression<Func<string>> bodysortOrder = null, Expression<Func<string[]>> bodyfilteredAssetClassCode = null)
+        public IBodyWorkflowAction<AssetSearchResult, ApiConnectionActionConfiguration> AssetsSearch(Expression<Func<string>> baseUrl, Expression<Func<string>> bodycontractId = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodymodifiedDategreaterThan = null, Expression<Func<string>> bodymodifiedDatelessThan = null, Expression<Func<string>> bodysortKey = null, Expression<Func<string>> bodysortOrder = null, Expression<Func<string[]>> bodyfilteredAssetClassCode = null)
         {
             var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
             var __workflow_bodycontractId = WorkflowExpression.Compile(bodycontractId, nameof(bodycontractId), required: false);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             var __workflow_bodysortKey = WorkflowExpression.Compile(bodysortKey, nameof(bodysortKey), required: false);
             var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
             var __workflow_bodyfilteredAssetClassCode = WorkflowExpression.Compile(bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
-            return new DeferredBodyAction<AssetSearchResult>(() =>
+            return new DeferredBodyAction<AssetSearchResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/aimsapi/assets/search/";
                 var apiCallHttpMethod = "post";
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<UserDataResponseDoc> GetUserData(Expression<Func<string>> baseUrl)
+        public IBodyWorkflowAction<UserDataResponseDoc, ApiConnectionActionConfiguration> GetUserData(Expression<Func<string>> baseUrl)
         {
             var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
-            return new DeferredBodyAction<UserDataResponseDoc>(() =>
+            return new DeferredBodyAction<UserDataResponseDoc, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/aimsapi/user/user_data/";
                 var apiCallHttpMethod = "get";

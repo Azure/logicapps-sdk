@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
     public class PostmanipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ListWorkspacesResponse> ListWorkspaces(Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<ListWorkspacesResponse, ApiConnectionActionConfiguration> ListWorkspaces(Expression<Func<typeInput>> type = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<ListWorkspacesResponse>(() =>
+            return new DeferredBodyAction<ListWorkspacesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspaces";
                 var apiCallHttpMethod = "get";
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<CreateAWorkspaceResponse> CreateAWorkspace(Expression<Func<string>> bodyworkspacename, Expression<Func<bodyworkspacetypeInput>> bodyworkspacetype, Expression<Func<string>> bodyworkspacedescription = null)
+        public IBodyWorkflowAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration> CreateAWorkspace(Expression<Func<string>> bodyworkspacename, Expression<Func<bodyworkspacetypeInput>> bodyworkspacetype, Expression<Func<string>> bodyworkspacedescription = null)
         {
             var __workflow_bodyworkspacename = WorkflowExpression.Compile(bodyworkspacename, nameof(bodyworkspacename), required: true);
             var __workflow_bodyworkspacetype = WorkflowExpression.Compile(bodyworkspacetype, nameof(bodyworkspacetype), required: true);
             var __workflow_bodyworkspacedescription = WorkflowExpression.Compile(bodyworkspacedescription, nameof(bodyworkspacedescription), required: false);
-            return new DeferredBodyAction<CreateAWorkspaceResponse>(() =>
+            return new DeferredBodyAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspaces";
                 var apiCallHttpMethod = "post";
@@ -68,10 +68,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<GetWorkspaceResponse> GetWorkspace(Expression<Func<string>> workspaceId)
+        public IBodyWorkflowAction<GetWorkspaceResponse, ApiConnectionActionConfiguration> GetWorkspace(Expression<Func<string>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyAction<GetWorkspaceResponse>(() =>
+            return new DeferredBodyAction<GetWorkspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workspaces/{0}", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<GetAuthenticatedUserResponse> GetAuthenticatedUser()
+        public IBodyWorkflowAction<GetAuthenticatedUserResponse, ApiConnectionActionConfiguration> GetAuthenticatedUser()
         {
             var apiCallPath = "/me";
             var apiCallHttpMethod = "get";
@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ListEnvironmentsResponse> ListEnvironments(Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ListEnvironmentsResponse, ApiConnectionActionConfiguration> ListEnvironments(Expression<Func<string>> workspace = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
-            return new DeferredBodyAction<ListEnvironmentsResponse>(() =>
+            return new DeferredBodyAction<ListEnvironmentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/environments";
                 var apiCallHttpMethod = "get";
@@ -105,10 +105,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<GetEnvironmentResponse> GetEnvironment(Expression<Func<string>> environmentId)
+        public IBodyWorkflowAction<GetEnvironmentResponse, ApiConnectionActionConfiguration> GetEnvironment(Expression<Func<string>> environmentId)
         {
             var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
-            return new DeferredBodyAction<GetEnvironmentResponse>(() =>
+            return new DeferredBodyAction<GetEnvironmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environments/{0}", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -118,10 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ListCollectionsResponse> ListCollections(Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ListCollectionsResponse, ApiConnectionActionConfiguration> ListCollections(Expression<Func<string>> workspace = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
-            return new DeferredBodyAction<ListCollectionsResponse>(() =>
+            return new DeferredBodyAction<ListCollectionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/collections";
                 var apiCallHttpMethod = "get";
@@ -133,11 +133,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<GetCollectionResponse> GetCollection(Expression<Func<string>> collectionId, Expression<Func<string>> accessKey = null)
+        public IBodyWorkflowAction<GetCollectionResponse, ApiConnectionActionConfiguration> GetCollection(Expression<Func<string>> collectionId, Expression<Func<string>> accessKey = null)
         {
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
             var __workflow_accessKey = WorkflowExpression.Compile(accessKey, nameof(accessKey), required: false);
-            return new DeferredBodyAction<GetCollectionResponse>(() =>
+            return new DeferredBodyAction<GetCollectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -149,10 +149,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ImportOpenApiResponse> ImportOpenApi(Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ImportOpenApiResponse, ApiConnectionActionConfiguration> ImportOpenApi(Expression<Func<string>> workspace = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
-            return new DeferredBodyAction<ImportOpenApiResponse>(() =>
+            return new DeferredBodyAction<ImportOpenApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/import/openapi";
                 var apiCallHttpMethod = "post";

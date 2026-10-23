@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
     public class FinnishrailwaytrafipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetStationsResponseItem[]> GetStations()
+        public IBodyWorkflowAction<GetStationsResponseItem[], ApiConnectionActionConfiguration> GetStations()
         {
             var apiCallPath = "/metadata/stations";
             var apiCallHttpMethod = "get";
@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules(Expression<Func<string>> departureStation, Expression<Func<string>> arrivalStation, Expression<Func<string>> departureDate = null)
+        public IBodyWorkflowAction<GetSchedulesResponseItem[], ApiConnectionActionConfiguration> GetSchedules(Expression<Func<string>> departureStation, Expression<Func<string>> arrivalStation, Expression<Func<string>> departureDate = null)
         {
             var __workflow_departureStation = WorkflowExpression.Compile(departureStation, nameof(departureStation), required: true);
             var __workflow_arrivalStation = WorkflowExpression.Compile(arrivalStation, nameof(arrivalStation), required: true);
             var __workflow_departureDate = WorkflowExpression.Compile(departureDate, nameof(departureDate), required: false);
-            return new DeferredBodyAction<GetSchedulesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetSchedulesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/live-trains/station/{0}/{1}", __workflow_departureStation.WithUrlEncoding(1), __workflow_arrivalStation.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures(Expression<Func<string>> trainStation, Expression<Func<int>> arrivingTrains = null, Expression<Func<int>> departingTrains = null)
+        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[], ApiConnectionActionConfiguration> GetArrivalsAndDepartures(Expression<Func<string>> trainStation, Expression<Func<int>> arrivingTrains = null, Expression<Func<int>> departingTrains = null)
         {
             var __workflow_trainStation = WorkflowExpression.Compile(trainStation, nameof(trainStation), required: true);
             var __workflow_arrivingTrains = WorkflowExpression.Compile(arrivingTrains, nameof(arrivingTrains), required: false);
             var __workflow_departingTrains = WorkflowExpression.Compile(departingTrains, nameof(departingTrains), required: false);
-            return new DeferredBodyAction<GetArrivalsAndDeparturesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetArrivalsAndDeparturesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/live-trains/station/{0}", __workflow_trainStation.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

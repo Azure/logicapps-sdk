@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
     public class HolopinipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<IssuePostResponse> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<IssuePostResponse, ApiConnectionActionConfiguration> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            return new DeferredBodyAction<IssuePostResponse>(() =>
+            return new DeferredBodyAction<IssuePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sticker/share";
                 var apiCallHttpMethod = "post";
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet(Expression<Func<string>> username)
+        public IBodyWorkflowAction<UserStickerGetResponse, ApiConnectionActionConfiguration> UserStickerGet(Expression<Func<string>> username)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
-            return new DeferredBodyAction<UserStickerGetResponse>(() =>
+            return new DeferredBodyAction<UserStickerGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stickers";
                 var apiCallHttpMethod = "get";
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet(Expression<Func<string>> user)
+        public IBodyWorkflowAction<UserBoardGetResponse, ApiConnectionActionConfiguration> UserBoardGet(Expression<Func<string>> user)
         {
             var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: true);
-            return new DeferredBodyAction<UserBoardGetResponse>(() =>
+            return new DeferredBodyAction<UserBoardGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/user/board";
                 var apiCallHttpMethod = "get";

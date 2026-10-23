@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class DpirdweatheripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsResponse> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetStationsResponse, ApiConnectionActionConfiguration> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
-            return new DeferredBodyAction<GetStationsResponse>(() =>
+            return new DeferredBodyAction<GetStationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations";
                 var apiCallHttpMethod = "get";
@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsAvailabilityResponse> GetStationsAvailability(Expression<Func<string>> stationCode = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationsAvailabilityResponse, ApiConnectionActionConfiguration> GetStationsAvailability(Expression<Func<string>> stationCode = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetStationsAvailabilityResponse>(() =>
+            return new DeferredBodyAction<GetStationsAvailabilityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/availability";
                 var apiCallHttpMethod = "get";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IWorkflowAction GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/nearby";
                 var apiCallHttpMethod = "get";
@@ -106,11 +106,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationResponse> GetStation(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationResponse, ApiConnectionActionConfiguration> GetStation(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetStationResponse>(() =>
+            return new DeferredBodyAction<GetStationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/station/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> GetWeatherStationAvailability(Expression<Func<string>> stationCode, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse, ApiConnectionActionConfiguration> GetWeatherStationAvailability(Expression<Func<string>> stationCode, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetWeatherStationAvailabilityResponse>(() =>
+            return new DeferredBodyAction<GetWeatherStationAvailabilityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/availability", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsBulletinsResponse> GetStationsBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetStationsBulletinsResponse, ApiConnectionActionConfiguration> GetStationsBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
-            return new DeferredBodyAction<GetStationsBulletinsResponse>(() =>
+            return new DeferredBodyAction<GetStationsBulletinsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/bulletins";
                 var apiCallHttpMethod = "get";
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationsRainfallResponse> GetWeatherStationsRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetWeatherStationsRainfallResponse, ApiConnectionActionConfiguration> GetWeatherStationsRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
-            return new DeferredBodyAction<GetWeatherStationsRainfallResponse>(() =>
+            return new DeferredBodyAction<GetWeatherStationsRainfallResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/rainfall";
                 var apiCallHttpMethod = "get";
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationRainfallResponse> GetWeatherStationRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetWeatherStationRainfallResponse, ApiConnectionActionConfiguration> GetWeatherStationRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
-            return new DeferredBodyAction<GetWeatherStationRainfallResponse>(() =>
+            return new DeferredBodyAction<GetWeatherStationRainfallResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations1/rainfall";
                 var apiCallHttpMethod = "get";
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsExtremeConditionsResponse> GetStationsExtremeConditions(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null)
+        public IBodyWorkflowAction<GetStationsExtremeConditionsResponse, ApiConnectionActionConfiguration> GetStationsExtremeConditions(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
-            return new DeferredBodyAction<GetStationsExtremeConditionsResponse>(() =>
+            return new DeferredBodyAction<GetStationsExtremeConditionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/extreme-conditions";
                 var apiCallHttpMethod = "get";
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsExtremeEventsResponse> GetStationsExtremeEvents(Expression<Func<@operatorInput>> @operator, Expression<Func<int>> threshold, Expression<Func<propertyInput>> property, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<intervalInput>> interval = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationsExtremeEventsResponse, ApiConnectionActionConfiguration> GetStationsExtremeEvents(Expression<Func<@operatorInput>> @operator, Expression<Func<int>> threshold, Expression<Func<propertyInput>> property, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<intervalInput>> interval = null, Expression<Func<string>> select = null)
         {
             var __workflow_operator = WorkflowExpression.Compile(@operator, nameof(@operator), required: true);
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_interval = WorkflowExpression.Compile(interval, nameof(interval), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetStationsExtremeEventsResponse>(() =>
+            return new DeferredBodyAction<GetStationsExtremeEventsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/events";
                 var apiCallHttpMethod = "get";
@@ -319,14 +319,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsLatestDataResponse> GetStationsLatestData(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetStationsLatestDataResponse, ApiConnectionActionConfiguration> GetStationsLatestData(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
-            return new DeferredBodyAction<GetStationsLatestDataResponse>(() =>
+            return new DeferredBodyAction<GetStationsLatestDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/latest";
                 var apiCallHttpMethod = "get";
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationBulletinsResponse> GetStationBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationBulletinsResponse, ApiConnectionActionConfiguration> GetStationBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetStationBulletinsResponse>(() =>
+            return new DeferredBodyAction<GetStationBulletinsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/bulletin", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -375,11 +375,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationLatestDataResponse> GetStationLatestData(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationLatestDataResponse, ApiConnectionActionConfiguration> GetStationLatestData(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetStationLatestDataResponse>(() =>
+            return new DeferredBodyAction<GetStationLatestDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/latest", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationMinuteDataResponse> GetStationMinuteData(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationMinuteDataResponse, ApiConnectionActionConfiguration> GetStationMinuteData(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetStationMinuteDataResponse>(() =>
+            return new DeferredBodyAction<GetStationMinuteDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/data", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations15minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStations15minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/15min";
                 var apiCallHttpMethod = "get";
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations30minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStations30minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/30min";
                 var apiCallHttpMethod = "get";
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsHourlySummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsHourlySummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/hourly";
                 var apiCallHttpMethod = "get";
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsDailySummary(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsDailySummary(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/daily";
                 var apiCallHttpMethod = "get";
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsMonthlySummary(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsMonthlySummary(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
             var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/monthly";
                 var apiCallHttpMethod = "get";
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsYearlySummary(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsYearlySummary(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startYear = WorkflowExpression.Compile(startYear, nameof(startYear), required: true);
             var __workflow_endYear = WorkflowExpression.Compile(endYear, nameof(endYear), required: true);
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/yearly";
                 var apiCallHttpMethod = "get";
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations15minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStations15minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/15min/timeseries";
                 var apiCallHttpMethod = "get";
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations30minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStations30minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/30min/timeseries";
                 var apiCallHttpMethod = "get";
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsHourlySummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsHourlySummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/hourly/timeseries";
                 var apiCallHttpMethod = "get";
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsDailySummaryTimeSeries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsDailySummaryTimeSeries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/daily/timeseries";
                 var apiCallHttpMethod = "get";
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsMonthlySummaryTimeSeries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsMonthlySummaryTimeSeries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
             var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/monthly/timeseries";
                 var apiCallHttpMethod = "get";
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsYearlySummaryTimeSeries(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsYearlySummaryTimeSeries(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startYear = WorkflowExpression.Compile(startYear, nameof(startYear), required: true);
             var __workflow_endYear = WorkflowExpression.Compile(endYear, nameof(endYear), required: true);
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/summaries/yearly/timeseries";
                 var apiCallHttpMethod = "get";
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation15minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStation15minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/15min", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation30minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStation30minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
@@ -902,7 +902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/30min", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationHourlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationHourlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
@@ -931,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/hourly", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationDailySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationDailySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/daily", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -980,7 +980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationMonthlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationMonthlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -989,7 +989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/monthly", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationYearlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationYearlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            return new DeferredBodyAction<SingleStationSummarySchemaModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/yearly", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

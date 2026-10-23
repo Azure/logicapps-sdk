@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
     public class LibreboripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
-        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany(Expression<Func<string>> query, Expression<Func<string>> page = null, Expression<Func<string>> province = null)
+        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse, ApiConnectionActionConfiguration> LibrebormeSearchCompany(Expression<Func<string>> query, Expression<Func<string>> page = null, Expression<Func<string>> province = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_province = WorkflowExpression.Compile(province, nameof(province), required: false);
-            return new DeferredBodyAction<LibrebormeSearchCompanyResponse>(() =>
+            return new DeferredBodyAction<LibrebormeSearchCompanyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/company/search/";
                 var apiCallHttpMethod = "get";

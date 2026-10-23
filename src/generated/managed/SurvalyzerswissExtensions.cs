@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public class SurvalyzerswissActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateAndInviteMembersResponse> CreateAndInviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<Member[]>> bodymembers, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration> CreateAndInviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<Member[]>> bodymembers, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: true);
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyfromName = WorkflowExpression.Compile(bodyfromName, nameof(bodyfromName), required: false);
             var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
             var __workflow_bodyreplyToName = WorkflowExpression.Compile(bodyreplyToName, nameof(bodyreplyToName), required: false);
-            return new DeferredBodyAction<CreateAndInviteMembersResponse>(() =>
+            return new DeferredBodyAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/CreateAndInviteMembers";
                 var apiCallHttpMethod = "post";
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateArtifactResponse> CreateArtifact(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<string>> bodypath = null)
+        public IBodyWorkflowAction<CreateArtifactResponse, ApiConnectionActionConfiguration> CreateArtifact(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<string>> bodypath = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
-            return new DeferredBodyAction<CreateArtifactResponse>(() =>
+            return new DeferredBodyAction<CreateArtifactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/CreateArtifact";
                 var apiCallHttpMethod = "post";
@@ -146,12 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateMembersResponse> CreateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<CreateMembersResponse, ApiConnectionActionConfiguration> CreateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
         {
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
             var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: true);
             var __workflow_bodytenant = WorkflowExpression.Compile(bodytenant, nameof(bodytenant), required: false);
-            return new DeferredBodyAction<CreateMembersResponse>(() =>
+            return new DeferredBodyAction<CreateMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/CreateMembers";
                 var apiCallHttpMethod = "post";
@@ -178,12 +178,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreatePanelResponse> CreatePanel(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bodypanelTypeInput>> bodypanelType = null)
+        public IBodyWorkflowAction<CreatePanelResponse, ApiConnectionActionConfiguration> CreatePanel(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bodypanelTypeInput>> bodypanelType = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodypanelType = WorkflowExpression.Compile(bodypanelType, nameof(bodypanelType), required: false);
-            return new DeferredBodyAction<CreatePanelResponse>(() =>
+            return new DeferredBodyAction<CreatePanelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/CreatePanel";
                 var apiCallHttpMethod = "post";
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateSurveyResponse> CreateSurvey(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
+        public IBodyWorkflowAction<CreateSurveyResponse, ApiConnectionActionConfiguration> CreateSurvey(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
             var __workflow_bodysurveyConfigurationdesignConfigurationtextBlocks = WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
             var __workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode = WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
-            return new DeferredBodyAction<CreateSurveyResponse>(() =>
+            return new DeferredBodyAction<CreateSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/CreateSurvey";
                 var apiCallHttpMethod = "post";
@@ -421,13 +421,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateWebHookResponse> CreateWebHook(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
+        public IBodyWorkflowAction<CreateWebHookResponse, ApiConnectionActionConfiguration> CreateWebHook(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
         {
             var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: false);
             var __workflow_bodyentityIdentifier = WorkflowExpression.Compile(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
             var __workflow_bodysecurityToken = WorkflowExpression.Compile(bodysecurityToken, nameof(bodysecurityToken), required: false);
             var __workflow_bodywebHookUrl = WorkflowExpression.Compile(bodywebHookUrl, nameof(bodywebHookUrl), required: false);
-            return new DeferredBodyAction<CreateWebHookResponse>(() =>
+            return new DeferredBodyAction<CreateWebHookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/CreateWebHook";
                 var apiCallHttpMethod = "post";
@@ -468,12 +468,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteArtifactResponse> DeleteArtifact(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyfilename = null, Expression<Func<int>> bodyworkspaceId = null)
+        public IBodyWorkflowAction<DeleteArtifactResponse, ApiConnectionActionConfiguration> DeleteArtifact(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyfilename = null, Expression<Func<int>> bodyworkspaceId = null)
         {
             var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
             var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: false);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            return new DeferredBodyAction<DeleteArtifactResponse>(() =>
+            return new DeferredBodyAction<DeleteArtifactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/DeleteArtifact";
                 var apiCallHttpMethod = "post";
@@ -508,11 +508,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteDistributorResponse> DeleteDistributor(Expression<Func<int>> bodydistributorId, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteDistributorResponse, ApiConnectionActionConfiguration> DeleteDistributor(Expression<Func<int>> bodydistributorId, Expression<Func<bool>> bodykeepInterviews = null)
         {
             var __workflow_bodydistributorId = WorkflowExpression.Compile(bodydistributorId, nameof(bodydistributorId), required: true);
             var __workflow_bodykeepInterviews = WorkflowExpression.Compile(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
-            return new DeferredBodyAction<DeleteDistributorResponse>(() =>
+            return new DeferredBodyAction<DeleteDistributorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/DeleteDistributor";
                 var apiCallHttpMethod = "post";
@@ -537,11 +537,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteInterviewResponse> DeleteInterview(Expression<Func<string>> bodyinterviewId = null, Expression<Func<int>> bodysurveyId = null)
+        public IBodyWorkflowAction<DeleteInterviewResponse, ApiConnectionActionConfiguration> DeleteInterview(Expression<Func<string>> bodyinterviewId = null, Expression<Func<int>> bodysurveyId = null)
         {
             var __workflow_bodyinterviewId = WorkflowExpression.Compile(bodyinterviewId, nameof(bodyinterviewId), required: false);
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: false);
-            return new DeferredBodyAction<DeleteInterviewResponse>(() =>
+            return new DeferredBodyAction<DeleteInterviewResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/DeleteInterview";
                 var apiCallHttpMethod = "post";
@@ -570,12 +570,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteMembersResponse> DeleteMembers(Expression<Func<int>> bodypanelId, Expression<Func<int[]>> bodypanelMembersIds, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteMembersResponse, ApiConnectionActionConfiguration> DeleteMembers(Expression<Func<int>> bodypanelId, Expression<Func<int[]>> bodypanelMembersIds, Expression<Func<bool>> bodykeepInterviews = null)
         {
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
             var __workflow_bodypanelMembersIds = WorkflowExpression.Compile(bodypanelMembersIds, nameof(bodypanelMembersIds), required: true);
             var __workflow_bodykeepInterviews = WorkflowExpression.Compile(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
-            return new DeferredBodyAction<DeleteMembersResponse>(() =>
+            return new DeferredBodyAction<DeleteMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/DeleteMembers";
                 var apiCallHttpMethod = "post";
@@ -602,11 +602,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeletePanelResponse> DeletePanel(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeletePanelResponse, ApiConnectionActionConfiguration> DeletePanel(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodykeepInterviews = null)
         {
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
             var __workflow_bodykeepInterviews = WorkflowExpression.Compile(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
-            return new DeferredBodyAction<DeletePanelResponse>(() =>
+            return new DeferredBodyAction<DeletePanelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/DeletePanel";
                 var apiCallHttpMethod = "post";
@@ -631,11 +631,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteSamplingProjectResponse> DeleteSamplingProject(Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteSamplingProjectResponse, ApiConnectionActionConfiguration> DeleteSamplingProject(Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bool>> bodykeepInterviews = null)
         {
             var __workflow_bodysamplingProjectId = WorkflowExpression.Compile(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
             var __workflow_bodykeepInterviews = WorkflowExpression.Compile(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
-            return new DeferredBodyAction<DeleteSamplingProjectResponse>(() =>
+            return new DeferredBodyAction<DeleteSamplingProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/DeleteSamplingProject";
                 var apiCallHttpMethod = "post";
@@ -664,10 +664,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteSurveyResponse> DeleteSurvey(Expression<Func<int>> bodysurveyId)
+        public IBodyWorkflowAction<DeleteSurveyResponse, ApiConnectionActionConfiguration> DeleteSurvey(Expression<Func<int>> bodysurveyId)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: true);
-            return new DeferredBodyAction<DeleteSurveyResponse>(() =>
+            return new DeferredBodyAction<DeleteSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/DeleteSurvey";
                 var apiCallHttpMethod = "post";
@@ -686,10 +686,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteWebHookResponse> DeleteWebHook(Expression<Func<string>> bodywebHookId = null)
+        public IBodyWorkflowAction<DeleteWebHookResponse, ApiConnectionActionConfiguration> DeleteWebHook(Expression<Func<string>> bodywebHookId = null)
         {
             var __workflow_bodywebHookId = WorkflowExpression.Compile(bodywebHookId, nameof(bodywebHookId), required: false);
-            return new DeferredBodyAction<DeleteWebHookResponse>(() =>
+            return new DeferredBodyAction<DeleteWebHookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/DeleteWebHook";
                 var apiCallHttpMethod = "post";
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DownloadAnswersResponse> DownloadInterviewPdf(Expression<Func<string>> tenant, Expression<Func<int>> surveyId, Expression<Func<string>> interviewId, Expression<Func<bool>> showPartialCompleted = null, Expression<Func<string>> locale = null, Expression<Func<string>> timeZone = null, Expression<Func<bool>> bodyisCancellationRequested = null, Expression<Func<bool>> bodycanBeCanceled = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisInvalid = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisClosed = null)
+        public IBodyWorkflowAction<DownloadAnswersResponse, ApiConnectionActionConfiguration> DownloadInterviewPdf(Expression<Func<string>> tenant, Expression<Func<int>> surveyId, Expression<Func<string>> interviewId, Expression<Func<bool>> showPartialCompleted = null, Expression<Func<string>> locale = null, Expression<Func<string>> timeZone = null, Expression<Func<bool>> bodyisCancellationRequested = null, Expression<Func<bool>> bodycanBeCanceled = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisInvalid = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisClosed = null)
         {
             var __workflow_tenant = WorkflowExpression.Compile(tenant, nameof(tenant), required: true);
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodycanBeCanceled = WorkflowExpression.Compile(bodycanBeCanceled, nameof(bodycanBeCanceled), required: false);
             var __workflow_bodywaitHandlesafeWaitHandleisInvalid = WorkflowExpression.Compile(bodywaitHandlesafeWaitHandleisInvalid, nameof(bodywaitHandlesafeWaitHandleisInvalid), required: false);
             var __workflow_bodywaitHandlesafeWaitHandleisClosed = WorkflowExpression.Compile(bodywaitHandlesafeWaitHandleisClosed, nameof(bodywaitHandlesafeWaitHandleisClosed), required: false);
-            return new DeferredBodyAction<DownloadAnswersResponse>(() =>
+            return new DeferredBodyAction<DownloadAnswersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/DownloadAnswers";
                 var apiCallHttpMethod = "post";
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ExecuteSendMailResponse> ExecuteSendMail(Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<int>> bodymessageTemplateId = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodytoName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration> ExecuteSendMail(Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<int>> bodymessageTemplateId = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodytoName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodytoName = WorkflowExpression.Compile(bodytoName, nameof(bodytoName), required: false);
             var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
             var __workflow_bodyreplyToName = WorkflowExpression.Compile(bodyreplyToName, nameof(bodyreplyToName), required: false);
-            return new DeferredBodyAction<ExecuteSendMailResponse>(() =>
+            return new DeferredBodyAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ExecuteSendMail";
                 var apiCallHttpMethod = "post";
@@ -874,7 +874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse> ExecuteWorkflowTransition(Expression<Func<string>> bodytargetState, Expression<Func<bodyworkflowInput>> bodyworkflow = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<int>> bodyreminderId = null)
+        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration> ExecuteWorkflowTransition(Expression<Func<string>> bodytargetState, Expression<Func<bodyworkflowInput>> bodyworkflow = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<int>> bodyreminderId = null)
         {
             var __workflow_bodytargetState = WorkflowExpression.Compile(bodytargetState, nameof(bodytargetState), required: true);
             var __workflow_bodyworkflow = WorkflowExpression.Compile(bodyworkflow, nameof(bodyworkflow), required: false);
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodysamplingProjectId = WorkflowExpression.Compile(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
             var __workflow_bodydistributorId = WorkflowExpression.Compile(bodydistributorId, nameof(bodydistributorId), required: false);
             var __workflow_bodyreminderId = WorkflowExpression.Compile(bodyreminderId, nameof(bodyreminderId), required: false);
-            return new DeferredBodyAction<ExecuteWorkflowTransitionResponse>(() =>
+            return new DeferredBodyAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ExecuteWorkflowTransition";
                 var apiCallHttpMethod = "post";
@@ -939,7 +939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<InviteMembersResponse> InviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int[]>> bodymemberIds = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<InviteMembersResponse, ApiConnectionActionConfiguration> InviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int[]>> bodymemberIds = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: true);
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
@@ -956,7 +956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyfromName = WorkflowExpression.Compile(bodyfromName, nameof(bodyfromName), required: false);
             var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
             var __workflow_bodyreplyToName = WorkflowExpression.Compile(bodyreplyToName, nameof(bodyreplyToName), required: false);
-            return new DeferredBodyAction<InviteMembersResponse>(() =>
+            return new DeferredBodyAction<InviteMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/InviteMembers";
                 var apiCallHttpMethod = "post";
@@ -1051,11 +1051,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadArtifactListRequest> ReadArtifactList(Expression<Func<string>> bodypath = null, Expression<Func<int>> bodyworkspaceId = null)
+        public IBodyWorkflowAction<ReadArtifactListRequest, ApiConnectionActionConfiguration> ReadArtifactList(Expression<Func<string>> bodypath = null, Expression<Func<int>> bodyworkspaceId = null)
         {
             var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            return new DeferredBodyAction<ReadArtifactListRequest>(() =>
+            return new DeferredBodyAction<ReadArtifactListRequest, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ReadArtifactList";
                 var apiCallHttpMethod = "post";
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadBounceListResponseV3> ReadBounceList(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int[]>> bodydistributors = null, Expression<Func<bodyinvitationTypeInput>> bodyinvitationType = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration> ReadBounceList(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int[]>> bodydistributors = null, Expression<Func<bodyinvitationTypeInput>> bodyinvitationType = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: true);
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
@@ -1095,7 +1095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadBounceListResponseV3>(() =>
+            return new DeferredBodyAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadBounceList";
                 var apiCallHttpMethod = "post";
@@ -1162,7 +1162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadCreditBalanceResponse> ReadCreditBalance()
+        public IBodyWorkflowAction<ReadCreditBalanceResponse, ApiConnectionActionConfiguration> ReadCreditBalance()
         {
             var apiCallPath = "/publicapi/Incentive/v3/ReadCreditBalance";
             var apiCallHttpMethod = "post";
@@ -1178,7 +1178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadDistributorListResponse> ReadDistributorList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadDistributorListResponse, ApiConnectionActionConfiguration> ReadDistributorList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
             var __workflow_bodypagingpage = WorkflowExpression.Compile(bodypagingpage, nameof(bodypagingpage), required: true);
@@ -1187,7 +1187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadDistributorListResponse>(() =>
+            return new DeferredBodyAction<ReadDistributorListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadDistributorList";
                 var apiCallHttpMethod = "post";
@@ -1246,14 +1246,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadIncentiveListResponse> ReadIncentiveList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadIncentiveListResponse, ApiConnectionActionConfiguration> ReadIncentiveList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
             var __workflow_bodypagingpage = WorkflowExpression.Compile(bodypagingpage, nameof(bodypagingpage), required: true);
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadIncentiveListResponse>(() =>
+            return new DeferredBodyAction<ReadIncentiveListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveList";
                 var apiCallHttpMethod = "post";
@@ -1300,14 +1300,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse> ReadIncentiveTransactionList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse, ApiConnectionActionConfiguration> ReadIncentiveTransactionList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
             var __workflow_bodypagingpage = WorkflowExpression.Compile(bodypagingpage, nameof(bodypagingpage), required: true);
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadIncentiveTransactionListResponse>(() =>
+            return new DeferredBodyAction<ReadIncentiveTransactionListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveTransactionList";
                 var apiCallHttpMethod = "post";
@@ -1354,13 +1354,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadInterviewDataResponse> ReadInterview(Expression<Func<string>> bodytenant, Expression<Func<string>> bodyinterviewId, Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodyloadSurveyDefinition = null)
+        public IBodyWorkflowAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration> ReadInterview(Expression<Func<string>> bodytenant, Expression<Func<string>> bodyinterviewId, Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodyloadSurveyDefinition = null)
         {
             var __workflow_bodytenant = WorkflowExpression.Compile(bodytenant, nameof(bodytenant), required: true);
             var __workflow_bodyinterviewId = WorkflowExpression.Compile(bodyinterviewId, nameof(bodyinterviewId), required: true);
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: true);
             var __workflow_bodyloadSurveyDefinition = WorkflowExpression.Compile(bodyloadSurveyDefinition, nameof(bodyloadSurveyDefinition), required: false);
-            return new DeferredBodyAction<ReadInterviewDataResponse>(() =>
+            return new DeferredBodyAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/ReadInterview";
                 var apiCallHttpMethod = "post";
@@ -1389,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3> ReadInterviewListCompact(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3, ApiConnectionActionConfiguration> ReadInterviewListCompact(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
             var __workflow_bodypagingpage = WorkflowExpression.Compile(bodypagingpage, nameof(bodypagingpage), required: true);
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadInterviewListCompactResponseV3>(() =>
+            return new DeferredBodyAction<ReadInterviewListCompactResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/ReadInterviewListCompact";
                 var apiCallHttpMethod = "post";
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadInterviewListResponseV3> ReadInterviewList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadInterviewListResponseV3, ApiConnectionActionConfiguration> ReadInterviewList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
             var __workflow_bodypagingpage = WorkflowExpression.Compile(bodypagingpage, nameof(bodypagingpage), required: true);
@@ -1482,7 +1482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadInterviewListResponseV3>(() =>
+            return new DeferredBodyAction<ReadInterviewListResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/ReadInterviewList";
                 var apiCallHttpMethod = "post";
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadMemberListResponse> ReadMemberList(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodyinterviewsRequired, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadMemberListResponse, ApiConnectionActionConfiguration> ReadMemberList(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodyinterviewsRequired, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
             var __workflow_bodyinterviewsRequired = WorkflowExpression.Compile(bodyinterviewsRequired, nameof(bodyinterviewsRequired), required: true);
@@ -1564,7 +1564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadMemberListResponse>(() =>
+            return new DeferredBodyAction<ReadMemberListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ReadMemberList";
                 var apiCallHttpMethod = "post";
@@ -1627,7 +1627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadMessageTemplateListResponse> ReadMessageTemplateList(Expression<Func<string>> bodylanguage, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration> ReadMessageTemplateList(Expression<Func<string>> bodylanguage, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadMessageTemplateListResponse>(() =>
+            return new DeferredBodyAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadMessageTemplateList";
                 var apiCallHttpMethod = "post";
@@ -1691,7 +1691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadOptOutListResponseV3> ReadOptOutList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadOptOutListResponseV3, ApiConnectionActionConfiguration> ReadOptOutList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
             var __workflow_bodypagingpage = WorkflowExpression.Compile(bodypagingpage, nameof(bodypagingpage), required: true);
@@ -1700,7 +1700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadOptOutListResponseV3>(() =>
+            return new DeferredBodyAction<ReadOptOutListResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadOptOutList";
                 var apiCallHttpMethod = "post";
@@ -1759,11 +1759,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadPanelDefinitionResponse> ReadPanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration> ReadPanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null)
         {
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
             var __workflow_bodytenant = WorkflowExpression.Compile(bodytenant, nameof(bodytenant), required: false);
-            return new DeferredBodyAction<ReadPanelDefinitionResponse>(() =>
+            return new DeferredBodyAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ReadPanel";
                 var apiCallHttpMethod = "post";
@@ -1788,10 +1788,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSamplingProjectResponse> ReadSamplingProject(Expression<Func<int>> bodysamplingProjectId = null)
+        public IBodyWorkflowAction<ReadSamplingProjectResponse, ApiConnectionActionConfiguration> ReadSamplingProject(Expression<Func<int>> bodysamplingProjectId = null)
         {
             var __workflow_bodysamplingProjectId = WorkflowExpression.Compile(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
-            return new DeferredBodyAction<ReadSamplingProjectResponse>(() =>
+            return new DeferredBodyAction<ReadSamplingProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadSamplingProject";
                 var apiCallHttpMethod = "post";
@@ -1814,10 +1814,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSurveyLinksResponse> ReadSurveyLinks(Expression<Func<int>> bodysurveyId = null)
+        public IBodyWorkflowAction<ReadSurveyLinksResponse, ApiConnectionActionConfiguration> ReadSurveyLinks(Expression<Func<int>> bodysurveyId = null)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: false);
-            return new DeferredBodyAction<ReadSurveyLinksResponse>(() =>
+            return new DeferredBodyAction<ReadSurveyLinksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurveyLinks";
                 var apiCallHttpMethod = "post";
@@ -1840,7 +1840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSurveyListResponse> ReadSurveyList(Expression<Func<int>> bodyworkspaceId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadSurveyListResponse, ApiConnectionActionConfiguration> ReadSurveyList(Expression<Func<int>> bodyworkspaceId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
@@ -1848,7 +1848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadSurveyListResponse>(() =>
+            return new DeferredBodyAction<ReadSurveyListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurveyList";
                 var apiCallHttpMethod = "post";
@@ -1897,11 +1897,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSurveyResponse> ReadSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<ReadSurveyResponse, ApiConnectionActionConfiguration> ReadSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<string>> bodytenant = null)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: true);
             var __workflow_bodytenant = WorkflowExpression.Compile(bodytenant, nameof(bodytenant), required: false);
-            return new DeferredBodyAction<ReadSurveyResponse>(() =>
+            return new DeferredBodyAction<ReadSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurvey";
                 var apiCallHttpMethod = "post";
@@ -1926,11 +1926,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadWebHookListResponse> ReadWebHookList(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null)
+        public IBodyWorkflowAction<ReadWebHookListResponse, ApiConnectionActionConfiguration> ReadWebHookList(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null)
         {
             var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: false);
             var __workflow_bodyentityIdentifier = WorkflowExpression.Compile(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
-            return new DeferredBodyAction<ReadWebHookListResponse>(() =>
+            return new DeferredBodyAction<ReadWebHookListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/ReadWebHookList";
                 var apiCallHttpMethod = "post";
@@ -1959,11 +1959,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse> ReadWorkflowTransitions(Expression<Func<string>> bodycurrentState, Expression<Func<bodyworkflowInput>> bodyworkflow = null)
+        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration> ReadWorkflowTransitions(Expression<Func<string>> bodycurrentState, Expression<Func<bodyworkflowInput>> bodyworkflow = null)
         {
             var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
             var __workflow_bodyworkflow = WorkflowExpression.Compile(bodyworkflow, nameof(bodyworkflow), required: false);
-            return new DeferredBodyAction<ReadWorkflowTransitionsResponse>(() =>
+            return new DeferredBodyAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ReadWorkflowTransitions";
                 var apiCallHttpMethod = "post";
@@ -1988,14 +1988,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadWorkspaceListResponse> ReadWorkspaceList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadWorkspaceListResponse, ApiConnectionActionConfiguration> ReadWorkspaceList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
             var __workflow_bodypagingpageSize = WorkflowExpression.Compile(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
             var __workflow_bodypagingpage = WorkflowExpression.Compile(bodypagingpage, nameof(bodypagingpage), required: true);
             var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
             var __workflow_bodypagingorderField = WorkflowExpression.Compile(bodypagingorderField, nameof(bodypagingorderField), required: false);
             var __workflow_bodypagingorderDirection = WorkflowExpression.Compile(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
-            return new DeferredBodyAction<ReadWorkspaceListResponse>(() =>
+            return new DeferredBodyAction<ReadWorkspaceListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadWorkspaceList";
                 var apiCallHttpMethod = "post";
@@ -2042,10 +2042,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<RedeemIncentiveCodeResponse> RedeemIncentiveCode(Expression<Func<int>> bodyincentiveId)
+        public IBodyWorkflowAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration> RedeemIncentiveCode(Expression<Func<int>> bodyincentiveId)
         {
             var __workflow_bodyincentiveId = WorkflowExpression.Compile(bodyincentiveId, nameof(bodyincentiveId), required: true);
-            return new DeferredBodyAction<RedeemIncentiveCodeResponse>(() =>
+            return new DeferredBodyAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Incentive/v3/RedeemIncentiveCode";
                 var apiCallHttpMethod = "post";
@@ -2064,7 +2064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<RemindMembersResponse> RemindMembers(Expression<Func<int>> bodydistributorId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<RemindMembersResponse, ApiConnectionActionConfiguration> RemindMembers(Expression<Func<int>> bodydistributorId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
             var __workflow_bodydistributorId = WorkflowExpression.Compile(bodydistributorId, nameof(bodydistributorId), required: true);
             var __workflow_bodymessageTemplateId = WorkflowExpression.Compile(bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
@@ -2076,7 +2076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodyfromName = WorkflowExpression.Compile(bodyfromName, nameof(bodyfromName), required: false);
             var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
             var __workflow_bodyreplyToName = WorkflowExpression.Compile(bodyreplyToName, nameof(bodyreplyToName), required: false);
-            return new DeferredBodyAction<RemindMembersResponse>(() =>
+            return new DeferredBodyAction<RemindMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/RemindMembers";
                 var apiCallHttpMethod = "post";
@@ -2145,11 +2145,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ResetInterviewResponse> ResetInterview(Expression<Func<int>> bodysurveyId = null, Expression<Func<string>> bodyinterviewId = null)
+        public IBodyWorkflowAction<ResetInterviewResponse, ApiConnectionActionConfiguration> ResetInterview(Expression<Func<int>> bodysurveyId = null, Expression<Func<string>> bodyinterviewId = null)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: false);
             var __workflow_bodyinterviewId = WorkflowExpression.Compile(bodyinterviewId, nameof(bodyinterviewId), required: false);
-            return new DeferredBodyAction<ResetInterviewResponse>(() =>
+            return new DeferredBodyAction<ResetInterviewResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ResetInterview";
                 var apiCallHttpMethod = "post";
@@ -2178,12 +2178,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<UpdateMembersResponse> UpdateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<UpdateMembersResponse, ApiConnectionActionConfiguration> UpdateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
         {
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
             var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: true);
             var __workflow_bodytenant = WorkflowExpression.Compile(bodytenant, nameof(bodytenant), required: false);
-            return new DeferredBodyAction<UpdateMembersResponse>(() =>
+            return new DeferredBodyAction<UpdateMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/UpdateMembers";
                 var apiCallHttpMethod = "post";
@@ -2210,14 +2210,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<WritePanelResponse> UpdatePanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null, Expression<Func<PanelMemberField[]>> bodyaddedFields = null, Expression<Func<int[]>> bodyremovedFields = null, Expression<Func<PanelMemberField[]>> bodyrenamedFields = null)
+        public IBodyWorkflowAction<WritePanelResponse, ApiConnectionActionConfiguration> UpdatePanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null, Expression<Func<PanelMemberField[]>> bodyaddedFields = null, Expression<Func<int[]>> bodyremovedFields = null, Expression<Func<PanelMemberField[]>> bodyrenamedFields = null)
         {
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: true);
             var __workflow_bodytenant = WorkflowExpression.Compile(bodytenant, nameof(bodytenant), required: false);
             var __workflow_bodyaddedFields = WorkflowExpression.Compile(bodyaddedFields, nameof(bodyaddedFields), required: false);
             var __workflow_bodyremovedFields = WorkflowExpression.Compile(bodyremovedFields, nameof(bodyremovedFields), required: false);
             var __workflow_bodyrenamedFields = WorkflowExpression.Compile(bodyrenamedFields, nameof(bodyrenamedFields), required: false);
-            return new DeferredBodyAction<WritePanelResponse>(() =>
+            return new DeferredBodyAction<WritePanelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/UpdatePanel";
                 var apiCallHttpMethod = "post";
@@ -2260,7 +2260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<UpdateSurveyResponse> UpdateSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<string>> bodysurveyName = null, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
+        public IBodyWorkflowAction<UpdateSurveyResponse, ApiConnectionActionConfiguration> UpdateSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<string>> bodysurveyName = null, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
             var __workflow_bodysurveyId = WorkflowExpression.Compile(bodysurveyId, nameof(bodysurveyId), required: true);
             var __workflow_bodysurveyDefinitionallowMultipleParticipation = WorkflowExpression.Compile(bodysurveyDefinitionallowMultipleParticipation, nameof(bodysurveyDefinitionallowMultipleParticipation), required: true);
@@ -2290,7 +2290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
             var __workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
             var __workflow_bodysurveyConfigurationdesignConfigurationtextBlocks = WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
             var __workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode = WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
-            return new DeferredBodyAction<UpdateSurveyResponse>(() =>
+            return new DeferredBodyAction<UpdateSurveyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/UpdateSurvey";
                 var apiCallHttpMethod = "post";
@@ -2475,14 +2475,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<UpdateWebHookResponse> UpdateWebHook(Expression<Func<string>> bodywebHookId = null, Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
+        public IBodyWorkflowAction<UpdateWebHookResponse, ApiConnectionActionConfiguration> UpdateWebHook(Expression<Func<string>> bodywebHookId = null, Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
         {
             var __workflow_bodywebHookId = WorkflowExpression.Compile(bodywebHookId, nameof(bodywebHookId), required: false);
             var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: false);
             var __workflow_bodyentityIdentifier = WorkflowExpression.Compile(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
             var __workflow_bodysecurityToken = WorkflowExpression.Compile(bodysecurityToken, nameof(bodysecurityToken), required: false);
             var __workflow_bodywebHookUrl = WorkflowExpression.Compile(bodywebHookUrl, nameof(bodywebHookUrl), required: false);
-            return new DeferredBodyAction<UpdateWebHookResponse>(() =>
+            return new DeferredBodyAction<UpdateWebHookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/UpdateWebHook";
                 var apiCallHttpMethod = "post";
@@ -2529,14 +2529,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<WriteOptOutListResponse> WriteOptOutList(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<EmailItem[]>> bodyemails = null, Expression<Func<CellPhoneItem[]>> bodycellPhones = null)
+        public IBodyWorkflowAction<WriteOptOutListResponse, ApiConnectionActionConfiguration> WriteOptOutList(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<EmailItem[]>> bodyemails = null, Expression<Func<CellPhoneItem[]>> bodycellPhones = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodypanelId = WorkflowExpression.Compile(bodypanelId, nameof(bodypanelId), required: false);
             var __workflow_bodydistributorId = WorkflowExpression.Compile(bodydistributorId, nameof(bodydistributorId), required: false);
             var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
             var __workflow_bodycellPhones = WorkflowExpression.Compile(bodycellPhones, nameof(bodycellPhones), required: false);
-            return new DeferredBodyAction<WriteOptOutListResponse>(() =>
+            return new DeferredBodyAction<WriteOptOutListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/WriteOptOutList";
                 var apiCallHttpMethod = "post";

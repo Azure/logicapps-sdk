@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
     public class CopilotforserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch(Expression<Func<string>> bodyprompt = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> NaturalQueryTextSearch(Expression<Func<string>> bodyprompt = null)
         {
             var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
-            return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
+            return new DeferredBodyAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/orchestrator/connector";
                 var apiCallHttpMethod = "post";
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
         {
             var __workflow_bodyskillId = WorkflowExpression.Compile(bodyskillId, nameof(bodyskillId), required: false);
-            return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
+            return new DeferredBodyAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/orchestrator/executeSkill";
                 var apiCallHttpMethod = "post";

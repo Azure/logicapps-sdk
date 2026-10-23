@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Themealdbip
     public class ThemealdbipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "themealdbip")]
-        public IBodyWorkflowAction<GetARandomMealResponse> GetARandomMeal()
+        public IBodyWorkflowAction<GetARandomMealResponse, ApiConnectionActionConfiguration> GetARandomMeal()
         {
             var apiCallPath = "/random.php";
             var apiCallHttpMethod = "get";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Themealdbip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "themealdbip")]
-        public IBodyWorkflowAction<ListAllMealsCategoriesResponse> ListAllMealsCategories()
+        public IBodyWorkflowAction<ListAllMealsCategoriesResponse, ApiConnectionActionConfiguration> ListAllMealsCategories()
         {
             var apiCallPath = "/categories.php";
             var apiCallHttpMethod = "get";

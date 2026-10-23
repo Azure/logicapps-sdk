@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     public class ElasticformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<AssignFormResponse> AssignForm(Expression<Func<string>> formAssignBodyuser, Expression<Func<string>> formAssignBodyform, Expression<Func<object>> formAssignBodyfields = null)
+        public IBodyWorkflowAction<AssignFormResponse, ApiConnectionActionConfiguration> AssignForm(Expression<Func<string>> formAssignBodyuser, Expression<Func<string>> formAssignBodyform, Expression<Func<object>> formAssignBodyfields = null)
         {
             var __workflow_formAssignBodyuser = WorkflowExpression.Compile(formAssignBodyuser, nameof(formAssignBodyuser), required: true);
             var __workflow_formAssignBodyform = WorkflowExpression.Compile(formAssignBodyform, nameof(formAssignBodyform), required: true);
             var __workflow_formAssignBodyfields = WorkflowExpression.Compile(formAssignBodyfields, nameof(formAssignBodyfields), required: false);
-            return new DeferredBodyAction<AssignFormResponse>(() =>
+            return new DeferredBodyAction<AssignFormResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/Form";
                 var apiCallHttpMethod = "post";
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<string> AddData(Expression<Func<string>> formDataBodyform, Expression<Func<object>> formDataBodyfields = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddData(Expression<Func<string>> formDataBodyform, Expression<Func<object>> formDataBodyfields = null)
         {
             var __workflow_formDataBodyform = WorkflowExpression.Compile(formDataBodyform, nameof(formDataBodyform), required: true);
             var __workflow_formDataBodyfields = WorkflowExpression.Compile(formDataBodyfields, nameof(formDataBodyfields), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/FormData";
                 var apiCallHttpMethod = "post";
@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class ElasticformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhookform = WorkflowExpression.Compile(requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/WebHook";
                 var apiCallHttpMethod = "post";

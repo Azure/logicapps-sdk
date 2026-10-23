@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
     public class InstagrambasicdispipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<GetMyMediaResponse> GetMyMedia(Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<GetMyMediaResponse, ApiConnectionActionConfiguration> GetMyMedia(Expression<Func<string>> fields = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<GetMyMediaResponse>(() =>
+            return new DeferredBodyAction<GetMyMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/me/media";
                 var apiCallHttpMethod = "get";
@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<GetMyDetailsResponse> GetMyDetails(Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<GetMyDetailsResponse, ApiConnectionActionConfiguration> GetMyDetails(Expression<Func<string>> fields = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<GetMyDetailsResponse>(() =>
+            return new DeferredBodyAction<GetMyDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/me";
                 var apiCallHttpMethod = "get";
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<GetMediaDetailsResponse> GetMediaDetails(Expression<Func<string>> mediaId, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<GetMediaDetailsResponse, ApiConnectionActionConfiguration> GetMediaDetails(Expression<Func<string>> mediaId, Expression<Func<string>> fields = null)
         {
             var __workflow_mediaId = WorkflowExpression.Compile(mediaId, nameof(mediaId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<GetMediaDetailsResponse>(() =>
+            return new DeferredBodyAction<GetMediaDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_mediaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -61,11 +61,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<RefreshTokenResponse> RefreshToken(Expression<Func<string>> grantType, Expression<Func<string>> accessToken)
+        public IBodyWorkflowAction<RefreshTokenResponse, ApiConnectionActionConfiguration> RefreshToken(Expression<Func<string>> grantType, Expression<Func<string>> accessToken)
         {
             var __workflow_grantType = WorkflowExpression.Compile(grantType, nameof(grantType), required: true);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
-            return new DeferredBodyAction<RefreshTokenResponse>(() =>
+            return new DeferredBodyAction<RefreshTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/refresh_access_token";
                 var apiCallHttpMethod = "get";

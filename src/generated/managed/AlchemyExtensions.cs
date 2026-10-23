@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
     public class AlchemyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration> GetSelfHelpInsights(Expression<Func<string>> bodytext)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<GetSelfHelpInsightsResponse>(() =>
+            return new DeferredBodyAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
                 var apiCallHttpMethod = "post";

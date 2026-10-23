@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     public class VenaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<ETLJob> ETLUpload(Expression<Func<string>> modelIdPath, Expression<Func<string>> templateId, Expression<Func<string>> fileName, Expression<Func<string>> file, Expression<Func<fileTypeInput>> fileType, Expression<Func<fileEncodingInput>> fileEncoding = null)
+        public IBodyWorkflowAction<ETLJob, ApiConnectionActionConfiguration> ETLUpload(Expression<Func<string>> modelIdPath, Expression<Func<string>> templateId, Expression<Func<string>> fileName, Expression<Func<string>> file, Expression<Func<fileTypeInput>> fileType, Expression<Func<fileEncodingInput>> fileEncoding = null)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             var __workflow_fileType = WorkflowExpression.Compile(fileType, nameof(fileType), required: true);
             var __workflow_fileEncoding = WorkflowExpression.Compile(fileEncoding, nameof(fileEncoding), required: false);
-            return new DeferredBodyAction<ETLJob>(() =>
+            return new DeferredBodyAction<ETLJob, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/templates/{1}/upload", __workflow_modelIdPath.WithUrlEncoding(1), __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_lidsBodyshowHeader = WorkflowExpression.Compile(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
             var __workflow_lidsBodymQLQueryString = WorkflowExpression.Compile(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
             var __workflow_lidsBodyfileFormat = WorkflowExpression.Compile(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
             var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/attributes", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<bool>> hierarchiesBodyshowHeader = null, Expression<Func<string>> hierarchiesBodymQLQueryString = null, Expression<Func<hierarchiesBodyfileFormatInput>> hierarchiesBodyfileFormat = null, Expression<Func<hierarchiesBodyfileEncodingInput>> hierarchiesBodyfileEncoding = null, Expression<Func<bool>> hierarchiesBodyexportMemberIDs = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<bool>> hierarchiesBodyshowHeader = null, Expression<Func<string>> hierarchiesBodymQLQueryString = null, Expression<Func<hierarchiesBodyfileFormatInput>> hierarchiesBodyfileFormat = null, Expression<Func<hierarchiesBodyfileEncodingInput>> hierarchiesBodyfileEncoding = null, Expression<Func<bool>> hierarchiesBodyexportMemberIDs = null)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_hierarchiesBodyshowHeader = WorkflowExpression.Compile(hierarchiesBodyshowHeader, nameof(hierarchiesBodyshowHeader), required: false);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_hierarchiesBodyfileFormat = WorkflowExpression.Compile(hierarchiesBodyfileFormat, nameof(hierarchiesBodyfileFormat), required: false);
             var __workflow_hierarchiesBodyfileEncoding = WorkflowExpression.Compile(hierarchiesBodyfileEncoding, nameof(hierarchiesBodyfileEncoding), required: false);
             var __workflow_hierarchiesBodyexportMemberIDs = WorkflowExpression.Compile(hierarchiesBodyexportMemberIDs, nameof(hierarchiesBodyexportMemberIDs), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/hierarchies", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<bool>> valuesBodyshowHeader = null, Expression<Func<string>> valuesBodymQLQueryString = null, Expression<Func<valuesBodyfileFormatInput>> valuesBodyfileFormat = null, Expression<Func<valuesBodyfileEncodingInput>> valuesBodyfileEncoding = null, Expression<Func<bool>> valuesBodyincludeExternalIDs = null, Expression<Func<bool>> valuesBodynamedDimensions = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<bool>> valuesBodyshowHeader = null, Expression<Func<string>> valuesBodymQLQueryString = null, Expression<Func<valuesBodyfileFormatInput>> valuesBodyfileFormat = null, Expression<Func<valuesBodyfileEncodingInput>> valuesBodyfileEncoding = null, Expression<Func<bool>> valuesBodyincludeExternalIDs = null, Expression<Func<bool>> valuesBodynamedDimensions = null)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_valuesBodyshowHeader = WorkflowExpression.Compile(valuesBodyshowHeader, nameof(valuesBodyshowHeader), required: false);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_valuesBodyfileEncoding = WorkflowExpression.Compile(valuesBodyfileEncoding, nameof(valuesBodyfileEncoding), required: false);
             var __workflow_valuesBodyincludeExternalIDs = WorkflowExpression.Compile(valuesBodyincludeExternalIDs, nameof(valuesBodyincludeExternalIDs), required: false);
             var __workflow_valuesBodynamedDimensions = WorkflowExpression.Compile(valuesBodynamedDimensions, nameof(valuesBodynamedDimensions), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/intersections2", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -326,14 +326,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_lidsBodyshowHeader = WorkflowExpression.Compile(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
             var __workflow_lidsBodymQLQueryString = WorkflowExpression.Compile(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
             var __workflow_lidsBodyfileFormat = WorkflowExpression.Compile(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
             var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/lids2", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

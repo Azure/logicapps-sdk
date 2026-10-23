@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The Terminate action stops workflow execution with a specified status.
     /// </summary>
-    public class TerminateAction : WorkflowActionBase
+    public class TerminateAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly string status;
         private readonly string message;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var input = new TerminateActionInput
             {

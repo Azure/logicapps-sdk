@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
     public class AzurespeechpronunciaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurespeechpronuncia")]
-        public IWorkflowAction SpeechRecognitionConversationCognitiveServices(Expression<Func<string>> referenceText, Expression<Func<string>> language, Expression<Func<string>> audioContent = null, Expression<Func<gradingSystemInput>> gradingSystem = null, Expression<Func<granularityInput>> granularity = null, Expression<Func<dimensionInput>> dimension = null, Expression<Func<bool>> enableMiscue = null, Expression<Func<string>> scenarioId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SpeechRecognitionConversationCognitiveServices(Expression<Func<string>> referenceText, Expression<Func<string>> language, Expression<Func<string>> audioContent = null, Expression<Func<gradingSystemInput>> gradingSystem = null, Expression<Func<granularityInput>> granularity = null, Expression<Func<dimensionInput>> dimension = null, Expression<Func<bool>> enableMiscue = null, Expression<Func<string>> scenarioId = null)
         {
             var __workflow_referenceText = WorkflowExpression.Compile(referenceText, nameof(referenceText), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
             var __workflow_dimension = WorkflowExpression.Compile(dimension, nameof(dimension), required: false);
             var __workflow_enableMiscue = WorkflowExpression.Compile(enableMiscue, nameof(enableMiscue), required: false);
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversation/cognitiveservices/v1";
                 var apiCallHttpMethod = "post";

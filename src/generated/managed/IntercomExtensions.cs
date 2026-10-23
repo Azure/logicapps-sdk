@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class IntercomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycompanyId = null)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycompanyId = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
             var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
-            return new DeferredBodyAction<UserResponse>(() =>
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse[]> ListLeads()
+        public IBodyWorkflowAction<LeadResponse[], ApiConnectionActionConfiguration> ListLeads()
         {
             var apiCallPath = "/contacts";
             var apiCallHttpMethod = "get";
@@ -64,14 +64,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse> CreateLead(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyavatarimageURL = null, Expression<Func<string>> bodycompanyId = null)
+        public IBodyWorkflowAction<LeadResponse, ApiConnectionActionConfiguration> CreateLead(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyavatarimageURL = null, Expression<Func<string>> bodycompanyId = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
             var __workflow_bodyavatarimageURL = WorkflowExpression.Compile(bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
             var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
-            return new DeferredBodyAction<LeadResponse>(() =>
+            return new DeferredBodyAction<LeadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
@@ -122,10 +122,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse> GetUser(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<UserResponse>(() =>
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse> GetLead(Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<LeadResponse, ApiConnectionActionConfiguration> GetLead(Expression<Func<string>> contactId)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            return new DeferredBodyAction<LeadResponse>(() =>
+            return new DeferredBodyAction<LeadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 
     public class IntercomTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TrigLeadResponse[]> TrigNewLead(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigLeadResponse[], ApiConnectionTriggerConfiguration> TrigNewLead(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_lead_trigger/contacts";
             var apiCallHttpMethod = "get";
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigNewUser(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigUserResponse[], ApiConnectionTriggerConfiguration> TrigNewUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_user_trigger/users";
             var apiCallHttpMethod = "get";
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigUserResponse[], ApiConnectionTriggerConfiguration> TrigUpdateUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/update_user_trigger/users";
             var apiCallHttpMethod = "get";
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
             return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigConversationResponse[], ApiConnectionTriggerConfiguration> TrigNewConversation(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_conversation_trigger/conversations";
             var apiCallHttpMethod = "get";

@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     public class TendocsdocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiCompareResponse> AiCompare(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
+        public IBodyWorkflowAction<AiCompareResponse, ApiConnectionActionConfiguration> AiCompare(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
         {
             var __workflow_requestsourceDocumentfirstFile = WorkflowExpression.Compile(requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
             var __workflow_requestcomparisonDocumentsecondFile = WorkflowExpression.Compile(requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
             var __workflow_requestconfigurationprofession = WorkflowExpression.Compile(requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
-            return new DeferredBodyAction<AiCompareResponse>(() =>
+            return new DeferredBodyAction<AiCompareResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/compare";
                 var apiCallHttpMethod = "post";
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiSummaryResponse> AiSummary(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
+        public IBodyWorkflowAction<AiSummaryResponse, ApiConnectionActionConfiguration> AiSummary(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
         {
             var __workflow_requestdocumentfile = WorkflowExpression.Compile(requestdocumentfile, nameof(requestdocumentfile), required: false);
             var __workflow_requestconfigurationtargetWordCount = WorkflowExpression.Compile(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
-            return new DeferredBodyAction<AiSummaryResponse>(() =>
+            return new DeferredBodyAction<AiSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/summary";
                 var apiCallHttpMethod = "post";
@@ -141,10 +141,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder(Expression<Func<string>> requestdescribeTheDocument1000Chars)
+        public IBodyWorkflowAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration> AiTemplateBuilder(Expression<Func<string>> requestdescribeTheDocument1000Chars)
         {
             var __workflow_requestdescribeTheDocument1000Chars = WorkflowExpression.Compile(requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
-            return new DeferredBodyAction<AiTemplateBuilderResponse>(() =>
+            return new DeferredBodyAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/templateBuilder";
                 var apiCallHttpMethod = "post";
@@ -179,11 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> ConversionConvert(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConversionConvert(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
             var __workflow_requestdocumentfile = WorkflowExpression.Compile(requestdocumentfile, nameof(requestdocumentfile), required: false);
             var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversion/v1/convert";
                 var apiCallHttpMethod = "post";
@@ -236,11 +236,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
             var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
             var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents/v1/jsonTemplate";
                 var apiCallHttpMethod = "post";
@@ -301,14 +301,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
             var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
             var __workflow_requestimage = WorkflowExpression.Compile(requestimage, nameof(requestimage), required: false);
             var __workflow_requestdocument = WorkflowExpression.Compile(requestdocument, nameof(requestdocument), required: false);
             var __workflow_requesttable = WorkflowExpression.Compile(requesttable, nameof(requesttable), required: false);
             var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents/v1/template";
                 var apiCallHttpMethod = "post";
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
+        public IBodyWorkflowAction<InstancesResponse, ApiConnectionActionConfiguration> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
         {
             var __workflow_requestdocumentTitle = WorkflowExpression.Compile(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
             var __workflow_requestdocumentIntroduction = WorkflowExpression.Compile(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var __workflow_requestcompleteButtonLabel = WorkflowExpression.Compile(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
             var __workflow_requestcompleteDocumentLabel = WorkflowExpression.Compile(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
             var __workflow_requestincompleteDocumentLabel = WorkflowExpression.Compile(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
-            return new DeferredBodyAction<InstancesResponse>(() =>
+            return new DeferredBodyAction<InstancesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/envelopes/v1/instances";
                 var apiCallHttpMethod = "post";

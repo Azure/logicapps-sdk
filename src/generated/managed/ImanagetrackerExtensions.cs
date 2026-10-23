@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
     public class ImanagetrackerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<GetTrackersForWorkspaceResponseBody> GetTrackersForWorkspace(Expression<Func<string>> workspaceId)
+        public IBodyWorkflowAction<GetTrackersForWorkspaceResponseBody, ApiConnectionActionConfiguration> GetTrackersForWorkspace(Expression<Func<string>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyAction<GetTrackersForWorkspaceResponseBody>(() =>
+            return new DeferredBodyAction<GetTrackersForWorkspaceResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getTrackersForWorkspace";
                 var apiCallHttpMethod = "get";
@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<GetStatusesForATrackerResponse> GetStatusesForATracker(Expression<Func<string>> workspaceId, Expression<Func<string>> trackerId)
+        public IBodyWorkflowAction<GetStatusesForATrackerResponse, ApiConnectionActionConfiguration> GetStatusesForATracker(Expression<Func<string>> workspaceId, Expression<Func<string>> trackerId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_trackerId = WorkflowExpression.Compile(trackerId, nameof(trackerId), required: true);
-            return new DeferredBodyAction<GetStatusesForATrackerResponse>(() =>
+            return new DeferredBodyAction<GetStatusesForATrackerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getStatusesForATracker";
                 var apiCallHttpMethod = "get";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddTaskResponse> AddTask(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodycontextId, Expression<Func<string>> bodytitle, Expression<Func<bodyassigneetyInput>> bodyassigneety, Expression<Func<string>> bodyassigneeworkId, Expression<Func<string>> bodyworkObjectwWstype, Expression<Func<string>> bodyworkObjectwId, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodydueTimeZone = null, Expression<Func<string>> bodytaskStatus = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<AddTaskResponse, ApiConnectionActionConfiguration> AddTask(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodycontextId, Expression<Func<string>> bodytitle, Expression<Func<bodyassigneetyInput>> bodyassigneety, Expression<Func<string>> bodyassigneeworkId, Expression<Func<string>> bodyworkObjectwWstype, Expression<Func<string>> bodyworkObjectwId, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodydueTimeZone = null, Expression<Func<string>> bodytaskStatus = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyparentId = null)
         {
             var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
             var __workflow_bodycontextId = WorkflowExpression.Compile(bodycontextId, nameof(bodycontextId), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var __workflow_bodytaskStatus = WorkflowExpression.Compile(bodytaskStatus, nameof(bodytaskStatus), required: false);
             var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            return new DeferredBodyAction<AddTaskResponse>(() =>
+            return new DeferredBodyAction<AddTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addTask";
                 var apiCallHttpMethod = "post";
@@ -134,14 +134,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse> UpdateSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldType, Expression<Func<string>> bodyfieldId, Expression<Func<object>> bodyfieldData)
+        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration> UpdateSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldType, Expression<Func<string>> bodyfieldId, Expression<Func<object>> bodyfieldData)
         {
             var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
             var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: true);
             var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: true);
             var __workflow_bodyfieldData = WorkflowExpression.Compile(bodyfieldData, nameof(bodyfieldData), required: true);
-            return new DeferredBodyAction<UpdateSingleTaskFieldResponse>(() =>
+            return new DeferredBodyAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updateSingleTaskField";
                 var apiCallHttpMethod = "post";
@@ -168,12 +168,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<CreateTrackerResponse> CreateTracker(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytrackerOwner = null)
+        public IBodyWorkflowAction<CreateTrackerResponse, ApiConnectionActionConfiguration> CreateTracker(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytrackerOwner = null)
         {
             var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodytrackerOwner = WorkflowExpression.Compile(bodytrackerOwner, nameof(bodytrackerOwner), required: false);
-            return new DeferredBodyAction<CreateTrackerResponse>(() =>
+            return new DeferredBodyAction<CreateTrackerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createTracker";
                 var apiCallHttpMethod = "post";
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddCustomFieldResponse> AddCustomField(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycontextId, Expression<Func<bodyviewOptionInput>> bodyviewOption, Expression<Func<string>> bodyfieldTitle, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldData = null)
+        public IBodyWorkflowAction<AddCustomFieldResponse, ApiConnectionActionConfiguration> AddCustomField(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycontextId, Expression<Func<bodyviewOptionInput>> bodyviewOption, Expression<Func<string>> bodyfieldTitle, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldData = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodycontextId = WorkflowExpression.Compile(bodycontextId, nameof(bodycontextId), required: true);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
             var __workflow_bodyfieldTitle = WorkflowExpression.Compile(bodyfieldTitle, nameof(bodyfieldTitle), required: true);
             var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: true);
             var __workflow_bodyfieldData = WorkflowExpression.Compile(bodyfieldData, nameof(bodyfieldData), required: false);
-            return new DeferredBodyAction<AddCustomFieldResponse>(() =>
+            return new DeferredBodyAction<AddCustomFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addCustomField";
                 var apiCallHttpMethod = "post";
@@ -241,12 +241,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ClearSingleTaskFieldResponse> ClearSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldId)
+        public IBodyWorkflowAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration> ClearSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldId)
         {
             var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
             var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: true);
-            return new DeferredBodyAction<ClearSingleTaskFieldResponse>(() =>
+            return new DeferredBodyAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/clearSingleTaskField";
                 var apiCallHttpMethod = "post";
@@ -269,14 +269,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ImportTrackerResponse> ImportTracker(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceTrackerId, Expression<Func<string>> bodydestinationWorkspaceId, Expression<Func<string>> bodyimportType, Expression<Func<object>> bodyoptions = null)
+        public IBodyWorkflowAction<ImportTrackerResponse, ApiConnectionActionConfiguration> ImportTracker(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceTrackerId, Expression<Func<string>> bodydestinationWorkspaceId, Expression<Func<string>> bodyimportType, Expression<Func<object>> bodyoptions = null)
         {
             var __workflow_bodysourceWorkspaceId = WorkflowExpression.Compile(bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
             var __workflow_bodysourceTrackerId = WorkflowExpression.Compile(bodysourceTrackerId, nameof(bodysourceTrackerId), required: true);
             var __workflow_bodydestinationWorkspaceId = WorkflowExpression.Compile(bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: true);
             var __workflow_bodyimportType = WorkflowExpression.Compile(bodyimportType, nameof(bodyimportType), required: true);
             var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
-            return new DeferredBodyAction<ImportTrackerResponse>(() =>
+            return new DeferredBodyAction<ImportTrackerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/importTracker";
                 var apiCallHttpMethod = "post";

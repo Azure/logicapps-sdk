@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
     public class CardsforpowerappsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<CreateCardResult> CreateCardInstance(Expression<Func<string>> cardId, Expression<Func<object>> cardRequestinputs = null)
+        public IBodyWorkflowAction<CreateCardResult, ApiConnectionActionConfiguration> CreateCardInstance(Expression<Func<string>> cardId, Expression<Func<object>> cardRequestinputs = null)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             var __workflow_cardRequestinputs = WorkflowExpression.Compile(cardRequestinputs, nameof(cardRequestinputs), required: false);
-            return new DeferredBodyAction<CreateCardResult>(() =>
+            return new DeferredBodyAction<CreateCardResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/cards/{0}/instances", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<PowerCardDescription> GetCardDescription(Expression<Func<string>> cardId)
+        public IBodyWorkflowAction<PowerCardDescription, ApiConnectionActionConfiguration> GetCardDescription(Expression<Func<string>> cardId)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
-            return new DeferredBodyAction<PowerCardDescription>(() =>
+            return new DeferredBodyAction<PowerCardDescription, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/cards/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<JToken> ProcessActivity()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ProcessActivity()
         {
             var apiCallPath = "/cards/activities";
             var apiCallHttpMethod = "post";
@@ -68,11 +68,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<GenerateCardResponse> GenerateCard(Expression<Func<CardAction[]>> generateCardRequestactions = null, Expression<Func<string>> generateCardRequestdescription = null)
+        public IBodyWorkflowAction<GenerateCardResponse, ApiConnectionActionConfiguration> GenerateCard(Expression<Func<CardAction[]>> generateCardRequestactions = null, Expression<Func<string>> generateCardRequestdescription = null)
         {
             var __workflow_generateCardRequestactions = WorkflowExpression.Compile(generateCardRequestactions, nameof(generateCardRequestactions), required: false);
             var __workflow_generateCardRequestdescription = WorkflowExpression.Compile(generateCardRequestdescription, nameof(generateCardRequestdescription), required: false);
-            return new DeferredBodyAction<GenerateCardResponse>(() =>
+            return new DeferredBodyAction<GenerateCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/generate/card";
                 var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
     public class InqubajourneyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<AcquireAccessTokenResponse> AcquireAccessToken(Expression<Func<string>> tenantName, Expression<Func<string>> hostURL, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
+        public IBodyWorkflowAction<AcquireAccessTokenResponse, ApiConnectionActionConfiguration> AcquireAccessToken(Expression<Func<string>> tenantName, Expression<Func<string>> hostURL, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
             var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
             var __workflow_hostURL = WorkflowExpression.Compile(hostURL, nameof(hostURL), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
             var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
             var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
             var __workflow_clientSecret = WorkflowExpression.Compile(clientSecret, nameof(clientSecret), required: true);
-            return new DeferredBodyAction<AcquireAccessTokenResponse>(() =>
+            return new DeferredBodyAction<AcquireAccessTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/connect/token", __workflow_tenantName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<string> PublishEvent(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodyeventDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PublishEvent(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodyeventDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
         {
             var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
             var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
             var __workflow_bodyeventDefinitionCode = WorkflowExpression.Compile(bodyeventDefinitionCode, nameof(bodyeventDefinitionCode), required: false);
             var __workflow_bodyisTest = WorkflowExpression.Compile(bodyisTest, nameof(bodyisTest), required: false);
             var __workflow_bodyattributes = WorkflowExpression.Compile(bodyattributes, nameof(bodyattributes), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cems/api/Events";
                 var apiCallHttpMethod = "post";
@@ -77,14 +77,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<string> PublishTransaction(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodytransactionDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PublishTransaction(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodytransactionDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
         {
             var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
             var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
             var __workflow_bodytransactionDefinitionCode = WorkflowExpression.Compile(bodytransactionDefinitionCode, nameof(bodytransactionDefinitionCode), required: false);
             var __workflow_bodyisTest = WorkflowExpression.Compile(bodyisTest, nameof(bodyisTest), required: false);
             var __workflow_bodyattributes = WorkflowExpression.Compile(bodyattributes, nameof(bodyattributes), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cems/api/Transactions";
                 var apiCallHttpMethod = "post";

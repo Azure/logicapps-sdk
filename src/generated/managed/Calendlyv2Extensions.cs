@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
     public class Calendlyv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes(Expression<Func<bool>> active = null, Expression<Func<int>> count = null, Expression<Func<string>> pageToken = null, Expression<Func<bool>> adminManaged = null)
+        public IBodyWorkflowAction<GetEventTypesResponse, ApiConnectionActionConfiguration> GetEventTypes(Expression<Func<bool>> active = null, Expression<Func<int>> count = null, Expression<Func<string>> pageToken = null, Expression<Func<bool>> adminManaged = null)
         {
             var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_pageToken = WorkflowExpression.Compile(pageToken, nameof(pageToken), required: false);
             var __workflow_adminManaged = WorkflowExpression.Compile(adminManaged, nameof(adminManaged), required: false);
-            return new DeferredBodyAction<GetEventTypesResponse>(() =>
+            return new DeferredBodyAction<GetEventTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/event_types";
                 var apiCallHttpMethod = "get";
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow(Expression<Func<string>> bodyinvitee)
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration> CreateInviteeNoShow(Expression<Func<string>> bodyinvitee)
         {
             var __workflow_bodyinvitee = WorkflowExpression.Compile(bodyinvitee, nameof(bodyinvitee), required: true);
-            return new DeferredBodyAction<CreateInviteeNoShowResponse>(() =>
+            return new DeferredBodyAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invitee_no_shows";
                 var apiCallHttpMethod = "post";
@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypeResponse> GetEventType(Expression<Func<string>> uuid)
+        public IBodyWorkflowAction<GetEventTypeResponse, ApiConnectionActionConfiguration> GetEventType(Expression<Func<string>> uuid)
         {
             var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: true);
-            return new DeferredBodyAction<GetEventTypeResponse>(() =>
+            return new DeferredBodyAction<GetEventTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event_types/{0}", __workflow_uuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -72,10 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<JToken> DeleteInviteeNoShow(Expression<Func<string>> uuid)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteInviteeNoShow(Expression<Func<string>> uuid)
         {
             var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invitee_no_shows/{0}", __workflow_uuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -87,10 +87,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
-            return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse>(() =>
+            return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions";
                 var apiCallHttpMethod = "post";
@@ -112,10 +112,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
-            return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(() =>
+            return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions/routing_form_submission";
                 var apiCallHttpMethod = "post";

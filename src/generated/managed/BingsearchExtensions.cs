@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
     public class BingsearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingsearch")]
-        public IBodyWorkflowAction<NewsArticle[]> GetNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
+        public IBodyWorkflowAction<NewsArticle[], ApiConnectionActionConfiguration> GetNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_mkt = WorkflowExpression.Compile(mkt, nameof(mkt), required: false);
             var __workflow_safeSearch = WorkflowExpression.Compile(safeSearch, nameof(safeSearch), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<NewsArticle[]>(() =>
+            return new DeferredBodyAction<NewsArticle[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/news/search";
                 var apiCallHttpMethod = "get";
@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
 
     public class BingsearchTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewsArticle[]> TrigNewNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewsArticle[], ApiConnectionTriggerConfiguration> TrigNewNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, FlowRecurrence recurrence = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_mkt = WorkflowExpression.Compile(mkt, nameof(mkt), required: false);
             var __workflow_safeSearch = WorkflowExpression.Compile(safeSearch, nameof(safeSearch), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyTrigger<NewsArticle[]>(() =>
+            return new DeferredBodyTrigger<NewsArticle[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/news/search";
                 var apiCallHttpMethod = "get";

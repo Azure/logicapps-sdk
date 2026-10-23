@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendly
 
     public class CalendlyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> WebhookCreateInvitee(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateInvitee(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook1/api/v1/hooks";
             var apiCallHttpMethod = "post";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendly
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> WebhookCancelInvitee(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCancelInvitee(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook2/api/v1/hooks";
             var apiCallHttpMethod = "post";

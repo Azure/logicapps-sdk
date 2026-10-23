@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
     public class ProjectonlineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<ProjectsWrapper> ListProjects(Expression<Func<string>> siteUrl)
+        public IBodyWorkflowAction<ProjectsWrapper, ApiConnectionActionConfiguration> ListProjects(Expression<Func<string>> siteUrl)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            return new DeferredBodyAction<ProjectsWrapper>(() =>
+            return new DeferredBodyAction<ProjectsWrapper, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/ProjectServer/Projects";
                 var apiCallHttpMethod = "get";
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<Project> CreateProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projprojectName, Expression<Func<string>> projprojectDescription = null, Expression<Func<string>> projprojectStartDate = null)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projprojectName, Expression<Func<string>> projprojectDescription = null, Expression<Func<string>> projprojectStartDate = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projprojectName = WorkflowExpression.Compile(projprojectName, nameof(projprojectName), required: true);
             var __workflow_projprojectDescription = WorkflowExpression.Compile(projprojectDescription, nameof(projprojectDescription), required: false);
             var __workflow_projprojectStartDate = WorkflowExpression.Compile(projprojectStartDate, nameof(projprojectStartDate), required: false);
-            return new DeferredBodyAction<Project>(() =>
+            return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/ProjectServer/Projects";
                 var apiCallHttpMethod = "post";
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<Project> ListProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> ListProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> select = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<Project>(() =>
+            return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TaskObject> CreateTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> taskparameterstaskName, Expression<Func<string>> taskparameterstaskNotes = null, Expression<Func<string>> taskparameterstaskStartDate = null, Expression<Func<string>> taskparameterstaskDuration = null)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> taskparameterstaskName, Expression<Func<string>> taskparameterstaskNotes = null, Expression<Func<string>> taskparameterstaskStartDate = null, Expression<Func<string>> taskparameterstaskDuration = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             var __workflow_taskparameterstaskNotes = WorkflowExpression.Compile(taskparameterstaskNotes, nameof(taskparameterstaskNotes), required: false);
             var __workflow_taskparameterstaskStartDate = WorkflowExpression.Compile(taskparameterstaskStartDate, nameof(taskparameterstaskStartDate), required: false);
             var __workflow_taskparameterstaskDuration = WorkflowExpression.Compile(taskparameterstaskDuration, nameof(taskparameterstaskDuration), required: false);
-            return new DeferredBodyAction<TaskObject>(() =>
+            return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Tasks/Add", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -136,14 +136,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<EnterpriseResource> CreateResource(Expression<Func<string>> siteUrl, Expression<Func<string>> resourceresourceName, Expression<Func<bool>> resourceisResourceInBudget = null, Expression<Func<bool>> resourceisResourceGeneric = null, Expression<Func<bool>> resourceisResourceInactive = null)
+        public IBodyWorkflowAction<EnterpriseResource, ApiConnectionActionConfiguration> CreateResource(Expression<Func<string>> siteUrl, Expression<Func<string>> resourceresourceName, Expression<Func<bool>> resourceisResourceInBudget = null, Expression<Func<bool>> resourceisResourceGeneric = null, Expression<Func<bool>> resourceisResourceInactive = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_resourceresourceName = WorkflowExpression.Compile(resourceresourceName, nameof(resourceresourceName), required: true);
             var __workflow_resourceisResourceInBudget = WorkflowExpression.Compile(resourceisResourceInBudget, nameof(resourceisResourceInBudget), required: false);
             var __workflow_resourceisResourceGeneric = WorkflowExpression.Compile(resourceisResourceGeneric, nameof(resourceisResourceGeneric), required: false);
             var __workflow_resourceisResourceInactive = WorkflowExpression.Compile(resourceisResourceInactive, nameof(resourceisResourceInactive), required: false);
-            return new DeferredBodyAction<EnterpriseResource>(() =>
+            return new DeferredBodyAction<EnterpriseResource, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/ProjectServer/EnterpriseResources";
                 var apiCallHttpMethod = "post";
@@ -181,13 +181,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TasksWrapper> ListTasks(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<TasksWrapper, ApiConnectionActionConfiguration> ListTasks(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<TasksWrapper>(() =>
+            return new DeferredBodyAction<TasksWrapper, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/Tasks", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -202,11 +202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TaskObject> GetProjectSummaryTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> GetProjectSummaryTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<TaskObject>(() =>
+            return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/ProjectSummaryTask", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -217,11 +217,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<JToken> CheckoutProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CheckoutProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/checkOut", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -232,11 +232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<JToken> PublishProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PublishProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Publish(true)", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -249,10 +249,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
     public class ProjectonlineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnNewProject(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration> OnNewProject(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            return new DeferredBodyTrigger<TriggerProjectsWrapper>(() =>
+            return new DeferredBodyTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/_api/ProjectData/Projects";
                 var apiCallHttpMethod = "get";
@@ -262,10 +262,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration> OnProjectPublished(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            return new DeferredBodyTrigger<TriggerProjectsWrapper>(() =>
+            return new DeferredBodyTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/_api/ProjectData/PublishedProjects";
                 var apiCallHttpMethod = "get";
@@ -275,10 +275,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerResourcesWrapper> OnNewResource(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerResourcesWrapper, ApiConnectionTriggerConfiguration> OnNewResource(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            return new DeferredBodyTrigger<TriggerResourcesWrapper>(() =>
+            return new DeferredBodyTrigger<TriggerResourcesWrapper, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/_api/ProjectData/Resources";
                 var apiCallHttpMethod = "get";
@@ -288,10 +288,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerTasksWrapper> OnNewTask(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerTasksWrapper, ApiConnectionTriggerConfiguration> OnNewTask(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            return new DeferredBodyTrigger<TriggerTasksWrapper>(() =>
+            return new DeferredBodyTrigger<TriggerTasksWrapper, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/_api/ProjectData/Tasks";
                 var apiCallHttpMethod = "get";

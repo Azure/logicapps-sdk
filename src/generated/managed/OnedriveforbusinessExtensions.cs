@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
     public class OnedriveforbusinessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> GetFileMetadata(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> GetFileMetadata(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "put";
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IWorkflowAction DeleteFile(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteFile(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> GetFileMetadataByPath(Expression<Func<string>> path)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> GetFileMetadataByPath(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/GetFileByPath";
                 var apiCallHttpMethod = "get";
@@ -67,11 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<string> GetFileContentByPath(Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileContentByPath(Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/GetFileContentByPath";
                 var apiCallHttpMethod = "get";
@@ -85,11 +85,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileContent(Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/content", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/files";
                 var apiCallHttpMethod = "post";
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/copyFile";
                 var apiCallHttpMethod = "post";
@@ -140,12 +140,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> CopyDriveFile(Expression<Func<string>> id, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CopyDriveFile(Expression<Func<string>> id, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/copy", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -159,12 +159,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> CopyDriveFileByPath(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CopyDriveFileByPath(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/CopyFileByPath";
                 var apiCallHttpMethod = "post";
@@ -179,12 +179,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> MoveFile(Expression<Func<string>> id, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> MoveFile(Expression<Func<string>> id, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/move", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -198,12 +198,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata> MoveFileByPath(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> MoveFileByPath(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/MoveFileByPath";
                 var apiCallHttpMethod = "post";
@@ -218,11 +218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<string> ConvertFile(Expression<Func<string>> id, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFile(Expression<Func<string>> id, Expression<Func<typeInput>> type = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/convert", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -235,11 +235,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<string> ConvertFileByPath(Expression<Func<string>> path, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFileByPath(Expression<Func<string>> path, Expression<Func<typeInput>> type = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/ConvertFileByPath";
                 var apiCallHttpMethod = "get";
@@ -253,11 +253,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<Thumbnail> GetFileThumbnail(Expression<Func<string>> id, Expression<Func<sizeInput>> size)
+        public IBodyWorkflowAction<Thumbnail, ApiConnectionActionConfiguration> GetFileThumbnail(Expression<Func<string>> id, Expression<Func<sizeInput>> size)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: true);
-            return new DeferredBodyAction<Thumbnail>(() =>
+            return new DeferredBodyAction<Thumbnail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/thumbnail", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata[]> ListRootFolder()
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListRootFolder()
         {
             var apiCallPath = "/datasets/default/folders";
             var apiCallHttpMethod = "get";
@@ -277,13 +277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata[]> FindFiles(Expression<Func<string>> query, Expression<Func<string>> id, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFiles(Expression<Func<string>> query, Expression<Func<string>> id, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_findMode = WorkflowExpression.Compile(findMode, nameof(findMode), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyAction<BlobMetadata[]>(() =>
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/folders/{0}/search", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -298,13 +298,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata[]> FindFilesByPath(Expression<Func<string>> query, Expression<Func<string>> path, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFilesByPath(Expression<Func<string>> query, Expression<Func<string>> path, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_findMode = WorkflowExpression.Compile(findMode, nameof(findMode), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyAction<BlobMetadata[]>(() =>
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/findFile";
                 var apiCallHttpMethod = "get";
@@ -320,12 +320,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<SharingLink> CreateShareLink(Expression<Func<string>> id, Expression<Func<typeInput>> type, Expression<Func<scopeInput>> scope = null)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLink(Expression<Func<string>> id, Expression<Func<typeInput>> type, Expression<Func<scopeInput>> scope = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_scope = WorkflowExpression.Compile(scope, nameof(scope), required: false);
-            return new DeferredBodyAction<SharingLink>(() =>
+            return new DeferredBodyAction<SharingLink, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/shareV2", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -339,12 +339,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<SharingLink> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<typeInput>> type, Expression<Func<scopeInput>> scope = null)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<typeInput>> type, Expression<Func<scopeInput>> scope = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_scope = WorkflowExpression.Compile(scope, nameof(scope), required: false);
-            return new DeferredBodyAction<SharingLink>(() =>
+            return new DeferredBodyAction<SharingLink, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/CreateShareLinkByPathV2";
                 var apiCallHttpMethod = "post";
@@ -359,12 +359,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata[]>(() =>
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/extractFolderV2";
                 var apiCallHttpMethod = "post";
@@ -379,10 +379,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadataPage> ListFolder(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BlobMetadataPage, ApiConnectionActionConfiguration> ListFolder(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BlobMetadataPage>(() =>
+            return new DeferredBodyAction<BlobMetadataPage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/foldersV2/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -396,12 +396,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
 
     public class OnedriveforbusinessTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> OnNewFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnNewFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyTrigger<string>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/onnewfilev2";
                 var apiCallHttpMethod = "get";
@@ -418,12 +418,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             });
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnNewFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[]>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onnewfilesv2";
                 var apiCallHttpMethod = "get";
@@ -440,12 +440,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             });
         }
 
-        public IBodyWorkflowTrigger<string> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyTrigger<string>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/onupdatedfilev2";
                 var apiCallHttpMethod = "get";
@@ -463,12 +463,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
             });
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<bool>> includeSubfolders = null, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeSubfolders = WorkflowExpression.Compile(includeSubfolders, nameof(includeSubfolders), required: false);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[]>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onupdatedfilesv2";
                 var apiCallHttpMethod = "get";

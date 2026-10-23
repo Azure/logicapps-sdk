@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
     public class ImanagedatamartsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType)
+        public IBodyWorkflowAction<ItemBatchResponse, ApiConnectionActionConfiguration> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType)
         {
             var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
-            return new DeferredBodyAction<ItemBatchResponse>(() =>
+            return new DeferredBodyAction<ItemBatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/batch/{0}/metadata", __workflow_itemType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType)
+        public IBodyWorkflowAction<ItemBatchResponse, ApiConnectionActionConfiguration> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType)
         {
             var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
-            return new DeferredBodyAction<ItemBatchResponse>(() =>
+            return new DeferredBodyAction<ItemBatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/batch/{0}/metadata", __workflow_itemType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";

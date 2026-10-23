@@ -4,10 +4,26 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
+
+    public sealed class ApiConnectionActionConfiguration :
+        IRetryPolicyConfiguration,
+        ITrackedPropertiesConfiguration,
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
     /// <summary>
     /// Represents an action that performs an API connection operation in a workflow.
     /// </summary>
-    public class ApiConnectionAction : WorkflowActionBase
+    public class ApiConnectionAction : WorkflowActionBase<ApiConnectionActionConfiguration>
     {
         /// <summary>
         /// API connection action input.
@@ -31,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {
@@ -45,7 +61,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents an API connection action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public class ApiConnectionAction<T> : ApiConnectionAction, IBodyWorkflowAction<T>
+    public class ApiConnectionAction<T> :
+        ApiConnectionAction,
+        IBodyWorkflowAction<T, ApiConnectionActionConfiguration>
     {
         internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
             : base(apiConnectionActionInput)

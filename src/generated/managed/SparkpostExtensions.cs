@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
     public class SparkpostActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> CreateRecipientList(Expression<Func<string>> recipientListidOfTheRecipientList = null, Expression<Func<string>> recipientListnameOfTheRecipientList = null, Expression<Func<string>> recipientListdescription = null, Expression<Func<string>> recipientListemailAddressOfFirstRecipient = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRecipientList(Expression<Func<string>> recipientListidOfTheRecipientList = null, Expression<Func<string>> recipientListnameOfTheRecipientList = null, Expression<Func<string>> recipientListdescription = null, Expression<Func<string>> recipientListemailAddressOfFirstRecipient = null)
         {
             var __workflow_recipientListidOfTheRecipientList = WorkflowExpression.Compile(recipientListidOfTheRecipientList, nameof(recipientListidOfTheRecipientList), required: false);
             var __workflow_recipientListnameOfTheRecipientList = WorkflowExpression.Compile(recipientListnameOfTheRecipientList, nameof(recipientListnameOfTheRecipientList), required: false);
             var __workflow_recipientListdescription = WorkflowExpression.Compile(recipientListdescription, nameof(recipientListdescription), required: false);
             var __workflow_recipientListemailAddressOfFirstRecipient = WorkflowExpression.Compile(recipientListemailAddressOfFirstRecipient, nameof(recipientListemailAddressOfFirstRecipient), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/recipient-lists";
                 var apiCallHttpMethod = "post";
@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> AddUserToRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressemailAddress, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressname = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddUserToRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressemailAddress, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressname = null)
         {
             var __workflow_recipientListId = WorkflowExpression.Compile(recipientListId, nameof(recipientListId), required: true);
             var __workflow_addUserToRecipientListRequestrecipientaddressemailAddress = WorkflowExpression.Compile(addUserToRecipientListRequestrecipientaddressemailAddress, nameof(addUserToRecipientListRequestrecipientaddressemailAddress), required: true);
             var __workflow_addUserToRecipientListRequestrecipientaddressname = WorkflowExpression.Compile(addUserToRecipientListRequestrecipientaddressname, nameof(addUserToRecipientListRequestrecipientaddressname), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/add-user/recipient-lists/{0}", __workflow_recipientListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> DeleteUserFromRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> deleteUserRequestemailAddress = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteUserFromRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> deleteUserRequestemailAddress = null)
         {
             var __workflow_recipientListId = WorkflowExpression.Compile(recipientListId, nameof(recipientListId), required: true);
             var __workflow_deleteUserRequestemailAddress = WorkflowExpression.Compile(deleteUserRequestemailAddress, nameof(deleteUserRequestemailAddress), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/delete-user/recipient-lists/{0}", __workflow_recipientListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -132,12 +132,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> SendEmailToRecipientList(Expression<Func<string>> requestrecipientsrecipient, Expression<Func<string>> requestcontenttemplate, Expression<Func<string>> requestcampaignId = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmailToRecipientList(Expression<Func<string>> requestrecipientsrecipient, Expression<Func<string>> requestcontenttemplate, Expression<Func<string>> requestcampaignId = null)
         {
             var __workflow_requestrecipientsrecipient = WorkflowExpression.Compile(requestrecipientsrecipient, nameof(requestrecipientsrecipient), required: true);
             var __workflow_requestcontenttemplate = WorkflowExpression.Compile(requestcontenttemplate, nameof(requestcontenttemplate), required: true);
             var __workflow_requestcampaignId = WorkflowExpression.Compile(requestcampaignId, nameof(requestcampaignId), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/transmissions";
                 var apiCallHttpMethod = "post";
@@ -180,11 +180,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> SendEmailToRecipient(Expression<Func<string>> requestcontenttemplate, Expression<Func<EmailRecipient[]>> requestrecipients)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmailToRecipient(Expression<Func<string>> requestcontenttemplate, Expression<Func<EmailRecipient[]>> requestrecipients)
         {
             var __workflow_requestcontenttemplate = WorkflowExpression.Compile(requestcontenttemplate, nameof(requestcontenttemplate), required: true);
             var __workflow_requestrecipients = WorkflowExpression.Compile(requestrecipients, nameof(requestrecipients), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/transmissions/singleRecipient";
                 var apiCallHttpMethod = "post";
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class SparkpostTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListRecipientListsResponse> OnNewRecipientList(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListRecipientListsResponse, ApiConnectionTriggerConfiguration> OnNewRecipientList(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/recipient-lists";
             var apiCallHttpMethod = "get";

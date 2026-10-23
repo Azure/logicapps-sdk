@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     public class FederalreservemarketsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse, ApiConnectionActionConfiguration> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
             var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            return new DeferredBodyAction<GetTreasurySecuritiesOperationsByStatusResponse>(() =>
+            return new DeferredBodyAction<GetTreasurySecuritiesOperationsByStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", __workflow_operation.WithUrlEncoding(1), __workflow_status.WithUrlEncoding(1), __workflow_include.WithUrlEncoding(1), __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse, ApiConnectionActionConfiguration> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
             var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            return new DeferredBodyAction<GetSecuritiesLendingOperationsResponse>(() =>
+            return new DeferredBodyAction<GetSecuritiesLendingOperationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/seclending/{0}/results/{1}/latest.{2}", __workflow_operation.WithUrlEncoding(1), __workflow_include.WithUrlEncoding(1), __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
     public class PeltarionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "peltarion")]
-        public IBodyWorkflowAction<CallapiResponse> Callapi(Expression<Func<string>> peltarionbody)
+        public IBodyWorkflowAction<CallapiResponse, ApiConnectionActionConfiguration> Callapi(Expression<Func<string>> peltarionbody)
         {
             var __workflow_peltarionbody = WorkflowExpression.Compile(peltarionbody, nameof(peltarionbody), required: true);
-            return new DeferredBodyAction<CallapiResponse>(() =>
+            return new DeferredBodyAction<CallapiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/forwardcall";
                 var apiCallHttpMethod = "post";

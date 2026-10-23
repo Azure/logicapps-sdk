@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
     public class DpirdscienceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
-        public IBodyWorkflowAction<GetStationsResponse> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<string>> state = null)
+        public IBodyWorkflowAction<GetStationsResponse, ApiConnectionActionConfiguration> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<string>> state = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<GetStationsResponse>(() =>
+            return new DeferredBodyAction<GetStationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations";
                 var apiCallHttpMethod = "get";
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
-        public IBodyWorkflowAction<GetStationResponse> GetStation(Expression<Func<string>> stationCode)
+        public IBodyWorkflowAction<GetStationResponse, ApiConnectionActionConfiguration> GetStation(Expression<Func<string>> stationCode)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
-            return new DeferredBodyAction<GetStationResponse>(() =>
+            return new DeferredBodyAction<GetStationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/station/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
-        public IBodyWorkflowAction<GetNearbyWeatherStationsResponse> GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<string>> state = null)
+        public IBodyWorkflowAction<GetNearbyWeatherStationsResponse, ApiConnectionActionConfiguration> GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<string>> state = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<GetNearbyWeatherStationsResponse>(() =>
+            return new DeferredBodyAction<GetNearbyWeatherStationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stations/nearby";
                 var apiCallHttpMethod = "get";
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
-        public IBodyWorkflowAction<GetStationRainfallResponse> GetStationRainfall(Expression<Func<string>> stationCode, Expression<Func<string>> summerStartDate = null, Expression<Func<string>> growingSeasonStartDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> forecastDate = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationRainfallResponse, ApiConnectionActionConfiguration> GetStationRainfall(Expression<Func<string>> stationCode, Expression<Func<string>> summerStartDate = null, Expression<Func<string>> growingSeasonStartDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> forecastDate = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             var __workflow_summerStartDate = WorkflowExpression.Compile(summerStartDate, nameof(summerStartDate), required: false);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_forecastDate = WorkflowExpression.Compile(forecastDate, nameof(forecastDate), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetStationRainfallResponse>(() =>
+            return new DeferredBodyAction<GetStationRainfallResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/rainfall/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
-        public IBodyWorkflowAction<GetPotentialYieldResponse> GetPotentialYield(Expression<Func<string>> stationCode = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<string>> summerStartDate = null, Expression<Func<string>> growingSeasonStartDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> forecastDate = null, Expression<Func<int>> waterUseEfficiency = null, Expression<Func<int>> evaporation = null)
+        public IBodyWorkflowAction<GetPotentialYieldResponse, ApiConnectionActionConfiguration> GetPotentialYield(Expression<Func<string>> stationCode = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<string>> summerStartDate = null, Expression<Func<string>> growingSeasonStartDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> forecastDate = null, Expression<Func<int>> waterUseEfficiency = null, Expression<Func<int>> evaporation = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: false);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var __workflow_forecastDate = WorkflowExpression.Compile(forecastDate, nameof(forecastDate), required: false);
             var __workflow_waterUseEfficiency = WorkflowExpression.Compile(waterUseEfficiency, nameof(waterUseEfficiency), required: false);
             var __workflow_evaporation = WorkflowExpression.Compile(evaporation, nameof(evaporation), required: false);
-            return new DeferredBodyAction<GetPotentialYieldResponse>(() =>
+            return new DeferredBodyAction<GetPotentialYieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/potential-yield";
                 var apiCallHttpMethod = "get";
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
-        public IBodyWorkflowAction<GetSoilWaterResponse> GetSoilWater(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<soilTypeInput>> soilType, Expression<Func<string>> stationCode = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<int>> faoInitialisationDays = null, Expression<Func<double>> faoInitialisationCropCoefficient = null, Expression<Func<int>> faoDevelopmentDays = null, Expression<Func<double>> faoDevelopmentCropCoefficient = null, Expression<Func<int>> faoMidSeasonDays = null, Expression<Func<double>> faoMidSeasonCropCoefficient = null, Expression<Func<int>> faoLateSeasonDays = null, Expression<Func<double>> faoLateSeasonCropCoefficient = null, Expression<Func<int>> faoBreakOfSeason3Days25April = null, Expression<Func<int>> faoBreakOfSeason3Days5June = null)
+        public IBodyWorkflowAction<GetSoilWaterResponse, ApiConnectionActionConfiguration> GetSoilWater(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<soilTypeInput>> soilType, Expression<Func<string>> stationCode = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<int>> faoInitialisationDays = null, Expression<Func<double>> faoInitialisationCropCoefficient = null, Expression<Func<int>> faoDevelopmentDays = null, Expression<Func<double>> faoDevelopmentCropCoefficient = null, Expression<Func<int>> faoMidSeasonDays = null, Expression<Func<double>> faoMidSeasonCropCoefficient = null, Expression<Func<int>> faoLateSeasonDays = null, Expression<Func<double>> faoLateSeasonCropCoefficient = null, Expression<Func<int>> faoBreakOfSeason3Days25April = null, Expression<Func<int>> faoBreakOfSeason3Days5June = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var __workflow_faoLateSeasonCropCoefficient = WorkflowExpression.Compile(faoLateSeasonCropCoefficient, nameof(faoLateSeasonCropCoefficient), required: false);
             var __workflow_faoBreakOfSeason3Days25April = WorkflowExpression.Compile(faoBreakOfSeason3Days25April, nameof(faoBreakOfSeason3Days25April), required: false);
             var __workflow_faoBreakOfSeason3Days5June = WorkflowExpression.Compile(faoBreakOfSeason3Days5June, nameof(faoBreakOfSeason3Days5June), required: false);
-            return new DeferredBodyAction<GetSoilWaterResponse>(() =>
+            return new DeferredBodyAction<GetSoilWaterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/soilwater";
                 var apiCallHttpMethod = "get";
@@ -219,12 +219,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
-        public IBodyWorkflowAction<GetYellowSpotResponse> GetYellowSpot(Expression<Func<string>> stationCode = null, Expression<Func<string>> date = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetYellowSpotResponse, ApiConnectionActionConfiguration> GetYellowSpot(Expression<Func<string>> stationCode = null, Expression<Func<string>> date = null, Expression<Func<string>> select = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetYellowSpotResponse>(() =>
+            return new DeferredBodyAction<GetYellowSpotResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/yellowspot";
                 var apiCallHttpMethod = "get";

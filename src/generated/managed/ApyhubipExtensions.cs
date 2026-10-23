@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
     public class ApyhubipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<ArchiveFilePostResponse> ArchiveFile(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<ArchiveFilePostResponse, ApiConnectionActionConfiguration> ArchiveFile(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
         {
             var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
-            return new DeferredBodyAction<ArchiveFilePostResponse>(() =>
+            return new DeferredBodyAction<ArchiveFilePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate/archive/file-urls/archive-file";
                 var apiCallHttpMethod = "post";
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<ArchiveURLPostResponse> ArchiveURL(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<ArchiveURLPostResponse, ApiConnectionActionConfiguration> ArchiveURL(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
         {
             var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
-            return new DeferredBodyAction<ArchiveURLPostResponse>(() =>
+            return new DeferredBodyAction<ArchiveURLPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate/archive/file-urls/archive-url";
                 var apiCallHttpMethod = "post";
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<UnarchiveURLPostResponse> UnarchiveURL(Expression<Func<string>> bodyurl)
+        public IBodyWorkflowAction<UnarchiveURLPostResponse, ApiConnectionActionConfiguration> UnarchiveURL(Expression<Func<string>> bodyurl)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            return new DeferredBodyAction<UnarchiveURLPostResponse>(() =>
+            return new DeferredBodyAction<UnarchiveURLPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/extract/archive/url/file-urls";
                 var apiCallHttpMethod = "post";

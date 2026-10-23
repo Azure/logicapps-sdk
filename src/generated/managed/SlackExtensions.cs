@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
     public class SlackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<SetDNDResponse> SetDND(Expression<Func<string>> numMinutes = null)
+        public IBodyWorkflowAction<SetDNDResponse, ApiConnectionActionConfiguration> SetDND(Expression<Func<string>> numMinutes = null)
         {
             var __workflow_numMinutes = WorkflowExpression.Compile(numMinutes, nameof(numMinutes), required: false);
-            return new DeferredBodyAction<SetDNDResponse>(() =>
+            return new DeferredBodyAction<SetDNDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dnd.setSnooze";
                 var apiCallHttpMethod = "get";
@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel(Expression<Func<string>> name = null, Expression<Func<bool>> isPrivate = null)
+        public IBodyWorkflowAction<CreateChannelResponse, ApiConnectionActionConfiguration> CreateChannel(Expression<Func<string>> name = null, Expression<Func<bool>> isPrivate = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_isPrivate = WorkflowExpression.Compile(isPrivate, nameof(isPrivate), required: false);
-            return new DeferredBodyAction<CreateChannelResponse>(() =>
+            return new DeferredBodyAction<CreateChannelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations.create";
                 var apiCallHttpMethod = "post";
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<JoinChannelResponseV2> JoinChannel(Expression<Func<string>> channel = null)
+        public IBodyWorkflowAction<JoinChannelResponseV2, ApiConnectionActionConfiguration> JoinChannel(Expression<Func<string>> channel = null)
         {
             var __workflow_channel = WorkflowExpression.Compile(channel, nameof(channel), required: false);
-            return new DeferredBodyAction<JoinChannelResponseV2>(() =>
+            return new DeferredBodyAction<JoinChannelResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations.join";
                 var apiCallHttpMethod = "post";
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<ListChannelsResponseV3> ListChannels()
+        public IBodyWorkflowAction<ListChannelsResponseV3, ApiConnectionActionConfiguration> ListChannels()
         {
             var apiCallPath = "/v3/conversations.list";
             var apiCallHttpMethod = "get";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<PostMessageResponse> PostMessage(Expression<Func<string>> messagechannelName, Expression<Func<string>> messagemessageText, Expression<Func<string>> messagebotName = null, Expression<Func<bool>> messagepostAsUser = null, Expression<Func<messageparseModeInput>> messageparseMode = null, Expression<Func<bool>> messageslackMarkupParsing = null, Expression<Func<int>> messagelinkNames = null, Expression<Func<bool>> messageunfurlLinks = null, Expression<Func<bool>> messageunfurlMedia = null, Expression<Func<string>> messageiconUrl = null, Expression<Func<string>> messageiconEmoji = null)
+        public IBodyWorkflowAction<PostMessageResponse, ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> messagechannelName, Expression<Func<string>> messagemessageText, Expression<Func<string>> messagebotName = null, Expression<Func<bool>> messagepostAsUser = null, Expression<Func<messageparseModeInput>> messageparseMode = null, Expression<Func<bool>> messageslackMarkupParsing = null, Expression<Func<int>> messagelinkNames = null, Expression<Func<bool>> messageunfurlLinks = null, Expression<Func<bool>> messageunfurlMedia = null, Expression<Func<string>> messageiconUrl = null, Expression<Func<string>> messageiconEmoji = null)
         {
             var __workflow_messagechannelName = WorkflowExpression.Compile(messagechannelName, nameof(messagechannelName), required: true);
             var __workflow_messagemessageText = WorkflowExpression.Compile(messagemessageText, nameof(messagemessageText), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
             var __workflow_messageunfurlMedia = WorkflowExpression.Compile(messageunfurlMedia, nameof(messageunfurlMedia), required: false);
             var __workflow_messageiconUrl = WorkflowExpression.Compile(messageiconUrl, nameof(messageiconUrl), required: false);
             var __workflow_messageiconEmoji = WorkflowExpression.Compile(messageiconEmoji, nameof(messageiconEmoji), required: false);
-            return new DeferredBodyAction<PostMessageResponse>(() =>
+            return new DeferredBodyAction<PostMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/chat.postMessage";
                 var apiCallHttpMethod = "post";
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
 
     public class SlackTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile(Expression<Func<string>> channel, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewFileResponseItem[], ApiConnectionTriggerConfiguration> OnNewFile(Expression<Func<string>> channel, FlowRecurrence recurrence = null)
         {
             var __workflow_channel = WorkflowExpression.Compile(channel, nameof(channel), required: true);
-            return new DeferredBodyTrigger<OnNewFileResponseItem[]>(() =>
+            return new DeferredBodyTrigger<OnNewFileResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/files.list";
                 var apiCallHttpMethod = "get";

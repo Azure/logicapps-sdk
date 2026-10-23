@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
     public class SmaponeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<UserInfoModel> GETAccount()
+        public IBodyWorkflowAction<UserInfoModel, ApiConnectionActionConfiguration> GETAccount()
         {
             var apiCallPath = "/intern/Account";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<AccountStatistics> GETAccountStats()
+        public IBodyWorkflowAction<AccountStatistics, ApiConnectionActionConfiguration> GETAccountStats()
         {
             var apiCallPath = "/intern/Account/Stats";
             var apiCallHttpMethod = "get";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataSourceListModel[]> GETDataSources()
+        public IBodyWorkflowAction<DataSourceListModel[], ApiConnectionActionConfiguration> GETDataSources()
         {
             var apiCallPath = "/intern/DataSource";
             var apiCallHttpMethod = "get";
@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataSourceModel> GETDataSource(Expression<Func<string>> dataSourceId)
+        public IBodyWorkflowAction<DataSourceModel, ApiConnectionActionConfiguration> GETDataSource(Expression<Func<string>> dataSourceId)
         {
             var __workflow_dataSourceId = WorkflowExpression.Compile(dataSourceId, nameof(dataSourceId), required: true);
-            return new DeferredBodyAction<DataSourceModel>(() =>
+            return new DeferredBodyAction<DataSourceModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/DataSource/{0}", __workflow_dataSourceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<JToken[]> GETDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GETDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion)
         {
             var __workflow_dataSourceId = WorkflowExpression.Compile(dataSourceId, nameof(dataSourceId), required: true);
             var __workflow_dataSourceVersion = WorkflowExpression.Compile(dataSourceVersion, nameof(dataSourceVersion), required: true);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", __workflow_dataSourceId.WithUrlEncoding(1), __workflow_dataSourceVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataSourceVersionModel> PUTDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion, Expression<Func<JToken[]>> values = null)
+        public IBodyWorkflowAction<DataSourceVersionModel, ApiConnectionActionConfiguration> PUTDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion, Expression<Func<JToken[]>> values = null)
         {
             var __workflow_dataSourceId = WorkflowExpression.Compile(dataSourceId, nameof(dataSourceId), required: true);
             var __workflow_dataSourceVersion = WorkflowExpression.Compile(dataSourceVersion, nameof(dataSourceVersion), required: true);
             var __workflow_values = WorkflowExpression.Compile(values, nameof(values), required: false);
-            return new DeferredBodyAction<DataSourceVersionModel>(() =>
+            return new DeferredBodyAction<DataSourceVersionModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", __workflow_dataSourceId.WithUrlEncoding(1), __workflow_dataSourceVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<SmapModel[]> GETSmaps()
+        public IBodyWorkflowAction<SmapModel[], ApiConnectionActionConfiguration> GETSmaps()
         {
             var apiCallPath = "/v1/Smaps";
             var apiCallHttpMethod = "get";
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<SmapModel> GETSmap(Expression<Func<string>> smapId)
+        public IBodyWorkflowAction<SmapModel, ApiConnectionActionConfiguration> GETSmap(Expression<Func<string>> smapId)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
-            return new DeferredBodyAction<SmapModel>(() =>
+            return new DeferredBodyAction<SmapModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}", __workflow_smapId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -104,13 +104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi[]> GETSmapDataFormat(Expression<Func<string>> smapId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<DataRecordApi[], ApiConnectionActionConfiguration> GETSmapDataFormat(Expression<Func<string>> smapId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_markAsExported = WorkflowExpression.Compile(markAsExported, nameof(markAsExported), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<DataRecordApi[]>(() =>
+            return new DeferredBodyAction<DataRecordApi[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Data.{1}", __workflow_smapId.WithUrlEncoding(1), __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -125,12 +125,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<string> GETSmapDataReport(Expression<Func<string>> smapId, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapDataReport(Expression<Func<string>> smapId, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_markAsExported = WorkflowExpression.Compile(markAsExported, nameof(markAsExported), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Data.pdf", __workflow_smapId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -145,14 +145,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi[]> GETSmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<formatInput>> format = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<DataRecordApi[], ApiConnectionActionConfiguration> GETSmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<formatInput>> format = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_markAsExported = WorkflowExpression.Compile(markAsExported, nameof(markAsExported), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<DataRecordApi[]>(() =>
+            return new DeferredBodyAction<DataRecordApi[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -170,12 +170,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IWorkflowAction DELETESmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<stateInput>> state = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DELETESmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<stateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi> POSTSmapsDataVersion(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> tasktitle, Expression<Func<string>> taskuserEmail = null, Expression<Func<string>> taskcomment = null, Expression<Func<bool>> taskhasPriority = null)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> POSTSmapsDataVersion(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> tasktitle, Expression<Func<string>> taskuserEmail = null, Expression<Func<string>> taskcomment = null, Expression<Func<bool>> taskhasPriority = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             var __workflow_taskuserEmail = WorkflowExpression.Compile(taskuserEmail, nameof(taskuserEmail), required: false);
             var __workflow_taskcomment = WorkflowExpression.Compile(taskcomment, nameof(taskcomment), required: false);
             var __workflow_taskhasPriority = WorkflowExpression.Compile(taskhasPriority, nameof(taskhasPriority), required: false);
-            return new DeferredBodyAction<DataRecordApi>(() =>
+            return new DeferredBodyAction<DataRecordApi, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/Smaps/{0}/Versions/{1}/Data", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -240,13 +240,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<string> GETSmapVersionDataReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionDataReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_markAsExported = WorkflowExpression.Compile(markAsExported, nameof(markAsExported), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data.pdf", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<string> GETSmapVersionRecordReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<bool>> useDefault = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionRecordReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<bool>> useDefault = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_markAsExported = WorkflowExpression.Compile(markAsExported, nameof(markAsExported), required: false);
             var __workflow_useDefault = WorkflowExpression.Compile(useDefault, nameof(useDefault), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}.{3}", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1), __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -285,14 +285,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi> GETSmapVersionRecordFormat(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format = null, Expression<Func<bool>> markAsExported = null)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> GETSmapVersionRecordFormat(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format = null, Expression<Func<bool>> markAsExported = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_markAsExported = WorkflowExpression.Compile(markAsExported, nameof(markAsExported), required: false);
-            return new DeferredBodyAction<DataRecordApi>(() =>
+            return new DeferredBodyAction<DataRecordApi, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -308,12 +308,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IWorkflowAction DELETESmapVersionDataRecord(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DELETESmapVersionDataRecord(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -323,12 +323,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<SingleFileValue[]> GETSmapVersionRecordFiles(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId)
+        public IBodyWorkflowAction<SingleFileValue[], ApiConnectionActionConfiguration> GETSmapVersionRecordFiles(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            return new DeferredBodyAction<SingleFileValue[]>(() =>
+            return new DeferredBodyAction<SingleFileValue[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -338,13 +338,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IWorkflowAction GETSmapVersionRecordFile(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<string>> fileId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GETSmapVersionRecordFile(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<string>> fileId)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files/{3}", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1), __workflow_fileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -354,14 +354,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi> PUTSmapVersionTaskState(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> taskId, Expression<Func<stateactionInput>> stateaction = null, Expression<Func<string>> stateuserEmail = null)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> PUTSmapVersionTaskState(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> taskId, Expression<Func<stateactionInput>> stateaction = null, Expression<Func<string>> stateuserEmail = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_stateaction = WorkflowExpression.Compile(stateaction, nameof(stateaction), required: false);
             var __workflow_stateuserEmail = WorkflowExpression.Compile(stateuserEmail, nameof(stateuserEmail), required: false);
-            return new DeferredBodyAction<DataRecordApi>(() =>
+            return new DeferredBodyAction<DataRecordApi, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/Smaps/{0}/Versions/{1}/Tasks/{2}/State", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -390,11 +390,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<SmapVersionModel> PUTSmapVersionsCurrentDataSourcesUpdate(Expression<Func<string>> smapId, Expression<Func<bool>> updateEditVersion = null)
+        public IBodyWorkflowAction<SmapVersionModel, ApiConnectionActionConfiguration> PUTSmapVersionsCurrentDataSourcesUpdate(Expression<Func<string>> smapId, Expression<Func<bool>> updateEditVersion = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_updateEditVersion = WorkflowExpression.Compile(updateEditVersion, nameof(updateEditVersion), required: false);
-            return new DeferredBodyAction<SmapVersionModel>(() =>
+            return new DeferredBodyAction<SmapVersionModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/Smaps/{0}/Versions/Current/DataSources/Update", __workflow_smapId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -407,10 +407,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<SmapVersionModel[]> GETSmapVersions(Expression<Func<string>> smapId)
+        public IBodyWorkflowAction<SmapVersionModel[], ApiConnectionActionConfiguration> GETSmapVersions(Expression<Func<string>> smapId)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
-            return new DeferredBodyAction<SmapVersionModel[]>(() =>
+            return new DeferredBodyAction<SmapVersionModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/Smaps/{0}/Versions", __workflow_smapId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -420,11 +420,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<SmapVersionModel> GETSmapVersion(Expression<Func<string>> smapId, Expression<Func<string>> version)
+        public IBodyWorkflowAction<SmapVersionModel, ApiConnectionActionConfiguration> GETSmapVersion(Expression<Func<string>> smapId, Expression<Func<string>> version)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            return new DeferredBodyAction<SmapVersionModel>(() =>
+            return new DeferredBodyAction<SmapVersionModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/Smaps/{0}/Versions/{1}", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -434,11 +434,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<JToken> GETSmapVersionSchema(Expression<Func<string>> smapId, Expression<Func<string>> version)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GETSmapVersionSchema(Expression<Func<string>> smapId, Expression<Func<string>> version)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/Smaps/{0}/Versions/{1}/Schema", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

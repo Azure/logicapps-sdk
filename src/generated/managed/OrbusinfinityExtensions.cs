@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
     public class OrbusinfinityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> RelationshipsGet(Expression<Func<bool>> includeIntersectional = null, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship, ApiConnectionActionConfiguration> RelationshipsGet(Expression<Func<bool>> includeIntersectional = null, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
             var __workflow_includeIntersectional = WorkflowExpression.Compile(includeIntersectional, nameof(includeIntersectional), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Relationships";
                 var apiCallHttpMethod = "get";
@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> Relationships(Expression<Func<string>> bodyrelationshipTypeId, Expression<Func<string>> bodyleadModelItemId, Expression<Func<string>> bodymemberModelItemId, Expression<Func<string>> bodymodelId, Expression<Func<string>> bodyrelationshipTypePairId = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0, ApiConnectionActionConfiguration> Relationships(Expression<Func<string>> bodyrelationshipTypeId, Expression<Func<string>> bodyleadModelItemId, Expression<Func<string>> bodymemberModelItemId, Expression<Func<string>> bodymodelId, Expression<Func<string>> bodyrelationshipTypePairId = null)
         {
             var __workflow_bodyrelationshipTypeId = WorkflowExpression.Compile(bodyrelationshipTypeId, nameof(bodyrelationshipTypeId), required: true);
             var __workflow_bodyleadModelItemId = WorkflowExpression.Compile(bodyleadModelItemId, nameof(bodyleadModelItemId), required: true);
             var __workflow_bodymemberModelItemId = WorkflowExpression.Compile(bodymemberModelItemId, nameof(bodymemberModelItemId), required: true);
             var __workflow_bodymodelId = WorkflowExpression.Compile(bodymodelId, nameof(bodymodelId), required: true);
             var __workflow_bodyrelationshipTypePairId = WorkflowExpression.Compile(bodyrelationshipTypePairId, nameof(bodyrelationshipTypePairId), required: false);
-            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Relationships";
                 var apiCallHttpMethod = "post";
@@ -95,12 +95,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> RelationshipsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0, ApiConnectionActionConfiguration> RelationshipsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
-            return new DeferredBodyAction<OfficeArchitectContractsODataModelRelationshipLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsODataModelRelationshipLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> RelationshipsDelete(Expression<Func<string>> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0, ApiConnectionActionConfiguration> RelationshipsDelete(Expression<Func<string>> key)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -127,10 +127,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> RelationshipsPatch(Expression<Func<string>> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0, ApiConnectionActionConfiguration> RelationshipsPatch(Expression<Func<string>> key)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> ObjectsGet(Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject, ApiConnectionActionConfiguration> ObjectsGet(Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Objects";
                 var apiCallHttpMethod = "get";
@@ -188,11 +188,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> Objects(Expression<Func<string>> bodyobjectTypeId, Expression<Func<string>> bodymodelId)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0, ApiConnectionActionConfiguration> Objects(Expression<Func<string>> bodyobjectTypeId, Expression<Func<string>> bodymodelId)
         {
             var __workflow_bodyobjectTypeId = WorkflowExpression.Compile(bodyobjectTypeId, nameof(bodyobjectTypeId), required: true);
             var __workflow_bodymodelId = WorkflowExpression.Compile(bodymodelId, nameof(bodymodelId), required: true);
-            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Objects";
                 var apiCallHttpMethod = "post";
@@ -221,12 +221,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> ObjectsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0, ApiConnectionActionConfiguration> ObjectsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
-            return new DeferredBodyAction<OfficeArchitectContractsODataModelObjectLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsODataModelObjectLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -240,10 +240,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> ObjectsDelete(Expression<Func<string>> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0, ApiConnectionActionConfiguration> ObjectsDelete(Expression<Func<string>> key)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -253,10 +253,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> ObjectsPatch(Expression<Func<string>> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0, ApiConnectionActionConfiguration> ObjectsPatch(Expression<Func<string>> key)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0>(() =>
+            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -283,12 +283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class OrbusinfinityTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
             var __workflow_bodysecret = WorkflowExpression.Compile(bodysecret, nameof(bodysecret), required: false);
             var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(() =>
+            return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Webhooks";
                 var apiCallHttpMethod = "post";

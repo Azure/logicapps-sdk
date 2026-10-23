@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
     public class PhilipshueipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetLightsResponse> GetLights()
+        public IBodyWorkflowAction<GetLightsResponse, ApiConnectionActionConfiguration> GetLights()
         {
             var apiCallPath = "/clip/v2/resource/light";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetLightResponse> GetLight(Expression<Func<string>> deviceId)
+        public IBodyWorkflowAction<GetLightResponse, ApiConnectionActionConfiguration> GetLight(Expression<Func<string>> deviceId)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
-            return new DeferredBodyAction<GetLightResponse>(() =>
+            return new DeferredBodyAction<GetLightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/light/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<string>> bodymetadataname = null, Expression<Func<bool>> bodyonon = null, Expression<Func<double>> bodydimmingbrightness = null, Expression<Func<int>> bodycolorTemperaturemirek = null, Expression<Func<double>> bodycolorxyx = null, Expression<Func<double>> bodycolorxyy = null, Expression<Func<double>> bodydynamicsspeed = null, Expression<Func<int>> bodydynamicsduration = null, Expression<Func<string>> bodyalertaction = null, Expression<Func<bodygradientpointsInputItem[]>> bodygradientpoints = null)
+        public IBodyWorkflowAction<ExecuteLightResponse, ApiConnectionActionConfiguration> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<string>> bodymetadataname = null, Expression<Func<bool>> bodyonon = null, Expression<Func<double>> bodydimmingbrightness = null, Expression<Func<int>> bodycolorTemperaturemirek = null, Expression<Func<double>> bodycolorxyx = null, Expression<Func<double>> bodycolorxyy = null, Expression<Func<double>> bodydynamicsspeed = null, Expression<Func<int>> bodydynamicsduration = null, Expression<Func<string>> bodyalertaction = null, Expression<Func<bodygradientpointsInputItem[]>> bodygradientpoints = null)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             var __workflow_bodymetadataname = WorkflowExpression.Compile(bodymetadataname, nameof(bodymetadataname), required: false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var __workflow_bodydynamicsduration = WorkflowExpression.Compile(bodydynamicsduration, nameof(bodydynamicsduration), required: false);
             var __workflow_bodyalertaction = WorkflowExpression.Compile(bodyalertaction, nameof(bodyalertaction), required: false);
             var __workflow_bodygradientpoints = WorkflowExpression.Compile(bodygradientpoints, nameof(bodygradientpoints), required: false);
-            return new DeferredBodyAction<ExecuteLightResponse>(() =>
+            return new DeferredBodyAction<ExecuteLightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/light/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetDevicesResponse> GetDevices()
+        public IBodyWorkflowAction<GetDevicesResponse, ApiConnectionActionConfiguration> GetDevices()
         {
             var apiCallPath = "/clip/v2/resource/device";
             var apiCallHttpMethod = "get";
@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetDeviceResponse> GetDevice(Expression<Func<string>> deviceId)
+        public IBodyWorkflowAction<GetDeviceResponse, ApiConnectionActionConfiguration> GetDevice(Expression<Func<string>> deviceId)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
-            return new DeferredBodyAction<GetDeviceResponse>(() =>
+            return new DeferredBodyAction<GetDeviceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/device/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -229,13 +229,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<bodymetadataarchetypeInput>> bodymetadataarchetype = null, Expression<Func<string>> bodymetadataname = null, Expression<Func<string>> bodyidentifyaction = null)
+        public IBodyWorkflowAction<ExecuteDeviceResponse, ApiConnectionActionConfiguration> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<bodymetadataarchetypeInput>> bodymetadataarchetype = null, Expression<Func<string>> bodymetadataname = null, Expression<Func<string>> bodyidentifyaction = null)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             var __workflow_bodymetadataarchetype = WorkflowExpression.Compile(bodymetadataarchetype, nameof(bodymetadataarchetype), required: false);
             var __workflow_bodymetadataname = WorkflowExpression.Compile(bodymetadataname, nameof(bodymetadataname), required: false);
             var __workflow_bodyidentifyaction = WorkflowExpression.Compile(bodyidentifyaction, nameof(bodyidentifyaction), required: false);
-            return new DeferredBodyAction<ExecuteDeviceResponse>(() =>
+            return new DeferredBodyAction<ExecuteDeviceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/device/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetRoomsResponse> GetRooms()
+        public IBodyWorkflowAction<GetRoomsResponse, ApiConnectionActionConfiguration> GetRooms()
         {
             var apiCallPath = "/clip/v2/resource/room";
             var apiCallHttpMethod = "get";
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetScenesResponse> GetScenes()
+        public IBodyWorkflowAction<GetScenesResponse, ApiConnectionActionConfiguration> GetScenes()
         {
             var apiCallPath = "/clip/v2/resource/scene";
             var apiCallHttpMethod = "get";
@@ -315,10 +315,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetSceneResponse> GetScene(Expression<Func<string>> sceneId)
+        public IBodyWorkflowAction<GetSceneResponse, ApiConnectionActionConfiguration> GetScene(Expression<Func<string>> sceneId)
         {
             var __workflow_sceneId = WorkflowExpression.Compile(sceneId, nameof(sceneId), required: true);
-            return new DeferredBodyAction<GetSceneResponse>(() =>
+            return new DeferredBodyAction<GetSceneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/scene/{0}", __workflow_sceneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -328,10 +328,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene(Expression<Func<string>> sceneId)
+        public IBodyWorkflowAction<DeleteSceneResponse, ApiConnectionActionConfiguration> DeleteScene(Expression<Func<string>> sceneId)
         {
             var __workflow_sceneId = WorkflowExpression.Compile(sceneId, nameof(sceneId), required: true);
-            return new DeferredBodyAction<DeleteSceneResponse>(() =>
+            return new DeferredBodyAction<DeleteSceneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/scene/{0}", __workflow_sceneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";

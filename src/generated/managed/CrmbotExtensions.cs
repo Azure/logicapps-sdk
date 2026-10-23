@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
     public class CrmbotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildCustomMessageResponse> BuildCustomMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration> BuildCustomMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
         {
             var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<BuildCustomMessageResponse>(() =>
+            return new DeferredBodyAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/custom";
                 var apiCallHttpMethod = "post";
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildTextMessageResponse> BuildTextMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<BuildTextMessageResponse, ApiConnectionActionConfiguration> BuildTextMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
         {
             var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<BuildTextMessageResponse>(() =>
+            return new DeferredBodyAction<BuildTextMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/text";
                 var apiCallHttpMethod = "post";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildCardMessageResponse> BuildCardMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<bool>> bodyisCarousel, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodybuttontitle1 = null, Expression<Func<string>> bodybuttonpostback1 = null, Expression<Func<string>> bodybuttontitle2 = null, Expression<Func<string>> bodybuttonpostback2 = null, Expression<Func<string>> bodybuttontitle3 = null, Expression<Func<string>> bodybuttonpostback3 = null)
+        public IBodyWorkflowAction<BuildCardMessageResponse, ApiConnectionActionConfiguration> BuildCardMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<bool>> bodyisCarousel, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodybuttontitle1 = null, Expression<Func<string>> bodybuttonpostback1 = null, Expression<Func<string>> bodybuttontitle2 = null, Expression<Func<string>> bodybuttonpostback2 = null, Expression<Func<string>> bodybuttontitle3 = null, Expression<Func<string>> bodybuttonpostback3 = null)
         {
             var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var __workflow_bodybuttonpostback2 = WorkflowExpression.Compile(bodybuttonpostback2, nameof(bodybuttonpostback2), required: false);
             var __workflow_bodybuttontitle3 = WorkflowExpression.Compile(bodybuttontitle3, nameof(bodybuttontitle3), required: false);
             var __workflow_bodybuttonpostback3 = WorkflowExpression.Compile(bodybuttonpostback3, nameof(bodybuttonpostback3), required: false);
-            return new DeferredBodyAction<BuildCardMessageResponse>(() =>
+            return new DeferredBodyAction<BuildCardMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/card";
                 var apiCallHttpMethod = "post";
@@ -146,12 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse> BuildQuickrepliesMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration> BuildQuickrepliesMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytext)
         {
             var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<BuildQuickrepliesMessageResponse>(() =>
+            return new DeferredBodyAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/quickreplies";
                 var apiCallHttpMethod = "post";
@@ -174,12 +174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildMediaMessageResponse> BuildMediaMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodyurl, Expression<Func<bodymediaTypeInput>> bodymediaType)
+        public IBodyWorkflowAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration> BuildMediaMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodyurl, Expression<Func<bodymediaTypeInput>> bodymediaType)
         {
             var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodymediaType = WorkflowExpression.Compile(bodymediaType, nameof(bodymediaType), required: true);
-            return new DeferredBodyAction<BuildMediaMessageResponse>(() =>
+            return new DeferredBodyAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/media";
                 var apiCallHttpMethod = "post";
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction SendResponse(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null, Expression<Func<string>> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, Expression<Func<string>> bodywebhookResponseapplySpecificContextToResponse = null, Expression<Func<int>> bodywebhookResponsedurationOfContext = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendResponse(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null, Expression<Func<string>> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, Expression<Func<string>> bodywebhookResponseapplySpecificContextToResponse = null, Expression<Func<int>> bodywebhookResponsedurationOfContext = null)
         {
             var __workflow_bodysessionId = WorkflowExpression.Compile(bodysessionId, nameof(bodysessionId), required: true);
             var __workflow_bodyuseGlossary = WorkflowExpression.Compile(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
             var __workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke = WorkflowExpression.Compile(bodywebhookResponseselectTheEventYouWouldLikeToInvoke, nameof(bodywebhookResponseselectTheEventYouWouldLikeToInvoke), required: false);
             var __workflow_bodywebhookResponseapplySpecificContextToResponse = WorkflowExpression.Compile(bodywebhookResponseapplySpecificContextToResponse, nameof(bodywebhookResponseapplySpecificContextToResponse), required: false);
             var __workflow_bodywebhookResponsedurationOfContext = WorkflowExpression.Compile(bodywebhookResponsedurationOfContext, nameof(bodywebhookResponsedurationOfContext), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector/response";
                 var apiCallHttpMethod = "post";
@@ -266,13 +266,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction SendProactiveMessage(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendProactiveMessage(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null)
         {
             var __workflow_bodysessionId = WorkflowExpression.Compile(bodysessionId, nameof(bodysessionId), required: true);
             var __workflow_bodyuseGlossary = WorkflowExpression.Compile(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
             var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: true);
             var __workflow_bodywebhookResponsefulfillmentMessages = WorkflowExpression.Compile(bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector/proactive";
                 var apiCallHttpMethod = "post";
@@ -311,11 +311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
 
     public class CrmbotTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> IntentDetected(Expression<Func<string>> bodyselectIntentYouWouldLikeToTriggerOn, Expression<Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput>> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> IntentDetected(Expression<Func<string>> bodyselectIntentYouWouldLikeToTriggerOn, Expression<Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput>> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyselectIntentYouWouldLikeToTriggerOn = WorkflowExpression.Compile(bodyselectIntentYouWouldLikeToTriggerOn, nameof(bodyselectIntentYouWouldLikeToTriggerOn), required: true);
             var __workflow_bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic = WorkflowExpression.Compile(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, nameof(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector";
                 var apiCallHttpMethod = "post";

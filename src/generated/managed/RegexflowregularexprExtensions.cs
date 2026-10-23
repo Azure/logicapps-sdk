@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowregularexpr
     public class RegexflowregularexprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowregularexpr")]
-        public IBodyWorkflowAction<RegexMultiGroupResponse> RegexMultiGroup(Expression<Func<string>> pattern, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<RegexMultiGroupResponse, ApiConnectionActionConfiguration> RegexMultiGroup(Expression<Func<string>> pattern, Expression<Func<string>> body = null)
         {
             var __workflow_pattern = WorkflowExpression.Compile(pattern, nameof(pattern), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<RegexMultiGroupResponse>(() =>
+            return new DeferredBodyAction<RegexMultiGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RegexMultiGroup";
                 var apiCallHttpMethod = "post";
