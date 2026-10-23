@@ -232,10 +232,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             IAgentWorkflowAction<AgentActionConfiguration> configuredAgentAction =
                 agentAction.WithRetryPolicy(RetryPolicy.None());
 
+            IBodyWorkflowAction<JToken, IRetryPolicyConfiguration> retryableBodyAction =
+                configuredBodyAction;
+            IOutputWorkflowAction<string, ITrackedPropertiesConfiguration> trackedOutputAction =
+                configuredOutputAction;
+            IOutputWorkflowTrigger<HttpRequestTriggerOutput, ITriggerConcurrencyConfiguration> concurrentOutputTrigger =
+                configuredOutputTrigger;
+            IAgentWorkflowAction<IRetryPolicyConfiguration> retryableAgentAction =
+                configuredAgentAction;
+
+            var variableAction = WorkflowActions.BuiltIn.Variables.InitializeVariable(
+                name: () => "count",
+                value: () => 0);
+            IVariableWorkflowAction<ITrackedPropertiesConfiguration> trackedVariableAction =
+                variableAction;
+
             Assert.Same(bodyAction, configuredBodyAction);
             Assert.Same(outputAction, configuredOutputAction);
             Assert.Same(outputTrigger, configuredOutputTrigger);
             Assert.Same(agentAction, configuredAgentAction);
+            Assert.Same(configuredBodyAction, retryableBodyAction);
+            Assert.Same(configuredOutputAction, trackedOutputAction);
+            Assert.Same(configuredOutputTrigger, concurrentOutputTrigger);
+            Assert.Same(configuredAgentAction, retryableAgentAction);
+            Assert.Same(variableAction, trackedVariableAction);
         }
 
         [Fact]

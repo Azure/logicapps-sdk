@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         FlowTemplateTrigger GetTriggerDefinition(FlowKind? flowKind = null);
     }
 
-    public interface IWorkflowTrigger<TConfiguration> :
+    public interface IWorkflowTrigger<out TConfiguration> :
         IWorkflowTrigger,
         IWorkflowOperation<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         T TriggerOutput { get; }
     }
 
-    public interface IOutputWorkflowTrigger<T, TConfiguration> :
+    public interface IOutputWorkflowTrigger<T, out TConfiguration> :
         IOutputWorkflowTrigger<T>,
         IWorkflowTrigger<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         T TriggerBody { get; }
     }
 
-    public interface IBodyWorkflowTrigger<T, TConfiguration> :
+    public interface IBodyWorkflowTrigger<T, out TConfiguration> :
         IBodyWorkflowTrigger<T>,
         IWorkflowTrigger<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
