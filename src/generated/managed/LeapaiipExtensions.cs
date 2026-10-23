@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,146 +14,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet(Expression<Func<modelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (onlyFinished != null)
-                callPayload.Queries["onlyFinished"] = ExpressionConverter.Convert(onlyFinished);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_onlyFinished = WorkflowExpression.Compile(onlyFinished, nameof(onlyFinished), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            return new DeferredBodyAction<ImagesGetResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_onlyFinished != null)
+                    callPayload.Queries["onlyFinished"] = ExpressionConverter.Convert(__workflow_onlyFinished);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-            if (bodynegativePrompt != null)
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodynegativePrompt = WorkflowExpression.Compile(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
+            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodynumberOfImages = WorkflowExpression.Compile(bodynumberOfImages, nameof(bodynumberOfImages), required: false);
+            var __workflow_bodypromptStrength = WorkflowExpression.Compile(bodypromptStrength, nameof(bodypromptStrength), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            return new DeferredBodyAction<ImagePostResponse>(() =>
             {
-                body["negativePrompt"] = ExpressionConverter.ConvertO(bodynegativePrompt);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
+                if (__workflow_bodynegativePrompt != null)
+                {
+                    body["negativePrompt"] = ExpressionConverter.ConvertO(__workflow_bodynegativePrompt);
+                    bodypropCount++;
+                }
 
-            if (bodysteps != null)
-            {
-                body["steps"] = ExpressionConverter.ConvertO(bodysteps);
-                bodypropCount++;
-            }
+                if (__workflow_bodysteps != null)
+                {
+                    body["steps"] = ExpressionConverter.ConvertO(__workflow_bodysteps);
+                    bodypropCount++;
+                }
 
-            if (bodywidth != null)
-            {
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
-                bodypropCount++;
-            }
+                if (__workflow_bodywidth != null)
+                {
+                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
+                    bodypropCount++;
+                }
 
-            if (bodyheight != null)
-            {
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
-                bodypropCount++;
-            }
+                if (__workflow_bodyheight != null)
+                {
+                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
+                    bodypropCount++;
+                }
 
-            if (bodynumberOfImages != null)
-            {
-                body["numberOfImages"] = ExpressionConverter.ConvertO(bodynumberOfImages);
-                bodypropCount++;
-            }
+                if (__workflow_bodynumberOfImages != null)
+                {
+                    body["numberOfImages"] = ExpressionConverter.ConvertO(__workflow_bodynumberOfImages);
+                    bodypropCount++;
+                }
 
-            if (bodypromptStrength != null)
-            {
-                body["promptStrength"] = ExpressionConverter.ConvertO(bodypromptStrength);
-                bodypropCount++;
-            }
+                if (__workflow_bodypromptStrength != null)
+                {
+                    body["promptStrength"] = ExpressionConverter.ConvertO(__workflow_bodypromptStrength);
+                    bodypropCount++;
+                }
 
-            if (bodyseed != null)
-            {
-                body["seed"] = ExpressionConverter.ConvertO(bodyseed);
-                bodypropCount++;
-            }
+                if (__workflow_bodyseed != null)
+                {
+                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
+                    bodypropCount++;
+                }
 
-            if (bodywebhookUrl != null)
-            {
-                body["webhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
-                bodypropCount++;
-            }
+                if (__workflow_bodywebhookUrl != null)
+                {
+                    body["webhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ImagePostResponse>(callPayload);
+                return new ApiConnectionAction<ImagePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
+            return new DeferredBodyAction<ImageGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences/{1}", __workflow_modelId.WithUrlEncoding(1), __workflow_inferenceId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<string> ImageDelete(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            var apiCallPath = String.Format("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences/{1}", __workflow_modelId.WithUrlEncoding(1), __workflow_inferenceId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelPostResponse> Model(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubjectKeyword = null, Expression<Func<string>> bodysubjectType = null, Expression<Func<string>> bodywebhookUrl = null, Expression<Func<string[]>> bodyimageSampleUrls = null)
         {
-            var apiCallPath = "/v2/images/models/new";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodysubjectKeyword = WorkflowExpression.Compile(bodysubjectKeyword, nameof(bodysubjectKeyword), required: false);
+            var __workflow_bodysubjectType = WorkflowExpression.Compile(bodysubjectType, nameof(bodysubjectType), required: false);
+            var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_bodyimageSampleUrls = WorkflowExpression.Compile(bodyimageSampleUrls, nameof(bodyimageSampleUrls), required: false);
+            return new DeferredBodyAction<ModelPostResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v2/images/models/new";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodysubjectKeyword != null)
-            {
-                body["subjectKeyword"] = ExpressionConverter.ConvertO(bodysubjectKeyword);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubjectKeyword != null)
+                {
+                    body["subjectKeyword"] = ExpressionConverter.ConvertO(__workflow_bodysubjectKeyword);
+                    bodypropCount++;
+                }
 
-            if (bodysubjectType != null)
-            {
-                body["subjectType"] = ExpressionConverter.ConvertO(bodysubjectType);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubjectType != null)
+                {
+                    body["subjectType"] = ExpressionConverter.ConvertO(__workflow_bodysubjectType);
+                    bodypropCount++;
+                }
 
-            if (bodywebhookUrl != null)
-            {
-                body["webhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
-                bodypropCount++;
-            }
+                if (__workflow_bodywebhookUrl != null)
+                {
+                    body["webhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
+                    bodypropCount++;
+                }
 
-            if (bodyimageSampleUrls != null)
-            {
-                body["imageSampleUrls"] = ExpressionConverter.ConvertO(bodyimageSampleUrls);
-                bodypropCount++;
-            }
+                if (__workflow_bodyimageSampleUrls != null)
+                {
+                    body["imageSampleUrls"] = ExpressionConverter.ConvertO(__workflow_bodyimageSampleUrls);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ModelPostResponse>(callPayload);
+                return new ApiConnectionAction<ModelPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
@@ -168,19 +206,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<modelIdInput>> modelId)
         {
-            var apiCallPath = String.Format("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelGetResponse>(callPayload);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            return new DeferredBodyAction<ModelGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/images/models/{0}", __workflow_modelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ModelGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelDeleteResponse> ModelDelete(Expression<Func<modelIdInput>> modelId)
         {
-            var apiCallPath = String.Format("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelDeleteResponse>(callPayload);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            return new DeferredBodyAction<ModelDeleteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/images/models/{0}", __workflow_modelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ModelDeleteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
@@ -195,32 +241,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicPostResponse> Music(Expression<Func<string>> bodyprompt, Expression<Func<bodymodeInput>> bodymode, Expression<Func<int>> bodyduration)
         {
-            var apiCallPath = "/v1/music";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-            bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
-            bodypropCount++;
-            body["duration"] = ExpressionConverter.ConvertO(bodyduration);
-            if (bodypropCount > 0)
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
+            return new DeferredBodyAction<MusicPostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/music";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
+                bodypropCount++;
+                body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
+                bodypropCount++;
+                body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MusicPostResponse>(callPayload);
+                return new ApiConnectionAction<MusicPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicGetResponse> MusicGet(Expression<Func<string>> inferenceId)
         {
-            var apiCallPath = String.Format("/v1/music/{0}", ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MusicGetResponse>(callPayload);
+            var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
+            return new DeferredBodyAction<MusicGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/music/{0}", __workflow_inferenceId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MusicGetResponse>(callPayload);
+            });
         }
     }
 
@@ -288,6 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string CreatedAt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelIdInput
     {
         [EnumMember(Value = "26a1a203-3a46-42cb-8cfa-f4de075907d8")]
@@ -570,6 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string MediaUri { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "melody")]

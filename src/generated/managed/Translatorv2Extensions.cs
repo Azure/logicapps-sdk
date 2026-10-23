@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -24,44 +24,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<string> Translate(Expression<Func<string>> to, Expression<Func<string>> bodytext, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<textTypeInput>> textType = null)
         {
-            var apiCallPath = "/Translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (textType != null)
-                callPayload.Queries["textType"] = ExpressionConverter.Convert(textType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_textType = WorkflowExpression.Compile(textType, nameof(textType), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_textType != null)
+                    callPayload.Queries["textType"] = ExpressionConverter.Convert(__workflow_textType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<Language> Detect(Expression<Func<string>> bodytext)
         {
-            var apiCallPath = "/Detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<Language>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Language>(callPayload);
+                return new ApiConnectionAction<Language>(callPayload);
+            });
         }
     }
 
@@ -78,6 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         public string LanguageName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum textTypeInput
     {
         [EnumMember(Value = "plain")]

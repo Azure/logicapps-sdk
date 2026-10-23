@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,40 +14,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetConditions(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
-            var apiCallPath = "/wx/observations/current";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            return new DeferredBodyAction<SuccessSchema>(() =>
+            {
+                var apiCallPath = "/wx/observations/current";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = ExpressionConverter.Convert(__workflow_geocode);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction<SuccessSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
-            var apiCallPath = "/alerts/headlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["acceptHeader"] = ExpressionConverter.Convert(acceptHeader);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
+            var __workflow_acceptHeader = WorkflowExpression.Compile(acceptHeader, nameof(acceptHeader), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            return new DeferredBodyAction<SuccessSchema>(() =>
+            {
+                var apiCallPath = "/alerts/headlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = ExpressionConverter.Convert(__workflow_geocode);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Headers["acceptHeader"] = ExpressionConverter.Convert(__workflow_acceptHeader);
+                return new ApiConnectionAction<SuccessSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetHistory(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
-            var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            return new DeferredBodyAction<SuccessSchema>(() =>
+            {
+                var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = ExpressionConverter.Convert(__workflow_geocode);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction<SuccessSchema>(callPayload);
+            });
         }
     }
 
@@ -85,6 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitsInput
     {
         [EnumMember(Value = "e")]
@@ -93,6 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         M
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]

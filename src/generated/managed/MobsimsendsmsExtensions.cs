@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,37 +14,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
         public IBodyWorkflowAction<string> SMS(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodygroupMsg = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
         {
-            var apiCallPath = "/sms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroupId != null)
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodygroupMsg = WorkflowExpression.Compile(bodygroupMsg, nameof(bodygroupMsg), required: false);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/sms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodygroupId != null)
+                {
+                    body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
+                    bodypropCount++;
+                }
 
-            if (bodygroupMsg != null)
-            {
-                body["groupMsg"] = ExpressionConverter.ConvertO(bodygroupMsg);
-                bodypropCount++;
-            }
+                if (__workflow_bodygroupMsg != null)
+                {
+                    body["groupMsg"] = ExpressionConverter.ConvertO(__workflow_bodygroupMsg);
+                    bodypropCount++;
+                }
 
-            if (bodymessages != null)
-            {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                bodypropCount++;
-            }
+                if (__workflow_bodymessages != null)
+                {
+                    body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

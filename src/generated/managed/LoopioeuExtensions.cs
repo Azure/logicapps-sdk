@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioeu
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,13 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioeu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loopioeu")]
         public IBodyWorkflowAction<ListStacksResponse> ListStacks(Expression<Func<string>> fields = null)
         {
-            var apiCallPath = "/stacks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("@wide");
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<ListStacksResponse>(callPayload);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<ListStacksResponse>(() =>
+            {
+                var apiCallPath = "/stacks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("@wide");
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                return new ApiConnectionAction<ListStacksResponse>(callPayload);
+            });
         }
     }
 

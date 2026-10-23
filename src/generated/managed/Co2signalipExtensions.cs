@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,24 +14,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
         public IBodyWorkflowAction<GetLatestbyCodeResponse> GetLatestbyCode(Expression<Func<string>> countryCode)
         {
-            var apiCallPath = "/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
-            return new ApiConnectionAction<GetLatestbyCodeResponse>(callPayload);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
+            return new DeferredBodyAction<GetLatestbyCodeResponse>(() =>
+            {
+                var apiCallPath = "/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
+                return new ApiConnectionAction<GetLatestbyCodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
         public IBodyWorkflowAction<GetLatestbyLatLonResponse> GetLatestbyLatLon(Expression<Func<double>> lon = null, Expression<Func<double>> lat = null)
         {
-            var apiCallPath = "/latestbyloc";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            return new ApiConnectionAction<GetLatestbyLatLonResponse>(callPayload);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            return new DeferredBodyAction<GetLatestbyLatLonResponse>(() =>
+            {
+                var apiCallPath = "/latestbyloc";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                return new ApiConnectionAction<GetLatestbyLatLonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,163 +23,191 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         public IBodyWorkflowAction<ListScheduledInfo[]> ScheduledMessageInfo(Expression<Func<string>> listScheduledRequestto = null)
         {
-            var apiCallPath = "/messages/list-scheduled.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var listScheduledRequest = new JObject();
-            var listScheduledRequestpropCount = 0;
-            if (listScheduledRequestto != null)
+            var __workflow_listScheduledRequestto = WorkflowExpression.Compile(listScheduledRequestto, nameof(listScheduledRequestto), required: false);
+            return new DeferredBodyAction<ListScheduledInfo[]>(() =>
             {
-                listScheduledRequest["To"] = ExpressionConverter.ConvertO(listScheduledRequestto);
-                listScheduledRequestpropCount++;
-            }
+                var apiCallPath = "/messages/list-scheduled.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var listScheduledRequest = new JObject();
+                var listScheduledRequestpropCount = 0;
+                if (__workflow_listScheduledRequestto != null)
+                {
+                    listScheduledRequest["To"] = ExpressionConverter.ConvertO(__workflow_listScheduledRequestto);
+                    listScheduledRequestpropCount++;
+                }
 
-            if (listScheduledRequestpropCount > 0)
-            {
-                callPayload.Body = listScheduledRequest;
-            }
+                if (listScheduledRequestpropCount > 0)
+                {
+                    callPayload.Body = listScheduledRequest;
+                }
 
-            return new ApiConnectionAction<ListScheduledInfo[]>(callPayload);
+                return new ApiConnectionAction<ListScheduledInfo[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         public IBodyWorkflowAction<SendMessageResponse[]> SendMessage(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfo[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
         {
-            var apiCallPath = "/v2/messages/send.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var sendMessageRequest = new JObject();
-            var sendMessageRequestpropCount = 0;
-            var messageObject = new JObject();
-            var messageObjectpropCount = 0;
-            if (sendMessageRequestmessagecontentOfTheMessage != null)
+            var __workflow_sendMessageRequestmessagesubject = WorkflowExpression.Compile(sendMessageRequestmessagesubject, nameof(sendMessageRequestmessagesubject), required: true);
+            var __workflow_sendMessageRequestmessagefromEmail = WorkflowExpression.Compile(sendMessageRequestmessagefromEmail, nameof(sendMessageRequestmessagefromEmail), required: true);
+            var __workflow_sendMessageRequestmessagesendTo = WorkflowExpression.Compile(sendMessageRequestmessagesendTo, nameof(sendMessageRequestmessagesendTo), required: true);
+            var __workflow_sendMessageRequestmessagecontentOfTheMessage = WorkflowExpression.Compile(sendMessageRequestmessagecontentOfTheMessage, nameof(sendMessageRequestmessagecontentOfTheMessage), required: false);
+            var __workflow_sendMessageRequestmessagefromName = WorkflowExpression.Compile(sendMessageRequestmessagefromName, nameof(sendMessageRequestmessagefromName), required: false);
+            var __workflow_sendMessageRequestmessageextraHeaders = WorkflowExpression.Compile(sendMessageRequestmessageextraHeaders, nameof(sendMessageRequestmessageextraHeaders), required: false);
+            var __workflow_sendMessageRequestmessageisThisMessageImportantTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageisThisMessageImportantTrueFalse, nameof(sendMessageRequestmessageisThisMessageImportantTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse, nameof(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse, nameof(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse, nameof(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse, nameof(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse, nameof(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse, nameof(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageremoveContentLoggingTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageremoveContentLoggingTrueFalse, nameof(sendMessageRequestmessageremoveContentLoggingTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageoptionalBCCAddress = WorkflowExpression.Compile(sendMessageRequestmessageoptionalBCCAddress, nameof(sendMessageRequestmessageoptionalBCCAddress), required: false);
+            var __workflow_sendMessageRequestmessagecustomDomaingForTracking = WorkflowExpression.Compile(sendMessageRequestmessagecustomDomaingForTracking, nameof(sendMessageRequestmessagecustomDomaingForTracking), required: false);
+            var __workflow_sendMessageRequestmessagetags = WorkflowExpression.Compile(sendMessageRequestmessagetags, nameof(sendMessageRequestmessagetags), required: false);
+            var __workflow_sendMessageRequestmessageattachments = WorkflowExpression.Compile(sendMessageRequestmessageattachments, nameof(sendMessageRequestmessageattachments), required: false);
+            var __workflow_sendMessageRequestsendAt = WorkflowExpression.Compile(sendMessageRequestsendAt, nameof(sendMessageRequestsendAt), required: false);
+            var __workflow_sendMessageRequestenableAsyncTrueFalse = WorkflowExpression.Compile(sendMessageRequestenableAsyncTrueFalse, nameof(sendMessageRequestenableAsyncTrueFalse), required: false);
+            var __workflow_sendMessageRequestdedicatedIpPoolName = WorkflowExpression.Compile(sendMessageRequestdedicatedIpPoolName, nameof(sendMessageRequestdedicatedIpPoolName), required: false);
+            return new DeferredBodyAction<SendMessageResponse[]>(() =>
             {
-                messageObject["html"] = ExpressionConverter.ConvertO(sendMessageRequestmessagecontentOfTheMessage);
+                var apiCallPath = "/v2/messages/send.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var sendMessageRequest = new JObject();
+                var sendMessageRequestpropCount = 0;
+                var messageObject = new JObject();
+                var messageObjectpropCount = 0;
+                if (__workflow_sendMessageRequestmessagecontentOfTheMessage != null)
+                {
+                    messageObject["html"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagecontentOfTheMessage);
+                    messageObjectpropCount++;
+                }
+
                 messageObjectpropCount++;
-            }
-
-            messageObjectpropCount++;
-            messageObject["subject"] = ExpressionConverter.ConvertO(sendMessageRequestmessagesubject);
-            messageObjectpropCount++;
-            messageObject["from_email"] = ExpressionConverter.ConvertO(sendMessageRequestmessagefromEmail);
-            if (sendMessageRequestmessagefromName != null)
-            {
-                messageObject["from_name"] = ExpressionConverter.ConvertO(sendMessageRequestmessagefromName);
+                messageObject["subject"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagesubject);
                 messageObjectpropCount++;
-            }
+                messageObject["from_email"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagefromEmail);
+                if (__workflow_sendMessageRequestmessagefromName != null)
+                {
+                    messageObject["from_name"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagefromName);
+                    messageObjectpropCount++;
+                }
 
-            messageObjectpropCount++;
-            messageObject["to"] = ExpressionConverter.ConvertO(sendMessageRequestmessagesendTo);
-            if (sendMessageRequestmessageextraHeaders != null)
-            {
-                messageObject["headers"] = ExpressionConverter.ConvertO(sendMessageRequestmessageextraHeaders);
                 messageObjectpropCount++;
-            }
+                messageObject["to"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagesendTo);
+                if (__workflow_sendMessageRequestmessageextraHeaders != null)
+                {
+                    messageObject["headers"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessageextraHeaders);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessageisThisMessageImportantTrueFalse != null)
-            {
-                messageObject["important"] = ExpressionConverter.ConvertO(sendMessageRequestmessageisThisMessageImportantTrueFalse);
+                if (__workflow_sendMessageRequestmessageisThisMessageImportantTrueFalse != null)
+                {
+                    messageObject["important"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessageisThisMessageImportantTrueFalse);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_sendMessageRequestmessagetrackWhenMessageOpensTrueFalse != null)
+                {
+                    messageObject["track_opens"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagetrackWhenMessageOpensTrueFalse);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_sendMessageRequestmessagetrackClicksForThisMessageTrueFalse != null)
+                {
+                    messageObject["track_clicks"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagetrackClicksForThisMessageTrueFalse);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse != null)
+                {
+                    messageObject["auto_text"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse);
+                    messageObjectpropCount++;
+                }
+
+                messageObject["auto_html"] = false;
                 messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse != null)
+                {
+                    messageObject["inline_css"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessagetrackWhenMessageOpensTrueFalse != null)
-            {
-                messageObject["track_opens"] = ExpressionConverter.ConvertO(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse != null)
+                {
+                    messageObject["url_strip_qs"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessagetrackClicksForThisMessageTrueFalse != null)
-            {
-                messageObject["track_clicks"] = ExpressionConverter.ConvertO(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse != null)
+                {
+                    messageObject["preserve_recipients"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse != null)
-            {
-                messageObject["auto_text"] = ExpressionConverter.ConvertO(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessageremoveContentLoggingTrueFalse != null)
+                {
+                    messageObject["view_content_link"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessageremoveContentLoggingTrueFalse);
+                    messageObjectpropCount++;
+                }
 
-            messageObject["auto_html"] = false;
-            messageObjectpropCount++;
-            if (sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse != null)
-            {
-                messageObject["inline_css"] = ExpressionConverter.ConvertO(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessageoptionalBCCAddress != null)
+                {
+                    messageObject["bcc_address"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessageoptionalBCCAddress);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse != null)
-            {
-                messageObject["url_strip_qs"] = ExpressionConverter.ConvertO(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessagecustomDomaingForTracking != null)
+                {
+                    messageObject["tracking_domain"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagecustomDomaingForTracking);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse != null)
-            {
-                messageObject["preserve_recipients"] = ExpressionConverter.ConvertO(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessagetags != null)
+                {
+                    messageObject["tags"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagetags);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessageremoveContentLoggingTrueFalse != null)
-            {
-                messageObject["view_content_link"] = ExpressionConverter.ConvertO(sendMessageRequestmessageremoveContentLoggingTrueFalse);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestmessageattachments != null)
+                {
+                    messageObject["attachments"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessageattachments);
+                    messageObjectpropCount++;
+                }
 
-            if (sendMessageRequestmessageoptionalBCCAddress != null)
-            {
-                messageObject["bcc_address"] = ExpressionConverter.ConvertO(sendMessageRequestmessageoptionalBCCAddress);
-                messageObjectpropCount++;
-            }
+                if (messageObjectpropCount > 0)
+                {
+                    sendMessageRequest["message"] = messageObject;
+                    sendMessageRequestpropCount++;
+                }
 
-            if (sendMessageRequestmessagecustomDomaingForTracking != null)
-            {
-                messageObject["tracking_domain"] = ExpressionConverter.ConvertO(sendMessageRequestmessagecustomDomaingForTracking);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestsendAt != null)
+                {
+                    sendMessageRequest["send_at"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestsendAt);
+                    sendMessageRequestpropCount++;
+                }
 
-            if (sendMessageRequestmessagetags != null)
-            {
-                messageObject["tags"] = ExpressionConverter.ConvertO(sendMessageRequestmessagetags);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestenableAsyncTrueFalse != null)
+                {
+                    sendMessageRequest["async"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestenableAsyncTrueFalse);
+                    sendMessageRequestpropCount++;
+                }
 
-            if (sendMessageRequestmessageattachments != null)
-            {
-                messageObject["attachments"] = ExpressionConverter.ConvertO(sendMessageRequestmessageattachments);
-                messageObjectpropCount++;
-            }
+                if (__workflow_sendMessageRequestdedicatedIpPoolName != null)
+                {
+                    sendMessageRequest["ip_pool"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestdedicatedIpPoolName);
+                    sendMessageRequestpropCount++;
+                }
 
-            if (messageObjectpropCount > 0)
-            {
-                sendMessageRequest["message"] = messageObject;
-                sendMessageRequestpropCount++;
-            }
+                if (sendMessageRequestpropCount > 0)
+                {
+                    callPayload.Body = sendMessageRequest;
+                }
 
-            if (sendMessageRequestsendAt != null)
-            {
-                sendMessageRequest["send_at"] = ExpressionConverter.ConvertO(sendMessageRequestsendAt);
-                sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequestenableAsyncTrueFalse != null)
-            {
-                sendMessageRequest["async"] = ExpressionConverter.ConvertO(sendMessageRequestenableAsyncTrueFalse);
-                sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequestdedicatedIpPoolName != null)
-            {
-                sendMessageRequest["ip_pool"] = ExpressionConverter.ConvertO(sendMessageRequestdedicatedIpPoolName);
-                sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequestpropCount > 0)
-            {
-                callPayload.Body = sendMessageRequest;
-            }
-
-            return new ApiConnectionAction<SendMessageResponse[]>(callPayload);
+                return new ApiConnectionAction<SendMessageResponse[]>(callPayload);
+            });
         }
     }
 
@@ -277,6 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string MessageID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListScheduledInfoRecipientSStatusType
     {
         [EnumMember(Value = "")]
@@ -293,6 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         OrInvalid
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListScheduledInfoRejectionReasonType
     {
         [EnumMember(Value = "")]
@@ -346,6 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public RecipientInfoSendAsType SendAs { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecipientInfoSendAsType
     {
         [EnumMember(Value = "to")]

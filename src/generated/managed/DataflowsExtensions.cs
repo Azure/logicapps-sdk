@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,23 +14,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
         public IBodyWorkflowAction<DataflowModel> RefreshDataflow(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
         {
-            var apiCallPath = String.Format("/api/groups/{0}/dataflows/{1}/refreshdataflow", ExpressionConverter.ConvertWithUrlEncoding(groupIdForRefreshDataflow, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForRefreshDataflow, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-            return new ApiConnectionAction<DataflowModel>(callPayload);
+            var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
+            var __workflow_groupIdForRefreshDataflow = WorkflowExpression.Compile(groupIdForRefreshDataflow, nameof(groupIdForRefreshDataflow), required: true);
+            var __workflow_dataflowIdForRefreshDataflow = WorkflowExpression.Compile(dataflowIdForRefreshDataflow, nameof(dataflowIdForRefreshDataflow), required: true);
+            return new DeferredBodyAction<DataflowModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", __workflow_groupIdForRefreshDataflow.WithUrlEncoding(1), __workflow_dataflowIdForRefreshDataflow.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(__workflow_workspaceType);
+                return new ApiConnectionAction<DataflowModel>(callPayload);
+            });
         }
     }
 
     public class DataflowsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", ExpressionConverter.ConvertWithUrlEncoding(groupIdForOnRefreshComplete, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForOnRefreshComplete, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-            return new ApiConnectionTrigger<RefreshModel>(callPayload, triggerName, recurrence);
+            var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
+            var __workflow_groupIdForOnRefreshComplete = WorkflowExpression.Compile(groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
+            var __workflow_dataflowIdForOnRefreshComplete = WorkflowExpression.Compile(dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
+            return new DeferredBodyTrigger<RefreshModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", __workflow_groupIdForOnRefreshComplete.WithUrlEncoding(1), __workflow_dataflowIdForOnRefreshComplete.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(__workflow_workspaceType);
+                return new ApiConnectionTrigger<RefreshModel>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -43,6 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
         public string DataflowId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum workspaceTypeInput
     {
         Workspace,

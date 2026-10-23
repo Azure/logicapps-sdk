@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the queries of the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Queries { get; set; }
+        public object Queries { get; set; }
 
         /// <summary>
         /// Gets or sets the cookie for the request.
@@ -46,6 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the headers for the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Headers { get; set; }
+        public object Headers { get; set; }
     }
 }

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,38 +14,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         public IBodyWorkflowAction<ScrapeResponse> Scrape(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null)
         {
-            var apiCallPath = "/scraper";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
-            if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            return new ApiConnectionAction<ScrapeResponse>(callPayload);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_render = WorkflowExpression.Compile(render, nameof(render), required: false);
+            var __workflow_selector = WorkflowExpression.Compile(selector, nameof(selector), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            return new DeferredBodyAction<ScrapeResponse>(() =>
+            {
+                var apiCallPath = "/scraper";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_render != null)
+                    callPayload.Queries["render"] = ExpressionConverter.Convert(__workflow_render);
+                if (__workflow_selector != null)
+                    callPayload.Queries["selector"] = ExpressionConverter.Convert(__workflow_selector);
+                if (__workflow_timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
+                return new ApiConnectionAction<ScrapeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = "/scraper";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
-            if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<ScrapeFormResponse>(callPayload);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_render = WorkflowExpression.Compile(render, nameof(render), required: false);
+            var __workflow_selector = WorkflowExpression.Compile(selector, nameof(selector), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ScrapeFormResponse>(() =>
+            {
+                var apiCallPath = "/scraper";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_render != null)
+                    callPayload.Queries["render"] = ExpressionConverter.Convert(__workflow_render);
+                if (__workflow_selector != null)
+                    callPayload.Queries["selector"] = ExpressionConverter.Convert(__workflow_selector);
+                if (__workflow_timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ScrapeFormResponse>(callPayload);
+            });
         }
     }
 

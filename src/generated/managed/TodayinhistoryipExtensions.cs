@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,10 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
         public IBodyWorkflowAction<DayGetResponse> DayGet(Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var apiCallPath = String.Format("/date/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DayGetResponse>(callPayload);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
+            return new DeferredBodyAction<DayGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/date/{0}/{1}", __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DayGetResponse>(callPayload);
+            });
         }
     }
 

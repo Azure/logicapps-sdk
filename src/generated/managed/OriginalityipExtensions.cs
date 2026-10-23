@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,75 +14,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetCreditBalanceResponse> GetCreditBalance(Expression<Func<string>> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetCreditBalanceResponse>(callPayload);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetCreditBalanceResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/account/credits/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                return new ApiConnectionAction<GetCreditBalanceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetCreditUsageResponse> GetCreditUsage(Expression<Func<string>> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/content_scan_usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetCreditUsageResponse>(callPayload);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetCreditUsageResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/account/credits/content_scan_usage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                return new ApiConnectionAction<GetCreditUsageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetPaymentResponse> GetPayment(Expression<Func<string>> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/payments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetPaymentResponse>(callPayload);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetPaymentResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/account/credits/payments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                return new ApiConnectionAction<GetPaymentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<PostAIDetectionResponse> PostAIDetection(Expression<Func<string>> bodycontent = null)
         {
-            var apiCallPath = "/api/v1/scan/ai";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            return new DeferredBodyAction<PostAIDetectionResponse>(() =>
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/scan/ai";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostAIDetectionResponse>(callPayload);
+                return new ApiConnectionAction<PostAIDetectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<PostUrlAIDetectionResponse> PostUrlAIDetection(Expression<Func<string>> bodyurl = null)
         {
-            var apiCallPath = "/api/v1/scan/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyurl != null)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            return new DeferredBodyAction<PostUrlAIDetectionResponse>(() =>
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/scan/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyurl != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostUrlAIDetectionResponse>(callPayload);
+                return new ApiConnectionAction<PostUrlAIDetectionResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,87 +14,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IWorkflowAction Execute(Expression<Func<string>> sessionId, Expression<Func<string>> scenarioId)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/execute/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["scenarioId"] = ExpressionConverter.Convert(scenarioId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/execute/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
+                callPayload.Queries["scenarioId"] = ExpressionConverter.Convert(__workflow_scenarioId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IWorkflowAction GetPausedProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/paused/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/paused/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
+                callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<GetProcedureListResponse> GetProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/project/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-            return new ApiConnectionAction<GetProcedureListResponse>(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
+            return new DeferredBodyAction<GetProcedureListResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/project/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
+                callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
+                return new ApiConnectionAction<GetProcedureListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<GetProjectListResponse> GetProjectList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> mode = null)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/projects/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
-            return new ApiConnectionAction<GetProjectListResponse>(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
+            var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
+            return new DeferredBodyAction<GetProjectListResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/projects/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
+                callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                if (__workflow_mode != null)
+                    callPayload.Queries["mode"] = ExpressionConverter.Convert(__workflow_mode);
+                return new ApiConnectionAction<GetProjectListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> pattern, Expression<Func<string>> versionId = null)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["pattern"] = ExpressionConverter.Convert(pattern);
-            if (versionId != null)
-                callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
+            var __workflow_pattern = WorkflowExpression.Compile(pattern, nameof(pattern), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
+                callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                callPayload.Queries["pattern"] = ExpressionConverter.Convert(__workflow_pattern);
+                if (__workflow_versionId != null)
+                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> sessionId)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/user/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<GetUserResponse>(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            return new DeferredBodyAction<GetUserResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/user/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
+                return new ApiConnectionAction<GetUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
         public IWorkflowAction Login(Expression<Func<string>> login, Expression<Func<string>> password, Expression<Func<string>> locale = null)
         {
-            var apiCallPath = "/livedesk/CHECK";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["locale"] = Convert.ToString("en_US");
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["login"] = ExpressionConverter.Convert(login);
-            callPayload.Queries["password"] = ExpressionConverter.Convert(password);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_login = WorkflowExpression.Compile(login, nameof(login), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/livedesk/CHECK";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["locale"] = Convert.ToString("en_US");
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                callPayload.Queries["login"] = ExpressionConverter.Convert(__workflow_login);
+                callPayload.Queries["password"] = ExpressionConverter.Convert(__workflow_password);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,313 +14,381 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateTextContentResponse> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:generateContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodygenerationConfigmaxOutputTokens = WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            var __workflow_bodygenerationConfigtemperature = WorkflowExpression.Compile(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            var __workflow_bodygenerationConfigtopP = WorkflowExpression.Compile(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            var __workflow_bodygenerationConfigcandidateCount = WorkflowExpression.Compile(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
+            var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            return new DeferredBodyAction<GenerateTextContentResponse>(() =>
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:generateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontents != null)
+                {
+                    body["contents"] = ExpressionConverter.ConvertO(__workflow_bodycontents);
+                    bodypropCount++;
+                }
 
-            if (bodysafetySettings != null)
-            {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
-                bodypropCount++;
-            }
+                if (__workflow_bodysafetySettings != null)
+                {
+                    body["safetySettings"] = ExpressionConverter.ConvertO(__workflow_bodysafetySettings);
+                    bodypropCount++;
+                }
 
-            var generationConfigObject = new JObject();
-            var generationConfigObjectpropCount = 0;
-            if (bodygenerationConfigmaxOutputTokens != null)
-            {
-                generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(bodygenerationConfigmaxOutputTokens);
-                generationConfigObjectpropCount++;
-            }
+                var generationConfigObject = new JObject();
+                var generationConfigObjectpropCount = 0;
+                if (__workflow_bodygenerationConfigmaxOutputTokens != null)
+                {
+                    generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigmaxOutputTokens);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtemperature != null)
-            {
-                generationConfigObject["temperature"] = ExpressionConverter.ConvertO(bodygenerationConfigtemperature);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtemperature != null)
+                {
+                    generationConfigObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtemperature);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtopP != null)
-            {
-                generationConfigObject["topP"] = ExpressionConverter.ConvertO(bodygenerationConfigtopP);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtopP != null)
+                {
+                    generationConfigObject["topP"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtopP);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtopK != null)
-            {
-                generationConfigObject["topK"] = ExpressionConverter.ConvertO(bodygenerationConfigtopK);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtopK != null)
+                {
+                    generationConfigObject["topK"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtopK);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigcandidateCount != null)
-            {
-                generationConfigObject["candidateCount"] = ExpressionConverter.ConvertO(bodygenerationConfigcandidateCount);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigcandidateCount != null)
+                {
+                    generationConfigObject["candidateCount"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigcandidateCount);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigstopSequences != null)
-            {
-                generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(bodygenerationConfigstopSequences);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigstopSequences != null)
+                {
+                    generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigstopSequences);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (generationConfigObjectpropCount > 0)
-            {
-                body["generationConfig"] = generationConfigObject;
-                bodypropCount++;
-            }
+                if (generationConfigObjectpropCount > 0)
+                {
+                    body["generationConfig"] = generationConfigObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GenerateTextContentResponse>(callPayload);
+                return new ApiConnectionAction<GenerateTextContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:streamGenerateContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodygenerationConfigtemperature = WorkflowExpression.Compile(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            var __workflow_bodygenerationConfigmaxOutputTokens = WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            var __workflow_bodygenerationConfigtopP = WorkflowExpression.Compile(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            var __workflow_bodygenerationConfigcandidateCount = WorkflowExpression.Compile(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
+            var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            return new DeferredBodyAction<GenerateStreamContentResponseItem[]>(() =>
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:streamGenerateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontents != null)
+                {
+                    body["contents"] = ExpressionConverter.ConvertO(__workflow_bodycontents);
+                    bodypropCount++;
+                }
 
-            if (bodysafetySettings != null)
-            {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
-                bodypropCount++;
-            }
+                if (__workflow_bodysafetySettings != null)
+                {
+                    body["safetySettings"] = ExpressionConverter.ConvertO(__workflow_bodysafetySettings);
+                    bodypropCount++;
+                }
 
-            var generationConfigObject = new JObject();
-            var generationConfigObjectpropCount = 0;
-            if (bodygenerationConfigtemperature != null)
-            {
-                generationConfigObject["temperature"] = ExpressionConverter.ConvertO(bodygenerationConfigtemperature);
-                generationConfigObjectpropCount++;
-            }
+                var generationConfigObject = new JObject();
+                var generationConfigObjectpropCount = 0;
+                if (__workflow_bodygenerationConfigtemperature != null)
+                {
+                    generationConfigObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtemperature);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigmaxOutputTokens != null)
-            {
-                generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(bodygenerationConfigmaxOutputTokens);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigmaxOutputTokens != null)
+                {
+                    generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigmaxOutputTokens);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtopP != null)
-            {
-                generationConfigObject["topP"] = ExpressionConverter.ConvertO(bodygenerationConfigtopP);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtopP != null)
+                {
+                    generationConfigObject["topP"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtopP);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtopK != null)
-            {
-                generationConfigObject["topK"] = ExpressionConverter.ConvertO(bodygenerationConfigtopK);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtopK != null)
+                {
+                    generationConfigObject["topK"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtopK);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigcandidateCount != null)
-            {
-                generationConfigObject["candidateCount"] = ExpressionConverter.ConvertO(bodygenerationConfigcandidateCount);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigcandidateCount != null)
+                {
+                    generationConfigObject["candidateCount"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigcandidateCount);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigstopSequences != null)
-            {
-                generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(bodygenerationConfigstopSequences);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigstopSequences != null)
+                {
+                    generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigstopSequences);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (generationConfigObjectpropCount > 0)
-            {
-                body["generationConfig"] = generationConfigObject;
-                bodypropCount++;
-            }
+                if (generationConfigObjectpropCount > 0)
+                {
+                    body["generationConfig"] = generationConfigObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GenerateStreamContentResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GenerateStreamContentResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateMultiModalContentResponse> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}-vision:generateContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodygenerationConfigmaxOutputTokens = WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            var __workflow_bodygenerationConfigtemperature = WorkflowExpression.Compile(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            var __workflow_bodygenerationConfigtopP = WorkflowExpression.Compile(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            return new DeferredBodyAction<GenerateMultiModalContentResponse>(() =>
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}-vision:generateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontents != null)
+                {
+                    body["contents"] = ExpressionConverter.ConvertO(__workflow_bodycontents);
+                    bodypropCount++;
+                }
 
-            if (bodysafetySettings != null)
-            {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
-                bodypropCount++;
-            }
+                if (__workflow_bodysafetySettings != null)
+                {
+                    body["safetySettings"] = ExpressionConverter.ConvertO(__workflow_bodysafetySettings);
+                    bodypropCount++;
+                }
 
-            var generationConfigObject = new JObject();
-            var generationConfigObjectpropCount = 0;
-            if (bodygenerationConfigmaxOutputTokens != null)
-            {
-                generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(bodygenerationConfigmaxOutputTokens);
-                generationConfigObjectpropCount++;
-            }
+                var generationConfigObject = new JObject();
+                var generationConfigObjectpropCount = 0;
+                if (__workflow_bodygenerationConfigmaxOutputTokens != null)
+                {
+                    generationConfigObject["maxOutputTokens"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigmaxOutputTokens);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtemperature != null)
-            {
-                generationConfigObject["temperature"] = ExpressionConverter.ConvertO(bodygenerationConfigtemperature);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtemperature != null)
+                {
+                    generationConfigObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtemperature);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtopP != null)
-            {
-                generationConfigObject["topP"] = ExpressionConverter.ConvertO(bodygenerationConfigtopP);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtopP != null)
+                {
+                    generationConfigObject["topP"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtopP);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigtopK != null)
-            {
-                generationConfigObject["topK"] = ExpressionConverter.ConvertO(bodygenerationConfigtopK);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigtopK != null)
+                {
+                    generationConfigObject["topK"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigtopK);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (bodygenerationConfigstopSequences != null)
-            {
-                generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(bodygenerationConfigstopSequences);
-                generationConfigObjectpropCount++;
-            }
+                if (__workflow_bodygenerationConfigstopSequences != null)
+                {
+                    generationConfigObject["stopSequences"] = ExpressionConverter.ConvertO(__workflow_bodygenerationConfigstopSequences);
+                    generationConfigObjectpropCount++;
+                }
 
-            if (generationConfigObjectpropCount > 0)
-            {
-                body["generationConfig"] = generationConfigObject;
-                bodypropCount++;
-            }
+                if (generationConfigObjectpropCount > 0)
+                {
+                    body["generationConfig"] = generationConfigObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GenerateMultiModalContentResponse>(callPayload);
+                return new ApiConnectionAction<GenerateMultiModalContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<CountTokensResponse> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem22[]>> bodycontents = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:countTokens", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            return new DeferredBodyAction<CountTokensResponse>(() =>
             {
-                body["contents"] = ExpressionConverter.ConvertO(bodycontents);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:countTokens", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontents != null)
+                {
+                    body["contents"] = ExpressionConverter.ConvertO(__workflow_bodycontents);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CountTokensResponse>(callPayload);
+                return new ApiConnectionAction<CountTokensResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetAllModelsResponse> GetAllModels(Expression<Func<string>> apiVersion)
         {
-            var apiCallPath = String.Format("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllModelsResponse>(callPayload);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            return new DeferredBodyAction<GetAllModelsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models", __workflow_apiVersion.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllModelsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetModelDetailsResponse> GetModelDetails(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetModelDetailsResponse>(callPayload);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            return new DeferredBodyAction<GetModelDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetModelDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<string>> bodymodelResourceName, Expression<Func<bodycontentpartsInputItem[]>> bodycontentparts = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:embedContent", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodelResourceName);
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            if (bodycontentparts != null)
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodymodelResourceName = WorkflowExpression.Compile(bodymodelResourceName, nameof(bodymodelResourceName), required: true);
+            var __workflow_bodycontentparts = WorkflowExpression.Compile(bodycontentparts, nameof(bodycontentparts), required: false);
+            var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<GenerateEmbeddingResponse>(() =>
             {
-                contentObject["parts"] = ExpressionConverter.ConvertO(bodycontentparts);
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:embedContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodelResourceName);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                if (__workflow_bodycontentparts != null)
+                {
+                    contentObject["parts"] = ExpressionConverter.ConvertO(__workflow_bodycontentparts);
+                    contentObjectpropCount++;
+                }
 
-            if (bodytaskType != null)
-            {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
-                bodypropCount++;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (__workflow_bodytaskType != null)
+                {
+                    body["taskType"] = ExpressionConverter.ConvertO(__workflow_bodytaskType);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<GenerateEmbeddingResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GenerateEmbeddingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodyrequestsInputItem[]>> bodyrequests)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:batchEmbedContents", ExpressionConverter.ConvertWithUrlEncoding(apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["requests"] = ExpressionConverter.ConvertO(bodyrequests);
-            if (bodypropCount > 0)
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodyrequests = WorkflowExpression.Compile(bodyrequests, nameof(bodyrequests), required: true);
+            return new DeferredBodyAction<BatchEmbedContentsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:batchEmbedContents", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["requests"] = ExpressionConverter.ConvertO(__workflow_bodyrequests);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<BatchEmbedContentsResponse>(callPayload);
+                return new ApiConnectionAction<BatchEmbedContentsResponse>(callPayload);
+            });
         }
     }
 
@@ -640,6 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskTypeInput
     {
         [EnumMember(Value = "RETRIEVAL_QUERY")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,43 +14,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<RandomResponse> Random(Expression<Func<int>> count = null)
         {
-            var apiCallPath = "/random/joke";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            return new ApiConnectionAction<RandomResponse>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            return new DeferredBodyAction<RandomResponse>(() =>
+            {
+                var apiCallPath = "/random/joke";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                return new ApiConnectionAction<RandomResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeIDResponse> JokeID(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/joke/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JokeIDResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<JokeIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/joke/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JokeIDResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeTypeResponse> JokeType(Expression<Func<string>> type, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = String.Format("/joke/type/{0}", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<JokeTypeResponse>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<JokeTypeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/joke/type/{0}", __workflow_type.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<JokeTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeSearchResponse> JokeSearch(Expression<Func<string>> term = null)
         {
-            var apiCallPath = "/joke/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (term != null)
-                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
-            return new ApiConnectionAction<JokeSearchResponse>(callPayload);
+            var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: false);
+            return new DeferredBodyAction<JokeSearchResponse>(() =>
+            {
+                var apiCallPath = "/joke/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_term != null)
+                    callPayload.Queries["term"] = ExpressionConverter.Convert(__workflow_term);
+                return new ApiConnectionAction<JokeSearchResponse>(callPayload);
+            });
         }
     }
 

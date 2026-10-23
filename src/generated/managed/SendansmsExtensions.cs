@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,46 +14,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
         public IWorkflowAction SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(xTopMessageKey);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydatafrom != null)
+            var __workflow_xTopMessageKey = WorkflowExpression.Compile(xTopMessageKey, nameof(xTopMessageKey), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodydatafrom = WorkflowExpression.Compile(bodydatafrom, nameof(bodydatafrom), required: false);
+            var __workflow_bodydatato = WorkflowExpression.Compile(bodydatato, nameof(bodydatato), required: false);
+            var __workflow_bodydatatext = WorkflowExpression.Compile(bodydatatext, nameof(bodydatatext), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                dataObject["from"] = ExpressionConverter.ConvertO(bodydatafrom);
-                dataObjectpropCount++;
-            }
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(__workflow_xTopMessageKey);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (__workflow_bodydatafrom != null)
+                {
+                    dataObject["from"] = ExpressionConverter.ConvertO(__workflow_bodydatafrom);
+                    dataObjectpropCount++;
+                }
 
-            if (bodydatato != null)
-            {
-                dataObject["to"] = ExpressionConverter.ConvertO(bodydatato);
-                dataObjectpropCount++;
-            }
+                if (__workflow_bodydatato != null)
+                {
+                    dataObject["to"] = ExpressionConverter.ConvertO(__workflow_bodydatato);
+                    dataObjectpropCount++;
+                }
 
-            if (bodydatatext != null)
-            {
-                dataObject["text"] = ExpressionConverter.ConvertO(bodydatatext);
-                dataObjectpropCount++;
-            }
+                if (__workflow_bodydatatext != null)
+                {
+                    dataObject["text"] = ExpressionConverter.ConvertO(__workflow_bodydatatext);
+                    dataObjectpropCount++;
+                }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

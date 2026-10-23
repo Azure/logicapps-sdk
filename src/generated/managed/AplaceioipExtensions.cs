@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,38 +14,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<string>> sessionId = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> countries = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null, Expression<Func<string>> lang = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (sessionId != null)
-                callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-            if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_countries = WorkflowExpression.Compile(countries, nameof(countries), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            return new DeferredBodyAction<SearchGetResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["session_id"] = ExpressionConverter.Convert(__workflow_sessionId);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_countries != null)
+                    callPayload.Queries["countries"] = ExpressionConverter.Convert(__workflow_countries);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["radius"] = ExpressionConverter.Convert(__workflow_radius);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
         public IBodyWorkflowAction<PIPGetResponse> PIPGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
         {
-            var apiCallPath = "/pip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-            return new ApiConnectionAction<PIPGetResponse>(callPayload);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            return new DeferredBodyAction<PIPGetResponse>(() =>
+            {
+                var apiCallPath = "/pip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
+                return new ApiConnectionAction<PIPGetResponse>(callPayload);
+            });
         }
     }
 
@@ -137,6 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         public string From { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "house_number")]

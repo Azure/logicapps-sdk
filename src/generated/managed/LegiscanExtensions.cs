@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legiscan
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;

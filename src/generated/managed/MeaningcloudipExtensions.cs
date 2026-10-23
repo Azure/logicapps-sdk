@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,73 +14,140 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<ofInput>> of = null, Expression<Func<txtfInput>> txtf = null, Expression<Func<string>> model = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<uwInput>> uw = null)
         {
-            var apiCallPath = "/sentiment-2.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            var __workflow_txtf = WorkflowExpression.Compile(txtf, nameof(txtf), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
+            var __workflow_uw = WorkflowExpression.Compile(uw, nameof(uw), required: false);
+            return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
+            {
+                var apiCallPath = "/sentiment-2.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<TextClassificationResponse> TextClassification(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<expandHierarchyInput>> expandHierarchy = null)
         {
-            var apiCallPath = "/class-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClassificationResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_debug = WorkflowExpression.Compile(debug, nameof(debug), required: false);
+            var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
+            var __workflow_expandHierarchy = WorkflowExpression.Compile(expandHierarchy, nameof(expandHierarchy), required: false);
+            return new DeferredBodyAction<TextClassificationResponse>(() =>
+            {
+                var apiCallPath = "/class-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextClassificationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<string>> model = null)
         {
-            var apiCallPath = "/reputation-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            return new DeferredBodyAction<CorporateReputationResponse>(() =>
+            {
+                var apiCallPath = "/reputation-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<int>> sentences = null, Expression<Func<ofInput>> of = null)
         {
-            var apiCallPath = "/summarization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_sentences = WorkflowExpression.Compile(sentences, nameof(sentences), required: false);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            return new DeferredBodyAction<SummarizationResponse>(() =>
+            {
+                var apiCallPath = "/summarization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<ofInput>> of = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<polarityInput>> polarity = null)
         {
-            var apiCallPath = "/deepcategorization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            var __workflow_debug = WorkflowExpression.Compile(debug, nameof(debug), required: false);
+            var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
+            var __workflow_polarity = WorkflowExpression.Compile(polarity, nameof(polarity), required: false);
+            return new DeferredBodyAction<DeepCategorizationResponse>(() =>
+            {
+                var apiCallPath = "/deepcategorization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification(Expression<Func<string>> key, Expression<Func<string>> txt)
         {
-            var apiCallPath = "/lang-4.0/identification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            return new DeferredBodyAction<LanguageIdentificationResponse>(() =>
+            {
+                var apiCallPath = "/lang-4.0/identification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<TextClusteringResponse> TextClustering(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<langInput>> lang, Expression<Func<ofInput>> of = null, Expression<Func<modeInput>> mode = null, Expression<Func<swInput>> sw = null)
         {
-            var apiCallPath = "/clustering-1.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClusteringResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
+            var __workflow_sw = WorkflowExpression.Compile(sw, nameof(sw), required: false);
+            return new DeferredBodyAction<TextClusteringResponse>(() =>
+            {
+                var apiCallPath = "/clustering-1.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextClusteringResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<ofInput>> of = null)
         {
-            var apiCallPath = "/documentstructure-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            return new DeferredBodyAction<DocumentStructureResponse>(() =>
+            {
+                var apiCallPath = "/documentstructure-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
+            });
         }
     }
 
@@ -244,6 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string RemainingCredits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ofInput
     {
         [EnumMember(Value = "json")]
@@ -252,6 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum txtfInput
     {
         [EnumMember(Value = "plain")]
@@ -260,6 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Markup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum verboseInput
     {
         [EnumMember(Value = "y")]
@@ -268,6 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         N
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uwInput
     {
         [EnumMember(Value = "y")]
@@ -315,6 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string RemainingCredits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelInput
     {
         [EnumMember(Value = "IAB_2.0")]
@@ -343,6 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         VoEExitInterview
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum debugInput
     {
         [EnumMember(Value = "y")]
@@ -351,6 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         N
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum expandHierarchyInput
     {
         [EnumMember(Value = "n")]
@@ -499,6 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string Relevance { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum polarityInput
     {
         [EnumMember(Value = "y")]
@@ -630,6 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string Document10 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "en")]
@@ -660,6 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Ar
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modeInput
     {
         [EnumMember(Value = "tm")]
@@ -668,6 +745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Dg
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum swInput
     {
         [EnumMember(Value = "y")]

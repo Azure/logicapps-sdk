@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,21 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
         public IBodyWorkflowAction<ConvertToWordResponse> ConvertToWord(Expression<Func<string>> coordinates)
         {
-            var apiCallPath = "/convert-to-3wa";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["coordinates"] = ExpressionConverter.Convert(coordinates);
-            return new ApiConnectionAction<ConvertToWordResponse>(callPayload);
+            var __workflow_coordinates = WorkflowExpression.Compile(coordinates, nameof(coordinates), required: true);
+            return new DeferredBodyAction<ConvertToWordResponse>(() =>
+            {
+                var apiCallPath = "/convert-to-3wa";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["coordinates"] = ExpressionConverter.Convert(__workflow_coordinates);
+                return new ApiConnectionAction<ConvertToWordResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
         public IBodyWorkflowAction<ConvertToLatLngResponse> ConvertToLatLng(Expression<Func<string>> words)
         {
-            var apiCallPath = "/convert-to-coordinates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["words"] = ExpressionConverter.Convert(words);
-            return new ApiConnectionAction<ConvertToLatLngResponse>(callPayload);
+            var __workflow_words = WorkflowExpression.Compile(words, nameof(words), required: true);
+            return new DeferredBodyAction<ConvertToLatLngResponse>(() =>
+            {
+                var apiCallPath = "/convert-to-coordinates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["words"] = ExpressionConverter.Convert(__workflow_words);
+                return new ApiConnectionAction<ConvertToLatLngResponse>(callPayload);
+            });
         }
     }
 

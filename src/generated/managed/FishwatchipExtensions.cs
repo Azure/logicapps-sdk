@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,10 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fishwatchip")]
         public IBodyWorkflowAction<SpeciesResponseItem[]> GetSpecies(Expression<Func<string>> species)
         {
-            var apiCallPath = String.Format("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(species, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SpeciesResponseItem[]>(callPayload);
+            var __workflow_species = WorkflowExpression.Compile(species, nameof(species), required: true);
+            return new DeferredBodyAction<SpeciesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/species/{0}", __workflow_species.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SpeciesResponseItem[]>(callPayload);
+            });
         }
     }
 

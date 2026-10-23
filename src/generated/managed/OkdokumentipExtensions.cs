@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,22 +15,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 
     public class OkdokumentipTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WaitForSignature(Expression<Func<string>> signatureRequestId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WaitForSignature(Expression<Func<string>> signatureRequestId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/signatureRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(signatureRequestId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["sendInfoURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_signatureRequestId = WorkflowExpression.Compile(signatureRequestId, nameof(signatureRequestId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signatureRequest/{0}", __workflow_signatureRequestId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["sendInfoURL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,60 +14,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
         public IWorkflowAction NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodymobileNo != null)
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodymobileNo = WorkflowExpression.Compile(bodymobileNo, nameof(bodymobileNo), required: false);
+            var __workflow_bodysecondaryEmail = WorkflowExpression.Compile(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
+            var __workflow_bodylifecycleStageName = WorkflowExpression.Compile(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["mobile_no"] = ExpressionConverter.ConvertO(bodymobileNo);
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysecondaryEmail != null)
-            {
-                body["secondary_email"] = ExpressionConverter.ConvertO(bodysecondaryEmail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-            }
-
-            if (bodylifecycleStageName != null)
-            {
-                if (bodylifecycleStageName != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodymobileNo != null)
                 {
-                    body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(bodylifecycleStageName);
+                    body["mobile_no"] = ExpressionConverter.ConvertO(__workflow_bodymobileNo);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["lifecycle_stage_name"] = 1;
-                bodypropCount++;
-            }
+                if (__workflow_bodysecondaryEmail != null)
+                {
+                    body["secondary_email"] = ExpressionConverter.ConvertO(__workflow_bodysecondaryEmail);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodylifecycleStageName != null)
+                {
+                    if (__workflow_bodylifecycleStageName != null)
+                    {
+                        body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(__workflow_bodylifecycleStageName);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["lifecycle_stage_name"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class PureleadsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/contacts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, recurrence: recurrence);
         }
     }
 

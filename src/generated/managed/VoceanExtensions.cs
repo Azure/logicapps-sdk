@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,37 +14,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetIdeasResponseItem[]> GetIdeas(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
         {
-            var apiCallPath = "/api/data/connector/innovate/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
-            return new ApiConnectionAction<GetIdeasResponseItem[]>(callPayload);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
+            return new DeferredBodyAction<GetIdeasResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/data/connector/innovate/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(__workflow_networkId);
+                callPayload.Queries["activityId"] = ExpressionConverter.Convert(__workflow_activityId);
+                return new ApiConnectionAction<GetIdeasResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetVotesResponseItem[]> GetVotes(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
         {
-            var apiCallPath = "/api/data/connector/vote/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
-            return new ApiConnectionAction<GetVotesResponseItem[]>(callPayload);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
+            return new DeferredBodyAction<GetVotesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/data/connector/vote/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(__workflow_networkId);
+                callPayload.Queries["activityId"] = ExpressionConverter.Convert(__workflow_activityId);
+                return new ApiConnectionAction<GetVotesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetExploreResponsesResponseItem[]> GetExploreResponses(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
         {
-            var apiCallPath = "/api/data/connector/explore/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
-            return new ApiConnectionAction<GetExploreResponsesResponseItem[]>(callPayload);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
+            return new DeferredBodyAction<GetExploreResponsesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/data/connector/explore/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(__workflow_networkId);
+                callPayload.Queries["activityId"] = ExpressionConverter.Convert(__workflow_activityId);
+                return new ApiConnectionAction<GetExploreResponsesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
@@ -59,90 +74,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> GetActivities(Expression<Func<string>> networkId, Expression<Func<activityTypeInput>> activityType)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
-            return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityType = WorkflowExpression.Compile(activityType, nameof(activityType), required: true);
+            return new DeferredBodyAction<GetActivitiesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities", __workflow_networkId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["activityType"] = ExpressionConverter.Convert(__workflow_activityType);
+                return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeaResponse> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<string>> bodytext)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<AddIdeaResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddIdeaResponse>(callPayload);
+                return new ApiConnectionAction<AddIdeaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeasResponseItem[]> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AddIdeasResponseItem[]>(callPayload);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<AddIdeasResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AddIdeasResponseItem[]>(callPayload);
+            });
         }
     }
 
     public class VoceanTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyeventTypes != null)
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_bodyeventTypes = WorkflowExpression.Compile(bodyeventTypes, nameof(bodyeventTypes), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (__workflow_bodyeventTypes != null)
+                {
+                    body["eventTypes"] = ExpressionConverter.ConvertO(__workflow_bodyeventTypes);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger UserActivityTrigger(Expression<Func<string>> networkId = null, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserActivityTrigger(Expression<Func<string>> networkId = null, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyeventTypes != null)
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
+            var __workflow_bodyeventTypes = WorkflowExpression.Compile(bodyeventTypes, nameof(bodyeventTypes), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
+                var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(__workflow_networkId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (__workflow_bodyeventTypes != null)
+                {
+                    body["eventTypes"] = ExpressionConverter.ConvertO(__workflow_bodyeventTypes);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -257,6 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public GetExploreResponsesResponseItemResponseMultipleValuesTypeItem[] ResponseMultipleValues { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetExploreResponsesResponseItemResponseYesNoValueType
     {
         [EnumMember(Value = "")]
@@ -306,6 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public string ActivityType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activityTypeInput
     {
         Innovate,

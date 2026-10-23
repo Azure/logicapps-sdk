@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,111 +14,156 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<GetSpeciesResponse> GetSpecies(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = "/species";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<GetSpeciesResponse>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            return new DeferredBodyAction<GetSpeciesResponse>(() =>
+            {
+                var apiCallPath = "/species";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                return new ApiConnectionAction<GetSpeciesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Starship[]> GetStarships(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = "/starships";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<Starship[]>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            return new DeferredBodyAction<Starship[]>(() =>
+            {
+                var apiCallPath = "/starships";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                return new ApiConnectionAction<Starship[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<GetFilmsResponse> GetFilms(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = "/films";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<GetFilmsResponse>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            return new DeferredBodyAction<GetFilmsResponse>(() =>
+            {
+                var apiCallPath = "/films";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                return new ApiConnectionAction<GetFilmsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Film> GetFilmById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Film>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Film>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/films/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Film>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<GetPlanetsResponse> GetPlanets(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = "/planets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<GetPlanetsResponse>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            return new DeferredBodyAction<GetPlanetsResponse>(() =>
+            {
+                var apiCallPath = "/planets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                return new ApiConnectionAction<GetPlanetsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Person> GetPeople(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = "/people";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<Person>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            return new DeferredBodyAction<Person>(() =>
+            {
+                var apiCallPath = "/people";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                return new ApiConnectionAction<Person>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Person> GetPersonById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Person>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Person>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/people/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Person>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Planet> GetPlanetById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/planets/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Planet>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Planet>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/planets/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Planet>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Species> GetSpeciesById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Species>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Species>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/species/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Species>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
         public IBodyWorkflowAction<Starship> GetStarShipById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/starships/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Starship>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Starship>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/starships/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Starship>(callPayload);
+            });
         }
     }
 

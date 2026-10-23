@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,17 +14,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
         public IBodyWorkflowAction<GetDataResponse> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<formattedInput>> formatted = null)
         {
-            var apiCallPath = "/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            callPayload.Queries["date"] = Convert.ToString("");
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (formatted != null)
-                callPayload.Queries["formatted"] = ExpressionConverter.Convert(formatted);
-            return new ApiConnectionAction<GetDataResponse>(callPayload);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_formatted = WorkflowExpression.Compile(formatted, nameof(formatted), required: false);
+            return new DeferredBodyAction<GetDataResponse>(() =>
+            {
+                var apiCallPath = "/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
+                callPayload.Queries["date"] = Convert.ToString("");
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_formatted != null)
+                    callPayload.Queries["formatted"] = ExpressionConverter.Convert(__workflow_formatted);
+                return new ApiConnectionAction<GetDataResponse>(callPayload);
+            });
         }
     }
 
@@ -74,6 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
         public string AstronomicalTwilightEnd { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formattedInput
     {
         [EnumMember(Value = "0")]

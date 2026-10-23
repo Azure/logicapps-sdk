@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,73 +32,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
         public IBodyWorkflowAction<JToken> GetMailboxSchema(Expression<Func<string>> mailboxID)
         {
-            var apiCallPath = String.Format("/parser/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/schema", __workflow_mailboxID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
         public IBodyWorkflowAction<JToken> GetTableSchema(Expression<Func<string>> tableID)
         {
-            var apiCallPath = String.Format("/table/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(tableID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_tableID = WorkflowExpression.Compile(tableID, nameof(tableID), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/table/{0}/schema", __workflow_tableID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class ParseurTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded(Expression<Func<string>> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded(Expression<Func<string>> mailboxID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/parser/{0}/flow_webhook/document.processed", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/flow_webhook/document.processed", __workflow_mailboxID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/parser/{0}/flow_webhook/document.template_needed", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/flow_webhook/document.template_needed", __workflow_mailboxID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/table/{0}/flow_webhook/table.processed", ExpressionConverter.ConvertWithUrlEncoding(tableID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_tableID = WorkflowExpression.Compile(tableID, nameof(tableID), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/table/{0}/flow_webhook/table.processed", __workflow_tableID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

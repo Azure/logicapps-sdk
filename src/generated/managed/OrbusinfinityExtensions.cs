@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,242 +14,310 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> RelationshipsGet(Expression<Func<bool>> includeIntersectional = null, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
-            var apiCallPath = "/odata/Relationships";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeIntersectional"] = Convert.ToString(false);
-            if (includeIntersectional != null)
-                callPayload.Queries["includeIntersectional"] = ExpressionConverter.Convert(includeIntersectional);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(callPayload);
+            var __workflow_includeIntersectional = WorkflowExpression.Compile(includeIntersectional, nameof(includeIntersectional), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(() =>
+            {
+                var apiCallPath = "/odata/Relationships";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeIntersectional"] = Convert.ToString(false);
+                if (__workflow_includeIntersectional != null)
+                    callPayload.Queries["includeIntersectional"] = ExpressionConverter.Convert(__workflow_includeIntersectional);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
+                return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> Relationships(Expression<Func<string>> bodyrelationshipTypeId, Expression<Func<string>> bodyleadModelItemId, Expression<Func<string>> bodymemberModelItemId, Expression<Func<string>> bodymodelId, Expression<Func<string>> bodyrelationshipTypePairId = null)
         {
-            var apiCallPath = "/odata/Relationships";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["relationshipTypeId"] = ExpressionConverter.ConvertO(bodyrelationshipTypeId);
-            if (bodyrelationshipTypePairId != null)
+            var __workflow_bodyrelationshipTypeId = WorkflowExpression.Compile(bodyrelationshipTypeId, nameof(bodyrelationshipTypeId), required: true);
+            var __workflow_bodyleadModelItemId = WorkflowExpression.Compile(bodyleadModelItemId, nameof(bodyleadModelItemId), required: true);
+            var __workflow_bodymemberModelItemId = WorkflowExpression.Compile(bodymemberModelItemId, nameof(bodymemberModelItemId), required: true);
+            var __workflow_bodymodelId = WorkflowExpression.Compile(bodymodelId, nameof(bodymodelId), required: true);
+            var __workflow_bodyrelationshipTypePairId = WorkflowExpression.Compile(bodyrelationshipTypePairId, nameof(bodyrelationshipTypePairId), required: false);
+            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0>(() =>
             {
-                body["relationshipTypePairId"] = ExpressionConverter.ConvertO(bodyrelationshipTypePairId);
+                var apiCallPath = "/odata/Relationships";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["relationshipTypeId"] = ExpressionConverter.ConvertO(__workflow_bodyrelationshipTypeId);
+                if (__workflow_bodyrelationshipTypePairId != null)
+                {
+                    body["relationshipTypePairId"] = ExpressionConverter.ConvertO(__workflow_bodyrelationshipTypePairId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["leadModelItemId"] = ExpressionConverter.ConvertO(bodyleadModelItemId);
-            bodypropCount++;
-            body["memberModelItemId"] = ExpressionConverter.ConvertO(bodymemberModelItemId);
-            var attributeValuesFlatObject = new JObject();
-            var attributeValuesFlatObjectpropCount = 0;
-            if (attributeValuesFlatObjectpropCount > 0)
-            {
-                body["attributeValuesFlat"] = attributeValuesFlatObject;
                 bodypropCount++;
-            }
+                body["leadModelItemId"] = ExpressionConverter.ConvertO(__workflow_bodyleadModelItemId);
+                bodypropCount++;
+                body["memberModelItemId"] = ExpressionConverter.ConvertO(__workflow_bodymemberModelItemId);
+                var attributeValuesFlatObject = new JObject();
+                var attributeValuesFlatObjectpropCount = 0;
+                if (attributeValuesFlatObjectpropCount > 0)
+                {
+                    body["attributeValuesFlat"] = attributeValuesFlatObject;
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["modelId"] = ExpressionConverter.ConvertO(bodymodelId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["modelId"] = ExpressionConverter.ConvertO(__workflow_bodymodelId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0>(callPayload);
+                return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> RelationshipsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            return new ApiConnectionAction<OfficeArchitectContractsODataModelRelationshipLevel0>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            return new DeferredBodyAction<OfficeArchitectContractsODataModelRelationshipLevel0>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                return new ApiConnectionAction<OfficeArchitectContractsODataModelRelationshipLevel0>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> RelationshipsDelete(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> RelationshipsPatch(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var attributeValuesFlatObject = new JObject();
-            var attributeValuesFlatObjectpropCount = 0;
-            if (attributeValuesFlatObjectpropCount > 0)
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0>(() =>
             {
-                body["attributeValuesFlat"] = attributeValuesFlatObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var attributeValuesFlatObject = new JObject();
+                var attributeValuesFlatObjectpropCount = 0;
+                if (attributeValuesFlatObjectpropCount > 0)
+                {
+                    body["attributeValuesFlat"] = attributeValuesFlatObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0>(callPayload);
+                return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> ObjectsGet(Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
-            var apiCallPath = "/odata/Objects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(callPayload);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(() =>
+            {
+                var apiCallPath = "/odata/Objects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
+                return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> Objects(Expression<Func<string>> bodyobjectTypeId, Expression<Func<string>> bodymodelId)
         {
-            var apiCallPath = "/odata/Objects";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["objectTypeId"] = ExpressionConverter.ConvertO(bodyobjectTypeId);
-            var attributeValuesFlatObject = new JObject();
-            var attributeValuesFlatObjectpropCount = 0;
-            if (attributeValuesFlatObjectpropCount > 0)
+            var __workflow_bodyobjectTypeId = WorkflowExpression.Compile(bodyobjectTypeId, nameof(bodyobjectTypeId), required: true);
+            var __workflow_bodymodelId = WorkflowExpression.Compile(bodymodelId, nameof(bodymodelId), required: true);
+            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0>(() =>
             {
-                body["attributeValuesFlat"] = attributeValuesFlatObject;
+                var apiCallPath = "/odata/Objects";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["objectTypeId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectTypeId);
+                var attributeValuesFlatObject = new JObject();
+                var attributeValuesFlatObjectpropCount = 0;
+                if (attributeValuesFlatObjectpropCount > 0)
+                {
+                    body["attributeValuesFlat"] = attributeValuesFlatObject;
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["modelId"] = ExpressionConverter.ConvertO(bodymodelId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["modelId"] = ExpressionConverter.ConvertO(__workflow_bodymodelId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0>(callPayload);
+                return new ApiConnectionAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> ObjectsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            return new ApiConnectionAction<OfficeArchitectContractsODataModelObjectLevel0>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            return new DeferredBodyAction<OfficeArchitectContractsODataModelObjectLevel0>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                return new ApiConnectionAction<OfficeArchitectContractsODataModelObjectLevel0>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> ObjectsDelete(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> ObjectsPatch(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var attributeValuesFlatObject = new JObject();
-            var attributeValuesFlatObjectpropCount = 0;
-            if (attributeValuesFlatObjectpropCount > 0)
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            return new DeferredBodyAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0>(() =>
             {
-                body["attributeValuesFlat"] = attributeValuesFlatObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var attributeValuesFlatObject = new JObject();
+                var attributeValuesFlatObjectpropCount = 0;
+                if (attributeValuesFlatObjectpropCount > 0)
+                {
+                    body["attributeValuesFlat"] = attributeValuesFlatObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0>(callPayload);
+                return new ApiConnectionAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0>(callPayload);
+            });
         }
     }
 
     public class OrbusinfinityTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/odata/Webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysecret != null)
+            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodysecret = WorkflowExpression.Compile(bodysecret, nameof(bodysecret), required: false);
+            var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(() =>
             {
-                body["secret"] = ExpressionConverter.ConvertO(bodysecret);
+                var apiCallPath = "/odata/Webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodysecret != null)
+                {
+                    body["secret"] = ExpressionConverter.ConvertO(__workflow_bodysecret);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (__workflow_bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -835,6 +903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelDocumentTypeRepresentationSituation
     {
         None,
@@ -843,6 +912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Overlap
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelMetamodelItemRelationshipTypeUsage
     {
         Directionless,
@@ -851,6 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Intersectional
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelMetamodelItemSystemColors
     {
         Default,
@@ -996,6 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public OfficeArchitectContractsModelItemModelItemStatus Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsModelItemModelItemStatus
     {
         Original,
@@ -1150,6 +1222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string MemberObjectId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMessageMessageCategory
     {
         Error,
@@ -1157,6 +1230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Information
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMessageMessageCode
     {
         AttributeAssignmentDoesNotExist,
@@ -1626,6 +1700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         OverrideAll
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsResponseOperationType
     {
         Create,
@@ -1633,6 +1708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Delete
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsResponseEntityType
     {
         None,
@@ -1895,6 +1971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelMetamodelItemTitleIcons
     {
         None,

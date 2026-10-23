@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,56 +14,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
         public IBodyWorkflowAction<Process> Process(Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodydefaultDateParsing = null, Expression<Func<string>> bodydecimalPlaces = null)
         {
-            var apiCallPath = "/api/2/processbase64";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimage != null)
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
+            var __workflow_bodydocumentType = WorkflowExpression.Compile(bodydocumentType, nameof(bodydocumentType), required: false);
+            var __workflow_bodydefaultDateParsing = WorkflowExpression.Compile(bodydefaultDateParsing, nameof(bodydefaultDateParsing), required: false);
+            var __workflow_bodydecimalPlaces = WorkflowExpression.Compile(bodydecimalPlaces, nameof(bodydecimalPlaces), required: false);
+            return new DeferredBodyAction<Process>(() =>
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/2/processbase64";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyimage != null)
+                {
+                    body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
+                    bodypropCount++;
+                }
 
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                if (__workflow_bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodydocumentType != null)
-            {
-                body["documentType"] = ExpressionConverter.ConvertO(bodydocumentType);
-                bodypropCount++;
-            }
+                if (__workflow_bodydocumentType != null)
+                {
+                    body["documentType"] = ExpressionConverter.ConvertO(__workflow_bodydocumentType);
+                    bodypropCount++;
+                }
 
-            if (bodydefaultDateParsing != null)
-            {
-                body["defaultDateParsing"] = ExpressionConverter.ConvertO(bodydefaultDateParsing);
-                bodypropCount++;
-            }
+                if (__workflow_bodydefaultDateParsing != null)
+                {
+                    body["defaultDateParsing"] = ExpressionConverter.ConvertO(__workflow_bodydefaultDateParsing);
+                    bodypropCount++;
+                }
 
-            if (bodydecimalPlaces != null)
-            {
-                body["decimalPlaces"] = ExpressionConverter.ConvertO(bodydecimalPlaces);
-                bodypropCount++;
-            }
+                if (__workflow_bodydecimalPlaces != null)
+                {
+                    body["decimalPlaces"] = ExpressionConverter.ConvertO(__workflow_bodydecimalPlaces);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Process>(callPayload);
+                return new ApiConnectionAction<Process>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
         public IBodyWorkflowAction<Result> Result(Expression<Func<string>> token)
         {
-            var apiCallPath = String.Format("/api/result/{0}", ExpressionConverter.ConvertWithUrlEncoding(token, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Result>(callPayload);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            return new DeferredBodyAction<Result>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/result/{0}", __workflow_token.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Result>(callPayload);
+            });
         }
     }
 

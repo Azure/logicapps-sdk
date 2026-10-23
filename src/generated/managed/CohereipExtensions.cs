@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,309 +14,358 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<EmbedPostResponse> Embed(Expression<Func<string[]>> bodytexts = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
         {
-            var apiCallPath = "/embed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytexts != null)
+            var __workflow_bodytexts = WorkflowExpression.Compile(bodytexts, nameof(bodytexts), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodytruncate = WorkflowExpression.Compile(bodytruncate, nameof(bodytruncate), required: false);
+            return new DeferredBodyAction<EmbedPostResponse>(() =>
             {
-                body["texts"] = ExpressionConverter.ConvertO(bodytexts);
-                bodypropCount++;
-            }
-
-            if (bodymodel != null)
-            {
-                if (bodymodel != null)
+                var apiCallPath = "/embed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytexts != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["texts"] = ExpressionConverter.ConvertO(__workflow_bodytexts);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "large";
-                bodypropCount++;
-            }
+                if (__workflow_bodymodel != null)
+                {
+                    if (__workflow_bodymodel != null)
+                    {
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                        bodypropCount++;
+                    }
 
-            if (bodytruncate != null)
-            {
-                body["truncate"] = ExpressionConverter.ConvertO(bodytruncate);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "large";
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodytruncate != null)
+                {
+                    body["truncate"] = ExpressionConverter.ConvertO(__workflow_bodytruncate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<EmbedPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EmbedPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<ClassifyPostResponse> Classify(Expression<Func<string[]>> bodyinputs = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodyexamplesInputItem[]>> bodyexamples = null, Expression<Func<string>> bodypreset = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
         {
-            var apiCallPath = "/classify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyexamples = WorkflowExpression.Compile(bodyexamples, nameof(bodyexamples), required: false);
+            var __workflow_bodypreset = WorkflowExpression.Compile(bodypreset, nameof(bodypreset), required: false);
+            var __workflow_bodytruncate = WorkflowExpression.Compile(bodytruncate, nameof(bodytruncate), required: false);
+            return new DeferredBodyAction<ClassifyPostResponse>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
-
-            if (bodymodel != null)
-            {
-                if (bodymodel != null)
+                var apiCallPath = "/classify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "large";
-                bodypropCount++;
-            }
+                if (__workflow_bodymodel != null)
+                {
+                    if (__workflow_bodymodel != null)
+                    {
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                        bodypropCount++;
+                    }
 
-            if (bodyexamples != null)
-            {
-                body["examples"] = ExpressionConverter.ConvertO(bodyexamples);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "large";
+                    bodypropCount++;
+                }
 
-            if (bodypreset != null)
-            {
-                body["preset"] = ExpressionConverter.ConvertO(bodypreset);
-                bodypropCount++;
-            }
+                if (__workflow_bodyexamples != null)
+                {
+                    body["examples"] = ExpressionConverter.ConvertO(__workflow_bodyexamples);
+                    bodypropCount++;
+                }
 
-            if (bodytruncate != null)
-            {
-                body["truncate"] = ExpressionConverter.ConvertO(bodytruncate);
-                bodypropCount++;
-            }
+                if (__workflow_bodypreset != null)
+                {
+                    body["preset"] = ExpressionConverter.ConvertO(__workflow_bodypreset);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodytruncate != null)
+                {
+                    body["truncate"] = ExpressionConverter.ConvertO(__workflow_bodytruncate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ClassifyPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ClassifyPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<TokenPostResponse> Token(Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = "/tokenize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<TokenPostResponse>(() =>
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                var apiCallPath = "/tokenize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TokenPostResponse>(callPayload);
+                return new ApiConnectionAction<TokenPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<DetokenPostResponse> Detoken(Expression<Func<int[]>> bodytokens = null)
         {
-            var apiCallPath = "/detokenize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytokens != null)
+            var __workflow_bodytokens = WorkflowExpression.Compile(bodytokens, nameof(bodytokens), required: false);
+            return new DeferredBodyAction<DetokenPostResponse>(() =>
             {
-                body["tokens"] = ExpressionConverter.ConvertO(bodytokens);
-                bodypropCount++;
-            }
+                var apiCallPath = "/detokenize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytokens != null)
+                {
+                    body["tokens"] = ExpressionConverter.ConvertO(__workflow_bodytokens);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<DetokenPostResponse>(callPayload);
+                return new ApiConnectionAction<DetokenPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<LanguagePostResponse> Language(Expression<Func<string[]>> bodytexts = null)
         {
-            var apiCallPath = "/detect-language";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytexts != null)
+            var __workflow_bodytexts = WorkflowExpression.Compile(bodytexts, nameof(bodytexts), required: false);
+            return new DeferredBodyAction<LanguagePostResponse>(() =>
             {
-                body["texts"] = ExpressionConverter.ConvertO(bodytexts);
-                bodypropCount++;
-            }
+                var apiCallPath = "/detect-language";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytexts != null)
+                {
+                    body["texts"] = ExpressionConverter.ConvertO(__workflow_bodytexts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<LanguagePostResponse>(callPayload);
+                return new ApiConnectionAction<LanguagePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
         public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodymessage, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodypreamble = null, Expression<Func<bodychatHistoryInputItem[]>> bodychatHistory = null, Expression<Func<string>> bodyconversationId = null, Expression<Func<bodypromptTruncationInput>> bodypromptTruncation = null, Expression<Func<bodyconnectorsInputItem[]>> bodyconnectors = null, Expression<Func<bool>> bodysearchQueriesOnly = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodycitationQualityInput>> bodycitationQuality = null, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<int>> bodymaxInputTokens = null, Expression<Func<int>> bodyk = null, Expression<Func<double>> bodyp = null, Expression<Func<double>> bodyseed = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
-            var apiCallPath = "/v1/chat";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodymodel != null)
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodypreamble = WorkflowExpression.Compile(bodypreamble, nameof(bodypreamble), required: false);
+            var __workflow_bodychatHistory = WorkflowExpression.Compile(bodychatHistory, nameof(bodychatHistory), required: false);
+            var __workflow_bodyconversationId = WorkflowExpression.Compile(bodyconversationId, nameof(bodyconversationId), required: false);
+            var __workflow_bodypromptTruncation = WorkflowExpression.Compile(bodypromptTruncation, nameof(bodypromptTruncation), required: false);
+            var __workflow_bodyconnectors = WorkflowExpression.Compile(bodyconnectors, nameof(bodyconnectors), required: false);
+            var __workflow_bodysearchQueriesOnly = WorkflowExpression.Compile(bodysearchQueriesOnly, nameof(bodysearchQueriesOnly), required: false);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodycitationQuality = WorkflowExpression.Compile(bodycitationQuality, nameof(bodycitationQuality), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodymaxInputTokens = WorkflowExpression.Compile(bodymaxInputTokens, nameof(bodymaxInputTokens), required: false);
+            var __workflow_bodyk = WorkflowExpression.Compile(bodyk, nameof(bodyk), required: false);
+            var __workflow_bodyp = WorkflowExpression.Compile(bodyp, nameof(bodyp), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodystopSequences = WorkflowExpression.Compile(bodystopSequences, nameof(bodystopSequences), required: false);
+            var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
+            return new DeferredBodyAction<ChatPostResponse>(() =>
             {
-                if (bodymodel != null)
+                var apiCallPath = "/v1/chat";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    if (__workflow_bodymodel != null)
+                    {
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "command-r-plus";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "command-r-plus";
-                bodypropCount++;
-            }
+                if (__workflow_bodypreamble != null)
+                {
+                    body["preamble"] = ExpressionConverter.ConvertO(__workflow_bodypreamble);
+                    bodypropCount++;
+                }
 
-            if (bodypreamble != null)
-            {
-                body["preamble"] = ExpressionConverter.ConvertO(bodypreamble);
-                bodypropCount++;
-            }
+                if (__workflow_bodychatHistory != null)
+                {
+                    body["chat_history"] = ExpressionConverter.ConvertO(__workflow_bodychatHistory);
+                    bodypropCount++;
+                }
 
-            if (bodychatHistory != null)
-            {
-                body["chat_history"] = ExpressionConverter.ConvertO(bodychatHistory);
-                bodypropCount++;
-            }
+                if (__workflow_bodyconversationId != null)
+                {
+                    body["conversation_id"] = ExpressionConverter.ConvertO(__workflow_bodyconversationId);
+                    bodypropCount++;
+                }
 
-            if (bodyconversationId != null)
-            {
-                body["conversation_id"] = ExpressionConverter.ConvertO(bodyconversationId);
-                bodypropCount++;
-            }
+                if (__workflow_bodypromptTruncation != null)
+                {
+                    body["prompt_truncation"] = ExpressionConverter.ConvertO(__workflow_bodypromptTruncation);
+                    bodypropCount++;
+                }
 
-            if (bodypromptTruncation != null)
-            {
-                body["prompt_truncation"] = ExpressionConverter.ConvertO(bodypromptTruncation);
-                bodypropCount++;
-            }
+                if (__workflow_bodyconnectors != null)
+                {
+                    body["connectors"] = ExpressionConverter.ConvertO(__workflow_bodyconnectors);
+                    bodypropCount++;
+                }
 
-            if (bodyconnectors != null)
-            {
-                body["connectors"] = ExpressionConverter.ConvertO(bodyconnectors);
-                bodypropCount++;
-            }
+                if (__workflow_bodysearchQueriesOnly != null)
+                {
+                    body["search_queries_only"] = ExpressionConverter.ConvertO(__workflow_bodysearchQueriesOnly);
+                    bodypropCount++;
+                }
 
-            if (bodysearchQueriesOnly != null)
-            {
-                body["search_queries_only"] = ExpressionConverter.ConvertO(bodysearchQueriesOnly);
-                bodypropCount++;
-            }
+                if (__workflow_bodydocuments != null)
+                {
+                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
+                    bodypropCount++;
+                }
 
-            if (bodydocuments != null)
-            {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
+                if (__workflow_bodycitationQuality != null)
+                {
+                    body["citation_quality"] = ExpressionConverter.ConvertO(__workflow_bodycitationQuality);
+                    bodypropCount++;
+                }
 
-            if (bodycitationQuality != null)
-            {
-                body["citation_quality"] = ExpressionConverter.ConvertO(bodycitationQuality);
-                bodypropCount++;
-            }
+                if (__workflow_bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                    bodypropCount++;
+                }
 
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
+                if (__workflow_bodymaxTokens != null)
+                {
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
+                    bodypropCount++;
+                }
 
-            if (bodymaxTokens != null)
-            {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
-                bodypropCount++;
-            }
+                if (__workflow_bodymaxInputTokens != null)
+                {
+                    body["max_input_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxInputTokens);
+                    bodypropCount++;
+                }
 
-            if (bodymaxInputTokens != null)
-            {
-                body["max_input_tokens"] = ExpressionConverter.ConvertO(bodymaxInputTokens);
-                bodypropCount++;
-            }
+                if (__workflow_bodyk != null)
+                {
+                    body["k"] = ExpressionConverter.ConvertO(__workflow_bodyk);
+                    bodypropCount++;
+                }
 
-            if (bodyk != null)
-            {
-                body["k"] = ExpressionConverter.ConvertO(bodyk);
-                bodypropCount++;
-            }
+                if (__workflow_bodyp != null)
+                {
+                    body["p"] = ExpressionConverter.ConvertO(__workflow_bodyp);
+                    bodypropCount++;
+                }
 
-            if (bodyp != null)
-            {
-                body["p"] = ExpressionConverter.ConvertO(bodyp);
-                bodypropCount++;
-            }
+                if (__workflow_bodyseed != null)
+                {
+                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
+                    bodypropCount++;
+                }
 
-            if (bodyseed != null)
-            {
-                body["seed"] = ExpressionConverter.ConvertO(bodyseed);
-                bodypropCount++;
-            }
+                if (__workflow_bodystopSequences != null)
+                {
+                    body["stop_sequences"] = ExpressionConverter.ConvertO(__workflow_bodystopSequences);
+                    bodypropCount++;
+                }
 
-            if (bodystopSequences != null)
-            {
-                body["stop_sequences"] = ExpressionConverter.ConvertO(bodystopSequences);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfrequencyPenalty != null)
+                {
+                    body["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyfrequencyPenalty);
+                    bodypropCount++;
+                }
 
-            if (bodyfrequencyPenalty != null)
-            {
-                body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
-                bodypropCount++;
-            }
+                if (__workflow_bodypresencePenalty != null)
+                {
+                    body["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_bodypresencePenalty);
+                    bodypropCount++;
+                }
 
-            if (bodypresencePenalty != null)
-            {
-                body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
-                bodypropCount++;
-            }
+                if (__workflow_bodytools != null)
+                {
+                    body["tools"] = ExpressionConverter.ConvertO(__workflow_bodytools);
+                    bodypropCount++;
+                }
 
-            if (bodytools != null)
-            {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ChatPostResponse>(callPayload);
+                return new ApiConnectionAction<ChatPostResponse>(callPayload);
+            });
         }
     }
 
@@ -354,6 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsDeprecated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "large")]
@@ -364,6 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         Multilingual2212
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytruncateInput
     {
         NONE,
@@ -729,6 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodychatHistoryInputItemRoleType
     {
         CHATBOT,
@@ -736,6 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         USER
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypromptTruncationInput
     {
         AUTO,
@@ -768,6 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycitationQualityInput
     {
         [EnumMember(Value = "accurate")]

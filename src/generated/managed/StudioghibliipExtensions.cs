@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,121 +14,171 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Films[]> GetFilms(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/films";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<Films[]>(callPayload);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<Films[]>(() =>
+            {
+                var apiCallPath = "/films";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<Films[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Films[]> GetFilm(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<Films[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<Films[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/films/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                return new ApiConnectionAction<Films[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<People[]> GetPeople(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/people";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<People[]>(callPayload);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<People[]>(() =>
+            {
+                var apiCallPath = "/people";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<People[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<People[]> GetPerson(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<People[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<People[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/people/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                return new ApiConnectionAction<People[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Locations[]> GetLocations(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/locations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<Locations[]>(callPayload);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<Locations[]>(() =>
+            {
+                var apiCallPath = "/locations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<Locations[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Locations[]> GetLocation(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<Locations[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<Locations[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/locations/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                return new ApiConnectionAction<Locations[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Species[]> GetSpecies(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/species";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<Species[]>(callPayload);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<Species[]>(() =>
+            {
+                var apiCallPath = "/species";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<Species[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Species[]> GetASpecies(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<Species[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<Species[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/species/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                return new ApiConnectionAction<Species[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Vehicles[]> GetVehicles(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/vehicles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<Vehicles[]>(callPayload);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<Vehicles[]>(() =>
+            {
+                var apiCallPath = "/vehicles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<Vehicles[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Vehicles[]> GetVehicle(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = String.Format("/vehicles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<Vehicles[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<Vehicles[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vehicles/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                return new ApiConnectionAction<Vehicles[]>(callPayload);
+            });
         }
     }
 

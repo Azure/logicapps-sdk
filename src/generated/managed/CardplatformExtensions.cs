@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,50 +14,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IBodyWorkflowAction<string> SendMessage(Expression<Func<string[]>> cardbodyrecipients, Expression<Func<string>> cardbodyheading, Expression<Func<string>> cardbodyadaptiveCard)
         {
-            var apiCallPath = "/sendmessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var cardbody = new JObject();
-            var cardbodypropCount = 0;
-            cardbodypropCount++;
-            cardbody["recipients"] = ExpressionConverter.ConvertO(cardbodyrecipients);
-            cardbodypropCount++;
-            cardbody["heading"] = ExpressionConverter.ConvertO(cardbodyheading);
-            cardbodypropCount++;
-            cardbody["card"] = ExpressionConverter.ConvertO(cardbodyadaptiveCard);
-            if (cardbodypropCount > 0)
+            var __workflow_cardbodyrecipients = WorkflowExpression.Compile(cardbodyrecipients, nameof(cardbodyrecipients), required: true);
+            var __workflow_cardbodyheading = WorkflowExpression.Compile(cardbodyheading, nameof(cardbodyheading), required: true);
+            var __workflow_cardbodyadaptiveCard = WorkflowExpression.Compile(cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = cardbody;
-            }
+                var apiCallPath = "/sendmessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var cardbody = new JObject();
+                var cardbodypropCount = 0;
+                cardbodypropCount++;
+                cardbody["recipients"] = ExpressionConverter.ConvertO(__workflow_cardbodyrecipients);
+                cardbodypropCount++;
+                cardbody["heading"] = ExpressionConverter.ConvertO(__workflow_cardbodyheading);
+                cardbodypropCount++;
+                cardbody["card"] = ExpressionConverter.ConvertO(__workflow_cardbodyadaptiveCard);
+                if (cardbodypropCount > 0)
+                {
+                    callPayload.Body = cardbody;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IWorkflowAction PrivateTemplatesDelete(Expression<Func<string>> name)
         {
-            var apiCallPath = "/PrivateTemplates";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/PrivateTemplates";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IWorkflowAction PrivateTemplatesUpdate(Expression<Func<string>> name)
         {
-            var apiCallPath = "/PrivateTemplates";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/PrivateTemplates";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

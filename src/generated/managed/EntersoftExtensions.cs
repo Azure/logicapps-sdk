@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,2557 +14,3217 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsInfo(Expression<Func<string>> routeid)
         {
-            var apiCallPath = String.Format("/api/ES00Documents/Info/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/Info/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> ES00DocumentsInfoByEntityGid(Expression<Func<string>> routeid)
         {
-            var apiCallPath = String.Format("/api/ES00Documents/InfoByEntityGid/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo[]>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/InfoByEntityGid/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsBlobDataByGid(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null)
         {
-            var apiCallPath = String.Format("/api/ES00Documents/BlobDataByGid/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/BlobDataByGid/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsDownloadBlobDataByGID(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            var apiCallPath = String.Format("/api/ES00Documents/DownloadBlobDataByGID/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/DownloadBlobDataByGID/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsGetES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            var apiCallPath = String.Format("/api/ES00Documents/GetES00Blob/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extType != null)
-                callPayload.Queries["extType"] = ExpressionConverter.Convert(extType);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            var __workflow_extType = WorkflowExpression.Compile(extType, nameof(extType), required: false);
+            var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/GetES00Blob/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_extType != null)
+                    callPayload.Queries["extType"] = ExpressionConverter.Convert(__workflow_extType);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsGetES00BlobFromObject(Expression<Func<string>> routeid, Expression<Func<string>> keyid, Expression<Func<int>> typeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            var apiCallPath = String.Format("/api/ES00Documents/GetES00BlobFromObject/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["keyid"] = ExpressionConverter.Convert(keyid);
-            callPayload.Queries["typeid"] = ExpressionConverter.Convert(typeid);
-            if (extType != null)
-                callPayload.Queries["extType"] = ExpressionConverter.Convert(extType);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            var __workflow_keyid = WorkflowExpression.Compile(keyid, nameof(keyid), required: true);
+            var __workflow_typeid = WorkflowExpression.Compile(typeid, nameof(typeid), required: true);
+            var __workflow_extType = WorkflowExpression.Compile(extType, nameof(extType), required: false);
+            var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/GetES00BlobFromObject/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["keyid"] = ExpressionConverter.Convert(__workflow_keyid);
+                callPayload.Queries["typeid"] = ExpressionConverter.Convert(__workflow_typeid);
+                if (__workflow_extType != null)
+                    callPayload.Queries["extType"] = ExpressionConverter.Convert(__workflow_extType);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogID = null, Expression<Func<string>> blobInfoobjectID = null, Expression<Func<string>> blobInfokeyID = null, Expression<Func<int>> blobInfotypeID = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
         {
-            var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var blobInfo = new JObject();
-            var blobInfopropCount = 0;
-            if (blobInfogID != null)
+            var __workflow_blobInfogID = WorkflowExpression.Compile(blobInfogID, nameof(blobInfogID), required: false);
+            var __workflow_blobInfoobjectID = WorkflowExpression.Compile(blobInfoobjectID, nameof(blobInfoobjectID), required: false);
+            var __workflow_blobInfokeyID = WorkflowExpression.Compile(blobInfokeyID, nameof(blobInfokeyID), required: false);
+            var __workflow_blobInfotypeID = WorkflowExpression.Compile(blobInfotypeID, nameof(blobInfotypeID), required: false);
+            var __workflow_blobInfoext = WorkflowExpression.Compile(blobInfoext, nameof(blobInfoext), required: false);
+            var __workflow_blobInfotextBody = WorkflowExpression.Compile(blobInfotextBody, nameof(blobInfotextBody), required: false);
+            var __workflow_blobInfoisNew = WorkflowExpression.Compile(blobInfoisNew, nameof(blobInfoisNew), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                blobInfo["GID"] = ExpressionConverter.ConvertO(blobInfogID);
-                blobInfopropCount++;
-            }
+                var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var blobInfo = new JObject();
+                var blobInfopropCount = 0;
+                if (__workflow_blobInfogID != null)
+                {
+                    blobInfo["GID"] = ExpressionConverter.ConvertO(__workflow_blobInfogID);
+                    blobInfopropCount++;
+                }
 
-            if (blobInfoobjectID != null)
-            {
-                blobInfo["ObjectID"] = ExpressionConverter.ConvertO(blobInfoobjectID);
-                blobInfopropCount++;
-            }
+                if (__workflow_blobInfoobjectID != null)
+                {
+                    blobInfo["ObjectID"] = ExpressionConverter.ConvertO(__workflow_blobInfoobjectID);
+                    blobInfopropCount++;
+                }
 
-            if (blobInfokeyID != null)
-            {
-                blobInfo["KeyID"] = ExpressionConverter.ConvertO(blobInfokeyID);
-                blobInfopropCount++;
-            }
+                if (__workflow_blobInfokeyID != null)
+                {
+                    blobInfo["KeyID"] = ExpressionConverter.ConvertO(__workflow_blobInfokeyID);
+                    blobInfopropCount++;
+                }
 
-            if (blobInfotypeID != null)
-            {
-                blobInfo["TypeID"] = ExpressionConverter.ConvertO(blobInfotypeID);
-                blobInfopropCount++;
-            }
+                if (__workflow_blobInfotypeID != null)
+                {
+                    blobInfo["TypeID"] = ExpressionConverter.ConvertO(__workflow_blobInfotypeID);
+                    blobInfopropCount++;
+                }
 
-            if (blobInfoext != null)
-            {
-                blobInfo["Ext"] = ExpressionConverter.ConvertO(blobInfoext);
-                blobInfopropCount++;
-            }
+                if (__workflow_blobInfoext != null)
+                {
+                    blobInfo["Ext"] = ExpressionConverter.ConvertO(__workflow_blobInfoext);
+                    blobInfopropCount++;
+                }
 
-            if (blobInfotextBody != null)
-            {
-                blobInfo["TextBody"] = ExpressionConverter.ConvertO(blobInfotextBody);
-                blobInfopropCount++;
-            }
+                if (__workflow_blobInfotextBody != null)
+                {
+                    blobInfo["TextBody"] = ExpressionConverter.ConvertO(__workflow_blobInfotextBody);
+                    blobInfopropCount++;
+                }
 
-            if (blobInfoisNew != null)
-            {
-                blobInfo["IsNew"] = ExpressionConverter.ConvertO(blobInfoisNew);
-                blobInfopropCount++;
-            }
+                if (__workflow_blobInfoisNew != null)
+                {
+                    blobInfo["IsNew"] = ExpressionConverter.ConvertO(__workflow_blobInfoisNew);
+                    blobInfopropCount++;
+                }
 
-            if (blobInfopropCount > 0)
-            {
-                callPayload.Body = blobInfo;
-            }
+                if (blobInfopropCount > 0)
+                {
+                    callPayload.Body = blobInfo;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> ES00DocumentsGetBodyFromES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> keyid = null, Expression<Func<int>> typeid = null)
         {
-            var apiCallPath = String.Format("/api/ES00Documents/GetBodyFromES00Blob/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (keyid != null)
-                callPayload.Queries["keyid"] = ExpressionConverter.Convert(keyid);
-            if (typeid != null)
-                callPayload.Queries["typeid"] = ExpressionConverter.Convert(typeid);
-            return new ApiConnectionAction<EntersoftWebApiModelsES00BlobInfo>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            var __workflow_keyid = WorkflowExpression.Compile(keyid, nameof(keyid), required: false);
+            var __workflow_typeid = WorkflowExpression.Compile(typeid, nameof(typeid), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsES00BlobInfo>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/GetBodyFromES00Blob/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_keyid != null)
+                    callPayload.Queries["keyid"] = ExpressionConverter.Convert(__workflow_keyid);
+                if (__workflow_typeid != null)
+                    callPayload.Queries["typeid"] = ExpressionConverter.Convert(__workflow_typeid);
+                return new ApiConnectionAction<EntersoftWebApiModelsES00BlobInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgID = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableID = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
         {
-            var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var @params = new JObject();
-            var @paramspropCount = 0;
-            if (paramsgID != null)
+            var __workflow_paramsgID = WorkflowExpression.Compile(paramsgID, nameof(paramsgID), required: false);
+            var __workflow_paramscode = WorkflowExpression.Compile(paramscode, nameof(paramscode), required: false);
+            var __workflow_paramstitle = WorkflowExpression.Compile(paramstitle, nameof(paramstitle), required: false);
+            var __workflow_paramsdescription = WorkflowExpression.Compile(paramsdescription, nameof(paramsdescription), required: false);
+            var __workflow_paramscaption = WorkflowExpression.Compile(paramscaption, nameof(paramscaption), required: false);
+            var __workflow_paramseDate = WorkflowExpression.Compile(paramseDate, nameof(paramseDate), required: false);
+            var __workflow_paramsfType = WorkflowExpression.Compile(paramsfType, nameof(paramsfType), required: false);
+            var __workflow_paramstableID = WorkflowExpression.Compile(paramstableID, nameof(paramstableID), required: false);
+            var __workflow_paramstableName = WorkflowExpression.Compile(paramstableName, nameof(paramstableName), required: false);
+            var __workflow_paramsfGID = WorkflowExpression.Compile(paramsfGID, nameof(paramsfGID), required: false);
+            var __workflow_paramsfDetailLineGID = WorkflowExpression.Compile(paramsfDetailLineGID, nameof(paramsfDetailLineGID), required: false);
+            var __workflow_paramsuNCPath = WorkflowExpression.Compile(paramsuNCPath, nameof(paramsuNCPath), required: false);
+            var __workflow_paramsoriginalPath = WorkflowExpression.Compile(paramsoriginalPath, nameof(paramsoriginalPath), required: false);
+            var __workflow_paramsoriginalFN = WorkflowExpression.Compile(paramsoriginalFN, nameof(paramsoriginalFN), required: false);
+            var __workflow_paramsfDocCategoryCode = WorkflowExpression.Compile(paramsfDocCategoryCode, nameof(paramsfDocCategoryCode), required: false);
+            var __workflow_paramsfDocGroupCode = WorkflowExpression.Compile(paramsfDocGroupCode, nameof(paramsfDocGroupCode), required: false);
+            var __workflow_paramsfCompanyCode = WorkflowExpression.Compile(paramsfCompanyCode, nameof(paramsfCompanyCode), required: false);
+            var __workflow_paramsfDocumentCategoryCode = WorkflowExpression.Compile(paramsfDocumentCategoryCode, nameof(paramsfDocumentCategoryCode), required: false);
+            var __workflow_paramsfDocumentLocationCode = WorkflowExpression.Compile(paramsfDocumentLocationCode, nameof(paramsfDocumentLocationCode), required: false);
+            var __workflow_paramseSDModified = WorkflowExpression.Compile(paramseSDModified, nameof(paramseSDModified), required: false);
+            var __workflow_paramseSUModified = WorkflowExpression.Compile(paramseSUModified, nameof(paramseSUModified), required: false);
+            var __workflow_paramseSDCreated = WorkflowExpression.Compile(paramseSDCreated, nameof(paramseSDCreated), required: false);
+            var __workflow_paramseSUCreated = WorkflowExpression.Compile(paramseSUCreated, nameof(paramseSUCreated), required: false);
+            var __workflow_paramsisBLOB = WorkflowExpression.Compile(paramsisBLOB, nameof(paramsisBLOB), required: false);
+            var __workflow_paramsingoing = WorkflowExpression.Compile(paramsingoing, nameof(paramsingoing), required: false);
+            var __workflow_paramsfRLSNodeGID = WorkflowExpression.Compile(paramsfRLSNodeGID, nameof(paramsfRLSNodeGID), required: false);
+            var __workflow_paramsbLOBDATALength = WorkflowExpression.Compile(paramsbLOBDATALength, nameof(paramsbLOBDATALength), required: false);
+            var __workflow_paramsbLOBDATA = WorkflowExpression.Compile(paramsbLOBDATA, nameof(paramsbLOBDATA), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                @params["GID"] = ExpressionConverter.ConvertO(paramsgID);
-                @paramspropCount++;
-            }
+                var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var @params = new JObject();
+                var @paramspropCount = 0;
+                if (__workflow_paramsgID != null)
+                {
+                    @params["GID"] = ExpressionConverter.ConvertO(__workflow_paramsgID);
+                    @paramspropCount++;
+                }
 
-            if (paramscode != null)
-            {
-                @params["Code"] = ExpressionConverter.ConvertO(paramscode);
-                @paramspropCount++;
-            }
+                if (__workflow_paramscode != null)
+                {
+                    @params["Code"] = ExpressionConverter.ConvertO(__workflow_paramscode);
+                    @paramspropCount++;
+                }
 
-            if (paramstitle != null)
-            {
-                @params["Title"] = ExpressionConverter.ConvertO(paramstitle);
-                @paramspropCount++;
-            }
+                if (__workflow_paramstitle != null)
+                {
+                    @params["Title"] = ExpressionConverter.ConvertO(__workflow_paramstitle);
+                    @paramspropCount++;
+                }
 
-            if (paramsdescription != null)
-            {
-                @params["Description"] = ExpressionConverter.ConvertO(paramsdescription);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsdescription != null)
+                {
+                    @params["Description"] = ExpressionConverter.ConvertO(__workflow_paramsdescription);
+                    @paramspropCount++;
+                }
 
-            if (paramscaption != null)
-            {
-                @params["Caption"] = ExpressionConverter.ConvertO(paramscaption);
-                @paramspropCount++;
-            }
+                if (__workflow_paramscaption != null)
+                {
+                    @params["Caption"] = ExpressionConverter.ConvertO(__workflow_paramscaption);
+                    @paramspropCount++;
+                }
 
-            if (paramseDate != null)
-            {
-                @params["EDate"] = ExpressionConverter.ConvertO(paramseDate);
-                @paramspropCount++;
-            }
+                if (__workflow_paramseDate != null)
+                {
+                    @params["EDate"] = ExpressionConverter.ConvertO(__workflow_paramseDate);
+                    @paramspropCount++;
+                }
 
-            if (paramsfType != null)
-            {
-                @params["FType"] = ExpressionConverter.ConvertO(paramsfType);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfType != null)
+                {
+                    @params["FType"] = ExpressionConverter.ConvertO(__workflow_paramsfType);
+                    @paramspropCount++;
+                }
 
-            if (paramstableID != null)
-            {
-                @params["TableID"] = ExpressionConverter.ConvertO(paramstableID);
-                @paramspropCount++;
-            }
+                if (__workflow_paramstableID != null)
+                {
+                    @params["TableID"] = ExpressionConverter.ConvertO(__workflow_paramstableID);
+                    @paramspropCount++;
+                }
 
-            if (paramstableName != null)
-            {
-                @params["TableName"] = ExpressionConverter.ConvertO(paramstableName);
-                @paramspropCount++;
-            }
+                if (__workflow_paramstableName != null)
+                {
+                    @params["TableName"] = ExpressionConverter.ConvertO(__workflow_paramstableName);
+                    @paramspropCount++;
+                }
 
-            if (paramsfGID != null)
-            {
-                @params["fGID"] = ExpressionConverter.ConvertO(paramsfGID);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfGID != null)
+                {
+                    @params["fGID"] = ExpressionConverter.ConvertO(__workflow_paramsfGID);
+                    @paramspropCount++;
+                }
 
-            if (paramsfDetailLineGID != null)
-            {
-                @params["fDetailLineGID"] = ExpressionConverter.ConvertO(paramsfDetailLineGID);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfDetailLineGID != null)
+                {
+                    @params["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_paramsfDetailLineGID);
+                    @paramspropCount++;
+                }
 
-            if (paramsuNCPath != null)
-            {
-                @params["UNCPath"] = ExpressionConverter.ConvertO(paramsuNCPath);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsuNCPath != null)
+                {
+                    @params["UNCPath"] = ExpressionConverter.ConvertO(__workflow_paramsuNCPath);
+                    @paramspropCount++;
+                }
 
-            if (paramsoriginalPath != null)
-            {
-                @params["OriginalPath"] = ExpressionConverter.ConvertO(paramsoriginalPath);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsoriginalPath != null)
+                {
+                    @params["OriginalPath"] = ExpressionConverter.ConvertO(__workflow_paramsoriginalPath);
+                    @paramspropCount++;
+                }
 
-            if (paramsoriginalFN != null)
-            {
-                @params["OriginalFN"] = ExpressionConverter.ConvertO(paramsoriginalFN);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsoriginalFN != null)
+                {
+                    @params["OriginalFN"] = ExpressionConverter.ConvertO(__workflow_paramsoriginalFN);
+                    @paramspropCount++;
+                }
 
-            if (paramsfDocCategoryCode != null)
-            {
-                @params["fDocCategoryCode"] = ExpressionConverter.ConvertO(paramsfDocCategoryCode);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfDocCategoryCode != null)
+                {
+                    @params["fDocCategoryCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocCategoryCode);
+                    @paramspropCount++;
+                }
 
-            if (paramsfDocGroupCode != null)
-            {
-                @params["fDocGroupCode"] = ExpressionConverter.ConvertO(paramsfDocGroupCode);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfDocGroupCode != null)
+                {
+                    @params["fDocGroupCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocGroupCode);
+                    @paramspropCount++;
+                }
 
-            if (paramsfCompanyCode != null)
-            {
-                @params["fCompanyCode"] = ExpressionConverter.ConvertO(paramsfCompanyCode);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfCompanyCode != null)
+                {
+                    @params["fCompanyCode"] = ExpressionConverter.ConvertO(__workflow_paramsfCompanyCode);
+                    @paramspropCount++;
+                }
 
-            if (paramsfDocumentCategoryCode != null)
-            {
-                @params["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(paramsfDocumentCategoryCode);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfDocumentCategoryCode != null)
+                {
+                    @params["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocumentCategoryCode);
+                    @paramspropCount++;
+                }
 
-            if (paramsfDocumentLocationCode != null)
-            {
-                @params["fDocumentLocationCode"] = ExpressionConverter.ConvertO(paramsfDocumentLocationCode);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfDocumentLocationCode != null)
+                {
+                    @params["fDocumentLocationCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocumentLocationCode);
+                    @paramspropCount++;
+                }
 
-            if (paramseSDModified != null)
-            {
-                @params["ESDModified"] = ExpressionConverter.ConvertO(paramseSDModified);
-                @paramspropCount++;
-            }
+                if (__workflow_paramseSDModified != null)
+                {
+                    @params["ESDModified"] = ExpressionConverter.ConvertO(__workflow_paramseSDModified);
+                    @paramspropCount++;
+                }
 
-            if (paramseSUModified != null)
-            {
-                @params["ESUModified"] = ExpressionConverter.ConvertO(paramseSUModified);
-                @paramspropCount++;
-            }
+                if (__workflow_paramseSUModified != null)
+                {
+                    @params["ESUModified"] = ExpressionConverter.ConvertO(__workflow_paramseSUModified);
+                    @paramspropCount++;
+                }
 
-            if (paramseSDCreated != null)
-            {
-                @params["ESDCreated"] = ExpressionConverter.ConvertO(paramseSDCreated);
-                @paramspropCount++;
-            }
+                if (__workflow_paramseSDCreated != null)
+                {
+                    @params["ESDCreated"] = ExpressionConverter.ConvertO(__workflow_paramseSDCreated);
+                    @paramspropCount++;
+                }
 
-            if (paramseSUCreated != null)
-            {
-                @params["ESUCreated"] = ExpressionConverter.ConvertO(paramseSUCreated);
-                @paramspropCount++;
-            }
+                if (__workflow_paramseSUCreated != null)
+                {
+                    @params["ESUCreated"] = ExpressionConverter.ConvertO(__workflow_paramseSUCreated);
+                    @paramspropCount++;
+                }
 
-            if (paramsisBLOB != null)
-            {
-                @params["IsBLOB"] = ExpressionConverter.ConvertO(paramsisBLOB);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsisBLOB != null)
+                {
+                    @params["IsBLOB"] = ExpressionConverter.ConvertO(__workflow_paramsisBLOB);
+                    @paramspropCount++;
+                }
 
-            if (paramsingoing != null)
-            {
-                @params["Ingoing"] = ExpressionConverter.ConvertO(paramsingoing);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsingoing != null)
+                {
+                    @params["Ingoing"] = ExpressionConverter.ConvertO(__workflow_paramsingoing);
+                    @paramspropCount++;
+                }
 
-            if (paramsfRLSNodeGID != null)
-            {
-                @params["fRLSNodeGID"] = ExpressionConverter.ConvertO(paramsfRLSNodeGID);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsfRLSNodeGID != null)
+                {
+                    @params["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_paramsfRLSNodeGID);
+                    @paramspropCount++;
+                }
 
-            if (paramsbLOBDATALength != null)
-            {
-                @params["BLOBDATALength"] = ExpressionConverter.ConvertO(paramsbLOBDATALength);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsbLOBDATALength != null)
+                {
+                    @params["BLOBDATALength"] = ExpressionConverter.ConvertO(__workflow_paramsbLOBDATALength);
+                    @paramspropCount++;
+                }
 
-            if (paramsbLOBDATA != null)
-            {
-                @params["BLOBDATA"] = ExpressionConverter.ConvertO(paramsbLOBDATA);
-                @paramspropCount++;
-            }
+                if (__workflow_paramsbLOBDATA != null)
+                {
+                    @params["BLOBDATA"] = ExpressionConverter.ConvertO(__workflow_paramsbLOBDATA);
+                    @paramspropCount++;
+                }
 
-            if (@paramspropCount > 0)
-            {
-                callPayload.Body = @params;
-            }
+                if (@paramspropCount > 0)
+                {
+                    callPayload.Body = @params;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgID = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableID = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
         {
-            var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inDoc = new JObject();
-            var inDocpropCount = 0;
-            if (inDocgID != null)
+            var __workflow_inDocgID = WorkflowExpression.Compile(inDocgID, nameof(inDocgID), required: false);
+            var __workflow_inDoccode = WorkflowExpression.Compile(inDoccode, nameof(inDoccode), required: false);
+            var __workflow_inDoctitle = WorkflowExpression.Compile(inDoctitle, nameof(inDoctitle), required: false);
+            var __workflow_inDocdescription = WorkflowExpression.Compile(inDocdescription, nameof(inDocdescription), required: false);
+            var __workflow_inDoccaption = WorkflowExpression.Compile(inDoccaption, nameof(inDoccaption), required: false);
+            var __workflow_inDoceDate = WorkflowExpression.Compile(inDoceDate, nameof(inDoceDate), required: false);
+            var __workflow_inDocfType = WorkflowExpression.Compile(inDocfType, nameof(inDocfType), required: false);
+            var __workflow_inDoctableID = WorkflowExpression.Compile(inDoctableID, nameof(inDoctableID), required: false);
+            var __workflow_inDoctableName = WorkflowExpression.Compile(inDoctableName, nameof(inDoctableName), required: false);
+            var __workflow_inDocfGID = WorkflowExpression.Compile(inDocfGID, nameof(inDocfGID), required: false);
+            var __workflow_inDocfDetailLineGID = WorkflowExpression.Compile(inDocfDetailLineGID, nameof(inDocfDetailLineGID), required: false);
+            var __workflow_inDocuNCPath = WorkflowExpression.Compile(inDocuNCPath, nameof(inDocuNCPath), required: false);
+            var __workflow_inDocoriginalPath = WorkflowExpression.Compile(inDocoriginalPath, nameof(inDocoriginalPath), required: false);
+            var __workflow_inDocoriginalFN = WorkflowExpression.Compile(inDocoriginalFN, nameof(inDocoriginalFN), required: false);
+            var __workflow_inDocfDocCategoryCode = WorkflowExpression.Compile(inDocfDocCategoryCode, nameof(inDocfDocCategoryCode), required: false);
+            var __workflow_inDocfDocGroupCode = WorkflowExpression.Compile(inDocfDocGroupCode, nameof(inDocfDocGroupCode), required: false);
+            var __workflow_inDocfCompanyCode = WorkflowExpression.Compile(inDocfCompanyCode, nameof(inDocfCompanyCode), required: false);
+            var __workflow_inDocfDocumentCategoryCode = WorkflowExpression.Compile(inDocfDocumentCategoryCode, nameof(inDocfDocumentCategoryCode), required: false);
+            var __workflow_inDocfDocumentLocationCode = WorkflowExpression.Compile(inDocfDocumentLocationCode, nameof(inDocfDocumentLocationCode), required: false);
+            var __workflow_inDoceSDModified = WorkflowExpression.Compile(inDoceSDModified, nameof(inDoceSDModified), required: false);
+            var __workflow_inDoceSUModified = WorkflowExpression.Compile(inDoceSUModified, nameof(inDoceSUModified), required: false);
+            var __workflow_inDoceSDCreated = WorkflowExpression.Compile(inDoceSDCreated, nameof(inDoceSDCreated), required: false);
+            var __workflow_inDoceSUCreated = WorkflowExpression.Compile(inDoceSUCreated, nameof(inDoceSUCreated), required: false);
+            var __workflow_inDocisBLOB = WorkflowExpression.Compile(inDocisBLOB, nameof(inDocisBLOB), required: false);
+            var __workflow_inDocingoing = WorkflowExpression.Compile(inDocingoing, nameof(inDocingoing), required: false);
+            var __workflow_inDocfRLSNodeGID = WorkflowExpression.Compile(inDocfRLSNodeGID, nameof(inDocfRLSNodeGID), required: false);
+            var __workflow_inDocbLOBDATALength = WorkflowExpression.Compile(inDocbLOBDATALength, nameof(inDocbLOBDATALength), required: false);
+            var __workflow_inDocbLOBDATA = WorkflowExpression.Compile(inDocbLOBDATA, nameof(inDocbLOBDATA), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo>(() =>
             {
-                inDoc["GID"] = ExpressionConverter.ConvertO(inDocgID);
-                inDocpropCount++;
-            }
+                var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inDoc = new JObject();
+                var inDocpropCount = 0;
+                if (__workflow_inDocgID != null)
+                {
+                    inDoc["GID"] = ExpressionConverter.ConvertO(__workflow_inDocgID);
+                    inDocpropCount++;
+                }
 
-            if (inDoccode != null)
-            {
-                inDoc["Code"] = ExpressionConverter.ConvertO(inDoccode);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoccode != null)
+                {
+                    inDoc["Code"] = ExpressionConverter.ConvertO(__workflow_inDoccode);
+                    inDocpropCount++;
+                }
 
-            if (inDoctitle != null)
-            {
-                inDoc["Title"] = ExpressionConverter.ConvertO(inDoctitle);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoctitle != null)
+                {
+                    inDoc["Title"] = ExpressionConverter.ConvertO(__workflow_inDoctitle);
+                    inDocpropCount++;
+                }
 
-            if (inDocdescription != null)
-            {
-                inDoc["Description"] = ExpressionConverter.ConvertO(inDocdescription);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocdescription != null)
+                {
+                    inDoc["Description"] = ExpressionConverter.ConvertO(__workflow_inDocdescription);
+                    inDocpropCount++;
+                }
 
-            if (inDoccaption != null)
-            {
-                inDoc["Caption"] = ExpressionConverter.ConvertO(inDoccaption);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoccaption != null)
+                {
+                    inDoc["Caption"] = ExpressionConverter.ConvertO(__workflow_inDoccaption);
+                    inDocpropCount++;
+                }
 
-            if (inDoceDate != null)
-            {
-                inDoc["EDate"] = ExpressionConverter.ConvertO(inDoceDate);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoceDate != null)
+                {
+                    inDoc["EDate"] = ExpressionConverter.ConvertO(__workflow_inDoceDate);
+                    inDocpropCount++;
+                }
 
-            if (inDocfType != null)
-            {
-                inDoc["FType"] = ExpressionConverter.ConvertO(inDocfType);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfType != null)
+                {
+                    inDoc["FType"] = ExpressionConverter.ConvertO(__workflow_inDocfType);
+                    inDocpropCount++;
+                }
 
-            if (inDoctableID != null)
-            {
-                inDoc["TableID"] = ExpressionConverter.ConvertO(inDoctableID);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoctableID != null)
+                {
+                    inDoc["TableID"] = ExpressionConverter.ConvertO(__workflow_inDoctableID);
+                    inDocpropCount++;
+                }
 
-            if (inDoctableName != null)
-            {
-                inDoc["TableName"] = ExpressionConverter.ConvertO(inDoctableName);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoctableName != null)
+                {
+                    inDoc["TableName"] = ExpressionConverter.ConvertO(__workflow_inDoctableName);
+                    inDocpropCount++;
+                }
 
-            if (inDocfGID != null)
-            {
-                inDoc["fGID"] = ExpressionConverter.ConvertO(inDocfGID);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfGID != null)
+                {
+                    inDoc["fGID"] = ExpressionConverter.ConvertO(__workflow_inDocfGID);
+                    inDocpropCount++;
+                }
 
-            if (inDocfDetailLineGID != null)
-            {
-                inDoc["fDetailLineGID"] = ExpressionConverter.ConvertO(inDocfDetailLineGID);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfDetailLineGID != null)
+                {
+                    inDoc["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_inDocfDetailLineGID);
+                    inDocpropCount++;
+                }
 
-            if (inDocuNCPath != null)
-            {
-                inDoc["UNCPath"] = ExpressionConverter.ConvertO(inDocuNCPath);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocuNCPath != null)
+                {
+                    inDoc["UNCPath"] = ExpressionConverter.ConvertO(__workflow_inDocuNCPath);
+                    inDocpropCount++;
+                }
 
-            if (inDocoriginalPath != null)
-            {
-                inDoc["OriginalPath"] = ExpressionConverter.ConvertO(inDocoriginalPath);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocoriginalPath != null)
+                {
+                    inDoc["OriginalPath"] = ExpressionConverter.ConvertO(__workflow_inDocoriginalPath);
+                    inDocpropCount++;
+                }
 
-            if (inDocoriginalFN != null)
-            {
-                inDoc["OriginalFN"] = ExpressionConverter.ConvertO(inDocoriginalFN);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocoriginalFN != null)
+                {
+                    inDoc["OriginalFN"] = ExpressionConverter.ConvertO(__workflow_inDocoriginalFN);
+                    inDocpropCount++;
+                }
 
-            if (inDocfDocCategoryCode != null)
-            {
-                inDoc["fDocCategoryCode"] = ExpressionConverter.ConvertO(inDocfDocCategoryCode);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfDocCategoryCode != null)
+                {
+                    inDoc["fDocCategoryCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocCategoryCode);
+                    inDocpropCount++;
+                }
 
-            if (inDocfDocGroupCode != null)
-            {
-                inDoc["fDocGroupCode"] = ExpressionConverter.ConvertO(inDocfDocGroupCode);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfDocGroupCode != null)
+                {
+                    inDoc["fDocGroupCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocGroupCode);
+                    inDocpropCount++;
+                }
 
-            if (inDocfCompanyCode != null)
-            {
-                inDoc["fCompanyCode"] = ExpressionConverter.ConvertO(inDocfCompanyCode);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfCompanyCode != null)
+                {
+                    inDoc["fCompanyCode"] = ExpressionConverter.ConvertO(__workflow_inDocfCompanyCode);
+                    inDocpropCount++;
+                }
 
-            if (inDocfDocumentCategoryCode != null)
-            {
-                inDoc["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(inDocfDocumentCategoryCode);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfDocumentCategoryCode != null)
+                {
+                    inDoc["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocumentCategoryCode);
+                    inDocpropCount++;
+                }
 
-            if (inDocfDocumentLocationCode != null)
-            {
-                inDoc["fDocumentLocationCode"] = ExpressionConverter.ConvertO(inDocfDocumentLocationCode);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfDocumentLocationCode != null)
+                {
+                    inDoc["fDocumentLocationCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocumentLocationCode);
+                    inDocpropCount++;
+                }
 
-            if (inDoceSDModified != null)
-            {
-                inDoc["ESDModified"] = ExpressionConverter.ConvertO(inDoceSDModified);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoceSDModified != null)
+                {
+                    inDoc["ESDModified"] = ExpressionConverter.ConvertO(__workflow_inDoceSDModified);
+                    inDocpropCount++;
+                }
 
-            if (inDoceSUModified != null)
-            {
-                inDoc["ESUModified"] = ExpressionConverter.ConvertO(inDoceSUModified);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoceSUModified != null)
+                {
+                    inDoc["ESUModified"] = ExpressionConverter.ConvertO(__workflow_inDoceSUModified);
+                    inDocpropCount++;
+                }
 
-            if (inDoceSDCreated != null)
-            {
-                inDoc["ESDCreated"] = ExpressionConverter.ConvertO(inDoceSDCreated);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoceSDCreated != null)
+                {
+                    inDoc["ESDCreated"] = ExpressionConverter.ConvertO(__workflow_inDoceSDCreated);
+                    inDocpropCount++;
+                }
 
-            if (inDoceSUCreated != null)
-            {
-                inDoc["ESUCreated"] = ExpressionConverter.ConvertO(inDoceSUCreated);
-                inDocpropCount++;
-            }
+                if (__workflow_inDoceSUCreated != null)
+                {
+                    inDoc["ESUCreated"] = ExpressionConverter.ConvertO(__workflow_inDoceSUCreated);
+                    inDocpropCount++;
+                }
 
-            if (inDocisBLOB != null)
-            {
-                inDoc["IsBLOB"] = ExpressionConverter.ConvertO(inDocisBLOB);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocisBLOB != null)
+                {
+                    inDoc["IsBLOB"] = ExpressionConverter.ConvertO(__workflow_inDocisBLOB);
+                    inDocpropCount++;
+                }
 
-            if (inDocingoing != null)
-            {
-                inDoc["Ingoing"] = ExpressionConverter.ConvertO(inDocingoing);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocingoing != null)
+                {
+                    inDoc["Ingoing"] = ExpressionConverter.ConvertO(__workflow_inDocingoing);
+                    inDocpropCount++;
+                }
 
-            if (inDocfRLSNodeGID != null)
-            {
-                inDoc["fRLSNodeGID"] = ExpressionConverter.ConvertO(inDocfRLSNodeGID);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocfRLSNodeGID != null)
+                {
+                    inDoc["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_inDocfRLSNodeGID);
+                    inDocpropCount++;
+                }
 
-            if (inDocbLOBDATALength != null)
-            {
-                inDoc["BLOBDATALength"] = ExpressionConverter.ConvertO(inDocbLOBDATALength);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocbLOBDATALength != null)
+                {
+                    inDoc["BLOBDATALength"] = ExpressionConverter.ConvertO(__workflow_inDocbLOBDATALength);
+                    inDocpropCount++;
+                }
 
-            if (inDocbLOBDATA != null)
-            {
-                inDoc["BLOBDATA"] = ExpressionConverter.ConvertO(inDocbLOBDATA);
-                inDocpropCount++;
-            }
+                if (__workflow_inDocbLOBDATA != null)
+                {
+                    inDoc["BLOBDATA"] = ExpressionConverter.ConvertO(__workflow_inDocbLOBDATA);
+                    inDocpropCount++;
+                }
 
-            if (inDocpropCount > 0)
-            {
-                callPayload.Body = inDoc;
-            }
+                if (inDocpropCount > 0)
+                {
+                    callPayload.Body = inDoc;
+                }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
+                return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESAsset2FetchWebAsset(Expression<Func<string>> routeId, Expression<Func<bool>> base64 = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            var apiCallPath = String.Format("/api/asset2/fetchWebAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (base64 != null)
-                callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            var __workflow_base64 = WorkflowExpression.Compile(base64, nameof(base64), required: false);
+            var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/asset2/fetchWebAsset/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_base64 != null)
+                    callPayload.Queries["base64"] = ExpressionConverter.Convert(__workflow_base64);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESAsset2DownloadAsset(Expression<Func<string>> routeId, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            var apiCallPath = String.Format("/api/asset2/downloadAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/asset2/downloadAsset/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> ESBudgetESBGBudgetSheet(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESBudget/ESBGBudgetSheet/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESBudget/ESBGBudgetSheet/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgmessage = null)
         {
-            var apiCallPath = "/api/collaboration/BroadcastMessage/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgrecipients != null)
+            var __workflow_msgrecipients = WorkflowExpression.Compile(msgrecipients, nameof(msgrecipients), required: false);
+            var __workflow_msgmessage = WorkflowExpression.Compile(msgmessage, nameof(msgmessage), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
-                msgpropCount++;
-            }
+                var apiCallPath = "/api/collaboration/BroadcastMessage/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (__workflow_msgrecipients != null)
+                {
+                    msg["Recipients"] = ExpressionConverter.ConvertO(__workflow_msgrecipients);
+                    msgpropCount++;
+                }
 
-            if (msgmessage != null)
-            {
-                msg["Message"] = ExpressionConverter.ConvertO(msgmessage);
-                msgpropCount++;
-            }
+                if (__workflow_msgmessage != null)
+                {
+                    msg["Message"] = ExpressionConverter.ConvertO(__workflow_msgmessage);
+                    msgpropCount++;
+                }
 
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESCollaborationSendEmail(Expression<Func<string>> msgfromEmailAddr = null, Expression<Func<string>> msgtoEmailAddr = null, Expression<Func<string>> msgsubject = null, Expression<Func<string>> msgbody = null)
         {
-            var apiCallPath = "/api/collaboration/SendEmail/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgfromEmailAddr != null)
+            var __workflow_msgfromEmailAddr = WorkflowExpression.Compile(msgfromEmailAddr, nameof(msgfromEmailAddr), required: false);
+            var __workflow_msgtoEmailAddr = WorkflowExpression.Compile(msgtoEmailAddr, nameof(msgtoEmailAddr), required: false);
+            var __workflow_msgsubject = WorkflowExpression.Compile(msgsubject, nameof(msgsubject), required: false);
+            var __workflow_msgbody = WorkflowExpression.Compile(msgbody, nameof(msgbody), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                msg["FromEmailAddr"] = ExpressionConverter.ConvertO(msgfromEmailAddr);
-                msgpropCount++;
-            }
+                var apiCallPath = "/api/collaboration/SendEmail/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (__workflow_msgfromEmailAddr != null)
+                {
+                    msg["FromEmailAddr"] = ExpressionConverter.ConvertO(__workflow_msgfromEmailAddr);
+                    msgpropCount++;
+                }
 
-            if (msgtoEmailAddr != null)
-            {
-                msg["ToEmailAddr"] = ExpressionConverter.ConvertO(msgtoEmailAddr);
-                msgpropCount++;
-            }
+                if (__workflow_msgtoEmailAddr != null)
+                {
+                    msg["ToEmailAddr"] = ExpressionConverter.ConvertO(__workflow_msgtoEmailAddr);
+                    msgpropCount++;
+                }
 
-            if (msgsubject != null)
-            {
-                msg["Subject"] = ExpressionConverter.ConvertO(msgsubject);
-                msgpropCount++;
-            }
+                if (__workflow_msgsubject != null)
+                {
+                    msg["Subject"] = ExpressionConverter.ConvertO(__workflow_msgsubject);
+                    msgpropCount++;
+                }
 
-            if (msgbody != null)
-            {
-                msg["Body"] = ExpressionConverter.ConvertO(msgbody);
-                msgpropCount++;
-            }
+                if (__workflow_msgbody != null)
+                {
+                    msg["Body"] = ExpressionConverter.ConvertO(__workflow_msgbody);
+                    msgpropCount++;
+                }
 
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string[]> ESCollaborationSendSMS(Expression<Func<string>> msgbody = null, Expression<Func<string[]>> msgrecipients = null, Expression<Func<string[]>> msgusers = null)
         {
-            var apiCallPath = "/api/collaboration/SendSMS/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgbody != null)
+            var __workflow_msgbody = WorkflowExpression.Compile(msgbody, nameof(msgbody), required: false);
+            var __workflow_msgrecipients = WorkflowExpression.Compile(msgrecipients, nameof(msgrecipients), required: false);
+            var __workflow_msgusers = WorkflowExpression.Compile(msgusers, nameof(msgusers), required: false);
+            return new DeferredBodyAction<string[]>(() =>
             {
-                msg["Body"] = ExpressionConverter.ConvertO(msgbody);
-                msgpropCount++;
-            }
+                var apiCallPath = "/api/collaboration/SendSMS/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (__workflow_msgbody != null)
+                {
+                    msg["Body"] = ExpressionConverter.ConvertO(__workflow_msgbody);
+                    msgpropCount++;
+                }
 
-            if (msgrecipients != null)
-            {
-                msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
-                msgpropCount++;
-            }
+                if (__workflow_msgrecipients != null)
+                {
+                    msg["Recipients"] = ExpressionConverter.ConvertO(__workflow_msgrecipients);
+                    msgpropCount++;
+                }
 
-            if (msgusers != null)
-            {
-                msg["Users"] = ExpressionConverter.ConvertO(msgusers);
-                msgpropCount++;
-            }
+                if (__workflow_msgusers != null)
+                {
+                    msg["Users"] = ExpressionConverter.ConvertO(__workflow_msgusers);
+                    msgpropCount++;
+                }
 
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
 
-            return new ApiConnectionAction<string[]>(callPayload);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
         {
-            var apiCallPath = "/api/collaboration/SendViberMessage/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgrecipients != null)
+            var __workflow_msgrecipients = WorkflowExpression.Compile(msgrecipients, nameof(msgrecipients), required: false);
+            var __workflow_msgdateToSend = WorkflowExpression.Compile(msgdateToSend, nameof(msgdateToSend), required: false);
+            var __workflow_msgexpiresInSecs = WorkflowExpression.Compile(msgexpiresInSecs, nameof(msgexpiresInSecs), required: false);
+            var __workflow_msgexpiryText = WorkflowExpression.Compile(msgexpiryText, nameof(msgexpiryText), required: false);
+            var __workflow_msgfReferenceID = WorkflowExpression.Compile(msgfReferenceID, nameof(msgfReferenceID), required: false);
+            var __workflow_msgcallback = WorkflowExpression.Compile(msgcallback, nameof(msgcallback), required: false);
+            var __workflow_msgbody = WorkflowExpression.Compile(msgbody, nameof(msgbody), required: false);
+            var __workflow_msgimage = WorkflowExpression.Compile(msgimage, nameof(msgimage), required: false);
+            var __workflow_msgbuttonAction = WorkflowExpression.Compile(msgbuttonAction, nameof(msgbuttonAction), required: false);
+            var __workflow_msgbuttonCaption = WorkflowExpression.Compile(msgbuttonCaption, nameof(msgbuttonCaption), required: false);
+            var __workflow_msgsMSFallbacksMSText = WorkflowExpression.Compile(msgsMSFallbacksMSText, nameof(msgsMSFallbacksMSText), required: false);
+            return new DeferredBodyAction<EntersoftWebApiControllersESViberResponse>(() =>
             {
-                msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
-                msgpropCount++;
-            }
+                var apiCallPath = "/api/collaboration/SendViberMessage/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (__workflow_msgrecipients != null)
+                {
+                    msg["Recipients"] = ExpressionConverter.ConvertO(__workflow_msgrecipients);
+                    msgpropCount++;
+                }
 
-            if (msgdateToSend != null)
-            {
-                msg["DateToSend"] = ExpressionConverter.ConvertO(msgdateToSend);
-                msgpropCount++;
-            }
+                if (__workflow_msgdateToSend != null)
+                {
+                    msg["DateToSend"] = ExpressionConverter.ConvertO(__workflow_msgdateToSend);
+                    msgpropCount++;
+                }
 
-            if (msgexpiresInSecs != null)
-            {
-                msg["ExpiresInSecs"] = ExpressionConverter.ConvertO(msgexpiresInSecs);
-                msgpropCount++;
-            }
+                if (__workflow_msgexpiresInSecs != null)
+                {
+                    msg["ExpiresInSecs"] = ExpressionConverter.ConvertO(__workflow_msgexpiresInSecs);
+                    msgpropCount++;
+                }
 
-            if (msgexpiryText != null)
-            {
-                msg["ExpiryText"] = ExpressionConverter.ConvertO(msgexpiryText);
-                msgpropCount++;
-            }
+                if (__workflow_msgexpiryText != null)
+                {
+                    msg["ExpiryText"] = ExpressionConverter.ConvertO(__workflow_msgexpiryText);
+                    msgpropCount++;
+                }
 
-            if (msgfReferenceID != null)
-            {
-                msg["fReferenceID"] = ExpressionConverter.ConvertO(msgfReferenceID);
-                msgpropCount++;
-            }
+                if (__workflow_msgfReferenceID != null)
+                {
+                    msg["fReferenceID"] = ExpressionConverter.ConvertO(__workflow_msgfReferenceID);
+                    msgpropCount++;
+                }
 
-            if (msgcallback != null)
-            {
-                msg["Callback"] = ExpressionConverter.ConvertO(msgcallback);
-                msgpropCount++;
-            }
+                if (__workflow_msgcallback != null)
+                {
+                    msg["Callback"] = ExpressionConverter.ConvertO(__workflow_msgcallback);
+                    msgpropCount++;
+                }
 
-            if (msgbody != null)
-            {
-                msg["Body"] = ExpressionConverter.ConvertO(msgbody);
-                msgpropCount++;
-            }
+                if (__workflow_msgbody != null)
+                {
+                    msg["Body"] = ExpressionConverter.ConvertO(__workflow_msgbody);
+                    msgpropCount++;
+                }
 
-            if (msgimage != null)
-            {
-                msg["Image"] = ExpressionConverter.ConvertO(msgimage);
-                msgpropCount++;
-            }
+                if (__workflow_msgimage != null)
+                {
+                    msg["Image"] = ExpressionConverter.ConvertO(__workflow_msgimage);
+                    msgpropCount++;
+                }
 
-            if (msgbuttonAction != null)
-            {
-                msg["ButtonAction"] = ExpressionConverter.ConvertO(msgbuttonAction);
-                msgpropCount++;
-            }
+                if (__workflow_msgbuttonAction != null)
+                {
+                    msg["ButtonAction"] = ExpressionConverter.ConvertO(__workflow_msgbuttonAction);
+                    msgpropCount++;
+                }
 
-            if (msgbuttonCaption != null)
-            {
-                msg["ButtonCaption"] = ExpressionConverter.ConvertO(msgbuttonCaption);
-                msgpropCount++;
-            }
+                if (__workflow_msgbuttonCaption != null)
+                {
+                    msg["ButtonCaption"] = ExpressionConverter.ConvertO(__workflow_msgbuttonCaption);
+                    msgpropCount++;
+                }
 
-            var extraPropertiesObject = new JObject();
-            var extraPropertiesObjectpropCount = 0;
-            if (extraPropertiesObjectpropCount > 0)
-            {
-                msg["ExtraProperties"] = extraPropertiesObject;
-                msgpropCount++;
-            }
+                var extraPropertiesObject = new JObject();
+                var extraPropertiesObjectpropCount = 0;
+                if (extraPropertiesObjectpropCount > 0)
+                {
+                    msg["ExtraProperties"] = extraPropertiesObject;
+                    msgpropCount++;
+                }
 
-            var sMSFallbackObject = new JObject();
-            var sMSFallbackObjectpropCount = 0;
-            if (msgsMSFallbacksMSText != null)
-            {
-                sMSFallbackObject["SMSText"] = ExpressionConverter.ConvertO(msgsMSFallbacksMSText);
-                sMSFallbackObjectpropCount++;
-            }
+                var sMSFallbackObject = new JObject();
+                var sMSFallbackObjectpropCount = 0;
+                if (__workflow_msgsMSFallbacksMSText != null)
+                {
+                    sMSFallbackObject["SMSText"] = ExpressionConverter.ConvertO(__workflow_msgsMSFallbacksMSText);
+                    sMSFallbackObjectpropCount++;
+                }
 
-            if (sMSFallbackObjectpropCount > 0)
-            {
-                msg["SMSFallback"] = sMSFallbackObject;
-                msgpropCount++;
-            }
+                if (sMSFallbackObjectpropCount > 0)
+                {
+                    msg["SMSFallback"] = sMSFallbackObject;
+                    msgpropCount++;
+                }
 
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
 
-            return new ApiConnectionAction<EntersoftWebApiControllersESViberResponse>(callPayload);
+                return new ApiConnectionAction<EntersoftWebApiControllersESViberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESCollaborationCreateRFARequest(Expression<Func<string>> rFARequestid, Expression<Func<string>> rFARequestcode, Expression<Func<string>> rFARequestrequestedBy, Expression<Func<bool>> rFARequestisExternal, Expression<Func<rFARequestpriorityInput>> rFARequestpriority = null, Expression<Func<string>> rFARequestrequestClass = null, Expression<Func<string>> rFARequestrequestCategory = null, Expression<Func<double>> rFARequestnumericValue = null, Expression<Func<string>> rFARequesttitle = null, Expression<Func<string[]>> rFARequestrecipientUsers = null, Expression<Func<string[]>> rFARequestrecipientGroups = null, Expression<Func<string>> rFARequestrecipienteMail = null, Expression<Func<string>> rFARequestrecipientPhone = null, Expression<Func<string>> rFARequestrequestedOnUTC = null, Expression<Func<string>> rFARequestexpiresOnUTC = null, Expression<Func<string>> rFARequesttriggeredOn = null)
         {
-            var apiCallPath = "/api/collaboration/CreateRFARequest/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var rFARequest = new JObject();
-            var rFARequestpropCount = 0;
-            rFARequestpropCount++;
-            rFARequest["id"] = ExpressionConverter.ConvertO(rFARequestid);
-            rFARequestpropCount++;
-            rFARequest["Code"] = ExpressionConverter.ConvertO(rFARequestcode);
-            rFARequestpropCount++;
-            rFARequest["RequestedBy"] = ExpressionConverter.ConvertO(rFARequestrequestedBy);
-            if (rFARequestpriority != null)
+            var __workflow_rFARequestid = WorkflowExpression.Compile(rFARequestid, nameof(rFARequestid), required: true);
+            var __workflow_rFARequestcode = WorkflowExpression.Compile(rFARequestcode, nameof(rFARequestcode), required: true);
+            var __workflow_rFARequestrequestedBy = WorkflowExpression.Compile(rFARequestrequestedBy, nameof(rFARequestrequestedBy), required: true);
+            var __workflow_rFARequestisExternal = WorkflowExpression.Compile(rFARequestisExternal, nameof(rFARequestisExternal), required: true);
+            var __workflow_rFARequestpriority = WorkflowExpression.Compile(rFARequestpriority, nameof(rFARequestpriority), required: false);
+            var __workflow_rFARequestrequestClass = WorkflowExpression.Compile(rFARequestrequestClass, nameof(rFARequestrequestClass), required: false);
+            var __workflow_rFARequestrequestCategory = WorkflowExpression.Compile(rFARequestrequestCategory, nameof(rFARequestrequestCategory), required: false);
+            var __workflow_rFARequestnumericValue = WorkflowExpression.Compile(rFARequestnumericValue, nameof(rFARequestnumericValue), required: false);
+            var __workflow_rFARequesttitle = WorkflowExpression.Compile(rFARequesttitle, nameof(rFARequesttitle), required: false);
+            var __workflow_rFARequestrecipientUsers = WorkflowExpression.Compile(rFARequestrecipientUsers, nameof(rFARequestrecipientUsers), required: false);
+            var __workflow_rFARequestrecipientGroups = WorkflowExpression.Compile(rFARequestrecipientGroups, nameof(rFARequestrecipientGroups), required: false);
+            var __workflow_rFARequestrecipienteMail = WorkflowExpression.Compile(rFARequestrecipienteMail, nameof(rFARequestrecipienteMail), required: false);
+            var __workflow_rFARequestrecipientPhone = WorkflowExpression.Compile(rFARequestrecipientPhone, nameof(rFARequestrecipientPhone), required: false);
+            var __workflow_rFARequestrequestedOnUTC = WorkflowExpression.Compile(rFARequestrequestedOnUTC, nameof(rFARequestrequestedOnUTC), required: false);
+            var __workflow_rFARequestexpiresOnUTC = WorkflowExpression.Compile(rFARequestexpiresOnUTC, nameof(rFARequestexpiresOnUTC), required: false);
+            var __workflow_rFARequesttriggeredOn = WorkflowExpression.Compile(rFARequesttriggeredOn, nameof(rFARequesttriggeredOn), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                if (rFARequestpriority != null)
+                var apiCallPath = "/api/collaboration/CreateRFARequest/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var rFARequest = new JObject();
+                var rFARequestpropCount = 0;
+                rFARequestpropCount++;
+                rFARequest["id"] = ExpressionConverter.ConvertO(__workflow_rFARequestid);
+                rFARequestpropCount++;
+                rFARequest["Code"] = ExpressionConverter.ConvertO(__workflow_rFARequestcode);
+                rFARequestpropCount++;
+                rFARequest["RequestedBy"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestedBy);
+                if (__workflow_rFARequestpriority != null)
                 {
-                    rFARequest["Priority"] = ExpressionConverter.ConvertO(rFARequestpriority);
+                    if (__workflow_rFARequestpriority != null)
+                    {
+                        rFARequest["Priority"] = ExpressionConverter.ConvertO(__workflow_rFARequestpriority);
+                        rFARequestpropCount++;
+                    }
+
+                    rFARequestpropCount++;
+                }
+                else
+                {
+                    rFARequest["Priority"] = "Normal";
                     rFARequestpropCount++;
                 }
 
                 rFARequestpropCount++;
-            }
-            else
-            {
-                rFARequest["Priority"] = "Normal";
-                rFARequestpropCount++;
-            }
-
-            rFARequestpropCount++;
-            rFARequest["IsExternal"] = ExpressionConverter.ConvertO(rFARequestisExternal);
-            if (rFARequestrequestClass != null)
-            {
-                rFARequest["RequestClass"] = ExpressionConverter.ConvertO(rFARequestrequestClass);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestrequestCategory != null)
-            {
-                rFARequest["RequestCategory"] = ExpressionConverter.ConvertO(rFARequestrequestCategory);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestnumericValue != null)
-            {
-                if (rFARequestnumericValue != null)
+                rFARequest["IsExternal"] = ExpressionConverter.ConvertO(__workflow_rFARequestisExternal);
+                if (__workflow_rFARequestrequestClass != null)
                 {
-                    rFARequest["NumericValue"] = ExpressionConverter.ConvertO(rFARequestnumericValue);
+                    rFARequest["RequestClass"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestClass);
                     rFARequestpropCount++;
                 }
 
-                rFARequestpropCount++;
-            }
-            else
-            {
-                rFARequest["NumericValue"] = 0;
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequestrequestCategory != null)
+                {
+                    rFARequest["RequestCategory"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestCategory);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequesttitle != null)
-            {
-                rFARequest["Title"] = ExpressionConverter.ConvertO(rFARequesttitle);
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequestnumericValue != null)
+                {
+                    if (__workflow_rFARequestnumericValue != null)
+                    {
+                        rFARequest["NumericValue"] = ExpressionConverter.ConvertO(__workflow_rFARequestnumericValue);
+                        rFARequestpropCount++;
+                    }
 
-            if (rFARequestrecipientUsers != null)
-            {
-                rFARequest["RecipientUsers"] = ExpressionConverter.ConvertO(rFARequestrecipientUsers);
-                rFARequestpropCount++;
-            }
+                    rFARequestpropCount++;
+                }
+                else
+                {
+                    rFARequest["NumericValue"] = 0;
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequestrecipientGroups != null)
-            {
-                rFARequest["RecipientGroups"] = ExpressionConverter.ConvertO(rFARequestrecipientGroups);
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequesttitle != null)
+                {
+                    rFARequest["Title"] = ExpressionConverter.ConvertO(__workflow_rFARequesttitle);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequestrecipienteMail != null)
-            {
-                rFARequest["RecipienteMail"] = ExpressionConverter.ConvertO(rFARequestrecipienteMail);
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequestrecipientUsers != null)
+                {
+                    rFARequest["RecipientUsers"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipientUsers);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequestrecipientPhone != null)
-            {
-                rFARequest["RecipientPhone"] = ExpressionConverter.ConvertO(rFARequestrecipientPhone);
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequestrecipientGroups != null)
+                {
+                    rFARequest["RecipientGroups"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipientGroups);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequestrequestedOnUTC != null)
-            {
-                rFARequest["RequestedOnUTC"] = ExpressionConverter.ConvertO(rFARequestrequestedOnUTC);
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequestrecipienteMail != null)
+                {
+                    rFARequest["RecipienteMail"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipienteMail);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequestexpiresOnUTC != null)
-            {
-                rFARequest["ExpiresOnUTC"] = ExpressionConverter.ConvertO(rFARequestexpiresOnUTC);
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequestrecipientPhone != null)
+                {
+                    rFARequest["RecipientPhone"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipientPhone);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequesttriggeredOn != null)
-            {
-                rFARequest["TriggeredOn"] = ExpressionConverter.ConvertO(rFARequesttriggeredOn);
-                rFARequestpropCount++;
-            }
+                if (__workflow_rFARequestrequestedOnUTC != null)
+                {
+                    rFARequest["RequestedOnUTC"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestedOnUTC);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequestpropCount > 0)
-            {
-                callPayload.Body = rFARequest;
-            }
+                if (__workflow_rFARequestexpiresOnUTC != null)
+                {
+                    rFARequest["ExpiresOnUTC"] = ExpressionConverter.ConvertO(__workflow_rFARequestexpiresOnUTC);
+                    rFARequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_rFARequesttriggeredOn != null)
+                {
+                    rFARequest["TriggeredOn"] = ExpressionConverter.ConvertO(__workflow_rFARequesttriggeredOn);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestpropCount > 0)
+                {
+                    callPayload.Body = rFARequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESCollaborationRespondToRFARequest(Expression<Func<string>> rFAResponseid, Expression<Func<string>> rFAResponsecode, Expression<Func<string>> rFAResponseresponseBy, Expression<Func<string>> rFAResponseresponseOrigin, Expression<Func<string>> rFAResponseresponseOnUTC, Expression<Func<string>> rFAResponseresponseComments = null)
         {
-            var apiCallPath = "/api/collaboration/RespondToRFARequest/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var rFAResponse = new JObject();
-            var rFAResponsepropCount = 0;
-            rFAResponsepropCount++;
-            rFAResponse["id"] = ExpressionConverter.ConvertO(rFAResponseid);
-            rFAResponsepropCount++;
-            rFAResponse["Code"] = ExpressionConverter.ConvertO(rFAResponsecode);
-            if (rFAResponseresponseComments != null)
+            var __workflow_rFAResponseid = WorkflowExpression.Compile(rFAResponseid, nameof(rFAResponseid), required: true);
+            var __workflow_rFAResponsecode = WorkflowExpression.Compile(rFAResponsecode, nameof(rFAResponsecode), required: true);
+            var __workflow_rFAResponseresponseBy = WorkflowExpression.Compile(rFAResponseresponseBy, nameof(rFAResponseresponseBy), required: true);
+            var __workflow_rFAResponseresponseOrigin = WorkflowExpression.Compile(rFAResponseresponseOrigin, nameof(rFAResponseresponseOrigin), required: true);
+            var __workflow_rFAResponseresponseOnUTC = WorkflowExpression.Compile(rFAResponseresponseOnUTC, nameof(rFAResponseresponseOnUTC), required: true);
+            var __workflow_rFAResponseresponseComments = WorkflowExpression.Compile(rFAResponseresponseComments, nameof(rFAResponseresponseComments), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                rFAResponse["ResponseComments"] = ExpressionConverter.ConvertO(rFAResponseresponseComments);
+                var apiCallPath = "/api/collaboration/RespondToRFARequest/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var rFAResponse = new JObject();
+                var rFAResponsepropCount = 0;
                 rFAResponsepropCount++;
-            }
+                rFAResponse["id"] = ExpressionConverter.ConvertO(__workflow_rFAResponseid);
+                rFAResponsepropCount++;
+                rFAResponse["Code"] = ExpressionConverter.ConvertO(__workflow_rFAResponsecode);
+                if (__workflow_rFAResponseresponseComments != null)
+                {
+                    rFAResponse["ResponseComments"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseComments);
+                    rFAResponsepropCount++;
+                }
 
-            rFAResponsepropCount++;
-            rFAResponse["ResponseBy"] = ExpressionConverter.ConvertO(rFAResponseresponseBy);
-            rFAResponsepropCount++;
-            rFAResponse["ResponseOrigin"] = ExpressionConverter.ConvertO(rFAResponseresponseOrigin);
-            rFAResponsepropCount++;
-            rFAResponse["ResponseOnUTC"] = ExpressionConverter.ConvertO(rFAResponseresponseOnUTC);
-            if (rFAResponsepropCount > 0)
-            {
-                callPayload.Body = rFAResponse;
-            }
+                rFAResponsepropCount++;
+                rFAResponse["ResponseBy"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseBy);
+                rFAResponsepropCount++;
+                rFAResponse["ResponseOrigin"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseOrigin);
+                rFAResponsepropCount++;
+                rFAResponse["ResponseOnUTC"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseOnUTC);
+                if (rFAResponsepropCount > 0)
+                {
+                    callPayload.Body = rFAResponse;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> ESCollaborationFetchRequest(Expression<Func<string>> requestID)
         {
-            var apiCallPath = "/api/collaboration/FetchRequest/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RequestID"] = ExpressionConverter.Convert(requestID);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFARequest>(callPayload);
+            var __workflow_requestID = WorkflowExpression.Compile(requestID, nameof(requestID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFARequest>(() =>
+            {
+                var apiCallPath = "/api/collaboration/FetchRequest/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["RequestID"] = ExpressionConverter.Convert(__workflow_requestID);
+                return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFARequest>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string> ESRPCPingServer(Expression<Func<string>> routeid)
         {
-            var apiCallPath = String.Format("/api/rpc/PingServer/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/PingServer/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESTestEBSConnectionTest(Expression<Func<string>> routeid)
         {
-            var apiCallPath = String.Format("/esapi/estest/EBSConnectionTest/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/esapi/estest/EBSConnectionTest/{0}", __workflow_routeid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityDeleteEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
-            var apiCallPath = "/api/esentity/DeleteEntityByID/";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-            callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/esentity/DeleteEntityByID/";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityDeleteEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
-            var apiCallPath = "/api/esentity/DeleteEntityByType/";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/esentity/DeleteEntityByType/";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityUpdateEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
-            var apiCallPath = "/api/esentity/UpdateEntityByID/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-            callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = updProperties;
-            }
+                var apiCallPath = "/api/esentity/UpdateEntityByID/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IWorkflowAction ESEntityUpdateEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
-            var apiCallPath = "/api/esentity/UpdateEntityByType/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = updProperties;
-            }
+                var apiCallPath = "/api/esentity/UpdateEntityByType/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByID(Expression<Func<string>> entityID)
         {
-            var apiCallPath = "/api/esentity/CreateEntityByID/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(() =>
             {
-                callPayload.Body = updProperties;
-            }
+                var apiCallPath = "/api/esentity/CreateEntityByID/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
 
-            return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
+                return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByType(Expression<Func<entityTypeInput>> entityType)
         {
-            var apiCallPath = "/api/esentity/CreateEntityByType/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
+            return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(() =>
             {
-                callPayload.Body = updProperties;
-            }
+                var apiCallPath = "/api/esentity/CreateEntityByType/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
 
-            return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
+                return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
-            var apiCallPath = "/api/esentity/EntityByID/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-            callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
+            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity>(() =>
+            {
+                var apiCallPath = "/api/esentity/EntityByID/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
-            var apiCallPath = "/api/esentity/EntityByType/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
+            var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity>(() =>
+            {
+                var apiCallPath = "/api/esentity/EntityByType/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
-            var apiCallPath = "/api/esentity/EntitiesByID/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-            var fetchOptions = new JObject();
-            var fetchOptionspropCount = 0;
-            if (fetchOptionsselectFields != null)
+            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_fetchOptionsselectFields = WorkflowExpression.Compile(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
+            var __workflow_fetchOptionsorderByFields = WorkflowExpression.Compile(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
+            var __workflow_fetchOptionspage = WorkflowExpression.Compile(fetchOptionspage, nameof(fetchOptionspage), required: false);
+            var __workflow_fetchOptionspageSize = WorkflowExpression.Compile(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
             {
-                fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsselectFields);
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionsorderByFields != null)
-            {
-                fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsorderByFields);
-                fetchOptionspropCount++;
-            }
-
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
-            {
-                fetchOptions["Params"] = paramsObject;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspage != null)
-            {
-                if (fetchOptionspage != null)
+                var apiCallPath = "/api/esentity/EntitiesByID/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                var fetchOptions = new JObject();
+                var fetchOptionspropCount = 0;
+                if (__workflow_fetchOptionsselectFields != null)
                 {
-                    fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                    fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsselectFields);
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["Page"] = 1;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspageSize != null)
-            {
-                if (fetchOptionspageSize != null)
+                if (__workflow_fetchOptionsorderByFields != null)
                 {
-                    fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                    fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsorderByFields);
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["PageSize"] = 500;
-                fetchOptionspropCount++;
-            }
+                var paramsObject = new JObject();
+                var paramsObjectpropCount = 0;
+                if (paramsObjectpropCount > 0)
+                {
+                    fetchOptions["Params"] = paramsObject;
+                    fetchOptionspropCount++;
+                }
 
-            if (fetchOptionspropCount > 0)
-            {
-                callPayload.Body = fetchOptions;
-            }
+                if (__workflow_fetchOptionspage != null)
+                {
+                    if (__workflow_fetchOptionspage != null)
+                    {
+                        fetchOptions["Page"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspage);
+                        fetchOptionspropCount++;
+                    }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["Page"] = 1;
+                    fetchOptionspropCount++;
+                }
+
+                if (__workflow_fetchOptionspageSize != null)
+                {
+                    if (__workflow_fetchOptionspageSize != null)
+                    {
+                        fetchOptions["PageSize"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspageSize);
+                        fetchOptionspropCount++;
+                    }
+
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["PageSize"] = 500;
+                    fetchOptionspropCount++;
+                }
+
+                if (fetchOptionspropCount > 0)
+                {
+                    callPayload.Body = fetchOptions;
+                }
+
+                return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
-            var apiCallPath = "/api/esentity/EntitiesByType/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            var fetchOptions = new JObject();
-            var fetchOptionspropCount = 0;
-            if (fetchOptionsselectFields != null)
+            var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
+            var __workflow_fetchOptionsselectFields = WorkflowExpression.Compile(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
+            var __workflow_fetchOptionsorderByFields = WorkflowExpression.Compile(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
+            var __workflow_fetchOptionspage = WorkflowExpression.Compile(fetchOptionspage, nameof(fetchOptionspage), required: false);
+            var __workflow_fetchOptionspageSize = WorkflowExpression.Compile(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
             {
-                fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsselectFields);
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionsorderByFields != null)
-            {
-                fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsorderByFields);
-                fetchOptionspropCount++;
-            }
-
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
-            {
-                fetchOptions["Params"] = paramsObject;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspage != null)
-            {
-                if (fetchOptionspage != null)
+                var apiCallPath = "/api/esentity/EntitiesByType/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                var fetchOptions = new JObject();
+                var fetchOptionspropCount = 0;
+                if (__workflow_fetchOptionsselectFields != null)
                 {
-                    fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                    fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsselectFields);
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["Page"] = 1;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspageSize != null)
-            {
-                if (fetchOptionspageSize != null)
+                if (__workflow_fetchOptionsorderByFields != null)
                 {
-                    fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                    fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsorderByFields);
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["PageSize"] = 500;
-                fetchOptionspropCount++;
-            }
+                var paramsObject = new JObject();
+                var paramsObjectpropCount = 0;
+                if (paramsObjectpropCount > 0)
+                {
+                    fetchOptions["Params"] = paramsObject;
+                    fetchOptionspropCount++;
+                }
 
-            if (fetchOptionspropCount > 0)
-            {
-                callPayload.Body = fetchOptions;
-            }
+                if (__workflow_fetchOptionspage != null)
+                {
+                    if (__workflow_fetchOptionspage != null)
+                    {
+                        fetchOptions["Page"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspage);
+                        fetchOptionspropCount++;
+                    }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["Page"] = 1;
+                    fetchOptionspropCount++;
+                }
+
+                if (__workflow_fetchOptionspageSize != null)
+                {
+                    if (__workflow_fetchOptionspageSize != null)
+                    {
+                        fetchOptions["PageSize"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspageSize);
+                        fetchOptionspropCount++;
+                    }
+
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["PageSize"] = 500;
+                    fetchOptionspropCount++;
+                }
+
+                if (fetchOptionspropCount > 0)
+                {
+                    callPayload.Body = fetchOptions;
+                }
+
+                return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESEntityEntityAutomationNew(Expression<Func<string>> entity, Expression<Func<string>> operation)
         {
-            var apiCallPath = "/api/esentity/EntityAutomationNew/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
-            var commandParams = new JObject();
-            var commandParamspropCount = 0;
-            if (commandParamspropCount > 0)
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = commandParams;
-            }
+                var apiCallPath = "/api/esentity/EntityAutomationNew/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["operation"] = ExpressionConverter.Convert(__workflow_operation);
+                var commandParams = new JObject();
+                var commandParamspropCount = 0;
+                if (commandParamspropCount > 0)
+                {
+                    callPayload.Body = commandParams;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdate(Expression<Func<string>> entity, Expression<Func<string>> field, Expression<Func<string>> id, Expression<Func<string>> operation)
         {
-            var apiCallPath = "/api/esentity/EntityAutomationUpdate/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["field"] = ExpressionConverter.Convert(field);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
-            var commandParams = new JObject();
-            var commandParamspropCount = 0;
-            if (commandParamspropCount > 0)
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = commandParams;
-            }
+                var apiCallPath = "/api/esentity/EntityAutomationUpdate/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["field"] = ExpressionConverter.Convert(__workflow_field);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Queries["operation"] = ExpressionConverter.Convert(__workflow_operation);
+                var commandParams = new JObject();
+                var commandParamspropCount = 0;
+                if (commandParamspropCount > 0)
+                {
+                    callPayload.Body = commandParams;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdateByCode(Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> operation)
         {
-            var apiCallPath = "/api/esentity/EntityAutomationUpdateByCode/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
-            var commandParams = new JObject();
-            var commandParamspropCount = 0;
-            if (commandParamspropCount > 0)
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = commandParams;
-            }
+                var apiCallPath = "/api/esentity/EntityAutomationUpdateByCode/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Queries["operation"] = ExpressionConverter.Convert(__workflow_operation);
+                var commandParams = new JObject();
+                var commandParamspropCount = 0;
+                if (commandParamspropCount > 0)
+                {
+                    callPayload.Body = commandParams;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> ESFinancialsESFIDocumentTrade(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIDocumentTrade/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentTrade/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> ESFinancialsESFIItemExpenses(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIItemExpenses/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItemExpenses/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> ESFinancialsESFICreditor(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFICreditor/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICreditorObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICreditorObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFICreditor/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICreditorObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> ESFinancialsESFIDocumentCash(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIDocumentCash/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentCash/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> ESFinancialsESMMStockOrderPlan(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESMMStockOrderPlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESMMStockOrderPlan/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> ESFinancialsESFISupplier(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFISupplier/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISupplierObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISupplierObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFISupplier/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISupplierObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> ESFinancialsESFIItemExpense(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIItemExpense/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItemExpense/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> ESFinancialsESFISalesPerson(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFISalesPerson/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFISalesPerson/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> ESFinancialsESFIPaymentMethod(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIPaymentMethod/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIPaymentMethod/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> ESFinancialsESFIItem(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItem/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> ESFinancialsESFISpecialAccount(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFISpecialAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFISpecialAccount/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> ESFinancialsESFIDocumentStock(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIDocumentStock/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentStock/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> ESFinancialsESFINote(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFINote/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFINoteObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFINoteObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFINote/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFINoteObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> ESFinancialsESFITradeAccountContract(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFITradeAccountContract/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFITradeAccountContract/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> ESFinancialsESFIVoucher(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIVoucher/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIVoucher/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> ESFinancialsESFICustomer(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFICustomer/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICustomerObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICustomerObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFICustomer/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICustomerObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> ESFinancialsESFIDebtor(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIDebtor/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDebtor/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> ESFinancialsESFIPricelist(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIPricelist/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIPricelist/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> ESFinancialsESFIItemService(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIItemService/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItemService/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> ESFinancialsESFICashAccount(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFICashAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFICashAccount/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> ESFinancialsESFIDocumentAdjustment(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFIDocumentAdjustment/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentAdjustment/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> ESFinancialsESFITradeAccount(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFinancials/ESFITradeAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFITradeAccount/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> ESFixedAssetESFAFixedAsset(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESFixedAsset/ESFAFixedAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFixedAsset/ESFAFixedAsset/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> ESGlobalObjectsESGOPerson(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESGlobalObjects/ESGOPerson/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOPersonObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOPersonObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ESGOPerson/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOPersonObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> ESGlobalObjectsES00Device(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESGlobalObjects/ES00Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsES00DeviceObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsES00DeviceObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ES00Device/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsES00DeviceObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> ESGlobalObjectsESGOWebUser(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESGlobalObjects/ESGOWebUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ESGOWebUser/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> ESGlobalObjectsESGOUser(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESGlobalObjects/ESGOUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOUserObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOUserObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ESGOUser/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOUserObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookGet(Expression<Func<string>> hookID)
         {
-            var apiCallPath = String.Format("/api/businesshook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
+            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/businesshook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookGet(Expression<Func<string>> hookID)
         {
-            var apiCallPath = String.Format("/api/podhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
+            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/podhook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookGet(Expression<Func<string>> hookID)
         {
-            var apiCallPath = String.Format("/api/rfahook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
+            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rfahook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookGet(Expression<Func<string>> hookID)
         {
-            var apiCallPath = String.Format("/api/hook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
+            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/hook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookGet(Expression<Func<string>> hookID)
         {
-            var apiCallPath = String.Format("/api/systemhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload);
+            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/systemhook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> ESMachineLearningESMLModel(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMachineLearning/ESMLModel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMLModelObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMLModelObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMachineLearning/ESMLModel/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMLModelObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> ESMaterialManagementESMMSerialNumber(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMSerialNumber/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMSerialNumber/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> ESMaterialManagementESMMCatalogueItem(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> ESMaterialManagementESMMStorageLocation(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMStorageLocation/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMStorageLocation/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> ESMaterialManagementESMMStockItem(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMStockItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMStockItem/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> ESMaterialManagementESMMCommercialProfile(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> ESMaterialManagementESMMSortiment(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMSortiment/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMSortiment/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> ESMaterialManagementESMMLot(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMLot/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMLotObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMLotObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMLot/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMLotObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> ESMaterialManagementESMMProductionPlan(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESMaterialManagement/ESMMProductionPlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMProductionPlan/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESDeviceFetchDeviceInfo(Expression<Func<string>> deviceCode)
         {
-            var apiCallPath = String.Format("/api/device/fetchDeviceInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_deviceCode = WorkflowExpression.Compile(deviceCode, nameof(deviceCode), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/device/fetchDeviceInfo/{0}", __workflow_deviceCode.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> ESRPCFetchPropertySet(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/fetchPropertySet/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsESPropertySet>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsESPropertySet>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/fetchPropertySet/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiModelsESPropertySet>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScale> ESRPCFetchESScale(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/fetchESScale/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsESScale>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsESScale>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/fetchESScale/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiModelsESScale>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> ESRPCPublicQueryLayout(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/PublicQueryLayout/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQLayout>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQLayout>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/PublicQueryLayout/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiModelsESPQLayout>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
         {
-            var apiCallPath = String.Format("/api/rpc/GetPQData/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pqOptionsPage != null)
-                callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(pqOptionsPage);
-            if (pqOptionsPageSize != null)
-                callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(pqOptionsPageSize);
-            if (pqOptionsWithCount != null)
-                callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(pqOptionsWithCount);
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            var __workflow_pqOptionsPage = WorkflowExpression.Compile(pqOptionsPage, nameof(pqOptionsPage), required: false);
+            var __workflow_pqOptionsPageSize = WorkflowExpression.Compile(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
+            var __workflow_pqOptionsWithCount = WorkflowExpression.Compile(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/GetPQData/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_pqOptionsPage != null)
+                    callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(__workflow_pqOptionsPage);
+                if (__workflow_pqOptionsPageSize != null)
+                    callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(__workflow_pqOptionsPageSize);
+                if (__workflow_pqOptionsWithCount != null)
+                    callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(__workflow_pqOptionsWithCount);
+                return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<string> ESRPCFIImportDocument(Expression<Func<string>> inputXMLAsString = null)
         {
-            var apiCallPath = "/api/rpc/FIImportDocument/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(inputXMLAsString);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_inputXMLAsString = WorkflowExpression.Compile(inputXMLAsString, nameof(inputXMLAsString), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/rpc/FIImportDocument/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_inputXMLAsString);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData2(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
         {
-            var apiCallPath = String.Format("/api/rpc/GetPQData2/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pqOptionsPage != null)
-                callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(pqOptionsPage);
-            if (pqOptionsPageSize != null)
-                callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(pqOptionsPageSize);
-            if (pqOptionsWithCount != null)
-                callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(pqOptionsWithCount);
-            var @params = new JObject();
-            var @paramspropCount = 0;
-            if (@paramspropCount > 0)
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            var __workflow_pqOptionsPage = WorkflowExpression.Compile(pqOptionsPage, nameof(pqOptionsPage), required: false);
+            var __workflow_pqOptionsPageSize = WorkflowExpression.Compile(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
+            var __workflow_pqOptionsWithCount = WorkflowExpression.Compile(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
             {
-                callPayload.Body = @params;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/GetPQData2/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_pqOptionsPage != null)
+                    callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(__workflow_pqOptionsPage);
+                if (__workflow_pqOptionsPageSize != null)
+                    callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(__workflow_pqOptionsPageSize);
+                if (__workflow_pqOptionsWithCount != null)
+                    callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(__workflow_pqOptionsWithCount);
+                var @params = new JObject();
+                var @paramspropCount = 0;
+                if (@paramspropCount > 0)
+                {
+                    callPayload.Body = @params;
+                }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+                return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<bool> ESRPCLog(Expression<Func<string>> iD, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
         {
-            var apiCallPath = "/api/rpc/Log/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = ExpressionConverter.Convert(iD);
-            if (description != null)
-                callPayload.Queries["Description"] = ExpressionConverter.Convert(description);
-            if (severity != null)
-                callPayload.Queries["Severity"] = ExpressionConverter.Convert(severity);
-            return new ApiConnectionAction<bool>(callPayload);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_severity = WorkflowExpression.Compile(severity, nameof(severity), required: false);
+            return new DeferredBodyAction<bool>(() =>
+            {
+                var apiCallPath = "/api/rpc/Log/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
+                if (__workflow_description != null)
+                    callPayload.Queries["Description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_severity != null)
+                    callPayload.Queries["Severity"] = ExpressionConverter.Convert(__workflow_severity);
+                return new ApiConnectionAction<bool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> ESRPCFetchCompanyParam(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/FetchCompanyParam/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/FetchCompanyParam/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> ESRPCParameterValue(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/ParameterValue/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/ParameterValue/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> ESRPCFetchCompanyParams(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/FetchCompanyParams/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx[]>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/FetchCompanyParams/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerID, Expression<Func<string>> eSScrollerCommandcommandID, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
         {
-            var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eSScrollerCommand = new JObject();
-            var eSScrollerCommandpropCount = 0;
-            var scrollerParamsObject = new JObject();
-            var scrollerParamsObjectpropCount = 0;
-            if (scrollerParamsObjectpropCount > 0)
+            var __workflow_eSScrollerCommandscrollerID = WorkflowExpression.Compile(eSScrollerCommandscrollerID, nameof(eSScrollerCommandscrollerID), required: true);
+            var __workflow_eSScrollerCommandcommandID = WorkflowExpression.Compile(eSScrollerCommandcommandID, nameof(eSScrollerCommandcommandID), required: true);
+            var __workflow_eSScrollerCommandscrollerDatasetJson = WorkflowExpression.Compile(eSScrollerCommandscrollerDatasetJson, nameof(eSScrollerCommandscrollerDatasetJson), required: false);
+            var __workflow_eSScrollerCommandrequiresTransaction = WorkflowExpression.Compile(eSScrollerCommandrequiresTransaction, nameof(eSScrollerCommandrequiresTransaction), required: false);
+            var __workflow_eSScrollerCommandonlyPrepareTargetDatasets = WorkflowExpression.Compile(eSScrollerCommandonlyPrepareTargetDatasets, nameof(eSScrollerCommandonlyPrepareTargetDatasets), required: false);
+            var __workflow_eSScrollerCommandreturnTargetDatasets = WorkflowExpression.Compile(eSScrollerCommandreturnTargetDatasets, nameof(eSScrollerCommandreturnTargetDatasets), required: false);
+            var __workflow_eSScrollerCommandreturnScrollerDataset = WorkflowExpression.Compile(eSScrollerCommandreturnScrollerDataset, nameof(eSScrollerCommandreturnScrollerDataset), required: false);
+            var __workflow_eSScrollerCommandreturnEntersoftDatasets = WorkflowExpression.Compile(eSScrollerCommandreturnEntersoftDatasets, nameof(eSScrollerCommandreturnEntersoftDatasets), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut>(() =>
             {
-                eSScrollerCommand["ScrollerParams"] = scrollerParamsObject;
+                var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eSScrollerCommand = new JObject();
+                var eSScrollerCommandpropCount = 0;
+                var scrollerParamsObject = new JObject();
+                var scrollerParamsObjectpropCount = 0;
+                if (scrollerParamsObjectpropCount > 0)
+                {
+                    eSScrollerCommand["ScrollerParams"] = scrollerParamsObject;
+                    eSScrollerCommandpropCount++;
+                }
+
+                var scrollerDatasetObject = new JObject();
+                var scrollerDatasetObjectpropCount = 0;
+                if (scrollerDatasetObjectpropCount > 0)
+                {
+                    eSScrollerCommand["ScrollerDataset"] = scrollerDatasetObject;
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (__workflow_eSScrollerCommandscrollerDatasetJson != null)
+                {
+                    eSScrollerCommand["ScrollerDatasetJson"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandscrollerDatasetJson);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (__workflow_eSScrollerCommandrequiresTransaction != null)
+                {
+                    eSScrollerCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandrequiresTransaction);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (__workflow_eSScrollerCommandonlyPrepareTargetDatasets != null)
+                {
+                    eSScrollerCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandonlyPrepareTargetDatasets);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (__workflow_eSScrollerCommandreturnTargetDatasets != null)
+                {
+                    eSScrollerCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandreturnTargetDatasets);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (__workflow_eSScrollerCommandreturnScrollerDataset != null)
+                {
+                    eSScrollerCommand["ReturnScrollerDataset"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandreturnScrollerDataset);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (__workflow_eSScrollerCommandreturnEntersoftDatasets != null)
+                {
+                    eSScrollerCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandreturnEntersoftDatasets);
+                    eSScrollerCommandpropCount++;
+                }
+
                 eSScrollerCommandpropCount++;
-            }
-
-            var scrollerDatasetObject = new JObject();
-            var scrollerDatasetObjectpropCount = 0;
-            if (scrollerDatasetObjectpropCount > 0)
-            {
-                eSScrollerCommand["ScrollerDataset"] = scrollerDatasetObject;
+                eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandscrollerID);
                 eSScrollerCommandpropCount++;
-            }
+                eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandcommandID);
+                var commandParamsObject = new JObject();
+                var commandParamsObjectpropCount = 0;
+                if (commandParamsObjectpropCount > 0)
+                {
+                    eSScrollerCommand["CommandParams"] = commandParamsObject;
+                    eSScrollerCommandpropCount++;
+                }
 
-            if (eSScrollerCommandscrollerDatasetJson != null)
-            {
-                eSScrollerCommand["ScrollerDatasetJson"] = ExpressionConverter.ConvertO(eSScrollerCommandscrollerDatasetJson);
-                eSScrollerCommandpropCount++;
-            }
+                var unboundVariablesObject = new JObject();
+                var unboundVariablesObjectpropCount = 0;
+                if (unboundVariablesObjectpropCount > 0)
+                {
+                    eSScrollerCommand["UnboundVariables"] = unboundVariablesObject;
+                    eSScrollerCommandpropCount++;
+                }
 
-            if (eSScrollerCommandrequiresTransaction != null)
-            {
-                eSScrollerCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(eSScrollerCommandrequiresTransaction);
-                eSScrollerCommandpropCount++;
-            }
+                if (eSScrollerCommandpropCount > 0)
+                {
+                    callPayload.Body = eSScrollerCommand;
+                }
 
-            if (eSScrollerCommandonlyPrepareTargetDatasets != null)
-            {
-                eSScrollerCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandonlyPrepareTargetDatasets);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandreturnTargetDatasets != null)
-            {
-                eSScrollerCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnTargetDatasets);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandreturnScrollerDataset != null)
-            {
-                eSScrollerCommand["ReturnScrollerDataset"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnScrollerDataset);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandreturnEntersoftDatasets != null)
-            {
-                eSScrollerCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnEntersoftDatasets);
-                eSScrollerCommandpropCount++;
-            }
-
-            eSScrollerCommandpropCount++;
-            eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(eSScrollerCommandscrollerID);
-            eSScrollerCommandpropCount++;
-            eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(eSScrollerCommandcommandID);
-            var commandParamsObject = new JObject();
-            var commandParamsObjectpropCount = 0;
-            if (commandParamsObjectpropCount > 0)
-            {
-                eSScrollerCommand["CommandParams"] = commandParamsObject;
-                eSScrollerCommandpropCount++;
-            }
-
-            var unboundVariablesObject = new JObject();
-            var unboundVariablesObjectpropCount = 0;
-            if (unboundVariablesObjectpropCount > 0)
-            {
-                eSScrollerCommand["UnboundVariables"] = unboundVariablesObject;
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandpropCount > 0)
-            {
-                callPayload.Body = eSScrollerCommand;
-            }
-
-            return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
+                return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerID, Expression<Func<string>> eSCommandIncommandID)
         {
-            var apiCallPath = "/api/rpc/ExecuteCommand/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eSCommandIn = new JObject();
-            var eSCommandInpropCount = 0;
-            eSCommandInpropCount++;
-            eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(eSCommandInscrollerID);
-            eSCommandInpropCount++;
-            eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(eSCommandIncommandID);
-            var commandParamsObject = new JObject();
-            var commandParamsObjectpropCount = 0;
-            if (commandParamsObjectpropCount > 0)
+            var __workflow_eSCommandInscrollerID = WorkflowExpression.Compile(eSCommandInscrollerID, nameof(eSCommandInscrollerID), required: true);
+            var __workflow_eSCommandIncommandID = WorkflowExpression.Compile(eSCommandIncommandID, nameof(eSCommandIncommandID), required: true);
+            return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut>(() =>
             {
-                eSCommandIn["CommandParams"] = commandParamsObject;
+                var apiCallPath = "/api/rpc/ExecuteCommand/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eSCommandIn = new JObject();
+                var eSCommandInpropCount = 0;
                 eSCommandInpropCount++;
-            }
-
-            var unboundVariablesObject = new JObject();
-            var unboundVariablesObjectpropCount = 0;
-            if (unboundVariablesObjectpropCount > 0)
-            {
-                eSCommandIn["UnboundVariables"] = unboundVariablesObject;
+                eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSCommandInscrollerID);
                 eSCommandInpropCount++;
-            }
+                eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSCommandIncommandID);
+                var commandParamsObject = new JObject();
+                var commandParamsObjectpropCount = 0;
+                if (commandParamsObjectpropCount > 0)
+                {
+                    eSCommandIn["CommandParams"] = commandParamsObject;
+                    eSCommandInpropCount++;
+                }
 
-            if (eSCommandInpropCount > 0)
-            {
-                callPayload.Body = eSCommandIn;
-            }
+                var unboundVariablesObject = new JObject();
+                var unboundVariablesObjectpropCount = 0;
+                if (unboundVariablesObjectpropCount > 0)
+                {
+                    eSCommandIn["UnboundVariables"] = unboundVariablesObject;
+                    eSCommandInpropCount++;
+                }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
+                if (eSCommandInpropCount > 0)
+                {
+                    callPayload.Body = eSCommandIn;
+                }
+
+                return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityID = null, Expression<Func<string>> formCommandcommandID = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGID = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerID = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
         {
-            var apiCallPath = "/api/rpc/ExecuteFormCommand/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var formCommand = new JObject();
-            var formCommandpropCount = 0;
-            if (formCommandentityID != null)
+            var __workflow_formCommandentityID = WorkflowExpression.Compile(formCommandentityID, nameof(formCommandentityID), required: false);
+            var __workflow_formCommandcommandID = WorkflowExpression.Compile(formCommandcommandID, nameof(formCommandcommandID), required: false);
+            var __workflow_formCommandentityDatasetJson = WorkflowExpression.Compile(formCommandentityDatasetJson, nameof(formCommandentityDatasetJson), required: false);
+            var __workflow_formCommandentityGID = WorkflowExpression.Compile(formCommandentityGID, nameof(formCommandentityGID), required: false);
+            var __workflow_formCommandentityGIDs = WorkflowExpression.Compile(formCommandentityGIDs, nameof(formCommandentityGIDs), required: false);
+            var __workflow_formCommandentityCode = WorkflowExpression.Compile(formCommandentityCode, nameof(formCommandentityCode), required: false);
+            var __workflow_formCommandentityCodes = WorkflowExpression.Compile(formCommandentityCodes, nameof(formCommandentityCodes), required: false);
+            var __workflow_formCommandentityScrollerID = WorkflowExpression.Compile(formCommandentityScrollerID, nameof(formCommandentityScrollerID), required: false);
+            var __workflow_formCommandrequiresTransaction = WorkflowExpression.Compile(formCommandrequiresTransaction, nameof(formCommandrequiresTransaction), required: false);
+            var __workflow_formCommandcreateNewEmptySourceEntity = WorkflowExpression.Compile(formCommandcreateNewEmptySourceEntity, nameof(formCommandcreateNewEmptySourceEntity), required: false);
+            var __workflow_formCommandonlyPrepareTargetDatasets = WorkflowExpression.Compile(formCommandonlyPrepareTargetDatasets, nameof(formCommandonlyPrepareTargetDatasets), required: false);
+            var __workflow_formCommandreturnSourceDatasets = WorkflowExpression.Compile(formCommandreturnSourceDatasets, nameof(formCommandreturnSourceDatasets), required: false);
+            var __workflow_formCommandreturnTargetDatasets = WorkflowExpression.Compile(formCommandreturnTargetDatasets, nameof(formCommandreturnTargetDatasets), required: false);
+            var __workflow_formCommandreturnMap = WorkflowExpression.Compile(formCommandreturnMap, nameof(formCommandreturnMap), required: false);
+            var __workflow_formCommandreturnEntersoftDatasets = WorkflowExpression.Compile(formCommandreturnEntersoftDatasets, nameof(formCommandreturnEntersoftDatasets), required: false);
+            return new DeferredBodyAction<EntersoftWebApiModelsESFormCommandOut>(() =>
             {
-                formCommand["EntityID"] = ExpressionConverter.ConvertO(formCommandentityID);
-                formCommandpropCount++;
-            }
+                var apiCallPath = "/api/rpc/ExecuteFormCommand/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var formCommand = new JObject();
+                var formCommandpropCount = 0;
+                if (__workflow_formCommandentityID != null)
+                {
+                    formCommand["EntityID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityID);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandcommandID != null)
-            {
-                formCommand["CommandID"] = ExpressionConverter.ConvertO(formCommandcommandID);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandcommandID != null)
+                {
+                    formCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_formCommandcommandID);
+                    formCommandpropCount++;
+                }
 
-            var entityDatasetObject = new JObject();
-            var entityDatasetObjectpropCount = 0;
-            if (entityDatasetObjectpropCount > 0)
-            {
-                formCommand["EntityDataset"] = entityDatasetObject;
-                formCommandpropCount++;
-            }
+                var entityDatasetObject = new JObject();
+                var entityDatasetObjectpropCount = 0;
+                if (entityDatasetObjectpropCount > 0)
+                {
+                    formCommand["EntityDataset"] = entityDatasetObject;
+                    formCommandpropCount++;
+                }
 
-            if (formCommandentityDatasetJson != null)
-            {
-                formCommand["EntityDatasetJson"] = ExpressionConverter.ConvertO(formCommandentityDatasetJson);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandentityDatasetJson != null)
+                {
+                    formCommand["EntityDatasetJson"] = ExpressionConverter.ConvertO(__workflow_formCommandentityDatasetJson);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandentityGID != null)
-            {
-                formCommand["EntityGID"] = ExpressionConverter.ConvertO(formCommandentityGID);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandentityGID != null)
+                {
+                    formCommand["EntityGID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityGID);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandentityGIDs != null)
-            {
-                formCommand["EntityGIDs"] = ExpressionConverter.ConvertO(formCommandentityGIDs);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandentityGIDs != null)
+                {
+                    formCommand["EntityGIDs"] = ExpressionConverter.ConvertO(__workflow_formCommandentityGIDs);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandentityCode != null)
-            {
-                formCommand["EntityCode"] = ExpressionConverter.ConvertO(formCommandentityCode);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandentityCode != null)
+                {
+                    formCommand["EntityCode"] = ExpressionConverter.ConvertO(__workflow_formCommandentityCode);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandentityCodes != null)
-            {
-                formCommand["EntityCodes"] = ExpressionConverter.ConvertO(formCommandentityCodes);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandentityCodes != null)
+                {
+                    formCommand["EntityCodes"] = ExpressionConverter.ConvertO(__workflow_formCommandentityCodes);
+                    formCommandpropCount++;
+                }
 
-            var entityParamsObject = new JObject();
-            var entityParamsObjectpropCount = 0;
-            if (entityParamsObjectpropCount > 0)
-            {
-                formCommand["EntityParams"] = entityParamsObject;
-                formCommandpropCount++;
-            }
+                var entityParamsObject = new JObject();
+                var entityParamsObjectpropCount = 0;
+                if (entityParamsObjectpropCount > 0)
+                {
+                    formCommand["EntityParams"] = entityParamsObject;
+                    formCommandpropCount++;
+                }
 
-            if (formCommandentityScrollerID != null)
-            {
-                formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(formCommandentityScrollerID);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandentityScrollerID != null)
+                {
+                    formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityScrollerID);
+                    formCommandpropCount++;
+                }
 
-            var entityScrollerParamsObject = new JObject();
-            var entityScrollerParamsObjectpropCount = 0;
-            if (entityScrollerParamsObjectpropCount > 0)
-            {
-                formCommand["EntityScrollerParams"] = entityScrollerParamsObject;
-                formCommandpropCount++;
-            }
+                var entityScrollerParamsObject = new JObject();
+                var entityScrollerParamsObjectpropCount = 0;
+                if (entityScrollerParamsObjectpropCount > 0)
+                {
+                    formCommand["EntityScrollerParams"] = entityScrollerParamsObject;
+                    formCommandpropCount++;
+                }
 
-            if (formCommandrequiresTransaction != null)
-            {
-                formCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(formCommandrequiresTransaction);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandrequiresTransaction != null)
+                {
+                    formCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(__workflow_formCommandrequiresTransaction);
+                    formCommandpropCount++;
+                }
 
-            var commandParamsObject = new JObject();
-            var commandParamsObjectpropCount = 0;
-            if (commandParamsObjectpropCount > 0)
-            {
-                formCommand["CommandParams"] = commandParamsObject;
-                formCommandpropCount++;
-            }
+                var commandParamsObject = new JObject();
+                var commandParamsObjectpropCount = 0;
+                if (commandParamsObjectpropCount > 0)
+                {
+                    formCommand["CommandParams"] = commandParamsObject;
+                    formCommandpropCount++;
+                }
 
-            var unboundVariablesObject = new JObject();
-            var unboundVariablesObjectpropCount = 0;
-            if (unboundVariablesObjectpropCount > 0)
-            {
-                formCommand["UnboundVariables"] = unboundVariablesObject;
-                formCommandpropCount++;
-            }
+                var unboundVariablesObject = new JObject();
+                var unboundVariablesObjectpropCount = 0;
+                if (unboundVariablesObjectpropCount > 0)
+                {
+                    formCommand["UnboundVariables"] = unboundVariablesObject;
+                    formCommandpropCount++;
+                }
 
-            if (formCommandcreateNewEmptySourceEntity != null)
-            {
-                formCommand["CreateNewEmptySourceEntity"] = ExpressionConverter.ConvertO(formCommandcreateNewEmptySourceEntity);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandcreateNewEmptySourceEntity != null)
+                {
+                    formCommand["CreateNewEmptySourceEntity"] = ExpressionConverter.ConvertO(__workflow_formCommandcreateNewEmptySourceEntity);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandonlyPrepareTargetDatasets != null)
-            {
-                formCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(formCommandonlyPrepareTargetDatasets);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandonlyPrepareTargetDatasets != null)
+                {
+                    formCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandonlyPrepareTargetDatasets);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandreturnSourceDatasets != null)
-            {
-                formCommand["ReturnSourceDatasets"] = ExpressionConverter.ConvertO(formCommandreturnSourceDatasets);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandreturnSourceDatasets != null)
+                {
+                    formCommand["ReturnSourceDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnSourceDatasets);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandreturnTargetDatasets != null)
-            {
-                formCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(formCommandreturnTargetDatasets);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandreturnTargetDatasets != null)
+                {
+                    formCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnTargetDatasets);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandreturnMap != null)
-            {
-                formCommand["ReturnMap"] = ExpressionConverter.ConvertO(formCommandreturnMap);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandreturnMap != null)
+                {
+                    formCommand["ReturnMap"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnMap);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandreturnEntersoftDatasets != null)
-            {
-                formCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(formCommandreturnEntersoftDatasets);
-                formCommandpropCount++;
-            }
+                if (__workflow_formCommandreturnEntersoftDatasets != null)
+                {
+                    formCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnEntersoftDatasets);
+                    formCommandpropCount++;
+                }
 
-            if (formCommandpropCount > 0)
-            {
-                callPayload.Body = formCommand;
-            }
+                if (formCommandpropCount > 0)
+                {
+                    callPayload.Body = formCommand;
+                }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESFormCommandOut>(callPayload);
+                return new ApiConnectionAction<EntersoftWebApiModelsESFormCommandOut>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> GETESRPCEbsService2(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/EbsService2/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/EbsService2/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<JToken> POSTESRPCEbsService2(Expression<Func<string>> routeId)
         {
-            var apiCallPath = String.Format("/api/rpc/EbsService2/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/EbsService2/{0}", __workflow_routeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> ESTaskManagementESTMMobileTaskType(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMMobileTaskType/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMMobileTaskType/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> ESTaskManagementESTMServiceRequest(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMServiceRequest/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> ESTaskManagementESTMRFMModel(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMRFMModel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMRFMModel/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> ESTaskManagementESTMNewsletterRecipient(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> ESTaskManagementESTMInteraction(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMInteraction/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMInteraction/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> ESTaskManagementESTMObjectRating(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMObjectRating/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMObjectRating/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> ESTaskManagementESTMTask(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMTask/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMTaskObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMTaskObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMTask/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMTaskObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> ESTaskManagementESTMResource(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMResource/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMResourceObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMResourceObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMResource/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMResourceObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> ESTaskManagementESTMCampaign(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMCampaign/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMCampaign/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> ESTaskManagementESTMSMActivity(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMSMActivity/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMSMActivity/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> ESTaskManagementESTMOpportunity(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESTaskManagement/ESTMOpportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMOpportunity/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> ESWarehouseManagementESWMTransportAction(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWarehouseManagement/ESWMTransportAction/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMTransportAction/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> ESWarehouseManagementESWMAction(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWarehouseManagement/ESWMAction/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMActionObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMActionObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMAction/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMActionObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> ESWarehouseManagementESWMShipment(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWarehouseManagement/ESWMShipment/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMShipment/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> ESWarehouseManagementESWMWorkPackage(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> ESWarehouseManagementESWMRequest(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWarehouseManagement/ESWMRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMRequestObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMRequestObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMRequest/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMRequestObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> ESWarehouseManagementESWMContainer(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWarehouseManagement/ESWMContainer/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMContainerObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMContainerObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMContainer/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMContainerObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> ESWorkInProgressESWPTaskRequest(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWorkInProgress/ESWPTaskRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWorkInProgress/ESWPTaskRequest/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> ESWorkInProgressESWPWorkPackage(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWorkInProgress/ESWPWorkPackage/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWorkInProgress/ESWPWorkPackage/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
         public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> ESWorkInProgressESWPActualTask(Expression<Func<string>> pK)
         {
-            var apiCallPath = String.Format("/api/ESWorkInProgress/ESWPActualTask/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(callPayload);
+            var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWorkInProgress/ESWPActualTask/{0}", __workflow_pK.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(callPayload);
+            });
         }
     }
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/businesshook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            registrationpropCount++;
-            registration["BusinessEventType"] = ExpressionConverter.ConvertO(registrationbusinessEventType);
-            if (registrationcontext != null)
+            var __workflow_registrationbusinessEventType = WorkflowExpression.Compile(registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
+            var __workflow_registrationcontext = WorkflowExpression.Compile(registrationcontext, nameof(registrationcontext), required: false);
+            var __workflow_registrationvalue = WorkflowExpression.Compile(registrationvalue, nameof(registrationvalue), required: false);
+            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(() =>
             {
-                registration["Context"] = ExpressionConverter.ConvertO(registrationcontext);
+                var apiCallPath = "/api/businesshook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
                 registrationpropCount++;
-            }
-
-            if (registrationvalue != null)
-            {
-                if (registrationvalue != null)
+                registration["BusinessEventType"] = ExpressionConverter.ConvertO(__workflow_registrationbusinessEventType);
+                if (__workflow_registrationcontext != null)
                 {
-                    registration["Value"] = ExpressionConverter.ConvertO(registrationvalue);
+                    registration["Context"] = ExpressionConverter.ConvertO(__workflow_registrationcontext);
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["Value"] = 0;
-                registrationpropCount++;
-            }
-
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
-                registrationpropCount++;
-            }
-
-            if (registrationdescription != null)
-            {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
-                if (registrationisActive != null)
+                if (__workflow_registrationvalue != null)
                 {
-                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    if (__workflow_registrationvalue != null)
+                    {
+                        registration["Value"] = ExpressionConverter.ConvertO(__workflow_registrationvalue);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["Value"] = 0;
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
-            }
+                if (__workflow_registrationexternalID != null)
+                {
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registrationpropCount++;
+                }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
+                if (__workflow_registrationdescription != null)
+                {
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
+                    registrationpropCount++;
+                }
 
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, triggerName, recurrence);
+                if (__workflow_registrationisActive != null)
+                {
+                    if (__workflow_registrationisActive != null)
+                    {
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
+                    registrationpropCount++;
+                }
+
+                registration["CallbackURL"] = "#{listCallbackUrl()}";
+                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/podhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            if (registrationstate != null)
+            var __workflow_registrationstate = WorkflowExpression.Compile(registrationstate, nameof(registrationstate), required: false);
+            var __workflow_registrationpackageType = WorkflowExpression.Compile(registrationpackageType, nameof(registrationpackageType), required: false);
+            var __workflow_registrationconveyanceLicencePlate = WorkflowExpression.Compile(registrationconveyanceLicencePlate, nameof(registrationconveyanceLicencePlate), required: false);
+            var __workflow_registrationbranchID = WorkflowExpression.Compile(registrationbranchID, nameof(registrationbranchID), required: false);
+            var __workflow_registrationtradeAccountName = WorkflowExpression.Compile(registrationtradeAccountName, nameof(registrationtradeAccountName), required: false);
+            var __workflow_registrationdriverCode = WorkflowExpression.Compile(registrationdriverCode, nameof(registrationdriverCode), required: false);
+            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(() =>
             {
-                if (registrationstate != null)
+                var apiCallPath = "/api/podhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
+                if (__workflow_registrationstate != null)
                 {
-                    registration["State"] = ExpressionConverter.ConvertO(registrationstate);
+                    if (__workflow_registrationstate != null)
+                    {
+                        registration["State"] = ExpressionConverter.ConvertO(__workflow_registrationstate);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["State"] = "All";
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["State"] = "All";
-                registrationpropCount++;
-            }
-
-            if (registrationpackageType != null)
-            {
-                if (registrationpackageType != null)
+                if (__workflow_registrationpackageType != null)
                 {
-                    registration["PackageType"] = ExpressionConverter.ConvertO(registrationpackageType);
+                    if (__workflow_registrationpackageType != null)
+                    {
+                        registration["PackageType"] = ExpressionConverter.ConvertO(__workflow_registrationpackageType);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["PackageType"] = "All";
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["PackageType"] = "All";
-                registrationpropCount++;
-            }
-
-            if (registrationconveyanceLicencePlate != null)
-            {
-                registration["ConveyanceLicencePlate"] = ExpressionConverter.ConvertO(registrationconveyanceLicencePlate);
-                registrationpropCount++;
-            }
-
-            if (registrationbranchID != null)
-            {
-                registration["BranchID"] = ExpressionConverter.ConvertO(registrationbranchID);
-                registrationpropCount++;
-            }
-
-            if (registrationtradeAccountName != null)
-            {
-                registration["TradeAccountName"] = ExpressionConverter.ConvertO(registrationtradeAccountName);
-                registrationpropCount++;
-            }
-
-            if (registrationdriverCode != null)
-            {
-                registration["DriverCode"] = ExpressionConverter.ConvertO(registrationdriverCode);
-                registrationpropCount++;
-            }
-
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
-                registrationpropCount++;
-            }
-
-            if (registrationdescription != null)
-            {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
-                if (registrationisActive != null)
+                if (__workflow_registrationconveyanceLicencePlate != null)
                 {
-                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registration["ConveyanceLicencePlate"] = ExpressionConverter.ConvertO(__workflow_registrationconveyanceLicencePlate);
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
-            }
+                if (__workflow_registrationbranchID != null)
+                {
+                    registration["BranchID"] = ExpressionConverter.ConvertO(__workflow_registrationbranchID);
+                    registrationpropCount++;
+                }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
+                if (__workflow_registrationtradeAccountName != null)
+                {
+                    registration["TradeAccountName"] = ExpressionConverter.ConvertO(__workflow_registrationtradeAccountName);
+                    registrationpropCount++;
+                }
 
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, triggerName, recurrence);
+                if (__workflow_registrationdriverCode != null)
+                {
+                    registration["DriverCode"] = ExpressionConverter.ConvertO(__workflow_registrationdriverCode);
+                    registrationpropCount++;
+                }
+
+                if (__workflow_registrationexternalID != null)
+                {
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registrationpropCount++;
+                }
+
+                if (__workflow_registrationdescription != null)
+                {
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
+                    registrationpropCount++;
+                }
+
+                if (__workflow_registrationisActive != null)
+                {
+                    if (__workflow_registrationisActive != null)
+                    {
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
+                    registrationpropCount++;
+                }
+
+                registration["CallbackURL"] = "#{listCallbackUrl()}";
+                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/rfahook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            if (registrationrequestedBy != null)
+            var __workflow_registrationrequestedBy = WorkflowExpression.Compile(registrationrequestedBy, nameof(registrationrequestedBy), required: false);
+            var __workflow_registrationpriority = WorkflowExpression.Compile(registrationpriority, nameof(registrationpriority), required: false);
+            var __workflow_registrationrequestClass = WorkflowExpression.Compile(registrationrequestClass, nameof(registrationrequestClass), required: false);
+            var __workflow_registrationrequestCategory = WorkflowExpression.Compile(registrationrequestCategory, nameof(registrationrequestCategory), required: false);
+            var __workflow_registrationnumericValue = WorkflowExpression.Compile(registrationnumericValue, nameof(registrationnumericValue), required: false);
+            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(() =>
             {
-                registration["RequestedBy"] = ExpressionConverter.ConvertO(registrationrequestedBy);
-                registrationpropCount++;
-            }
-
-            if (registrationpriority != null)
-            {
-                registration["Priority"] = ExpressionConverter.ConvertO(registrationpriority);
-                registrationpropCount++;
-            }
-
-            if (registrationrequestClass != null)
-            {
-                registration["RequestClass"] = ExpressionConverter.ConvertO(registrationrequestClass);
-                registrationpropCount++;
-            }
-
-            if (registrationrequestCategory != null)
-            {
-                registration["RequestCategory"] = ExpressionConverter.ConvertO(registrationrequestCategory);
-                registrationpropCount++;
-            }
-
-            if (registrationnumericValue != null)
-            {
-                if (registrationnumericValue != null)
+                var apiCallPath = "/api/rfahook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
+                if (__workflow_registrationrequestedBy != null)
                 {
-                    registration["NumericValue"] = ExpressionConverter.ConvertO(registrationnumericValue);
+                    registration["RequestedBy"] = ExpressionConverter.ConvertO(__workflow_registrationrequestedBy);
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["NumericValue"] = 0;
-                registrationpropCount++;
-            }
-
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
-                registrationpropCount++;
-            }
-
-            if (registrationdescription != null)
-            {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
-                if (registrationisActive != null)
+                if (__workflow_registrationpriority != null)
                 {
-                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registration["Priority"] = ExpressionConverter.ConvertO(__workflow_registrationpriority);
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
-            }
+                if (__workflow_registrationrequestClass != null)
+                {
+                    registration["RequestClass"] = ExpressionConverter.ConvertO(__workflow_registrationrequestClass);
+                    registrationpropCount++;
+                }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
+                if (__workflow_registrationrequestCategory != null)
+                {
+                    registration["RequestCategory"] = ExpressionConverter.ConvertO(__workflow_registrationrequestCategory);
+                    registrationpropCount++;
+                }
 
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, triggerName, recurrence);
+                if (__workflow_registrationnumericValue != null)
+                {
+                    if (__workflow_registrationnumericValue != null)
+                    {
+                        registration["NumericValue"] = ExpressionConverter.ConvertO(__workflow_registrationnumericValue);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["NumericValue"] = 0;
+                    registrationpropCount++;
+                }
+
+                if (__workflow_registrationexternalID != null)
+                {
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registrationpropCount++;
+                }
+
+                if (__workflow_registrationdescription != null)
+                {
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
+                    registrationpropCount++;
+                }
+
+                if (__workflow_registrationisActive != null)
+                {
+                    if (__workflow_registrationisActive != null)
+                    {
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
+                    registrationpropCount++;
+                }
+
+                registration["CallbackURL"] = "#{listCallbackUrl()}";
+                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/hook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            registrationpropCount++;
-            registration["EntityType"] = ExpressionConverter.ConvertO(registrationentityType);
-            registrationpropCount++;
-            registration["EventType"] = ExpressionConverter.ConvertO(registrationeventType);
-            if (registrationexternalID != null)
+            var __workflow_registrationentityType = WorkflowExpression.Compile(registrationentityType, nameof(registrationentityType), required: true);
+            var __workflow_registrationeventType = WorkflowExpression.Compile(registrationeventType, nameof(registrationeventType), required: true);
+            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(() =>
             {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
+                var apiCallPath = "/api/hook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
                 registrationpropCount++;
-            }
-
-            if (registrationdescription != null)
-            {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
+                registration["EntityType"] = ExpressionConverter.ConvertO(__workflow_registrationentityType);
                 registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
-                if (registrationisActive != null)
+                registration["EventType"] = ExpressionConverter.ConvertO(__workflow_registrationeventType);
+                if (__workflow_registrationexternalID != null)
                 {
-                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
-            }
+                if (__workflow_registrationdescription != null)
+                {
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
+                    registrationpropCount++;
+                }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
+                if (__workflow_registrationisActive != null)
+                {
+                    if (__workflow_registrationisActive != null)
+                    {
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
+                        registrationpropCount++;
+                    }
 
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, triggerName, recurrence);
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
+                    registrationpropCount++;
+                }
+
+                registration["CallbackURL"] = "#{listCallbackUrl()}";
+                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/systemhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            registrationpropCount++;
-            registration["SystemEventType"] = ExpressionConverter.ConvertO(registrationsystemEventType);
-            if (registrationotherEvent != null)
+            var __workflow_registrationsystemEventType = WorkflowExpression.Compile(registrationsystemEventType, nameof(registrationsystemEventType), required: true);
+            var __workflow_registrationotherEvent = WorkflowExpression.Compile(registrationotherEvent, nameof(registrationotherEvent), required: false);
+            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(() =>
             {
-                registration["OtherEvent"] = ExpressionConverter.ConvertO(registrationotherEvent);
+                var apiCallPath = "/api/systemhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
                 registrationpropCount++;
-            }
-
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
-                registrationpropCount++;
-            }
-
-            if (registrationdescription != null)
-            {
-                registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
-                if (registrationisActive != null)
+                registration["SystemEventType"] = ExpressionConverter.ConvertO(__workflow_registrationsystemEventType);
+                if (__workflow_registrationotherEvent != null)
                 {
-                    registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                    registration["OtherEvent"] = ExpressionConverter.ConvertO(__workflow_registrationotherEvent);
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
-            }
+                if (__workflow_registrationexternalID != null)
+                {
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registrationpropCount++;
+                }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
+                if (__workflow_registrationdescription != null)
+                {
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
+                    registrationpropCount++;
+                }
 
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload, triggerName, recurrence);
+                if (__workflow_registrationisActive != null)
+                {
+                    if (__workflow_registrationisActive != null)
+                    {
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
+                    registrationpropCount++;
+                }
+
+                registration["CallbackURL"] = "#{listCallbackUrl()}";
+                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -2733,6 +3393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESBGBudgetSheetObjStateType
     {
         Initial,
@@ -2742,6 +3403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Fixed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESBGBudgetSheetObjLayoutTypeType
     {
         PerDC,
@@ -2750,6 +3412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         TotDD
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESBGBudgetSheetObjProductionStatusType
     {
         Indifferent,
@@ -2764,6 +3427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken[] Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum rFARequestpriorityInput
     {
         Low,
@@ -2792,6 +3456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TriggeredOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESRFARequestPriorityType
     {
         Low,
@@ -2799,6 +3464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entityTypeInput
     {
         ES00Device,
@@ -3053,6 +3719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApiApiControllersESCreatedEntityInfoEntityTypeType EntityType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiApiControllersESCreatedEntityInfoEntityTypeType
     {
         ES00Device,
@@ -4095,6 +4762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjTradeAccountTypeType
     {
         Customer,
@@ -4103,12 +4771,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjTradeAccountNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADDocumentStateType
     {
         Temporary,
@@ -4116,6 +4786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjVATStatusType
     {
         Normal,
@@ -4125,6 +4796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADCancelStateType
     {
         Normal,
@@ -4132,6 +4804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADOriginType
     {
         Manual,
@@ -4139,12 +4812,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADFiscalPeriodTypeType
     {
         Normal,
@@ -4152,6 +4827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADTransitionStateType
     {
         None,
@@ -4159,6 +4835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADLockModeType
     {
         NoLock,
@@ -4166,6 +4843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjCalculatedCashFlowTypeType
     {
         No,
@@ -4175,6 +4853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         UndoOutflows
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADProcessStateType
     {
         Initial,
@@ -4407,6 +5086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -4417,6 +5097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjItemClassType
     {
         Item,
@@ -4424,6 +5105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjValuationMethodType
     {
         Average,
@@ -4436,18 +5118,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjExpenseTypeType
     {
         VariousExpenses,
@@ -4474,6 +5159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjServiceTypeType
     {
         ServicesProvision,
@@ -4485,6 +5171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjElementExportCategoryType
     {
         None,
@@ -4748,6 +5435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjTypeType
     {
         Customer,
@@ -4756,12 +5444,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjKEPYOStatusType
     {
         Obligated,
@@ -4770,6 +5460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjVATStatusType
     {
         Normal,
@@ -4779,6 +5470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -4786,6 +5478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjProposedPaymentTypeType
     {
         ByCheck,
@@ -4795,6 +5488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjIncludeTaxDocsType
     {
         All,
@@ -4803,6 +5497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjSolvencyTypeType
     {
         Approved,
@@ -4810,6 +5505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjConcernsType
     {
         Items,
@@ -5146,6 +5842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADDocumentStateType
     {
         Temporary,
@@ -5153,6 +5850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADCancelStateType
     {
         Normal,
@@ -5160,6 +5858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADOriginType
     {
         Manual,
@@ -5167,6 +5866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjVATStatusType
     {
         Normal,
@@ -5176,12 +5876,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADFiscalPeriodTypeType
     {
         Normal,
@@ -5189,6 +5891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADTransitionStateType
     {
         None,
@@ -5196,6 +5899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADLockModeType
     {
         NoLock,
@@ -5203,6 +5907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADProcessStateType
     {
         Initial,
@@ -5520,6 +6225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjTypeType
     {
         Customer,
@@ -5528,12 +6234,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjKEPYOStatusType
     {
         Obligated,
@@ -5542,6 +6250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjVATStatusType
     {
         Normal,
@@ -5551,6 +6260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -5558,6 +6268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjProposedPaymentTypeType
     {
         ByCheck,
@@ -5567,6 +6278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjIncludeTaxDocsType
     {
         All,
@@ -5575,6 +6287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjSolvencyTypeType
     {
         Approved,
@@ -5582,6 +6295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjConcernsType
     {
         Items,
@@ -5813,6 +6527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -5823,6 +6538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjItemClassType
     {
         Item,
@@ -5830,6 +6546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjValuationMethodType
     {
         Average,
@@ -5842,18 +6559,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjExpenseTypeType
     {
         VariousExpenses,
@@ -5880,6 +6600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjServiceTypeType
     {
         ServicesProvision,
@@ -5891,6 +6612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjElementExportCategoryType
     {
         None,
@@ -6245,6 +6967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -6255,6 +6978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjItemClassType
     {
         Item,
@@ -6262,6 +6986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjValuationMethodType
     {
         Average,
@@ -6274,18 +6999,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjExpenseTypeType
     {
         VariousExpenses,
@@ -6312,6 +7040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjServiceTypeType
     {
         ServicesProvision,
@@ -6323,6 +7052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjElementExportCategoryType
     {
         None,
@@ -6432,6 +7162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjAccountTypeType
     {
         Charge,
@@ -6441,6 +7172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Bonus
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjDiscountLineUpdateType
     {
         Discount1,
@@ -6449,6 +7181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Discount4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjAmountTypeType
     {
         Price,
@@ -6457,6 +7190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Round
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjPriceRelatedFieldType
     {
         Quantity,
@@ -6466,6 +7200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Volume
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjPercentageRelatedFieldType
     {
         [EnumMember(Value = "HP_BaseValue")]
@@ -6498,6 +7233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         LPQuantityAndGrossPriceProduct
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjRoundingTypeType
     {
         NoDecimal,
@@ -6506,6 +7242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         _000
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjOriginType
     {
         DocumentType,
@@ -6516,12 +7253,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ShippingMethod
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjIsKEPYOType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjCalcFromPrevLineType
     {
         No,
@@ -6529,6 +7268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RunningTotal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjElementExportCategoryType
     {
         None,
@@ -6541,6 +7281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ClearanceSupply
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjTypeType
     {
         Revenue,
@@ -6966,6 +7707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjSourceTypeType
     {
         CompanySite,
@@ -6975,6 +7717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Transporter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjTargetTypeType
     {
         CompanySite,
@@ -6984,6 +7727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Transporter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADDocumentStateType
     {
         Temporary,
@@ -6991,6 +7735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADCancelStateType
     {
         Normal,
@@ -6998,6 +7743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADOriginType
     {
         Manual,
@@ -7005,12 +7751,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADFiscalPeriodTypeType
     {
         Normal,
@@ -7018,6 +7766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADTransitionStateType
     {
         None,
@@ -7025,6 +7774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADLockModeType
     {
         NoLock,
@@ -7032,6 +7782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADProcessStateType
     {
         Initial,
@@ -7173,12 +7924,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjNatureType
     {
         Receivable,
         Payable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjSourceAccountTypeType
     {
         Customer,
@@ -7188,6 +7941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjTargetAccountTypeType
     {
         Customer,
@@ -7197,6 +7951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjHolderTypeType
     {
         [EnumMember(Value = "One_Off")]
@@ -7211,6 +7966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         GLAccount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjIssuedByTypeType
     {
         [EnumMember(Value = "One_Off")]
@@ -7225,6 +7981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         GLAccount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjUnderwriterTypeType
     {
         [EnumMember(Value = "One_Off")]
@@ -7239,6 +7996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         GLAccount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjConcernsType
     {
         All,
@@ -7439,6 +8197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountContractObjPeriodLengthType
     {
         OneMonthPeriod,
@@ -7540,6 +8299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIVoucherObjTypeType
     {
         DiscVoucherValue,
@@ -7798,6 +8558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjTypeType
     {
         Customer,
@@ -7806,12 +8567,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjKEPYOStatusType
     {
         Obligated,
@@ -7820,6 +8583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjVATStatusType
     {
         Normal,
@@ -7829,6 +8593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -7836,6 +8601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjProposedPaymentTypeType
     {
         ByCheck,
@@ -7845,6 +8611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjIncludeTaxDocsType
     {
         All,
@@ -7853,6 +8620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjSolvencyTypeType
     {
         Approved,
@@ -7860,6 +8628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjConcernsType
     {
         Items,
@@ -8119,6 +8888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjTypeType
     {
         Customer,
@@ -8127,12 +8897,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjKEPYOStatusType
     {
         Obligated,
@@ -8141,6 +8913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjVATStatusType
     {
         Normal,
@@ -8150,6 +8923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -8157,6 +8931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjProposedPaymentTypeType
     {
         ByCheck,
@@ -8166,6 +8941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjIncludeTaxDocsType
     {
         All,
@@ -8174,6 +8950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjSolvencyTypeType
     {
         Approved,
@@ -8181,6 +8958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjConcernsType
     {
         Items,
@@ -8274,12 +9052,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjKindType
     {
         Sales,
         Purchases
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjDiscountAssignmentType
     {
         DirectlyOnPrice,
@@ -8288,6 +9068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Discount3Field
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjTypeType
     {
         Simple,
@@ -8296,6 +9077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         InvoicePolicyReference
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjDiscountSelectionType
     {
         All,
@@ -8527,6 +9309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -8537,6 +9320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjItemClassType
     {
         Item,
@@ -8544,6 +9328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjValuationMethodType
     {
         Average,
@@ -8556,18 +9341,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjExpenseTypeType
     {
         VariousExpenses,
@@ -8594,6 +9382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjServiceTypeType
     {
         ServicesProvision,
@@ -8605,6 +9394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjElementExportCategoryType
     {
         None,
@@ -8723,6 +9513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICashAccountObjExportTransferLayoutTypeType
     {
         None,
@@ -8732,12 +9523,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Ethniki
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICashAccountObjNotesNumberingModeType
     {
         BasedOnIntervals,
         BasedOnSpecifiedValues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICashAccountObjConcernsType
     {
         All,
@@ -9215,6 +10008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjAccountTypeType
     {
         GeneralLedgerAccount,
@@ -9227,6 +10021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         SalesPerson
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADDocumentStateType
     {
         Temporary,
@@ -9234,6 +10029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADCancelStateType
     {
         Normal,
@@ -9241,6 +10037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADOriginType
     {
         Manual,
@@ -9248,12 +10045,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADFiscalPeriodTypeType
     {
         Normal,
@@ -9261,6 +10060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADTransitionStateType
     {
         None,
@@ -9268,6 +10068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjVATStatusType
     {
         Normal,
@@ -9277,6 +10078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADLockModeType
     {
         NoLock,
@@ -9284,6 +10086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADProcessStateType
     {
         Initial,
@@ -9544,6 +10347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjTypeType
     {
         Customer,
@@ -9552,12 +10356,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjKEPYOStatusType
     {
         Obligated,
@@ -9566,6 +10372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjVATStatusType
     {
         Normal,
@@ -9575,6 +10382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -9582,6 +10390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjProposedPaymentTypeType
     {
         ByCheck,
@@ -9591,6 +10400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjIncludeTaxDocsType
     {
         All,
@@ -9599,6 +10409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjSolvencyTypeType
     {
         Approved,
@@ -9606,6 +10417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjConcernsType
     {
         Items,
@@ -9920,6 +10732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -9930,6 +10743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjItemClassType
     {
         Item,
@@ -9937,6 +10751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjItemTypeType
     {
         Good,
@@ -9954,6 +10769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PackingMaterial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjValuationMethodType
     {
         Average,
@@ -9966,12 +10782,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjAssetTypeType
     {
         Land,
@@ -10265,6 +11083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjVATStatusType
     {
         Normal,
@@ -10274,12 +11093,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjPersonKindType
     {
         LegalPerson,
         ActualPerson
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjSexType
     {
         Unknown,
@@ -10287,6 +11108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Female
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjFamilyStatusType
     {
         Unmarried,
@@ -10295,6 +11117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjPreferredWayOfContractType
     {
         UNKNOWN,
@@ -10373,6 +11196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjLogTypeType
     {
         Full,
@@ -10380,6 +11204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Phantom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjStateType
     {
         Normal,
@@ -10390,6 +11215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Init
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjMobileApplicationType
     {
         SalesForceAutomation,
@@ -10407,6 +11233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ESAnalyzer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjOperatingSystemType
     {
         WindowsMobile,
@@ -10447,6 +11274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOWebUserObjStatusType
     {
         PendingActivation,
@@ -10514,6 +11342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjSecurityLevelType
     {
         IPRestricted,
@@ -10526,6 +11355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ForbidEditShortcuts
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjUserTypeType
     {
         Normal,
@@ -10533,12 +11363,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         B2BUser
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjValidAuthMethodsType
     {
         BASIC,
         LDAP
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjAllowAccessFromSourceType
     {
         Desktop,
@@ -10548,6 +11380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Service
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjRequest2FAFromSourceType
     {
         Desktop,
@@ -10586,6 +11419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESBusinessHookRegistrationResponseBusinessEventTypeType
     {
         HighValueSalesOrder,
@@ -10609,6 +11443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RequestHasBeenApproved
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESBusinessHookRegistrationResponseHClassType
     {
         Entity,
@@ -10651,6 +11486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESPodHookRegistrationResponseStateType
     {
         Initial,
@@ -10661,6 +11497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESPodHookRegistrationResponsePackageTypeType
     {
         MasterPackage,
@@ -10671,6 +11508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESPodHookRegistrationResponseHClassType
     {
         Entity,
@@ -10714,6 +11552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESRFAHookRegistrationResponsePriorityType
     {
         Low,
@@ -10721,6 +11560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESRFAHookRegistrationResponseHClassType
     {
         Entity,
@@ -10759,6 +11599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESEntityHookRegistrationResponseEntityTypeType
     {
         ES00Device,
@@ -11005,6 +11846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ESWPWorkPackage
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESEntityHookRegistrationResponseEventTypeType
     {
         Create,
@@ -11013,6 +11855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         CreateOrUpdate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESEntityHookRegistrationResponseHClassType
     {
         Entity,
@@ -11051,6 +11894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESSystemHookRegistrationResponseSystemEventTypeTypeItem
     {
         RestartAppServer,
@@ -11070,6 +11914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESSystemHookRegistrationResponseHClassType
     {
         Entity,
@@ -11165,6 +12010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjModelClassType
     {
         NotSpecified,
@@ -11175,6 +12021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Recommendation
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjRegressionType
     {
         NotSpecified,
@@ -11182,6 +12029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Casual
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjStatusType
     {
         Initial,
@@ -11191,6 +12039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Training
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSubSystemType
     {
         NotSpecified,
@@ -11204,6 +12053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ItemLikelihoodToDeliver
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjAlgorithmType
     {
         NotSpecified,
@@ -11237,6 +12087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         MLCATBOOST
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjMeasureType
     {
         NotSpecified,
@@ -11245,6 +12096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Transactions
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjAggregateType
     {
         NotSpecified,
@@ -11255,12 +12107,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Count
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTransactionGroupsType
     {
         Date,
         TransactionID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCalendarGroupsType
     {
         Year,
@@ -11276,6 +12130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         WorkingDay
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCompanyGroupsType
     {
         Company,
@@ -11286,6 +12141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Dimension2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBranchGroupsType
     {
         Branch,
@@ -11296,6 +12152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountGroupsType
     {
         TradeAccount,
@@ -11315,6 +12172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Education
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjItemGroupsType
     {
         Item,
@@ -11324,6 +12182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         SubCategory
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCalendarFeaturesType
     {
         Year,
@@ -11339,6 +12198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         WorkingDay
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCompanyFeaturesType
     {
         Company,
@@ -11349,6 +12209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Dimension2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBranchFeaturesType
     {
         Branch,
@@ -11359,6 +12220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountFeaturesType
     {
         TradeAccount,
@@ -11378,6 +12240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Education
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjItemFeaturesType
     {
         Item,
@@ -11387,6 +12250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         SubCategory
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonGroupsType
     {
         Person,
@@ -11415,6 +12279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Property10
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonFeaturesType
     {
         Person,
@@ -11443,6 +12308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Property10
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSiteGroupsType
     {
         Site,
@@ -11453,6 +12319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSiteFeaturesType
     {
         Site,
@@ -11463,6 +12330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjOpportunityFeaturesType
     {
         Lead,
@@ -11473,6 +12341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Competitor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTransactionKPIFeaturesType
     {
         Turnover,
@@ -11482,6 +12351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NumberOfItemHierarchyCategories
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBinningStrategyType
     {
         NoBinning,
@@ -11491,6 +12361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         DecisionTree
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCompanyFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11498,6 +12369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBranchFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11505,6 +12377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11512,6 +12385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonSiteFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11519,6 +12393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonPropertyFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11526,6 +12401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11533,6 +12409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountSiteFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11540,6 +12417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSiteFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11547,6 +12425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjOpportunityFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11554,6 +12433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjNumericFeaturesType
     {
         Numeric1,
@@ -11583,6 +12463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Numeric25
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjItemFeaturesGenerationType
     {
         SelectedFeatures,
@@ -11590,6 +12471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjFeatureImportanceAlgorithmType
     {
         RandomForest,
@@ -11598,6 +12480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RecursiveFeatureElimination
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjHyperParamOptType
     {
         Default,
@@ -11606,6 +12489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Bayesian
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBinningNumStrategyType
     {
         None,
@@ -11614,12 +12498,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         BayesianBlocks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjFeatureCorrelationNumAlgortithmType
     {
         PearsonCorrCoef,
         Spearman
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjFeatureCorrelationCatAlgortithmType
     {
         CramersV
@@ -11791,6 +12677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMSerialNumberObjPositionTypeType
     {
         TradeAccount,
@@ -11917,6 +12804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCatalogueItemObjNotesTextTypeType
     {
         RichText,
@@ -11924,6 +12812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         HtmlText
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCatalogueItemObjProductTypeType
     {
         CompanyProduct,
@@ -11997,6 +12886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStorageLocationObjAisleSideTypeType
     {
         Unknown,
@@ -12364,6 +13254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -12374,6 +13265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjItemClassType
     {
         Item,
@@ -12381,6 +13273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjItemTypeType
     {
         Good,
@@ -12398,6 +13291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PackingMaterial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjValuationMethodType
     {
         Average,
@@ -12410,18 +13304,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjServiceMUTypeType
     {
         BaseMU,
         AltMU
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjLotCharacteristicsMgmtType
     {
         ExpirationDate,
@@ -12581,12 +13478,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjValuationMethodType
     {
         Average,
@@ -12599,6 +13498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjItemTypeType
     {
         Good,
@@ -12616,6 +13516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PackingMaterial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjItemClassType
     {
         Item,
@@ -12623,6 +13524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjAssetTypeType
     {
         Land,
@@ -12636,6 +13538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjLotCharacteristicsMgmtType
     {
         ExpirationDate,
@@ -12876,6 +13779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMProductionPlanObjStatusType
     {
         Initial,
@@ -12887,6 +13791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Cancelled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMProductionPlanObjDatesCalculationBasedOnType
     {
         ResourceDateAnalysis,
@@ -13102,6 +14007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string DataTypeName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum severityInput
     {
         Information,
@@ -13121,6 +14027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string EnumName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiModelsCompanyParamExESTypeType
     {
         [EnumMember(Value = "STRING_TYPE")]
@@ -13172,6 +14079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMMobileTaskTypeObjSignatureType
     {
         None,
@@ -13410,18 +14318,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMServiceRequestObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMServiceRequestObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMServiceRequestObjTaskNotesTextTypeType
     {
         RichText,
@@ -13457,18 +14368,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMRFMModelObjTradeAccountSelectionModeType
     {
         AllCustomers,
         BasedOnFilter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMRFMModelObjStateType
     {
         InProgress,
         Completed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMRFMModelObjCalculationSourceType
     {
         TradeAccountEntries,
@@ -13500,6 +14414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMNewsletterRecipientObjStateType
     {
         Subscribed,
@@ -13739,18 +14654,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMInteractionObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMInteractionObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMInteractionObjTaskNotesTextTypeType
     {
         RichText,
@@ -14016,18 +14934,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMTaskObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMTaskObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMTaskObjTaskNotesTextTypeType
     {
         RichText,
@@ -14077,6 +14998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMResourceObjResourceTypeType
     {
         Person,
@@ -14316,18 +15238,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMCampaignObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMCampaignObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMCampaignObjTaskNotesTextTypeType
     {
         RichText,
@@ -14566,18 +15491,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMSMActivityObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMSMActivityObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMSMActivityObjTaskNotesTextTypeType
     {
         RichText,
@@ -14816,18 +15744,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMOpportunityObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMOpportunityObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMOpportunityObjTaskNotesTextTypeType
     {
         RichText,
@@ -15065,6 +15996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESWMTransportActionObjBalancePostingType
     {
         ActionItem,
@@ -15166,6 +16098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESWMShipmentObjOriginType
     {
         User,
@@ -15540,6 +16473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationbusinessEventTypeInput
     {
         HighValueSalesOrder,
@@ -15563,6 +16497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RequestHasBeenApproved
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationstateInput
     {
         Initial,
@@ -15573,6 +16508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationpackageTypeInput
     {
         MasterPackage,
@@ -15583,6 +16519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationpriorityInput
     {
         Low,
@@ -15590,6 +16527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationentityTypeInput
     {
         ES00Device,
@@ -15836,6 +16774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ESWPWorkPackage
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationeventTypeInput
     {
         Create,
@@ -15844,6 +16783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         CreateOrUpdate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationsystemEventTypeInputItem
     {
         RestartAppServer,

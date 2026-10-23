@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,10 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apptigentpowertoolspro")]
         public IWorkflowAction CompositeImage(Expression<Func<positionInput>> position, Expression<Func<double>> opacity, Expression<Func<object>> background, Expression<Func<object>> foreground, Expression<Func<double>> horizontal = null, Expression<Func<double>> vertical = null, Expression<Func<string>> filename = null)
         {
-            var apiCallPath = "/CompositeImage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_position = WorkflowExpression.Compile(position, nameof(position), required: true);
+            var __workflow_opacity = WorkflowExpression.Compile(opacity, nameof(opacity), required: true);
+            var __workflow_background = WorkflowExpression.Compile(background, nameof(background), required: true);
+            var __workflow_foreground = WorkflowExpression.Compile(foreground, nameof(foreground), required: true);
+            var __workflow_horizontal = WorkflowExpression.Compile(horizontal, nameof(horizontal), required: false);
+            var __workflow_vertical = WorkflowExpression.Compile(vertical, nameof(vertical), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/CompositeImage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -25,6 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum positionInput
     {
         Custom,

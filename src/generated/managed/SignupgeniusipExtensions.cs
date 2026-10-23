@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,41 +32,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<GroupMemberResponse> GroupMember(Expression<Func<string>> groupID)
         {
-            var apiCallPath = String.Format("/groups/{0}/members/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GroupMemberResponse>(callPayload);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            return new DeferredBodyAction<GroupMemberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/members/", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GroupMemberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<GroupMemberDetailResponse> GroupMemberDetail(Expression<Func<string>> groupID, Expression<Func<string>> memberID)
         {
-            var apiCallPath = String.Format("/groups/{0}/members/{1}/details/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1), ExpressionConverter.ConvertWithUrlEncoding(memberID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GroupMemberDetailResponse>(callPayload);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_memberID = WorkflowExpression.Compile(memberID, nameof(memberID), required: true);
+            return new DeferredBodyAction<GroupMemberDetailResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/members/{1}/details/", __workflow_groupID.WithUrlEncoding(1), __workflow_memberID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GroupMemberDetailResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<GroupUserAddResponse> GroupUserAdd(Expression<Func<string>> groupID, Expression<Func<string>> bodyemailaddress, Expression<Func<string>> bodyfirstname, Expression<Func<string>> bodylastname)
         {
-            var apiCallPath = String.Format("/groups/{0}/members/create/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["emailaddress"] = ExpressionConverter.ConvertO(bodyemailaddress);
-            bodypropCount++;
-            body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
-            bodypropCount++;
-            body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
-            if (bodypropCount > 0)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyemailaddress = WorkflowExpression.Compile(bodyemailaddress, nameof(bodyemailaddress), required: true);
+            var __workflow_bodyfirstname = WorkflowExpression.Compile(bodyfirstname, nameof(bodyfirstname), required: true);
+            var __workflow_bodylastname = WorkflowExpression.Compile(bodylastname, nameof(bodylastname), required: true);
+            return new DeferredBodyAction<GroupUserAddResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/members/create/", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["emailaddress"] = ExpressionConverter.ConvertO(__workflow_bodyemailaddress);
+                bodypropCount++;
+                body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
+                bodypropCount++;
+                body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GroupUserAddResponse>(callPayload);
+                return new ApiConnectionAction<GroupUserAddResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
@@ -117,28 +133,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<ReportSignUpResponse> ReportSignUp(Expression<Func<string>> signUpID)
         {
-            var apiCallPath = String.Format("/signups/report/all/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReportSignUpResponse>(callPayload);
+            var __workflow_signUpID = WorkflowExpression.Compile(signUpID, nameof(signUpID), required: true);
+            return new DeferredBodyAction<ReportSignUpResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signups/report/all/{0}", __workflow_signUpID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReportSignUpResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<ReportSignUpSlotResponse> ReportSignUpSlot(Expression<Func<string>> signUpID)
         {
-            var apiCallPath = String.Format("/signups/report/available/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReportSignUpSlotResponse>(callPayload);
+            var __workflow_signUpID = WorkflowExpression.Compile(signUpID, nameof(signUpID), required: true);
+            return new DeferredBodyAction<ReportSignUpSlotResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signups/report/available/{0}", __workflow_signUpID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReportSignUpSlotResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<ReportSignupFilledResponse> ReportSignupFilled(Expression<Func<string>> signUpID)
         {
-            var apiCallPath = String.Format("/signups/report/filled/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReportSignupFilledResponse>(callPayload);
+            var __workflow_signUpID = WorkflowExpression.Compile(signUpID, nameof(signUpID), required: true);
+            return new DeferredBodyAction<ReportSignupFilledResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signups/report/filled/{0}", __workflow_signUpID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReportSignupFilledResponse>(callPayload);
+            });
         }
     }
 

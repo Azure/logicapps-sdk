@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,14 +23,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<int>> vatNumber = null, Expression<Func<string>> countryCode = null)
         {
-            var apiCallPath = "/v2/check";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (vatNumber != null)
-                callPayload.Queries["vat_number"] = ExpressionConverter.Convert(vatNumber);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            var __workflow_vatNumber = WorkflowExpression.Compile(vatNumber, nameof(vatNumber), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
+            return new DeferredBodyAction<ValidateResponse>(() =>
+            {
+                var apiCallPath = "/v2/check";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_vatNumber != null)
+                    callPayload.Queries["vat_number"] = ExpressionConverter.Convert(__workflow_vatNumber);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                return new ApiConnectionAction<ValidateResponse>(callPayload);
+            });
         }
     }
 

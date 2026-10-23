@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iconhorseip")]
         public IBodyWorkflowAction<JToken> FaviconGet(Expression<Func<string>> domain)
         {
-            var apiCallPath = String.Format("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/icon/{0}", __workflow_domain.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

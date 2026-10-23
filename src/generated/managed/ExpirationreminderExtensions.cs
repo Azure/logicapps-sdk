@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,110 +14,133 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IBodyWorkflowAction<FindExpirationResponse> FindExpiration(Expression<Func<string>> category = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null)
         {
-            var apiCallPath = "/v1/expirationitems/find";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            return new ApiConnectionAction<FindExpirationResponse>(callPayload);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            return new DeferredBodyAction<FindExpirationResponse>(() =>
+            {
+                var apiCallPath = "/v1/expirationitems/find";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_email != null)
+                    callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                return new ApiConnectionAction<FindExpirationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IWorkflowAction CreateContact(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null)
         {
-            var apiCallPath = "/v1/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+                if (__workflow_bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IBodyWorkflowAction<RenewExpirationResponse> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodydetails = null)
         {
-            var apiCallPath = String.Format("/v1/expirationitems/{0}/renew", ExpressionConverter.ConvertWithUrlEncoding(expirationItemId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyexpirationDate != null)
+            var __workflow_expirationItemId = WorkflowExpression.Compile(expirationItemId, nameof(expirationItemId), required: true);
+            var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            var __workflow_bodydetails = WorkflowExpression.Compile(bodydetails, nameof(bodydetails), required: false);
+            return new DeferredBodyAction<RenewExpirationResponse>(() =>
             {
-                body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/expirationitems/{0}/renew", __workflow_expirationItemId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyexpirationDate != null)
+                {
+                    body["expiration_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
+                    bodypropCount++;
+                }
 
-            if (bodydetails != null)
-            {
-                body["details"] = ExpressionConverter.ConvertO(bodydetails);
-                bodypropCount++;
-            }
+                if (__workflow_bodydetails != null)
+                {
+                    body["details"] = ExpressionConverter.ConvertO(__workflow_bodydetails);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<RenewExpirationResponse>(callPayload);
+                return new ApiConnectionAction<RenewExpirationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
         public IBodyWorkflowAction<CreateExpirationItemResponse> CreateExpirationItem(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycategoryName = null, Expression<Func<string>> bodyexpirationDate = null)
         {
-            var apiCallPath = "/v1/expirationitems";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycategoryName = WorkflowExpression.Compile(bodycategoryName, nameof(bodycategoryName), required: false);
+            var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            return new DeferredBodyAction<CreateExpirationItemResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1/expirationitems";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodycategoryName != null)
-            {
-                body["category_name"] = ExpressionConverter.ConvertO(bodycategoryName);
-                bodypropCount++;
-            }
+                if (__workflow_bodycategoryName != null)
+                {
+                    body["category_name"] = ExpressionConverter.ConvertO(__workflow_bodycategoryName);
+                    bodypropCount++;
+                }
 
-            if (bodyexpirationDate != null)
-            {
-                body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodyexpirationDate != null)
+                {
+                    body["expiration_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateExpirationItemResponse>(callPayload);
+                return new ApiConnectionAction<CreateExpirationItemResponse>(callPayload);
+            });
         }
     }
 

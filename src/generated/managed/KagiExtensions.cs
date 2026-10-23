@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,134 +14,164 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SummarizePostResponse> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
         {
-            var apiCallPath = "/v0/summarize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyurl != null)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyengine = WorkflowExpression.Compile(bodyengine, nameof(bodyengine), required: false);
+            var __workflow_bodysummaryType = WorkflowExpression.Compile(bodysummaryType, nameof(bodysummaryType), required: false);
+            var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
+            var __workflow_bodycache = WorkflowExpression.Compile(bodycache, nameof(bodycache), required: false);
+            return new DeferredBodyAction<SummarizePostResponse>(() =>
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodyengine != null)
-            {
-                if (bodyengine != null)
+                var apiCallPath = "/v0/summarize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyurl != null)
                 {
-                    body["engine"] = ExpressionConverter.ConvertO(bodyengine);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["engine"] = "cecil";
-                bodypropCount++;
-            }
-
-            if (bodysummaryType != null)
-            {
-                if (bodysummaryType != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["summary_type"] = ExpressionConverter.ConvertO(bodysummaryType);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["summary_type"] = "summary";
-                bodypropCount++;
-            }
+                if (__workflow_bodyengine != null)
+                {
+                    if (__workflow_bodyengine != null)
+                    {
+                        body["engine"] = ExpressionConverter.ConvertO(__workflow_bodyengine);
+                        bodypropCount++;
+                    }
 
-            if (bodytargetLanguage != null)
-            {
-                body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["engine"] = "cecil";
+                    bodypropCount++;
+                }
 
-            if (bodycache != null)
-            {
-                body["cache"] = ExpressionConverter.ConvertO(bodycache);
-                bodypropCount++;
-            }
+                if (__workflow_bodysummaryType != null)
+                {
+                    if (__workflow_bodysummaryType != null)
+                    {
+                        body["summary_type"] = ExpressionConverter.ConvertO(__workflow_bodysummaryType);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["summary_type"] = "summary";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SummarizePostResponse>(callPayload);
+                if (__workflow_bodytargetLanguage != null)
+                {
+                    body["target_language"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycache != null)
+                {
+                    body["cache"] = ExpressionConverter.ConvertO(__workflow_bodycache);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SummarizePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<FastGPTPostResponse> FastGPT(Expression<Func<string>> bodyquery)
         {
-            var apiCallPath = "/v0/fastgpt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            if (bodypropCount > 0)
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            return new DeferredBodyAction<FastGPTPostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v0/fastgpt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FastGPTPostResponse>(callPayload);
+                return new ApiConnectionAction<FastGPTPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/v0/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<SearchGetResponse>(() =>
+            {
+                var apiCallPath = "/v0/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet(Expression<Func<string>> q)
         {
-            var apiCallPath = "/v0/enrich/web";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<EnrichmentWebGetResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            return new DeferredBodyAction<EnrichmentWebGetResponse>(() =>
+            {
+                var apiCallPath = "/v0/enrich/web";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                return new ApiConnectionAction<EnrichmentWebGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet(Expression<Func<string>> q)
         {
-            var apiCallPath = "/v0/enrich/news";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<EnrichmentNewsGetResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            return new DeferredBodyAction<EnrichmentNewsGetResponse>(() =>
+            {
+                var apiCallPath = "/v0/enrich/news";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                return new ApiConnectionAction<EnrichmentNewsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet(Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/v1/smallweb/feed/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<SmallWebGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<SmallWebGetResponse>(() =>
+            {
+                var apiCallPath = "/v1/smallweb/feed/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<SmallWebGetResponse>(callPayload);
+            });
         }
     }
 
@@ -203,6 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Ref { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyengineInput
     {
         [EnumMember(Value = "cecil")]
@@ -215,6 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         Muriel
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysummaryTypeInput
     {
         [EnumMember(Value = "summary")]
@@ -223,6 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         Takeaway
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytargetLanguageInput
     {
         BG,

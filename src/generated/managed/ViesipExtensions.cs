@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,21 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
         public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity(Expression<Func<bodycountryCodeInput>> bodycountryCode, Expression<Func<string>> bodyvatNumber)
         {
-            var apiCallPath = "/taxation_customs/vies/services/checkVatService";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-            bodypropCount++;
-            body["vatNumber"] = ExpressionConverter.ConvertO(bodyvatNumber);
-            if (bodypropCount > 0)
+            var __workflow_bodycountryCode = WorkflowExpression.Compile(bodycountryCode, nameof(bodycountryCode), required: true);
+            var __workflow_bodyvatNumber = WorkflowExpression.Compile(bodyvatNumber, nameof(bodyvatNumber), required: true);
+            return new DeferredBodyAction<CheckVATValidityResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/taxation_customs/vies/services/checkVatService";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["countryCode"] = ExpressionConverter.ConvertO(__workflow_bodycountryCode);
+                bodypropCount++;
+                body["vatNumber"] = ExpressionConverter.ConvertO(__workflow_bodyvatNumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
+                return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
+            });
         }
     }
 
@@ -57,6 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
         public string Address { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycountryCodeInput
     {
         AT,

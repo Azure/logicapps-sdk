@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,197 +14,258 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IBodyWorkflowAction<ListMessagesResponse> ListMessages(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> startTime = null, Expression<Func<string>> maxPageSize = null)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
-            if (maxPageSize != null)
-                callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(maxPageSize);
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction<ListMessagesResponse>(callPayload);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
+            var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
+            return new DeferredBodyAction<ListMessagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/messages", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                if (__workflow_startTime != null)
+                    callPayload.Queries["startTime"] = ExpressionConverter.Convert(__workflow_startTime);
+                if (__workflow_maxPageSize != null)
+                    callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(__workflow_maxPageSize);
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction<ListMessagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IBodyWorkflowAction<SendChatResponse> SendChat(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycontent, Expression<Func<string>> bodysenderDisplayName)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            bodypropCount++;
-            body["senderDisplayName"] = ExpressionConverter.ConvertO(bodysenderDisplayName);
-            if (bodypropCount > 0)
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodysenderDisplayName = WorkflowExpression.Compile(bodysenderDisplayName, nameof(bodysenderDisplayName), required: true);
+            return new DeferredBodyAction<SendChatResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/messages", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                bodypropCount++;
+                body["senderDisplayName"] = ExpressionConverter.ConvertO(__workflow_bodysenderDisplayName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendChatResponse>(callPayload);
+                return new ApiConnectionAction<SendChatResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IBodyWorkflowAction<AddParticipantsResponse> AddParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<bodyparticipantsInputItem[]>> bodyparticipants = null)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}/participants/:add", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyparticipants != null)
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
+            return new DeferredBodyAction<AddParticipantsResponse>(() =>
             {
-                body["participants"] = ExpressionConverter.ConvertO(bodyparticipants);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:add", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyparticipants != null)
+                {
+                    body["participants"] = ExpressionConverter.ConvertO(__workflow_bodyparticipants);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddParticipantsResponse>(callPayload);
+                return new ApiConnectionAction<AddParticipantsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IWorkflowAction RemoveParticipant(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycommunicationUseruserID = null)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}/participants/:remove", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var communicationUserObject = new JObject();
-            var communicationUserObjectpropCount = 0;
-            if (bodycommunicationUseruserID != null)
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            var __workflow_bodycommunicationUseruserID = WorkflowExpression.Compile(bodycommunicationUseruserID, nameof(bodycommunicationUseruserID), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                communicationUserObject["id"] = ExpressionConverter.ConvertO(bodycommunicationUseruserID);
-                communicationUserObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:remove", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var communicationUserObject = new JObject();
+                var communicationUserObjectpropCount = 0;
+                if (__workflow_bodycommunicationUseruserID != null)
+                {
+                    communicationUserObject["id"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationUseruserID);
+                    communicationUserObjectpropCount++;
+                }
 
-            if (communicationUserObjectpropCount > 0)
-            {
-                body["communicationUser"] = communicationUserObject;
-                bodypropCount++;
-            }
+                if (communicationUserObjectpropCount > 0)
+                {
+                    body["communicationUser"] = communicationUserObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IBodyWorkflowAction<ListChatThreadsResponse> ListChatThreads(Expression<Func<string>> accessToken, Expression<Func<string>> startTime = null, Expression<Func<int>> maxPageSize = null)
         {
-            var apiCallPath = "/chat/threads";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            if (startTime != null)
-                callPayload.Queries["startTime"] = ExpressionConverter.Convert(startTime);
-            if (maxPageSize != null)
-                callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(maxPageSize);
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction<ListChatThreadsResponse>(callPayload);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
+            var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
+            return new DeferredBodyAction<ListChatThreadsResponse>(() =>
+            {
+                var apiCallPath = "/chat/threads";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                if (__workflow_startTime != null)
+                    callPayload.Queries["startTime"] = ExpressionConverter.Convert(__workflow_startTime);
+                if (__workflow_maxPageSize != null)
+                    callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(__workflow_maxPageSize);
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction<ListChatThreadsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IBodyWorkflowAction<CreateChatResponse> CreateChat(Expression<Func<string>> accessToken, Expression<Func<string>> bodytopic, Expression<Func<bodyparticipantsInputItem2[]>> bodyparticipants = null)
         {
-            var apiCallPath = "/chat/threads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["topic"] = ExpressionConverter.ConvertO(bodytopic);
-            if (bodyparticipants != null)
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
+            var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
+            return new DeferredBodyAction<CreateChatResponse>(() =>
             {
-                body["participants"] = ExpressionConverter.ConvertO(bodyparticipants);
+                var apiCallPath = "/chat/threads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
+                if (__workflow_bodyparticipants != null)
+                {
+                    body["participants"] = ExpressionConverter.ConvertO(__workflow_bodyparticipants);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateChatResponse>(callPayload);
+                return new ApiConnectionAction<CreateChatResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IBodyWorkflowAction<ListParticipantsResponse> ListParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> skip = null, Expression<Func<string>> maxPageSize = null)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}/participants", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            if (maxPageSize != null)
-                callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(maxPageSize);
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction<ListParticipantsResponse>(callPayload);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
+            return new DeferredBodyAction<ListParticipantsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_maxPageSize != null)
+                    callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(__workflow_maxPageSize);
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction<ListParticipantsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IBodyWorkflowAction<GetThreadPropertiesResponse> GetThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction<GetThreadPropertiesResponse>(callPayload);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            return new DeferredBodyAction<GetThreadPropertiesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction<GetThreadPropertiesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IWorkflowAction UpdateChatThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodytopic = null)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            callPayload.Headers["content-type"] = Convert.ToString("application/merge-patch+json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopic != null)
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["topic"] = ExpressionConverter.ConvertO(bodytopic);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                callPayload.Headers["content-type"] = Convert.ToString("application/merge-patch+json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytopic != null)
+                {
+                    body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
         public IWorkflowAction DeleteChatThread(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId)
         {
-            var apiCallPath = String.Format("/chat/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(chatThreadId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
-            callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
+                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

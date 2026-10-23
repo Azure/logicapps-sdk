@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,107 +14,133 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileListResponse> FileList(Expression<Func<string>> search = null, Expression<Func<string>> sort = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<FileListResponse>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<FileListResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<FileListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileUploadResponse> FileUpload(Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfile != null)
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
+            var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            return new DeferredBodyAction<FileUploadResponse>(() =>
             {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
-                bodypropCount++;
-            }
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfile != null)
+                {
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    bodypropCount++;
+                }
 
-            if (bodyexpires != null)
-            {
-                body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
-                bodypropCount++;
-            }
+                if (__workflow_bodyexpires != null)
+                {
+                    body["expires"] = ExpressionConverter.ConvertO(__workflow_bodyexpires);
+                    bodypropCount++;
+                }
 
-            if (bodymaxDownloads != null)
-            {
-                body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
-                bodypropCount++;
-            }
+                if (__workflow_bodymaxDownloads != null)
+                {
+                    body["maxDownloads"] = ExpressionConverter.ConvertO(__workflow_bodymaxDownloads);
+                    bodypropCount++;
+                }
 
-            if (bodyautoDelete != null)
-            {
-                body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
-                bodypropCount++;
-            }
+                if (__workflow_bodyautoDelete != null)
+                {
+                    body["autoDelete"] = ExpressionConverter.ConvertO(__workflow_bodyautoDelete);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FileUploadResponse>(callPayload);
+                return new ApiConnectionAction<FileUploadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileUpdateResponse> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfile != null)
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
+            var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            return new DeferredBodyAction<FileUpdateResponse>(() =>
             {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfile != null)
+                {
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    bodypropCount++;
+                }
 
-            if (bodyexpires != null)
-            {
-                body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
-                bodypropCount++;
-            }
+                if (__workflow_bodyexpires != null)
+                {
+                    body["expires"] = ExpressionConverter.ConvertO(__workflow_bodyexpires);
+                    bodypropCount++;
+                }
 
-            if (bodymaxDownloads != null)
-            {
-                body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
-                bodypropCount++;
-            }
+                if (__workflow_bodymaxDownloads != null)
+                {
+                    body["maxDownloads"] = ExpressionConverter.ConvertO(__workflow_bodymaxDownloads);
+                    bodypropCount++;
+                }
 
-            if (bodyautoDelete != null)
-            {
-                body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
-                bodypropCount++;
-            }
+                if (__workflow_bodyautoDelete != null)
+                {
+                    body["autoDelete"] = ExpressionConverter.ConvertO(__workflow_bodyautoDelete);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FileUpdateResponse>(callPayload);
+                return new ApiConnectionAction<FileUpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> key)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FileDeleteResponse>(callPayload);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            return new DeferredBodyAction<FileDeleteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_key.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FileDeleteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]

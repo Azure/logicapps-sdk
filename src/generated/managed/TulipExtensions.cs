@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,30 +14,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> CreateRecord(Expression<Func<string>> tableId, Expression<Func<object>> dynamicTableSchema = null)
         {
-            var apiCallPath = String.Format("/tables/{0}/records", ExpressionConverter.ConvertWithUrlEncoding(tableId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicTableSchema);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
+            var __workflow_dynamicTableSchema = WorkflowExpression.Compile(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tables/{0}/records", __workflow_tableId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTableSchema);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> GetRecord(Expression<Func<string>> tableId, Expression<Func<string>> recordId)
         {
-            var apiCallPath = String.Format("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tables/{0}/records/{1}", __workflow_tableId.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> UpdateRecord(Expression<Func<string>> tableId, Expression<Func<string>> recordId, Expression<Func<object>> dynamicTableSchema = null)
         {
-            var apiCallPath = String.Format("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicTableSchema);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_dynamicTableSchema = WorkflowExpression.Compile(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tables/{0}/records/{1}", __workflow_tableId.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTableSchema);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

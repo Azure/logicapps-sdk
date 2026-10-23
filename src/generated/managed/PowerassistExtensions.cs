@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,941 +14,1140 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArraySortResponse> ArraySort(Expression<Func<JToken[]>> bodyarray)
         {
-            var apiCallPath = "/array/sort";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            return new DeferredBodyAction<ArraySortResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/sort";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ArraySortResponse>(callPayload);
+                return new ApiConnectionAction<ArraySortResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse(Expression<Func<JToken[]>> bodyarray)
         {
-            var apiCallPath = "/array/reverse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            return new DeferredBodyAction<ArrayReverseResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/reverse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ArrayReverseResponse>(callPayload);
+                return new ApiConnectionAction<ArrayReverseResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bool>> bodydescending)
         {
-            var apiCallPath = "/array/sortByProperty";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["descending"] = ExpressionConverter.ConvertO(bodydescending);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodydescending = WorkflowExpression.Compile(bodydescending, nameof(bodydescending), required: true);
+            return new DeferredBodyAction<ArraySortByPropertyResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/sortByProperty";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(__workflow_bodypropertyName);
+                bodypropCount++;
+                body["descending"] = ExpressionConverter.ConvertO(__workflow_bodydescending);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ArraySortByPropertyResponse>(callPayload);
+                return new ApiConnectionAction<ArraySortByPropertyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var apiCallPath = "/array/filter";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayFilterResponse>(() =>
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                var apiCallPath = "/array/filter";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(__workflow_bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(__workflow_bodycomparison);
+                if (__workflow_bodyvalue != null)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalueType != null)
+                {
+                    if (__workflow_bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(__workflow_bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArrayFilterResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayFilterResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var apiCallPath = "/array/prepend";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodyvalueType != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayPrependResponse>(() =>
             {
-                if (bodyvalueType != null)
+                var apiCallPath = "/array/prepend";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (__workflow_bodyvalueType != null)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    if (__workflow_bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(__workflow_bodyvalueType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayPrependResponse>(callPayload);
+                return new ApiConnectionAction<ArrayPrependResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var apiCallPath = "/array/any";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayAnyResponse>(() =>
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                var apiCallPath = "/array/any";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(__workflow_bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(__workflow_bodycomparison);
+                if (__workflow_bodyvalue != null)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalueType != null)
+                {
+                    if (__workflow_bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(__workflow_bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArrayAnyResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayAnyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var apiCallPath = "/array/every";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayEveryResponse>(() =>
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                var apiCallPath = "/array/every";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(__workflow_bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(__workflow_bodycomparison);
+                if (__workflow_bodyvalue != null)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalueType != null)
+                {
+                    if (__workflow_bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(__workflow_bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArrayEveryResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayEveryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var apiCallPath = "/array/removeFirst";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayRemoveFirstResponse>(() =>
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                var apiCallPath = "/array/removeFirst";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(__workflow_bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(__workflow_bodycomparison);
+                if (__workflow_bodyvalue != null)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalueType != null)
+                {
+                    if (__workflow_bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(__workflow_bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArrayRemoveFirstResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayRemoveFirstResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName = null)
         {
-            var apiCallPath = "/array/groupBy";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodypropertyName != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: false);
+            return new DeferredBodyAction<ArrayGroupByResponse>(() =>
             {
-                body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
+                var apiCallPath = "/array/groupBy";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (__workflow_bodypropertyName != null)
+                {
+                    body["propertyName"] = ExpressionConverter.ConvertO(__workflow_bodypropertyName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ArrayGroupByResponse>(callPayload);
+                return new ApiConnectionAction<ArrayGroupByResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var apiCallPath = "/array/findFirst";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayFindFirstResponse>(() =>
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                var apiCallPath = "/array/findFirst";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(__workflow_bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(__workflow_bodycomparison);
+                if (__workflow_bodyvalue != null)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalueType != null)
+                {
+                    if (__workflow_bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(__workflow_bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArrayFindFirstResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayFindFirstResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<RoundResponse> Round(Expression<Func<double>> bodynumber)
         {
-            var apiCallPath = "/math/round";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodypropCount > 0)
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
+            return new DeferredBodyAction<RoundResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/math/round";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<RoundResponse>(callPayload);
+                return new ApiConnectionAction<RoundResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathCeilResponse> MathCeil(Expression<Func<double>> bodynumber)
         {
-            var apiCallPath = "/math/ceil";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodypropCount > 0)
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
+            return new DeferredBodyAction<MathCeilResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/math/ceil";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MathCeilResponse>(callPayload);
+                return new ApiConnectionAction<MathCeilResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathFloorResponse> MathFloor(Expression<Func<double>> bodynumber)
         {
-            var apiCallPath = "/math/floor";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodypropCount > 0)
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
+            return new DeferredBodyAction<MathFloorResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/math/floor";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MathFloorResponse>(callPayload);
+                return new ApiConnectionAction<MathFloorResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathAverageResponse> MathAverage(Expression<Func<double[]>> bodynumbers)
         {
-            var apiCallPath = "/math/average";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
-            if (bodypropCount > 0)
+            var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
+            return new DeferredBodyAction<MathAverageResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/math/average";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["numbers"] = ExpressionConverter.ConvertO(__workflow_bodynumbers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MathAverageResponse>(callPayload);
+                return new ApiConnectionAction<MathAverageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathMedianResponse> MathMedian(Expression<Func<JToken[]>> bodynumbers)
         {
-            var apiCallPath = "/math/median";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
-            if (bodypropCount > 0)
+            var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
+            return new DeferredBodyAction<MathMedianResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/math/median";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["numbers"] = ExpressionConverter.ConvertO(__workflow_bodynumbers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MathMedianResponse>(callPayload);
+                return new ApiConnectionAction<MathMedianResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathModeResponse> MathMode(Expression<Func<JToken[]>> bodynumbers)
         {
-            var apiCallPath = "/math/mode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
-            if (bodypropCount > 0)
+            var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
+            return new DeferredBodyAction<MathModeResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/math/mode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["numbers"] = ExpressionConverter.ConvertO(__workflow_bodynumbers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MathModeResponse>(callPayload);
+                return new ApiConnectionAction<MathModeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathRandomResponse> MathRandom(Expression<Func<int>> bodymaximum)
         {
-            var apiCallPath = "/math/random";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["maximum"] = ExpressionConverter.ConvertO(bodymaximum);
-            if (bodypropCount > 0)
+            var __workflow_bodymaximum = WorkflowExpression.Compile(bodymaximum, nameof(bodymaximum), required: true);
+            return new DeferredBodyAction<MathRandomResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/math/random";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["maximum"] = ExpressionConverter.ConvertO(__workflow_bodymaximum);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MathRandomResponse>(callPayload);
+                return new ApiConnectionAction<MathRandomResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodysearchValue, Expression<Func<string>> bodyreplaceValue)
         {
-            var apiCallPath = "/string/replaceAll";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sourceString"] = ExpressionConverter.ConvertO(bodysourceString);
-            bodypropCount++;
-            body["searchValue"] = ExpressionConverter.ConvertO(bodysearchValue);
-            bodypropCount++;
-            body["replaceValue"] = ExpressionConverter.ConvertO(bodyreplaceValue);
-            if (bodypropCount > 0)
+            var __workflow_bodysourceString = WorkflowExpression.Compile(bodysourceString, nameof(bodysourceString), required: true);
+            var __workflow_bodysearchValue = WorkflowExpression.Compile(bodysearchValue, nameof(bodysearchValue), required: true);
+            var __workflow_bodyreplaceValue = WorkflowExpression.Compile(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
+            return new DeferredBodyAction<StringReplaceAllResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/replaceAll";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["sourceString"] = ExpressionConverter.ConvertO(__workflow_bodysourceString);
+                bodypropCount++;
+                body["searchValue"] = ExpressionConverter.ConvertO(__workflow_bodysearchValue);
+                bodypropCount++;
+                body["replaceValue"] = ExpressionConverter.ConvertO(__workflow_bodyreplaceValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringReplaceAllResponse>(callPayload);
+                return new ApiConnectionAction<StringReplaceAllResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplaceValue)
         {
-            var apiCallPath = "/string/regexReplace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sourceString"] = ExpressionConverter.ConvertO(bodysourceString);
-            bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-            bodypropCount++;
-            body["replaceValue"] = ExpressionConverter.ConvertO(bodyreplaceValue);
-            if (bodypropCount > 0)
+            var __workflow_bodysourceString = WorkflowExpression.Compile(bodysourceString, nameof(bodysourceString), required: true);
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodyreplaceValue = WorkflowExpression.Compile(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
+            return new DeferredBodyAction<StringRegexReplaceResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/regexReplace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["sourceString"] = ExpressionConverter.ConvertO(__workflow_bodysourceString);
+                bodypropCount++;
+                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
+                bodypropCount++;
+                body["replaceValue"] = ExpressionConverter.ConvertO(__workflow_bodyreplaceValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringRegexReplaceResponse>(callPayload);
+                return new ApiConnectionAction<StringRegexReplaceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize(Expression<Func<string>> bodystring)
         {
-            var apiCallPath = "/string/capitalize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringCapitalizeResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/capitalize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringCapitalizeResponse>(callPayload);
+                return new ApiConnectionAction<StringCapitalizeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimResponse> StringTrim(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
-            var apiCallPath = "/string/trim";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodycharacters != null)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
+            return new DeferredBodyAction<StringTrimResponse>(() =>
             {
-                body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                var apiCallPath = "/string/trim";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodycharacters != null)
+                {
+                    body["characters"] = ExpressionConverter.ConvertO(__workflow_bodycharacters);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringTrimResponse>(callPayload);
+                return new ApiConnectionAction<StringTrimResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
-            var apiCallPath = "/string/trimStart";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodycharacters != null)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
+            return new DeferredBodyAction<StringTrimStartResponse>(() =>
             {
-                body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                var apiCallPath = "/string/trimStart";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodycharacters != null)
+                {
+                    body["characters"] = ExpressionConverter.ConvertO(__workflow_bodycharacters);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringTrimStartResponse>(callPayload);
+                return new ApiConnectionAction<StringTrimStartResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
-            var apiCallPath = "/string/trimEnd";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodycharacters != null)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
+            return new DeferredBodyAction<StringTrimEndResponse>(() =>
             {
-                body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                var apiCallPath = "/string/trimEnd";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodycharacters != null)
+                {
+                    body["characters"] = ExpressionConverter.ConvertO(__workflow_bodycharacters);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringTrimEndResponse>(callPayload);
+                return new ApiConnectionAction<StringTrimEndResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify(Expression<Func<string>> bodystring)
         {
-            var apiCallPath = "/string/slugify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringSlugifyResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/slugify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringSlugifyResponse>(callPayload);
+                return new ApiConnectionAction<StringSlugifyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringWordsResponse> StringWords(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
         {
-            var apiCallPath = "/string/words";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodydelimiter != null)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
+            return new DeferredBodyAction<StringWordsResponse>(() =>
             {
-                body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                var apiCallPath = "/string/words";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodydelimiter != null)
+                {
+                    body["delimiter"] = ExpressionConverter.ConvertO(__workflow_bodydelimiter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringWordsResponse>(callPayload);
+                return new ApiConnectionAction<StringWordsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringWordCountResponse> StringWordCount(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
         {
-            var apiCallPath = "/string/wordCount";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodydelimiter != null)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
+            return new DeferredBodyAction<StringWordCountResponse>(() =>
             {
-                body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                var apiCallPath = "/string/wordCount";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodydelimiter != null)
+                {
+                    body["delimiter"] = ExpressionConverter.ConvertO(__workflow_bodydelimiter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringWordCountResponse>(callPayload);
+                return new ApiConnectionAction<StringWordCountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml(Expression<Func<string>> bodystring)
         {
-            var apiCallPath = "/string/stripHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringStripHtmlResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/stripHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringStripHtmlResponse>(callPayload);
+                return new ApiConnectionAction<StringStripHtmlResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCleanResponse> StringClean(Expression<Func<string>> bodystring)
         {
-            var apiCallPath = "/string/clean";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringCleanResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/clean";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringCleanResponse>(callPayload);
+                return new ApiConnectionAction<StringCleanResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics(Expression<Func<string>> bodystring)
         {
-            var apiCallPath = "/string/cleanDiacritics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringCleanDiacriticsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/cleanDiacritics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringCleanDiacriticsResponse>(callPayload);
+                return new ApiConnectionAction<StringCleanDiacriticsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml(Expression<Func<string>> bodystring)
         {
-            var apiCallPath = "/string/escapeHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringEscapeHtmlResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/escapeHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringEscapeHtmlResponse>(callPayload);
+                return new ApiConnectionAction<StringEscapeHtmlResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml(Expression<Func<string>> bodystring)
         {
-            var apiCallPath = "/string/unescapeHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringUnescapeHtmlResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/unescapeHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringUnescapeHtmlResponse>(callPayload);
+                return new ApiConnectionAction<StringUnescapeHtmlResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances(Expression<Func<string>> bodystring, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
         {
-            var apiCallPath = "/string/countInstances";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            bodypropCount++;
-            body["substring"] = ExpressionConverter.ConvertO(bodysubstring);
-            if (bodyignoreCase != null)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodysubstring = WorkflowExpression.Compile(bodysubstring, nameof(bodysubstring), required: true);
+            var __workflow_bodyignoreCase = WorkflowExpression.Compile(bodyignoreCase, nameof(bodyignoreCase), required: false);
+            return new DeferredBodyAction<StringCountInstancesResponse>(() =>
             {
-                if (bodyignoreCase != null)
+                var apiCallPath = "/string/countInstances";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                bodypropCount++;
+                body["substring"] = ExpressionConverter.ConvertO(__workflow_bodysubstring);
+                if (__workflow_bodyignoreCase != null)
                 {
-                    body["ignoreCase"] = ExpressionConverter.ConvertO(bodyignoreCase);
+                    if (__workflow_bodyignoreCase != null)
+                    {
+                        body["ignoreCase"] = ExpressionConverter.ConvertO(__workflow_bodyignoreCase);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ignoreCase"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ignoreCase"] = false;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringCountInstancesResponse>(callPayload);
+                return new ApiConnectionAction<StringCountInstancesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringChopResponse> StringChop(Expression<Func<string>> bodystring, Expression<Func<int>> bodyinterval)
         {
-            var apiCallPath = "/string/chop";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            bodypropCount++;
-            body["interval"] = ExpressionConverter.ConvertO(bodyinterval);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyinterval = WorkflowExpression.Compile(bodyinterval, nameof(bodyinterval), required: true);
+            return new DeferredBodyAction<StringChopResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/string/chop";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                bodypropCount++;
+                body["interval"] = ExpressionConverter.ConvertO(__workflow_bodyinterval);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StringChopResponse>(callPayload);
+                return new ApiConnectionAction<StringChopResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString(Expression<Func<object>> bodyvalue)
         {
-            var apiCallPath = "/types/isString";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsStringResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/types/isString";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TypesIsStringResponse>(callPayload);
+                return new ApiConnectionAction<TypesIsStringResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber(Expression<Func<object>> bodyvalue, Expression<Func<bool>> bodyincludeNumbersInStrings)
         {
-            var apiCallPath = "/types/isNumber";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            bodypropCount++;
-            body["includeNumbersInStrings"] = ExpressionConverter.ConvertO(bodyincludeNumbersInStrings);
-            if (bodypropCount > 0)
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyincludeNumbersInStrings = WorkflowExpression.Compile(bodyincludeNumbersInStrings, nameof(bodyincludeNumbersInStrings), required: true);
+            return new DeferredBodyAction<TypesIsNumberResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/types/isNumber";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                bodypropCount++;
+                body["includeNumbersInStrings"] = ExpressionConverter.ConvertO(__workflow_bodyincludeNumbersInStrings);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TypesIsNumberResponse>(callPayload);
+                return new ApiConnectionAction<TypesIsNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty(Expression<Func<object>> bodyvalue)
         {
-            var apiCallPath = "/types/isNullOrEmpty";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsNullOrEmptyResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/types/isNullOrEmpty";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TypesIsNullOrEmptyResponse>(callPayload);
+                return new ApiConnectionAction<TypesIsNullOrEmptyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray(Expression<Func<object>> bodyvalue)
         {
-            var apiCallPath = "/types/isArray";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsArrayResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/types/isArray";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TypesIsArrayResponse>(callPayload);
+                return new ApiConnectionAction<TypesIsArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject(Expression<Func<object>> bodyvalue)
         {
-            var apiCallPath = "/types/isObject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsObjectResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/types/isObject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TypesIsObjectResponse>(callPayload);
+                return new ApiConnectionAction<TypesIsObjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> bodyemail)
         {
-            var apiCallPath = "/validate/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            return new DeferredBodyAction<ValidateEmailResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/validate/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
+                return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex(Expression<Func<string>> bodystring, Expression<Func<string>> bodypattern)
         {
-            var apiCallPath = "/validate/regex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-            if (bodypropCount > 0)
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
+            return new DeferredBodyAction<ValidateRegexResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/validate/regex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                bodypropCount++;
+                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ValidateRegexResponse>(callPayload);
+                return new ApiConnectionAction<ValidateRegexResponse>(callPayload);
+            });
         }
     }
 
@@ -976,6 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycomparisonInput
     {
         [EnumMember(Value = "equals")]
@@ -996,6 +1196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         IsNotNullOrUndefined
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvalueTypeInput
     {
         String,

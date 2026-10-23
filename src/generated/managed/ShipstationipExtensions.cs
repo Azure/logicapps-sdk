@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,30 +32,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
         {
-            var apiCallPath = "/stores/refreshstore";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystoreId != null)
+            var __workflow_bodystoreId = WorkflowExpression.Compile(bodystoreId, nameof(bodystoreId), required: false);
+            var __workflow_bodyrefreshDate = WorkflowExpression.Compile(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
+            return new DeferredBodyAction<RefreshStoreResponse>(() =>
             {
-                body["storeId"] = ExpressionConverter.ConvertO(bodystoreId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/stores/refreshstore";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodystoreId != null)
+                {
+                    body["storeId"] = ExpressionConverter.ConvertO(__workflow_bodystoreId);
+                    bodypropCount++;
+                }
 
-            if (bodyrefreshDate != null)
-            {
-                body["refreshDate"] = ExpressionConverter.ConvertO(bodyrefreshDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrefreshDate != null)
+                {
+                    body["refreshDate"] = ExpressionConverter.ConvertO(__workflow_bodyrefreshDate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<RefreshStoreResponse>(callPayload);
+                return new ApiConnectionAction<RefreshStoreResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,244 +14,297 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoListResponse> VideoList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/videos";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<VideoListResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<VideoListResponse>(() =>
+            {
+                var apiCallPath = "/videos";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<VideoListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoCreateResponse> VideoCreate(Expression<Func<bodyinputInputItem[]>> bodyinput, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodycallbackId = null, Expression<Func<string>> bodysoundtrack = null)
         {
-            var apiCallPath = "/videos";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytest != null)
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
+            var __workflow_bodyctaSettingslabel = WorkflowExpression.Compile(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
+            var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
+            var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
+            var __workflow_bodysoundtrack = WorkflowExpression.Compile(bodysoundtrack, nameof(bodysoundtrack), required: false);
+            return new DeferredBodyAction<VideoCreateResponse>(() =>
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                var apiCallPath = "/videos";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytest != null)
+                {
+                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyvisibility != null)
+                {
+                    body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
+                    bodypropCount++;
+                }
+
+                var ctaSettingsObject = new JObject();
+                var ctaSettingsObjectpropCount = 0;
+                if (__workflow_bodyctaSettingslabel != null)
+                {
+                    ctaSettingsObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingslabel);
+                    ctaSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodyctaSettingsurl != null)
+                {
+                    ctaSettingsObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingsurl);
+                    ctaSettingsObjectpropCount++;
+                }
+
+                if (ctaSettingsObjectpropCount > 0)
+                {
+                    body["ctaSettings"] = ctaSettingsObject;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycallbackId != null)
+                {
+                    body["callbackId"] = ExpressionConverter.ConvertO(__workflow_bodycallbackId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
+                if (__workflow_bodysoundtrack != null)
+                {
+                    body["soundtrack"] = ExpressionConverter.ConvertO(__workflow_bodysoundtrack);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyvisibility != null)
-            {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
-                bodypropCount++;
-            }
-
-            var ctaSettingsObject = new JObject();
-            var ctaSettingsObjectpropCount = 0;
-            if (bodyctaSettingslabel != null)
-            {
-                ctaSettingsObject["label"] = ExpressionConverter.ConvertO(bodyctaSettingslabel);
-                ctaSettingsObjectpropCount++;
-            }
-
-            if (bodyctaSettingsurl != null)
-            {
-                ctaSettingsObject["url"] = ExpressionConverter.ConvertO(bodyctaSettingsurl);
-                ctaSettingsObjectpropCount++;
-            }
-
-            if (ctaSettingsObjectpropCount > 0)
-            {
-                body["ctaSettings"] = ctaSettingsObject;
-                bodypropCount++;
-            }
-
-            if (bodycallbackId != null)
-            {
-                body["callbackId"] = ExpressionConverter.ConvertO(bodycallbackId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
-            if (bodysoundtrack != null)
-            {
-                body["soundtrack"] = ExpressionConverter.ConvertO(bodysoundtrack);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<VideoCreateResponse>(callPayload);
+                return new ApiConnectionAction<VideoCreateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoStatusResponse> VideoStatus(Expression<Func<string>> videoId)
         {
-            var apiCallPath = String.Format("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(videoId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VideoStatusResponse>(callPayload);
+            var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
+            return new DeferredBodyAction<VideoStatusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VideoStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<string> VideoDelete(Expression<Func<string>> videoId)
         {
-            var apiCallPath = String.Format("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(videoId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoPatchResponse> VideoPatch(Expression<Func<string>> videoId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodyvisibility = null)
         {
-            var apiCallPath = String.Format("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(videoId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyctaSettingslabel = WorkflowExpression.Compile(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
+            var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
+            return new DeferredBodyAction<VideoPatchResponse>(() =>
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            var ctaSettingsObject = new JObject();
-            var ctaSettingsObjectpropCount = 0;
-            if (bodyctaSettingslabel != null)
-            {
-                ctaSettingsObject["label"] = ExpressionConverter.ConvertO(bodyctaSettingslabel);
-                ctaSettingsObjectpropCount++;
-            }
+                var ctaSettingsObject = new JObject();
+                var ctaSettingsObjectpropCount = 0;
+                if (__workflow_bodyctaSettingslabel != null)
+                {
+                    ctaSettingsObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingslabel);
+                    ctaSettingsObjectpropCount++;
+                }
 
-            if (bodyctaSettingsurl != null)
-            {
-                ctaSettingsObject["url"] = ExpressionConverter.ConvertO(bodyctaSettingsurl);
-                ctaSettingsObjectpropCount++;
-            }
+                if (__workflow_bodyctaSettingsurl != null)
+                {
+                    ctaSettingsObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingsurl);
+                    ctaSettingsObjectpropCount++;
+                }
 
-            if (ctaSettingsObjectpropCount > 0)
-            {
-                body["ctaSettings"] = ctaSettingsObject;
-                bodypropCount++;
-            }
+                if (ctaSettingsObjectpropCount > 0)
+                {
+                    body["ctaSettings"] = ctaSettingsObject;
+                    bodypropCount++;
+                }
 
-            if (bodyvisibility != null)
-            {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvisibility != null)
+                {
+                    body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<VideoPatchResponse>(callPayload);
+                return new ApiConnectionAction<VideoPatchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<TemplateListResponse> TemplateList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TemplateListResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<TemplateListResponse>(() =>
+            {
+                var apiCallPath = "/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<TemplateListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
         {
-            var apiCallPath = String.Format("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            return new DeferredBodyAction<TemplateGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}", __workflow_templateId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoCreateTemplateResponse> VideoCreateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodytemplateDataname = null, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodycallbackId = null)
         {
-            var apiCallPath = "/videos/fromTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
+            var __workflow_bodytemplateDataname = WorkflowExpression.Compile(bodytemplateDataname, nameof(bodytemplateDataname), required: false);
+            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
+            return new DeferredBodyAction<VideoCreateTemplateResponse>(() =>
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                var apiCallPath = "/videos/fromTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyvisibility != null)
+                {
+                    body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                var templateDataObject = new JObject();
+                var templateDataObjectpropCount = 0;
+                if (__workflow_bodytemplateDataname != null)
+                {
+                    templateDataObject["name"] = ExpressionConverter.ConvertO(__workflow_bodytemplateDataname);
+                    templateDataObjectpropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (templateDataObjectpropCount > 0)
+                {
+                    body["templateData"] = templateDataObject;
+                    bodypropCount++;
+                }
 
-            if (bodyvisibility != null)
-            {
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
-                bodypropCount++;
-            }
+                if (__workflow_bodytest != null)
+                {
+                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
-            var templateDataObject = new JObject();
-            var templateDataObjectpropCount = 0;
-            if (bodytemplateDataname != null)
-            {
-                templateDataObject["name"] = ExpressionConverter.ConvertO(bodytemplateDataname);
-                templateDataObjectpropCount++;
-            }
+                if (__workflow_bodycallbackId != null)
+                {
+                    body["callbackId"] = ExpressionConverter.ConvertO(__workflow_bodycallbackId);
+                    bodypropCount++;
+                }
 
-            if (templateDataObjectpropCount > 0)
-            {
-                body["templateData"] = templateDataObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodytest != null)
-            {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
-                bodypropCount++;
-            }
-
-            if (bodycallbackId != null)
-            {
-                body["callbackId"] = ExpressionConverter.ConvertO(bodycallbackId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<VideoCreateTemplateResponse>(callPayload);
+                return new ApiConnectionAction<VideoCreateTemplateResponse>(callPayload);
+            });
         }
     }
 

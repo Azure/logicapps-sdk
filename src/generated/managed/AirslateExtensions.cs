@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,47 +14,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<CreateSmartLinkResponse> CreateSmartLink(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/flows/{0}/smartLink/create", ExpressionConverter.ConvertWithUrlEncoding(slateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(organizationDomain);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<CreateSmartLinkResponse>(callPayload);
+            var __workflow_organizationDomain = WorkflowExpression.Compile(organizationDomain, nameof(organizationDomain), required: true);
+            var __workflow_slateId = WorkflowExpression.Compile(slateId, nameof(slateId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<CreateSmartLinkResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flows/{0}/smartLink/create", __workflow_slateId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(__workflow_organizationDomain);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                return new ApiConnectionAction<CreateSmartLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<StartFlowResponse> StartFlow(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
-            var apiCallPath = String.Format("/addon-proxy/flow/v1/flows/{0}/packets/blank", ExpressionConverter.ConvertWithUrlEncoding(slateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(organizationDomain);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<StartFlowResponse>(callPayload);
+            var __workflow_organizationDomain = WorkflowExpression.Compile(organizationDomain, nameof(organizationDomain), required: true);
+            var __workflow_slateId = WorkflowExpression.Compile(slateId, nameof(slateId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<StartFlowResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/addon-proxy/flow/v1/flows/{0}/packets/blank", __workflow_slateId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(__workflow_organizationDomain);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                return new ApiConnectionAction<StartFlowResponse>(callPayload);
+            });
         }
     }
 
     public class AirslateTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/event";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["botToken"] = ExpressionConverter.ConvertO(bodybotAuthorizationToken);
-            body["callback"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodybotAuthorizationToken = WorkflowExpression.Compile(bodybotAuthorizationToken, nameof(bodybotAuthorizationToken), required: true);
+            return new DeferredBodyTrigger<CreateSlateTriggerResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/event";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["botToken"] = ExpressionConverter.ConvertO(__workflow_bodybotAuthorizationToken);
+                body["callback"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<CreateSlateTriggerResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<CreateSlateTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

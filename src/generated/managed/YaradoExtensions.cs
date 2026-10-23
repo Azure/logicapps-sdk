@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,21 +32,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
         public IWorkflowAction CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
         {
-            var apiCallPath = "/v1/task-schedules";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["robot_id"] = ExpressionConverter.ConvertO(bodyrobotId);
-            bodypropCount++;
-            body["task_file_id"] = ExpressionConverter.ConvertO(bodytaskFileId);
-            if (bodypropCount > 0)
+            var __workflow_bodyrobotId = WorkflowExpression.Compile(bodyrobotId, nameof(bodyrobotId), required: true);
+            var __workflow_bodytaskFileId = WorkflowExpression.Compile(bodytaskFileId, nameof(bodytaskFileId), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/task-schedules";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["robot_id"] = ExpressionConverter.ConvertO(__workflow_bodyrobotId);
+                bodypropCount++;
+                body["task_file_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskFileId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,215 +14,252 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<ProductResponse> UpdateProduct(Expression<Func<string>> id, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
         {
-            var apiCallPath = String.Format("/v1/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyactive != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
+            var __workflow_bodycaption = WorkflowExpression.Compile(bodycaption, nameof(bodycaption), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyimages = WorkflowExpression.Compile(bodyimages, nameof(bodyimages), required: false);
+            var __workflow_bodyshippable = WorkflowExpression.Compile(bodyshippable, nameof(bodyshippable), required: false);
+            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            return new DeferredBodyAction<ProductResponse>(() =>
             {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/products/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyactive != null)
+                {
+                    body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
+                    bodypropCount++;
+                }
 
-            if (bodycaption != null)
-            {
-                body["caption"] = ExpressionConverter.ConvertO(bodycaption);
-                bodypropCount++;
-            }
+                if (__workflow_bodycaption != null)
+                {
+                    body["caption"] = ExpressionConverter.ConvertO(__workflow_bodycaption);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyimages != null)
-            {
-                body["images"] = ExpressionConverter.ConvertO(bodyimages);
-                bodypropCount++;
-            }
+                if (__workflow_bodyimages != null)
+                {
+                    body["images"] = ExpressionConverter.ConvertO(__workflow_bodyimages);
+                    bodypropCount++;
+                }
 
-            if (bodyshippable != null)
-            {
-                body["shippable"] = ExpressionConverter.ConvertO(bodyshippable);
-                bodypropCount++;
-            }
+                if (__workflow_bodyshippable != null)
+                {
+                    body["shippable"] = ExpressionConverter.ConvertO(__workflow_bodyshippable);
+                    bodypropCount++;
+                }
 
-            if (bodyuRL != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyuRL);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuRL != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ProductResponse>(callPayload);
+                return new ApiConnectionAction<ProductResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<ProductResponse> CreateProduct(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
         {
-            var apiCallPath = "/v1/products";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyid != null)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
+            var __workflow_bodycaption = WorkflowExpression.Compile(bodycaption, nameof(bodycaption), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyimages = WorkflowExpression.Compile(bodyimages, nameof(bodyimages), required: false);
+            var __workflow_bodyshippable = WorkflowExpression.Compile(bodyshippable, nameof(bodyshippable), required: false);
+            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            return new DeferredBodyAction<ProductResponse>(() =>
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                var apiCallPath = "/v1/products";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyid != null)
+                {
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
+                    bodypropCount++;
+                }
 
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
+                if (__workflow_bodyactive != null)
+                {
+                    body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
+                    bodypropCount++;
+                }
 
-            if (bodycaption != null)
-            {
-                body["caption"] = ExpressionConverter.ConvertO(bodycaption);
-                bodypropCount++;
-            }
+                if (__workflow_bodycaption != null)
+                {
+                    body["caption"] = ExpressionConverter.ConvertO(__workflow_bodycaption);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyimages != null)
-            {
-                body["images"] = ExpressionConverter.ConvertO(bodyimages);
-                bodypropCount++;
-            }
+                if (__workflow_bodyimages != null)
+                {
+                    body["images"] = ExpressionConverter.ConvertO(__workflow_bodyimages);
+                    bodypropCount++;
+                }
 
-            if (bodyshippable != null)
-            {
-                body["shippable"] = ExpressionConverter.ConvertO(bodyshippable);
-                bodypropCount++;
-            }
+                if (__workflow_bodyshippable != null)
+                {
+                    body["shippable"] = ExpressionConverter.ConvertO(__workflow_bodyshippable);
+                    bodypropCount++;
+                }
 
-            if (bodyuRL != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyuRL);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuRL != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ProductResponse>(callPayload);
+                return new ApiConnectionAction<ProductResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> GetCustomer(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CustomerResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CustomerResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/customers/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CustomerResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> UpdateCustomer(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
         {
-            var apiCallPath = String.Format("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            return new DeferredBodyAction<CustomerResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/customers/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+                if (__workflow_bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CustomerResponse>(callPayload);
+                return new ApiConnectionAction<CustomerResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
         public IBodyWorkflowAction<CustomerResponse> CreateCustomer(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
         {
-            var apiCallPath = "/v1/customers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            return new DeferredBodyAction<CustomerResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1/customers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+                if (__workflow_bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CustomerResponse>(callPayload);
+                return new ApiConnectionAction<CustomerResponse>(callPayload);
+            });
         }
     }
 
     public class StripeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListCustomersResponseItem[]> OnNewCustomer(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListCustomersResponseItem[]> OnNewCustomer(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/customers";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListOrdersResponseItem[]> OnNewOrder(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListOrdersResponseItem[]> OnNewOrder(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/orders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListChargesResponseItem[]> OnNewCharge(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListChargesResponseItem[]> OnNewCharge(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/charges";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[]> OnNewInvoiceItem(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[]> OnNewInvoiceItem(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/invoiceitems";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListInvoiceItemsResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListInvoiceItemsResponseItem[]>(callPayload, recurrence: recurrence);
         }
     }
 

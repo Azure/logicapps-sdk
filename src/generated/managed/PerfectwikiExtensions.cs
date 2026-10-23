@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,12 +23,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perfectwiki")]
         public IWorkflowAction QueryKnowledgebase(Expression<Func<string>> q, Expression<Func<string>> chatId)
         {
-            var apiCallPath = "/chatgpt/organization/bot";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["chatId"] = ExpressionConverter.Convert(chatId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_chatId = WorkflowExpression.Compile(chatId, nameof(chatId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/chatgpt/organization/bot";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                callPayload.Queries["chatId"] = ExpressionConverter.Convert(__workflow_chatId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

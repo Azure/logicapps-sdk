@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,37 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<string>> cloudId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/spaces", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpacesResponse>(callPayload);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
+            return new DeferredBodyAction<GetSpacesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", __workflow_cloudId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSpacesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPages(Expression<Func<string>> cloudId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
+            return new DeferredBodyAction<GetPagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", __workflow_cloudId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
+            var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
+            return new DeferredBodyAction<GetPagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", __workflow_cloudId.WithUrlEncoding(1), __workflow_spaceId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId, Expression<Func<string>> pageId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
+            var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            return new DeferredBodyAction<GetPagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", __workflow_cloudId.WithUrlEncoding(1), __workflow_pageId.WithUrlEncoding(1), __workflow_spaceId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            });
         }
     }
 

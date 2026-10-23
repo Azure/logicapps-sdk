@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,63 +14,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<string> GetJobOutput(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}/output", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}/output", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_automationAccount.WithUrlEncoding(1), __workflow_jobId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> GetStatusOfJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
-            return new ApiConnectionAction<CreateJobResponse>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
+            return new DeferredBodyAction<CreateJobResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_automationAccount.WithUrlEncoding(1), __workflow_jobId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
+                return new ApiConnectionAction<CreateJobResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> runbookName = null, Expression<Func<object>> bodypropertiesrunbookParameters = null, Expression<Func<string>> bodypropertieshybridAutomationWorkerGroup = null, Expression<Func<bool>> wait = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
-            if (runbookName != null)
-                callPayload.Queries["runbookName"] = ExpressionConverter.Convert(runbookName);
-            callPayload.Queries["wait"] = Convert.ToString(false);
-            if (wait != null)
-                callPayload.Queries["wait"] = ExpressionConverter.Convert(wait);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodypropertiesrunbookParameters != null)
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_runbookName = WorkflowExpression.Compile(runbookName, nameof(runbookName), required: false);
+            var __workflow_bodypropertiesrunbookParameters = WorkflowExpression.Compile(bodypropertiesrunbookParameters, nameof(bodypropertiesrunbookParameters), required: false);
+            var __workflow_bodypropertieshybridAutomationWorkerGroup = WorkflowExpression.Compile(bodypropertieshybridAutomationWorkerGroup, nameof(bodypropertieshybridAutomationWorkerGroup), required: false);
+            var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: false);
+            return new DeferredBodyAction<CreateJobResponse>(() =>
             {
-                propertiesObject["parameters"] = ExpressionConverter.ConvertO(bodypropertiesrunbookParameters);
-                propertiesObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_automationAccount.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2015-10-31");
+                if (__workflow_runbookName != null)
+                    callPayload.Queries["runbookName"] = ExpressionConverter.Convert(__workflow_runbookName);
+                callPayload.Queries["wait"] = Convert.ToString(false);
+                if (__workflow_wait != null)
+                    callPayload.Queries["wait"] = ExpressionConverter.Convert(__workflow_wait);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (__workflow_bodypropertiesrunbookParameters != null)
+                {
+                    propertiesObject["parameters"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesrunbookParameters);
+                    propertiesObjectpropCount++;
+                }
 
-            if (bodypropertieshybridAutomationWorkerGroup != null)
-            {
-                propertiesObject["runOn"] = ExpressionConverter.ConvertO(bodypropertieshybridAutomationWorkerGroup);
-                propertiesObjectpropCount++;
-            }
+                if (__workflow_bodypropertieshybridAutomationWorkerGroup != null)
+                {
+                    propertiesObject["runOn"] = ExpressionConverter.ConvertO(__workflow_bodypropertieshybridAutomationWorkerGroup);
+                    propertiesObjectpropCount++;
+                }
 
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateJobResponse>(callPayload);
+                return new ApiConnectionAction<CreateJobResponse>(callPayload);
+            });
         }
     }
 

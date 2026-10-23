@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,332 +14,463 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/airlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetAirlinesResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetAirlinesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/airlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetAirlinesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/animals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetAnimalsResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetAnimalsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/animals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetAnimalsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/colors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetColorsResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetColorsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/colors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetColorsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/companies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetCompaniesResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetCompaniesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/companies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetCompaniesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/databases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetDatabasesResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetDatabasesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/databases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetDatabasesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/dates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetDatesResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetDatesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/dates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetDatesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/finances";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetFinancesResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetFinancesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/finances";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetFinancesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/gits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetGitsResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetGitsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/gits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetGitsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/hackers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetHackersResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetHackersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/hackers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetHackersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages(Expression<Func<int>> count = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<categoryInput>> category = null)
         {
-            var apiCallPath = "/images";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (width != null)
-                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-            if (height != null)
-                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            return new ApiConnectionAction<GetRandomImagesResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: false);
+            var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            return new DeferredBodyAction<GetRandomImagesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/images";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_width != null)
+                    callPayload.Queries["width"] = ExpressionConverter.Convert(__workflow_width);
+                if (__workflow_height != null)
+                    callPayload.Queries["height"] = ExpressionConverter.Convert(__workflow_height);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                return new ApiConnectionAction<GetRandomImagesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/internets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetInternetResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetInternetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/internets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetInternetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/locations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetLocationsResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetLocationsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/locations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetLocationsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/lorems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetLoremsResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetLoremsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/lorems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetLoremsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/musics";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetMusicsResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetMusicsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/musics";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetMusicsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/numbers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetNumbersResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetNumbersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/numbers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetNumbersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/persons";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetPeopleResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetPeopleResponseItem[]>(() =>
+            {
+                var apiCallPath = "/persons";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetPeopleResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/phones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetPhonesResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetPhonesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/phones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetPhonesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/products";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetProductsResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetProductsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/products";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetProductsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/sciences";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetSciencesResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetSciencesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/sciences";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetSciencesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/strings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetStringsResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetStringsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/strings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetStringsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/systems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetSystemsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/systems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/vehicles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetVehiclesResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetVehiclesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/vehicles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetVehiclesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var apiCallPath = "/words";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetWordsResponseItem[]>(callPayload);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetWordsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/words";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
+                return new ApiConnectionAction<GetWordsResponseItem[]>(callPayload);
+            });
         }
     }
 
@@ -434,6 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum availableLocalesInput
     {
         [EnumMember(Value = "af_ZA")]
@@ -829,6 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string ImageUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryInput
     {
         [EnumMember(Value = "abstract")]

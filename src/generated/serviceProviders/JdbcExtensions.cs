@@ -1,11 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
 {
     using System;
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -26,32 +26,41 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         public IBodyWorkflowAction<JToken[]> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
-            if (queryParameters != null)
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: false);
+            return new DeferredBodyAction<JToken[]>(() =>
             {
-                serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["query"] = ExpressionConverter.ConvertO(__workflow_query);
+                if (__workflow_queryParameters != null)
+                {
+                    serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(__workflow_queryParameters);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "rawQuery", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "rawQuery", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema(Expression<Func<string>> tableName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            return new DeferredBodyAction<GetSchemaOutputItem[]>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetSchemaOutputItem[]>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetSchemaOutputItem[]>(serviceProviderInput);
+            });
         }
     }
 

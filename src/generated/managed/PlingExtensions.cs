@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,33 +14,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IWorkflowAction SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
         {
-            var apiCallPath = String.Format("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            bodypropCount++;
-            body["audienceUsers"] = ExpressionConverter.ConvertO(bodyaudienceUsers);
-            var additionalTemplateDataObject = new JObject();
-            var additionalTemplateDataObjectpropCount = 0;
-            if (additionalTemplateDataObjectpropCount > 0)
+            var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodyaudienceUsers = WorkflowExpression.Compile(bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                body["additionalTemplateData"] = additionalTemplateDataObject;
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}/messages", __workflow_profileId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                bodypropCount++;
+                body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                bodypropCount++;
+                body["audienceUsers"] = ExpressionConverter.ConvertO(__workflow_bodyaudienceUsers);
+                var additionalTemplateDataObject = new JObject();
+                var additionalTemplateDataObjectpropCount = 0;
+                if (additionalTemplateDataObjectpropCount > 0)
+                {
+                    body["additionalTemplateData"] = additionalTemplateDataObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
@@ -55,10 +63,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates(Expression<Func<string>> profileId)
         {
-            var apiCallPath = String.Format("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTemplatesResponseItem[]>(callPayload);
+            var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
+            return new DeferredBodyAction<GetTemplatesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}/templates", __workflow_profileId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTemplatesResponseItem[]>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2locationip")]
         public IBodyWorkflowAction<LookupIpResponse> LookupIp(Expression<Func<string>> ip)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip"] = ExpressionConverter.Convert(ip);
-            return new ApiConnectionAction<LookupIpResponse>(callPayload);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
+            return new DeferredBodyAction<LookupIpResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ip"] = ExpressionConverter.Convert(__workflow_ip);
+                return new ApiConnectionAction<LookupIpResponse>(callPayload);
+            });
         }
     }
 

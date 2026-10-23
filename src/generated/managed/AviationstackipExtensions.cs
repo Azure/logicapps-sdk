@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,141 +14,199 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<FlightGetResponse> FlightGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<flightStatusInput>> flightStatus = null, Expression<Func<string>> flightDate = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineName = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> airlineIcao = null, Expression<Func<int>> flightNumber = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<int>> minDelayDep = null, Expression<Func<int>> minDelayArr = null, Expression<Func<int>> maxDelayDep = null, Expression<Func<int>> maxDelayArr = null, Expression<Func<string>> arrScheduledTimeArr = null, Expression<Func<string>> arrScheduledTimeDep = null)
         {
-            var apiCallPath = "/flights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (flightStatus != null)
-                callPayload.Queries["flight_status"] = ExpressionConverter.Convert(flightStatus);
-            if (flightDate != null)
-                callPayload.Queries["flight_date"] = ExpressionConverter.Convert(flightDate);
-            if (depIata != null)
-                callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
-            if (arrIata != null)
-                callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
-            if (depIcao != null)
-                callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
-            if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
-            if (airlineName != null)
-                callPayload.Queries["airline_name"] = ExpressionConverter.Convert(airlineName);
-            if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
-            if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
-            if (flightNumber != null)
-                callPayload.Queries["flight_number"] = ExpressionConverter.Convert(flightNumber);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
-            if (minDelayDep != null)
-                callPayload.Queries["min_delay_dep"] = ExpressionConverter.Convert(minDelayDep);
-            if (minDelayArr != null)
-                callPayload.Queries["min_delay_arr"] = ExpressionConverter.Convert(minDelayArr);
-            if (maxDelayDep != null)
-                callPayload.Queries["max_delay_dep"] = ExpressionConverter.Convert(maxDelayDep);
-            if (maxDelayArr != null)
-                callPayload.Queries["max_delay_arr"] = ExpressionConverter.Convert(maxDelayArr);
-            if (arrScheduledTimeArr != null)
-                callPayload.Queries["arr_scheduled_time_arr"] = ExpressionConverter.Convert(arrScheduledTimeArr);
-            if (arrScheduledTimeDep != null)
-                callPayload.Queries["arr_scheduled_time_dep"] = ExpressionConverter.Convert(arrScheduledTimeDep);
-            return new ApiConnectionAction<FlightGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_flightStatus = WorkflowExpression.Compile(flightStatus, nameof(flightStatus), required: false);
+            var __workflow_flightDate = WorkflowExpression.Compile(flightDate, nameof(flightDate), required: false);
+            var __workflow_depIata = WorkflowExpression.Compile(depIata, nameof(depIata), required: false);
+            var __workflow_arrIata = WorkflowExpression.Compile(arrIata, nameof(arrIata), required: false);
+            var __workflow_depIcao = WorkflowExpression.Compile(depIcao, nameof(depIcao), required: false);
+            var __workflow_arrIcao = WorkflowExpression.Compile(arrIcao, nameof(arrIcao), required: false);
+            var __workflow_airlineName = WorkflowExpression.Compile(airlineName, nameof(airlineName), required: false);
+            var __workflow_airlineIata = WorkflowExpression.Compile(airlineIata, nameof(airlineIata), required: false);
+            var __workflow_airlineIcao = WorkflowExpression.Compile(airlineIcao, nameof(airlineIcao), required: false);
+            var __workflow_flightNumber = WorkflowExpression.Compile(flightNumber, nameof(flightNumber), required: false);
+            var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
+            var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
+            var __workflow_minDelayDep = WorkflowExpression.Compile(minDelayDep, nameof(minDelayDep), required: false);
+            var __workflow_minDelayArr = WorkflowExpression.Compile(minDelayArr, nameof(minDelayArr), required: false);
+            var __workflow_maxDelayDep = WorkflowExpression.Compile(maxDelayDep, nameof(maxDelayDep), required: false);
+            var __workflow_maxDelayArr = WorkflowExpression.Compile(maxDelayArr, nameof(maxDelayArr), required: false);
+            var __workflow_arrScheduledTimeArr = WorkflowExpression.Compile(arrScheduledTimeArr, nameof(arrScheduledTimeArr), required: false);
+            var __workflow_arrScheduledTimeDep = WorkflowExpression.Compile(arrScheduledTimeDep, nameof(arrScheduledTimeDep), required: false);
+            return new DeferredBodyAction<FlightGetResponse>(() =>
+            {
+                var apiCallPath = "/flights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_flightStatus != null)
+                    callPayload.Queries["flight_status"] = ExpressionConverter.Convert(__workflow_flightStatus);
+                if (__workflow_flightDate != null)
+                    callPayload.Queries["flight_date"] = ExpressionConverter.Convert(__workflow_flightDate);
+                if (__workflow_depIata != null)
+                    callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(__workflow_depIata);
+                if (__workflow_arrIata != null)
+                    callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(__workflow_arrIata);
+                if (__workflow_depIcao != null)
+                    callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(__workflow_depIcao);
+                if (__workflow_arrIcao != null)
+                    callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(__workflow_arrIcao);
+                if (__workflow_airlineName != null)
+                    callPayload.Queries["airline_name"] = ExpressionConverter.Convert(__workflow_airlineName);
+                if (__workflow_airlineIata != null)
+                    callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(__workflow_airlineIata);
+                if (__workflow_airlineIcao != null)
+                    callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(__workflow_airlineIcao);
+                if (__workflow_flightNumber != null)
+                    callPayload.Queries["flight_number"] = ExpressionConverter.Convert(__workflow_flightNumber);
+                if (__workflow_flightIata != null)
+                    callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(__workflow_flightIata);
+                if (__workflow_flightIcao != null)
+                    callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(__workflow_flightIcao);
+                if (__workflow_minDelayDep != null)
+                    callPayload.Queries["min_delay_dep"] = ExpressionConverter.Convert(__workflow_minDelayDep);
+                if (__workflow_minDelayArr != null)
+                    callPayload.Queries["min_delay_arr"] = ExpressionConverter.Convert(__workflow_minDelayArr);
+                if (__workflow_maxDelayDep != null)
+                    callPayload.Queries["max_delay_dep"] = ExpressionConverter.Convert(__workflow_maxDelayDep);
+                if (__workflow_maxDelayArr != null)
+                    callPayload.Queries["max_delay_arr"] = ExpressionConverter.Convert(__workflow_maxDelayArr);
+                if (__workflow_arrScheduledTimeArr != null)
+                    callPayload.Queries["arr_scheduled_time_arr"] = ExpressionConverter.Convert(__workflow_arrScheduledTimeArr);
+                if (__workflow_arrScheduledTimeDep != null)
+                    callPayload.Queries["arr_scheduled_time_dep"] = ExpressionConverter.Convert(__workflow_arrScheduledTimeDep);
+                return new ApiConnectionAction<FlightGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirportGetResponse> AirportGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/airports";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<AirportGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<AirportGetResponse>(() =>
+            {
+                var apiCallPath = "/airports";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<AirportGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirlineGetResponse> AirlineGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/airlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<AirlineGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<AirlineGetResponse>(() =>
+            {
+                var apiCallPath = "/airlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<AirlineGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirplaneGetResponse> AirplaneGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/airplanes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<AirplaneGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<AirplaneGetResponse>(() =>
+            {
+                var apiCallPath = "/airplanes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<AirplaneGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AircraftGetResponse> AircraftGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/aircraft_types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<AircraftGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<AircraftGetResponse>(() =>
+            {
+                var apiCallPath = "/aircraft_types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<AircraftGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<TaxesGetResponse> TaxesGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/taxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TaxesGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<TaxesGetResponse>(() =>
+            {
+                var apiCallPath = "/taxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<TaxesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<CityGetResponse> CityGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/cities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<CityGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<CityGetResponse>(() =>
+            {
+                var apiCallPath = "/cities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<CityGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<CountryGetResponse> CountryGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<CountryGetResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<CountryGetResponse>(() =>
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<CountryGetResponse>(callPayload);
+            });
         }
     }
 
@@ -309,6 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         public string FlightIcao { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum flightStatusInput
     {
         [EnumMember(Value = "scheduled")]

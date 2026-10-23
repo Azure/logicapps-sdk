@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,113 +14,134 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
         {
-            var apiCallPath = "/Organisations/3/Incidents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            if (accessToken != null)
-                callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylocation != null)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
+            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
+            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: false);
+            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: false);
+            var __workflow_bodydivisionId = WorkflowExpression.Compile(bodydivisionId, nameof(bodydivisionId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyanonymouslyReported = WorkflowExpression.Compile(bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
+            var __workflow_bodycheckListData = WorkflowExpression.Compile(bodycheckListData, nameof(bodycheckListData), required: false);
+            return new DeferredBodyAction<CreateIncidentResponse>(() =>
             {
-                body["Location"] = ExpressionConverter.ConvertO(bodylocation);
-                bodypropCount++;
-            }
+                var apiCallPath = "/Organisations/3/Incidents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_accessToken != null)
+                    callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodylocation != null)
+                {
+                    body["Location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
+                    bodypropCount++;
+                }
 
-            if (bodylocationId != null)
-            {
-                body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
-                bodypropCount++;
-            }
+                if (__workflow_bodylocationId != null)
+                {
+                    body["LocationId"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
+                    bodypropCount++;
+                }
 
-            if (bodylatitude != null)
-            {
-                body["Latitude"] = ExpressionConverter.ConvertO(bodylatitude);
-                bodypropCount++;
-            }
+                if (__workflow_bodylatitude != null)
+                {
+                    body["Latitude"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
+                    bodypropCount++;
+                }
 
-            if (bodylongitude != null)
-            {
-                body["Longitude"] = ExpressionConverter.ConvertO(bodylongitude);
-                bodypropCount++;
-            }
+                if (__workflow_bodylongitude != null)
+                {
+                    body["Longitude"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
+                    bodypropCount++;
+                }
 
-            if (bodydivisionId != null)
-            {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
-                bodypropCount++;
-            }
+                if (__workflow_bodydivisionId != null)
+                {
+                    body["DivisionId"] = ExpressionConverter.ConvertO(__workflow_bodydivisionId);
+                    bodypropCount++;
+                }
 
-            if (bodyuserId != null)
-            {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuserId != null)
+                {
+                    body["UserId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodyanonymouslyReported != null)
-            {
-                body["AnonymouslyReported"] = ExpressionConverter.ConvertO(bodyanonymouslyReported);
-                bodypropCount++;
-            }
+                if (__workflow_bodyanonymouslyReported != null)
+                {
+                    body["AnonymouslyReported"] = ExpressionConverter.ConvertO(__workflow_bodyanonymouslyReported);
+                    bodypropCount++;
+                }
 
-            if (bodycheckListData != null)
-            {
-                body["CheckListData"] = ExpressionConverter.ConvertO(bodycheckListData);
-                bodypropCount++;
-            }
+                if (__workflow_bodycheckListData != null)
+                {
+                    body["CheckListData"] = ExpressionConverter.ConvertO(__workflow_bodycheckListData);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateIncidentResponse>(callPayload);
+                return new ApiConnectionAction<CreateIncidentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
         {
-            var apiCallPath = "/App/Login";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserUid != null)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodyuserUid = WorkflowExpression.Compile(bodyuserUid, nameof(bodyuserUid), required: false);
+            var __workflow_bodyappPassword = WorkflowExpression.Compile(bodyappPassword, nameof(bodyappPassword), required: false);
+            var __workflow_bodyacceptConditions = WorkflowExpression.Compile(bodyacceptConditions, nameof(bodyacceptConditions), required: false);
+            var __workflow_bodyisOqsha = WorkflowExpression.Compile(bodyisOqsha, nameof(bodyisOqsha), required: false);
+            return new DeferredBodyAction<LoginResponse>(() =>
             {
-                body["UserUid"] = ExpressionConverter.ConvertO(bodyuserUid);
-                bodypropCount++;
-            }
+                var apiCallPath = "/App/Login";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyuserUid != null)
+                {
+                    body["UserUid"] = ExpressionConverter.ConvertO(__workflow_bodyuserUid);
+                    bodypropCount++;
+                }
 
-            if (bodyappPassword != null)
-            {
-                body["AppPassword"] = ExpressionConverter.ConvertO(bodyappPassword);
-                bodypropCount++;
-            }
+                if (__workflow_bodyappPassword != null)
+                {
+                    body["AppPassword"] = ExpressionConverter.ConvertO(__workflow_bodyappPassword);
+                    bodypropCount++;
+                }
 
-            if (bodyacceptConditions != null)
-            {
-                body["acceptConditions"] = ExpressionConverter.ConvertO(bodyacceptConditions);
-                bodypropCount++;
-            }
+                if (__workflow_bodyacceptConditions != null)
+                {
+                    body["acceptConditions"] = ExpressionConverter.ConvertO(__workflow_bodyacceptConditions);
+                    bodypropCount++;
+                }
 
-            if (bodyisOqsha != null)
-            {
-                body["IsOqsha"] = ExpressionConverter.ConvertO(bodyisOqsha);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisOqsha != null)
+                {
+                    body["IsOqsha"] = ExpressionConverter.ConvertO(__workflow_bodyisOqsha);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<LoginResponse>(callPayload);
+                return new ApiConnectionAction<LoginResponse>(callPayload);
+            });
         }
     }
 

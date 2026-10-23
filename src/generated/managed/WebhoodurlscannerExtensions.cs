@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,31 +14,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IBodyWorkflowAction<Scan[]> GetScans(Expression<Func<statusInput>> status = null)
         {
-            var apiCallPath = "/beta/scans";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = Convert.ToString("done");
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<Scan[]>(callPayload);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            return new DeferredBodyAction<Scan[]>(() =>
+            {
+                var apiCallPath = "/beta/scans";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = Convert.ToString("done");
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                return new ApiConnectionAction<Scan[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IBodyWorkflowAction<Scan> GetScanById(Expression<Func<string>> scanId)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Scan>(callPayload);
+            var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
+            return new DeferredBodyAction<Scan>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/scans/{0}", __workflow_scanId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Scan>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IWorkflowAction GetScreenshotByScanId(Expression<Func<string>> scanId)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}/screenshot", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/scans/{0}/screenshot", __workflow_scanId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -82,6 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         public string ErrorDescription { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ScanStatusType
     {
         [EnumMember(Value = "pending")]
@@ -94,6 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         Running
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "pending")]

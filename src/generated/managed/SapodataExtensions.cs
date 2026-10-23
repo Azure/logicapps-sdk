@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,176 +14,234 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<Output> GetEntityData(Expression<Func<string>> entity, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
         {
-            var apiCallPath = "/getentitydata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["relativePath"] = Convert.ToString("/");
-            if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (inlinecount != null)
-                callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(inlinecount);
-            return new ApiConnectionAction<Output>(callPayload);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_inlinecount = WorkflowExpression.Compile(inlinecount, nameof(inlinecount), required: false);
+            return new DeferredBodyAction<Output>(() =>
+            {
+                var apiCallPath = "/getentitydata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["relativePath"] = Convert.ToString("/");
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_expand != null)
+                    callPayload.Queries["expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_inlinecount != null)
+                    callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(__workflow_inlinecount);
+                return new ApiConnectionAction<Output>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
         {
-            var apiCallPath = "/getentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["relativePath"] = Convert.ToString("/");
-            if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (inlinecount != null)
-                callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(inlinecount);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_inlinecount = WorkflowExpression.Compile(inlinecount, nameof(inlinecount), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/getentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["relativePath"] = Convert.ToString("/");
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_expand != null)
+                    callPayload.Queries["expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_inlinecount != null)
+                    callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(__workflow_inlinecount);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> CreateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            var apiCallPath = "/createentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["relativePath"] = Convert.ToString("/");
-            if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/createentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["relativePath"] = Convert.ToString("/");
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> UpdateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            var apiCallPath = "/updateentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["relativePath"] = Convert.ToString("/");
-            if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/updateentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["relativePath"] = Convert.ToString("/");
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<AdHocRequestResponse> AdHocRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<bool>> bypassMetadata = null)
         {
-            var apiCallPath = "/adhoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
-            if (bypassMetadata != null)
-                callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(bypassMetadata);
-            var entryInput = new JObject();
-            var entryInputpropCount = 0;
-            entryInputpropCount++;
-            entryInput["httpMethod"] = ExpressionConverter.ConvertO(entryInputhttpMethod);
-            var queryStringObject = new JObject();
-            var queryStringObjectpropCount = 0;
-            if (queryStringObjectpropCount > 0)
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
+            var __workflow_entryInputhttpMethod = WorkflowExpression.Compile(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
+            var __workflow_bypassMetadata = WorkflowExpression.Compile(bypassMetadata, nameof(bypassMetadata), required: false);
+            return new DeferredBodyAction<AdHocRequestResponse>(() =>
             {
-                entryInput["queryString"] = queryStringObject;
+                var apiCallPath = "/adhoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
+                if (__workflow_bypassMetadata != null)
+                    callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(__workflow_bypassMetadata);
+                var entryInput = new JObject();
+                var entryInputpropCount = 0;
                 entryInputpropCount++;
-            }
+                entryInput["httpMethod"] = ExpressionConverter.ConvertO(__workflow_entryInputhttpMethod);
+                var queryStringObject = new JObject();
+                var queryStringObjectpropCount = 0;
+                if (queryStringObjectpropCount > 0)
+                {
+                    entryInput["queryString"] = queryStringObject;
+                    entryInputpropCount++;
+                }
 
-            var payloadObject = new JObject();
-            var payloadObjectpropCount = 0;
-            if (payloadObjectpropCount > 0)
-            {
-                entryInput["payload"] = payloadObject;
-                entryInputpropCount++;
-            }
+                var payloadObject = new JObject();
+                var payloadObjectpropCount = 0;
+                if (payloadObjectpropCount > 0)
+                {
+                    entryInput["payload"] = payloadObject;
+                    entryInputpropCount++;
+                }
 
-            if (entryInputpropCount > 0)
-            {
-                callPayload.Body = entryInput;
-            }
+                if (entryInputpropCount > 0)
+                {
+                    callPayload.Body = entryInput;
+                }
 
-            return new ApiConnectionAction<AdHocRequestResponse>(callPayload);
+                return new ApiConnectionAction<AdHocRequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<AdHocBulkRequestResponse> AdHocBulkRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<JToken[]>> entryInputpayload = null, Expression<Func<bool>> bypassMetadata = null)
         {
-            var apiCallPath = "/adhocBulk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
-            if (bypassMetadata != null)
-                callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(bypassMetadata);
-            var entryInput = new JObject();
-            var entryInputpropCount = 0;
-            entryInputpropCount++;
-            entryInput["httpMethod"] = ExpressionConverter.ConvertO(entryInputhttpMethod);
-            var queryStringObject = new JObject();
-            var queryStringObjectpropCount = 0;
-            if (queryStringObjectpropCount > 0)
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
+            var __workflow_entryInputhttpMethod = WorkflowExpression.Compile(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
+            var __workflow_entryInputpayload = WorkflowExpression.Compile(entryInputpayload, nameof(entryInputpayload), required: false);
+            var __workflow_bypassMetadata = WorkflowExpression.Compile(bypassMetadata, nameof(bypassMetadata), required: false);
+            return new DeferredBodyAction<AdHocBulkRequestResponse>(() =>
             {
-                entryInput["queryString"] = queryStringObject;
+                var apiCallPath = "/adhocBulk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
+                if (__workflow_bypassMetadata != null)
+                    callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(__workflow_bypassMetadata);
+                var entryInput = new JObject();
+                var entryInputpropCount = 0;
                 entryInputpropCount++;
-            }
+                entryInput["httpMethod"] = ExpressionConverter.ConvertO(__workflow_entryInputhttpMethod);
+                var queryStringObject = new JObject();
+                var queryStringObjectpropCount = 0;
+                if (queryStringObjectpropCount > 0)
+                {
+                    entryInput["queryString"] = queryStringObject;
+                    entryInputpropCount++;
+                }
 
-            if (entryInputpayload != null)
-            {
-                entryInput["payload"] = ExpressionConverter.ConvertO(entryInputpayload);
-                entryInputpropCount++;
-            }
+                if (__workflow_entryInputpayload != null)
+                {
+                    entryInput["payload"] = ExpressionConverter.ConvertO(__workflow_entryInputpayload);
+                    entryInputpropCount++;
+                }
 
-            if (entryInputpropCount > 0)
-            {
-                callPayload.Body = entryInput;
-            }
+                if (entryInputpropCount > 0)
+                {
+                    callPayload.Body = entryInput;
+                }
 
-            return new ApiConnectionAction<AdHocBulkRequestResponse>(callPayload);
+                return new ApiConnectionAction<AdHocBulkRequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> DeleteEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            var apiCallPath = "/deleteentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Queries["relativePath"] = Convert.ToString("/");
-            if (relativePath != null)
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/deleteentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["relativePath"] = Convert.ToString("/");
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
@@ -200,6 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         public double Count { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inlinecountInput
     {
         [EnumMember(Value = "none")]
@@ -226,6 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         public string Unstructured { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entryInputhttpMethodInput
     {
         GET,

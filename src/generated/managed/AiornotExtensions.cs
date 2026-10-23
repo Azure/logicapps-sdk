@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,19 +23,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
         public IBodyWorkflowAction<ImageReportResponse> ImageReport(Expression<Func<string>> bodyObject)
         {
-            var apiCallPath = "/v1/reports/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["object"] = ExpressionConverter.ConvertO(bodyObject);
-            if (bodypropCount > 0)
+            var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
+            return new DeferredBodyAction<ImageReportResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/reports/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ImageReportResponse>(callPayload);
+                return new ApiConnectionAction<ImageReportResponse>(callPayload);
+            });
         }
     }
 

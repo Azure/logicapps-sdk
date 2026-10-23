@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,23 +15,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["actionConfigId"] = ExpressionConverter.ConvertO(bodyactionConfigId);
-            body["hookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyactionConfigId = WorkflowExpression.Compile(bodyactionConfigId, nameof(bodyactionConfigId), required: true);
+            return new DeferredBodyTrigger<BttnWebhookResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["actionConfigId"] = ExpressionConverter.ConvertO(__workflow_bodyactionConfigId);
+                body["hookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,149 +14,231 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RRSetResults[]> RRSET(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            var apiCallPath = String.Format("/lookup/rrset/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (timeFirstBefore != null)
-                callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-            if (timeFirstAfter != null)
-                callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-            if (timeLastBefore != null)
-                callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-            if (timeLastAfter != null)
-                callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (aggr != null)
-                callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-            if (humantime != null)
-                callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<RRSetResults[]>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            var __workflow_timeFirstBefore = WorkflowExpression.Compile(timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = WorkflowExpression.Compile(timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = WorkflowExpression.Compile(timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = WorkflowExpression.Compile(timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_aggr = WorkflowExpression.Compile(aggr, nameof(aggr), required: false);
+            var __workflow_humantime = WorkflowExpression.Compile(humantime, nameof(humantime), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<RRSetResults[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rrset/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<RRSetResults[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPE(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            var apiCallPath = String.Format("/lookup/rrset/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1), ExpressionConverter.ConvertWithUrlEncoding(rrtype, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (timeFirstBefore != null)
-                callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-            if (timeFirstAfter != null)
-                callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-            if (timeLastBefore != null)
-                callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-            if (timeLastAfter != null)
-                callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (aggr != null)
-                callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-            if (humantime != null)
-                callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<RRSetResults[]>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            var __workflow_rrtype = WorkflowExpression.Compile(rrtype, nameof(rrtype), required: true);
+            var __workflow_timeFirstBefore = WorkflowExpression.Compile(timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = WorkflowExpression.Compile(timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = WorkflowExpression.Compile(timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = WorkflowExpression.Compile(timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_aggr = WorkflowExpression.Compile(aggr, nameof(aggr), required: false);
+            var __workflow_humantime = WorkflowExpression.Compile(humantime, nameof(humantime), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<RRSetResults[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rrset/{0}/{1}/{2}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1), __workflow_rrtype.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<RRSetResults[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPEBAILIWICK(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<string>> bailiwick, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            var apiCallPath = String.Format("/lookup/rrset/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1), ExpressionConverter.ConvertWithUrlEncoding(rrtype, 1), ExpressionConverter.ConvertWithUrlEncoding(bailiwick, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (timeFirstBefore != null)
-                callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-            if (timeFirstAfter != null)
-                callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-            if (timeLastBefore != null)
-                callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-            if (timeLastAfter != null)
-                callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (aggr != null)
-                callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-            if (humantime != null)
-                callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<RRSetResults[]>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            var __workflow_rrtype = WorkflowExpression.Compile(rrtype, nameof(rrtype), required: true);
+            var __workflow_bailiwick = WorkflowExpression.Compile(bailiwick, nameof(bailiwick), required: true);
+            var __workflow_timeFirstBefore = WorkflowExpression.Compile(timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = WorkflowExpression.Compile(timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = WorkflowExpression.Compile(timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = WorkflowExpression.Compile(timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_aggr = WorkflowExpression.Compile(aggr, nameof(aggr), required: false);
+            var __workflow_humantime = WorkflowExpression.Compile(humantime, nameof(humantime), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<RRSetResults[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rrset/{0}/{1}/{2}/{3}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1), __workflow_rrtype.WithUrlEncoding(1), __workflow_bailiwick.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<RRSetResults[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RDataResults[]> RDATA(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            var apiCallPath = String.Format("/lookup/rdata/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (timeFirstBefore != null)
-                callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-            if (timeFirstAfter != null)
-                callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-            if (timeLastBefore != null)
-                callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-            if (timeLastAfter != null)
-                callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (aggr != null)
-                callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-            if (humantime != null)
-                callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<RDataResults[]>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            var __workflow_timeFirstBefore = WorkflowExpression.Compile(timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = WorkflowExpression.Compile(timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = WorkflowExpression.Compile(timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = WorkflowExpression.Compile(timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_aggr = WorkflowExpression.Compile(aggr, nameof(aggr), required: false);
+            var __workflow_humantime = WorkflowExpression.Compile(humantime, nameof(humantime), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<RDataResults[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rdata/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<RDataResults[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RDataResults[]> RDATARRTYPE(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            var apiCallPath = String.Format("/lookup/rdata/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1), ExpressionConverter.ConvertWithUrlEncoding(rrtype, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (timeFirstBefore != null)
-                callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-            if (timeFirstAfter != null)
-                callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-            if (timeLastBefore != null)
-                callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-            if (timeLastAfter != null)
-                callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (aggr != null)
-                callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-            if (humantime != null)
-                callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<RDataResults[]>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            var __workflow_rrtype = WorkflowExpression.Compile(rrtype, nameof(rrtype), required: true);
+            var __workflow_timeFirstBefore = WorkflowExpression.Compile(timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = WorkflowExpression.Compile(timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = WorkflowExpression.Compile(timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = WorkflowExpression.Compile(timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_aggr = WorkflowExpression.Compile(aggr, nameof(aggr), required: false);
+            var __workflow_humantime = WorkflowExpression.Compile(humantime, nameof(humantime), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<RDataResults[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rdata/{0}/{1}/{2}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1), __workflow_rrtype.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<RDataResults[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<FlexResults[]> FLEX(Expression<Func<methodInput>> method, Expression<Func<keyInput>> key, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<string>> exclude = null, Expression<Func<double>> offset = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(method, 1), ExpressionConverter.ConvertWithUrlEncoding(key, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (timeFirstBefore != null)
-                callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-            if (timeFirstAfter != null)
-                callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-            if (timeLastBefore != null)
-                callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-            if (timeLastAfter != null)
-                callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (exclude != null)
-                callPayload.Queries["exclude"] = ExpressionConverter.Convert(exclude);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<FlexResults[]>(callPayload);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            var __workflow_timeFirstBefore = WorkflowExpression.Compile(timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = WorkflowExpression.Compile(timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = WorkflowExpression.Compile(timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = WorkflowExpression.Compile(timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_exclude = WorkflowExpression.Compile(exclude, nameof(exclude), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<FlexResults[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_method.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_exclude != null)
+                    callPayload.Queries["exclude"] = ExpressionConverter.Convert(__workflow_exclude);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<FlexResults[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
@@ -212,6 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         public string[] Rdata { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "name")]
@@ -264,6 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         public string RawRdata { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         [EnumMember(Value = "regex")]
@@ -272,6 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         Glob
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum keyInput
     {
         [EnumMember(Value = "rrnames")]

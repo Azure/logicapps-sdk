@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,138 +14,189 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> UserTimeline(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            var apiCallPath = "/usertimeline";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            return new ApiConnectionAction<TweetModel[]>(callPayload);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            return new DeferredBodyAction<TweetModel[]>(() =>
+            {
+                var apiCallPath = "/usertimeline";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                return new ApiConnectionAction<TweetModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> HomeTimeline(Expression<Func<int>> maxResults = null)
         {
-            var apiCallPath = "/hometimeline";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            return new ApiConnectionAction<TweetModel[]>(callPayload);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            return new DeferredBodyAction<TweetModel[]>(() =>
+            {
+                var apiCallPath = "/hometimeline";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                return new ApiConnectionAction<TweetModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> SearchTweet(Expression<Func<string>> searchQuery, Expression<Func<int>> maxResults = null, Expression<Func<string>> sinceId = null)
         {
-            var apiCallPath = "/searchtweets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            if (sinceId != null)
-                callPayload.Queries["sinceId"] = ExpressionConverter.Convert(sinceId);
-            return new ApiConnectionAction<TweetModel[]>(callPayload);
+            var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            var __workflow_sinceId = WorkflowExpression.Compile(sinceId, nameof(sinceId), required: false);
+            return new DeferredBodyAction<TweetModel[]>(() =>
+            {
+                var apiCallPath = "/searchtweets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                if (__workflow_sinceId != null)
+                    callPayload.Queries["sinceId"] = ExpressionConverter.Convert(__workflow_sinceId);
+                return new ApiConnectionAction<TweetModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> Followers(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            var apiCallPath = "/followers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            return new DeferredBodyAction<UserDetailsModel[]>(() =>
+            {
+                var apiCallPath = "/followers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> MyFollowers(Expression<Func<int>> maxResults = null)
         {
-            var apiCallPath = "/myfollowers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            return new DeferredBodyAction<UserDetailsModel[]>(() =>
+            {
+                var apiCallPath = "/myfollowers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> Following(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            var apiCallPath = "/friends";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            return new DeferredBodyAction<UserDetailsModel[]>(() =>
+            {
+                var apiCallPath = "/friends";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> MyFollowing(Expression<Func<int>> maxResults = null)
         {
-            var apiCallPath = "/myfriends";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            return new DeferredBodyAction<UserDetailsModel[]>(() =>
+            {
+                var apiCallPath = "/myfriends";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel> User(Expression<Func<string>> userName)
         {
-            var apiCallPath = "/user";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
-            return new ApiConnectionAction<UserDetailsModel>(callPayload);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
+            return new DeferredBodyAction<UserDetailsModel>(() =>
+            {
+                var apiCallPath = "/user";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
+                return new ApiConnectionAction<UserDetailsModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetResponseModel> Tweet(Expression<Func<string>> tweetText = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = "/posttweet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tweetText != null)
-                callPayload.Queries["tweetText"] = ExpressionConverter.Convert(tweetText);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<TweetResponseModel>(callPayload);
+            var __workflow_tweetText = WorkflowExpression.Compile(tweetText, nameof(tweetText), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<TweetResponseModel>(() =>
+            {
+                var apiCallPath = "/posttweet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_tweetText != null)
+                    callPayload.Queries["tweetText"] = ExpressionConverter.Convert(__workflow_tweetText);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TweetResponseModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetResponseModel> Retweet(Expression<Func<string>> tweetId, Expression<Func<bool>> trimUser = null)
         {
-            var apiCallPath = "/retweet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tweetId"] = ExpressionConverter.Convert(tweetId);
-            callPayload.Queries["trimUser"] = Convert.ToString(false);
-            if (trimUser != null)
-                callPayload.Queries["trimUser"] = ExpressionConverter.Convert(trimUser);
-            return new ApiConnectionAction<TweetResponseModel>(callPayload);
+            var __workflow_tweetId = WorkflowExpression.Compile(tweetId, nameof(tweetId), required: true);
+            var __workflow_trimUser = WorkflowExpression.Compile(trimUser, nameof(trimUser), required: false);
+            return new DeferredBodyAction<TweetResponseModel>(() =>
+            {
+                var apiCallPath = "/retweet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tweetId"] = ExpressionConverter.Convert(__workflow_tweetId);
+                callPayload.Queries["trimUser"] = Convert.ToString(false);
+                if (__workflow_trimUser != null)
+                    callPayload.Queries["trimUser"] = ExpressionConverter.Convert(__workflow_trimUser);
+                return new ApiConnectionAction<TweetResponseModel>(callPayload);
+            });
         }
     }
 
     public class TwitterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet(Expression<Func<string>> searchQuery, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet(Expression<Func<string>> searchQuery, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/onnewtweet";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
-            return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, triggerName, recurrence);
+            var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: true);
+            return new DeferredBodyTrigger<TriggerBatchResponseTweetModel>(() =>
+            {
+                var apiCallPath = "/onnewtweet";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
+                return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

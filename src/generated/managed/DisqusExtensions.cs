@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,33 +14,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<CreatePostResponse> Create(Expression<Func<string>> thread, Expression<Func<string>> message)
         {
-            var apiCallPath = "/posts/create.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            return new DeferredBodyAction<CreatePostResponse>(() =>
+            {
+                var apiCallPath = "/posts/create.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
+                callPayload.Queries["message"] = ExpressionConverter.Convert(__workflow_message);
+                return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<CreatePostResponse> ReplyTo(Expression<Func<string>> parent, Expression<Func<string>> message)
         {
-            var apiCallPath = "/reply/posts/create.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parent"] = ExpressionConverter.Convert(parent);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            var __workflow_parent = WorkflowExpression.Compile(parent, nameof(parent), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            return new DeferredBodyAction<CreatePostResponse>(() =>
+            {
+                var apiCallPath = "/reply/posts/create.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["parent"] = ExpressionConverter.Convert(__workflow_parent);
+                callPayload.Queries["message"] = ExpressionConverter.Convert(__workflow_message);
+                return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<OperationResultResponse> Remove(Expression<Func<string>> post)
         {
-            var apiCallPath = "/posts/remove.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["post"] = ExpressionConverter.Convert(post);
-            return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            var __workflow_post = WorkflowExpression.Compile(post, nameof(post), required: true);
+            return new DeferredBodyAction<OperationResultResponse>(() =>
+            {
+                var apiCallPath = "/posts/remove.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["post"] = ExpressionConverter.Convert(__workflow_post);
+                return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
@@ -57,91 +71,124 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<EmptyResponse> SubscribeToThread(Expression<Func<string>> thread)
         {
-            var apiCallPath = "/threads/subscribe.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<EmptyResponse>(callPayload);
+            var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<EmptyResponse>(() =>
+            {
+                var apiCallPath = "/threads/subscribe.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
+                return new ApiConnectionAction<EmptyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<OperationResultResponse> OpenThread(Expression<Func<string>> thread)
         {
-            var apiCallPath = "/threads/open.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<OperationResultResponse>(() =>
+            {
+                var apiCallPath = "/threads/open.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
+                return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<OperationResultResponse> CloseThread(Expression<Func<string>> thread)
         {
-            var apiCallPath = "/threads/close.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<OperationResultResponse>(() =>
+            {
+                var apiCallPath = "/threads/close.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
+                return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<RecommendThreadResponse> RecommendThread(Expression<Func<string>> thread)
         {
-            var apiCallPath = "/threads/vote.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            callPayload.Queries["vote"] = Convert.ToString("1");
-            return new ApiConnectionAction<RecommendThreadResponse>(callPayload);
+            var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<RecommendThreadResponse>(() =>
+            {
+                var apiCallPath = "/threads/vote.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
+                callPayload.Queries["vote"] = Convert.ToString("1");
+                return new ApiConnectionAction<RecommendThreadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<GetThreadResponse> GetThread(Expression<Func<string>> thread)
         {
-            var apiCallPath = "/threads/details.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<GetThreadResponse>(callPayload);
+            var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<GetThreadResponse>(() =>
+            {
+                var apiCallPath = "/threads/details.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
+                return new ApiConnectionAction<GetThreadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<Thread[]> GetForumThreads(Expression<Func<string>> forum)
         {
-            var apiCallPath = "/forums/listThreads.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            return new ApiConnectionAction<Thread[]>(callPayload);
+            var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
+            return new DeferredBodyAction<Thread[]>(() =>
+            {
+                var apiCallPath = "/forums/listThreads.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["forum"] = ExpressionConverter.Convert(__workflow_forum);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                return new ApiConnectionAction<Thread[]>(callPayload);
+            });
         }
     }
 
     public class DisqusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/posts/list.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
-            if (thread != null)
-                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            callPayload.Queries["limit"] = Convert.ToString(75);
-            return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
+            var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
+            var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: false);
+            return new DeferredBodyTrigger<Post[]>(() =>
+            {
+                var apiCallPath = "/posts/list.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["forum"] = ExpressionConverter.Convert(__workflow_forum);
+                if (__workflow_thread != null)
+                    callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                callPayload.Queries["limit"] = Convert.ToString(75);
+                return new ApiConnectionTrigger<Post[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated(Expression<Func<string>> forum, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated(Expression<Func<string>> forum, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/threads/list.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            callPayload.Queries["limit"] = Convert.ToString(75);
-            return new ApiConnectionTrigger<Thread[]>(callPayload, triggerName, recurrence);
+            var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
+            return new DeferredBodyTrigger<Thread[]>(() =>
+            {
+                var apiCallPath = "/threads/list.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["forum"] = ExpressionConverter.Convert(__workflow_forum);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                callPayload.Queries["limit"] = Convert.ToString(75);
+                return new ApiConnectionTrigger<Thread[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

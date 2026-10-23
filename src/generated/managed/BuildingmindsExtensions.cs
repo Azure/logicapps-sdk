@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,335 +14,479 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<PortfolioTypeWithPagination> GetPortfolios(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/portfolios";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<PortfolioTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<PortfolioTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/portfolios";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<PortfolioTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<SiteTypeWithPagination> GetSites(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/sites";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<SiteTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<SiteTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/sites";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<SiteTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<BuildingTypeWithPagination> GetBuildings(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/buildings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<BuildingTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<BuildingTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/buildings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<BuildingTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<FloorTypeWithPagination> GetFloors(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/floors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<FloorTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<FloorTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/floors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<FloorTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<RoofsTypeWithPagination> GetRoofs(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/roofs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<RoofsTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<RoofsTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/roofs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<RoofsTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<FacadesTypeWithPagination> GetFacades(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/facades";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<FacadesTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<FacadesTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/facades";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<FacadesTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<OutsideareasTypeWithPagination> GetOutsideareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/outsideareas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<OutsideareasTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<OutsideareasTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/outsideareas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<OutsideareasTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<SubareasTypeWithPagination> GetSubareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/subareas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<SubareasTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<SubareasTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/subareas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<SubareasTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<LandsTypeWithPagination> GetLands(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/lands";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<LandsTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<LandsTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/lands";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<LandsTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<SpacesTypeWithPagination> GetSpaces(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var apiCallPath = "/premises/spaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<SpacesTypeWithPagination>(callPayload);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<SpacesTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/spaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<SpacesTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Portfolio> GetPortfolioById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/portfolios/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Portfolio>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Portfolio>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/portfolios/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Portfolio>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Site> GetSiteById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Site>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Site>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/sites/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Site>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Building> GetBuildingById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/buildings/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Building>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Building>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/buildings/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Building>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Floor> GetFloorById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/floors/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Floor>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Floor>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/floors/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Floor>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Roof> GetRoofById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/roofs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Roof>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Roof>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/roofs/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Roof>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Facade> GetFacadeById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/facades/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Facade>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Facade>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/facades/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Facade>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Outsidearea> GetOutsideareaById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/outsideareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Outsidearea>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Outsidearea>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/outsideareas/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Outsidearea>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Subarea> GetSubareaById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/subareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Subarea>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Subarea>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/subareas/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Subarea>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Land> GetLandById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/lands/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Land>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Land>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/lands/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Land>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<Space> GetSpaceById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/spaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Space>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Space>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/spaces/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Space>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnPortfolio(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/portfolios/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/portfolios/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSite(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/sites/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/sites/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnBuilding(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/buildings/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/buildings/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFloor(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/floors/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/floors/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnRoof(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/roofs/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/roofs/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFacade(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/facades/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/facades/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnOutsidearea(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/outsideareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/outsideareas/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSubarea(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/subareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/subareas/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnLand(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/lands/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/lands/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSpace(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/premises/spaces/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/spaces/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination> GetAssociatedSpacesForSpace(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<string>> id, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
         {
-            var apiCallPath = String.Format("/premises/{0}/{1}/associated/{2}", ExpressionConverter.ConvertWithUrlEncoding(spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(associatedType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<AssociatedSpacesTypeWithPagination>(callPayload);
+            var __workflow_spaceType = WorkflowExpression.Compile(spaceType, nameof(spaceType), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_associatedType = WorkflowExpression.Compile(associatedType, nameof(associatedType), required: true);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<AssociatedSpacesTypeWithPagination>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/{0}/{1}/associated/{2}", __workflow_spaceType.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1), __workflow_associatedType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<AssociatedSpacesTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
         public IWorkflowAction GetUnassociatedSpaces(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> spaceid = null)
         {
-            var apiCallPath = String.Format("/premises/{0}/notassociated/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(associatedType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (spaceid != null)
-                callPayload.Queries["spaceid"] = ExpressionConverter.Convert(spaceid);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_spaceType = WorkflowExpression.Compile(spaceType, nameof(spaceType), required: true);
+            var __workflow_associatedType = WorkflowExpression.Compile(associatedType, nameof(associatedType), required: true);
+            var __workflow_spaceid = WorkflowExpression.Compile(spaceid, nameof(spaceid), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/{0}/notassociated/{1}", __workflow_spaceType.WithUrlEncoding(1), __workflow_associatedType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_spaceid != null)
+                    callPayload.Queries["spaceid"] = ExpressionConverter.Convert(__workflow_spaceid);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -407,6 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public string[] AssociatedBuildingIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntityType
     {
         [EnumMember(Value = "portfolio")]
@@ -457,6 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public double MetricValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AreaValueTypeUnitType
     {
         [EnumMember(Value = "m2")]
@@ -582,6 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public double Longitude { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpaceTypeOfUseEnum
     {
         [EnumMember(Value = "office")]
@@ -708,6 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public int NumberOfBasementFloors { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpaceTypeOfOwnership
     {
         Leased,
@@ -783,6 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public string[] ImageIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FloorTypeOfFloorType
     {
         [EnumMember(Value = "basement")]
@@ -961,6 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public AreaValueType GrossArea { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OutsideAreaType
     {
         [EnumMember(Value = "pavedArea")]
@@ -1158,6 +1308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public SpaceTypeOfSpaceType TypeOfSpace { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpaceTypeOfSpaceType
     {
         [EnumMember(Value = "residential")]
@@ -1195,6 +1346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public Space[] Items { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum spaceTypeInput
     {
         [EnumMember(Value = "portfolios")]
@@ -1219,6 +1371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         Spaces
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum associatedTypeInput
     {
         [EnumMember(Value = "portfolios")]

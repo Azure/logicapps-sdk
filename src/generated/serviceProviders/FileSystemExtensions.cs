@@ -1,11 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
 {
     using System;
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -16,206 +16,264 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IWorkflowAction AppendFile(Expression<Func<string>> filePath, Expression<Func<object>> body, Expression<Func<bool>> createFileIfNotPresent = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            if (createFileIfNotPresent != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_createFileIfNotPresent = WorkflowExpression.Compile(createFileIfNotPresent, nameof(createFileIfNotPresent), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                serviceProviderParameters["createFileIfNotPresent"] = ExpressionConverter.ConvertO(createFileIfNotPresent);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_createFileIfNotPresent != null)
+                {
+                    serviceProviderParameters["createFileIfNotPresent"] = ExpressionConverter.ConvertO(__workflow_createFileIfNotPresent);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "appendFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "appendFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IWorkflowAction CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["source"] = ExpressionConverter.ConvertO(source);
-            serviceProviderParameters["destination"] = ExpressionConverter.ConvertO(destination);
-            if (overwrite != null)
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["source"] = ExpressionConverter.ConvertO(__workflow_source);
+                serviceProviderParameters["destination"] = ExpressionConverter.ConvertO(__workflow_destination);
+                if (__workflow_overwrite != null)
+                {
+                    serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(__workflow_overwrite);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "copyFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "copyFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<CreateFileOutput> CreateFile(Expression<Func<string>> filePath, Expression<Func<object>> body = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (body != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<CreateFileOutput>(() =>
             {
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_body != null)
+                {
+                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "createFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "createFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IOutputWorkflowAction<JToken> DeleteFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (skipIfFileNotPresent != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_skipIfFileNotPresent = WorkflowExpression.Compile(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                serviceProviderParameters["skipIfFileNotPresent"] = ExpressionConverter.ConvertO(skipIfFileNotPresent);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_skipIfFileNotPresent != null)
+                {
+                    serviceProviderParameters["skipIfFileNotPresent"] = ExpressionConverter.ConvertO(__workflow_skipIfFileNotPresent);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "deleteFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "deleteFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (inferContentType != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
-            }
-            else
-            {
-                serviceProviderParameters["inferContentType"] = true;
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_inferContentType != null)
+                {
+                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(__workflow_inferContentType);
+                }
+                else
+                {
+                    serviceProviderParameters["inferContentType"] = true;
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileContent", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileContent", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<JToken> GetFileContentV2(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (inferContentType != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
-            }
-            else
-            {
-                serviceProviderParameters["inferContentType"] = true;
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_inferContentType != null)
+                {
+                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(__workflow_inferContentType);
+                }
+                else
+                {
+                    serviceProviderParameters["inferContentType"] = true;
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileContentV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileContentV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata(Expression<Func<string>> filePath)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            return new DeferredBodyAction<GetFileMetadataOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder(Expression<Func<string>> folderPath, Expression<Func<bool>> enableRecursiveListing = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (enableRecursiveListing != null)
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_enableRecursiveListing = WorkflowExpression.Compile(enableRecursiveListing, nameof(enableRecursiveListing), required: false);
+            return new DeferredBodyAction<ListFolderOutputItem[]>(() =>
             {
-                serviceProviderParameters["enableRecursiveListing"] = ExpressionConverter.ConvertO(enableRecursiveListing);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_enableRecursiveListing != null)
+                {
+                    serviceProviderParameters["enableRecursiveListing"] = ExpressionConverter.ConvertO(__workflow_enableRecursiveListing);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "listFolder", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "listFolder", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IWorkflowAction RenameFile(Expression<Func<string>> filePath, Expression<Func<string>> newName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["newName"] = ExpressionConverter.ConvertO(newName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_newName = WorkflowExpression.Compile(newName, nameof(newName), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "renameFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["newName"] = ExpressionConverter.ConvertO(__workflow_newName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "renameFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<UpdateFileOutput> UpdateFile(Expression<Func<string>> filePath, Expression<Func<object>> body)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<UpdateFileOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "updateFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "updateFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive(Expression<Func<string>> folderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveInputOverwriteType>> overwrite = null, Expression<Func<object>> body = null)
         {
-            var serviceProviderParameters = new JObject();
-            if (filePath != null)
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: false);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ExtractArchiveOutputItem[]>(() =>
             {
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            }
+                var serviceProviderParameters = new JObject();
+                if (__workflow_filePath != null)
+                {
+                    serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                }
 
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (overwrite != null)
-            {
-                serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
-            }
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_overwrite != null)
+                {
+                    serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(__workflow_overwrite);
+                }
 
-            if (body != null)
-            {
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            }
+                if (__workflow_body != null)
+                {
+                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "extractArchive", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "extractArchive", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+            });
         }
     }
 
@@ -223,46 +281,58 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
     {
         public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (maxFileCount != null)
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
+            var __workflow_oldFileCutOffTimestamp = WorkflowExpression.Compile(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
+            return new DeferredBodyTrigger<WhenFilesAreAddedOutputItem[]>(() =>
             {
-                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_maxFileCount != null)
+                {
+                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(__workflow_maxFileCount);
+                }
 
-            if (oldFileCutOffTimestamp != null)
-            {
-                serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFileCutOffTimestamp);
-            }
+                if (__workflow_oldFileCutOffTimestamp != null)
+                {
+                    serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(__workflow_oldFileCutOffTimestamp);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAdded", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAdded", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (maxFileCount != null)
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
+            var __workflow_oldFileCutOffTimestamp = WorkflowExpression.Compile(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
+            return new DeferredBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(() =>
             {
-                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_maxFileCount != null)
+                {
+                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(__workflow_maxFileCount);
+                }
 
-            if (oldFileCutOffTimestamp != null)
-            {
-                serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFileCutOffTimestamp);
-            }
+                if (__workflow_oldFileCutOffTimestamp != null)
+                {
+                    serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(__workflow_oldFileCutOffTimestamp);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
         }
     }
 
@@ -392,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public bool IsFolder { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveInputOverwriteType
     {
         Fail,

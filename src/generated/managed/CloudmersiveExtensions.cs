@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,32 +14,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
         public IBodyWorkflowAction<VirusScanResult> ScanFile(Expression<Func<string>> inputFile)
         {
-            var apiCallPath = "/virus/scan/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VirusScanResult>(callPayload);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<VirusScanResult>(() =>
+            {
+                var apiCallPath = "/virus/scan/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VirusScanResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
         public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
         {
-            var apiCallPath = "/virus/scan/website";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputurl != null)
+            var __workflow_inputurl = WorkflowExpression.Compile(inputurl, nameof(inputurl), required: false);
+            return new DeferredBodyAction<WebsiteScanResult>(() =>
             {
-                input["Url"] = ExpressionConverter.ConvertO(inputurl);
-                inputpropCount++;
-            }
+                var apiCallPath = "/virus/scan/website";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (__workflow_inputurl != null)
+                {
+                    input["Url"] = ExpressionConverter.ConvertO(__workflow_inputurl);
+                    inputpropCount++;
+                }
 
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
 
-            return new ApiConnectionAction<WebsiteScanResult>(callPayload);
+                return new ApiConnectionAction<WebsiteScanResult>(callPayload);
+            });
         }
     }
 
@@ -65,6 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         public WebsiteScanResultWebsiteThreatTypeType WebsiteThreatType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WebsiteScanResultWebsiteThreatTypeType
     {
         None,

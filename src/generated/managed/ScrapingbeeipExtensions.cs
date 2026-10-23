@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,56 +14,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
         public IBodyWorkflowAction<HTMLResponse> HTML(Expression<Func<string>> url, Expression<Func<bool>> renderJs, Expression<Func<string>> jsScenario = null, Expression<Func<int>> wait = null, Expression<Func<string>> waitFor = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockResources = null, Expression<Func<int>> windowWidth = null, Expression<Func<int>> windowHeight = null, Expression<Func<bool>> premiumProxy = null, Expression<Func<string>> countryCode = null, Expression<Func<bool>> stealthProxy = null, Expression<Func<string>> ownProxy = null, Expression<Func<string>> extractRules = null, Expression<Func<bool>> screenshot = null, Expression<Func<string>> screenshotSelector = null, Expression<Func<bool>> screenshotFullPage = null, Expression<Func<bool>> returnPageSource = null, Expression<Func<int>> sessionId = null, Expression<Func<int>> timeout = null, Expression<Func<string>> cookies = null, Expression<Func<deviceInput>> device = null, Expression<Func<bool>> customGoogle = null)
         {
-            var apiCallPath = "/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            callPayload.Queries["render_js"] = ExpressionConverter.Convert(renderJs);
-            if (jsScenario != null)
-                callPayload.Queries["js_scenario"] = ExpressionConverter.Convert(jsScenario);
-            if (wait != null)
-                callPayload.Queries["wait"] = ExpressionConverter.Convert(wait);
-            if (waitFor != null)
-                callPayload.Queries["wait_for"] = ExpressionConverter.Convert(waitFor);
-            if (blockAds != null)
-                callPayload.Queries["block_ads"] = ExpressionConverter.Convert(blockAds);
-            if (blockResources != null)
-                callPayload.Queries["block_resources"] = ExpressionConverter.Convert(blockResources);
-            if (windowWidth != null)
-                callPayload.Queries["window_width"] = ExpressionConverter.Convert(windowWidth);
-            if (windowHeight != null)
-                callPayload.Queries["window_height"] = ExpressionConverter.Convert(windowHeight);
-            if (premiumProxy != null)
-                callPayload.Queries["premium_proxy"] = ExpressionConverter.Convert(premiumProxy);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            if (stealthProxy != null)
-                callPayload.Queries["stealth_proxy"] = ExpressionConverter.Convert(stealthProxy);
-            if (ownProxy != null)
-                callPayload.Queries["own_proxy"] = ExpressionConverter.Convert(ownProxy);
-            if (extractRules != null)
-                callPayload.Queries["extract_rules"] = ExpressionConverter.Convert(extractRules);
-            if (screenshot != null)
-                callPayload.Queries["screenshot"] = ExpressionConverter.Convert(screenshot);
-            if (screenshotSelector != null)
-                callPayload.Queries["screenshot_selector"] = ExpressionConverter.Convert(screenshotSelector);
-            if (screenshotFullPage != null)
-                callPayload.Queries["screenshot_full_page"] = ExpressionConverter.Convert(screenshotFullPage);
-            callPayload.Queries["json_response"] = Convert.ToString(true);
-            if (returnPageSource != null)
-                callPayload.Queries["return_page_source"] = ExpressionConverter.Convert(returnPageSource);
-            if (sessionId != null)
-                callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            if (cookies != null)
-                callPayload.Queries["cookies"] = ExpressionConverter.Convert(cookies);
-            callPayload.Queries["device"] = Convert.ToString("desktop");
-            if (device != null)
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            if (customGoogle != null)
-                callPayload.Queries["custom_google"] = ExpressionConverter.Convert(customGoogle);
-            return new ApiConnectionAction<HTMLResponse>(callPayload);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_renderJs = WorkflowExpression.Compile(renderJs, nameof(renderJs), required: true);
+            var __workflow_jsScenario = WorkflowExpression.Compile(jsScenario, nameof(jsScenario), required: false);
+            var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: false);
+            var __workflow_waitFor = WorkflowExpression.Compile(waitFor, nameof(waitFor), required: false);
+            var __workflow_blockAds = WorkflowExpression.Compile(blockAds, nameof(blockAds), required: false);
+            var __workflow_blockResources = WorkflowExpression.Compile(blockResources, nameof(blockResources), required: false);
+            var __workflow_windowWidth = WorkflowExpression.Compile(windowWidth, nameof(windowWidth), required: false);
+            var __workflow_windowHeight = WorkflowExpression.Compile(windowHeight, nameof(windowHeight), required: false);
+            var __workflow_premiumProxy = WorkflowExpression.Compile(premiumProxy, nameof(premiumProxy), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
+            var __workflow_stealthProxy = WorkflowExpression.Compile(stealthProxy, nameof(stealthProxy), required: false);
+            var __workflow_ownProxy = WorkflowExpression.Compile(ownProxy, nameof(ownProxy), required: false);
+            var __workflow_extractRules = WorkflowExpression.Compile(extractRules, nameof(extractRules), required: false);
+            var __workflow_screenshot = WorkflowExpression.Compile(screenshot, nameof(screenshot), required: false);
+            var __workflow_screenshotSelector = WorkflowExpression.Compile(screenshotSelector, nameof(screenshotSelector), required: false);
+            var __workflow_screenshotFullPage = WorkflowExpression.Compile(screenshotFullPage, nameof(screenshotFullPage), required: false);
+            var __workflow_returnPageSource = WorkflowExpression.Compile(returnPageSource, nameof(returnPageSource), required: false);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            var __workflow_cookies = WorkflowExpression.Compile(cookies, nameof(cookies), required: false);
+            var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
+            var __workflow_customGoogle = WorkflowExpression.Compile(customGoogle, nameof(customGoogle), required: false);
+            return new DeferredBodyAction<HTMLResponse>(() =>
+            {
+                var apiCallPath = "/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                callPayload.Queries["render_js"] = ExpressionConverter.Convert(__workflow_renderJs);
+                if (__workflow_jsScenario != null)
+                    callPayload.Queries["js_scenario"] = ExpressionConverter.Convert(__workflow_jsScenario);
+                if (__workflow_wait != null)
+                    callPayload.Queries["wait"] = ExpressionConverter.Convert(__workflow_wait);
+                if (__workflow_waitFor != null)
+                    callPayload.Queries["wait_for"] = ExpressionConverter.Convert(__workflow_waitFor);
+                if (__workflow_blockAds != null)
+                    callPayload.Queries["block_ads"] = ExpressionConverter.Convert(__workflow_blockAds);
+                if (__workflow_blockResources != null)
+                    callPayload.Queries["block_resources"] = ExpressionConverter.Convert(__workflow_blockResources);
+                if (__workflow_windowWidth != null)
+                    callPayload.Queries["window_width"] = ExpressionConverter.Convert(__workflow_windowWidth);
+                if (__workflow_windowHeight != null)
+                    callPayload.Queries["window_height"] = ExpressionConverter.Convert(__workflow_windowHeight);
+                if (__workflow_premiumProxy != null)
+                    callPayload.Queries["premium_proxy"] = ExpressionConverter.Convert(__workflow_premiumProxy);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                if (__workflow_stealthProxy != null)
+                    callPayload.Queries["stealth_proxy"] = ExpressionConverter.Convert(__workflow_stealthProxy);
+                if (__workflow_ownProxy != null)
+                    callPayload.Queries["own_proxy"] = ExpressionConverter.Convert(__workflow_ownProxy);
+                if (__workflow_extractRules != null)
+                    callPayload.Queries["extract_rules"] = ExpressionConverter.Convert(__workflow_extractRules);
+                if (__workflow_screenshot != null)
+                    callPayload.Queries["screenshot"] = ExpressionConverter.Convert(__workflow_screenshot);
+                if (__workflow_screenshotSelector != null)
+                    callPayload.Queries["screenshot_selector"] = ExpressionConverter.Convert(__workflow_screenshotSelector);
+                if (__workflow_screenshotFullPage != null)
+                    callPayload.Queries["screenshot_full_page"] = ExpressionConverter.Convert(__workflow_screenshotFullPage);
+                callPayload.Queries["json_response"] = Convert.ToString(true);
+                if (__workflow_returnPageSource != null)
+                    callPayload.Queries["return_page_source"] = ExpressionConverter.Convert(__workflow_returnPageSource);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["session_id"] = ExpressionConverter.Convert(__workflow_sessionId);
+                if (__workflow_timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
+                if (__workflow_cookies != null)
+                    callPayload.Queries["cookies"] = ExpressionConverter.Convert(__workflow_cookies);
+                callPayload.Queries["device"] = Convert.ToString("desktop");
+                if (__workflow_device != null)
+                    callPayload.Queries["device"] = ExpressionConverter.Convert(__workflow_device);
+                if (__workflow_customGoogle != null)
+                    callPayload.Queries["custom_google"] = ExpressionConverter.Convert(__workflow_customGoogle);
+                return new ApiConnectionAction<HTMLResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
@@ -78,21 +104,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
         public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch(Expression<Func<string>> search, Expression<Func<string>> countryCode = null, Expression<Func<int>> nbResults = null, Expression<Func<int>> page = null, Expression<Func<string>> language = null, Expression<Func<string>> extraParams = null)
         {
-            var apiCallPath = "/v1/store/google";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            if (nbResults != null)
-                callPayload.Queries["nb_results"] = ExpressionConverter.Convert(nbResults);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (extraParams != null)
-                callPayload.Queries["extra_params"] = ExpressionConverter.Convert(extraParams);
-            return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: true);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
+            var __workflow_nbResults = WorkflowExpression.Compile(nbResults, nameof(nbResults), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_extraParams = WorkflowExpression.Compile(extraParams, nameof(extraParams), required: false);
+            return new DeferredBodyAction<SimpleSearchResponse>(() =>
+            {
+                var apiCallPath = "/v1/store/google";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                if (__workflow_nbResults != null)
+                    callPayload.Queries["nb_results"] = ExpressionConverter.Convert(__workflow_nbResults);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_extraParams != null)
+                    callPayload.Queries["extra_params"] = ExpressionConverter.Convert(__workflow_extraParams);
+                return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
+            });
         }
     }
 
@@ -446,6 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string URI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum deviceInput
     {
         [EnumMember(Value = "desktop")]

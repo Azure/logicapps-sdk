@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,27 +14,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
         public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode(Expression<Func<string>> businessId)
         {
-            var apiCallPath = String.Format("/bis/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(businessId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
+            var __workflow_businessId = WorkflowExpression.Compile(businessId, nameof(businessId), required: true);
+            return new DeferredBodyAction<CompanyByBISCodeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bis/v1/{0}", __workflow_businessId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
         public IBodyWorkflowAction<CompanySearchResponse> CompanySearch(Expression<Func<string>> name = null, Expression<Func<int>> maxResults = null, Expression<Func<bool>> totalResults = null)
         {
-            var apiCallPath = "/bis/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["maxResults"] = Convert.ToString(10);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            callPayload.Queries["totalResults"] = Convert.ToString(true);
-            if (totalResults != null)
-                callPayload.Queries["totalResults"] = ExpressionConverter.Convert(totalResults);
-            return new ApiConnectionAction<CompanySearchResponse>(callPayload);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            var __workflow_totalResults = WorkflowExpression.Compile(totalResults, nameof(totalResults), required: false);
+            return new DeferredBodyAction<CompanySearchResponse>(() =>
+            {
+                var apiCallPath = "/bis/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Queries["maxResults"] = Convert.ToString(10);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                callPayload.Queries["totalResults"] = Convert.ToString(true);
+                if (__workflow_totalResults != null)
+                    callPayload.Queries["totalResults"] = ExpressionConverter.Convert(__workflow_totalResults);
+                return new ApiConnectionAction<CompanySearchResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,352 +14,504 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetsGetResponse> DatasetsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/cdo-web/api/v2/datasets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (datatypeid != null)
-                callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(datatypeid);
-            if (locationid != null)
-                callPayload.Queries["locationid"] = ExpressionConverter.Convert(locationid);
-            if (stationid != null)
-                callPayload.Queries["stationid"] = ExpressionConverter.Convert(stationid);
-            if (startdate != null)
-                callPayload.Queries["startdate"] = ExpressionConverter.Convert(startdate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (sortfield != null)
-                callPayload.Queries["sortfield"] = ExpressionConverter.Convert(sortfield);
-            if (sortorder != null)
-                callPayload.Queries["sortorder"] = ExpressionConverter.Convert(sortorder);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<DatasetsGetResponse>(callPayload);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<DatasetsGetResponse>(() =>
+            {
+                var apiCallPath = "/cdo-web/api/v2/datasets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_datatypeid != null)
+                    callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(__workflow_datatypeid);
+                if (__workflow_locationid != null)
+                    callPayload.Queries["locationid"] = ExpressionConverter.Convert(__workflow_locationid);
+                if (__workflow_stationid != null)
+                    callPayload.Queries["stationid"] = ExpressionConverter.Convert(__workflow_stationid);
+                if (__workflow_startdate != null)
+                    callPayload.Queries["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_sortfield != null)
+                    callPayload.Queries["sortfield"] = ExpressionConverter.Convert(__workflow_sortfield);
+                if (__workflow_sortorder != null)
+                    callPayload.Queries["sortorder"] = ExpressionConverter.Convert(__workflow_sortorder);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<DatasetsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetGetResponse> DatasetGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cdo-web/api/v2/datasets/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DatasetGetResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<DatasetGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/datasets/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DatasetGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<CatagoriesGetResponse> CatagoriesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/cdo-web/api/v2/datacategories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (datatsetid != null)
-                callPayload.Queries["datatsetid"] = ExpressionConverter.Convert(datatsetid);
-            if (locationid != null)
-                callPayload.Queries["locationid"] = ExpressionConverter.Convert(locationid);
-            if (stationid != null)
-                callPayload.Queries["stationid"] = ExpressionConverter.Convert(stationid);
-            if (startdate != null)
-                callPayload.Queries["startdate"] = ExpressionConverter.Convert(startdate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (sortfield != null)
-                callPayload.Queries["sortfield"] = ExpressionConverter.Convert(sortfield);
-            if (sortorder != null)
-                callPayload.Queries["sortorder"] = ExpressionConverter.Convert(sortorder);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<CatagoriesGetResponse>(callPayload);
+            var __workflow_datatsetid = WorkflowExpression.Compile(datatsetid, nameof(datatsetid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<CatagoriesGetResponse>(() =>
+            {
+                var apiCallPath = "/cdo-web/api/v2/datacategories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_datatsetid != null)
+                    callPayload.Queries["datatsetid"] = ExpressionConverter.Convert(__workflow_datatsetid);
+                if (__workflow_locationid != null)
+                    callPayload.Queries["locationid"] = ExpressionConverter.Convert(__workflow_locationid);
+                if (__workflow_stationid != null)
+                    callPayload.Queries["stationid"] = ExpressionConverter.Convert(__workflow_stationid);
+                if (__workflow_startdate != null)
+                    callPayload.Queries["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_sortfield != null)
+                    callPayload.Queries["sortfield"] = ExpressionConverter.Convert(__workflow_sortfield);
+                if (__workflow_sortorder != null)
+                    callPayload.Queries["sortorder"] = ExpressionConverter.Convert(__workflow_sortorder);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<CatagoriesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cdo-web/api/v2/datacategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CategoryGetResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CategoryGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/datacategories/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CategoryGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<TypesGetResponse> TypesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/cdo-web/api/v2/datatypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (datatsetid != null)
-                callPayload.Queries["datatsetid"] = ExpressionConverter.Convert(datatsetid);
-            if (locationid != null)
-                callPayload.Queries["locationid"] = ExpressionConverter.Convert(locationid);
-            if (stationid != null)
-                callPayload.Queries["stationid"] = ExpressionConverter.Convert(stationid);
-            if (datacategoryid != null)
-                callPayload.Queries["datacategoryid"] = ExpressionConverter.Convert(datacategoryid);
-            if (startdate != null)
-                callPayload.Queries["startdate"] = ExpressionConverter.Convert(startdate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (sortfield != null)
-                callPayload.Queries["sortfield"] = ExpressionConverter.Convert(sortfield);
-            if (sortorder != null)
-                callPayload.Queries["sortorder"] = ExpressionConverter.Convert(sortorder);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TypesGetResponse>(callPayload);
+            var __workflow_datatsetid = WorkflowExpression.Compile(datatsetid, nameof(datatsetid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_datacategoryid = WorkflowExpression.Compile(datacategoryid, nameof(datacategoryid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<TypesGetResponse>(() =>
+            {
+                var apiCallPath = "/cdo-web/api/v2/datatypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_datatsetid != null)
+                    callPayload.Queries["datatsetid"] = ExpressionConverter.Convert(__workflow_datatsetid);
+                if (__workflow_locationid != null)
+                    callPayload.Queries["locationid"] = ExpressionConverter.Convert(__workflow_locationid);
+                if (__workflow_stationid != null)
+                    callPayload.Queries["stationid"] = ExpressionConverter.Convert(__workflow_stationid);
+                if (__workflow_datacategoryid != null)
+                    callPayload.Queries["datacategoryid"] = ExpressionConverter.Convert(__workflow_datacategoryid);
+                if (__workflow_startdate != null)
+                    callPayload.Queries["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_sortfield != null)
+                    callPayload.Queries["sortfield"] = ExpressionConverter.Convert(__workflow_sortfield);
+                if (__workflow_sortorder != null)
+                    callPayload.Queries["sortorder"] = ExpressionConverter.Convert(__workflow_sortorder);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<TypesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<TypeGetResponse> TypeGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cdo-web/api/v2/datatypes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TypeGetResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<TypeGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/datatypes/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TypeGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationCategoriesGetResponse> LocationCategoriesGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/cdo-web/api/v2/locationcategories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (datasetid != null)
-                callPayload.Queries["datasetid"] = ExpressionConverter.Convert(datasetid);
-            if (startdate != null)
-                callPayload.Queries["startdate"] = ExpressionConverter.Convert(startdate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (sortfield != null)
-                callPayload.Queries["sortfield"] = ExpressionConverter.Convert(sortfield);
-            if (sortorder != null)
-                callPayload.Queries["sortorder"] = ExpressionConverter.Convert(sortorder);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<LocationCategoriesGetResponse>(callPayload);
+            var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<LocationCategoriesGetResponse>(() =>
+            {
+                var apiCallPath = "/cdo-web/api/v2/locationcategories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_datasetid != null)
+                    callPayload.Queries["datasetid"] = ExpressionConverter.Convert(__workflow_datasetid);
+                if (__workflow_startdate != null)
+                    callPayload.Queries["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_sortfield != null)
+                    callPayload.Queries["sortfield"] = ExpressionConverter.Convert(__workflow_sortfield);
+                if (__workflow_sortorder != null)
+                    callPayload.Queries["sortorder"] = ExpressionConverter.Convert(__workflow_sortorder);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<LocationCategoriesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationCategoryGetResponse> LocationCategoryGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cdo-web/api/v2/locationcategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LocationCategoryGetResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<LocationCategoryGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/locationcategories/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LocationCategoryGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationsGetResponse> LocationsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationcategoryid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/cdo-web/api/v2/locations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (datatypeid != null)
-                callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(datatypeid);
-            if (locationcategoryid != null)
-                callPayload.Queries["locationcategoryid"] = ExpressionConverter.Convert(locationcategoryid);
-            if (datacategoryid != null)
-                callPayload.Queries["datacategoryid"] = ExpressionConverter.Convert(datacategoryid);
-            if (startdate != null)
-                callPayload.Queries["startdate"] = ExpressionConverter.Convert(startdate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (sortfield != null)
-                callPayload.Queries["sortfield"] = ExpressionConverter.Convert(sortfield);
-            if (sortorder != null)
-                callPayload.Queries["sortorder"] = ExpressionConverter.Convert(sortorder);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<LocationsGetResponse>(callPayload);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_locationcategoryid = WorkflowExpression.Compile(locationcategoryid, nameof(locationcategoryid), required: false);
+            var __workflow_datacategoryid = WorkflowExpression.Compile(datacategoryid, nameof(datacategoryid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<LocationsGetResponse>(() =>
+            {
+                var apiCallPath = "/cdo-web/api/v2/locations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_datatypeid != null)
+                    callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(__workflow_datatypeid);
+                if (__workflow_locationcategoryid != null)
+                    callPayload.Queries["locationcategoryid"] = ExpressionConverter.Convert(__workflow_locationcategoryid);
+                if (__workflow_datacategoryid != null)
+                    callPayload.Queries["datacategoryid"] = ExpressionConverter.Convert(__workflow_datacategoryid);
+                if (__workflow_startdate != null)
+                    callPayload.Queries["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_sortfield != null)
+                    callPayload.Queries["sortfield"] = ExpressionConverter.Convert(__workflow_sortfield);
+                if (__workflow_sortorder != null)
+                    callPayload.Queries["sortorder"] = ExpressionConverter.Convert(__workflow_sortorder);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<LocationsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationGetResponse> LocationGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cdo-web/api/v2/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LocationGetResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<LocationGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/locations/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LocationGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationsGetResponse> StationsGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> datatypeid = null, Expression<Func<string>> extent = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = "/cdo-web/api/v2/stations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (datasetid != null)
-                callPayload.Queries["datasetid"] = ExpressionConverter.Convert(datasetid);
-            if (locationid != null)
-                callPayload.Queries["locationid"] = ExpressionConverter.Convert(locationid);
-            if (datacategoryid != null)
-                callPayload.Queries["datacategoryid"] = ExpressionConverter.Convert(datacategoryid);
-            if (datatypeid != null)
-                callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(datatypeid);
-            if (extent != null)
-                callPayload.Queries["extent"] = ExpressionConverter.Convert(extent);
-            if (startdate != null)
-                callPayload.Queries["startdate"] = ExpressionConverter.Convert(startdate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (sortfield != null)
-                callPayload.Queries["sortfield"] = ExpressionConverter.Convert(sortfield);
-            if (sortorder != null)
-                callPayload.Queries["sortorder"] = ExpressionConverter.Convert(sortorder);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<StationsGetResponse>(callPayload);
+            var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_datacategoryid = WorkflowExpression.Compile(datacategoryid, nameof(datacategoryid), required: false);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_extent = WorkflowExpression.Compile(extent, nameof(extent), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<StationsGetResponse>(() =>
+            {
+                var apiCallPath = "/cdo-web/api/v2/stations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_datasetid != null)
+                    callPayload.Queries["datasetid"] = ExpressionConverter.Convert(__workflow_datasetid);
+                if (__workflow_locationid != null)
+                    callPayload.Queries["locationid"] = ExpressionConverter.Convert(__workflow_locationid);
+                if (__workflow_datacategoryid != null)
+                    callPayload.Queries["datacategoryid"] = ExpressionConverter.Convert(__workflow_datacategoryid);
+                if (__workflow_datatypeid != null)
+                    callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(__workflow_datatypeid);
+                if (__workflow_extent != null)
+                    callPayload.Queries["extent"] = ExpressionConverter.Convert(__workflow_extent);
+                if (__workflow_startdate != null)
+                    callPayload.Queries["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_sortfield != null)
+                    callPayload.Queries["sortfield"] = ExpressionConverter.Convert(__workflow_sortfield);
+                if (__workflow_sortorder != null)
+                    callPayload.Queries["sortorder"] = ExpressionConverter.Convert(__workflow_sortorder);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<StationsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationGetResponse> StationGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/cdo-web/api/v2/stations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StationGetResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<StationGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/stations/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StationGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DataGetResponse> DataGet(Expression<Func<string>> datasetid, Expression<Func<string>> startdate, Expression<Func<string>> enddate, Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<unitsInput>> units = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> includemetadata = null)
         {
-            var apiCallPath = "/cdo-web/api/v2/data";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["datasetid"] = ExpressionConverter.Convert(datasetid);
-            if (datatypeid != null)
-                callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(datatypeid);
-            if (locationid != null)
-                callPayload.Queries["locationid"] = ExpressionConverter.Convert(locationid);
-            if (stationid != null)
-                callPayload.Queries["stationid"] = ExpressionConverter.Convert(stationid);
-            callPayload.Queries["startdate"] = ExpressionConverter.Convert(startdate);
-            callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (units != null)
-                callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            if (sortfield != null)
-                callPayload.Queries["sortfield"] = ExpressionConverter.Convert(sortfield);
-            if (sortorder != null)
-                callPayload.Queries["sortorder"] = ExpressionConverter.Convert(sortorder);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            callPayload.Queries["includemetadata"] = Convert.ToString(true);
-            if (includemetadata != null)
-                callPayload.Queries["includemetadata"] = ExpressionConverter.Convert(includemetadata);
-            return new ApiConnectionAction<DataGetResponse>(callPayload);
+            var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: true);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: true);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_includemetadata = WorkflowExpression.Compile(includemetadata, nameof(includemetadata), required: false);
+            return new DeferredBodyAction<DataGetResponse>(() =>
+            {
+                var apiCallPath = "/cdo-web/api/v2/data";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["datasetid"] = ExpressionConverter.Convert(__workflow_datasetid);
+                if (__workflow_datatypeid != null)
+                    callPayload.Queries["datatypeid"] = ExpressionConverter.Convert(__workflow_datatypeid);
+                if (__workflow_locationid != null)
+                    callPayload.Queries["locationid"] = ExpressionConverter.Convert(__workflow_locationid);
+                if (__workflow_stationid != null)
+                    callPayload.Queries["stationid"] = ExpressionConverter.Convert(__workflow_stationid);
+                callPayload.Queries["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_units != null)
+                    callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                if (__workflow_sortfield != null)
+                    callPayload.Queries["sortfield"] = ExpressionConverter.Convert(__workflow_sortfield);
+                if (__workflow_sortorder != null)
+                    callPayload.Queries["sortorder"] = ExpressionConverter.Convert(__workflow_sortorder);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                callPayload.Queries["includemetadata"] = Convert.ToString(true);
+                if (__workflow_includemetadata != null)
+                    callPayload.Queries["includemetadata"] = ExpressionConverter.Convert(__workflow_includemetadata);
+                return new ApiConnectionAction<DataGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetsSearchGetResponse> DatasetsSearchGet(Expression<Func<string>> dataset = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> boundingBox = null, Expression<Func<string>> keywords = null, Expression<Func<string>> text = null, Expression<Func<string>> dataTypes = null, Expression<Func<string>> stations = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> available = null)
         {
-            var apiCallPath = "/access/services/search/v1/data";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = ExpressionConverter.Convert(dataset);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (boundingBox != null)
-                callPayload.Queries["boundingBox"] = ExpressionConverter.Convert(boundingBox);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
-            if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            if (dataTypes != null)
-                callPayload.Queries["dataTypes"] = ExpressionConverter.Convert(dataTypes);
-            if (stations != null)
-                callPayload.Queries["stations"] = ExpressionConverter.Convert(stations);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (available != null)
-                callPayload.Queries["available"] = ExpressionConverter.Convert(available);
-            return new ApiConnectionAction<DatasetsSearchGetResponse>(callPayload);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_boundingBox = WorkflowExpression.Compile(boundingBox, nameof(boundingBox), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_dataTypes = WorkflowExpression.Compile(dataTypes, nameof(dataTypes), required: false);
+            var __workflow_stations = WorkflowExpression.Compile(stations, nameof(stations), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_available = WorkflowExpression.Compile(available, nameof(available), required: false);
+            return new DeferredBodyAction<DatasetsSearchGetResponse>(() =>
+            {
+                var apiCallPath = "/access/services/search/v1/data";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_dataset != null)
+                    callPayload.Queries["dataset"] = ExpressionConverter.Convert(__workflow_dataset);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_boundingBox != null)
+                    callPayload.Queries["boundingBox"] = ExpressionConverter.Convert(__workflow_boundingBox);
+                if (__workflow_keywords != null)
+                    callPayload.Queries["keywords"] = ExpressionConverter.Convert(__workflow_keywords);
+                if (__workflow_text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
+                if (__workflow_dataTypes != null)
+                    callPayload.Queries["dataTypes"] = ExpressionConverter.Convert(__workflow_dataTypes);
+                if (__workflow_stations != null)
+                    callPayload.Queries["stations"] = ExpressionConverter.Convert(__workflow_stations);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_available != null)
+                    callPayload.Queries["available"] = ExpressionConverter.Convert(__workflow_available);
+                return new ApiConnectionAction<DatasetsSearchGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationHistoricalGetResponse> StationHistoricalGet(Expression<Func<string>> stationid, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null)
         {
-            var apiCallPath = String.Format("/access/homr/services/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = Convert.ToString("all");
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (begindate != null)
-                callPayload.Queries["begindate"] = ExpressionConverter.Convert(begindate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            return new ApiConnectionAction<StationHistoricalGetResponse>(callPayload);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_begindate = WorkflowExpression.Compile(begindate, nameof(begindate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            return new DeferredBodyAction<StationHistoricalGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/access/homr/services/station/{0}", __workflow_stationid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["date"] = Convert.ToString("all");
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_begindate != null)
+                    callPayload.Queries["begindate"] = ExpressionConverter.Convert(__workflow_begindate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                return new ApiConnectionAction<StationHistoricalGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationHistoricSearchGetResponse> StationHistoricSearchGet(Expression<Func<string>> qid = null, Expression<Func<string>> qidMod = null, Expression<Func<string>> state = null, Expression<Func<string>> county = null, Expression<Func<string>> country = null, Expression<Func<string>> name = null, Expression<Func<string>> nameMod = null, Expression<Func<string>> platform = null, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null, Expression<Func<statusInput>> status = null, Expression<Func<bool>> current = null, Expression<Func<string>> headersOnly = null, Expression<Func<bool>> phrData = null, Expression<Func<bool>> definitions = null)
         {
-            var apiCallPath = "/access/homr/services/station/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (qid != null)
-                callPayload.Queries["qid"] = ExpressionConverter.Convert(qid);
-            if (qidMod != null)
-                callPayload.Queries["qidMod"] = ExpressionConverter.Convert(qidMod);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (county != null)
-                callPayload.Queries["county"] = ExpressionConverter.Convert(county);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (nameMod != null)
-                callPayload.Queries["nameMod"] = ExpressionConverter.Convert(nameMod);
-            if (platform != null)
-                callPayload.Queries["platform"] = ExpressionConverter.Convert(platform);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (begindate != null)
-                callPayload.Queries["begindate"] = ExpressionConverter.Convert(begindate);
-            if (enddate != null)
-                callPayload.Queries["enddate"] = ExpressionConverter.Convert(enddate);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (headersOnly != null)
-                callPayload.Queries["headersOnly"] = ExpressionConverter.Convert(headersOnly);
-            if (phrData != null)
-                callPayload.Queries["phrData"] = ExpressionConverter.Convert(phrData);
-            if (definitions != null)
-                callPayload.Queries["definitions"] = ExpressionConverter.Convert(definitions);
-            return new ApiConnectionAction<StationHistoricSearchGetResponse>(callPayload);
+            var __workflow_qid = WorkflowExpression.Compile(qid, nameof(qid), required: false);
+            var __workflow_qidMod = WorkflowExpression.Compile(qidMod, nameof(qidMod), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_nameMod = WorkflowExpression.Compile(nameMod, nameof(nameMod), required: false);
+            var __workflow_platform = WorkflowExpression.Compile(platform, nameof(platform), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_begindate = WorkflowExpression.Compile(begindate, nameof(begindate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
+            var __workflow_headersOnly = WorkflowExpression.Compile(headersOnly, nameof(headersOnly), required: false);
+            var __workflow_phrData = WorkflowExpression.Compile(phrData, nameof(phrData), required: false);
+            var __workflow_definitions = WorkflowExpression.Compile(definitions, nameof(definitions), required: false);
+            return new DeferredBodyAction<StationHistoricSearchGetResponse>(() =>
+            {
+                var apiCallPath = "/access/homr/services/station/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_qid != null)
+                    callPayload.Queries["qid"] = ExpressionConverter.Convert(__workflow_qid);
+                if (__workflow_qidMod != null)
+                    callPayload.Queries["qidMod"] = ExpressionConverter.Convert(__workflow_qidMod);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
+                if (__workflow_county != null)
+                    callPayload.Queries["county"] = ExpressionConverter.Convert(__workflow_county);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_nameMod != null)
+                    callPayload.Queries["nameMod"] = ExpressionConverter.Convert(__workflow_nameMod);
+                if (__workflow_platform != null)
+                    callPayload.Queries["platform"] = ExpressionConverter.Convert(__workflow_platform);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_begindate != null)
+                    callPayload.Queries["begindate"] = ExpressionConverter.Convert(__workflow_begindate);
+                if (__workflow_enddate != null)
+                    callPayload.Queries["enddate"] = ExpressionConverter.Convert(__workflow_enddate);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_current != null)
+                    callPayload.Queries["current"] = ExpressionConverter.Convert(__workflow_current);
+                if (__workflow_headersOnly != null)
+                    callPayload.Queries["headersOnly"] = ExpressionConverter.Convert(__workflow_headersOnly);
+                if (__workflow_phrData != null)
+                    callPayload.Queries["phrData"] = ExpressionConverter.Convert(__workflow_phrData);
+                if (__workflow_definitions != null)
+                    callPayload.Queries["definitions"] = ExpressionConverter.Convert(__workflow_definitions);
+                return new ApiConnectionAction<StationHistoricSearchGetResponse>(callPayload);
+            });
         }
     }
 
@@ -415,6 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortfieldInput
     {
         [EnumMember(Value = "id")]
@@ -429,6 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         Datacoverage
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortorderInput
     {
         [EnumMember(Value = "asc")]
@@ -800,6 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         public int Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitsInput
     {
         [EnumMember(Value = "standard")]
@@ -2116,6 +2271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         public string EndDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         CLOSED,

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,136 +14,175 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse> AddGlobalSuppression(Expression<Func<string[]>> recipientEmailsrecipientEmail = null)
         {
-            var apiCallPath = "/suppressions/global";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var recipientEmails = new JObject();
-            var recipientEmailspropCount = 0;
-            if (recipientEmailsrecipientEmail != null)
+            var __workflow_recipientEmailsrecipientEmail = WorkflowExpression.Compile(recipientEmailsrecipientEmail, nameof(recipientEmailsrecipientEmail), required: false);
+            return new DeferredBodyAction<AddGlobalSuppressRequestAndResponse>(() =>
             {
-                recipientEmails["recipient_emails"] = ExpressionConverter.ConvertO(recipientEmailsrecipientEmail);
-                recipientEmailspropCount++;
-            }
+                var apiCallPath = "/suppressions/global";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var recipientEmails = new JObject();
+                var recipientEmailspropCount = 0;
+                if (__workflow_recipientEmailsrecipientEmail != null)
+                {
+                    recipientEmails["recipient_emails"] = ExpressionConverter.ConvertO(__workflow_recipientEmailsrecipientEmail);
+                    recipientEmailspropCount++;
+                }
 
-            if (recipientEmailspropCount > 0)
-            {
-                callPayload.Body = recipientEmails;
-            }
+                if (recipientEmailspropCount > 0)
+                {
+                    callPayload.Body = recipientEmails;
+                }
 
-            return new ApiConnectionAction<AddGlobalSuppressRequestAndResponse>(callPayload);
+                return new ApiConnectionAction<AddGlobalSuppressRequestAndResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteGlobalSuppression(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/suppressions/global/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/suppressions/global/{0}", __workflow_email.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<JToken> AddRecipientToList(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
         {
-            var apiCallPath = String.Format("/v3/contactdb/lists/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/contactdb/lists/{0}/recipients/{1}", __workflow_listId.WithUrlEncoding(1), __workflow_recipientId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<Bounce[]> GetBounce(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Bounce[]>(callPayload);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            return new DeferredBodyAction<Bounce[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/suppression/bounces/{0}", __workflow_email.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Bounce[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteBounce(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/suppression/bounces/{0}", __workflow_email.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<EmailIsUnsubscribedResponse> CheckEmailIsInUnsubscribesList(Expression<Func<string>> email)
         {
-            var apiCallPath = String.Format("/unsubscribes/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EmailIsUnsubscribedResponse>(callPayload);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            return new DeferredBodyAction<EmailIsUnsubscribedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/unsubscribes/{0}", __workflow_email.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EmailIsUnsubscribedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<JToken> SendEmail(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachment[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
         {
-            var apiCallPath = "/v4/mail/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestattachment != null)
+            var __workflow_requestfrom = WorkflowExpression.Compile(requestfrom, nameof(requestfrom), required: true);
+            var __workflow_requestto = WorkflowExpression.Compile(requestto, nameof(requestto), required: true);
+            var __workflow_requestsubject = WorkflowExpression.Compile(requestsubject, nameof(requestsubject), required: true);
+            var __workflow_requestemailBody = WorkflowExpression.Compile(requestemailBody, nameof(requestemailBody), required: true);
+            var __workflow_requestattachment = WorkflowExpression.Compile(requestattachment, nameof(requestattachment), required: false);
+            var __workflow_requestfromName = WorkflowExpression.Compile(requestfromName, nameof(requestfromName), required: false);
+            var __workflow_requesttoNames = WorkflowExpression.Compile(requesttoNames, nameof(requesttoNames), required: false);
+            var __workflow_requestcC = WorkflowExpression.Compile(requestcC, nameof(requestcC), required: false);
+            var __workflow_requestcCNames = WorkflowExpression.Compile(requestcCNames, nameof(requestcCNames), required: false);
+            var __workflow_requestbcc = WorkflowExpression.Compile(requestbcc, nameof(requestbcc), required: false);
+            var __workflow_requestbCCNames = WorkflowExpression.Compile(requestbCCNames, nameof(requestbCCNames), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                request["attachments"] = ExpressionConverter.ConvertO(requestattachment);
+                var apiCallPath = "/v4/mail/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (__workflow_requestattachment != null)
+                {
+                    request["attachments"] = ExpressionConverter.ConvertO(__workflow_requestattachment);
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
-            }
+                request["from"] = ExpressionConverter.ConvertO(__workflow_requestfrom);
+                if (__workflow_requestfromName != null)
+                {
+                    request["fromname"] = ExpressionConverter.ConvertO(__workflow_requestfromName);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestfrom);
-            if (requestfromName != null)
-            {
-                request["fromname"] = ExpressionConverter.ConvertO(requestfromName);
                 requestpropCount++;
-            }
+                request["to"] = ExpressionConverter.ConvertO(__workflow_requestto);
+                if (__workflow_requesttoNames != null)
+                {
+                    request["toname"] = ExpressionConverter.ConvertO(__workflow_requesttoNames);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestto);
-            if (requesttoNames != null)
-            {
-                request["toname"] = ExpressionConverter.ConvertO(requesttoNames);
                 requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["subject"] = ExpressionConverter.ConvertO(requestsubject);
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requestemailBody);
-            request["ishtml"] = true;
-            requestpropCount++;
-            if (requestcC != null)
-            {
-                request["cc"] = ExpressionConverter.ConvertO(requestcC);
+                request["subject"] = ExpressionConverter.ConvertO(__workflow_requestsubject);
                 requestpropCount++;
-            }
-
-            if (requestcCNames != null)
-            {
-                request["ccname"] = ExpressionConverter.ConvertO(requestcCNames);
+                request["text"] = ExpressionConverter.ConvertO(__workflow_requestemailBody);
+                request["ishtml"] = true;
                 requestpropCount++;
-            }
+                if (__workflow_requestcC != null)
+                {
+                    request["cc"] = ExpressionConverter.ConvertO(__workflow_requestcC);
+                    requestpropCount++;
+                }
 
-            if (requestbcc != null)
-            {
-                request["bcc"] = ExpressionConverter.ConvertO(requestbcc);
-                requestpropCount++;
-            }
+                if (__workflow_requestcCNames != null)
+                {
+                    request["ccname"] = ExpressionConverter.ConvertO(__workflow_requestcCNames);
+                    requestpropCount++;
+                }
 
-            if (requestbCCNames != null)
-            {
-                request["bccname"] = ExpressionConverter.ConvertO(requestbCCNames);
-                requestpropCount++;
-            }
+                if (__workflow_requestbcc != null)
+                {
+                    request["bcc"] = ExpressionConverter.ConvertO(__workflow_requestbcc);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (__workflow_requestbCCNames != null)
+                {
+                    request["bccname"] = ExpressionConverter.ConvertO(__workflow_requestbCCNames);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

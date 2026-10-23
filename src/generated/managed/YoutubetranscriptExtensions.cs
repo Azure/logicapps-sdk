@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,39 +14,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
         public IBodyWorkflowAction<TranscriptResponse> GetTranscript(Expression<Func<string>> bodyyouTubeVideoID)
         {
-            var apiCallPath = "/youtubei/v1/get_transcript";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var contextObject = new JObject();
-            var contextObjectpropCount = 0;
-            var clientObject = new JObject();
-            var clientObjectpropCount = 0;
-            clientObject["clientName"] = "WEB";
-            clientObjectpropCount++;
-            clientObject["clientVersion"] = "2.20250923.08.00";
-            clientObjectpropCount++;
-            if (clientObjectpropCount > 0)
+            var __workflow_bodyyouTubeVideoID = WorkflowExpression.Compile(bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
+            return new DeferredBodyAction<TranscriptResponse>(() =>
             {
-                contextObject["client"] = clientObject;
-                contextObjectpropCount++;
-            }
+                var apiCallPath = "/youtubei/v1/get_transcript";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var contextObject = new JObject();
+                var contextObjectpropCount = 0;
+                var clientObject = new JObject();
+                var clientObjectpropCount = 0;
+                clientObject["clientName"] = "WEB";
+                clientObjectpropCount++;
+                clientObject["clientVersion"] = "2.20250923.08.00";
+                clientObjectpropCount++;
+                if (clientObjectpropCount > 0)
+                {
+                    contextObject["client"] = clientObject;
+                    contextObjectpropCount++;
+                }
 
-            if (contextObjectpropCount > 0)
-            {
-                body["context"] = contextObject;
+                if (contextObjectpropCount > 0)
+                {
+                    body["context"] = contextObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["externalVideoId"] = ExpressionConverter.ConvertO(__workflow_bodyyouTubeVideoID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["externalVideoId"] = ExpressionConverter.ConvertO(bodyyouTubeVideoID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TranscriptResponse>(callPayload);
+                return new ApiConnectionAction<TranscriptResponse>(callPayload);
+            });
         }
     }
 

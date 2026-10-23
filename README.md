@@ -192,6 +192,24 @@ public class WeatherAgentWorkflow : IWorkflowProvider
 
 More sample workflows (control flow, agents, managed connectors, and service providers) are available under [tests/Microsoft.Azure.Workflows.Sdk.UnitTests/Workflows](tests/Microsoft.Azure.Workflows.Sdk.UnitTests/Workflows).
 
+## C# workflow expressions
+
+Action and trigger inputs that depend on workflow data use `Expression<Func<T>>`. The SDK compiles each expression tree into a workflow expression descriptor when the factory method is called, snapshots immutable scalar captures at that point, and resolves referenced action and trigger names later when the workflow definition is rendered. This requires no source rewriting, transitive build target, or hidden operation-factory method.
+
+```csharp
+var suffix = "!";
+var source = WorkflowActions.BuiltIn.Compose<string>(() => "hello");
+var result = WorkflowActions.BuiltIn.Compose(
+    () => source.Output.ToUpperInvariant() + suffix);
+
+suffix = "?";
+source.WithName("Source");
+```
+
+The rendered expression references `outputs("Source")` and retains the captured `"!"`.
+
+The authoring contract is the C# expression-tree subset, including expression-bodied operators, conditionals, casts, method calls, LINQ, object/array/collection initializers, indexers, and nested expression-bodied lambdas. C# constructs that cannot be represented by `System.Linq.Expressions` are not supported in workflow input expressions, including statement-bodied lambdas, local declarations or functions, loops, assignments and mutation, null-conditional syntax, switch expressions, and pattern matching. Use an expression-bodied equivalent or a `CustomCode` action when statement-oriented C# is required.
+
 ## Repository structure
 
 - **src/** – The `Microsoft.Azure.Workflows.Sdk` library source.

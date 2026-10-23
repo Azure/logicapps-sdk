@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,20 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
         public IBodyWorkflowAction<GetGIFResponse> GetGIF(Expression<Func<string>> aPIKEY, Expression<Func<string>> q, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> rating = null, Expression<Func<string>> lang = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(aPIKEY);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (rating != null)
-                callPayload.Queries["rating"] = ExpressionConverter.Convert(rating);
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<GetGIFResponse>(callPayload);
+            var __workflow_aPIKEY = WorkflowExpression.Compile(aPIKEY, nameof(aPIKEY), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_rating = WorkflowExpression.Compile(rating, nameof(rating), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            return new DeferredBodyAction<GetGIFResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(__workflow_aPIKEY);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_rating != null)
+                    callPayload.Queries["rating"] = ExpressionConverter.Convert(__workflow_rating);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                return new ApiConnectionAction<GetGIFResponse>(callPayload);
+            });
         }
     }
 

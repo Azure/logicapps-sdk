@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,1604 +14,1825 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<GetPersonResponse> GetPerson(Expression<Func<string>> searchEmail)
         {
-            var apiCallPath = "/public/directory/v1/persons";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SearchEmail"] = ExpressionConverter.Convert(searchEmail);
-            return new ApiConnectionAction<GetPersonResponse>(callPayload);
+            var __workflow_searchEmail = WorkflowExpression.Compile(searchEmail, nameof(searchEmail), required: true);
+            return new DeferredBodyAction<GetPersonResponse>(() =>
+            {
+                var apiCallPath = "/public/directory/v1/persons";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SearchEmail"] = ExpressionConverter.Convert(__workflow_searchEmail);
+                return new ApiConnectionAction<GetPersonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreatePersonResponse> CreatePerson(Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodysecondName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodymobile, Expression<Func<string>> bodydateOfBirth, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodytown = null, Expression<Func<string>> bodypostCode = null, Expression<Func<string>> bodycountyName = null, Expression<Func<string>> bodycountryName = null, Expression<Func<string>> bodytitleName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyhomeEmail = null, Expression<Func<string>> bodyhomeTelephone = null, Expression<Func<string>> bodytag = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<string>> bodyroleName = null, Expression<Func<string>> bodyknownAs = null, Expression<Func<string>> bodyavatarURL = null, Expression<Func<int>> bodytitleId = null, Expression<Func<int>> bodycountyId = null, Expression<Func<int>> bodycountryId = null, Expression<Func<int>> bodygenderId = null, Expression<Func<int>> bodynationalityId = null, Expression<Func<int>> bodyethnicityId = null, Expression<Func<int>> bodymaritalStatusId = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<int>> bodyroleId = null, Expression<Func<int>> bodymainSiteId = null, Expression<Func<bool>> bodyemergencyContactConsent = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<int>> bodyemergencyRelationshipId = null, Expression<Func<string>> bodyemergencyContactTelephone = null, Expression<Func<string>> bodyemergencyAddress = null, Expression<Func<string>> bodynextOfKinName = null, Expression<Func<int>> bodynextOfKinRelationshipId = null, Expression<Func<string>> bodynextOfKinTelephone = null, Expression<Func<string>> bodydialingCode = null, Expression<Func<string>> bodyworkExtension = null, Expression<Func<string>> bodytelephone = null, Expression<Func<string>> bodypersonalMobile = null, Expression<Func<int>> bodystatusId = null, Expression<Func<int>> bodyemploymentTypeId = null, Expression<Func<int>> bodycontractTypeId = null, Expression<Func<string>> bodycontractExpiry = null, Expression<Func<int>> bodyemploymentStatusId = null, Expression<Func<int>> bodysecondaryEmploymentStatusId = null, Expression<Func<string>> bodyemploymentNotes = null, Expression<Func<string>> bodymedicalNotes = null, Expression<Func<bool>> bodyisPersonalDataEnabled = null, Expression<Func<bool>> bodyisContactDataEnabled = null, Expression<Func<bodytimeZoneInput>> bodytimeZone = null)
         {
-            var apiCallPath = "/public/directory/v1/persons";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-            bodypropCount++;
-            body["secondName"] = ExpressionConverter.ConvertO(bodysecondName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["mobile"] = ExpressionConverter.ConvertO(bodymobile);
-            bodypropCount++;
-            body["dateOfBirth"] = ExpressionConverter.ConvertO(bodydateOfBirth);
-            bodypropCount++;
-            body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-            if (bodyaddressLine1 != null)
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
+            var __workflow_bodysecondName = WorkflowExpression.Compile(bodysecondName, nameof(bodysecondName), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodymobile = WorkflowExpression.Compile(bodymobile, nameof(bodymobile), required: true);
+            var __workflow_bodydateOfBirth = WorkflowExpression.Compile(bodydateOfBirth, nameof(bodydateOfBirth), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodyaddressLine1 = WorkflowExpression.Compile(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
+            var __workflow_bodyaddressLine2 = WorkflowExpression.Compile(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
+            var __workflow_bodytown = WorkflowExpression.Compile(bodytown, nameof(bodytown), required: false);
+            var __workflow_bodypostCode = WorkflowExpression.Compile(bodypostCode, nameof(bodypostCode), required: false);
+            var __workflow_bodycountyName = WorkflowExpression.Compile(bodycountyName, nameof(bodycountyName), required: false);
+            var __workflow_bodycountryName = WorkflowExpression.Compile(bodycountryName, nameof(bodycountryName), required: false);
+            var __workflow_bodytitleName = WorkflowExpression.Compile(bodytitleName, nameof(bodytitleName), required: false);
+            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
+            var __workflow_bodyhomeEmail = WorkflowExpression.Compile(bodyhomeEmail, nameof(bodyhomeEmail), required: false);
+            var __workflow_bodyhomeTelephone = WorkflowExpression.Compile(bodyhomeTelephone, nameof(bodyhomeTelephone), required: false);
+            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: false);
+            var __workflow_bodymanagerEmail = WorkflowExpression.Compile(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            var __workflow_bodydepartmentName = WorkflowExpression.Compile(bodydepartmentName, nameof(bodydepartmentName), required: false);
+            var __workflow_bodyroleName = WorkflowExpression.Compile(bodyroleName, nameof(bodyroleName), required: false);
+            var __workflow_bodyknownAs = WorkflowExpression.Compile(bodyknownAs, nameof(bodyknownAs), required: false);
+            var __workflow_bodyavatarURL = WorkflowExpression.Compile(bodyavatarURL, nameof(bodyavatarURL), required: false);
+            var __workflow_bodytitleId = WorkflowExpression.Compile(bodytitleId, nameof(bodytitleId), required: false);
+            var __workflow_bodycountyId = WorkflowExpression.Compile(bodycountyId, nameof(bodycountyId), required: false);
+            var __workflow_bodycountryId = WorkflowExpression.Compile(bodycountryId, nameof(bodycountryId), required: false);
+            var __workflow_bodygenderId = WorkflowExpression.Compile(bodygenderId, nameof(bodygenderId), required: false);
+            var __workflow_bodynationalityId = WorkflowExpression.Compile(bodynationalityId, nameof(bodynationalityId), required: false);
+            var __workflow_bodyethnicityId = WorkflowExpression.Compile(bodyethnicityId, nameof(bodyethnicityId), required: false);
+            var __workflow_bodymaritalStatusId = WorkflowExpression.Compile(bodymaritalStatusId, nameof(bodymaritalStatusId), required: false);
+            var __workflow_bodymanagerId = WorkflowExpression.Compile(bodymanagerId, nameof(bodymanagerId), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodyroleId = WorkflowExpression.Compile(bodyroleId, nameof(bodyroleId), required: false);
+            var __workflow_bodymainSiteId = WorkflowExpression.Compile(bodymainSiteId, nameof(bodymainSiteId), required: false);
+            var __workflow_bodyemergencyContactConsent = WorkflowExpression.Compile(bodyemergencyContactConsent, nameof(bodyemergencyContactConsent), required: false);
+            var __workflow_bodyemergencyContactName = WorkflowExpression.Compile(bodyemergencyContactName, nameof(bodyemergencyContactName), required: false);
+            var __workflow_bodyemergencyRelationshipId = WorkflowExpression.Compile(bodyemergencyRelationshipId, nameof(bodyemergencyRelationshipId), required: false);
+            var __workflow_bodyemergencyContactTelephone = WorkflowExpression.Compile(bodyemergencyContactTelephone, nameof(bodyemergencyContactTelephone), required: false);
+            var __workflow_bodyemergencyAddress = WorkflowExpression.Compile(bodyemergencyAddress, nameof(bodyemergencyAddress), required: false);
+            var __workflow_bodynextOfKinName = WorkflowExpression.Compile(bodynextOfKinName, nameof(bodynextOfKinName), required: false);
+            var __workflow_bodynextOfKinRelationshipId = WorkflowExpression.Compile(bodynextOfKinRelationshipId, nameof(bodynextOfKinRelationshipId), required: false);
+            var __workflow_bodynextOfKinTelephone = WorkflowExpression.Compile(bodynextOfKinTelephone, nameof(bodynextOfKinTelephone), required: false);
+            var __workflow_bodydialingCode = WorkflowExpression.Compile(bodydialingCode, nameof(bodydialingCode), required: false);
+            var __workflow_bodyworkExtension = WorkflowExpression.Compile(bodyworkExtension, nameof(bodyworkExtension), required: false);
+            var __workflow_bodytelephone = WorkflowExpression.Compile(bodytelephone, nameof(bodytelephone), required: false);
+            var __workflow_bodypersonalMobile = WorkflowExpression.Compile(bodypersonalMobile, nameof(bodypersonalMobile), required: false);
+            var __workflow_bodystatusId = WorkflowExpression.Compile(bodystatusId, nameof(bodystatusId), required: false);
+            var __workflow_bodyemploymentTypeId = WorkflowExpression.Compile(bodyemploymentTypeId, nameof(bodyemploymentTypeId), required: false);
+            var __workflow_bodycontractTypeId = WorkflowExpression.Compile(bodycontractTypeId, nameof(bodycontractTypeId), required: false);
+            var __workflow_bodycontractExpiry = WorkflowExpression.Compile(bodycontractExpiry, nameof(bodycontractExpiry), required: false);
+            var __workflow_bodyemploymentStatusId = WorkflowExpression.Compile(bodyemploymentStatusId, nameof(bodyemploymentStatusId), required: false);
+            var __workflow_bodysecondaryEmploymentStatusId = WorkflowExpression.Compile(bodysecondaryEmploymentStatusId, nameof(bodysecondaryEmploymentStatusId), required: false);
+            var __workflow_bodyemploymentNotes = WorkflowExpression.Compile(bodyemploymentNotes, nameof(bodyemploymentNotes), required: false);
+            var __workflow_bodymedicalNotes = WorkflowExpression.Compile(bodymedicalNotes, nameof(bodymedicalNotes), required: false);
+            var __workflow_bodyisPersonalDataEnabled = WorkflowExpression.Compile(bodyisPersonalDataEnabled, nameof(bodyisPersonalDataEnabled), required: false);
+            var __workflow_bodyisContactDataEnabled = WorkflowExpression.Compile(bodyisContactDataEnabled, nameof(bodyisContactDataEnabled), required: false);
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
+            return new DeferredBodyAction<CreatePersonResponse>(() =>
             {
-                body["addressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                var apiCallPath = "/public/directory/v1/persons";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyaddressLine2 != null)
-            {
-                body["addressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                 bodypropCount++;
-            }
-
-            if (bodytown != null)
-            {
-                body["town"] = ExpressionConverter.ConvertO(bodytown);
+                body["secondName"] = ExpressionConverter.ConvertO(__workflow_bodysecondName);
                 bodypropCount++;
-            }
-
-            if (bodypostCode != null)
-            {
-                body["postCode"] = ExpressionConverter.ConvertO(bodypostCode);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-            }
-
-            if (bodycountyName != null)
-            {
-                body["countyName"] = ExpressionConverter.ConvertO(bodycountyName);
+                body["mobile"] = ExpressionConverter.ConvertO(__workflow_bodymobile);
                 bodypropCount++;
-            }
-
-            if (bodycountryName != null)
-            {
-                body["countryName"] = ExpressionConverter.ConvertO(bodycountryName);
+                body["dateOfBirth"] = ExpressionConverter.ConvertO(__workflow_bodydateOfBirth);
                 bodypropCount++;
-            }
-
-            if (bodytitleName != null)
-            {
-                body["titleName"] = ExpressionConverter.ConvertO(bodytitleName);
-                bodypropCount++;
-            }
-
-            if (bodymiddleName != null)
-            {
-                body["middleName"] = ExpressionConverter.ConvertO(bodymiddleName);
-                bodypropCount++;
-            }
-
-            if (bodyhomeEmail != null)
-            {
-                body["homeEmail"] = ExpressionConverter.ConvertO(bodyhomeEmail);
-                bodypropCount++;
-            }
-
-            if (bodyhomeTelephone != null)
-            {
-                body["homeTelephone"] = ExpressionConverter.ConvertO(bodyhomeTelephone);
-                bodypropCount++;
-            }
-
-            if (bodytag != null)
-            {
-                body["tag"] = ExpressionConverter.ConvertO(bodytag);
-                bodypropCount++;
-            }
-
-            if (bodymanagerEmail != null)
-            {
-                body["managerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentName != null)
-            {
-                body["departmentName"] = ExpressionConverter.ConvertO(bodydepartmentName);
-                bodypropCount++;
-            }
-
-            if (bodyroleName != null)
-            {
-                body["roleName"] = ExpressionConverter.ConvertO(bodyroleName);
-                bodypropCount++;
-            }
-
-            if (bodyknownAs != null)
-            {
-                body["knownAs"] = ExpressionConverter.ConvertO(bodyknownAs);
-                bodypropCount++;
-            }
-
-            if (bodyavatarURL != null)
-            {
-                body["avatarURL"] = ExpressionConverter.ConvertO(bodyavatarURL);
-                bodypropCount++;
-            }
-
-            if (bodytitleId != null)
-            {
-                body["titleId"] = ExpressionConverter.ConvertO(bodytitleId);
-                bodypropCount++;
-            }
-
-            if (bodycountyId != null)
-            {
-                body["countyId"] = ExpressionConverter.ConvertO(bodycountyId);
-                bodypropCount++;
-            }
-
-            if (bodycountryId != null)
-            {
-                body["countryId"] = ExpressionConverter.ConvertO(bodycountryId);
-                bodypropCount++;
-            }
-
-            if (bodygenderId != null)
-            {
-                body["genderId"] = ExpressionConverter.ConvertO(bodygenderId);
-                bodypropCount++;
-            }
-
-            if (bodynationalityId != null)
-            {
-                body["nationalityId"] = ExpressionConverter.ConvertO(bodynationalityId);
-                bodypropCount++;
-            }
-
-            if (bodyethnicityId != null)
-            {
-                body["ethnicityId"] = ExpressionConverter.ConvertO(bodyethnicityId);
-                bodypropCount++;
-            }
-
-            if (bodymaritalStatusId != null)
-            {
-                body["maritalStatusId"] = ExpressionConverter.ConvertO(bodymaritalStatusId);
-                bodypropCount++;
-            }
-
-            if (bodymanagerId != null)
-            {
-                body["managerId"] = ExpressionConverter.ConvertO(bodymanagerId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodyroleId != null)
-            {
-                body["roleId"] = ExpressionConverter.ConvertO(bodyroleId);
-                bodypropCount++;
-            }
-
-            if (bodymainSiteId != null)
-            {
-                body["mainSiteId"] = ExpressionConverter.ConvertO(bodymainSiteId);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactConsent != null)
-            {
-                body["emergencyContactConsent"] = ExpressionConverter.ConvertO(bodyemergencyContactConsent);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactName != null)
-            {
-                body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyRelationshipId != null)
-            {
-                body["emergencyRelationshipId"] = ExpressionConverter.ConvertO(bodyemergencyRelationshipId);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactTelephone != null)
-            {
-                body["emergencyContactTelephone"] = ExpressionConverter.ConvertO(bodyemergencyContactTelephone);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyAddress != null)
-            {
-                body["emergencyAddress"] = ExpressionConverter.ConvertO(bodyemergencyAddress);
-                bodypropCount++;
-            }
-
-            if (bodynextOfKinName != null)
-            {
-                body["nextOfKinName"] = ExpressionConverter.ConvertO(bodynextOfKinName);
-                bodypropCount++;
-            }
-
-            if (bodynextOfKinRelationshipId != null)
-            {
-                body["nextOfKinRelationshipId"] = ExpressionConverter.ConvertO(bodynextOfKinRelationshipId);
-                bodypropCount++;
-            }
-
-            if (bodynextOfKinTelephone != null)
-            {
-                body["nextOfKinTelephone"] = ExpressionConverter.ConvertO(bodynextOfKinTelephone);
-                bodypropCount++;
-            }
-
-            if (bodydialingCode != null)
-            {
-                body["dialingCode"] = ExpressionConverter.ConvertO(bodydialingCode);
-                bodypropCount++;
-            }
-
-            if (bodyworkExtension != null)
-            {
-                body["workExtension"] = ExpressionConverter.ConvertO(bodyworkExtension);
-                bodypropCount++;
-            }
-
-            if (bodytelephone != null)
-            {
-                body["telephone"] = ExpressionConverter.ConvertO(bodytelephone);
-                bodypropCount++;
-            }
-
-            if (bodypersonalMobile != null)
-            {
-                body["personalMobile"] = ExpressionConverter.ConvertO(bodypersonalMobile);
-                bodypropCount++;
-            }
-
-            if (bodystatusId != null)
-            {
-                if (bodystatusId != null)
+                body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
+                if (__workflow_bodyaddressLine1 != null)
                 {
-                    body["statusId"] = ExpressionConverter.ConvertO(bodystatusId);
+                    body["addressLine1"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine1);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["statusId"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodyemploymentTypeId != null)
-            {
-                body["employmentTypeId"] = ExpressionConverter.ConvertO(bodyemploymentTypeId);
-                bodypropCount++;
-            }
-
-            if (bodycontractTypeId != null)
-            {
-                body["contractTypeId"] = ExpressionConverter.ConvertO(bodycontractTypeId);
-                bodypropCount++;
-            }
-
-            if (bodycontractExpiry != null)
-            {
-                body["contractExpiry"] = ExpressionConverter.ConvertO(bodycontractExpiry);
-                bodypropCount++;
-            }
-
-            if (bodyemploymentStatusId != null)
-            {
-                body["employmentStatusId"] = ExpressionConverter.ConvertO(bodyemploymentStatusId);
-                bodypropCount++;
-            }
-
-            if (bodysecondaryEmploymentStatusId != null)
-            {
-                body["secondaryEmploymentStatusId"] = ExpressionConverter.ConvertO(bodysecondaryEmploymentStatusId);
-                bodypropCount++;
-            }
-
-            if (bodyemploymentNotes != null)
-            {
-                body["employmentNotes"] = ExpressionConverter.ConvertO(bodyemploymentNotes);
-                bodypropCount++;
-            }
-
-            if (bodymedicalNotes != null)
-            {
-                body["medicalNotes"] = ExpressionConverter.ConvertO(bodymedicalNotes);
-                bodypropCount++;
-            }
-
-            if (bodyisPersonalDataEnabled != null)
-            {
-                body["isPersonalDataEnabled"] = ExpressionConverter.ConvertO(bodyisPersonalDataEnabled);
-                bodypropCount++;
-            }
-
-            if (bodyisContactDataEnabled != null)
-            {
-                body["isContactDataEnabled"] = ExpressionConverter.ConvertO(bodyisContactDataEnabled);
-                bodypropCount++;
-            }
-
-            if (bodytimeZone != null)
-            {
-                if (bodytimeZone != null)
+                if (__workflow_bodyaddressLine2 != null)
                 {
-                    body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                    body["addressLine2"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine2);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["timeZone"] = "(GMT+00:00) London";
-                bodypropCount++;
-            }
+                if (__workflow_bodytown != null)
+                {
+                    body["town"] = ExpressionConverter.ConvertO(__workflow_bodytown);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodypostCode != null)
+                {
+                    body["postCode"] = ExpressionConverter.ConvertO(__workflow_bodypostCode);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreatePersonResponse>(callPayload);
+                if (__workflow_bodycountyName != null)
+                {
+                    body["countyName"] = ExpressionConverter.ConvertO(__workflow_bodycountyName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycountryName != null)
+                {
+                    body["countryName"] = ExpressionConverter.ConvertO(__workflow_bodycountryName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytitleName != null)
+                {
+                    body["titleName"] = ExpressionConverter.ConvertO(__workflow_bodytitleName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymiddleName != null)
+                {
+                    body["middleName"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyhomeEmail != null)
+                {
+                    body["homeEmail"] = ExpressionConverter.ConvertO(__workflow_bodyhomeEmail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyhomeTelephone != null)
+                {
+                    body["homeTelephone"] = ExpressionConverter.ConvertO(__workflow_bodyhomeTelephone);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytag != null)
+                {
+                    body["tag"] = ExpressionConverter.ConvertO(__workflow_bodytag);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymanagerEmail != null)
+                {
+                    body["managerEmail"] = ExpressionConverter.ConvertO(__workflow_bodymanagerEmail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydepartmentName != null)
+                {
+                    body["departmentName"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyroleName != null)
+                {
+                    body["roleName"] = ExpressionConverter.ConvertO(__workflow_bodyroleName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyknownAs != null)
+                {
+                    body["knownAs"] = ExpressionConverter.ConvertO(__workflow_bodyknownAs);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyavatarURL != null)
+                {
+                    body["avatarURL"] = ExpressionConverter.ConvertO(__workflow_bodyavatarURL);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytitleId != null)
+                {
+                    body["titleId"] = ExpressionConverter.ConvertO(__workflow_bodytitleId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycountyId != null)
+                {
+                    body["countyId"] = ExpressionConverter.ConvertO(__workflow_bodycountyId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycountryId != null)
+                {
+                    body["countryId"] = ExpressionConverter.ConvertO(__workflow_bodycountryId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodygenderId != null)
+                {
+                    body["genderId"] = ExpressionConverter.ConvertO(__workflow_bodygenderId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodynationalityId != null)
+                {
+                    body["nationalityId"] = ExpressionConverter.ConvertO(__workflow_bodynationalityId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyethnicityId != null)
+                {
+                    body["ethnicityId"] = ExpressionConverter.ConvertO(__workflow_bodyethnicityId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymaritalStatusId != null)
+                {
+                    body["maritalStatusId"] = ExpressionConverter.ConvertO(__workflow_bodymaritalStatusId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymanagerId != null)
+                {
+                    body["managerId"] = ExpressionConverter.ConvertO(__workflow_bodymanagerId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydepartmentId != null)
+                {
+                    body["departmentId"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyroleId != null)
+                {
+                    body["roleId"] = ExpressionConverter.ConvertO(__workflow_bodyroleId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymainSiteId != null)
+                {
+                    body["mainSiteId"] = ExpressionConverter.ConvertO(__workflow_bodymainSiteId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemergencyContactConsent != null)
+                {
+                    body["emergencyContactConsent"] = ExpressionConverter.ConvertO(__workflow_bodyemergencyContactConsent);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemergencyContactName != null)
+                {
+                    body["emergencyContactName"] = ExpressionConverter.ConvertO(__workflow_bodyemergencyContactName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemergencyRelationshipId != null)
+                {
+                    body["emergencyRelationshipId"] = ExpressionConverter.ConvertO(__workflow_bodyemergencyRelationshipId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemergencyContactTelephone != null)
+                {
+                    body["emergencyContactTelephone"] = ExpressionConverter.ConvertO(__workflow_bodyemergencyContactTelephone);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemergencyAddress != null)
+                {
+                    body["emergencyAddress"] = ExpressionConverter.ConvertO(__workflow_bodyemergencyAddress);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodynextOfKinName != null)
+                {
+                    body["nextOfKinName"] = ExpressionConverter.ConvertO(__workflow_bodynextOfKinName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodynextOfKinRelationshipId != null)
+                {
+                    body["nextOfKinRelationshipId"] = ExpressionConverter.ConvertO(__workflow_bodynextOfKinRelationshipId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodynextOfKinTelephone != null)
+                {
+                    body["nextOfKinTelephone"] = ExpressionConverter.ConvertO(__workflow_bodynextOfKinTelephone);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydialingCode != null)
+                {
+                    body["dialingCode"] = ExpressionConverter.ConvertO(__workflow_bodydialingCode);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyworkExtension != null)
+                {
+                    body["workExtension"] = ExpressionConverter.ConvertO(__workflow_bodyworkExtension);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytelephone != null)
+                {
+                    body["telephone"] = ExpressionConverter.ConvertO(__workflow_bodytelephone);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodypersonalMobile != null)
+                {
+                    body["personalMobile"] = ExpressionConverter.ConvertO(__workflow_bodypersonalMobile);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodystatusId != null)
+                {
+                    if (__workflow_bodystatusId != null)
+                    {
+                        body["statusId"] = ExpressionConverter.ConvertO(__workflow_bodystatusId);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["statusId"] = 1;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemploymentTypeId != null)
+                {
+                    body["employmentTypeId"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentTypeId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontractTypeId != null)
+                {
+                    body["contractTypeId"] = ExpressionConverter.ConvertO(__workflow_bodycontractTypeId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontractExpiry != null)
+                {
+                    body["contractExpiry"] = ExpressionConverter.ConvertO(__workflow_bodycontractExpiry);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemploymentStatusId != null)
+                {
+                    body["employmentStatusId"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentStatusId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysecondaryEmploymentStatusId != null)
+                {
+                    body["secondaryEmploymentStatusId"] = ExpressionConverter.ConvertO(__workflow_bodysecondaryEmploymentStatusId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemploymentNotes != null)
+                {
+                    body["employmentNotes"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentNotes);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymedicalNotes != null)
+                {
+                    body["medicalNotes"] = ExpressionConverter.ConvertO(__workflow_bodymedicalNotes);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyisPersonalDataEnabled != null)
+                {
+                    body["isPersonalDataEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyisPersonalDataEnabled);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyisContactDataEnabled != null)
+                {
+                    body["isContactDataEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyisContactDataEnabled);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytimeZone != null)
+                {
+                    if (__workflow_bodytimeZone != null)
+                    {
+                        body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["timeZone"] = "(GMT+00:00) London";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreatePersonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<GetObjectivesResponse> GetObjectives(Expression<Func<string>> searchTitle = null, Expression<Func<string>> personEmail = null, Expression<Func<string>> tag = null, Expression<Func<string>> closed = null, Expression<Func<objectiveTypeInput>> objectiveType = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> activeAt = null)
         {
-            var apiCallPath = "/public/Performance/v1/Objectives";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (searchTitle != null)
-                callPayload.Queries["SearchTitle"] = ExpressionConverter.Convert(searchTitle);
-            if (personEmail != null)
-                callPayload.Queries["PersonEmail"] = ExpressionConverter.Convert(personEmail);
-            if (tag != null)
-                callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
-            if (closed != null)
-                callPayload.Queries["Closed"] = ExpressionConverter.Convert(closed);
-            if (objectiveType != null)
-                callPayload.Queries["ObjectiveType"] = ExpressionConverter.Convert(objectiveType);
-            if (from != null)
-                callPayload.Queries["From"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["To"] = ExpressionConverter.Convert(to);
-            if (activeAt != null)
-                callPayload.Queries["ActiveAt"] = ExpressionConverter.Convert(activeAt);
-            return new ApiConnectionAction<GetObjectivesResponse>(callPayload);
+            var __workflow_searchTitle = WorkflowExpression.Compile(searchTitle, nameof(searchTitle), required: false);
+            var __workflow_personEmail = WorkflowExpression.Compile(personEmail, nameof(personEmail), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            var __workflow_closed = WorkflowExpression.Compile(closed, nameof(closed), required: false);
+            var __workflow_objectiveType = WorkflowExpression.Compile(objectiveType, nameof(objectiveType), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_activeAt = WorkflowExpression.Compile(activeAt, nameof(activeAt), required: false);
+            return new DeferredBodyAction<GetObjectivesResponse>(() =>
+            {
+                var apiCallPath = "/public/Performance/v1/Objectives";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_searchTitle != null)
+                    callPayload.Queries["SearchTitle"] = ExpressionConverter.Convert(__workflow_searchTitle);
+                if (__workflow_personEmail != null)
+                    callPayload.Queries["PersonEmail"] = ExpressionConverter.Convert(__workflow_personEmail);
+                if (__workflow_tag != null)
+                    callPayload.Queries["Tag"] = ExpressionConverter.Convert(__workflow_tag);
+                if (__workflow_closed != null)
+                    callPayload.Queries["Closed"] = ExpressionConverter.Convert(__workflow_closed);
+                if (__workflow_objectiveType != null)
+                    callPayload.Queries["ObjectiveType"] = ExpressionConverter.Convert(__workflow_objectiveType);
+                if (__workflow_from != null)
+                    callPayload.Queries["From"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["To"] = ExpressionConverter.Convert(__workflow_to);
+                if (__workflow_activeAt != null)
+                    callPayload.Queries["ActiveAt"] = ExpressionConverter.Convert(__workflow_activeAt);
+                return new ApiConnectionAction<GetObjectivesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateObjectiveByTemplateResponse> CreateObjectiveByTemplate(Expression<Func<int>> bodyobjectiveTemplateId, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodypersonEmail = null, Expression<Func<int>> bodypersonId = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<int>> bodycompanyObjectiveId = null, Expression<Func<int>> bodydepartmentObjectiveId = null)
         {
-            var apiCallPath = "/public/Performance/v1/Objectives";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["objectiveTemplateId"] = ExpressionConverter.ConvertO(bodyobjectiveTemplateId);
-            bodypropCount++;
-            body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-            bodypropCount++;
-            body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-            if (bodypersonEmail != null)
+            var __workflow_bodyobjectiveTemplateId = WorkflowExpression.Compile(bodyobjectiveTemplateId, nameof(bodyobjectiveTemplateId), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
+            var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
+            var __workflow_bodydepartmentName = WorkflowExpression.Compile(bodydepartmentName, nameof(bodydepartmentName), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodymanagerEmail = WorkflowExpression.Compile(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodymanagerId = WorkflowExpression.Compile(bodymanagerId, nameof(bodymanagerId), required: false);
+            var __workflow_bodycompanyObjectiveId = WorkflowExpression.Compile(bodycompanyObjectiveId, nameof(bodycompanyObjectiveId), required: false);
+            var __workflow_bodydepartmentObjectiveId = WorkflowExpression.Compile(bodydepartmentObjectiveId, nameof(bodydepartmentObjectiveId), required: false);
+            return new DeferredBodyAction<CreateObjectiveByTemplateResponse>(() =>
             {
-                body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
+                var apiCallPath = "/public/Performance/v1/Objectives";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypersonId != null)
-            {
-                body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
+                body["objectiveTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectiveTemplateId);
                 bodypropCount++;
-            }
-
-            if (bodydepartmentName != null)
-            {
-                body["departmentName"] = ExpressionConverter.ConvertO(bodydepartmentName);
+                body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
                 bodypropCount++;
-            }
+                body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
+                if (__workflow_bodypersonEmail != null)
+                {
+                    body["personEmail"] = ExpressionConverter.ConvertO(__workflow_bodypersonEmail);
+                    bodypropCount++;
+                }
 
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
+                if (__workflow_bodypersonId != null)
+                {
+                    body["personId"] = ExpressionConverter.ConvertO(__workflow_bodypersonId);
+                    bodypropCount++;
+                }
 
-            if (bodymanagerEmail != null)
-            {
-                body["managerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
-                bodypropCount++;
-            }
+                if (__workflow_bodydepartmentName != null)
+                {
+                    body["departmentName"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentName);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (__workflow_bodydepartmentId != null)
+                {
+                    body["departmentId"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentId);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodymanagerEmail != null)
+                {
+                    body["managerEmail"] = ExpressionConverter.ConvertO(__workflow_bodymanagerEmail);
+                    bodypropCount++;
+                }
 
-            if (bodymanagerId != null)
-            {
-                body["managerId"] = ExpressionConverter.ConvertO(bodymanagerId);
-                bodypropCount++;
-            }
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodycompanyObjectiveId != null)
-            {
-                body["companyObjectiveId"] = ExpressionConverter.ConvertO(bodycompanyObjectiveId);
-                bodypropCount++;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodydepartmentObjectiveId != null)
-            {
-                body["departmentObjectiveId"] = ExpressionConverter.ConvertO(bodydepartmentObjectiveId);
-                bodypropCount++;
-            }
+                if (__workflow_bodymanagerId != null)
+                {
+                    body["managerId"] = ExpressionConverter.ConvertO(__workflow_bodymanagerId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodycompanyObjectiveId != null)
+                {
+                    body["companyObjectiveId"] = ExpressionConverter.ConvertO(__workflow_bodycompanyObjectiveId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateObjectiveByTemplateResponse>(callPayload);
+                if (__workflow_bodydepartmentObjectiveId != null)
+                {
+                    body["departmentObjectiveId"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentObjectiveId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateObjectiveByTemplateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateObjectiveResponse> CreateObjective(Expression<Func<int>> bodycategoryId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodyvalueTypeInput>> bodyvalueType, Expression<Func<string>> bodytag = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<string>> bodypersonEmail = null, Expression<Func<int>> bodypersonId = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<int>> bodycompanyObjectiveId = null, Expression<Func<int>> bodydepartmentObjectiveId = null, Expression<Func<double>> bodystartValue = null, Expression<Func<double>> bodytarget = null, Expression<Func<bool>> bodyallowAddProgress = null, Expression<Func<bodyrecurTypeInput>> bodyrecurType = null, Expression<Func<int>> bodyrecurInterval = null, Expression<Func<bool>> bodycumulativeProgress = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<bool>> bodycontentSettingsallowDocuments = null)
         {
-            var apiCallPath = "/public/Performance/v1/Objectives/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
-            bodypropCount++;
-            body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-            bodypropCount++;
-            body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-            bodypropCount++;
-            body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
-            if (bodytag != null)
+            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: true);
+            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: false);
+            var __workflow_bodymanagerEmail = WorkflowExpression.Compile(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            var __workflow_bodymanagerId = WorkflowExpression.Compile(bodymanagerId, nameof(bodymanagerId), required: false);
+            var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
+            var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
+            var __workflow_bodydepartmentName = WorkflowExpression.Compile(bodydepartmentName, nameof(bodydepartmentName), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodycompanyObjectiveId = WorkflowExpression.Compile(bodycompanyObjectiveId, nameof(bodycompanyObjectiveId), required: false);
+            var __workflow_bodydepartmentObjectiveId = WorkflowExpression.Compile(bodydepartmentObjectiveId, nameof(bodydepartmentObjectiveId), required: false);
+            var __workflow_bodystartValue = WorkflowExpression.Compile(bodystartValue, nameof(bodystartValue), required: false);
+            var __workflow_bodytarget = WorkflowExpression.Compile(bodytarget, nameof(bodytarget), required: false);
+            var __workflow_bodyallowAddProgress = WorkflowExpression.Compile(bodyallowAddProgress, nameof(bodyallowAddProgress), required: false);
+            var __workflow_bodyrecurType = WorkflowExpression.Compile(bodyrecurType, nameof(bodyrecurType), required: false);
+            var __workflow_bodyrecurInterval = WorkflowExpression.Compile(bodyrecurInterval, nameof(bodyrecurInterval), required: false);
+            var __workflow_bodycumulativeProgress = WorkflowExpression.Compile(bodycumulativeProgress, nameof(bodycumulativeProgress), required: false);
+            var __workflow_bodycontentSettingspush = WorkflowExpression.Compile(bodycontentSettingspush, nameof(bodycontentSettingspush), required: false);
+            var __workflow_bodycontentSettingssms = WorkflowExpression.Compile(bodycontentSettingssms, nameof(bodycontentSettingssms), required: false);
+            var __workflow_bodycontentSettingsemail = WorkflowExpression.Compile(bodycontentSettingsemail, nameof(bodycontentSettingsemail), required: false);
+            var __workflow_bodycontentSettingsteams = WorkflowExpression.Compile(bodycontentSettingsteams, nameof(bodycontentSettingsteams), required: false);
+            var __workflow_bodycontentSettingsinApp = WorkflowExpression.Compile(bodycontentSettingsinApp, nameof(bodycontentSettingsinApp), required: false);
+            var __workflow_bodycontentSettingsallowLikes = WorkflowExpression.Compile(bodycontentSettingsallowLikes, nameof(bodycontentSettingsallowLikes), required: false);
+            var __workflow_bodycontentSettingsallowComments = WorkflowExpression.Compile(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
+            var __workflow_bodycontentSettingsallowImagesInComments = WorkflowExpression.Compile(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
+            var __workflow_bodycontentSettingsallowDocuments = WorkflowExpression.Compile(bodycontentSettingsallowDocuments, nameof(bodycontentSettingsallowDocuments), required: false);
+            return new DeferredBodyAction<CreateObjectiveResponse>(() =>
             {
-                body["tag"] = ExpressionConverter.ConvertO(bodytag);
+                var apiCallPath = "/public/Performance/v1/Objectives/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodymanagerEmail != null)
-            {
-                body["managerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
+                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
                 bodypropCount++;
-            }
-
-            if (bodymanagerId != null)
-            {
-                body["managerId"] = ExpressionConverter.ConvertO(bodymanagerId);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-            }
-
-            if (bodypersonEmail != null)
-            {
-                body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                 bodypropCount++;
-            }
-
-            if (bodypersonId != null)
-            {
-                body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
+                body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
                 bodypropCount++;
-            }
-
-            if (bodydepartmentName != null)
-            {
-                body["departmentName"] = ExpressionConverter.ConvertO(bodydepartmentName);
+                body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
                 bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodycompanyObjectiveId != null)
-            {
-                body["companyObjectiveId"] = ExpressionConverter.ConvertO(bodycompanyObjectiveId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentObjectiveId != null)
-            {
-                body["departmentObjectiveId"] = ExpressionConverter.ConvertO(bodydepartmentObjectiveId);
-                bodypropCount++;
-            }
-
-            if (bodystartValue != null)
-            {
-                body["startValue"] = ExpressionConverter.ConvertO(bodystartValue);
-                bodypropCount++;
-            }
-
-            if (bodytarget != null)
-            {
-                body["target"] = ExpressionConverter.ConvertO(bodytarget);
-                bodypropCount++;
-            }
-
-            if (bodyallowAddProgress != null)
-            {
-                if (bodyallowAddProgress != null)
+                body["valueType"] = ExpressionConverter.ConvertO(__workflow_bodyvalueType);
+                if (__workflow_bodytag != null)
                 {
-                    body["allowAddProgress"] = ExpressionConverter.ConvertO(bodyallowAddProgress);
+                    body["tag"] = ExpressionConverter.ConvertO(__workflow_bodytag);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["allowAddProgress"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyrecurType != null)
-            {
-                body["recurType"] = ExpressionConverter.ConvertO(bodyrecurType);
-                bodypropCount++;
-            }
-
-            if (bodyrecurInterval != null)
-            {
-                body["recurInterval"] = ExpressionConverter.ConvertO(bodyrecurInterval);
-                bodypropCount++;
-            }
-
-            if (bodycumulativeProgress != null)
-            {
-                if (bodycumulativeProgress != null)
+                if (__workflow_bodymanagerEmail != null)
                 {
-                    body["cumulativeProgress"] = ExpressionConverter.ConvertO(bodycumulativeProgress);
+                    body["managerEmail"] = ExpressionConverter.ConvertO(__workflow_bodymanagerEmail);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["cumulativeProgress"] = false;
-                bodypropCount++;
-            }
-
-            var contentSettingsObject = new JObject();
-            var contentSettingsObjectpropCount = 0;
-            if (bodycontentSettingspush != null)
-            {
-                if (bodycontentSettingspush != null)
+                if (__workflow_bodymanagerId != null)
                 {
-                    contentSettingsObject["push"] = ExpressionConverter.ConvertO(bodycontentSettingspush);
+                    body["managerId"] = ExpressionConverter.ConvertO(__workflow_bodymanagerId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodypersonEmail != null)
+                {
+                    body["personEmail"] = ExpressionConverter.ConvertO(__workflow_bodypersonEmail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodypersonId != null)
+                {
+                    body["personId"] = ExpressionConverter.ConvertO(__workflow_bodypersonId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydepartmentName != null)
+                {
+                    body["departmentName"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydepartmentId != null)
+                {
+                    body["departmentId"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycompanyObjectiveId != null)
+                {
+                    body["companyObjectiveId"] = ExpressionConverter.ConvertO(__workflow_bodycompanyObjectiveId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydepartmentObjectiveId != null)
+                {
+                    body["departmentObjectiveId"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentObjectiveId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodystartValue != null)
+                {
+                    body["startValue"] = ExpressionConverter.ConvertO(__workflow_bodystartValue);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytarget != null)
+                {
+                    body["target"] = ExpressionConverter.ConvertO(__workflow_bodytarget);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyallowAddProgress != null)
+                {
+                    if (__workflow_bodyallowAddProgress != null)
+                    {
+                        body["allowAddProgress"] = ExpressionConverter.ConvertO(__workflow_bodyallowAddProgress);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["allowAddProgress"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyrecurType != null)
+                {
+                    body["recurType"] = ExpressionConverter.ConvertO(__workflow_bodyrecurType);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyrecurInterval != null)
+                {
+                    body["recurInterval"] = ExpressionConverter.ConvertO(__workflow_bodyrecurInterval);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycumulativeProgress != null)
+                {
+                    if (__workflow_bodycumulativeProgress != null)
+                    {
+                        body["cumulativeProgress"] = ExpressionConverter.ConvertO(__workflow_bodycumulativeProgress);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["cumulativeProgress"] = false;
+                    bodypropCount++;
+                }
+
+                var contentSettingsObject = new JObject();
+                var contentSettingsObjectpropCount = 0;
+                if (__workflow_bodycontentSettingspush != null)
+                {
+                    if (__workflow_bodycontentSettingspush != null)
+                    {
+                        contentSettingsObject["push"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingspush);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["push"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["push"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingssms != null)
-            {
-                if (bodycontentSettingssms != null)
+                if (__workflow_bodycontentSettingssms != null)
                 {
-                    contentSettingsObject["sms"] = ExpressionConverter.ConvertO(bodycontentSettingssms);
+                    if (__workflow_bodycontentSettingssms != null)
+                    {
+                        contentSettingsObject["sms"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingssms);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["sms"] = false;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["sms"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsemail != null)
-            {
-                if (bodycontentSettingsemail != null)
+                if (__workflow_bodycontentSettingsemail != null)
                 {
-                    contentSettingsObject["email"] = ExpressionConverter.ConvertO(bodycontentSettingsemail);
+                    if (__workflow_bodycontentSettingsemail != null)
+                    {
+                        contentSettingsObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsemail);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["email"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["email"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsteams != null)
-            {
-                if (bodycontentSettingsteams != null)
+                if (__workflow_bodycontentSettingsteams != null)
                 {
-                    contentSettingsObject["teams"] = ExpressionConverter.ConvertO(bodycontentSettingsteams);
+                    if (__workflow_bodycontentSettingsteams != null)
+                    {
+                        contentSettingsObject["teams"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsteams);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["teams"] = false;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["teams"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsinApp != null)
-            {
-                if (bodycontentSettingsinApp != null)
+                if (__workflow_bodycontentSettingsinApp != null)
                 {
-                    contentSettingsObject["inApp"] = ExpressionConverter.ConvertO(bodycontentSettingsinApp);
+                    if (__workflow_bodycontentSettingsinApp != null)
+                    {
+                        contentSettingsObject["inApp"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsinApp);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["inApp"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["inApp"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsallowLikes != null)
-            {
-                if (bodycontentSettingsallowLikes != null)
+                if (__workflow_bodycontentSettingsallowLikes != null)
                 {
-                    contentSettingsObject["allowLikes"] = ExpressionConverter.ConvertO(bodycontentSettingsallowLikes);
+                    if (__workflow_bodycontentSettingsallowLikes != null)
+                    {
+                        contentSettingsObject["allowLikes"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowLikes);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["allowLikes"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["allowLikes"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsallowComments != null)
-            {
-                if (bodycontentSettingsallowComments != null)
+                if (__workflow_bodycontentSettingsallowComments != null)
                 {
-                    contentSettingsObject["allowComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowComments);
+                    if (__workflow_bodycontentSettingsallowComments != null)
+                    {
+                        contentSettingsObject["allowComments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowComments);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["allowComments"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["allowComments"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsallowImagesInComments != null)
-            {
-                if (bodycontentSettingsallowImagesInComments != null)
+                if (__workflow_bodycontentSettingsallowImagesInComments != null)
                 {
-                    contentSettingsObject["allowImagesInComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowImagesInComments);
+                    if (__workflow_bodycontentSettingsallowImagesInComments != null)
+                    {
+                        contentSettingsObject["allowImagesInComments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowImagesInComments);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["allowImagesInComments"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["allowImagesInComments"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsallowDocuments != null)
-            {
-                if (bodycontentSettingsallowDocuments != null)
+                if (__workflow_bodycontentSettingsallowDocuments != null)
                 {
-                    contentSettingsObject["allowDocuments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowDocuments);
+                    if (__workflow_bodycontentSettingsallowDocuments != null)
+                    {
+                        contentSettingsObject["allowDocuments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowDocuments);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["allowDocuments"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["allowDocuments"] = true;
-                contentSettingsObjectpropCount++;
-            }
+                if (contentSettingsObjectpropCount > 0)
+                {
+                    body["contentSettings"] = contentSettingsObject;
+                    bodypropCount++;
+                }
 
-            if (contentSettingsObjectpropCount > 0)
-            {
-                body["contentSettings"] = contentSettingsObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateObjectiveResponse>(callPayload);
+                return new ApiConnectionAction<CreateObjectiveResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<UpdateObjectiveScoreResponse> UpdateObjectiveScore(Expression<Func<string>> objectiveId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodydescription, Expression<Func<bool>> bodyisIncrement = null)
         {
-            var apiCallPath = String.Format("/public/Performance/v1/Objectives/{0}/progress", ExpressionConverter.ConvertWithUrlEncoding(objectiveId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodyisIncrement != null)
+            var __workflow_objectiveId = WorkflowExpression.Compile(objectiveId, nameof(objectiveId), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodyisIncrement = WorkflowExpression.Compile(bodyisIncrement, nameof(bodyisIncrement), required: false);
+            return new DeferredBodyAction<UpdateObjectiveScoreResponse>(() =>
             {
-                if (bodyisIncrement != null)
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/Performance/v1/Objectives/{0}/progress", __workflow_objectiveId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (__workflow_bodyisIncrement != null)
                 {
-                    body["isIncrement"] = ExpressionConverter.ConvertO(bodyisIncrement);
+                    if (__workflow_bodyisIncrement != null)
+                    {
+                        body["isIncrement"] = ExpressionConverter.ConvertO(__workflow_bodyisIncrement);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["isIncrement"] = false;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["isIncrement"] = false;
-                bodypropCount++;
-            }
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateObjectiveScoreResponse>(callPayload);
+                return new ApiConnectionAction<UpdateObjectiveScoreResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateArticleResponse> CreateArticle(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<bodyarticleTypeInput>> bodyarticleType, Expression<Func<string>> bodyhtmlContent, Expression<Func<string>> bodytag, Expression<Func<string>> bodymainImageUrl = null, Expression<Func<string>> bodysummary = null, Expression<Func<int>> bodychannelId = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<string>> bodypublicationDetailspinFromDate = null, Expression<Func<int>> bodypublicationDetailspinDurationHours = null, Expression<Func<string>> bodypublicationDetailsscheduledDateTime = null, Expression<Func<bool>> bodypublicationDetailspublishImmediately = null, Expression<Func<int>> bodypublicationDetailspublishAsUserId = null)
         {
-            var apiCallPath = "/public/comms/v1/Articles";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-            bodypropCount++;
-            body["articleType"] = ExpressionConverter.ConvertO(bodyarticleType);
-            bodypropCount++;
-            body["htmlContent"] = ExpressionConverter.ConvertO(bodyhtmlContent);
-            if (bodymainImageUrl != null)
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: true);
+            var __workflow_bodyarticleType = WorkflowExpression.Compile(bodyarticleType, nameof(bodyarticleType), required: true);
+            var __workflow_bodyhtmlContent = WorkflowExpression.Compile(bodyhtmlContent, nameof(bodyhtmlContent), required: true);
+            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
+            var __workflow_bodymainImageUrl = WorkflowExpression.Compile(bodymainImageUrl, nameof(bodymainImageUrl), required: false);
+            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
+            var __workflow_bodychannelId = WorkflowExpression.Compile(bodychannelId, nameof(bodychannelId), required: false);
+            var __workflow_bodycontentSettingspush = WorkflowExpression.Compile(bodycontentSettingspush, nameof(bodycontentSettingspush), required: false);
+            var __workflow_bodycontentSettingssms = WorkflowExpression.Compile(bodycontentSettingssms, nameof(bodycontentSettingssms), required: false);
+            var __workflow_bodycontentSettingsemail = WorkflowExpression.Compile(bodycontentSettingsemail, nameof(bodycontentSettingsemail), required: false);
+            var __workflow_bodycontentSettingsinApp = WorkflowExpression.Compile(bodycontentSettingsinApp, nameof(bodycontentSettingsinApp), required: false);
+            var __workflow_bodycontentSettingsteams = WorkflowExpression.Compile(bodycontentSettingsteams, nameof(bodycontentSettingsteams), required: false);
+            var __workflow_bodycontentSettingsallowLikes = WorkflowExpression.Compile(bodycontentSettingsallowLikes, nameof(bodycontentSettingsallowLikes), required: false);
+            var __workflow_bodycontentSettingsallowComments = WorkflowExpression.Compile(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
+            var __workflow_bodycontentSettingsallowImagesInComments = WorkflowExpression.Compile(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
+            var __workflow_bodypublicationDetailspinFromDate = WorkflowExpression.Compile(bodypublicationDetailspinFromDate, nameof(bodypublicationDetailspinFromDate), required: false);
+            var __workflow_bodypublicationDetailspinDurationHours = WorkflowExpression.Compile(bodypublicationDetailspinDurationHours, nameof(bodypublicationDetailspinDurationHours), required: false);
+            var __workflow_bodypublicationDetailsscheduledDateTime = WorkflowExpression.Compile(bodypublicationDetailsscheduledDateTime, nameof(bodypublicationDetailsscheduledDateTime), required: false);
+            var __workflow_bodypublicationDetailspublishImmediately = WorkflowExpression.Compile(bodypublicationDetailspublishImmediately, nameof(bodypublicationDetailspublishImmediately), required: false);
+            var __workflow_bodypublicationDetailspublishAsUserId = WorkflowExpression.Compile(bodypublicationDetailspublishAsUserId, nameof(bodypublicationDetailspublishAsUserId), required: false);
+            return new DeferredBodyAction<CreateArticleResponse>(() =>
             {
-                body["mainImageUrl"] = ExpressionConverter.ConvertO(bodymainImageUrl);
+                var apiCallPath = "/public/comms/v1/Articles";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysummary != null)
-            {
-                body["summary"] = ExpressionConverter.ConvertO(bodysummary);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
-            if (bodychannelId != null)
-            {
-                body["channelId"] = ExpressionConverter.ConvertO(bodychannelId);
+                body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                 bodypropCount++;
-            }
-
-            var contentSettingsObject = new JObject();
-            var contentSettingsObjectpropCount = 0;
-            if (bodycontentSettingspush != null)
-            {
-                if (bodycontentSettingspush != null)
-                {
-                    contentSettingsObject["push"] = ExpressionConverter.ConvertO(bodycontentSettingspush);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["push"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingssms != null)
-            {
-                if (bodycontentSettingssms != null)
-                {
-                    contentSettingsObject["sms"] = ExpressionConverter.ConvertO(bodycontentSettingssms);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["sms"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsemail != null)
-            {
-                if (bodycontentSettingsemail != null)
-                {
-                    contentSettingsObject["email"] = ExpressionConverter.ConvertO(bodycontentSettingsemail);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["email"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsinApp != null)
-            {
-                if (bodycontentSettingsinApp != null)
-                {
-                    contentSettingsObject["inApp"] = ExpressionConverter.ConvertO(bodycontentSettingsinApp);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["inApp"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsteams != null)
-            {
-                if (bodycontentSettingsteams != null)
-                {
-                    contentSettingsObject["teams"] = ExpressionConverter.ConvertO(bodycontentSettingsteams);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["teams"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsallowLikes != null)
-            {
-                if (bodycontentSettingsallowLikes != null)
-                {
-                    contentSettingsObject["allowLikes"] = ExpressionConverter.ConvertO(bodycontentSettingsallowLikes);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["allowLikes"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsallowComments != null)
-            {
-                if (bodycontentSettingsallowComments != null)
-                {
-                    contentSettingsObject["allowComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowComments);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["allowComments"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsallowImagesInComments != null)
-            {
-                if (bodycontentSettingsallowImagesInComments != null)
-                {
-                    contentSettingsObject["allowImagesInComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowImagesInComments);
-                    contentSettingsObjectpropCount++;
-                }
-
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["allowImagesInComments"] = true;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (contentSettingsObjectpropCount > 0)
-            {
-                body["contentSettings"] = contentSettingsObject;
+                body["articleType"] = ExpressionConverter.ConvertO(__workflow_bodyarticleType);
                 bodypropCount++;
-            }
-
-            var publicationDetailsObject = new JObject();
-            var publicationDetailsObjectpropCount = 0;
-            if (bodypublicationDetailspinFromDate != null)
-            {
-                publicationDetailsObject["pinFromDate"] = ExpressionConverter.ConvertO(bodypublicationDetailspinFromDate);
-                publicationDetailsObjectpropCount++;
-            }
-
-            if (bodypublicationDetailspinDurationHours != null)
-            {
-                publicationDetailsObject["pinDurationHours"] = ExpressionConverter.ConvertO(bodypublicationDetailspinDurationHours);
-                publicationDetailsObjectpropCount++;
-            }
-
-            if (bodypublicationDetailsscheduledDateTime != null)
-            {
-                publicationDetailsObject["scheduledDateTime"] = ExpressionConverter.ConvertO(bodypublicationDetailsscheduledDateTime);
-                publicationDetailsObjectpropCount++;
-            }
-
-            if (bodypublicationDetailspublishImmediately != null)
-            {
-                if (bodypublicationDetailspublishImmediately != null)
+                body["htmlContent"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlContent);
+                if (__workflow_bodymainImageUrl != null)
                 {
-                    publicationDetailsObject["publishImmediately"] = ExpressionConverter.ConvertO(bodypublicationDetailspublishImmediately);
+                    body["mainImageUrl"] = ExpressionConverter.ConvertO(__workflow_bodymainImageUrl);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysummary != null)
+                {
+                    body["summary"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["tag"] = ExpressionConverter.ConvertO(__workflow_bodytag);
+                if (__workflow_bodychannelId != null)
+                {
+                    body["channelId"] = ExpressionConverter.ConvertO(__workflow_bodychannelId);
+                    bodypropCount++;
+                }
+
+                var contentSettingsObject = new JObject();
+                var contentSettingsObjectpropCount = 0;
+                if (__workflow_bodycontentSettingspush != null)
+                {
+                    if (__workflow_bodycontentSettingspush != null)
+                    {
+                        contentSettingsObject["push"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingspush);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["push"] = false;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodycontentSettingssms != null)
+                {
+                    if (__workflow_bodycontentSettingssms != null)
+                    {
+                        contentSettingsObject["sms"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingssms);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["sms"] = false;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodycontentSettingsemail != null)
+                {
+                    if (__workflow_bodycontentSettingsemail != null)
+                    {
+                        contentSettingsObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsemail);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["email"] = false;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodycontentSettingsinApp != null)
+                {
+                    if (__workflow_bodycontentSettingsinApp != null)
+                    {
+                        contentSettingsObject["inApp"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsinApp);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["inApp"] = true;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodycontentSettingsteams != null)
+                {
+                    if (__workflow_bodycontentSettingsteams != null)
+                    {
+                        contentSettingsObject["teams"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsteams);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["teams"] = false;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodycontentSettingsallowLikes != null)
+                {
+                    if (__workflow_bodycontentSettingsallowLikes != null)
+                    {
+                        contentSettingsObject["allowLikes"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowLikes);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["allowLikes"] = true;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodycontentSettingsallowComments != null)
+                {
+                    if (__workflow_bodycontentSettingsallowComments != null)
+                    {
+                        contentSettingsObject["allowComments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowComments);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["allowComments"] = true;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (__workflow_bodycontentSettingsallowImagesInComments != null)
+                {
+                    if (__workflow_bodycontentSettingsallowImagesInComments != null)
+                    {
+                        contentSettingsObject["allowImagesInComments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowImagesInComments);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["allowImagesInComments"] = true;
+                    contentSettingsObjectpropCount++;
+                }
+
+                if (contentSettingsObjectpropCount > 0)
+                {
+                    body["contentSettings"] = contentSettingsObject;
+                    bodypropCount++;
+                }
+
+                var publicationDetailsObject = new JObject();
+                var publicationDetailsObjectpropCount = 0;
+                if (__workflow_bodypublicationDetailspinFromDate != null)
+                {
+                    publicationDetailsObject["pinFromDate"] = ExpressionConverter.ConvertO(__workflow_bodypublicationDetailspinFromDate);
                     publicationDetailsObjectpropCount++;
                 }
 
-                publicationDetailsObjectpropCount++;
-            }
-            else
-            {
-                publicationDetailsObject["publishImmediately"] = true;
-                publicationDetailsObjectpropCount++;
-            }
+                if (__workflow_bodypublicationDetailspinDurationHours != null)
+                {
+                    publicationDetailsObject["pinDurationHours"] = ExpressionConverter.ConvertO(__workflow_bodypublicationDetailspinDurationHours);
+                    publicationDetailsObjectpropCount++;
+                }
 
-            if (bodypublicationDetailspublishAsUserId != null)
-            {
-                publicationDetailsObject["publishAsUserId"] = ExpressionConverter.ConvertO(bodypublicationDetailspublishAsUserId);
-                publicationDetailsObjectpropCount++;
-            }
+                if (__workflow_bodypublicationDetailsscheduledDateTime != null)
+                {
+                    publicationDetailsObject["scheduledDateTime"] = ExpressionConverter.ConvertO(__workflow_bodypublicationDetailsscheduledDateTime);
+                    publicationDetailsObjectpropCount++;
+                }
 
-            if (publicationDetailsObjectpropCount > 0)
-            {
-                body["publicationDetails"] = publicationDetailsObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodypublicationDetailspublishImmediately != null)
+                {
+                    if (__workflow_bodypublicationDetailspublishImmediately != null)
+                    {
+                        publicationDetailsObject["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublicationDetailspublishImmediately);
+                        publicationDetailsObjectpropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    publicationDetailsObjectpropCount++;
+                }
+                else
+                {
+                    publicationDetailsObject["publishImmediately"] = true;
+                    publicationDetailsObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<CreateArticleResponse>(callPayload);
+                if (__workflow_bodypublicationDetailspublishAsUserId != null)
+                {
+                    publicationDetailsObject["publishAsUserId"] = ExpressionConverter.ConvertO(__workflow_bodypublicationDetailspublishAsUserId);
+                    publicationDetailsObjectpropCount++;
+                }
+
+                if (publicationDetailsObjectpropCount > 0)
+                {
+                    body["publicationDetails"] = publicationDetailsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateArticleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateAlertResponse> CreateAlert(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodysummary = null, Expression<Func<bool>> bodyeveryone = null, Expression<Func<string>> bodyaudiencedepartmentTags = null, Expression<Func<string>> bodyaudiencepeopleTags = null, Expression<Func<string>> bodyaudiencegroupTags = null, Expression<Func<string>> bodyaudiencesiteTags = null, Expression<Func<bool>> bodycommunicationMethodspush = null, Expression<Func<bool>> bodycommunicationMethodssms = null, Expression<Func<bool>> bodycommunicationMethodsemail = null, Expression<Func<bool>> bodycommunicationMethodsinApp = null, Expression<Func<bool>> bodycommunicationMethodsteams = null)
         {
-            var apiCallPath = "/public/comms/v1/Alerts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-            if (bodysummary != null)
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: true);
+            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
+            var __workflow_bodyeveryone = WorkflowExpression.Compile(bodyeveryone, nameof(bodyeveryone), required: false);
+            var __workflow_bodyaudiencedepartmentTags = WorkflowExpression.Compile(bodyaudiencedepartmentTags, nameof(bodyaudiencedepartmentTags), required: false);
+            var __workflow_bodyaudiencepeopleTags = WorkflowExpression.Compile(bodyaudiencepeopleTags, nameof(bodyaudiencepeopleTags), required: false);
+            var __workflow_bodyaudiencegroupTags = WorkflowExpression.Compile(bodyaudiencegroupTags, nameof(bodyaudiencegroupTags), required: false);
+            var __workflow_bodyaudiencesiteTags = WorkflowExpression.Compile(bodyaudiencesiteTags, nameof(bodyaudiencesiteTags), required: false);
+            var __workflow_bodycommunicationMethodspush = WorkflowExpression.Compile(bodycommunicationMethodspush, nameof(bodycommunicationMethodspush), required: false);
+            var __workflow_bodycommunicationMethodssms = WorkflowExpression.Compile(bodycommunicationMethodssms, nameof(bodycommunicationMethodssms), required: false);
+            var __workflow_bodycommunicationMethodsemail = WorkflowExpression.Compile(bodycommunicationMethodsemail, nameof(bodycommunicationMethodsemail), required: false);
+            var __workflow_bodycommunicationMethodsinApp = WorkflowExpression.Compile(bodycommunicationMethodsinApp, nameof(bodycommunicationMethodsinApp), required: false);
+            var __workflow_bodycommunicationMethodsteams = WorkflowExpression.Compile(bodycommunicationMethodsteams, nameof(bodycommunicationMethodsteams), required: false);
+            return new DeferredBodyAction<CreateAlertResponse>(() =>
             {
-                body["summary"] = ExpressionConverter.ConvertO(bodysummary);
+                var apiCallPath = "/public/comms/v1/Alerts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyeveryone != null)
-            {
-                if (bodyeveryone != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                bodypropCount++;
+                body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                if (__workflow_bodysummary != null)
                 {
-                    body["everyone"] = ExpressionConverter.ConvertO(bodyeveryone);
+                    body["summary"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["everyone"] = false;
-                bodypropCount++;
-            }
-
-            var audienceObject = new JObject();
-            var audienceObjectpropCount = 0;
-            if (bodyaudiencedepartmentTags != null)
-            {
-                audienceObject["departmentTags"] = ExpressionConverter.ConvertO(bodyaudiencedepartmentTags);
-                audienceObjectpropCount++;
-            }
-
-            if (bodyaudiencepeopleTags != null)
-            {
-                audienceObject["peopleTags"] = ExpressionConverter.ConvertO(bodyaudiencepeopleTags);
-                audienceObjectpropCount++;
-            }
-
-            if (bodyaudiencegroupTags != null)
-            {
-                audienceObject["groupTags"] = ExpressionConverter.ConvertO(bodyaudiencegroupTags);
-                audienceObjectpropCount++;
-            }
-
-            if (bodyaudiencesiteTags != null)
-            {
-                audienceObject["siteTags"] = ExpressionConverter.ConvertO(bodyaudiencesiteTags);
-                audienceObjectpropCount++;
-            }
-
-            if (audienceObjectpropCount > 0)
-            {
-                body["audience"] = audienceObject;
-                bodypropCount++;
-            }
-
-            var communicationMethodsObject = new JObject();
-            var communicationMethodsObjectpropCount = 0;
-            if (bodycommunicationMethodspush != null)
-            {
-                if (bodycommunicationMethodspush != null)
+                if (__workflow_bodyeveryone != null)
                 {
-                    communicationMethodsObject["push"] = ExpressionConverter.ConvertO(bodycommunicationMethodspush);
+                    if (__workflow_bodyeveryone != null)
+                    {
+                        body["everyone"] = ExpressionConverter.ConvertO(__workflow_bodyeveryone);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["everyone"] = false;
+                    bodypropCount++;
+                }
+
+                var audienceObject = new JObject();
+                var audienceObjectpropCount = 0;
+                if (__workflow_bodyaudiencedepartmentTags != null)
+                {
+                    audienceObject["departmentTags"] = ExpressionConverter.ConvertO(__workflow_bodyaudiencedepartmentTags);
+                    audienceObjectpropCount++;
+                }
+
+                if (__workflow_bodyaudiencepeopleTags != null)
+                {
+                    audienceObject["peopleTags"] = ExpressionConverter.ConvertO(__workflow_bodyaudiencepeopleTags);
+                    audienceObjectpropCount++;
+                }
+
+                if (__workflow_bodyaudiencegroupTags != null)
+                {
+                    audienceObject["groupTags"] = ExpressionConverter.ConvertO(__workflow_bodyaudiencegroupTags);
+                    audienceObjectpropCount++;
+                }
+
+                if (__workflow_bodyaudiencesiteTags != null)
+                {
+                    audienceObject["siteTags"] = ExpressionConverter.ConvertO(__workflow_bodyaudiencesiteTags);
+                    audienceObjectpropCount++;
+                }
+
+                if (audienceObjectpropCount > 0)
+                {
+                    body["audience"] = audienceObject;
+                    bodypropCount++;
+                }
+
+                var communicationMethodsObject = new JObject();
+                var communicationMethodsObjectpropCount = 0;
+                if (__workflow_bodycommunicationMethodspush != null)
+                {
+                    if (__workflow_bodycommunicationMethodspush != null)
+                    {
+                        communicationMethodsObject["push"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationMethodspush);
+                        communicationMethodsObjectpropCount++;
+                    }
+
+                    communicationMethodsObjectpropCount++;
+                }
+                else
+                {
+                    communicationMethodsObject["push"] = false;
                     communicationMethodsObjectpropCount++;
                 }
 
-                communicationMethodsObjectpropCount++;
-            }
-            else
-            {
-                communicationMethodsObject["push"] = false;
-                communicationMethodsObjectpropCount++;
-            }
-
-            if (bodycommunicationMethodssms != null)
-            {
-                if (bodycommunicationMethodssms != null)
+                if (__workflow_bodycommunicationMethodssms != null)
                 {
-                    communicationMethodsObject["sms"] = ExpressionConverter.ConvertO(bodycommunicationMethodssms);
+                    if (__workflow_bodycommunicationMethodssms != null)
+                    {
+                        communicationMethodsObject["sms"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationMethodssms);
+                        communicationMethodsObjectpropCount++;
+                    }
+
+                    communicationMethodsObjectpropCount++;
+                }
+                else
+                {
+                    communicationMethodsObject["sms"] = false;
                     communicationMethodsObjectpropCount++;
                 }
 
-                communicationMethodsObjectpropCount++;
-            }
-            else
-            {
-                communicationMethodsObject["sms"] = false;
-                communicationMethodsObjectpropCount++;
-            }
-
-            if (bodycommunicationMethodsemail != null)
-            {
-                if (bodycommunicationMethodsemail != null)
+                if (__workflow_bodycommunicationMethodsemail != null)
                 {
-                    communicationMethodsObject["email"] = ExpressionConverter.ConvertO(bodycommunicationMethodsemail);
+                    if (__workflow_bodycommunicationMethodsemail != null)
+                    {
+                        communicationMethodsObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationMethodsemail);
+                        communicationMethodsObjectpropCount++;
+                    }
+
+                    communicationMethodsObjectpropCount++;
+                }
+                else
+                {
+                    communicationMethodsObject["email"] = true;
                     communicationMethodsObjectpropCount++;
                 }
 
-                communicationMethodsObjectpropCount++;
-            }
-            else
-            {
-                communicationMethodsObject["email"] = true;
-                communicationMethodsObjectpropCount++;
-            }
-
-            if (bodycommunicationMethodsinApp != null)
-            {
-                if (bodycommunicationMethodsinApp != null)
+                if (__workflow_bodycommunicationMethodsinApp != null)
                 {
-                    communicationMethodsObject["inApp"] = ExpressionConverter.ConvertO(bodycommunicationMethodsinApp);
+                    if (__workflow_bodycommunicationMethodsinApp != null)
+                    {
+                        communicationMethodsObject["inApp"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationMethodsinApp);
+                        communicationMethodsObjectpropCount++;
+                    }
+
+                    communicationMethodsObjectpropCount++;
+                }
+                else
+                {
+                    communicationMethodsObject["inApp"] = true;
                     communicationMethodsObjectpropCount++;
                 }
 
-                communicationMethodsObjectpropCount++;
-            }
-            else
-            {
-                communicationMethodsObject["inApp"] = true;
-                communicationMethodsObjectpropCount++;
-            }
-
-            if (bodycommunicationMethodsteams != null)
-            {
-                if (bodycommunicationMethodsteams != null)
+                if (__workflow_bodycommunicationMethodsteams != null)
                 {
-                    communicationMethodsObject["teams"] = ExpressionConverter.ConvertO(bodycommunicationMethodsteams);
+                    if (__workflow_bodycommunicationMethodsteams != null)
+                    {
+                        communicationMethodsObject["teams"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationMethodsteams);
+                        communicationMethodsObjectpropCount++;
+                    }
+
+                    communicationMethodsObjectpropCount++;
+                }
+                else
+                {
+                    communicationMethodsObject["teams"] = false;
                     communicationMethodsObjectpropCount++;
                 }
 
-                communicationMethodsObjectpropCount++;
-            }
-            else
-            {
-                communicationMethodsObject["teams"] = false;
-                communicationMethodsObjectpropCount++;
-            }
+                if (communicationMethodsObjectpropCount > 0)
+                {
+                    body["communicationMethods"] = communicationMethodsObject;
+                    bodypropCount++;
+                }
 
-            if (communicationMethodsObjectpropCount > 0)
-            {
-                body["communicationMethods"] = communicationMethodsObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAlertResponse>(callPayload);
+                return new ApiConnectionAction<CreateAlertResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodytitle, Expression<Func<int>> bodyformId, Expression<Func<int>> bodytaskGroupId, Expression<Func<int>> bodypriorityId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<int>> bodyassignedToId = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<string>> bodyassignedToEmail = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<int>> bodytaskIntervalId = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<bool>> bodycontentSettingsallowDocuments = null)
         {
-            var apiCallPath = "/public/tasks/v1/tasks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypriorityId != null)
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_bodytaskGroupId = WorkflowExpression.Compile(bodytaskGroupId, nameof(bodytaskGroupId), required: true);
+            var __workflow_bodypriorityId = WorkflowExpression.Compile(bodypriorityId, nameof(bodypriorityId), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyassignedToId = WorkflowExpression.Compile(bodyassignedToId, nameof(bodyassignedToId), required: false);
+            var __workflow_bodymanagerId = WorkflowExpression.Compile(bodymanagerId, nameof(bodymanagerId), required: false);
+            var __workflow_bodyassignedToEmail = WorkflowExpression.Compile(bodyassignedToEmail, nameof(bodyassignedToEmail), required: false);
+            var __workflow_bodymanagerEmail = WorkflowExpression.Compile(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            var __workflow_bodytaskIntervalId = WorkflowExpression.Compile(bodytaskIntervalId, nameof(bodytaskIntervalId), required: false);
+            var __workflow_bodycontentSettingspush = WorkflowExpression.Compile(bodycontentSettingspush, nameof(bodycontentSettingspush), required: false);
+            var __workflow_bodycontentSettingssms = WorkflowExpression.Compile(bodycontentSettingssms, nameof(bodycontentSettingssms), required: false);
+            var __workflow_bodycontentSettingsemail = WorkflowExpression.Compile(bodycontentSettingsemail, nameof(bodycontentSettingsemail), required: false);
+            var __workflow_bodycontentSettingsteams = WorkflowExpression.Compile(bodycontentSettingsteams, nameof(bodycontentSettingsteams), required: false);
+            var __workflow_bodycontentSettingsinApp = WorkflowExpression.Compile(bodycontentSettingsinApp, nameof(bodycontentSettingsinApp), required: false);
+            var __workflow_bodycontentSettingsallowLikes = WorkflowExpression.Compile(bodycontentSettingsallowLikes, nameof(bodycontentSettingsallowLikes), required: false);
+            var __workflow_bodycontentSettingsallowComments = WorkflowExpression.Compile(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
+            var __workflow_bodycontentSettingsallowImagesInComments = WorkflowExpression.Compile(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
+            var __workflow_bodycontentSettingsallowDocuments = WorkflowExpression.Compile(bodycontentSettingsallowDocuments, nameof(bodycontentSettingsallowDocuments), required: false);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                body["priorityId"] = ExpressionConverter.ConvertO(bodypriorityId);
+                var apiCallPath = "/public/tasks/v1/tasks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["formId"] = ExpressionConverter.ConvertO(bodyformId);
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodyassignedToId != null)
-            {
-                body["assignedToId"] = ExpressionConverter.ConvertO(bodyassignedToId);
-                bodypropCount++;
-            }
-
-            if (bodymanagerId != null)
-            {
-                body["managerId"] = ExpressionConverter.ConvertO(bodymanagerId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["taskGroupId"] = ExpressionConverter.ConvertO(bodytaskGroupId);
-            if (bodyassignedToEmail != null)
-            {
-                body["assignedToEmail"] = ExpressionConverter.ConvertO(bodyassignedToEmail);
-                bodypropCount++;
-            }
-
-            if (bodymanagerEmail != null)
-            {
-                body["managerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
-                bodypropCount++;
-            }
-
-            if (bodytaskIntervalId != null)
-            {
-                body["taskIntervalId"] = ExpressionConverter.ConvertO(bodytaskIntervalId);
-                bodypropCount++;
-            }
-
-            var contentSettingsObject = new JObject();
-            var contentSettingsObjectpropCount = 0;
-            if (bodycontentSettingspush != null)
-            {
-                if (bodycontentSettingspush != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodypriorityId != null)
                 {
-                    contentSettingsObject["push"] = ExpressionConverter.ConvertO(bodycontentSettingspush);
+                    body["priorityId"] = ExpressionConverter.ConvertO(__workflow_bodypriorityId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["formId"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
+                if (__workflow_bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyassignedToId != null)
+                {
+                    body["assignedToId"] = ExpressionConverter.ConvertO(__workflow_bodyassignedToId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymanagerId != null)
+                {
+                    body["managerId"] = ExpressionConverter.ConvertO(__workflow_bodymanagerId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["taskGroupId"] = ExpressionConverter.ConvertO(__workflow_bodytaskGroupId);
+                if (__workflow_bodyassignedToEmail != null)
+                {
+                    body["assignedToEmail"] = ExpressionConverter.ConvertO(__workflow_bodyassignedToEmail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymanagerEmail != null)
+                {
+                    body["managerEmail"] = ExpressionConverter.ConvertO(__workflow_bodymanagerEmail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytaskIntervalId != null)
+                {
+                    body["taskIntervalId"] = ExpressionConverter.ConvertO(__workflow_bodytaskIntervalId);
+                    bodypropCount++;
+                }
+
+                var contentSettingsObject = new JObject();
+                var contentSettingsObjectpropCount = 0;
+                if (__workflow_bodycontentSettingspush != null)
+                {
+                    if (__workflow_bodycontentSettingspush != null)
+                    {
+                        contentSettingsObject["push"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingspush);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["push"] = false;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["push"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingssms != null)
-            {
-                if (bodycontentSettingssms != null)
+                if (__workflow_bodycontentSettingssms != null)
                 {
-                    contentSettingsObject["sms"] = ExpressionConverter.ConvertO(bodycontentSettingssms);
+                    if (__workflow_bodycontentSettingssms != null)
+                    {
+                        contentSettingsObject["sms"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingssms);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["sms"] = false;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["sms"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsemail != null)
-            {
-                if (bodycontentSettingsemail != null)
+                if (__workflow_bodycontentSettingsemail != null)
                 {
-                    contentSettingsObject["email"] = ExpressionConverter.ConvertO(bodycontentSettingsemail);
+                    if (__workflow_bodycontentSettingsemail != null)
+                    {
+                        contentSettingsObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsemail);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["email"] = false;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["email"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsteams != null)
-            {
-                if (bodycontentSettingsteams != null)
+                if (__workflow_bodycontentSettingsteams != null)
                 {
-                    contentSettingsObject["teams"] = ExpressionConverter.ConvertO(bodycontentSettingsteams);
+                    if (__workflow_bodycontentSettingsteams != null)
+                    {
+                        contentSettingsObject["teams"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsteams);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["teams"] = false;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["teams"] = false;
-                contentSettingsObjectpropCount++;
-            }
-
-            if (bodycontentSettingsinApp != null)
-            {
-                if (bodycontentSettingsinApp != null)
+                if (__workflow_bodycontentSettingsinApp != null)
                 {
-                    contentSettingsObject["inApp"] = ExpressionConverter.ConvertO(bodycontentSettingsinApp);
+                    if (__workflow_bodycontentSettingsinApp != null)
+                    {
+                        contentSettingsObject["inApp"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsinApp);
+                        contentSettingsObjectpropCount++;
+                    }
+
+                    contentSettingsObjectpropCount++;
+                }
+                else
+                {
+                    contentSettingsObject["inApp"] = true;
                     contentSettingsObjectpropCount++;
                 }
 
-                contentSettingsObjectpropCount++;
-            }
-            else
-            {
-                contentSettingsObject["inApp"] = true;
-                contentSettingsObjectpropCount++;
-            }
+                if (__workflow_bodycontentSettingsallowLikes != null)
+                {
+                    contentSettingsObject["allowLikes"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowLikes);
+                    contentSettingsObjectpropCount++;
+                }
 
-            if (bodycontentSettingsallowLikes != null)
-            {
-                contentSettingsObject["allowLikes"] = ExpressionConverter.ConvertO(bodycontentSettingsallowLikes);
-                contentSettingsObjectpropCount++;
-            }
+                if (__workflow_bodycontentSettingsallowComments != null)
+                {
+                    contentSettingsObject["allowComments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowComments);
+                    contentSettingsObjectpropCount++;
+                }
 
-            if (bodycontentSettingsallowComments != null)
-            {
-                contentSettingsObject["allowComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowComments);
-                contentSettingsObjectpropCount++;
-            }
+                if (__workflow_bodycontentSettingsallowImagesInComments != null)
+                {
+                    contentSettingsObject["allowImagesInComments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowImagesInComments);
+                    contentSettingsObjectpropCount++;
+                }
 
-            if (bodycontentSettingsallowImagesInComments != null)
-            {
-                contentSettingsObject["allowImagesInComments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowImagesInComments);
-                contentSettingsObjectpropCount++;
-            }
+                if (__workflow_bodycontentSettingsallowDocuments != null)
+                {
+                    contentSettingsObject["allowDocuments"] = ExpressionConverter.ConvertO(__workflow_bodycontentSettingsallowDocuments);
+                    contentSettingsObjectpropCount++;
+                }
 
-            if (bodycontentSettingsallowDocuments != null)
-            {
-                contentSettingsObject["allowDocuments"] = ExpressionConverter.ConvertO(bodycontentSettingsallowDocuments);
-                contentSettingsObjectpropCount++;
-            }
+                if (contentSettingsObjectpropCount > 0)
+                {
+                    body["contentSettings"] = contentSettingsObject;
+                    bodypropCount++;
+                }
 
-            if (contentSettingsObjectpropCount > 0)
-            {
-                body["contentSettings"] = contentSettingsObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
         }
     }
 
     public class StaffcircleTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewPerson(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewPerson(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/public/security/v1/webhooks/NewPerson";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["authType"] = "none";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["resourceType"] = "People";
-            bodypropCount++;
-            body["create"] = true;
-            bodypropCount++;
-            body["update"] = false;
-            bodypropCount++;
-            body["delete"] = false;
-            bodypropCount++;
-            body["notifications"] = false;
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<JToken> NewObjective(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/public/security/v1/webhooks/NewObjective";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["authType"] = "none";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["resourceType"] = "Objectives";
-            bodypropCount++;
-            body["create"] = true;
-            bodypropCount++;
-            body["update"] = false;
-            bodypropCount++;
-            body["delete"] = false;
-            bodypropCount++;
-            body["notifications"] = false;
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<JToken> UpdateObjective(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/public/security/v1/webhooks/UpdateObjective";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["authType"] = "none";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["resourceType"] = "Objectives_Progress";
-            bodypropCount++;
-            body["create"] = true;
-            bodypropCount++;
-            body["update"] = false;
-            bodypropCount++;
-            body["delete"] = false;
-            bodypropCount++;
-            body["notifications"] = false;
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<JToken> PublishedArticle(Expression<Func<string>> bodyname = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/Public/Security/v1/Webhooks/NewArticle";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["authType"] = "none";
-            bodypropCount++;
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/public/security/v1/webhooks/NewPerson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["authType"] = "none";
                 bodypropCount++;
-            }
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["resourceType"] = "People";
+                bodypropCount++;
+                body["create"] = true;
+                bodypropCount++;
+                body["update"] = false;
+                bodypropCount++;
+                body["delete"] = false;
+                bodypropCount++;
+                body["notifications"] = false;
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["resourceType"] = "Articles";
-            bodypropCount++;
-            body["create"] = false;
-            bodypropCount++;
-            body["update"] = false;
-            bodypropCount++;
-            body["delete"] = false;
-            bodypropCount++;
-            body["notifications"] = false;
-            bodypropCount++;
-            body["customAction"] = "Publish";
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewTask(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewObjective(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/public/security/v1/webhooks/NewTask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["authType"] = "none";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            body["resourceType"] = "Task";
-            bodypropCount++;
-            body["create"] = true;
-            bodypropCount++;
-            body["update"] = false;
-            bodypropCount++;
-            body["delete"] = false;
-            bodypropCount++;
-            body["notifications"] = false;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/public/security/v1/webhooks/NewObjective";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["authType"] = "none";
+                bodypropCount++;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["resourceType"] = "Objectives";
+                bodypropCount++;
+                body["create"] = true;
+                bodypropCount++;
+                body["update"] = false;
+                bodypropCount++;
+                body["delete"] = false;
+                bodypropCount++;
+                body["notifications"] = false;
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewReview(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> UpdateObjective(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/public/security/v1/webhooks/NewReview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["authType"] = "none";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            body["resourceType"] = "Reviews";
-            bodypropCount++;
-            body["create"] = true;
-            bodypropCount++;
-            body["update"] = false;
-            bodypropCount++;
-            body["delete"] = false;
-            bodypropCount++;
-            body["notifications"] = false;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/public/security/v1/webhooks/UpdateObjective";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["authType"] = "none";
+                bodypropCount++;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["resourceType"] = "Objectives_Progress";
+                bodypropCount++;
+                body["create"] = true;
+                bodypropCount++;
+                body["update"] = false;
+                bodypropCount++;
+                body["delete"] = false;
+                bodypropCount++;
+                body["notifications"] = false;
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewAbsence(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> PublishedArticle(Expression<Func<string>> bodyname = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/public/security/v1/webhooks/newabsence";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["authType"] = "none";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            body["resourceType"] = "Absences";
-            bodypropCount++;
-            body["create"] = true;
-            bodypropCount++;
-            body["update"] = false;
-            bodypropCount++;
-            body["delete"] = false;
-            bodypropCount++;
-            body["notifications"] = false;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Public/Security/v1/Webhooks/NewArticle";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["authType"] = "none";
+                bodypropCount++;
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["resourceType"] = "Articles";
+                bodypropCount++;
+                body["create"] = false;
+                bodypropCount++;
+                body["update"] = false;
+                bodypropCount++;
+                body["delete"] = false;
+                bodypropCount++;
+                body["notifications"] = false;
+                bodypropCount++;
+                body["customAction"] = "Publish";
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<JToken> NewTask(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
+            {
+                var apiCallPath = "/public/security/v1/webhooks/NewTask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["authType"] = "none";
+                bodypropCount++;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                body["resourceType"] = "Task";
+                bodypropCount++;
+                body["create"] = true;
+                bodypropCount++;
+                body["update"] = false;
+                bodypropCount++;
+                body["delete"] = false;
+                bodypropCount++;
+                body["notifications"] = false;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<JToken> NewReview(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
+            {
+                var apiCallPath = "/public/security/v1/webhooks/NewReview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["authType"] = "none";
+                bodypropCount++;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                body["resourceType"] = "Reviews";
+                bodypropCount++;
+                body["create"] = true;
+                bodypropCount++;
+                body["update"] = false;
+                bodypropCount++;
+                body["delete"] = false;
+                bodypropCount++;
+                body["notifications"] = false;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<JToken> NewAbsence(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
+            {
+                var apiCallPath = "/public/security/v1/webhooks/newabsence";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["authType"] = "none";
+                bodypropCount++;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                body["resourceType"] = "Absences";
+                bodypropCount++;
+                body["create"] = true;
+                bodypropCount++;
+                body["update"] = false;
+                bodypropCount++;
+                body["delete"] = false;
+                bodypropCount++;
+                body["notifications"] = false;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -1744,6 +1965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytimeZoneInput
     {
         [EnumMember(Value = "(GMT-11:00) Niue")]
@@ -2372,6 +2594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum objectiveTypeInput
     {
         Personal,
@@ -2391,6 +2614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvalueTypeInput
     {
         Number,
@@ -2399,6 +2623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         YesNo
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecurTypeInput
     {
         Days,
@@ -2419,6 +2644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         Critical,
@@ -2427,6 +2653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         Information
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyarticleTypeInput
     {
         Social,

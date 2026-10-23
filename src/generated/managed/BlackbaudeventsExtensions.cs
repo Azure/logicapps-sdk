@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,860 +14,1071 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventListEntry> ListEvents(Expression<Func<string>> category = null, Expression<Func<string>> lookupId = null, Expression<Func<string>> startDateFrom = null, Expression<Func<string>> startDateTo = null, Expression<Func<bool>> includeInactive = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> eventId = null, Expression<Func<string>> name = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> lastModified = null)
         {
-            var apiCallPath = "/event/v1/eventlist";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (lookupId != null)
-                callPayload.Queries["lookup_id"] = ExpressionConverter.Convert(lookupId);
-            if (startDateFrom != null)
-                callPayload.Queries["start_date_from"] = ExpressionConverter.Convert(startDateFrom);
-            if (startDateTo != null)
-                callPayload.Queries["start_date_to"] = ExpressionConverter.Convert(startDateTo);
-            if (includeInactive != null)
-                callPayload.Queries["include_inactive"] = ExpressionConverter.Convert(includeInactive);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (eventId != null)
-                callPayload.Queries["event_id"] = ExpressionConverter.Convert(eventId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (dateAdded != null)
-                callPayload.Queries["date_added"] = ExpressionConverter.Convert(dateAdded);
-            if (lastModified != null)
-                callPayload.Queries["last_modified"] = ExpressionConverter.Convert(lastModified);
-            return new ApiConnectionAction<EventApiApiCollectionOfEventListEntry>(callPayload);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_lookupId = WorkflowExpression.Compile(lookupId, nameof(lookupId), required: false);
+            var __workflow_startDateFrom = WorkflowExpression.Compile(startDateFrom, nameof(startDateFrom), required: false);
+            var __workflow_startDateTo = WorkflowExpression.Compile(startDateTo, nameof(startDateTo), required: false);
+            var __workflow_includeInactive = WorkflowExpression.Compile(includeInactive, nameof(includeInactive), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_dateAdded = WorkflowExpression.Compile(dateAdded, nameof(dateAdded), required: false);
+            var __workflow_lastModified = WorkflowExpression.Compile(lastModified, nameof(lastModified), required: false);
+            return new DeferredBodyAction<EventApiApiCollectionOfEventListEntry>(() =>
+            {
+                var apiCallPath = "/event/v1/eventlist";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_lookupId != null)
+                    callPayload.Queries["lookup_id"] = ExpressionConverter.Convert(__workflow_lookupId);
+                if (__workflow_startDateFrom != null)
+                    callPayload.Queries["start_date_from"] = ExpressionConverter.Convert(__workflow_startDateFrom);
+                if (__workflow_startDateTo != null)
+                    callPayload.Queries["start_date_to"] = ExpressionConverter.Convert(__workflow_startDateTo);
+                if (__workflow_includeInactive != null)
+                    callPayload.Queries["include_inactive"] = ExpressionConverter.Convert(__workflow_includeInactive);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_eventId != null)
+                    callPayload.Queries["event_id"] = ExpressionConverter.Convert(__workflow_eventId);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_dateAdded != null)
+                    callPayload.Queries["date_added"] = ExpressionConverter.Convert(__workflow_dateAdded);
+                if (__workflow_lastModified != null)
+                    callPayload.Queries["last_modified"] = ExpressionConverter.Convert(__workflow_lastModified);
+                return new ApiConnectionAction<EventApiApiCollectionOfEventListEntry>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEvent> CreateEvent(Expression<Func<string>> bodyeventName, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupID = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignID = null, Expression<Func<string>> bodyfundID = null, Expression<Func<bool>> bodyinactive = null)
         {
-            var apiCallPath = "/event/v1/events";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyeventName);
-            if (bodydescription != null)
+            var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: true);
+            var __workflow_bodycategorycategory = WorkflowExpression.Compile(bodycategorycategory, nameof(bodycategorycategory), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
+            var __workflow_bodylookupID = WorkflowExpression.Compile(bodylookupID, nameof(bodylookupID), required: false);
+            var __workflow_bodycapacity = WorkflowExpression.Compile(bodycapacity, nameof(bodycapacity), required: false);
+            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
+            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: false);
+            var __workflow_bodyfundID = WorkflowExpression.Compile(bodyfundID, nameof(bodyfundID), required: false);
+            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            return new DeferredBodyAction<EventApiCreatedEvent>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/event/v1/events";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyeventName);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            var categoryObject = new JObject();
-            var categoryObjectpropCount = 0;
-            categoryObjectpropCount++;
-            categoryObject["name"] = ExpressionConverter.ConvertO(bodycategorycategory);
-            if (categoryObjectpropCount > 0)
-            {
-                body["category"] = categoryObject;
+                var categoryObject = new JObject();
+                var categoryObjectpropCount = 0;
+                categoryObjectpropCount++;
+                categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycategorycategory);
+                if (categoryObjectpropCount > 0)
+                {
+                    body["category"] = categoryObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
+                if (__workflow_bodystartTime != null)
+                {
+                    body["start_time"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
-            if (bodystartTime != null)
-            {
-                body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
+                if (__workflow_bodyendDate != null)
+                {
+                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodyendTime != null)
+                {
+                    body["end_time"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
+                    bodypropCount++;
+                }
 
-            if (bodyendTime != null)
-            {
-                body["end_time"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
+                if (__workflow_bodylookupID != null)
+                {
+                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupID);
+                    bodypropCount++;
+                }
 
-            if (bodylookupID != null)
-            {
-                body["lookup_id"] = ExpressionConverter.ConvertO(bodylookupID);
-                bodypropCount++;
-            }
+                if (__workflow_bodycapacity != null)
+                {
+                    body["capacity"] = ExpressionConverter.ConvertO(__workflow_bodycapacity);
+                    bodypropCount++;
+                }
 
-            if (bodycapacity != null)
-            {
-                body["capacity"] = ExpressionConverter.ConvertO(bodycapacity);
-                bodypropCount++;
-            }
+                if (__workflow_bodygoal != null)
+                {
+                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
+                    bodypropCount++;
+                }
 
-            if (bodygoal != null)
-            {
-                body["goal"] = ExpressionConverter.ConvertO(bodygoal);
-                bodypropCount++;
-            }
+                if (__workflow_bodycampaignID != null)
+                {
+                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignID);
+                    bodypropCount++;
+                }
 
-            if (bodycampaignID != null)
-            {
-                body["campaign_id"] = ExpressionConverter.ConvertO(bodycampaignID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfundID != null)
+                {
+                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundID);
+                    bodypropCount++;
+                }
 
-            if (bodyfundID != null)
-            {
-                body["fund_id"] = ExpressionConverter.ConvertO(bodyfundID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyinactive != null)
+                {
+                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
+                    bodypropCount++;
+                }
 
-            if (bodyinactive != null)
-            {
-                body["inactive"] = ExpressionConverter.ConvertO(bodyinactive);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EventApiCreatedEvent>(callPayload);
+                return new ApiConnectionAction<EventApiCreatedEvent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiEvent> GetEvent(Expression<Func<string>> eventId)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EventApiEvent>(callPayload);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            return new DeferredBodyAction<EventApiEvent>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EventApiEvent>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditEvent(Expression<Func<string>> eventId, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodyeventName = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupID = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignID = null, Expression<Func<string>> bodyfundID = null, Expression<Func<bool>> bodyinactive = null)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyeventName != null)
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_bodycategorycategory = WorkflowExpression.Compile(bodycategorycategory, nameof(bodycategorycategory), required: true);
+            var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
+            var __workflow_bodylookupID = WorkflowExpression.Compile(bodylookupID, nameof(bodylookupID), required: false);
+            var __workflow_bodycapacity = WorkflowExpression.Compile(bodycapacity, nameof(bodycapacity), required: false);
+            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
+            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: false);
+            var __workflow_bodyfundID = WorkflowExpression.Compile(bodyfundID, nameof(bodyfundID), required: false);
+            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyeventName);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyeventName != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyeventName);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            var categoryObject = new JObject();
-            var categoryObjectpropCount = 0;
-            categoryObjectpropCount++;
-            categoryObject["name"] = ExpressionConverter.ConvertO(bodycategorycategory);
-            if (categoryObjectpropCount > 0)
-            {
-                body["category"] = categoryObject;
-                bodypropCount++;
-            }
+                var categoryObject = new JObject();
+                var categoryObjectpropCount = 0;
+                categoryObjectpropCount++;
+                categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycategorycategory);
+                if (categoryObjectpropCount > 0)
+                {
+                    body["category"] = categoryObject;
+                    bodypropCount++;
+                }
 
-            if (bodystartDate != null)
-            {
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodystartDate != null)
+                {
+                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodystartTime != null)
-            {
-                body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
+                if (__workflow_bodystartTime != null)
+                {
+                    body["start_time"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodyendDate != null)
+                {
+                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodyendTime != null)
-            {
-                body["end_time"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
+                if (__workflow_bodyendTime != null)
+                {
+                    body["end_time"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
+                    bodypropCount++;
+                }
 
-            if (bodylookupID != null)
-            {
-                body["lookup_id"] = ExpressionConverter.ConvertO(bodylookupID);
-                bodypropCount++;
-            }
+                if (__workflow_bodylookupID != null)
+                {
+                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupID);
+                    bodypropCount++;
+                }
 
-            if (bodycapacity != null)
-            {
-                body["capacity"] = ExpressionConverter.ConvertO(bodycapacity);
-                bodypropCount++;
-            }
+                if (__workflow_bodycapacity != null)
+                {
+                    body["capacity"] = ExpressionConverter.ConvertO(__workflow_bodycapacity);
+                    bodypropCount++;
+                }
 
-            if (bodygoal != null)
-            {
-                body["goal"] = ExpressionConverter.ConvertO(bodygoal);
-                bodypropCount++;
-            }
+                if (__workflow_bodygoal != null)
+                {
+                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
+                    bodypropCount++;
+                }
 
-            if (bodycampaignID != null)
-            {
-                body["campaign_id"] = ExpressionConverter.ConvertO(bodycampaignID);
-                bodypropCount++;
-            }
+                if (__workflow_bodycampaignID != null)
+                {
+                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignID);
+                    bodypropCount++;
+                }
 
-            if (bodyfundID != null)
-            {
-                body["fund_id"] = ExpressionConverter.ConvertO(bodyfundID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfundID != null)
+                {
+                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundID);
+                    bodypropCount++;
+                }
 
-            if (bodyinactive != null)
-            {
-                body["inactive"] = ExpressionConverter.ConvertO(bodyinactive);
-                bodypropCount++;
-            }
+                if (__workflow_bodyinactive != null)
+                {
+                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiEventAttachmentCollection> ListEventAttachments(Expression<Func<string>> eventId)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/attachments", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EventApiEventAttachmentCollection>(callPayload);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            return new DeferredBodyAction<EventApiEventAttachmentCollection>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/attachments", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EventApiEventAttachmentCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEventAttachment> CreateEventAttachment(Expression<Func<string>> eventId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileID = null, Expression<Func<string>> bodythumbnailID = null, Expression<Func<string[]>> bodytags = null)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/attachments", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyname != null)
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
+            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodyfileID = WorkflowExpression.Compile(bodyfileID, nameof(bodyfileID), required: false);
+            var __workflow_bodythumbnailID = WorkflowExpression.Compile(bodythumbnailID, nameof(bodythumbnailID), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            return new DeferredBodyAction<EventApiCreatedEventAttachment>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/attachments", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodydate != null)
-            {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
-                bodypropCount++;
-            }
+                if (__workflow_bodydate != null)
+                {
+                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
+                    bodypropCount++;
+                }
 
-            if (bodyuRL != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyuRL);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuRL != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
+                    bodypropCount++;
+                }
 
-            if (bodyfileName != null)
-            {
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfileName != null)
+                {
+                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                    bodypropCount++;
+                }
 
-            if (bodyfileID != null)
-            {
-                body["file_id"] = ExpressionConverter.ConvertO(bodyfileID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfileID != null)
+                {
+                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileID);
+                    bodypropCount++;
+                }
 
-            if (bodythumbnailID != null)
-            {
-                body["thumbnail_id"] = ExpressionConverter.ConvertO(bodythumbnailID);
-                bodypropCount++;
-            }
+                if (__workflow_bodythumbnailID != null)
+                {
+                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailID);
+                    bodypropCount++;
+                }
 
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
+                if (__workflow_bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedEventAttachment>(callPayload);
+                return new ApiConnectionAction<EventApiCreatedEventAttachment>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditEventAttachment(Expression<Func<string>> eventId, Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string[]>> bodytags = null)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/attachments/{1}", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1), ExpressionConverter.ConvertWithUrlEncoding(attachmentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
+            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/attachments/{1}", __workflow_eventId.WithUrlEncoding(1), __workflow_attachmentId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodydate != null)
-            {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
-                bodypropCount++;
-            }
+                if (__workflow_bodydate != null)
+                {
+                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
+                    bodypropCount++;
+                }
 
-            if (bodyuRL != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyuRL);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuRL != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
+                    bodypropCount++;
+                }
 
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
+                if (__workflow_bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventFee> ListEventFees(Expression<Func<string>> eventId)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/eventfees", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EventApiApiCollectionOfEventFee>(callPayload);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            return new DeferredBodyAction<EventApiApiCollectionOfEventFee>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventfees", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EventApiApiCollectionOfEventFee>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEventFee> CreateEventFee(Expression<Func<string>> eventId, Expression<Func<string>> bodyname, Expression<Func<double>> bodyfeeAmount, Expression<Func<double>> bodycontributionAmount)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/eventfees", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["cost"] = ExpressionConverter.ConvertO(bodyfeeAmount);
-            bodypropCount++;
-            body["contribution_amount"] = ExpressionConverter.ConvertO(bodycontributionAmount);
-            if (bodypropCount > 0)
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyfeeAmount = WorkflowExpression.Compile(bodyfeeAmount, nameof(bodyfeeAmount), required: true);
+            var __workflow_bodycontributionAmount = WorkflowExpression.Compile(bodycontributionAmount, nameof(bodycontributionAmount), required: true);
+            return new DeferredBodyAction<EventApiCreatedEventFee>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventfees", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                bodypropCount++;
+                body["cost"] = ExpressionConverter.ConvertO(__workflow_bodyfeeAmount);
+                bodypropCount++;
+                body["contribution_amount"] = ExpressionConverter.ConvertO(__workflow_bodycontributionAmount);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedEventFee>(callPayload);
+                return new ApiConnectionAction<EventApiCreatedEventFee>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfEventParticipantOption> ListEventParticipantOptions(Expression<Func<string>> eventId)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/eventparticipantoptions", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EventApiApiCollectionOfEventParticipantOption>(callPayload);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            return new DeferredBodyAction<EventApiApiCollectionOfEventParticipantOption>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventparticipantoptions", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EventApiApiCollectionOfEventParticipantOption>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedEventParticipantOption> CreateEventParticipantOption(Expression<Func<string>> eventId, Expression<Func<string>> bodyname, Expression<Func<bodyinputTypeInput>> bodyinputType, Expression<Func<bool>> bodyallowMultiSelect = null, Expression<Func<EventApiCreateParticipantOptionListOption[]>> bodylistOptions = null)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/eventparticipantoptions", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["input_type"] = ExpressionConverter.ConvertO(bodyinputType);
-            if (bodyallowMultiSelect != null)
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyinputType = WorkflowExpression.Compile(bodyinputType, nameof(bodyinputType), required: true);
+            var __workflow_bodyallowMultiSelect = WorkflowExpression.Compile(bodyallowMultiSelect, nameof(bodyallowMultiSelect), required: false);
+            var __workflow_bodylistOptions = WorkflowExpression.Compile(bodylistOptions, nameof(bodylistOptions), required: false);
+            return new DeferredBodyAction<EventApiCreatedEventParticipantOption>(() =>
             {
-                body["multi_select"] = ExpressionConverter.ConvertO(bodyallowMultiSelect);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventparticipantoptions", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodylistOptions != null)
-            {
-                body["list_options"] = ExpressionConverter.ConvertO(bodylistOptions);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-            }
+                body["input_type"] = ExpressionConverter.ConvertO(__workflow_bodyinputType);
+                if (__workflow_bodyallowMultiSelect != null)
+                {
+                    body["multi_select"] = ExpressionConverter.ConvertO(__workflow_bodyallowMultiSelect);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodylistOptions != null)
+                {
+                    body["list_options"] = ExpressionConverter.ConvertO(__workflow_bodylistOptions);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedEventParticipantOption>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EventApiCreatedEventParticipantOption>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantListEntry> ListEventParticipants(Expression<Func<string>> eventId, Expression<Func<rsvpStatusInput>> rsvpStatus = null, Expression<Func<invitationStatusInput>> invitationStatus = null, Expression<Func<string>> participationLevel = null, Expression<Func<bool>> attendedFilter = null, Expression<Func<bool>> feesPaidFilter = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> isConstituentFilter = null, Expression<Func<bool>> emailEligibleFilter = null, Expression<Func<bool>> phoneCallEligibleFilter = null, Expression<Func<string>> name = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> lastModified = null)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/participants", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (rsvpStatus != null)
-                callPayload.Queries["rsvp_status"] = ExpressionConverter.Convert(rsvpStatus);
-            if (invitationStatus != null)
-                callPayload.Queries["invitation_status"] = ExpressionConverter.Convert(invitationStatus);
-            if (participationLevel != null)
-                callPayload.Queries["participation_level"] = ExpressionConverter.Convert(participationLevel);
-            if (attendedFilter != null)
-                callPayload.Queries["attended_filter"] = ExpressionConverter.Convert(attendedFilter);
-            if (feesPaidFilter != null)
-                callPayload.Queries["fees_paid_filter"] = ExpressionConverter.Convert(feesPaidFilter);
-            callPayload.Queries["limit"] = Convert.ToString(500);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (isConstituentFilter != null)
-                callPayload.Queries["is_constituent_filter"] = ExpressionConverter.Convert(isConstituentFilter);
-            if (emailEligibleFilter != null)
-                callPayload.Queries["email_eligible_filter"] = ExpressionConverter.Convert(emailEligibleFilter);
-            if (phoneCallEligibleFilter != null)
-                callPayload.Queries["phone_call_eligible_filter"] = ExpressionConverter.Convert(phoneCallEligibleFilter);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (dateAdded != null)
-                callPayload.Queries["date_added"] = ExpressionConverter.Convert(dateAdded);
-            if (lastModified != null)
-                callPayload.Queries["last_modified"] = ExpressionConverter.Convert(lastModified);
-            return new ApiConnectionAction<EventApiApiCollectionOfParticipantListEntry>(callPayload);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_rsvpStatus = WorkflowExpression.Compile(rsvpStatus, nameof(rsvpStatus), required: false);
+            var __workflow_invitationStatus = WorkflowExpression.Compile(invitationStatus, nameof(invitationStatus), required: false);
+            var __workflow_participationLevel = WorkflowExpression.Compile(participationLevel, nameof(participationLevel), required: false);
+            var __workflow_attendedFilter = WorkflowExpression.Compile(attendedFilter, nameof(attendedFilter), required: false);
+            var __workflow_feesPaidFilter = WorkflowExpression.Compile(feesPaidFilter, nameof(feesPaidFilter), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_isConstituentFilter = WorkflowExpression.Compile(isConstituentFilter, nameof(isConstituentFilter), required: false);
+            var __workflow_emailEligibleFilter = WorkflowExpression.Compile(emailEligibleFilter, nameof(emailEligibleFilter), required: false);
+            var __workflow_phoneCallEligibleFilter = WorkflowExpression.Compile(phoneCallEligibleFilter, nameof(phoneCallEligibleFilter), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_dateAdded = WorkflowExpression.Compile(dateAdded, nameof(dateAdded), required: false);
+            var __workflow_lastModified = WorkflowExpression.Compile(lastModified, nameof(lastModified), required: false);
+            return new DeferredBodyAction<EventApiApiCollectionOfParticipantListEntry>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/participants", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_rsvpStatus != null)
+                    callPayload.Queries["rsvp_status"] = ExpressionConverter.Convert(__workflow_rsvpStatus);
+                if (__workflow_invitationStatus != null)
+                    callPayload.Queries["invitation_status"] = ExpressionConverter.Convert(__workflow_invitationStatus);
+                if (__workflow_participationLevel != null)
+                    callPayload.Queries["participation_level"] = ExpressionConverter.Convert(__workflow_participationLevel);
+                if (__workflow_attendedFilter != null)
+                    callPayload.Queries["attended_filter"] = ExpressionConverter.Convert(__workflow_attendedFilter);
+                if (__workflow_feesPaidFilter != null)
+                    callPayload.Queries["fees_paid_filter"] = ExpressionConverter.Convert(__workflow_feesPaidFilter);
+                callPayload.Queries["limit"] = Convert.ToString(500);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_isConstituentFilter != null)
+                    callPayload.Queries["is_constituent_filter"] = ExpressionConverter.Convert(__workflow_isConstituentFilter);
+                if (__workflow_emailEligibleFilter != null)
+                    callPayload.Queries["email_eligible_filter"] = ExpressionConverter.Convert(__workflow_emailEligibleFilter);
+                if (__workflow_phoneCallEligibleFilter != null)
+                    callPayload.Queries["phone_call_eligible_filter"] = ExpressionConverter.Convert(__workflow_phoneCallEligibleFilter);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_dateAdded != null)
+                    callPayload.Queries["date_added"] = ExpressionConverter.Convert(__workflow_dateAdded);
+                if (__workflow_lastModified != null)
+                    callPayload.Queries["last_modified"] = ExpressionConverter.Convert(__workflow_lastModified);
+                return new ApiConnectionAction<EventApiApiCollectionOfParticipantListEntry>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipant> CreateParticipant(Expression<Func<string>> eventId, Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyhostID = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null, Expression<Func<string>> bodysummaryNote = null)
         {
-            var apiCallPath = String.Format("/event/v1/events/{0}/participants", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["constituent_id"] = ExpressionConverter.ConvertO(bodyconstituentID);
-            if (bodyhostID != null)
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyparticipationLevelparticipationLevel = WorkflowExpression.Compile(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
+            var __workflow_bodyhostID = WorkflowExpression.Compile(bodyhostID, nameof(bodyhostID), required: false);
+            var __workflow_bodyrSVPStatus = WorkflowExpression.Compile(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
+            var __workflow_bodyattended = WorkflowExpression.Compile(bodyattended, nameof(bodyattended), required: false);
+            var __workflow_bodyinvitationStatus = WorkflowExpression.Compile(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
+            var __workflow_bodyrSVPDateday = WorkflowExpression.Compile(bodyrSVPDateday, nameof(bodyrSVPDateday), required: false);
+            var __workflow_bodyrSVPDatemonth = WorkflowExpression.Compile(bodyrSVPDatemonth, nameof(bodyrSVPDatemonth), required: false);
+            var __workflow_bodyrSVPDateyear = WorkflowExpression.Compile(bodyrSVPDateyear, nameof(bodyrSVPDateyear), required: false);
+            var __workflow_bodyinvitationDateday = WorkflowExpression.Compile(bodyinvitationDateday, nameof(bodyinvitationDateday), required: false);
+            var __workflow_bodyinvitationDatemonth = WorkflowExpression.Compile(bodyinvitationDatemonth, nameof(bodyinvitationDatemonth), required: false);
+            var __workflow_bodyinvitationDateyear = WorkflowExpression.Compile(bodyinvitationDateyear, nameof(bodyinvitationDateyear), required: false);
+            var __workflow_bodysummaryNote = WorkflowExpression.Compile(bodysummaryNote, nameof(bodysummaryNote), required: false);
+            return new DeferredBodyAction<EventApiCreatedParticipant>(() =>
             {
-                body["host_id"] = ExpressionConverter.ConvertO(bodyhostID);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/participants", __workflow_eventId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                if (__workflow_bodyhostID != null)
+                {
+                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostID);
+                    bodypropCount++;
+                }
 
-            if (bodyrSVPStatus != null)
-            {
-                body["rsvp_status"] = ExpressionConverter.ConvertO(bodyrSVPStatus);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrSVPStatus != null)
+                {
+                    body["rsvp_status"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPStatus);
+                    bodypropCount++;
+                }
 
-            if (bodyattended != null)
-            {
-                body["attended"] = ExpressionConverter.ConvertO(bodyattended);
-                bodypropCount++;
-            }
+                if (__workflow_bodyattended != null)
+                {
+                    body["attended"] = ExpressionConverter.ConvertO(__workflow_bodyattended);
+                    bodypropCount++;
+                }
 
-            if (bodyinvitationStatus != null)
-            {
-                body["invitation_status"] = ExpressionConverter.ConvertO(bodyinvitationStatus);
-                bodypropCount++;
-            }
+                if (__workflow_bodyinvitationStatus != null)
+                {
+                    body["invitation_status"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationStatus);
+                    bodypropCount++;
+                }
 
-            var rsvpDateObject = new JObject();
-            var rsvpDateObjectpropCount = 0;
-            if (bodyrSVPDateday != null)
-            {
-                rsvpDateObject["d"] = ExpressionConverter.ConvertO(bodyrSVPDateday);
-                rsvpDateObjectpropCount++;
-            }
+                var rsvpDateObject = new JObject();
+                var rsvpDateObjectpropCount = 0;
+                if (__workflow_bodyrSVPDateday != null)
+                {
+                    rsvpDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateday);
+                    rsvpDateObjectpropCount++;
+                }
 
-            if (bodyrSVPDatemonth != null)
-            {
-                rsvpDateObject["m"] = ExpressionConverter.ConvertO(bodyrSVPDatemonth);
-                rsvpDateObjectpropCount++;
-            }
+                if (__workflow_bodyrSVPDatemonth != null)
+                {
+                    rsvpDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDatemonth);
+                    rsvpDateObjectpropCount++;
+                }
 
-            if (bodyrSVPDateyear != null)
-            {
-                rsvpDateObject["y"] = ExpressionConverter.ConvertO(bodyrSVPDateyear);
-                rsvpDateObjectpropCount++;
-            }
+                if (__workflow_bodyrSVPDateyear != null)
+                {
+                    rsvpDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateyear);
+                    rsvpDateObjectpropCount++;
+                }
 
-            if (rsvpDateObjectpropCount > 0)
-            {
-                body["rsvp_date"] = rsvpDateObject;
-                bodypropCount++;
-            }
+                if (rsvpDateObjectpropCount > 0)
+                {
+                    body["rsvp_date"] = rsvpDateObject;
+                    bodypropCount++;
+                }
 
-            var invitationDateObject = new JObject();
-            var invitationDateObjectpropCount = 0;
-            if (bodyinvitationDateday != null)
-            {
-                invitationDateObject["d"] = ExpressionConverter.ConvertO(bodyinvitationDateday);
-                invitationDateObjectpropCount++;
-            }
+                var invitationDateObject = new JObject();
+                var invitationDateObjectpropCount = 0;
+                if (__workflow_bodyinvitationDateday != null)
+                {
+                    invitationDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateday);
+                    invitationDateObjectpropCount++;
+                }
 
-            if (bodyinvitationDatemonth != null)
-            {
-                invitationDateObject["m"] = ExpressionConverter.ConvertO(bodyinvitationDatemonth);
-                invitationDateObjectpropCount++;
-            }
+                if (__workflow_bodyinvitationDatemonth != null)
+                {
+                    invitationDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDatemonth);
+                    invitationDateObjectpropCount++;
+                }
 
-            if (bodyinvitationDateyear != null)
-            {
-                invitationDateObject["y"] = ExpressionConverter.ConvertO(bodyinvitationDateyear);
-                invitationDateObjectpropCount++;
-            }
+                if (__workflow_bodyinvitationDateyear != null)
+                {
+                    invitationDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateyear);
+                    invitationDateObjectpropCount++;
+                }
 
-            if (invitationDateObjectpropCount > 0)
-            {
-                body["invitation_date"] = invitationDateObject;
-                bodypropCount++;
-            }
+                if (invitationDateObjectpropCount > 0)
+                {
+                    body["invitation_date"] = invitationDateObject;
+                    bodypropCount++;
+                }
 
-            var participationLevelObject = new JObject();
-            var participationLevelObjectpropCount = 0;
-            participationLevelObjectpropCount++;
-            participationLevelObject["name"] = ExpressionConverter.ConvertO(bodyparticipationLevelparticipationLevel);
-            if (participationLevelObjectpropCount > 0)
-            {
-                body["participation_level"] = participationLevelObject;
-                bodypropCount++;
-            }
+                var participationLevelObject = new JObject();
+                var participationLevelObjectpropCount = 0;
+                participationLevelObjectpropCount++;
+                participationLevelObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyparticipationLevelparticipationLevel);
+                if (participationLevelObjectpropCount > 0)
+                {
+                    body["participation_level"] = participationLevelObject;
+                    bodypropCount++;
+                }
 
-            if (bodysummaryNote != null)
-            {
-                body["summary_note"] = ExpressionConverter.ConvertO(bodysummaryNote);
-                bodypropCount++;
-            }
+                if (__workflow_bodysummaryNote != null)
+                {
+                    body["summary_note"] = ExpressionConverter.ConvertO(__workflow_bodysummaryNote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedParticipant>(callPayload);
+                return new ApiConnectionAction<EventApiCreatedParticipant>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditParticipantOption(Expression<Func<string>> optionId, Expression<Func<string>> bodyvalue)
         {
-            var apiCallPath = String.Format("/event/v1/participantoptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(optionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["option_value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
+            var __workflow_optionId = WorkflowExpression.Compile(optionId, nameof(optionId), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participantoptions/{0}", __workflow_optionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["option_value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiParticipant> GetParticipant(Expression<Func<string>> participantId)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EventApiParticipant>(callPayload);
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            return new DeferredBodyAction<EventApiParticipant>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EventApiParticipant>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IWorkflowAction EditParticipant(Expression<Func<string>> participantId, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyconstituentID = null, Expression<Func<string>> bodyhostID = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null, Expression<Func<string>> bodysummaryNote = null)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyconstituentID != null)
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_bodyparticipationLevelparticipationLevel = WorkflowExpression.Compile(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
+            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: false);
+            var __workflow_bodyhostID = WorkflowExpression.Compile(bodyhostID, nameof(bodyhostID), required: false);
+            var __workflow_bodyrSVPStatus = WorkflowExpression.Compile(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
+            var __workflow_bodyattended = WorkflowExpression.Compile(bodyattended, nameof(bodyattended), required: false);
+            var __workflow_bodyinvitationStatus = WorkflowExpression.Compile(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
+            var __workflow_bodyrSVPDateday = WorkflowExpression.Compile(bodyrSVPDateday, nameof(bodyrSVPDateday), required: false);
+            var __workflow_bodyrSVPDatemonth = WorkflowExpression.Compile(bodyrSVPDatemonth, nameof(bodyrSVPDatemonth), required: false);
+            var __workflow_bodyrSVPDateyear = WorkflowExpression.Compile(bodyrSVPDateyear, nameof(bodyrSVPDateyear), required: false);
+            var __workflow_bodyinvitationDateday = WorkflowExpression.Compile(bodyinvitationDateday, nameof(bodyinvitationDateday), required: false);
+            var __workflow_bodyinvitationDatemonth = WorkflowExpression.Compile(bodyinvitationDatemonth, nameof(bodyinvitationDatemonth), required: false);
+            var __workflow_bodyinvitationDateyear = WorkflowExpression.Compile(bodyinvitationDateyear, nameof(bodyinvitationDateyear), required: false);
+            var __workflow_bodysummaryNote = WorkflowExpression.Compile(bodysummaryNote, nameof(bodysummaryNote), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["constituent_id"] = ExpressionConverter.ConvertO(bodyconstituentID);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyconstituentID != null)
+                {
+                    body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                    bodypropCount++;
+                }
 
-            if (bodyhostID != null)
-            {
-                body["host_id"] = ExpressionConverter.ConvertO(bodyhostID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyhostID != null)
+                {
+                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostID);
+                    bodypropCount++;
+                }
 
-            if (bodyrSVPStatus != null)
-            {
-                body["rsvp_status"] = ExpressionConverter.ConvertO(bodyrSVPStatus);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrSVPStatus != null)
+                {
+                    body["rsvp_status"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPStatus);
+                    bodypropCount++;
+                }
 
-            if (bodyattended != null)
-            {
-                body["attended"] = ExpressionConverter.ConvertO(bodyattended);
-                bodypropCount++;
-            }
+                if (__workflow_bodyattended != null)
+                {
+                    body["attended"] = ExpressionConverter.ConvertO(__workflow_bodyattended);
+                    bodypropCount++;
+                }
 
-            if (bodyinvitationStatus != null)
-            {
-                body["invitation_status"] = ExpressionConverter.ConvertO(bodyinvitationStatus);
-                bodypropCount++;
-            }
+                if (__workflow_bodyinvitationStatus != null)
+                {
+                    body["invitation_status"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationStatus);
+                    bodypropCount++;
+                }
 
-            var rsvpDateObject = new JObject();
-            var rsvpDateObjectpropCount = 0;
-            if (bodyrSVPDateday != null)
-            {
-                rsvpDateObject["d"] = ExpressionConverter.ConvertO(bodyrSVPDateday);
-                rsvpDateObjectpropCount++;
-            }
+                var rsvpDateObject = new JObject();
+                var rsvpDateObjectpropCount = 0;
+                if (__workflow_bodyrSVPDateday != null)
+                {
+                    rsvpDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateday);
+                    rsvpDateObjectpropCount++;
+                }
 
-            if (bodyrSVPDatemonth != null)
-            {
-                rsvpDateObject["m"] = ExpressionConverter.ConvertO(bodyrSVPDatemonth);
-                rsvpDateObjectpropCount++;
-            }
+                if (__workflow_bodyrSVPDatemonth != null)
+                {
+                    rsvpDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDatemonth);
+                    rsvpDateObjectpropCount++;
+                }
 
-            if (bodyrSVPDateyear != null)
-            {
-                rsvpDateObject["y"] = ExpressionConverter.ConvertO(bodyrSVPDateyear);
-                rsvpDateObjectpropCount++;
-            }
+                if (__workflow_bodyrSVPDateyear != null)
+                {
+                    rsvpDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateyear);
+                    rsvpDateObjectpropCount++;
+                }
 
-            if (rsvpDateObjectpropCount > 0)
-            {
-                body["rsvp_date"] = rsvpDateObject;
-                bodypropCount++;
-            }
+                if (rsvpDateObjectpropCount > 0)
+                {
+                    body["rsvp_date"] = rsvpDateObject;
+                    bodypropCount++;
+                }
 
-            var invitationDateObject = new JObject();
-            var invitationDateObjectpropCount = 0;
-            if (bodyinvitationDateday != null)
-            {
-                invitationDateObject["d"] = ExpressionConverter.ConvertO(bodyinvitationDateday);
-                invitationDateObjectpropCount++;
-            }
+                var invitationDateObject = new JObject();
+                var invitationDateObjectpropCount = 0;
+                if (__workflow_bodyinvitationDateday != null)
+                {
+                    invitationDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateday);
+                    invitationDateObjectpropCount++;
+                }
 
-            if (bodyinvitationDatemonth != null)
-            {
-                invitationDateObject["m"] = ExpressionConverter.ConvertO(bodyinvitationDatemonth);
-                invitationDateObjectpropCount++;
-            }
+                if (__workflow_bodyinvitationDatemonth != null)
+                {
+                    invitationDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDatemonth);
+                    invitationDateObjectpropCount++;
+                }
 
-            if (bodyinvitationDateyear != null)
-            {
-                invitationDateObject["y"] = ExpressionConverter.ConvertO(bodyinvitationDateyear);
-                invitationDateObjectpropCount++;
-            }
+                if (__workflow_bodyinvitationDateyear != null)
+                {
+                    invitationDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateyear);
+                    invitationDateObjectpropCount++;
+                }
 
-            if (invitationDateObjectpropCount > 0)
-            {
-                body["invitation_date"] = invitationDateObject;
-                bodypropCount++;
-            }
+                if (invitationDateObjectpropCount > 0)
+                {
+                    body["invitation_date"] = invitationDateObject;
+                    bodypropCount++;
+                }
 
-            var participationLevelObject = new JObject();
-            var participationLevelObjectpropCount = 0;
-            participationLevelObjectpropCount++;
-            participationLevelObject["name"] = ExpressionConverter.ConvertO(bodyparticipationLevelparticipationLevel);
-            if (participationLevelObjectpropCount > 0)
-            {
-                body["participation_level"] = participationLevelObject;
-                bodypropCount++;
-            }
+                var participationLevelObject = new JObject();
+                var participationLevelObjectpropCount = 0;
+                participationLevelObjectpropCount++;
+                participationLevelObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyparticipationLevelparticipationLevel);
+                if (participationLevelObjectpropCount > 0)
+                {
+                    body["participation_level"] = participationLevelObject;
+                    bodypropCount++;
+                }
 
-            if (bodysummaryNote != null)
-            {
-                body["summary_note"] = ExpressionConverter.ConvertO(bodysummaryNote);
-                bodypropCount++;
-            }
+                if (__workflow_bodysummaryNote != null)
+                {
+                    body["summary_note"] = ExpressionConverter.ConvertO(__workflow_bodysummaryNote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantDonation> ListParticipantDonations(Expression<Func<string>> participantId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(500);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<EventApiApiCollectionOfParticipantDonation>(callPayload);
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<EventApiApiCollectionOfParticipantDonation>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/donations", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(500);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<EventApiApiCollectionOfParticipantDonation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantDonation> CreateParticipantDonation(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftID)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["gift_id"] = ExpressionConverter.ConvertO(bodygiftID);
-            if (bodypropCount > 0)
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_bodygiftID = WorkflowExpression.Compile(bodygiftID, nameof(bodygiftID), required: true);
+            return new DeferredBodyAction<EventApiCreatedParticipantDonation>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/donations", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedParticipantDonation>(callPayload);
+                return new ApiConnectionAction<EventApiCreatedParticipantDonation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantFeePayment> ListParticipantFeePayments(Expression<Func<string>> participantId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/feepayments", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(500);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<EventApiApiCollectionOfParticipantFeePayment>(callPayload);
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<EventApiApiCollectionOfParticipantFeePayment>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/feepayments", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(500);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<EventApiApiCollectionOfParticipantFeePayment>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantFeePayment> CreateParticipantFeePayment(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftID, Expression<Func<double>> bodyappliedAmount)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/feepayments", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["gift_id"] = ExpressionConverter.ConvertO(bodygiftID);
-            bodypropCount++;
-            body["applied_amount"] = ExpressionConverter.ConvertO(bodyappliedAmount);
-            if (bodypropCount > 0)
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_bodygiftID = WorkflowExpression.Compile(bodygiftID, nameof(bodygiftID), required: true);
+            var __workflow_bodyappliedAmount = WorkflowExpression.Compile(bodyappliedAmount, nameof(bodyappliedAmount), required: true);
+            return new DeferredBodyAction<EventApiCreatedParticipantFeePayment>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/feepayments", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftID);
+                bodypropCount++;
+                body["applied_amount"] = ExpressionConverter.ConvertO(__workflow_bodyappliedAmount);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedParticipantFeePayment>(callPayload);
+                return new ApiConnectionAction<EventApiCreatedParticipantFeePayment>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantFee> ListParticipantFees(Expression<Func<string>> participantId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/fees", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(500);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<EventApiApiCollectionOfParticipantFee>(callPayload);
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<EventApiApiCollectionOfParticipantFee>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/fees", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(500);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                return new ApiConnectionAction<EventApiApiCollectionOfParticipantFee>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantFee> CreateParticipantFee(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventID, Expression<Func<string>> bodyfee, Expression<Func<int>> bodyquantity, Expression<Func<double>> bodyfeeAmount, Expression<Func<double>> bodycontributionAmount, Expression<Func<int>> bodydateday = null, Expression<Func<int>> bodydatemonth = null, Expression<Func<int>> bodydateyear = null)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/fees", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["event_id"] = ExpressionConverter.ConvertO(bodyeventID);
-            bodypropCount++;
-            body["event_fee_id"] = ExpressionConverter.ConvertO(bodyfee);
-            bodypropCount++;
-            body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
-            bodypropCount++;
-            body["fee_amount"] = ExpressionConverter.ConvertO(bodyfeeAmount);
-            bodypropCount++;
-            body["contribution_amount"] = ExpressionConverter.ConvertO(bodycontributionAmount);
-            var dateObject = new JObject();
-            var dateObjectpropCount = 0;
-            if (bodydateday != null)
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: true);
+            var __workflow_bodyfee = WorkflowExpression.Compile(bodyfee, nameof(bodyfee), required: true);
+            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: true);
+            var __workflow_bodyfeeAmount = WorkflowExpression.Compile(bodyfeeAmount, nameof(bodyfeeAmount), required: true);
+            var __workflow_bodycontributionAmount = WorkflowExpression.Compile(bodycontributionAmount, nameof(bodycontributionAmount), required: true);
+            var __workflow_bodydateday = WorkflowExpression.Compile(bodydateday, nameof(bodydateday), required: false);
+            var __workflow_bodydatemonth = WorkflowExpression.Compile(bodydatemonth, nameof(bodydatemonth), required: false);
+            var __workflow_bodydateyear = WorkflowExpression.Compile(bodydateyear, nameof(bodydateyear), required: false);
+            return new DeferredBodyAction<EventApiCreatedParticipantFee>(() =>
             {
-                dateObject["d"] = ExpressionConverter.ConvertO(bodydateday);
-                dateObjectpropCount++;
-            }
-
-            if (bodydatemonth != null)
-            {
-                dateObject["m"] = ExpressionConverter.ConvertO(bodydatemonth);
-                dateObjectpropCount++;
-            }
-
-            if (bodydateyear != null)
-            {
-                dateObject["y"] = ExpressionConverter.ConvertO(bodydateyear);
-                dateObjectpropCount++;
-            }
-
-            if (dateObjectpropCount > 0)
-            {
-                body["date"] = dateObject;
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/fees", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventID);
+                bodypropCount++;
+                body["event_fee_id"] = ExpressionConverter.ConvertO(__workflow_bodyfee);
+                bodypropCount++;
+                body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
+                bodypropCount++;
+                body["fee_amount"] = ExpressionConverter.ConvertO(__workflow_bodyfeeAmount);
+                bodypropCount++;
+                body["contribution_amount"] = ExpressionConverter.ConvertO(__workflow_bodycontributionAmount);
+                var dateObject = new JObject();
+                var dateObjectpropCount = 0;
+                if (__workflow_bodydateday != null)
+                {
+                    dateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateday);
+                    dateObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodydatemonth != null)
+                {
+                    dateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydatemonth);
+                    dateObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedParticipantFee>(callPayload);
+                if (__workflow_bodydateyear != null)
+                {
+                    dateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateyear);
+                    dateObjectpropCount++;
+                }
+
+                if (dateObjectpropCount > 0)
+                {
+                    body["date"] = dateObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EventApiCreatedParticipantFee>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiApiCollectionOfParticipantOption> ListParticipantOptions(Expression<Func<string>> participantId)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/participantoptions", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EventApiApiCollectionOfParticipantOption>(callPayload);
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            return new DeferredBodyAction<EventApiApiCollectionOfParticipantOption>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/participantoptions", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EventApiApiCollectionOfParticipantOption>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
         public IBodyWorkflowAction<EventApiCreatedParticipantOption> CreateParticipantOption(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventID, Expression<Func<string>> bodyoption, Expression<Func<object>> bodyoptionValue)
         {
-            var apiCallPath = String.Format("/event/v1/participants/{0}/participantoptions", ExpressionConverter.ConvertWithUrlEncoding(participantId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["event_id"] = ExpressionConverter.ConvertO(bodyeventID);
-            bodypropCount++;
-            body["event_participant_option_id"] = ExpressionConverter.ConvertO(bodyoption);
-            bodypropCount++;
-            body["option_value"] = ExpressionConverter.ConvertO(bodyoptionValue);
-            if (bodypropCount > 0)
+            var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
+            var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: true);
+            var __workflow_bodyoption = WorkflowExpression.Compile(bodyoption, nameof(bodyoption), required: true);
+            var __workflow_bodyoptionValue = WorkflowExpression.Compile(bodyoptionValue, nameof(bodyoptionValue), required: true);
+            return new DeferredBodyAction<EventApiCreatedParticipantOption>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/participantoptions", __workflow_participantId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventID);
+                bodypropCount++;
+                body["event_participant_option_id"] = ExpressionConverter.ConvertO(__workflow_bodyoption);
+                bodypropCount++;
+                body["option_value"] = ExpressionConverter.ConvertO(__workflow_bodyoptionValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EventApiCreatedParticipantOption>(callPayload);
+                return new ApiConnectionAction<EventApiCreatedParticipantOption>(callPayload);
+            });
         }
     }
 
@@ -1133,6 +1344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string[] Tags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiEventAttachmentTypeType
     {
         Link,
@@ -1145,6 +1357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         Link,
@@ -1232,6 +1445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public int Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiEventParticipantOptionInputTypeType
     {
         Boolean,
@@ -1257,6 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinputTypeInput
     {
         Boolean,
@@ -1387,6 +1602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public EventApiMembership[] Memberships { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantListEntryRSVPStatusType
     {
         NoResponse,
@@ -1398,6 +1614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantListEntryInvitationStatusType
     {
         NotApplicable,
@@ -1468,6 +1685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum rsvpStatusInput
     {
         NoResponse,
@@ -1479,6 +1697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum invitationStatusInput
     {
         NotApplicable,
@@ -1492,6 +1711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrSVPStatusInput
     {
         NoResponse,
@@ -1503,6 +1723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinvitationStatusInput
     {
         NotApplicable,
@@ -1552,6 +1773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string DateModified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantRSVPStatusType
     {
         NoResponse,
@@ -1563,6 +1785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantInvitationStatusType
     {
         NotApplicable,

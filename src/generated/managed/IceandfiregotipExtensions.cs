@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,105 +14,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<BookGetResponseItem[]> BookGet(Expression<Func<string>> name = null, Expression<Func<string>> fromReleaseDate = null, Expression<Func<string>> toReleaseDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = "/api/books";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (fromReleaseDate != null)
-                callPayload.Queries["fromReleaseDate"] = ExpressionConverter.Convert(fromReleaseDate);
-            if (toReleaseDate != null)
-                callPayload.Queries["toReleaseDate"] = ExpressionConverter.Convert(toReleaseDate);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["pageSize"] = Convert.ToString(10);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            return new ApiConnectionAction<BookGetResponseItem[]>(callPayload);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_fromReleaseDate = WorkflowExpression.Compile(fromReleaseDate, nameof(fromReleaseDate), required: false);
+            var __workflow_toReleaseDate = WorkflowExpression.Compile(toReleaseDate, nameof(toReleaseDate), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            return new DeferredBodyAction<BookGetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/books";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_fromReleaseDate != null)
+                    callPayload.Queries["fromReleaseDate"] = ExpressionConverter.Convert(__workflow_fromReleaseDate);
+                if (__workflow_toReleaseDate != null)
+                    callPayload.Queries["toReleaseDate"] = ExpressionConverter.Convert(__workflow_toReleaseDate);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["pageSize"] = Convert.ToString(10);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                return new ApiConnectionAction<BookGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<BookGetAResponse> BookGetA(Expression<Func<string>> number)
         {
-            var apiCallPath = String.Format("/api/books/{0}", ExpressionConverter.ConvertWithUrlEncoding(number, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BookGetAResponse>(callPayload);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
+            return new DeferredBodyAction<BookGetAResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/books/{0}", __workflow_number.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BookGetAResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<CharacterGetResponseItem[]> CharacterGet(Expression<Func<string>> name = null, Expression<Func<string>> gender = null, Expression<Func<string>> culture = null, Expression<Func<string>> born = null, Expression<Func<string>> died = null, Expression<Func<bool>> isAlive = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = "/api/characters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (gender != null)
-                callPayload.Queries["gender"] = ExpressionConverter.Convert(gender);
-            if (culture != null)
-                callPayload.Queries["culture"] = ExpressionConverter.Convert(culture);
-            if (born != null)
-                callPayload.Queries["born"] = ExpressionConverter.Convert(born);
-            if (died != null)
-                callPayload.Queries["died"] = ExpressionConverter.Convert(died);
-            callPayload.Queries["isAlive"] = Convert.ToString(true);
-            if (isAlive != null)
-                callPayload.Queries["isAlive"] = ExpressionConverter.Convert(isAlive);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["pageSize"] = Convert.ToString(10);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            return new ApiConnectionAction<CharacterGetResponseItem[]>(callPayload);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_gender = WorkflowExpression.Compile(gender, nameof(gender), required: false);
+            var __workflow_culture = WorkflowExpression.Compile(culture, nameof(culture), required: false);
+            var __workflow_born = WorkflowExpression.Compile(born, nameof(born), required: false);
+            var __workflow_died = WorkflowExpression.Compile(died, nameof(died), required: false);
+            var __workflow_isAlive = WorkflowExpression.Compile(isAlive, nameof(isAlive), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            return new DeferredBodyAction<CharacterGetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/characters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_gender != null)
+                    callPayload.Queries["gender"] = ExpressionConverter.Convert(__workflow_gender);
+                if (__workflow_culture != null)
+                    callPayload.Queries["culture"] = ExpressionConverter.Convert(__workflow_culture);
+                if (__workflow_born != null)
+                    callPayload.Queries["born"] = ExpressionConverter.Convert(__workflow_born);
+                if (__workflow_died != null)
+                    callPayload.Queries["died"] = ExpressionConverter.Convert(__workflow_died);
+                callPayload.Queries["isAlive"] = Convert.ToString(true);
+                if (__workflow_isAlive != null)
+                    callPayload.Queries["isAlive"] = ExpressionConverter.Convert(__workflow_isAlive);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["pageSize"] = Convert.ToString(10);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                return new ApiConnectionAction<CharacterGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<CharacterGetAResponse> CharacterGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/characters/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CharacterGetAResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CharacterGetAResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/characters/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CharacterGetAResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<HouseGetResponseItem[]> HouseGet(Expression<Func<string>> name = null, Expression<Func<string>> region = null, Expression<Func<string>> words = null, Expression<Func<bool>> hasWords = null, Expression<Func<bool>> hasTitles = null, Expression<Func<bool>> hasSeats = null, Expression<Func<bool>> hasDiedOut = null, Expression<Func<bool>> hasAncestralWeapons = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var apiCallPath = "/api/houses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            if (words != null)
-                callPayload.Queries["words"] = ExpressionConverter.Convert(words);
-            if (hasWords != null)
-                callPayload.Queries["hasWords"] = ExpressionConverter.Convert(hasWords);
-            if (hasTitles != null)
-                callPayload.Queries["hasTitles"] = ExpressionConverter.Convert(hasTitles);
-            if (hasSeats != null)
-                callPayload.Queries["hasSeats"] = ExpressionConverter.Convert(hasSeats);
-            if (hasDiedOut != null)
-                callPayload.Queries["hasDiedOut"] = ExpressionConverter.Convert(hasDiedOut);
-            if (hasAncestralWeapons != null)
-                callPayload.Queries["hasAncestralWeapons"] = ExpressionConverter.Convert(hasAncestralWeapons);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["pageSize"] = Convert.ToString(10);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            return new ApiConnectionAction<HouseGetResponseItem[]>(callPayload);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_words = WorkflowExpression.Compile(words, nameof(words), required: false);
+            var __workflow_hasWords = WorkflowExpression.Compile(hasWords, nameof(hasWords), required: false);
+            var __workflow_hasTitles = WorkflowExpression.Compile(hasTitles, nameof(hasTitles), required: false);
+            var __workflow_hasSeats = WorkflowExpression.Compile(hasSeats, nameof(hasSeats), required: false);
+            var __workflow_hasDiedOut = WorkflowExpression.Compile(hasDiedOut, nameof(hasDiedOut), required: false);
+            var __workflow_hasAncestralWeapons = WorkflowExpression.Compile(hasAncestralWeapons, nameof(hasAncestralWeapons), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            return new DeferredBodyAction<HouseGetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/houses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                if (__workflow_words != null)
+                    callPayload.Queries["words"] = ExpressionConverter.Convert(__workflow_words);
+                if (__workflow_hasWords != null)
+                    callPayload.Queries["hasWords"] = ExpressionConverter.Convert(__workflow_hasWords);
+                if (__workflow_hasTitles != null)
+                    callPayload.Queries["hasTitles"] = ExpressionConverter.Convert(__workflow_hasTitles);
+                if (__workflow_hasSeats != null)
+                    callPayload.Queries["hasSeats"] = ExpressionConverter.Convert(__workflow_hasSeats);
+                if (__workflow_hasDiedOut != null)
+                    callPayload.Queries["hasDiedOut"] = ExpressionConverter.Convert(__workflow_hasDiedOut);
+                if (__workflow_hasAncestralWeapons != null)
+                    callPayload.Queries["hasAncestralWeapons"] = ExpressionConverter.Convert(__workflow_hasAncestralWeapons);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["pageSize"] = Convert.ToString(10);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                return new ApiConnectionAction<HouseGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<HouseGetAResponse> HouseGetA(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/houses/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<HouseGetAResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<HouseGetAResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/houses/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<HouseGetAResponse>(callPayload);
+            });
         }
     }
 

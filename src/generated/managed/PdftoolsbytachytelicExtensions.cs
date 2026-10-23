@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,83 +14,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
         public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
         {
-            var apiCallPath = "/optimize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["PdfFileContent"] = ExpressionConverter.ConvertO(bodypDFFileContent);
-            if (bodymode != null)
+            var __workflow_bodypDFFileContent = WorkflowExpression.Compile(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
+            var __workflow_bodygarbageLevel = WorkflowExpression.Compile(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
+            var __workflow_bodydeflate = WorkflowExpression.Compile(bodydeflate, nameof(bodydeflate), required: false);
+            var __workflow_bodyclean = WorkflowExpression.Compile(bodyclean, nameof(bodyclean), required: false);
+            return new DeferredBodyAction<OptimizePdfResponse>(() =>
             {
-                if (bodymode != null)
+                var apiCallPath = "/optimize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["PdfFileContent"] = ExpressionConverter.ConvertO(__workflow_bodypDFFileContent);
+                if (__workflow_bodymode != null)
                 {
-                    body["Mode"] = ExpressionConverter.ConvertO(bodymode);
+                    if (__workflow_bodymode != null)
+                    {
+                        body["Mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Mode"] = "aggressive";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Mode"] = "aggressive";
-                bodypropCount++;
-            }
-
-            if (bodygarbageLevel != null)
-            {
-                if (bodygarbageLevel != null)
+                if (__workflow_bodygarbageLevel != null)
                 {
-                    body["Garbage"] = ExpressionConverter.ConvertO(bodygarbageLevel);
+                    if (__workflow_bodygarbageLevel != null)
+                    {
+                        body["Garbage"] = ExpressionConverter.ConvertO(__workflow_bodygarbageLevel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Garbage"] = 4;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Garbage"] = 4;
-                bodypropCount++;
-            }
-
-            if (bodydeflate != null)
-            {
-                if (bodydeflate != null)
+                if (__workflow_bodydeflate != null)
                 {
-                    body["Deflate"] = ExpressionConverter.ConvertO(bodydeflate);
+                    if (__workflow_bodydeflate != null)
+                    {
+                        body["Deflate"] = ExpressionConverter.ConvertO(__workflow_bodydeflate);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Deflate"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Deflate"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyclean != null)
-            {
-                if (bodyclean != null)
+                if (__workflow_bodyclean != null)
                 {
-                    body["Clean"] = ExpressionConverter.ConvertO(bodyclean);
+                    if (__workflow_bodyclean != null)
+                    {
+                        body["Clean"] = ExpressionConverter.ConvertO(__workflow_bodyclean);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Clean"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Clean"] = true;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OptimizePdfResponse>(callPayload);
+                return new ApiConnectionAction<OptimizePdfResponse>(callPayload);
+            });
         }
     }
 
@@ -104,6 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
         public string OptimizedPDF { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "aggressive")]
