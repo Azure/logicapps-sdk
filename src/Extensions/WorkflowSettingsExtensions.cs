@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
-    using Newtonsoft.Json.Linq;
 
     public static class WorkflowSettingsExtensions
     {
@@ -14,7 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk
             this TOperation action, string name, Expression<Func<TValue>> value)
             where TOperation : IWorkflowAction<ITrackedPropertiesConfiguration>
         {
-            AddTrackedProperty(action.Configuration, name, value);
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+
+            var descriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
+            action.Configuration.TrackedProperties.Add(
+                name,
+                () => ExpressionConverter.ConvertO(descriptor));
+
             return action;
         }
 
@@ -22,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             this TOperation operation, RetryPolicy retryPolicy)
             where TOperation : IWorkflowOperation<IRetryPolicyConfiguration>
         {
-            SetRetryPolicy(operation.Configuration, retryPolicy);
+            operation.Configuration.RetryPolicy = retryPolicy ?? throw new ArgumentNullException(nameof(retryPolicy));
             return operation;
         }
 
@@ -54,7 +60,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             this TOperation trigger, int runs, int? maximumWaitingRuns = null)
             where TOperation : IWorkflowTrigger<ITriggerConcurrencyConfiguration>
         {
-            SetConcurrency(trigger.Configuration, runs, maximumWaitingRuns);
+            trigger.Configuration.ConcurrentRuns = runs;
+            trigger.Configuration.MaximumWaitingRuns = maximumWaitingRuns;
             return trigger;
         }
 
@@ -62,7 +69,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             this TOperation trigger, Expression<Func<string>> clientTrackingId)
             where TOperation : IWorkflowTrigger<IClientTrackingIdConfiguration>
         {
-            SetClientTrackingId(trigger.Configuration, clientTrackingId);
+            var descriptor = WorkflowExpression.Compile(clientTrackingId, nameof(clientTrackingId), required: true);
+            trigger.Configuration.ClientTrackingId = () => ExpressionConverter.Convert(descriptor);
             return trigger;
         }
 
@@ -72,42 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             trigger.Configuration.SchemaValidationEnabled = true;
             return trigger;
-        }
-
-        private static void AddTrackedProperty<TValue>(
-            ITrackedPropertiesConfiguration configuration,
-            string name,
-            Expression<Func<TValue>> value)
-        {
-            if (name == null)
-                throw new ArgumentNullException(nameof(name));
-
-            var descriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
-            configuration.TrackedProperties.Add(
-                name,
-                () => ExpressionConverter.ConvertO(descriptor));
-        }
-
-        private static void SetRetryPolicy(
-            IRetryPolicyConfiguration configuration,
-            RetryPolicy retryPolicy) =>
-            configuration.RetryPolicy = retryPolicy ?? throw new ArgumentNullException(nameof(retryPolicy));
-
-        private static void SetConcurrency(
-            ITriggerConcurrencyConfiguration configuration,
-            int runs,
-            int? maximumWaitingRuns)
-        {
-            configuration.ConcurrentRuns = runs;
-            configuration.MaximumWaitingRuns = maximumWaitingRuns;
-        }
-
-        private static void SetClientTrackingId(
-            IClientTrackingIdConfiguration configuration,
-            Expression<Func<string>> clientTrackingId)
-        {
-            var descriptor = WorkflowExpression.Compile(clientTrackingId, nameof(clientTrackingId), required: true);
-            configuration.ClientTrackingId = () => ExpressionConverter.Convert(descriptor);
         }
     }
 }
