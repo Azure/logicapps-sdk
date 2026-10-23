@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         }
     }
 
-    public sealed class SendEventActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SendEventActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class SendEventsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SendEventsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ReplicateEventsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ReplicateEventsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         }
     }
 
-    public sealed class ReceiveEventsTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder
+    public sealed class ReceiveEventsTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         public int? MaximumWaitingRuns { get; set; }
     }
 
-    public sealed class ReceiveEventsForReplicationTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder
+    public sealed class ReceiveEventsForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }

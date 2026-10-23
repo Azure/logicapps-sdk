@@ -7,12 +7,11 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
 
     public sealed class HttpRequestTriggerConfiguration :
-        IWorkflowOperationConfiguration,
-        ISecureInputsConfigurationHolder,
-        ISecureOutputsConfigurationHolder,
-        ITriggerConcurrencyConfigurationHolder,
-        IClientTrackingIdConfigurationHolder,
-        IRequestSchemaValidationConfigurationHolder
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration,
+        ITriggerConcurrencyConfiguration,
+        IClientTrackingIdConfiguration,
+        IRequestSchemaValidationConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }

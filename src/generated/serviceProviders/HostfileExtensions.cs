@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         }
     }
 
-    public sealed class GenerateFileContentsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GenerateFileContentsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ParseFileContentsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ParseFileContentsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);

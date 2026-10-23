@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         }
     }
 
-    public sealed class SendMessageActionConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SendMessageActionConfiguration : ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
         public bool SecureInputs { get; set; }
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         }
     }
 
-    public sealed class ReceiveMessageTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ReceiveMessageTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }

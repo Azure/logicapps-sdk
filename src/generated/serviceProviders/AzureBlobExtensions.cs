@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         }
     }
 
-    public sealed class BlobExistsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class BlobExistsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ReadBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ReadBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ReadBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ReadBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class UploadBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class UploadBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class UploadBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class UploadBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ListBlobsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ListBlobsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ListBlobsFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ListBlobsFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ListBlobDirectoriesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ListBlobDirectoriesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ListContainersActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ListContainersActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetBlobSASUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetBlobSASUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetBlobSASUriFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetBlobSASUriFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetBlobMetadataActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetBlobMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetBlobMetadataFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetBlobMetadataFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetContainerMetadataActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetContainerMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CopyBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CopyBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CopyBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CopyBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetAccessPoliciesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetAccessPoliciesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class SetBlobTierActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SetBlobTierActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class SetBlobTierFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SetBlobTierFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -802,7 +802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ExtractArchiveFromBlobPathActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ExtractArchiveFromBlobPathActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ExtractArchiveFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ExtractArchiveFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -818,7 +818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ExtractArchiveFromContentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ExtractArchiveFromContentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         }
     }
 
-    public sealed class WhenABlobIsAddedOrModifiedTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class WhenABlobIsAddedOrModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }

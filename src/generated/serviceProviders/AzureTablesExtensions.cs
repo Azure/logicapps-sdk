@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
     }
 
-    public sealed class CreateTableActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CreateTableActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ListTablesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ListTablesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteTableActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteTableActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class UpsertEntityActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class UpsertEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class UpdateEntityActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class UpdateEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteEntityActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetEntityActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class QueryEntitiesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class QueryEntitiesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);

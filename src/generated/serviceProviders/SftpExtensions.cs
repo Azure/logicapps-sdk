@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         }
     }
 
-    public sealed class GetFileContentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetFileContentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class UploadFileContentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class UploadFileContentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetMetadataActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ListFolderActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ListFolderActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteFileActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CreateFolderActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CreateFolderActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class RenameFileActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class RenameFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CopyFileActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CopyFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetFileContentV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetFileContentV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ExtractArchiveActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ExtractArchiveActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteFolderActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteFolderActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         }
     }
 
-    public sealed class WhenFilesAreAddedOrModifiedTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder
+    public sealed class WhenFilesAreAddedOrModifiedTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public bool SecureInputs { get; set; }
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public int? MaximumWaitingRuns { get; set; }
     }
 
-    public sealed class WhenFileIsAddedOrModifiedTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder
+    public sealed class WhenFileIsAddedOrModifiedTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public bool SecureInputs { get; set; }

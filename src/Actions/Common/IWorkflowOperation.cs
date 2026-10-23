@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         List<IWorkflowAction> Children { get; }
     }
 
-    public interface IWorkflowOperation<TConfiguration> : IWorkflowOperation
+    public interface IWorkflowOperation<out TConfiguration> : IWorkflowOperation
         where TConfiguration : IWorkflowOperationConfiguration
     {
         TConfiguration Configuration { get; }

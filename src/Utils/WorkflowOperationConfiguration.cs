@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Workflows.Sdk
             FlowTemplateAction definition,
             FlowKind? flowKind)
         {
-            if (configuration is IRetryPolicyConfigurationHolder retry &&
+            if (configuration is IRetryPolicyConfiguration retry &&
                 retry.RetryPolicy != null)
             {
                 ValidateRetryPolicy(retry.RetryPolicy, flowKind);
                 AddRetryPolicy(definition, retry.RetryPolicy);
             }
 
-            if (configuration is ITrackedPropertiesConfigurationHolder tracked &&
+            if (configuration is ITrackedPropertiesConfiguration tracked &&
                 tracked.TrackedProperties.Count > 0)
             {
                 definition.TrackedProperties = new JObject(
@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk
                         pair => new JProperty(pair.Key, pair.Value?.DeepClone())));
             }
 
-            var secureInputs = configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
+            var secureInputs = configuration is ISecureInputsConfiguration inputs && inputs.SecureInputs;
             var secureOutputs =
-                configuration is ISecureInputsAndOutputsConfigurationHolder
+                configuration is ISecureInputsAndOutputsConfiguration
                     ? secureInputs
-                    : configuration is ISecureOutputsConfigurationHolder outputs &&
+                    : configuration is ISecureOutputsConfiguration outputs &&
                         outputs.SecureOutputs;
 
             var secureProperties = SecureProperties(secureInputs, secureOutputs);
-            var concurrency = configuration as IIterationConcurrencyConfigurationHolder;
+            var concurrency = configuration as IIterationConcurrencyConfiguration;
             if (secureProperties.Length > 0 || concurrency?.MaximumParallelIterations.HasValue == true)
             {
                 definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
@@ -67,17 +67,17 @@ namespace Microsoft.Azure.Workflows.Sdk
             FlowTemplateTrigger definition,
             FlowKind? flowKind)
         {
-            if (configuration is IRetryPolicyConfigurationHolder retry &&
+            if (configuration is IRetryPolicyConfiguration retry &&
                 retry.RetryPolicy != null)
             {
                 ValidateRetryPolicy(retry.RetryPolicy, flowKind);
                 AddRetryPolicy(definition, retry.RetryPolicy);
             }
 
-            var secureInputs = configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
-            var secureOutputs = configuration is ISecureOutputsConfigurationHolder outputs && outputs.SecureOutputs;
+            var secureInputs = configuration is ISecureInputsConfiguration inputs && inputs.SecureInputs;
+            var secureOutputs = configuration is ISecureOutputsConfiguration outputs && outputs.SecureOutputs;
             var secureProperties = SecureProperties(secureInputs, secureOutputs);
-            var concurrency = configuration as ITriggerConcurrencyConfigurationHolder;
+            var concurrency = configuration as ITriggerConcurrencyConfiguration;
             if (secureProperties.Length > 0 || concurrency?.ConcurrentRuns.HasValue == true)
             {
                 definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Workflows.Sdk
                 };
             }
 
-            if (configuration is IClientTrackingIdConfigurationHolder correlation &&
+            if (configuration is IClientTrackingIdConfiguration correlation &&
                 correlation.ClientTrackingId != null)
             {
                 definition.Correlation =
                     new FlowTemplateCorrelation { ClientTrackingId = correlation.ClientTrackingId };
             }
 
-            if (configuration is IRequestSchemaValidationConfigurationHolder schemaValidation &&
+            if (configuration is IRequestSchemaValidationConfiguration schemaValidation &&
                 schemaValidation.SchemaValidationEnabled)
             {
                 var inputObject = ToObject(definition.Inputs);

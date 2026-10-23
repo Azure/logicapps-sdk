@@ -7,9 +7,8 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Workflows.Sdk
 {
     public sealed class RecurrenceTriggerConfiguration :
-        IWorkflowOperationConfiguration,
-        ITriggerConcurrencyConfigurationHolder,
-        IClientTrackingIdConfigurationHolder
+        ITriggerConcurrencyConfiguration,
+        IClientTrackingIdConfiguration
     {
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }

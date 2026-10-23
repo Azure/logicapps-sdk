@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         }
     }
 
-    public sealed class BulkCreateOrUpdateDocumentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class BulkCreateOrUpdateDocumentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CreateOrUpdateDocumentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CreateOrUpdateDocumentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteDocumentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteDocumentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class QueryDocumentsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class QueryDocumentsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ReadDocumentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ReadDocumentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class PatchItemActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class PatchItemActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         }
     }
 
-    public sealed class WhenADocumentIsCreatedOrModifiedTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class WhenADocumentIsCreatedOrModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }

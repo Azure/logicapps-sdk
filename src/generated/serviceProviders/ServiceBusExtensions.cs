@@ -743,7 +743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
     }
 
-    public sealed class SendMessageActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SendMessageActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class SendMessagesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SendMessagesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class ReplicateMessagesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ReplicateMessagesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CompleteQueueMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CompleteQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class AbandonQueueMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class AbandonQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeadLetterQueueMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeadLetterQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class RenewLockQueueMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class RenewLockQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeferQueueMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeferQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetDeferredMessageFromQueueV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetDeferredMessageFromQueueV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetMessagesFromQueueV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetMessagesFromQueueV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CompleteTopicMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CompleteTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class AbandonTopicMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class AbandonTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeadLetterTopicMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeadLetterTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class RenewLockTopicMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class RenewLockTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeferTopicMessageV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeferTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetDeferredMessageFromTopicV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetDeferredMessageFromTopicV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetMessagesFromTopicV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetMessagesFromTopicV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CreateTopicSubscriptionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CreateTopicSubscriptionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeleteTopicSubscriptionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeleteTopicSubscriptionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CompleteMessageInSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CompleteMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -903,7 +903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class AbandonMessageInSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class AbandonMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeadLetterMessageInSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeadLetterMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class DeferMessageInSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class DeferMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetDeferredMessageFromQueueSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetDeferredMessageFromQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetDeferredMessageFromTopicSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetDeferredMessageFromTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -943,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetMessagesFromQueueSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetMessagesFromQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class GetMessagesFromTopicSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class GetMessagesFromTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class RenewQueueSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class RenewQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class RenewTopicSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class RenewTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -975,7 +975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CloseQueueSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CloseQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CloseTopicSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CloseTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -1276,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
     }
 
-    public sealed class ReceiveQueueMessagesTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class ReceiveQueueMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
@@ -1285,7 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class ReceiveTopicMessagesTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class ReceiveTopicMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
@@ -1294,7 +1294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class ReceiveQueueMessagesForReplicationTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class ReceiveQueueMessagesForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class ReceiveTopicMessagesForReplicationTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class ReceiveTopicMessagesForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
@@ -1312,7 +1312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class PeekLockQueueMessagesV2TriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class PeekLockQueueMessagesV2TriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
@@ -1321,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class PeekLockTopicMessagesV2TriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class PeekLockTopicMessagesV2TriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
@@ -1330,17 +1330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class OnNewMessagesFromQueueSessionTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
-    {
-        public RetryPolicy RetryPolicy { get; set; }
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
-        public int? ConcurrentRuns { get; set; }
-        public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
-    }
-
-    public sealed class OnNewMessagesFromTopicSessionTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class OnNewMessagesFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public bool SecureInputs { get; set; }
@@ -1350,7 +1340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class OnSingleNewMessageFromQueueSessionTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class OnNewMessagesFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public bool SecureInputs { get; set; }
@@ -1360,7 +1350,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string ClientTrackingId { get; set; }
     }
 
-    public sealed class OnSingleNewMessageFromTopicSessionTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder, IClientTrackingIdConfigurationHolder
+    public sealed class OnSingleNewMessageFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+        public int? ConcurrentRuns { get; set; }
+        public int? MaximumWaitingRuns { get; set; }
+        public string ClientTrackingId { get; set; }
+    }
+
+    public sealed class OnSingleNewMessageFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public bool SecureInputs { get; set; }

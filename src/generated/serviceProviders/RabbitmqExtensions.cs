@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         }
     }
 
-    public sealed class SendRabbitMQMessageActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SendRabbitMQMessageActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CreateQueueActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CreateQueueActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class CompleteMessageActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class CompleteMessageActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         }
     }
 
-    public sealed class ReceiveRabbitMQMessagesTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class ReceiveRabbitMQMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
     }
 
-    public sealed class PeeklockRabbitMQMessagesTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class PeeklockRabbitMQMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }

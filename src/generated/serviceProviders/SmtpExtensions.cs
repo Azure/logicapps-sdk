@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
         }
     }
 
-    public sealed class SendEmailActionConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    public sealed class SendEmailActionConfiguration : ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
         public bool SecureInputs { get; set; }
