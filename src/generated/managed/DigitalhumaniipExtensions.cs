@@ -51,48 +51,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
-        public IBodyWorkflowAction<TreePlantResponse, ApiConnectionActionConfiguration> TreePlant(Expression<Func<int>> bodytreeCount = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodyuser = null)
+        public IBodyWorkflowAction<TreePlantResponse, ApiConnectionActionConfiguration> TreePlant(Expression<Func<TreePlantInput>> body)
         {
-            var __workflow_bodytreeCount = WorkflowExpression.Compile(bodytreeCount, nameof(bodytreeCount), required: false);
-            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TreePlantResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tree";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytreeCount != null)
-                {
-                    body["treeCount"] = ExpressionConverter.ConvertO(__workflow_bodytreeCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyenterpriseId != null)
-                {
-                    body["enterpriseId"] = ExpressionConverter.ConvertO(__workflow_bodyenterpriseId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuser != null)
-                {
-                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TreePlantResponse>(callPayload);
             });
         }
@@ -282,6 +249,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
 
         [JsonProperty("treeCount")]
         public int TreeCount { get; set; }
+
+        [JsonProperty("enterpriseId")]
+        public string EnterpriseId { get; set; }
+
+        [JsonProperty("projectId")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("user")]
+        public string User { get; set; }
+    }
+
+    public class TreePlantInput
+    {
+        [JsonProperty("treeCount")]
+        public int? TreeCount { get; set; }
 
         [JsonProperty("enterpriseId")]
         public string EnterpriseId { get; set; }

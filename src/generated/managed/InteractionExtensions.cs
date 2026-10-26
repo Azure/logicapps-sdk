@@ -13,947 +13,183 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     public class InteractionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByIdResponse, ApiConnectionActionConfiguration> ReadListById(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesprimarySponsorName = null)
+        public IBodyWorkflowAction<ReadListByIdResponse, ApiConnectionActionConfiguration> ReadListById(Expression<Func<ReadListByIdInput>> body)
         {
-            var __workflow_bodyvariablesid = WorkflowExpression.Compile(bodyvariablesid, nameof(bodyvariablesid), required: false);
-            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            var __workflow_bodyvariablesprimarySponsorName = WorkflowExpression.Compile(bodyvariablesprimarySponsorName, nameof(bodyvariablesprimarySponsorName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadListByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadListByID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "query list($id: ID!, $skip: Int, $limit: Int, $primarySponsorName: String) {     list(id: $id) {         id         name         description         listType {             id             isActive             listClass             name         }         allowedLinkInto         allowedRemoveFrom         addAllowed         deleteAllowed         addActivityAllowed         addNoteAllowed         ownerName         creatorName         allowedContactEntity         isAdministrator         contacts(             skip: $skip             limit: $limit,             filter: { primarySponsorUserName: $primarySponsorName, checkForStrictPrimarySponsor: true },             sort: { direction: \"Ascending\", field: \"displayName\" }         ) {             totalModels             models {                 id                 title                 phoneNumber                 emailAddress                 displayName                 companyName                 companyId                 contactEntity                 sponsors {                     displayName                     fullName                     id                     isPrimary                 }                 additionalFieldValues {                     totalModels                     models {                         contactId                         dataType                         fieldDisplayName                         fieldId                         format                         id                         listId                         valueItems {                             lastEditDate                             value                             valueId                         }                     }                 }             }         }     } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariablesid != null)
-                {
-                    variablesObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesid);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesskip != null)
-                {
-                    if (__workflow_bodyvariablesskip != null)
-                    {
-                        variablesObject["skip"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesskip);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["skip"] = 0;
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariableslimit != null)
-                {
-                    if (__workflow_bodyvariableslimit != null)
-                    {
-                        variablesObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslimit);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["limit"] = 100;
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesprimarySponsorName != null)
-                {
-                    variablesObject["primarySponsorName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesprimarySponsorName);
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadListByIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByNameResponse, ApiConnectionActionConfiguration> ReadListByName(Expression<Func<string>> bodyvariablesfilterByName = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
+        public IBodyWorkflowAction<ReadListByNameResponse, ApiConnectionActionConfiguration> ReadListByName(Expression<Func<ReadListByNameInput>> body)
         {
-            var __workflow_bodyvariablesfilterByName = WorkflowExpression.Compile(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
-            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadListByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadListByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "query MyQuery($filterByName: String, $skip: Int, $limit: Int) {       lists(filter: { field: name, value: $filterByName }) {           totalModels           models {               id               name               description               listType {                   id                   isActive                   listClass                   name               }               allowedLinkInto               allowedRemoveFrom               addAllowed               deleteAllowed               addActivityAllowed               addNoteAllowed               ownerName               creatorName               allowedContactEntity               isAdministrator               contacts(skip: $skip, limit: $limit,sort: {direction: \"Ascending\", field: \"displayName\"}) {                   totalModels                   models {                       id                       title                       phoneNumber                       emailAddress                       displayName                       companyName                       companyId                       contactEntity                       sponsors {                           displayName                           fullName                           id                           isPrimary                       }                   }               }           }       }   }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariablesfilterByName != null)
-                {
-                    variablesObject["filterByName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesfilterByName);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesskip != null)
-                {
-                    if (__workflow_bodyvariablesskip != null)
-                    {
-                        variablesObject["skip"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesskip);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["skip"] = 0;
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariableslimit != null)
-                {
-                    if (__workflow_bodyvariableslimit != null)
-                    {
-                        variablesObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslimit);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["limit"] = 100;
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadListByNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
+        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<ReadAdditionalFieldDefinitionsAndValuesInput>> body)
         {
-            var __workflow_bodyvariablesid = WorkflowExpression.Compile(bodyvariablesid, nameof(bodyvariablesid), required: false);
-            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadAdditionalFieldDefinitionsAndValues";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "query listContactAdditionalFieldsViewDefinitionsAndValues(     $id: ID!     $skip: Int     $limit: Int ) {     list(id: $id) {         id         name         description         listType {             id             isActive             listClass             name         }         additionalFieldDefinitions {             totalModels             models {                 userDataTypeUserProfessional                 userDataTypeUserActive                 stringDataTypeMultiLine                 stringDataTypeMaxLength                 secondaryFieldName                 numericDataTypeMinValue                 numericDataTypeMaxValue                 name                 listDataType {                     options {                         id                         name                     }                 }                 id                 fieldDataType                 description                 decimalDataTypePrecision                 dataTypeDisplayName                 booleanDataTypeFalseValue                 booleanDataTypeTrueValue                 allowsSecondaryField                 allowsMultipleValues             }         }         contacts(             skip: $skip             limit: $limit             sort: { direction: \"Ascending\", field: \"displayName\" }         ) {             totalModels             models {                 id                 title                 phoneNumber                 emailAddress                 displayName                 companyName                 companyId                 contactEntity                 sponsors {                     displayName                     fullName                     id                     isPrimary                 }                 additionalFieldValues {                     totalModels                     models {                         contactId                         dataType                         fieldDisplayName                         fieldId                         format                         id                         listId                         separator                         valueItems {                             lastEditDate                             qualification                             value                             valueId                         }                     }                 }             }         }     } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariablesid != null)
-                {
-                    variablesObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesid);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesskip != null)
-                {
-                    if (__workflow_bodyvariablesskip != null)
-                    {
-                        variablesObject["skip"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesskip);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["skip"] = 0;
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariableslimit != null)
-                {
-                    if (__workflow_bodyvariableslimit != null)
-                    {
-                        variablesObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslimit);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["limit"] = 100;
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadAdditionalFieldDefinitionsAndValuesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration> AddOrUpdateAdditionalFieldValues(Expression<Func<string>> bodyvariablesinputcontactId, Expression<Func<bodyvariablesinputadditionalFieldsInputItem[]>> bodyvariablesinputadditionalFields)
+        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration> AddOrUpdateAdditionalFieldValues(Expression<Func<AddOrUpdateAdditionalFieldValuesInput>> body)
         {
-            var __workflow_bodyvariablesinputcontactId = WorkflowExpression.Compile(bodyvariablesinputcontactId, nameof(bodyvariablesinputcontactId), required: true);
-            var __workflow_bodyvariablesinputadditionalFields = WorkflowExpression.Compile(bodyvariablesinputadditionalFields, nameof(bodyvariablesinputadditionalFields), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/UpdateAdditionalFieldValues";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "mutation updateAdditionalFields($input: UpdateListContactAdditionalFieldInput!) {   updateListContactAdditionalFields(input: $input) {     models {       failureReason       fieldId       isSuccessful       valueId       __typename     }     __typename   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                inputObjectpropCount++;
-                inputObject["contactId"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputcontactId);
-                inputObjectpropCount++;
-                inputObject["additionalFields"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputadditionalFields);
-                if (inputObjectpropCount > 0)
-                {
-                    variablesObject["input"] = inputObject;
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddOrUpdateAdditionalFieldValuesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadContactByIdResponse, ApiConnectionActionConfiguration> ReadContactById(Expression<Func<string>> bodyvariablescontactid = null, Expression<Func<string>> bodyvariableslistid = null)
+        public IBodyWorkflowAction<ReadContactByIdResponse, ApiConnectionActionConfiguration> ReadContactById(Expression<Func<ReadContactByIdInput>> body)
         {
-            var __workflow_bodyvariablescontactid = WorkflowExpression.Compile(bodyvariablescontactid, nameof(bodyvariablescontactid), required: false);
-            var __workflow_bodyvariableslistid = WorkflowExpression.Compile(bodyvariableslistid, nameof(bodyvariableslistid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadContactByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadContactByID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "query contact($contactid: ID!, $listid: ID!) {   contact(id: $contactid) {     contactId: id     displayName     contactEntity     ... on Person {       contactId: id       displayName       title       firstName       middleName       lastName       goesBy       currentJobTitle       currentEmployer {         companyName: name         companyId: id       }       additionalFieldValues(listId: $listid) {         totalModels         models {           contactId           dataType           fieldId           fieldDisplayName           additionalFieldValueId: id           listId           valueItems {             lastEditDate             value             valueId           }         }       }       addresses {         addressID: id         street         city         administrativeDivision         country         postalCode       type       usage}     }     ... on Company {       contactId: id       name       additionalFieldValues(listId: $listid) {         totalModels         models {           contactId           dataType           fieldId           fieldDisplayName           id           listId           valueItems {             lastEditDate             value             valueId           }         }       }     }     visibility     emailAddresses {       emailId: id       type       usage       address       label       owningContactId       isGlobal     }     phoneNumbers {       phoneId: id       number       label       type       usage       owningContactId       isGlobal     }     activities {       totalModels       models {         ...ActivityFragment       }     }     notes {       allNotes {         ...NoteResultsFragment       }     }     lists(sort: {field: \"name\", direction: \"Ascending\"}, listIds: [$listid]) {       totalModels       models {         listId: id         name         listClass         description         type         userIsSponsor         allowedLinkInto         allowedRemoveFrom         ownerName         creatorName         sponsors {           sponsorId: id           displayName           isPrimary           fullName         }       }     }   } }  fragment ActivityFragment on Activity {   activityId: id   type   typeId   activityClass   typeGroup   activityStartDate   lastEditedDate   subject   summary   location }  fragment NoteResultsFragment on NoteResults {   totalModels   models {     changeDate     folderId     noteId     notes   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariablescontactid != null)
-                {
-                    variablesObject["contactid"] = ExpressionConverter.ConvertO(__workflow_bodyvariablescontactid);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariableslistid != null)
-                {
-                    if (__workflow_bodyvariableslistid != null)
-                    {
-                        variablesObject["listid"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslistid);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["listid"] = "00000000-0000-0000-0000-000000000000";
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReadContactByIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputemailAddress = null, Expression<Func<string>> bodyvariablesinputcompanyName = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputprimaryPhone = null, Expression<Func<bodyvariablesinputbusinessAddresscountryInput>> bodyvariablesinputbusinessAddresscountry = null, Expression<Func<string>> bodyvariablesinputbusinessAddressstreet = null, Expression<Func<string>> bodyvariablesinputbusinessAddresscity = null, Expression<Func<string>> bodyvariablesinputbusinessAddressadministrativeDivision = null, Expression<Func<string>> bodyvariablesinputbusinessAddresspostalCode = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
         {
-            var __workflow_bodyvariablesinputlastName = WorkflowExpression.Compile(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
-            var __workflow_bodyvariablesinputfirstName = WorkflowExpression.Compile(bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
-            var __workflow_bodyvariablesinputmiddleName = WorkflowExpression.Compile(bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
-            var __workflow_bodyvariablesinputgoesBy = WorkflowExpression.Compile(bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
-            var __workflow_bodyvariablesinputtitle = WorkflowExpression.Compile(bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
-            var __workflow_bodyvariablesinputemailAddress = WorkflowExpression.Compile(bodyvariablesinputemailAddress, nameof(bodyvariablesinputemailAddress), required: false);
-            var __workflow_bodyvariablesinputcompanyName = WorkflowExpression.Compile(bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
-            var __workflow_bodyvariablesinputjobTitle = WorkflowExpression.Compile(bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
-            var __workflow_bodyvariablesinputprimaryPhone = WorkflowExpression.Compile(bodyvariablesinputprimaryPhone, nameof(bodyvariablesinputprimaryPhone), required: false);
-            var __workflow_bodyvariablesinputbusinessAddresscountry = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresscountry, nameof(bodyvariablesinputbusinessAddresscountry), required: false);
-            var __workflow_bodyvariablesinputbusinessAddressstreet = WorkflowExpression.Compile(bodyvariablesinputbusinessAddressstreet, nameof(bodyvariablesinputbusinessAddressstreet), required: false);
-            var __workflow_bodyvariablesinputbusinessAddresscity = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresscity, nameof(bodyvariablesinputbusinessAddresscity), required: false);
-            var __workflow_bodyvariablesinputbusinessAddressadministrativeDivision = WorkflowExpression.Compile(bodyvariablesinputbusinessAddressadministrativeDivision, nameof(bodyvariablesinputbusinessAddressadministrativeDivision), required: false);
-            var __workflow_bodyvariablesinputbusinessAddresspostalCode = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresspostalCode, nameof(bodyvariablesinputbusinessAddresspostalCode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/CreateContact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "mutation addPerson($input: AddPersonInput!) {   addPerson(input: $input) {     status     item {       id       firstName       lastName       goesBy       currentJobTitle       phoneNumbers {         id         number         label         type         usage       }       emailAddresses {         id         type         usage         address         label       }       middleName       title       currentEmployer {         name       }       addresses {         city         country         administrativeDivision         street         postalCode       }     }     validationErrors {       propertyName       message     }   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                if (__workflow_bodyvariablesinputfirstName != null)
-                {
-                    inputObject["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputfirstName);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputmiddleName != null)
-                {
-                    inputObject["middleName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputmiddleName);
-                    inputObjectpropCount++;
-                }
-
-                inputObjectpropCount++;
-                inputObject["lastName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputlastName);
-                if (__workflow_bodyvariablesinputgoesBy != null)
-                {
-                    inputObject["goesBy"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputgoesBy);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputtitle != null)
-                {
-                    inputObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputtitle);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputemailAddress != null)
-                {
-                    inputObject["emailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputemailAddress);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputcompanyName != null)
-                {
-                    inputObject["companyName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputcompanyName);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputjobTitle != null)
-                {
-                    inputObject["jobTitle"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputjobTitle);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputprimaryPhone != null)
-                {
-                    inputObject["primaryPhone"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputprimaryPhone);
-                    inputObjectpropCount++;
-                }
-
-                var businessAddressObject = new JObject();
-                var businessAddressObjectpropCount = 0;
-                if (__workflow_bodyvariablesinputbusinessAddresscountry != null)
-                {
-                    businessAddressObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputbusinessAddresscountry);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputbusinessAddressstreet != null)
-                {
-                    businessAddressObject["street"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputbusinessAddressstreet);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputbusinessAddresscity != null)
-                {
-                    businessAddressObject["city"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputbusinessAddresscity);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputbusinessAddressadministrativeDivision != null)
-                {
-                    businessAddressObject["administrativeDivision"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputbusinessAddressadministrativeDivision);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputbusinessAddresspostalCode != null)
-                {
-                    businessAddressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputbusinessAddresspostalCode);
-                    businessAddressObjectpropCount++;
-                }
-
-                if (businessAddressObjectpropCount > 0)
-                {
-                    inputObject["businessAddress"] = businessAddressObject;
-                    inputObjectpropCount++;
-                }
-
-                if (inputObjectpropCount > 0)
-                {
-                    variablesObject["input"] = inputObject;
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> ReadLists(Expression<Func<bodyvariableslistClassInput>> bodyvariableslistClass = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesfilterByName = null)
+        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> ReadLists(Expression<Func<ReadListsInput>> body)
         {
-            var __workflow_bodyvariableslistClass = WorkflowExpression.Compile(bodyvariableslistClass, nameof(bodyvariableslistClass), required: false);
-            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            var __workflow_bodyvariablesfilterByName = WorkflowExpression.Compile(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadLists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "query Lists($listClass: [ListClass], $skip: Int, $limit: Int, $filterByName: String) {   lists(listClass: $listClass, skip: $skip, limit: $limit,  filter: {field: name, value: $filterByName}) {     skip     limit     totalModels     models {       id       name       description       listType {         id         isActive         listClass         name       }       allowedLinkInto       allowedRemoveFrom       addAllowed       deleteAllowed       addActivityAllowed       addNoteAllowed       ownerName       creatorName       allowedContactEntity       isAdministrator     }   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariableslistClass != null)
-                {
-                    variablesObject["listClass"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslistClass);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesskip != null)
-                {
-                    if (__workflow_bodyvariablesskip != null)
-                    {
-                        variablesObject["skip"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesskip);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["skip"] = 0;
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariableslimit != null)
-                {
-                    if (__workflow_bodyvariableslimit != null)
-                    {
-                        variablesObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslimit);
-                        variablesObjectpropCount++;
-                    }
-
-                    variablesObjectpropCount++;
-                }
-                else
-                {
-                    variablesObject["limit"] = 100;
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesfilterByName != null)
-                {
-                    variablesObject["filterByName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesfilterByName);
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddContactsToListsResponse, ApiConnectionActionConfiguration> AddContactsToLists(Expression<Func<string[]>> bodyvariableslistIds = null, Expression<Func<string[]>> bodyvariablescontactIds = null)
+        public IBodyWorkflowAction<AddContactsToListsResponse, ApiConnectionActionConfiguration> AddContactsToLists(Expression<Func<AddContactsToListsInput>> body)
         {
-            var __workflow_bodyvariableslistIds = WorkflowExpression.Compile(bodyvariableslistIds, nameof(bodyvariableslistIds), required: false);
-            var __workflow_bodyvariablescontactIds = WorkflowExpression.Compile(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddContactsToListsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/AddContactsToLists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "mutation addContactsToLists(   $listIds: [ID!]!,   $contactIds: [ID!]! ) {   addContactsToLists(     listIds: $listIds,     contactIds: $contactIds   ) {     totalCount     successCount     resultText   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariableslistIds != null)
-                {
-                    variablesObject["listIds"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslistIds);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablescontactIds != null)
-                {
-                    variablesObject["contactIds"] = ExpressionConverter.ConvertO(__workflow_bodyvariablescontactIds);
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddContactsToListsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration> RemoveContactsfromList(Expression<Func<string[]>> bodyvariablescontactIds = null, Expression<Func<string>> bodyvariableslistId = null)
+        public IBodyWorkflowAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration> RemoveContactsfromList(Expression<Func<RemoveContactsfromListInput>> body)
         {
-            var __workflow_bodyvariablescontactIds = WorkflowExpression.Compile(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
-            var __workflow_bodyvariableslistId = WorkflowExpression.Compile(bodyvariableslistId, nameof(bodyvariableslistId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/RemoveContactsFromList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "mutation MyMutation ($contactIds : [ID!]!, $listId: ID!){   removeContactsFromList(contactIds: $contactIds, listId: $listId) {     resultText pendingContactsEffected     contactsEffected  } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariablescontactIds != null)
-                {
-                    variablesObject["contactIds"] = ExpressionConverter.ConvertO(__workflow_bodyvariablescontactIds);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariableslistId != null)
-                {
-                    variablesObject["listId"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslistId);
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RemoveContactsfromListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration> UpdatePersonContact(Expression<Func<string>> bodyvariablesinputid, Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputaddressstreet = null, Expression<Func<string>> bodyvariablesinputaddresscity = null, Expression<Func<string>> bodyvariablesinputaddressadministrativeDivision = null, Expression<Func<bodyvariablesinputaddresscountryInput>> bodyvariablesinputaddresscountry = null, Expression<Func<string>> bodyvariablesinputaddresspostalCode = null, Expression<Func<string>> bodyvariablesinputemailelectronicAddress = null, Expression<Func<string>> bodyvariablesinputprimaryPhonenumber = null, Expression<Func<string>> bodyvariablesinputcompanyName = null)
+        public IBodyWorkflowAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration> UpdatePersonContact(Expression<Func<UpdatePersonContactInput>> body)
         {
-            var __workflow_bodyvariablesinputid = WorkflowExpression.Compile(bodyvariablesinputid, nameof(bodyvariablesinputid), required: true);
-            var __workflow_bodyvariablesinputlastName = WorkflowExpression.Compile(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
-            var __workflow_bodyvariablesinputtitle = WorkflowExpression.Compile(bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
-            var __workflow_bodyvariablesinputfirstName = WorkflowExpression.Compile(bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
-            var __workflow_bodyvariablesinputmiddleName = WorkflowExpression.Compile(bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
-            var __workflow_bodyvariablesinputgoesBy = WorkflowExpression.Compile(bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
-            var __workflow_bodyvariablesinputjobTitle = WorkflowExpression.Compile(bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
-            var __workflow_bodyvariablesinputaddressstreet = WorkflowExpression.Compile(bodyvariablesinputaddressstreet, nameof(bodyvariablesinputaddressstreet), required: false);
-            var __workflow_bodyvariablesinputaddresscity = WorkflowExpression.Compile(bodyvariablesinputaddresscity, nameof(bodyvariablesinputaddresscity), required: false);
-            var __workflow_bodyvariablesinputaddressadministrativeDivision = WorkflowExpression.Compile(bodyvariablesinputaddressadministrativeDivision, nameof(bodyvariablesinputaddressadministrativeDivision), required: false);
-            var __workflow_bodyvariablesinputaddresscountry = WorkflowExpression.Compile(bodyvariablesinputaddresscountry, nameof(bodyvariablesinputaddresscountry), required: false);
-            var __workflow_bodyvariablesinputaddresspostalCode = WorkflowExpression.Compile(bodyvariablesinputaddresspostalCode, nameof(bodyvariablesinputaddresspostalCode), required: false);
-            var __workflow_bodyvariablesinputemailelectronicAddress = WorkflowExpression.Compile(bodyvariablesinputemailelectronicAddress, nameof(bodyvariablesinputemailelectronicAddress), required: false);
-            var __workflow_bodyvariablesinputprimaryPhonenumber = WorkflowExpression.Compile(bodyvariablesinputprimaryPhonenumber, nameof(bodyvariablesinputprimaryPhonenumber), required: false);
-            var __workflow_bodyvariablesinputcompanyName = WorkflowExpression.Compile(bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/UpdatePersonContact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "mutation updatePublicPerson($input: UpdatePublicPersonInput!) {   updatePublicPerson(input: $input) {     item {       id      }     status     validationErrors {       propertyName       message           }   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                inputObjectpropCount++;
-                inputObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputid);
-                if (__workflow_bodyvariablesinputtitle != null)
-                {
-                    inputObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputtitle);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputfirstName != null)
-                {
-                    inputObject["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputfirstName);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputmiddleName != null)
-                {
-                    inputObject["middleName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputmiddleName);
-                    inputObjectpropCount++;
-                }
-
-                inputObjectpropCount++;
-                inputObject["lastName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputlastName);
-                if (__workflow_bodyvariablesinputgoesBy != null)
-                {
-                    inputObject["goesBy"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputgoesBy);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputjobTitle != null)
-                {
-                    inputObject["jobTitle"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputjobTitle);
-                    inputObjectpropCount++;
-                }
-
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                if (__workflow_bodyvariablesinputaddressstreet != null)
-                {
-                    addressObject["street"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputaddressstreet);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputaddresscity != null)
-                {
-                    addressObject["city"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputaddresscity);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputaddressadministrativeDivision != null)
-                {
-                    addressObject["administrativeDivision"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputaddressadministrativeDivision);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputaddresscountry != null)
-                {
-                    addressObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputaddresscountry);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputaddresspostalCode != null)
-                {
-                    addressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputaddresspostalCode);
-                    addressObjectpropCount++;
-                }
-
-                if (addressObjectpropCount > 0)
-                {
-                    inputObject["address"] = addressObject;
-                    inputObjectpropCount++;
-                }
-
-                var emailObject = new JObject();
-                var emailObjectpropCount = 0;
-                if (__workflow_bodyvariablesinputemailelectronicAddress != null)
-                {
-                    emailObject["electronicAddress"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputemailelectronicAddress);
-                    emailObjectpropCount++;
-                }
-
-                if (emailObjectpropCount > 0)
-                {
-                    inputObject["email"] = emailObject;
-                    inputObjectpropCount++;
-                }
-
-                var primaryPhoneObject = new JObject();
-                var primaryPhoneObjectpropCount = 0;
-                if (__workflow_bodyvariablesinputprimaryPhonenumber != null)
-                {
-                    primaryPhoneObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputprimaryPhonenumber);
-                    primaryPhoneObjectpropCount++;
-                }
-
-                if (primaryPhoneObjectpropCount > 0)
-                {
-                    inputObject["primaryPhone"] = primaryPhoneObject;
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputcompanyName != null)
-                {
-                    inputObject["companyName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputcompanyName);
-                    inputObjectpropCount++;
-                }
-
-                if (inputObjectpropCount > 0)
-                {
-                    variablesObject["input"] = inputObject;
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdatePersonContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string>> bodyvariablesinputactivityDate, Expression<Func<string>> bodyvariablesinputsubject, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputsummary = null)
+        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<CreateActivityInput>> body)
         {
-            var __workflow_bodyvariablesinputtypeId = WorkflowExpression.Compile(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
-            var __workflow_bodyvariablesinputactivityDate = WorkflowExpression.Compile(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: true);
-            var __workflow_bodyvariablesinputsubject = WorkflowExpression.Compile(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: true);
-            var __workflow_bodyvariablesinputlinkedEntityIds = WorkflowExpression.Compile(bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
-            var __workflow_bodyvariablesinputsummary = WorkflowExpression.Compile(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/CreateActivity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "mutation addActivity($input: AddActivityInput!) {   addActivity(input: $input) {     id   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                inputObjectpropCount++;
-                inputObject["typeId"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputtypeId);
-                inputObjectpropCount++;
-                inputObject["activityDate"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputactivityDate);
-                inputObjectpropCount++;
-                inputObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputsubject);
-                if (__workflow_bodyvariablesinputsummary != null)
-                {
-                    inputObject["summary"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputsummary);
-                    inputObjectpropCount++;
-                }
-
-                inputObjectpropCount++;
-                inputObject["linkedEntityIds"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputlinkedEntityIds);
-                if (inputObjectpropCount > 0)
-                {
-                    variablesObject["input"] = inputObject;
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateActivityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<SearchContactsResponse, ApiConnectionActionConfiguration> SearchContacts(Expression<Func<string>> bodyvariablesemailAddress = null, Expression<Func<string>> bodyvariablesfirstName = null, Expression<Func<string>> bodyvariableslastName = null)
+        public IBodyWorkflowAction<SearchContactsResponse, ApiConnectionActionConfiguration> SearchContacts(Expression<Func<SearchContactsInput>> body)
         {
-            var __workflow_bodyvariablesemailAddress = WorkflowExpression.Compile(bodyvariablesemailAddress, nameof(bodyvariablesemailAddress), required: false);
-            var __workflow_bodyvariablesfirstName = WorkflowExpression.Compile(bodyvariablesfirstName, nameof(bodyvariablesfirstName), required: false);
-            var __workflow_bodyvariableslastName = WorkflowExpression.Compile(bodyvariableslastName, nameof(bodyvariableslastName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/SearchContacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "query MyQuery($filterField: ContactFilterField, $filterValue: String) {   searchFirmContacts(filter: {field: $filterField, value: $filterValue}) {     totalModels     models {       contactId: id       displayName       contactEntity       ... on Person {         contactId: id         displayName         title         firstName         middleName         lastName         currentJobTitle         currentEmployer {           companyName: name           companyId: id         }         addresses {           addressID: id           street           city           administrativeDivision           country           postalCode           type           usage         }       }       ... on Company {         contactId: id         name       }       visibility       emailAddresses {         emailId: id         type         usage         address         label         owningContactId         isGlobal       }       phoneNumbers {         phoneId: id         number         label         type         usage         owningContactId         isGlobal       }       activities {         totalModels         models {           activityId: id           type           typeId           activityClass           typeGroup           activityStartDate           lastEditedDate           subject           summary           location         }       }       notes {         allNotes {           totalModels           models {             changeDate             folderId             noteId             notes           }         }       }       lists(sort: {field: \"name\", direction: \"Ascending\"}) {         totalModels         models {           listId: id           name           listClass           description           type           userIsSponsor           allowedLinkInto           allowedRemoveFrom           ownerName           creatorName           sponsors {             sponsorId: id             displayName             isPrimary             fullName           }         }       }     }   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (__workflow_bodyvariablesemailAddress != null)
-                {
-                    variablesObject["emailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesemailAddress);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesfirstName != null)
-                {
-                    variablesObject["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesfirstName);
-                    variablesObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariableslastName != null)
-                {
-                    variablesObject["lastName"] = ExpressionConverter.ConvertO(__workflow_bodyvariableslastName);
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SearchContactsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdateActivityResponse, ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<string>> bodyvariablesinputactivityId, Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputactivityDate = null, Expression<Func<string>> bodyvariablesinputsubject = null, Expression<Func<string>> bodyvariablesinputsummary = null)
+        public IBodyWorkflowAction<UpdateActivityResponse, ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<UpdateActivityInput>> body)
         {
-            var __workflow_bodyvariablesinputactivityId = WorkflowExpression.Compile(bodyvariablesinputactivityId, nameof(bodyvariablesinputactivityId), required: true);
-            var __workflow_bodyvariablesinputtypeId = WorkflowExpression.Compile(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
-            var __workflow_bodyvariablesinputlinkedEntityIds = WorkflowExpression.Compile(bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
-            var __workflow_bodyvariablesinputactivityDate = WorkflowExpression.Compile(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: false);
-            var __workflow_bodyvariablesinputsubject = WorkflowExpression.Compile(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: false);
-            var __workflow_bodyvariablesinputsummary = WorkflowExpression.Compile(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/UpdateActivity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["query"] = "mutation updateActivity($input: UpdateActivityInput!) {   updateActivity(input: $input) {     validationErrors {       propertyName       message     }     item {       id       type       typeId       activityClass       typeGroup       activityStartDate       lastEditedDate       subject       summary       location         regarding         }   } }";
-                bodypropCount++;
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                inputObjectpropCount++;
-                inputObject["activityId"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputactivityId);
-                inputObjectpropCount++;
-                inputObject["typeId"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputtypeId);
-                if (__workflow_bodyvariablesinputactivityDate != null)
-                {
-                    inputObject["activityDate"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputactivityDate);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputsubject != null)
-                {
-                    inputObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputsubject);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyvariablesinputsummary != null)
-                {
-                    inputObject["summary"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputsummary);
-                    inputObjectpropCount++;
-                }
-
-                inputObjectpropCount++;
-                inputObject["linkedEntityIds"] = ExpressionConverter.ConvertO(__workflow_bodyvariablesinputlinkedEntityIds);
-                if (inputObjectpropCount > 0)
-                {
-                    variablesObject["input"] = inputObject;
-                    variablesObjectpropCount++;
-                }
-
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateActivityResponse>(callPayload);
             });
         }
@@ -1092,6 +328,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public bool IsPrimary { get; set; }
     }
 
+    public class ReadListByIdInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "query list($id: ID!, $skip: Int, $limit: Int, $primarySponsorName: String) {     list(id: $id) {         id         name         description         listType {             id             isActive             listClass             name         }         allowedLinkInto         allowedRemoveFrom         addAllowed         deleteAllowed         addActivityAllowed         addNoteAllowed         ownerName         creatorName         allowedContactEntity         isAdministrator         contacts(             skip: $skip             limit: $limit,             filter: { primarySponsorUserName: $primarySponsorName, checkForStrictPrimarySponsor: true },             sort: { direction: \"Ascending\", field: \"displayName\" }         ) {             totalModels             models {                 id                 title                 phoneNumber                 emailAddress                 displayName                 companyName                 companyId                 contactEntity                 sponsors {                     displayName                     fullName                     id                     isPrimary                 }                 additionalFieldValues {                     totalModels                     models {                         contactId                         dataType                         fieldDisplayName                         fieldId                         format                         id                         listId                         valueItems {                             lastEditDate                             value                             valueId                         }                     }                 }             }         }     } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReadListByIdInputVariablesType Variables { get; set; }
+    }
+
+    public class ReadListByIdInputVariablesType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("skip", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Skip { get; set; } = 0;
+
+        [JsonProperty("limit", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Limit { get; set; } = 100;
+
+        [JsonProperty("primarySponsorName")]
+        public string PrimarySponsorName { get; set; }
+    }
+
     public class ReadListByNameResponse
     {
         [JsonProperty("data")]
@@ -1228,6 +488,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
         [JsonProperty("isPrimary")]
         public bool IsPrimary { get; set; }
+    }
+
+    public class ReadListByNameInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "query MyQuery($filterByName: String, $skip: Int, $limit: Int) {       lists(filter: { field: name, value: $filterByName }) {           totalModels           models {               id               name               description               listType {                   id                   isActive                   listClass                   name               }               allowedLinkInto               allowedRemoveFrom               addAllowed               deleteAllowed               addActivityAllowed               addNoteAllowed               ownerName               creatorName               allowedContactEntity               isAdministrator               contacts(skip: $skip, limit: $limit,sort: {direction: \"Ascending\", field: \"displayName\"}) {                   totalModels                   models {                       id                       title                       phoneNumber                       emailAddress                       displayName                       companyName                       companyId                       contactEntity                       sponsors {                           displayName                           fullName                           id                           isPrimary                       }                   }               }           }       }   }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReadListByNameInputVariablesType Variables { get; set; }
+    }
+
+    public class ReadListByNameInputVariablesType
+    {
+        [JsonProperty("filterByName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FilterByName { get; set; }
+
+        [JsonProperty("skip", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Skip { get; set; } = 0;
+
+        [JsonProperty("limit", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Limit { get; set; } = 100;
     }
 
     public class ReadAdditionalFieldDefinitionsAndValuesResponse
@@ -1461,6 +742,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string ValueId { get; set; }
     }
 
+    public class ReadAdditionalFieldDefinitionsAndValuesInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "query listContactAdditionalFieldsViewDefinitionsAndValues(     $id: ID!     $skip: Int     $limit: Int ) {     list(id: $id) {         id         name         description         listType {             id             isActive             listClass             name         }         additionalFieldDefinitions {             totalModels             models {                 userDataTypeUserProfessional                 userDataTypeUserActive                 stringDataTypeMultiLine                 stringDataTypeMaxLength                 secondaryFieldName                 numericDataTypeMinValue                 numericDataTypeMaxValue                 name                 listDataType {                     options {                         id                         name                     }                 }                 id                 fieldDataType                 description                 decimalDataTypePrecision                 dataTypeDisplayName                 booleanDataTypeFalseValue                 booleanDataTypeTrueValue                 allowsSecondaryField                 allowsMultipleValues             }         }         contacts(             skip: $skip             limit: $limit             sort: { direction: \"Ascending\", field: \"displayName\" }         ) {             totalModels             models {                 id                 title                 phoneNumber                 emailAddress                 displayName                 companyName                 companyId                 contactEntity                 sponsors {                     displayName                     fullName                     id                     isPrimary                 }                 additionalFieldValues {                     totalModels                     models {                         contactId                         dataType                         fieldDisplayName                         fieldId                         format                         id                         listId                         separator                         valueItems {                             lastEditDate                             qualification                             value                             valueId                         }                     }                 }             }         }     } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReadAdditionalFieldDefinitionsAndValuesInputVariablesType Variables { get; set; }
+    }
+
+    public class ReadAdditionalFieldDefinitionsAndValuesInputVariablesType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("skip", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Skip { get; set; } = 0;
+
+        [JsonProperty("limit", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Limit { get; set; } = 100;
+    }
+
     public class AddOrUpdateAdditionalFieldValuesResponse
     {
         [JsonProperty("data")]
@@ -1500,21 +802,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Typename { get; set; }
     }
 
-    public class bodyvariablesinputadditionalFieldsInputItem
+    public class AddOrUpdateAdditionalFieldValuesInput
     {
-        [JsonProperty("fieldId")]
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "mutation updateAdditionalFields($input: UpdateListContactAdditionalFieldInput!) {   updateListContactAdditionalFields(input: $input) {     models {       failureReason       fieldId       isSuccessful       valueId       __typename     }     __typename   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAdditionalFieldValuesInputVariablesType Variables { get; set; }
+    }
+
+    public class AddOrUpdateAdditionalFieldValuesInputVariablesType
+    {
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputType Input { get; set; }
+    }
+
+    public class AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputType
+    {
+        [JsonProperty("contactId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContactId { get; set; }
+
+        [JsonProperty("additionalFields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
+    }
+
+    public class AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputTypeAdditionalFieldsTypeItem
+    {
+        [JsonProperty("fieldId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldId { get; set; }
 
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
 
-        [JsonProperty("valueId")]
-        public string ValueId { get; set; }
+        [JsonProperty("valueId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ValueId { get; set; } = "null";
 
-        [JsonProperty("lastEditDate")]
-        public string LastEditDate { get; set; }
+        [JsonProperty("lastEditDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastEditDate { get; set; } = "null";
 
-        [JsonProperty("fieldDataType")]
+        [JsonProperty("fieldDataType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldDataType { get; set; }
     }
 
@@ -1854,6 +1180,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string FullName { get; set; }
     }
 
+    public class ReadContactByIdInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "query contact($contactid: ID!, $listid: ID!) {   contact(id: $contactid) {     contactId: id     displayName     contactEntity     ... on Person {       contactId: id       displayName       title       firstName       middleName       lastName       goesBy       currentJobTitle       currentEmployer {         companyName: name         companyId: id       }       additionalFieldValues(listId: $listid) {         totalModels         models {           contactId           dataType           fieldId           fieldDisplayName           additionalFieldValueId: id           listId           valueItems {             lastEditDate             value             valueId           }         }       }       addresses {         addressID: id         street         city         administrativeDivision         country         postalCode       type       usage}     }     ... on Company {       contactId: id       name       additionalFieldValues(listId: $listid) {         totalModels         models {           contactId           dataType           fieldId           fieldDisplayName           id           listId           valueItems {             lastEditDate             value             valueId           }         }       }     }     visibility     emailAddresses {       emailId: id       type       usage       address       label       owningContactId       isGlobal     }     phoneNumbers {       phoneId: id       number       label       type       usage       owningContactId       isGlobal     }     activities {       totalModels       models {         ...ActivityFragment       }     }     notes {       allNotes {         ...NoteResultsFragment       }     }     lists(sort: {field: \"name\", direction: \"Ascending\"}, listIds: [$listid]) {       totalModels       models {         listId: id         name         listClass         description         type         userIsSponsor         allowedLinkInto         allowedRemoveFrom         ownerName         creatorName         sponsors {           sponsorId: id           displayName           isPrimary           fullName         }       }     }   } }  fragment ActivityFragment on Activity {   activityId: id   type   typeId   activityClass   typeGroup   activityStartDate   lastEditedDate   subject   summary   location }  fragment NoteResultsFragment on NoteResults {   totalModels   models {     changeDate     folderId     noteId     notes   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReadContactByIdInputVariablesType Variables { get; set; }
+    }
+
+    public class ReadContactByIdInputVariablesType
+    {
+        [JsonProperty("contactid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Contactid { get; set; }
+
+        [JsonProperty("listid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Listid { get; set; } = "00000000-0000-0000-0000-000000000000";
+    }
+
     public class CreateContactResponse
     {
         [JsonProperty("data")]
@@ -1938,8 +1282,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Label { get; set; }
     }
 
+    public class CreateContactInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "mutation addPerson($input: AddPersonInput!) {   addPerson(input: $input) {     status     item {       id       firstName       lastName       goesBy       currentJobTitle       phoneNumbers {         id         number         label         type         usage       }       emailAddresses {         id         type         usage         address         label       }       middleName       title       currentEmployer {         name       }       addresses {         city         country         administrativeDivision         street         postalCode       }     }     validationErrors {       propertyName       message     }   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateContactInputVariablesType Variables { get; set; }
+    }
+
+    public class CreateContactInputVariablesType
+    {
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateContactInputVariablesTypeInputType Input { get; set; }
+    }
+
+    public class CreateContactInputVariablesTypeInputType
+    {
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("middleName")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("goesBy")]
+        public string GoesBy { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("emailAddress")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("companyName")]
+        public string CompanyName { get; set; }
+
+        [JsonProperty("jobTitle")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("primaryPhone")]
+        public string PrimaryPhone { get; set; }
+
+        [JsonProperty("businessAddress")]
+        public CreateContactInputVariablesTypeInputTypeBusinessAddressType BusinessAddress { get; set; }
+    }
+
+    public class CreateContactInputVariablesTypeInputTypeBusinessAddressType
+    {
+        [JsonProperty("country")]
+        public CreateContactInputVariablesTypeInputTypeBusinessAddressTypeCountryType? Country { get; set; }
+
+        [JsonProperty("street")]
+        public string Street { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("administrativeDivision")]
+        public string AdministrativeDivision { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyvariablesinputbusinessAddresscountryInput
+    public enum CreateContactInputVariablesTypeInputTypeBusinessAddressTypeCountryType
     {
         Afghanistan,
         [EnumMember(Value = "Aland Islands")]
@@ -2354,8 +1764,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Name { get; set; }
     }
 
+    public class ReadListsInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "query Lists($listClass: [ListClass], $skip: Int, $limit: Int, $filterByName: String) {   lists(listClass: $listClass, skip: $skip, limit: $limit,  filter: {field: name, value: $filterByName}) {     skip     limit     totalModels     models {       id       name       description       listType {         id         isActive         listClass         name       }       allowedLinkInto       allowedRemoveFrom       addAllowed       deleteAllowed       addActivityAllowed       addNoteAllowed       ownerName       creatorName       allowedContactEntity       isAdministrator     }   } }";
+
+        [JsonProperty("variables")]
+        public ReadListsInputVariablesType Variables { get; set; }
+    }
+
+    public class ReadListsInputVariablesType
+    {
+        [JsonProperty("listClass")]
+        public ReadListsInputVariablesTypeListClassType? ListClass { get; set; }
+
+        [JsonProperty("skip", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Skip { get; set; } = 0;
+
+        [JsonProperty("limit", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Limit { get; set; } = 100;
+
+        [JsonProperty("filterByName")]
+        public string FilterByName { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyvariableslistClassInput
+    public enum ReadListsInputVariablesTypeListClassType
     {
         MarketingList,
         MarketingListWithSponsorship,
@@ -2388,6 +1822,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string ResultText { get; set; }
     }
 
+    public class AddContactsToListsInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "mutation addContactsToLists(   $listIds: [ID!]!,   $contactIds: [ID!]! ) {   addContactsToLists(     listIds: $listIds,     contactIds: $contactIds   ) {     totalCount     successCount     resultText   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddContactsToListsInputVariablesType Variables { get; set; }
+    }
+
+    public class AddContactsToListsInputVariablesType
+    {
+        [JsonProperty("listIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] ListIds { get; set; }
+
+        [JsonProperty("contactIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] ContactIds { get; set; }
+    }
+
     public class RemoveContactsfromListResponse
     {
         [JsonProperty("data")]
@@ -2410,6 +1862,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
         [JsonProperty("contactsEffected")]
         public int ContactsEffected { get; set; }
+    }
+
+    public class RemoveContactsfromListInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "mutation MyMutation ($contactIds : [ID!]!, $listId: ID!){   removeContactsFromList(contactIds: $contactIds, listId: $listId) {     resultText pendingContactsEffected     contactsEffected  } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RemoveContactsfromListInputVariablesType Variables { get; set; }
+    }
+
+    public class RemoveContactsfromListInputVariablesType
+    {
+        [JsonProperty("contactIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] ContactIds { get; set; }
+
+        [JsonProperty("listId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ListId { get; set; }
     }
 
     public class UpdatePersonContactResponse
@@ -2442,8 +1912,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Id { get; set; }
     }
 
+    public class UpdatePersonContactInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "mutation updatePublicPerson($input: UpdatePublicPersonInput!) {   updatePublicPerson(input: $input) {     item {       id      }     status     validationErrors {       propertyName       message           }   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdatePersonContactInputVariablesType Variables { get; set; }
+    }
+
+    public class UpdatePersonContactInputVariablesType
+    {
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdatePersonContactInputVariablesTypeInputType Input { get; set; }
+    }
+
+    public class UpdatePersonContactInputVariablesTypeInputType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("middleName")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("goesBy")]
+        public string GoesBy { get; set; }
+
+        [JsonProperty("jobTitle")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("address")]
+        public UpdatePersonContactInputVariablesTypeInputTypeAddressType Address { get; set; }
+
+        [JsonProperty("email")]
+        public UpdatePersonContactInputVariablesTypeInputTypeEmailType Email { get; set; }
+
+        [JsonProperty("primaryPhone")]
+        public UpdatePersonContactInputVariablesTypeInputTypePrimaryPhoneType PrimaryPhone { get; set; }
+
+        [JsonProperty("companyName")]
+        public string CompanyName { get; set; }
+    }
+
+    public class UpdatePersonContactInputVariablesTypeInputTypeAddressType
+    {
+        [JsonProperty("street")]
+        public string Street { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("administrativeDivision")]
+        public string AdministrativeDivision { get; set; }
+
+        [JsonProperty("country")]
+        public UpdatePersonContactInputVariablesTypeInputTypeAddressTypeCountryType? Country { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyvariablesinputaddresscountryInput
+    public enum UpdatePersonContactInputVariablesTypeInputTypeAddressTypeCountryType
     {
         Afghanistan,
         [EnumMember(Value = "Aland Islands")]
@@ -2771,6 +2310,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         Zimbabwe
     }
 
+    public class UpdatePersonContactInputVariablesTypeInputTypeEmailType
+    {
+        [JsonProperty("electronicAddress")]
+        public string ElectronicAddress { get; set; }
+    }
+
+    public class UpdatePersonContactInputVariablesTypeInputTypePrimaryPhoneType
+    {
+        [JsonProperty("number")]
+        public string Number { get; set; }
+    }
+
     public class CreateActivityResponse
     {
         [JsonProperty("data")]
@@ -2787,6 +2338,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateActivityInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "mutation addActivity($input: AddActivityInput!) {   addActivity(input: $input) {     id   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateActivityInputVariablesType Variables { get; set; }
+    }
+
+    public class CreateActivityInputVariablesType
+    {
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateActivityInputVariablesTypeInputType Input { get; set; }
+    }
+
+    public class CreateActivityInputVariablesTypeInputType
+    {
+        [JsonProperty("typeId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TypeId { get; set; }
+
+        [JsonProperty("activityDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ActivityDate { get; set; }
+
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+
+        [JsonProperty("linkedEntityIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] LinkedEntityIds { get; set; }
     }
 
     public class SearchContactsResponse
@@ -3068,6 +2652,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string FullName { get; set; }
     }
 
+    public class SearchContactsInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "query MyQuery($filterField: ContactFilterField, $filterValue: String) {   searchFirmContacts(filter: {field: $filterField, value: $filterValue}) {     totalModels     models {       contactId: id       displayName       contactEntity       ... on Person {         contactId: id         displayName         title         firstName         middleName         lastName         currentJobTitle         currentEmployer {           companyName: name           companyId: id         }         addresses {           addressID: id           street           city           administrativeDivision           country           postalCode           type           usage         }       }       ... on Company {         contactId: id         name       }       visibility       emailAddresses {         emailId: id         type         usage         address         label         owningContactId         isGlobal       }       phoneNumbers {         phoneId: id         number         label         type         usage         owningContactId         isGlobal       }       activities {         totalModels         models {           activityId: id           type           typeId           activityClass           typeGroup           activityStartDate           lastEditedDate           subject           summary           location         }       }       notes {         allNotes {           totalModels           models {             changeDate             folderId             noteId             notes           }         }       }       lists(sort: {field: \"name\", direction: \"Ascending\"}) {         totalModels         models {           listId: id           name           listClass           description           type           userIsSponsor           allowedLinkInto           allowedRemoveFrom           ownerName           creatorName           sponsors {             sponsorId: id             displayName             isPrimary             fullName           }         }       }     }   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SearchContactsInputVariablesType Variables { get; set; }
+    }
+
+    public class SearchContactsInputVariablesType
+    {
+        [JsonProperty("emailAddress")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+    }
+
     public class UpdateActivityResponse
     {
         [JsonProperty("data")]
@@ -3123,6 +2728,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 
         [JsonProperty("regarding")]
         public string Regarding { get; set; }
+    }
+
+    public class UpdateActivityInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Query { get; set; } = "mutation updateActivity($input: UpdateActivityInput!) {   updateActivity(input: $input) {     validationErrors {       propertyName       message     }     item {       id       type       typeId       activityClass       typeGroup       activityStartDate       lastEditedDate       subject       summary       location         regarding         }   } }";
+
+        [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateActivityInputVariablesType Variables { get; set; }
+    }
+
+    public class UpdateActivityInputVariablesType
+    {
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateActivityInputVariablesTypeInputType Input { get; set; }
+    }
+
+    public class UpdateActivityInputVariablesTypeInputType
+    {
+        [JsonProperty("activityId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ActivityId { get; set; }
+
+        [JsonProperty("typeId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TypeId { get; set; }
+
+        [JsonProperty("activityDate")]
+        public string ActivityDate { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+
+        [JsonProperty("linkedEntityIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] LinkedEntityIds { get; set; }
     }
 }
 

@@ -13,40 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
     public class BulksmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<int>> bodylongMessageMaxParts, Expression<Func<string>> bodyfrom = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<SendSmsMessageInput>> body)
         {
             var __workflow_autoUnicode = WorkflowExpression.Compile(autoUnicode, nameof(autoUnicode), required: true);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
-            var __workflow_bodylongMessageMaxParts = WorkflowExpression.Compile(bodylongMessageMaxParts, nameof(bodylongMessageMaxParts), required: true);
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["auto-unicode"] = ExpressionConverter.Convert(__workflow_autoUnicode);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfrom != null)
-                {
-                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                body["userSuppliedId"] = "BLKTM.GWPF.01.00.00";
-                bodypropCount++;
-                bodypropCount++;
-                body["longMessageMaxParts"] = ExpressionConverter.ConvertO(__workflow_bodylongMessageMaxParts);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -54,6 +31,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
 
     public class BulksmsTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class SendSmsMessageInput
+    {
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+
+        [JsonProperty("userSuppliedId", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string UserSuppliedId { get; set; } = "BLKTM.GWPF.01.00.00";
+
+        [JsonProperty("longMessageMaxParts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int LongMessageMaxParts { get; set; } = 10;
     }
 }
 

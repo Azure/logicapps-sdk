@@ -44,16 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesPost, ApiConnectionActionConfiguration> CreateArticle(Expression<Func<string>> bodyarticleNumber = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<string>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyunitName = null)
+        public IBodyWorkflowAction<ResponseArticlesPost, ApiConnectionActionConfiguration> CreateArticle(Expression<Func<CreateArticleInput>> body)
         {
-            var __workflow_bodyarticleNumber = WorkflowExpression.Compile(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
-            var __workflow_bodypricegrossPrice = WorkflowExpression.Compile(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
-            var __workflow_bodypriceleadingPrice = WorkflowExpression.Compile(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
-            var __workflow_bodypricenetPrice = WorkflowExpression.Compile(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
-            var __workflow_bodypricetaxRate = WorkflowExpression.Compile(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyunitName = WorkflowExpression.Compile(bodyunitName, nameof(bodyunitName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseArticlesPost, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/articles";
@@ -61,69 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyarticleNumber != null)
-                {
-                    body["articleNumber"] = ExpressionConverter.ConvertO(__workflow_bodyarticleNumber);
-                    bodypropCount++;
-                }
-
-                var priceObject = new JObject();
-                var priceObjectpropCount = 0;
-                if (__workflow_bodypricegrossPrice != null)
-                {
-                    priceObject["grossPrice"] = ExpressionConverter.ConvertO(__workflow_bodypricegrossPrice);
-                    priceObjectpropCount++;
-                }
-
-                if (__workflow_bodypriceleadingPrice != null)
-                {
-                    priceObject["leadingPrice"] = ExpressionConverter.ConvertO(__workflow_bodypriceleadingPrice);
-                    priceObjectpropCount++;
-                }
-
-                if (__workflow_bodypricenetPrice != null)
-                {
-                    priceObject["netPrice"] = ExpressionConverter.ConvertO(__workflow_bodypricenetPrice);
-                    priceObjectpropCount++;
-                }
-
-                if (__workflow_bodypricetaxRate != null)
-                {
-                    priceObject["taxRate"] = ExpressionConverter.ConvertO(__workflow_bodypricetaxRate);
-                    priceObjectpropCount++;
-                }
-
-                if (priceObjectpropCount > 0)
-                {
-                    body["price"] = priceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyunitName != null)
-                {
-                    body["unitName"] = ExpressionConverter.ConvertO(__workflow_bodyunitName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseArticlesPost>(callPayload);
             });
         }
@@ -157,20 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyunitName, Expression<Func<int>> bodyversion, Expression<Func<string>> bodyarticleNumber = null, Expression<Func<string>> bodygtin = null, Expression<Func<string>> bodynote = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<bodypriceleadingPriceInput>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<UpdateAnArticleInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyunitName = WorkflowExpression.Compile(bodyunitName, nameof(bodyunitName), required: true);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: true);
-            var __workflow_bodyarticleNumber = WorkflowExpression.Compile(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
-            var __workflow_bodygtin = WorkflowExpression.Compile(bodygtin, nameof(bodygtin), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodypricegrossPrice = WorkflowExpression.Compile(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
-            var __workflow_bodypriceleadingPrice = WorkflowExpression.Compile(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
-            var __workflow_bodypricenetPrice = WorkflowExpression.Compile(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
-            var __workflow_bodypricetaxRate = WorkflowExpression.Compile(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/articles/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -178,85 +99,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyarticleNumber != null)
-                {
-                    body["articleNumber"] = ExpressionConverter.ConvertO(__workflow_bodyarticleNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygtin != null)
-                {
-                    body["gtin"] = ExpressionConverter.ConvertO(__workflow_bodygtin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                var priceObject = new JObject();
-                var priceObjectpropCount = 0;
-                if (__workflow_bodypricegrossPrice != null)
-                {
-                    priceObject["grossPrice"] = ExpressionConverter.ConvertO(__workflow_bodypricegrossPrice);
-                    priceObjectpropCount++;
-                }
-
-                if (__workflow_bodypriceleadingPrice != null)
-                {
-                    if (__workflow_bodypriceleadingPrice != null)
-                    {
-                        priceObject["leadingPrice"] = ExpressionConverter.ConvertO(__workflow_bodypriceleadingPrice);
-                        priceObjectpropCount++;
-                    }
-
-                    priceObjectpropCount++;
-                }
-                else
-                {
-                    priceObject["leadingPrice"] = "GROSS";
-                    priceObjectpropCount++;
-                }
-
-                if (__workflow_bodypricenetPrice != null)
-                {
-                    priceObject["netPrice"] = ExpressionConverter.ConvertO(__workflow_bodypricenetPrice);
-                    priceObjectpropCount++;
-                }
-
-                if (__workflow_bodypricetaxRate != null)
-                {
-                    priceObject["taxRate"] = ExpressionConverter.ConvertO(__workflow_bodypricetaxRate);
-                    priceObjectpropCount++;
-                }
-
-                if (priceObjectpropCount > 0)
-                {
-                    body["price"] = priceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["unitName"] = ExpressionConverter.ConvertO(__workflow_bodyunitName);
-                bodypropCount++;
-                body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseArticlesIdGet>(callPayload);
             });
         }
@@ -301,8 +145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseContactsPost, ApiConnectionActionConfiguration> CreateContact()
+        public IBodyWorkflowAction<ResponseContactsPost, ApiConnectionActionConfiguration> CreateContact(Expression<Func<object>> body)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseContactsPost, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -310,13 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseContactsPost>(callPayload);
             });
         }
@@ -336,9 +175,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseContactsIdPut, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResponseContactsIdPut, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> id, Expression<Func<object>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseContactsIdPut, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -346,13 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseContactsIdPut>(callPayload);
             });
         }
@@ -371,9 +205,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseCreditNotesPost, ApiConnectionActionConfiguration> CreateCreditNote(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseCreditNotesPost, ApiConnectionActionConfiguration> CreateCreditNote(Expression<Func<bool>> finalize, Expression<Func<object>> body, Expression<Func<string>> precedingSalesVoucherId = null)
         {
             var __workflow_finalize = WorkflowExpression.Compile(finalize, nameof(finalize), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             return new DeferredBodyAction<ResponseCreditNotesPost, ApiConnectionActionConfiguration>(() =>
             {
@@ -385,13 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Queries["finalize"] = ExpressionConverter.Convert(__workflow_finalize);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseCreditNotesPost>(callPayload);
             });
         }
@@ -425,9 +254,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseDeliveryNotesPost, ApiConnectionActionConfiguration> CreateDeliveryNote(Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseDeliveryNotesPost, ApiConnectionActionConfiguration> CreateDeliveryNote(Expression<Func<string>> precedingSalesVoucherId = null, Expression<Func<object>> body = null)
         {
             var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ResponseDeliveryNotesPost, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/delivery-notes";
@@ -437,13 +267,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(__workflow_precedingSalesVoucherId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseDeliveryNotesPost>(callPayload);
             });
         }
@@ -492,8 +317,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseDunningsPost, ApiConnectionActionConfiguration> CreateDunning(Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseDunningsPost, ApiConnectionActionConfiguration> CreateDunning(Expression<Func<object>> body, Expression<Func<string>> precedingSalesVoucherId = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             return new DeferredBodyAction<ResponseDunningsPost, ApiConnectionActionConfiguration>(() =>
             {
@@ -504,13 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(__workflow_precedingSalesVoucherId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseDunningsPost>(callPayload);
             });
         }
@@ -602,10 +422,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseInvoicesPost, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseInvoicesPost, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null, Expression<Func<object>> body = null)
         {
             var __workflow_finalize = WorkflowExpression.Compile(finalize, nameof(finalize), required: true);
             var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ResponseInvoicesPost, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoices";
@@ -616,13 +437,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Queries["finalize"] = ExpressionConverter.Convert(__workflow_finalize);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseInvoicesPost>(callPayload);
             });
         }
@@ -657,9 +473,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseOrderConfirmationsPost, ApiConnectionActionConfiguration> CreateOrderConfirmation(Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseOrderConfirmationsPost, ApiConnectionActionConfiguration> CreateOrderConfirmation(Expression<Func<string>> precedingSalesVoucherId = null, Expression<Func<object>> body = null)
         {
             var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ResponseOrderConfirmationsPost, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/order-confirmations";
@@ -669,13 +486,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(__workflow_precedingSalesVoucherId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseOrderConfirmationsPost>(callPayload);
             });
         }
@@ -762,9 +574,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseQuotationsPost, ApiConnectionActionConfiguration> CreateQuotation(Expression<Func<bool>> finalize)
+        public IBodyWorkflowAction<ResponseQuotationsPost, ApiConnectionActionConfiguration> CreateQuotation(Expression<Func<bool>> finalize, Expression<Func<object>> body)
         {
             var __workflow_finalize = WorkflowExpression.Compile(finalize, nameof(finalize), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseQuotationsPost, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/quotations";
@@ -773,13 +586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Queries["finalize"] = ExpressionConverter.Convert(__workflow_finalize);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseQuotationsPost>(callPayload);
             });
         }
@@ -907,21 +714,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersPost, ApiConnectionActionConfiguration> CreateVoucher(Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        public IBodyWorkflowAction<ResponseVouchersPost, ApiConnectionActionConfiguration> CreateVoucher(Expression<Func<CreateVoucherInput>> body)
         {
-            var __workflow_bodytaxType = WorkflowExpression.Compile(bodytaxType, nameof(bodytaxType), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyvoucherItems = WorkflowExpression.Compile(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
-            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: false);
-            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            var __workflow_bodyshippingDate = WorkflowExpression.Compile(bodyshippingDate, nameof(bodyshippingDate), required: false);
-            var __workflow_bodytotalGrossAmount = WorkflowExpression.Compile(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
-            var __workflow_bodytotalTaxAmount = WorkflowExpression.Compile(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
-            var __workflow_bodyuseCollectiveContact = WorkflowExpression.Compile(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
-            var __workflow_bodyvoucherDate = WorkflowExpression.Compile(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
-            var __workflow_bodyvoucherNumber = WorkflowExpression.Compile(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
-            var __workflow_bodyvoucherStatus = WorkflowExpression.Compile(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseVouchersPost, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vouchers";
@@ -929,79 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontactId != null)
-                {
-                    body["contactId"] = ExpressionConverter.ConvertO(__workflow_bodycontactId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueDate != null)
-                {
-                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyremark != null)
-                {
-                    body["remark"] = ExpressionConverter.ConvertO(__workflow_bodyremark);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshippingDate != null)
-                {
-                    body["shippingDate"] = ExpressionConverter.ConvertO(__workflow_bodyshippingDate);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["taxType"] = ExpressionConverter.ConvertO(__workflow_bodytaxType);
-                if (__workflow_bodytotalGrossAmount != null)
-                {
-                    body["totalGrossAmount"] = ExpressionConverter.ConvertO(__workflow_bodytotalGrossAmount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytotalTaxAmount != null)
-                {
-                    body["totalTaxAmount"] = ExpressionConverter.ConvertO(__workflow_bodytotalTaxAmount);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyuseCollectiveContact != null)
-                {
-                    body["useCollectiveContact"] = ExpressionConverter.ConvertO(__workflow_bodyuseCollectiveContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvoucherDate != null)
-                {
-                    body["voucherDate"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherDate);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["voucherItems"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherItems);
-                if (__workflow_bodyvoucherNumber != null)
-                {
-                    body["voucherNumber"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvoucherStatus != null)
-                {
-                    body["voucherStatus"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherStatus);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseVouchersPost>(callPayload);
             });
         }
@@ -1021,24 +744,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersIdPut, ApiConnectionActionConfiguration> UpdateVoucher(Expression<Func<string>> id, Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        public IBodyWorkflowAction<ResponseVouchersIdPut, ApiConnectionActionConfiguration> UpdateVoucher(Expression<Func<string>> id, Expression<Func<UpdateVoucherInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodytaxType = WorkflowExpression.Compile(bodytaxType, nameof(bodytaxType), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyvoucherItems = WorkflowExpression.Compile(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
-            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: false);
-            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: false);
-            var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
-            var __workflow_bodyshippingDate = WorkflowExpression.Compile(bodyshippingDate, nameof(bodyshippingDate), required: false);
-            var __workflow_bodytotalGrossAmount = WorkflowExpression.Compile(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
-            var __workflow_bodytotalTaxAmount = WorkflowExpression.Compile(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
-            var __workflow_bodyuseCollectiveContact = WorkflowExpression.Compile(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
-            var __workflow_bodyvoucherDate = WorkflowExpression.Compile(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
-            var __workflow_bodyvoucherNumber = WorkflowExpression.Compile(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
-            var __workflow_bodyvoucherStatus = WorkflowExpression.Compile(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseVouchersIdPut, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vouchers/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -1046,91 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontactId != null)
-                {
-                    body["contactId"] = ExpressionConverter.ConvertO(__workflow_bodycontactId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueDate != null)
-                {
-                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfiles != null)
-                {
-                    body["files"] = ExpressionConverter.ConvertO(__workflow_bodyfiles);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyremark != null)
-                {
-                    body["remark"] = ExpressionConverter.ConvertO(__workflow_bodyremark);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshippingDate != null)
-                {
-                    body["shippingDate"] = ExpressionConverter.ConvertO(__workflow_bodyshippingDate);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["taxType"] = ExpressionConverter.ConvertO(__workflow_bodytaxType);
-                if (__workflow_bodytotalGrossAmount != null)
-                {
-                    body["totalGrossAmount"] = ExpressionConverter.ConvertO(__workflow_bodytotalGrossAmount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytotalTaxAmount != null)
-                {
-                    body["totalTaxAmount"] = ExpressionConverter.ConvertO(__workflow_bodytotalTaxAmount);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyuseCollectiveContact != null)
-                {
-                    body["useCollectiveContact"] = ExpressionConverter.ConvertO(__workflow_bodyuseCollectiveContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvoucherDate != null)
-                {
-                    body["voucherDate"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherDate);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["voucherItems"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherItems);
-                if (__workflow_bodyvoucherNumber != null)
-                {
-                    body["voucherNumber"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvoucherStatus != null)
-                {
-                    body["voucherStatus"] = ExpressionConverter.ConvertO(__workflow_bodyvoucherStatus);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseVouchersIdPut>(callPayload);
             });
         }
@@ -1138,9 +763,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class LexofficeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration> EventSubscriptionLexoffice(Expression<Func<bodyeventTypeInput>> bodyeventType, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration> EventSubscriptionLexoffice(Expression<Func<EventSubscriptionLexofficeInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event-subscriptions";
@@ -1148,17 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<ResponseEventSubscriptionsPost>(callPayload, recurrence: recurrence);
             });
         }
@@ -1275,29 +890,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public class CreateArticleInput
     {
-        [EnumMember(Value = "salesinvoice")]
-        Salesinvoice,
-        [EnumMember(Value = "salescreditnote")]
-        Salescreditnote,
-        [EnumMember(Value = "purchaseinvoice")]
-        Purchaseinvoice,
-        [EnumMember(Value = "purchasecreditnote")]
-        Purchasecreditnote,
-        [EnumMember(Value = "invoice")]
-        Invoice,
-        [EnumMember(Value = "downpaymentinvoice")]
-        Downpaymentinvoice,
-        [EnumMember(Value = "creditnote")]
-        Creditnote,
-        [EnumMember(Value = "orderconfirmation")]
-        Orderconfirmation,
-        [EnumMember(Value = "quotation")]
-        Quotation,
-        [EnumMember(Value = "deliverynote")]
-        Deliverynote
+        [JsonProperty("articleNumber")]
+        public string ArticleNumber { get; set; }
+
+        [JsonProperty("price")]
+        public CreateArticleInputPriceType Price { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("type")]
+        public CreateArticleInputTypeType? Type { get; set; }
+
+        [JsonProperty("unitName")]
+        public string UnitName { get; set; }
+    }
+
+    public class CreateArticleInputPriceType
+    {
+        [JsonProperty("grossPrice")]
+        public double? GrossPrice { get; set; }
+
+        [JsonProperty("leadingPrice")]
+        public string LeadingPrice { get; set; }
+
+        [JsonProperty("netPrice")]
+        public double? NetPrice { get; set; }
+
+        [JsonProperty("taxRate")]
+        public double? TaxRate { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateArticleInputTypeType
+    {
+        PRODUCT,
+        SERVICE
     }
 
     public class RetrieveAnArticleResponse
@@ -1390,11 +1020,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double TaxRate { get; set; }
     }
 
+    public class UpdateAnArticleInput
+    {
+        [JsonProperty("articleNumber")]
+        public string ArticleNumber { get; set; }
+
+        [JsonProperty("gtin")]
+        public string Gtin { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("price", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateAnArticleInputPriceType Price { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateAnArticleInputTypeType Type { get; set; }
+
+        [JsonProperty("unitName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UnitName { get; set; }
+
+        [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Version { get; set; }
+    }
+
+    public class UpdateAnArticleInputPriceType
+    {
+        [JsonProperty("grossPrice", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double GrossPrice { get; set; }
+
+        [JsonProperty("leadingPrice", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateAnArticleInputPriceTypeLeadingPriceType LeadingPrice { get; set; } = UpdateAnArticleInputPriceTypeLeadingPriceType.GROSS;
+
+        [JsonProperty("netPrice", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double NetPrice { get; set; }
+
+        [JsonProperty("taxRate")]
+        public double? TaxRate { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypriceleadingPriceInput
+    public enum UpdateAnArticleInputPriceTypeLeadingPriceType
     {
         GROSS,
         NET
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateAnArticleInputTypeType
+    {
+        PRODUCT,
+        SERVICE
     }
 
     public class ResponseContactsGet
@@ -3922,8 +3601,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
+    public class CreateVoucherInput
+    {
+        [JsonProperty("contactId")]
+        public string ContactId { get; set; }
+
+        [JsonProperty("dueDate")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("remark")]
+        public string Remark { get; set; }
+
+        [JsonProperty("shippingDate")]
+        public string ShippingDate { get; set; }
+
+        [JsonProperty("taxType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateVoucherInputTaxTypeType TaxType { get; set; }
+
+        [JsonProperty("totalGrossAmount")]
+        public double? TotalGrossAmount { get; set; }
+
+        [JsonProperty("totalTaxAmount")]
+        public double? TotalTaxAmount { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateVoucherInputTypeType Type { get; set; }
+
+        [JsonProperty("useCollectiveContact")]
+        public bool? UseCollectiveContact { get; set; }
+
+        [JsonProperty("voucherDate")]
+        public string VoucherDate { get; set; }
+
+        [JsonProperty("voucherItems", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateVoucherInputVoucherItemsTypeItem[] VoucherItems { get; set; }
+
+        [JsonProperty("voucherNumber")]
+        public string VoucherNumber { get; set; }
+
+        [JsonProperty("voucherStatus")]
+        public CreateVoucherInputVoucherStatusType? VoucherStatus { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytaxTypeInput
+    public enum CreateVoucherInputTaxTypeType
     {
         [EnumMember(Value = "net")]
         Net,
@@ -3931,23 +3652,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         Gross
     }
 
-    public class bodyvoucherItemsInputItem
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateVoucherInputTypeType
+    {
+        [EnumMember(Value = "salesinvoice")]
+        Salesinvoice,
+        [EnumMember(Value = "salescreditnote")]
+        Salescreditnote,
+        [EnumMember(Value = "purchaseinvoice")]
+        Purchaseinvoice,
+        [EnumMember(Value = "purchasecreditnote")]
+        Purchasecreditnote,
+        [EnumMember(Value = "invoice")]
+        Invoice,
+        [EnumMember(Value = "downpaymentinvoice")]
+        Downpaymentinvoice,
+        [EnumMember(Value = "creditnote")]
+        Creditnote,
+        [EnumMember(Value = "orderconfirmation")]
+        Orderconfirmation,
+        [EnumMember(Value = "quotation")]
+        Quotation,
+        [EnumMember(Value = "deliverynote")]
+        Deliverynote
+    }
+
+    public class CreateVoucherInputVoucherItemsTypeItem
     {
         [JsonProperty("amount")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
 
         [JsonProperty("categoryId")]
         public string CategoryId { get; set; }
 
         [JsonProperty("taxAmount")]
-        public double TaxAmount { get; set; }
+        public double? TaxAmount { get; set; }
 
         [JsonProperty("taxRatePercent")]
-        public int TaxRatePercent { get; set; }
+        public int? TaxRatePercent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyvoucherStatusInput
+    public enum CreateVoucherInputVoucherStatusType
     {
         [EnumMember(Value = "unchecked")]
         Unchecked,
@@ -4099,6 +3845,112 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double TaxRatePercent { get; set; }
     }
 
+    public class UpdateVoucherInput
+    {
+        [JsonProperty("contactId")]
+        public string ContactId { get; set; }
+
+        [JsonProperty("dueDate")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("files")]
+        public string[] Files { get; set; }
+
+        [JsonProperty("remark")]
+        public string Remark { get; set; }
+
+        [JsonProperty("shippingDate")]
+        public string ShippingDate { get; set; }
+
+        [JsonProperty("taxType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateVoucherInputTaxTypeType TaxType { get; set; }
+
+        [JsonProperty("totalGrossAmount")]
+        public double? TotalGrossAmount { get; set; }
+
+        [JsonProperty("totalTaxAmount")]
+        public double? TotalTaxAmount { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateVoucherInputTypeType Type { get; set; }
+
+        [JsonProperty("useCollectiveContact")]
+        public bool? UseCollectiveContact { get; set; }
+
+        [JsonProperty("version")]
+        public int? Version { get; set; }
+
+        [JsonProperty("voucherDate")]
+        public string VoucherDate { get; set; }
+
+        [JsonProperty("voucherItems", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateVoucherInputVoucherItemsTypeItem[] VoucherItems { get; set; }
+
+        [JsonProperty("voucherNumber")]
+        public string VoucherNumber { get; set; }
+
+        [JsonProperty("voucherStatus")]
+        public UpdateVoucherInputVoucherStatusType? VoucherStatus { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateVoucherInputTaxTypeType
+    {
+        [EnumMember(Value = "net")]
+        Net,
+        [EnumMember(Value = "gross")]
+        Gross
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateVoucherInputTypeType
+    {
+        [EnumMember(Value = "salesinvoice")]
+        Salesinvoice,
+        [EnumMember(Value = "salescreditnote")]
+        Salescreditnote,
+        [EnumMember(Value = "purchaseinvoice")]
+        Purchaseinvoice,
+        [EnumMember(Value = "purchasecreditnote")]
+        Purchasecreditnote,
+        [EnumMember(Value = "invoice")]
+        Invoice,
+        [EnumMember(Value = "downpaymentinvoice")]
+        Downpaymentinvoice,
+        [EnumMember(Value = "creditnote")]
+        Creditnote,
+        [EnumMember(Value = "orderconfirmation")]
+        Orderconfirmation,
+        [EnumMember(Value = "quotation")]
+        Quotation,
+        [EnumMember(Value = "deliverynote")]
+        Deliverynote
+    }
+
+    public class UpdateVoucherInputVoucherItemsTypeItem
+    {
+        [JsonProperty("amount")]
+        public double? Amount { get; set; }
+
+        [JsonProperty("categoryId")]
+        public string CategoryId { get; set; }
+
+        [JsonProperty("taxAmount")]
+        public double? TaxAmount { get; set; }
+
+        [JsonProperty("taxRatePercent")]
+        public int? TaxRatePercent { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateVoucherInputVoucherStatusType
+    {
+        [EnumMember(Value = "unchecked")]
+        Unchecked,
+        [EnumMember(Value = "open")]
+        Open
+    }
+
     public class ResponseEventSubscriptionsPost
     {
         [JsonProperty("createdDate")]
@@ -4117,8 +3969,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
+    public class EventSubscriptionLexofficeInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public EventSubscriptionLexofficeInputEventTypeType EventType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventTypeInput
+    public enum EventSubscriptionLexofficeInputEventTypeType
     {
         [EnumMember(Value = "article.created")]
         ArticleCreated,

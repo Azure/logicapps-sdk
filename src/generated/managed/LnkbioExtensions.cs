@@ -13,33 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
     public class LnkbioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
-        public IBodyWorkflowAction<InlineResponse200, ApiConnectionActionConfiguration> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
+        public IBodyWorkflowAction<InlineResponse200, ApiConnectionActionConfiguration> Lnkadd(Expression<Func<LnkaddInput>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: true);
-            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InlineResponse200, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lnk/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["link"] = ExpressionConverter.ConvertO(__workflow_bodylink);
-                if (__workflow_bodyimage != null)
-                {
-                    body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InlineResponse200>(callPayload);
             });
         }
@@ -68,6 +50,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class LnkaddInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("link", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Link { get; set; }
+
+        [JsonProperty("image")]
+        public string Image { get; set; }
     }
 }
 

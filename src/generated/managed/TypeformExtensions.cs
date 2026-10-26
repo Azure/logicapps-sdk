@@ -16,26 +16,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
     public class TypeformTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<NewResponseWebhookV2Input>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/forms/{0}/webhooks/{1}", __workflow_formId.WithUrlEncoding(1), __workflow_tag.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["enabled"] = true;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -63,6 +54,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class NewResponseWebhookV2Input
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Enabled { get; set; } = true;
     }
 }
 

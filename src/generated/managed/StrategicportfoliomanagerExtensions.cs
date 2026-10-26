@@ -401,11 +401,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesSetEntityFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesSetEntityFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
-            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldsValues";
@@ -419,11 +419,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResult, ApiConnectionActionConfiguration> FinancialEntitiesSetEntityFieldsValuesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues = null)
+        public IBodyWorkflowAction<CallResult, ApiConnectionActionConfiguration> FinancialEntitiesSetEntityFieldsValuesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
-            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: true);
             return new DeferredBodyAction<CallResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesSetCustomFinancialFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<FinancialFieldValuePair[]>> fieldValues = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesSetCustomFinancialFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<FinancialFieldValuePair[]>> fieldValues)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             var __workflow_fdId = WorkflowExpression.Compile(fdId, nameof(fdId), required: true);
             var __workflow_fnId = WorkflowExpression.Compile(fnId, nameof(fnId), required: true);
             var __workflow_centerId = WorkflowExpression.Compile(centerId, nameof(centerId), required: true);
-            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
@@ -758,12 +758,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MilestonesSetMilestoneFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId, Expression<Func<MilestoneFieldValuePair[]>> fieldValues = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MilestonesSetMilestoneFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId, Expression<Func<MilestoneFieldValuePair[]>> fieldValues)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_milestoneId = WorkflowExpression.Compile(milestoneId, nameof(milestoneId), required: true);
-            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Milestones/SetMilestoneFieldsValues";
@@ -780,508 +780,288 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class StrategicportfoliomanagerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddFinancialValuesChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddFinancialValuesChangedHook(Expression<Func<EventsAddFinancialValuesChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddFinancialValuesChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityCreatedHook(Expression<Func<EventsAddEntityCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddEntityCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityUpdatedHook(Expression<Func<EventsAddEntityUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddEntityUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityDeletedHook(Expression<Func<EventsAddEntityDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddEntityDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddStageTransitionHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddStageTransitionHook(Expression<Func<EventsAddStageTransitionHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddStageTransitionHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<EventsAddActualsApprovalWorkflowStartedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsPeriodStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsPeriodStatusChangedHook(Expression<Func<EventsAddActualsPeriodStatusChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestCreatedHook(Expression<Func<EventsAddChangeRequestCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestUpdatedHook(Expression<Func<EventsAddChangeRequestUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestDeletedHook(Expression<Func<EventsAddChangeRequestDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestStatusChangedHook(Expression<Func<EventsAddChangeRequestStatusChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentAddedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentAddedHook(Expression<Func<EventsAddResourceAssignmentAddedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentRemovedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentRemovedHook(Expression<Func<EventsAddResourceAssignmentRemovedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentUpdatedHook(Expression<Func<EventsAddResourceAssignmentUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneCreatedHook(Expression<Func<EventsAddMilestoneCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneUpdatedHook(Expression<Func<EventsAddMilestoneUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneDeletedHook(Expression<Func<EventsAddMilestoneDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipCreatedHook(Expression<Func<EventsAddRelationshipCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipUpdatedHook(Expression<Func<EventsAddRelationshipUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipUpdatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipDeletedHook(Expression<Func<EventsAddRelationshipDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipDeletedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestCreatedHook(Expression<Func<EventsAddApprovalRequestCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddApprovalRequestCreatedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestChangedHook(Expression<Func<EventsAddApprovalRequestChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Events/AddApprovalRequestChangedHook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var eventCreationInformation = new JObject();
-                var eventCreationInformationpropCount = 0;
-                eventCreationInformationpropCount++;
-                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
-                eventCreationInformationpropCount++;
-                if (eventCreationInformationpropCount > 0)
-                {
-                    callPayload.Body = eventCreationInformation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventCreationInformation);
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -1427,6 +1207,204 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
     public class EventCreationResponse
     {
         public bool Succeeded { get; set; }
+    }
+
+    public class EventsAddFinancialValuesChangedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddEntityCreatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddEntityUpdatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddEntityDeletedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddStageTransitionHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddActualsApprovalWorkflowStartedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddActualsPeriodStatusChangedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddChangeRequestCreatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddChangeRequestUpdatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddChangeRequestDeletedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddChangeRequestStatusChangedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddResourceAssignmentAddedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddResourceAssignmentRemovedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddResourceAssignmentUpdatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddMilestoneCreatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddMilestoneUpdatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddMilestoneDeletedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddRelationshipCreatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddRelationshipUpdatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddRelationshipDeletedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddApprovalRequestCreatedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EventsAddApprovalRequestChangedHookInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteURL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

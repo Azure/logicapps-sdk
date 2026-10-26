@@ -13,79 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
     public class CentricalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostLearning(Expression<Func<string>> learningType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodycourseName, Expression<Func<double>> bodyscore, Expression<Func<string>> bodycontentCategory = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostLearning(Expression<Func<string>> learningType, Expression<Func<PostLearningInput>> body)
         {
             var __workflow_learningType = WorkflowExpression.Compile(learningType, nameof(learningType), required: true);
-            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodycourseName = WorkflowExpression.Compile(bodycourseName, nameof(bodycourseName), required: true);
-            var __workflow_bodyscore = WorkflowExpression.Compile(bodyscore, nameof(bodyscore), required: true);
-            var __workflow_bodycontentCategory = WorkflowExpression.Compile(bodycontentCategory, nameof(bodycontentCategory), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/import/push/lms_{0}", __workflow_learningType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event_time"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
-                bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                bodypropCount++;
-                body["course_name"] = ExpressionConverter.ConvertO(__workflow_bodycourseName);
-                bodypropCount++;
-                body["score"] = ExpressionConverter.ConvertO(__workflow_bodyscore);
-                if (__workflow_bodycontentCategory != null)
-                {
-                    body["course_category"] = ExpressionConverter.ConvertO(__workflow_bodycontentCategory);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostPerformance(Expression<Func<string>> performanceType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodykpiName, Expression<Func<double>> bodykpiValue, Expression<Func<string>> bodyadditionalData = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostPerformance(Expression<Func<string>> performanceType, Expression<Func<PostPerformanceInput>> body)
         {
             var __workflow_performanceType = WorkflowExpression.Compile(performanceType, nameof(performanceType), required: true);
-            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodykpiName = WorkflowExpression.Compile(bodykpiName, nameof(bodykpiName), required: true);
-            var __workflow_bodykpiValue = WorkflowExpression.Compile(bodykpiValue, nameof(bodykpiValue), required: true);
-            var __workflow_bodyadditionalData = WorkflowExpression.Compile(bodyadditionalData, nameof(bodyadditionalData), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/import/push/kpi_{0}", __workflow_performanceType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event_time"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
-                bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                bodypropCount++;
-                body["kpi_name"] = ExpressionConverter.ConvertO(__workflow_bodykpiName);
-                bodypropCount++;
-                body["kpi_value"] = ExpressionConverter.ConvertO(__workflow_bodykpiValue);
-                if (__workflow_bodyadditionalData != null)
-                {
-                    body["additional_data"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalData);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -93,6 +45,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
 
     public class CentricalTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class PostLearningInput
+    {
+        [JsonProperty("event_time", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateTime { get; set; }
+
+        [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserId { get; set; }
+
+        [JsonProperty("course_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CourseName { get; set; }
+
+        [JsonProperty("score", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Score { get; set; }
+
+        [JsonProperty("course_category")]
+        public string ContentCategory { get; set; }
+    }
+
+    public class PostPerformanceInput
+    {
+        [JsonProperty("event_time", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateTime { get; set; }
+
+        [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserId { get; set; }
+
+        [JsonProperty("kpi_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string KpiName { get; set; }
+
+        [JsonProperty("kpi_value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double KpiValue { get; set; }
+
+        [JsonProperty("additional_data")]
+        public string AdditionalData { get; set; }
     }
 }
 

@@ -16,25 +16,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascassessment
 
     public class AscassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASCAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASCAssessmentTriggerSubscribe(Expression<Func<ASCAssessmentTriggerSubscribeInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Microsoft.Security/Assessment/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class ASCAssessmentTriggerSubscribeInput
+    {
+        [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

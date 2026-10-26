@@ -44,265 +44,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddTaskResponse, ApiConnectionActionConfiguration> AddTask(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodycontextId, Expression<Func<string>> bodytitle, Expression<Func<bodyassigneetyInput>> bodyassigneety, Expression<Func<string>> bodyassigneeworkId, Expression<Func<string>> bodyworkObjectwWstype, Expression<Func<string>> bodyworkObjectwId, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodydueTimeZone = null, Expression<Func<string>> bodytaskStatus = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<AddTaskResponse, ApiConnectionActionConfiguration> AddTask(Expression<Func<AddTaskInput>> body)
         {
-            var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            var __workflow_bodycontextId = WorkflowExpression.Compile(bodycontextId, nameof(bodycontextId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyassigneety = WorkflowExpression.Compile(bodyassigneety, nameof(bodyassigneety), required: true);
-            var __workflow_bodyassigneeworkId = WorkflowExpression.Compile(bodyassigneeworkId, nameof(bodyassigneeworkId), required: true);
-            var __workflow_bodyworkObjectwWstype = WorkflowExpression.Compile(bodyworkObjectwWstype, nameof(bodyworkObjectwWstype), required: true);
-            var __workflow_bodyworkObjectwId = WorkflowExpression.Compile(bodyworkObjectwId, nameof(bodyworkObjectwId), required: true);
-            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodydueTimeZone = WorkflowExpression.Compile(bodydueTimeZone, nameof(bodydueTimeZone), required: false);
-            var __workflow_bodytaskStatus = WorkflowExpression.Compile(bodytaskStatus, nameof(bodytaskStatus), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["context_work_id"] = ExpressionConverter.ConvertO(__workflow_bodycontextWorkId);
-                bodypropCount++;
-                body["context_id"] = ExpressionConverter.ConvertO(__workflow_bodycontextId);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                var assigneeObject = new JObject();
-                var assigneeObjectpropCount = 0;
-                assigneeObjectpropCount++;
-                assigneeObject["ty"] = ExpressionConverter.ConvertO(__workflow_bodyassigneety);
-                assigneeObjectpropCount++;
-                assigneeObject["work_id"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeworkId);
-                if (assigneeObjectpropCount > 0)
-                {
-                    body["assignee"] = assigneeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueDate != null)
-                {
-                    body["due_date"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueTimeZone != null)
-                {
-                    body["due_time_zone"] = ExpressionConverter.ConvertO(__workflow_bodydueTimeZone);
-                    bodypropCount++;
-                }
-
-                var workObjectObject = new JObject();
-                var workObjectObjectpropCount = 0;
-                workObjectObjectpropCount++;
-                workObjectObject["w_wstype"] = ExpressionConverter.ConvertO(__workflow_bodyworkObjectwWstype);
-                workObjectObjectpropCount++;
-                workObjectObject["w_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkObjectwId);
-                if (workObjectObjectpropCount > 0)
-                {
-                    body["work_object"] = workObjectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskStatus != null)
-                {
-                    body["task_status"] = ExpressionConverter.ConvertO(__workflow_bodytaskStatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentId != null)
-                {
-                    body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration> UpdateSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldType, Expression<Func<string>> bodyfieldId, Expression<Func<object>> bodyfieldData)
+        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration> UpdateSingleTaskField(Expression<Func<UpdateSingleTaskFieldInput>> body)
         {
-            var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: true);
-            var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: true);
-            var __workflow_bodyfieldData = WorkflowExpression.Compile(bodyfieldData, nameof(bodyfieldData), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updateSingleTaskField";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["context_work_id"] = ExpressionConverter.ConvertO(__workflow_bodycontextWorkId);
-                bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                bodypropCount++;
-                body["field_type"] = ExpressionConverter.ConvertO(__workflow_bodyfieldType);
-                bodypropCount++;
-                body["field_id"] = ExpressionConverter.ConvertO(__workflow_bodyfieldId);
-                bodypropCount++;
-                body["field_data"] = ExpressionConverter.ConvertO(__workflow_bodyfieldData);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateSingleTaskFieldResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<CreateTrackerResponse, ApiConnectionActionConfiguration> CreateTracker(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytrackerOwner = null)
+        public IBodyWorkflowAction<CreateTrackerResponse, ApiConnectionActionConfiguration> CreateTracker(Expression<Func<CreateTrackerInput>> body)
         {
-            var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytrackerOwner = WorkflowExpression.Compile(bodytrackerOwner, nameof(bodytrackerOwner), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTrackerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createTracker";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["context_work_id"] = ExpressionConverter.ConvertO(__workflow_bodycontextWorkId);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodytrackerOwner != null)
-                {
-                    body["tracker_owner"] = ExpressionConverter.ConvertO(__workflow_bodytrackerOwner);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTrackerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddCustomFieldResponse, ApiConnectionActionConfiguration> AddCustomField(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycontextId, Expression<Func<bodyviewOptionInput>> bodyviewOption, Expression<Func<string>> bodyfieldTitle, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldData = null)
+        public IBodyWorkflowAction<AddCustomFieldResponse, ApiConnectionActionConfiguration> AddCustomField(Expression<Func<AddCustomFieldInput>> body)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodycontextId = WorkflowExpression.Compile(bodycontextId, nameof(bodycontextId), required: true);
-            var __workflow_bodyviewOption = WorkflowExpression.Compile(bodyviewOption, nameof(bodyviewOption), required: true);
-            var __workflow_bodyfieldTitle = WorkflowExpression.Compile(bodyfieldTitle, nameof(bodyfieldTitle), required: true);
-            var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: true);
-            var __workflow_bodyfieldData = WorkflowExpression.Compile(bodyfieldData, nameof(bodyfieldData), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddCustomFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addCustomField";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["context_id"] = ExpressionConverter.ConvertO(__workflow_bodycontextId);
-                bodypropCount++;
-                body["viewOption"] = ExpressionConverter.ConvertO(__workflow_bodyviewOption);
-                bodypropCount++;
-                body["field_title"] = ExpressionConverter.ConvertO(__workflow_bodyfieldTitle);
-                bodypropCount++;
-                body["field_type"] = ExpressionConverter.ConvertO(__workflow_bodyfieldType);
-                if (__workflow_bodyfieldData != null)
-                {
-                    body["field_data"] = ExpressionConverter.ConvertO(__workflow_bodyfieldData);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddCustomFieldResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration> ClearSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldId)
+        public IBodyWorkflowAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration> ClearSingleTaskField(Expression<Func<ClearSingleTaskFieldInput>> body)
         {
-            var __workflow_bodycontextWorkId = WorkflowExpression.Compile(bodycontextWorkId, nameof(bodycontextWorkId), required: true);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/clearSingleTaskField";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["context_work_id"] = ExpressionConverter.ConvertO(__workflow_bodycontextWorkId);
-                bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                bodypropCount++;
-                body["field_id"] = ExpressionConverter.ConvertO(__workflow_bodyfieldId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ClearSingleTaskFieldResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ImportTrackerResponse, ApiConnectionActionConfiguration> ImportTracker(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceTrackerId, Expression<Func<string>> bodydestinationWorkspaceId, Expression<Func<string>> bodyimportType, Expression<Func<object>> bodyoptions = null)
+        public IBodyWorkflowAction<ImportTrackerResponse, ApiConnectionActionConfiguration> ImportTracker(Expression<Func<ImportTrackerInput>> body)
         {
-            var __workflow_bodysourceWorkspaceId = WorkflowExpression.Compile(bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
-            var __workflow_bodysourceTrackerId = WorkflowExpression.Compile(bodysourceTrackerId, nameof(bodysourceTrackerId), required: true);
-            var __workflow_bodydestinationWorkspaceId = WorkflowExpression.Compile(bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: true);
-            var __workflow_bodyimportType = WorkflowExpression.Compile(bodyimportType, nameof(bodyimportType), required: true);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImportTrackerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/importTracker";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["source_workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodysourceWorkspaceId);
-                bodypropCount++;
-                body["source_tracker_id"] = ExpressionConverter.ConvertO(__workflow_bodysourceTrackerId);
-                bodypropCount++;
-                body["destination_workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodydestinationWorkspaceId);
-                bodypropCount++;
-                body["import_type"] = ExpressionConverter.ConvertO(__workflow_bodyimportType);
-                if (__workflow_bodyoptions != null)
-                {
-                    body["options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImportTrackerResponse>(callPayload);
             });
         }
@@ -475,8 +295,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         Tracker
     }
 
+    public class AddTaskInput
+    {
+        [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContextWorkId { get; set; }
+
+        [JsonProperty("context_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContextId { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("assignee")]
+        public AssigneeInRequest Assignee { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("due_time_zone")]
+        public string DueTimeZone { get; set; }
+
+        [JsonProperty("work_object")]
+        public WorkObjectInRequest WorkObject { get; set; }
+
+        [JsonProperty("task_status")]
+        public string TaskStatus { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("parent_id")]
+        public string ParentId { get; set; }
+    }
+
+    public class AssigneeInRequest
+    {
+        [JsonProperty("ty")]
+        public AssigneeInRequestTyType Ty { get; set; }
+
+        [JsonProperty("work_id")]
+        public string WorkId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyassigneetyInput
+    public enum AssigneeInRequestTyType
     {
         [EnumMember(Value = "user")]
         User,
@@ -484,10 +346,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         Group
     }
 
+    public class WorkObjectInRequest
+    {
+        [JsonProperty("w_wstype")]
+        public string WWstype { get; set; }
+
+        [JsonProperty("w_id")]
+        public string WId { get; set; }
+    }
+
     public class UpdateSingleTaskFieldResponse
     {
         [JsonProperty("data")]
         public TaskProfile Data { get; set; }
+    }
+
+    public class UpdateSingleTaskFieldInput
+    {
+        [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContextWorkId { get; set; }
+
+        [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TaskId { get; set; }
+
+        [JsonProperty("field_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldType { get; set; }
+
+        [JsonProperty("field_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldId { get; set; }
+
+        [JsonProperty("field_data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken FieldData { get; set; }
     }
 
     public class CreateTrackerResponse
@@ -526,6 +415,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string BasicProperties { get; set; }
     }
 
+    public class CreateTrackerInput
+    {
+        [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContextWorkId { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("tracker_owner")]
+        public string TrackerOwner { get; set; }
+    }
+
     public class AddCustomFieldResponse
     {
         [JsonProperty("data")]
@@ -538,8 +439,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string FieldId { get; set; }
     }
 
+    public class AddCustomFieldInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("context_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContextId { get; set; }
+
+        [JsonProperty("viewOption", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddCustomFieldInputViewOptionType ViewOption { get; set; } = AddCustomFieldInputViewOptionType.TableViewAndDetailsView;
+
+        [JsonProperty("field_title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldTitle { get; set; }
+
+        [JsonProperty("field_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldType { get; set; }
+
+        [JsonProperty("field_data")]
+        public JToken FieldData { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyviewOptionInput
+    public enum AddCustomFieldInputViewOptionType
     {
         [EnumMember(Value = "Details View")]
         DetailsView,
@@ -553,10 +475,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public TaskProfile Data { get; set; }
     }
 
+    public class ClearSingleTaskFieldInput
+    {
+        [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContextWorkId { get; set; }
+
+        [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TaskId { get; set; }
+
+        [JsonProperty("field_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldId { get; set; }
+    }
+
     public class ImportTrackerResponse
     {
         [JsonProperty("data")]
         public JToken Data { get; set; }
+    }
+
+    public class ImportTrackerInput
+    {
+        [JsonProperty("source_workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceWorkspaceId { get; set; }
+
+        [JsonProperty("source_tracker_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceTrackerId { get; set; }
+
+        [JsonProperty("destination_workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationWorkspaceId { get; set; }
+
+        [JsonProperty("import_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ImportType { get; set; }
+
+        [JsonProperty("options")]
+        public JToken Options { get; set; }
     }
 }
 

@@ -13,158 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
     public class MistralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> CreateChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<bool>> bodystream = null, Expression<Func<bool>> bodysafePrompt = null, Expression<Func<int>> bodyrandomSeed = null)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> CreateChatCompletion(Expression<Func<CreateChatCompletionInput>> body)
         {
-            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            var __workflow_bodystream = WorkflowExpression.Compile(bodystream, nameof(bodystream), required: false);
-            var __workflow_bodysafePrompt = WorkflowExpression.Compile(bodysafePrompt, nameof(bodysafePrompt), required: false);
-            var __workflow_bodyrandomSeed = WorkflowExpression.Compile(bodyrandomSeed, nameof(bodyrandomSeed), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatCompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                if (__workflow_bodytemperature != null)
-                {
-                    if (__workflow_bodytemperature != null)
-                    {
-                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["temperature"] = 0.7;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytopP != null)
-                {
-                    if (__workflow_bodytopP != null)
-                    {
-                        body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["top_p"] = 1;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxTokens != null)
-                {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystream != null)
-                {
-                    if (__workflow_bodystream != null)
-                    {
-                        body["stream"] = ExpressionConverter.ConvertO(__workflow_bodystream);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["stream"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysafePrompt != null)
-                {
-                    if (__workflow_bodysafePrompt != null)
-                    {
-                        body["safe_prompt"] = ExpressionConverter.ConvertO(__workflow_bodysafePrompt);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["safe_prompt"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrandomSeed != null)
-                {
-                    body["random_seed"] = ExpressionConverter.ConvertO(__workflow_bodyrandomSeed);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<EmbeddingResponse, ApiConnectionActionConfiguration> CreateEmbedding(Expression<Func<string>> bodymodel = null, Expression<Func<string[]>> bodyinput = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null)
+        public IBodyWorkflowAction<EmbeddingResponse, ApiConnectionActionConfiguration> CreateEmbedding(Expression<Func<CreateEmbeddingInput>> body)
         {
-            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
-            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: false);
-            var __workflow_bodyencodingFormat = WorkflowExpression.Compile(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmbeddingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/embeddings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymodel != null)
-                {
-                    if (__workflow_bodymodel != null)
-                    {
-                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["model"] = "mistral-embed";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinput != null)
-                {
-                    body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyencodingFormat != null)
-                {
-                    body["encoding_format"] = ExpressionConverter.ConvertO(__workflow_bodyencodingFormat);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmbeddingResponse>(callPayload);
             });
         }
@@ -260,17 +131,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public int TotalTokens { get; set; }
     }
 
-    public class bodymessagesInputItem
+    public class CreateChatCompletionInput
     {
-        [JsonProperty("role")]
-        public bodymessagesInputItemRoleType Role { get; set; }
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Model { get; set; }
+
+        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateChatCompletionInputMessagesTypeItem[] Messages { get; set; }
+
+        [JsonProperty("temperature", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Temperature { get; set; } = 0.7;
+
+        [JsonProperty("top_p", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? TopP { get; set; } = 1;
+
+        [JsonProperty("max_tokens")]
+        public int? MaxTokens { get; set; }
+
+        [JsonProperty("stream", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Stream { get; set; } = false;
+
+        [JsonProperty("safe_prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SafePrompt { get; set; } = false;
+
+        [JsonProperty("random_seed")]
+        public int? RandomSeed { get; set; }
+    }
+
+    public class CreateChatCompletionInputMessagesTypeItem
+    {
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateChatCompletionInputMessagesTypeItemRoleType? Role { get; set; } = CreateChatCompletionInputMessagesTypeItemRoleType.User;
 
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymessagesInputItemRoleType
+    public enum CreateChatCompletionInputMessagesTypeItemRoleType
     {
         [EnumMember(Value = "system")]
         System,
@@ -321,8 +219,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public int TotalTokens { get; set; }
     }
 
+    public class CreateEmbeddingInput
+    {
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Model { get; set; } = "mistral-embed";
+
+        [JsonProperty("input")]
+        public string[] Input { get; set; }
+
+        [JsonProperty("encoding_format")]
+        public CreateEmbeddingInputEncodingFormatType? EncodingFormat { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyencodingFormatInput
+    public enum CreateEmbeddingInputEncodingFormatType
     {
         [EnumMember(Value = "float")]
         Float

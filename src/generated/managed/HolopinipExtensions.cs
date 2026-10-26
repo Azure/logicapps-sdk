@@ -13,25 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
     public class HolopinipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<IssuePostResponse, ApiConnectionActionConfiguration> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<IssuePostResponse, ApiConnectionActionConfiguration> Issue(Expression<Func<string>> id, Expression<Func<IssuePostInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IssuePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sticker/share";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IssuePostResponse>(callPayload);
             });
         }
@@ -85,6 +77,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
 
         [JsonProperty("stickerId")]
         public string StickerId { get; set; }
+    }
+
+    public class IssuePostInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
     }
 
     public class UserStickerGetResponse

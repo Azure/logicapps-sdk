@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
     public class HvivehicleinspectionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
-        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[], ApiConnectionActionConfiguration> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyvehicleNumber, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate)
+        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[], ApiConnectionActionConfiguration> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<InspectionPerVehicleInput>> body)
         {
             var __workflow_sv = WorkflowExpression.Compile(sv, nameof(sv), required: true);
-            var __workflow_bodymasterEmail = WorkflowExpression.Compile(bodymasterEmail, nameof(bodymasterEmail), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodyvehicleNumber = WorkflowExpression.Compile(bodyvehicleNumber, nameof(bodyvehicleNumber), required: true);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InspectionPerVehicleResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";
@@ -31,23 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
                 callPayload.Queries["sv"] = ExpressionConverter.Convert(__workflow_sv);
                 callPayload.Queries["sig"] = Convert.ToString("byht1JYW63X3X6hvP1B3cRjYvZExaWoV9BsLb_Mm_vI");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["master_email"] = ExpressionConverter.ConvertO(__workflow_bodymasterEmail);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["vehicle_number"] = ExpressionConverter.ConvertO(__workflow_bodyvehicleNumber);
-                bodypropCount++;
-                body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                bodypropCount++;
-                body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InspectionPerVehicleResponseItem[]>(callPayload);
             });
         }
@@ -262,6 +242,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
 
         [JsonProperty("note")]
         public string Note { get; set; }
+    }
+
+    public class InspectionPerVehicleInput
+    {
+        [JsonProperty("master_email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MasterEmail { get; set; }
+
+        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty("vehicle_number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string VehicleNumber { get; set; }
+
+        [JsonProperty("start_date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartDate { get; set; }
+
+        [JsonProperty("end_date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndDate { get; set; }
     }
 }
 

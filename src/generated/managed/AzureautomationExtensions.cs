@@ -47,14 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> runbookName = null, Expression<Func<object>> bodypropertiesrunbookParameters = null, Expression<Func<string>> bodypropertieshybridAutomationWorkerGroup = null, Expression<Func<bool>> wait = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<CreateJobInput>> body, Expression<Func<string>> runbookName = null, Expression<Func<bool>> wait = null)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
             var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_runbookName = WorkflowExpression.Compile(runbookName, nameof(runbookName), required: false);
-            var __workflow_bodypropertiesrunbookParameters = WorkflowExpression.Compile(bodypropertiesrunbookParameters, nameof(bodypropertiesrunbookParameters), required: false);
-            var __workflow_bodypropertieshybridAutomationWorkerGroup = WorkflowExpression.Compile(bodypropertieshybridAutomationWorkerGroup, nameof(bodypropertieshybridAutomationWorkerGroup), required: false);
             var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: false);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -67,33 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
                 callPayload.Queries["wait"] = Convert.ToString(false);
                 if (__workflow_wait != null)
                     callPayload.Queries["wait"] = ExpressionConverter.Convert(__workflow_wait);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (__workflow_bodypropertiesrunbookParameters != null)
-                {
-                    propertiesObject["parameters"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesrunbookParameters);
-                    propertiesObjectpropCount++;
-                }
-
-                if (__workflow_bodypropertieshybridAutomationWorkerGroup != null)
-                {
-                    propertiesObject["runOn"] = ExpressionConverter.ConvertO(__workflow_bodypropertieshybridAutomationWorkerGroup);
-                    propertiesObjectpropCount++;
-                }
-
-                if (propertiesObjectpropCount > 0)
-                {
-                    body["properties"] = propertiesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateJobResponse>(callPayload);
             });
         }
@@ -137,6 +110,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
 
         [JsonProperty("statusDetails")]
         public string StatusDetails { get; set; }
+    }
+
+    public class CreateJobInput
+    {
+        [JsonProperty("properties")]
+        public CreateJobInputPropertiesType Properties { get; set; }
+    }
+
+    public class CreateJobInputPropertiesType
+    {
+        [JsonProperty("parameters")]
+        public JToken RunbookParameters { get; set; }
+
+        [JsonProperty("runOn")]
+        public string HybridAutomationWorkerGroup { get; set; }
     }
 }
 

@@ -13,27 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     public class SendgridActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse, ApiConnectionActionConfiguration> AddGlobalSuppression(Expression<Func<string[]>> recipientEmailsrecipientEmail = null)
+        public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse, ApiConnectionActionConfiguration> AddGlobalSuppression(Expression<Func<AddGlobalSuppressionInput>> recipientEmails)
         {
-            var __workflow_recipientEmailsrecipientEmail = WorkflowExpression.Compile(recipientEmailsrecipientEmail, nameof(recipientEmailsrecipientEmail), required: false);
+            var __workflow_recipientEmails = WorkflowExpression.Compile(recipientEmails, nameof(recipientEmails), required: true);
             return new DeferredBodyAction<AddGlobalSuppressRequestAndResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/suppressions/global";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var recipientEmails = new JObject();
-                var recipientEmailspropCount = 0;
-                if (__workflow_recipientEmailsrecipientEmail != null)
-                {
-                    recipientEmails["recipient_emails"] = ExpressionConverter.ConvertO(__workflow_recipientEmailsrecipientEmail);
-                    recipientEmailspropCount++;
-                }
-
-                if (recipientEmailspropCount > 0)
-                {
-                    callPayload.Body = recipientEmails;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_recipientEmails);
                 return new ApiConnectionAction<AddGlobalSuppressRequestAndResponse>(callPayload);
             });
         }
@@ -105,83 +93,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachment[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmail(Expression<Func<SendEmailV4Input>> request)
         {
-            var __workflow_requestfrom = WorkflowExpression.Compile(requestfrom, nameof(requestfrom), required: true);
-            var __workflow_requestto = WorkflowExpression.Compile(requestto, nameof(requestto), required: true);
-            var __workflow_requestsubject = WorkflowExpression.Compile(requestsubject, nameof(requestsubject), required: true);
-            var __workflow_requestemailBody = WorkflowExpression.Compile(requestemailBody, nameof(requestemailBody), required: true);
-            var __workflow_requestattachment = WorkflowExpression.Compile(requestattachment, nameof(requestattachment), required: false);
-            var __workflow_requestfromName = WorkflowExpression.Compile(requestfromName, nameof(requestfromName), required: false);
-            var __workflow_requesttoNames = WorkflowExpression.Compile(requesttoNames, nameof(requesttoNames), required: false);
-            var __workflow_requestcC = WorkflowExpression.Compile(requestcC, nameof(requestcC), required: false);
-            var __workflow_requestcCNames = WorkflowExpression.Compile(requestcCNames, nameof(requestcCNames), required: false);
-            var __workflow_requestbcc = WorkflowExpression.Compile(requestbcc, nameof(requestbcc), required: false);
-            var __workflow_requestbCCNames = WorkflowExpression.Compile(requestbCCNames, nameof(requestbCCNames), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/mail/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestattachment != null)
-                {
-                    request["attachments"] = ExpressionConverter.ConvertO(__workflow_requestattachment);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["from"] = ExpressionConverter.ConvertO(__workflow_requestfrom);
-                if (__workflow_requestfromName != null)
-                {
-                    request["fromname"] = ExpressionConverter.ConvertO(__workflow_requestfromName);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["to"] = ExpressionConverter.ConvertO(__workflow_requestto);
-                if (__workflow_requesttoNames != null)
-                {
-                    request["toname"] = ExpressionConverter.ConvertO(__workflow_requesttoNames);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["subject"] = ExpressionConverter.ConvertO(__workflow_requestsubject);
-                requestpropCount++;
-                request["text"] = ExpressionConverter.ConvertO(__workflow_requestemailBody);
-                request["ishtml"] = true;
-                requestpropCount++;
-                if (__workflow_requestcC != null)
-                {
-                    request["cc"] = ExpressionConverter.ConvertO(__workflow_requestcC);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestcCNames != null)
-                {
-                    request["ccname"] = ExpressionConverter.ConvertO(__workflow_requestcCNames);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestbcc != null)
-                {
-                    request["bcc"] = ExpressionConverter.ConvertO(__workflow_requestbcc);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestbCCNames != null)
-                {
-                    request["bccname"] = ExpressionConverter.ConvertO(__workflow_requestbCCNames);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -192,6 +112,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     }
 
     public class AddGlobalSuppressRequestAndResponse
+    {
+        [JsonProperty("recipient_emails")]
+        public string[] RecipientEmail { get; set; }
+    }
+
+    public class AddGlobalSuppressionInput
     {
         [JsonProperty("recipient_emails")]
         public string[] RecipientEmail { get; set; }
@@ -216,6 +142,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     {
         [JsonProperty("isUnsubscribed")]
         public bool IsEmailUnsubscribed { get; set; }
+    }
+
+    public class SendEmailV4Input
+    {
+        [JsonProperty("attachments")]
+        public EmailAttachment[] Attachment { get; set; }
+
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+
+        [JsonProperty("fromname")]
+        public string FromName { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty("toname")]
+        public string ToNames { get; set; }
+
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EmailBody { get; set; }
+
+        [JsonProperty("ishtml", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool IsHtml { get; set; } = true;
+
+        [JsonProperty("cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("ccname")]
+        public string CCNames { get; set; }
+
+        [JsonProperty("bcc")]
+        public string Bcc { get; set; }
+
+        [JsonProperty("bccname")]
+        public string BCCNames { get; set; }
     }
 
     public class EmailAttachment

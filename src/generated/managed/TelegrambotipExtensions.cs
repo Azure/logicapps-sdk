@@ -39,103 +39,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> token, Expression<Func<string>> bodychatId = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyparseMode = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> token, Expression<Func<SendMessageInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
-            var __workflow_bodychatId = WorkflowExpression.Compile(bodychatId, nameof(bodychatId), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyparseMode = WorkflowExpression.Compile(bodyparseMode, nameof(bodyparseMode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bot{0}/sendMessage", __workflow_token.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodychatId != null)
-                {
-                    body["chat_id"] = ExpressionConverter.ConvertO(__workflow_bodychatId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparseMode != null)
-                {
-                    body["parse_mode"] = ExpressionConverter.ConvertO(__workflow_bodyparseMode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
-        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendPhoto(Expression<Func<string>> token, Expression<Func<string>> bodychatId = null, Expression<Func<string>> bodyphoto = null)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendPhoto(Expression<Func<string>> token, Expression<Func<SendPhotoInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
-            var __workflow_bodychatId = WorkflowExpression.Compile(bodychatId, nameof(bodychatId), required: false);
-            var __workflow_bodyphoto = WorkflowExpression.Compile(bodyphoto, nameof(bodyphoto), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Message, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bot{0}/sendPhoto", __workflow_token.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodychatId != null)
-                {
-                    body["chat_id"] = ExpressionConverter.ConvertO(__workflow_bodychatId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphoto != null)
-                {
-                    body["photo"] = ExpressionConverter.ConvertO(__workflow_bodyphoto);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Message>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
-        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> GetChat(Expression<Func<string>> token, Expression<Func<string>> bodychatId = null)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> GetChat(Expression<Func<string>> token, Expression<Func<GetChatInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
-            var __workflow_bodychatId = WorkflowExpression.Compile(bodychatId, nameof(bodychatId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Message, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bot{0}/getChat", __workflow_token.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodychatId != null)
-                {
-                    body["chat_id"] = ExpressionConverter.ConvertO(__workflow_bodychatId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Message>(callPayload);
             });
         }
@@ -245,6 +191,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
 
         [JsonProperty("result")]
         public Message Result { get; set; }
+    }
+
+    public class SendMessageInput
+    {
+        [JsonProperty("chat_id")]
+        public string ChatId { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("parse_mode")]
+        public string ParseMode { get; set; }
+    }
+
+    public class SendPhotoInput
+    {
+        [JsonProperty("chat_id")]
+        public string ChatId { get; set; }
+
+        [JsonProperty("photo")]
+        public string Photo { get; set; }
+    }
+
+    public class GetChatInput
+    {
+        [JsonProperty("chat_id")]
+        public string ChatId { get; set; }
     }
 }
 

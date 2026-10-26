@@ -64,35 +64,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 
     public class AlvaoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> TicketTransitionsToStatus(Expression<Func<TicketTransitionsToStatusInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyprocessName = WorkflowExpression.Compile(bodyprocessName, nameof(bodyprocessName), required: true);
-            var __workflow_bodyticketStatusName = WorkflowExpression.Compile(bodyticketStatusName, nameof(bodyticketStatusName), required: true);
-            var __workflow_bodyserviceName = WorkflowExpression.Compile(bodyserviceName, nameof(bodyserviceName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/tickettransitionstostatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["process"] = ExpressionConverter.ConvertO(__workflow_bodyprocessName);
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodyticketStatusName);
-                if (__workflow_bodyserviceName != null)
-                {
-                    body["service"] = ExpressionConverter.ConvertO(__workflow_bodyserviceName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -264,6 +244,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     {
         [JsonProperty("id")]
         public int Id { get; set; }
+    }
+
+    public class TicketTransitionsToStatusInput
+    {
+        [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("process", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessName { get; set; }
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TicketStatusName { get; set; }
+
+        [JsonProperty("service")]
+        public string ServiceName { get; set; }
     }
 }
 

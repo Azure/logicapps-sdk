@@ -25,54 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keepersecretsmanager")]
-        public IBodyWorkflowAction<CreateSecretResponse, ApiConnectionActionConfiguration> CreateSecret(Expression<Func<string>> bodyfolderUId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodylogin = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<CreateSecretResponse, ApiConnectionActionConfiguration> CreateSecret(Expression<Func<CreateSecretInput>> body)
         {
-            var __workflow_bodyfolderUId = WorkflowExpression.Compile(bodyfolderUId, nameof(bodyfolderUId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodylogin = WorkflowExpression.Compile(bodylogin, nameof(bodylogin), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/secrets";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["folder_uid"] = ExpressionConverter.ConvertO(__workflow_bodyfolderUId);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodylogin != null)
-                {
-                    body["login"] = ExpressionConverter.ConvertO(__workflow_bodylogin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSecretResponse>(callPayload);
             });
         }
@@ -91,56 +52,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keepersecretsmanager")]
-        public IBodyWorkflowAction<UpdateSecretResponse, ApiConnectionActionConfiguration> UpdateSecret(Expression<Func<string>> uid, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodylogin = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<UpdateSecretResponse, ApiConnectionActionConfiguration> UpdateSecret(Expression<Func<string>> uid, Expression<Func<UpdateSecretInput>> body)
         {
             var __workflow_uid = WorkflowExpression.Compile(uid, nameof(uid), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodylogin = WorkflowExpression.Compile(bodylogin, nameof(bodylogin), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}", __workflow_uid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylogin != null)
-                {
-                    body["login"] = ExpressionConverter.ConvertO(__workflow_bodylogin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateSecretResponse>(callPayload);
             });
         }
@@ -192,6 +113,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string NewSecretUId { get; set; }
     }
 
+    public class CreateSecretInput
+    {
+        [JsonProperty("folder_uid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderUId { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("login")]
+        public string Login { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+    }
+
     public class SecretDetail
     {
         [JsonProperty("uid")]
@@ -226,6 +168,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
     {
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class UpdateSecretInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("login")]
+        public string Login { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
     }
 
     public class Folder

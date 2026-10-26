@@ -29,69 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtreport")]
-        public IBodyWorkflowAction<ReportApiExecuteReportResponse, ApiConnectionActionConfiguration> StartReportExecutionJob(Expression<Func<int>> bodyreportType, Expression<Func<int>> bodyexecutionParametersreportInstance = null, Expression<Func<bodyexecutionParametersoutputFormatInput>> bodyexecutionParametersoutputFormat = null, Expression<Func<int>> bodyexecutionParameterstimeZoneOffset = null, Expression<Func<bodyexecutionParametersanonymousOptionInput>> bodyexecutionParametersanonymousOption = null)
+        public IBodyWorkflowAction<ReportApiExecuteReportResponse, ApiConnectionActionConfiguration> StartReportExecutionJob(Expression<Func<StartReportExecutionJobInput>> body)
         {
-            var __workflow_bodyreportType = WorkflowExpression.Compile(bodyreportType, nameof(bodyreportType), required: true);
-            var __workflow_bodyexecutionParametersreportInstance = WorkflowExpression.Compile(bodyexecutionParametersreportInstance, nameof(bodyexecutionParametersreportInstance), required: false);
-            var __workflow_bodyexecutionParametersoutputFormat = WorkflowExpression.Compile(bodyexecutionParametersoutputFormat, nameof(bodyexecutionParametersoutputFormat), required: false);
-            var __workflow_bodyexecutionParameterstimeZoneOffset = WorkflowExpression.Compile(bodyexecutionParameterstimeZoneOffset, nameof(bodyexecutionParameterstimeZoneOffset), required: false);
-            var __workflow_bodyexecutionParametersanonymousOption = WorkflowExpression.Compile(bodyexecutionParametersanonymousOption, nameof(bodyexecutionParametersanonymousOption), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReportApiExecuteReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/rxr-mngmt/reports/executereport";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["report_type_id"] = ExpressionConverter.ConvertO(__workflow_bodyreportType);
-                var executionParametersObject = new JObject();
-                var executionParametersObjectpropCount = 0;
-                if (__workflow_bodyexecutionParametersreportInstance != null)
-                {
-                    executionParametersObject["report_instance_id"] = ExpressionConverter.ConvertO(__workflow_bodyexecutionParametersreportInstance);
-                    executionParametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyexecutionParametersoutputFormat != null)
-                {
-                    if (__workflow_bodyexecutionParametersoutputFormat != null)
-                    {
-                        executionParametersObject["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyexecutionParametersoutputFormat);
-                        executionParametersObjectpropCount++;
-                    }
-
-                    executionParametersObjectpropCount++;
-                }
-                else
-                {
-                    executionParametersObject["output_format"] = "CSV";
-                    executionParametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyexecutionParameterstimeZoneOffset != null)
-                {
-                    executionParametersObject["time_zone_offset_in_minutes"] = ExpressionConverter.ConvertO(__workflow_bodyexecutionParameterstimeZoneOffset);
-                    executionParametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyexecutionParametersanonymousOption != null)
-                {
-                    executionParametersObject["anonymous_option"] = ExpressionConverter.ConvertO(__workflow_bodyexecutionParametersanonymousOption);
-                    executionParametersObjectpropCount++;
-                }
-
-                if (executionParametersObjectpropCount > 0)
-                {
-                    body["execution_parameters"] = executionParametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReportApiExecuteReportResponse>(callPayload);
             });
         }
@@ -180,15 +126,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         public string[] JobIDs { get; set; }
     }
 
+    public class StartReportExecutionJobInput
+    {
+        [JsonProperty("report_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ReportType { get; set; }
+
+        [JsonProperty("execution_parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartReportExecutionJobInputExecutionParametersType ExecutionParameters { get; set; }
+    }
+
+    public class StartReportExecutionJobInputExecutionParametersType
+    {
+        [JsonProperty("report_instance_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ReportInstance { get; set; }
+
+        [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartReportExecutionJobInputExecutionParametersTypeOutputFormatType OutputFormat { get; set; } = StartReportExecutionJobInputExecutionParametersTypeOutputFormatType.CSV;
+
+        [JsonProperty("time_zone_offset_in_minutes")]
+        public int? TimeZoneOffset { get; set; }
+
+        [JsonProperty("anonymous_option")]
+        public StartReportExecutionJobInputExecutionParametersTypeAnonymousOptionType? AnonymousOption { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyexecutionParametersoutputFormatInput
+    public enum StartReportExecutionJobInputExecutionParametersTypeOutputFormatType
     {
         PDF,
         CSV
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyexecutionParametersanonymousOptionInput
+    public enum StartReportExecutionJobInputExecutionParametersTypeAnonymousOptionType
     {
         UseAnonymous,
         UseAsterisk

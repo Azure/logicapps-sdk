@@ -27,61 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateRoomsResponse, ApiConnectionActionConfiguration> CreateRooms(Expression<Func<string>> bodyname, Expression<Func<string>> bodydomainName, Expression<Func<int>> bodymaximumBoards = null, Expression<Func<int>> bodymaximumUsers = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyadministrator = null)
+        public IBodyWorkflowAction<CreateRoomsResponse, ApiConnectionActionConfiguration> CreateRooms(Expression<Func<CreateRoomsInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydomainName = WorkflowExpression.Compile(bodydomainName, nameof(bodydomainName), required: true);
-            var __workflow_bodymaximumBoards = WorkflowExpression.Compile(bodymaximumBoards, nameof(bodymaximumBoards), required: false);
-            var __workflow_bodymaximumUsers = WorkflowExpression.Compile(bodymaximumUsers, nameof(bodymaximumUsers), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyadministrator = WorkflowExpression.Compile(bodyadministrator, nameof(bodyadministrator), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateRoomsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/rooms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["domainName"] = ExpressionConverter.ConvertO(__workflow_bodydomainName);
-                if (__workflow_bodymaximumBoards != null)
-                {
-                    body["maximumBoards"] = ExpressionConverter.ConvertO(__workflow_bodymaximumBoards);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaximumUsers != null)
-                {
-                    body["maximumUsers"] = ExpressionConverter.ConvertO(__workflow_bodymaximumUsers);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyadministrator != null)
-                {
-                    body["administrator"] = ExpressionConverter.ConvertO(__workflow_bodyadministrator);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateRoomsResponse>(callPayload);
             });
         }
@@ -118,32 +72,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Type Card"] = ExpressionConverter.Convert(__workflow_typeCard);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicSchema);
+                if (__workflow_dynamicSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicSchema);
                 return new ApiConnectionAction<CreateCardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateQCDIndicatorsValue(Expression<Func<string>> bodyboardId, Expression<Func<JToken[]>> bodyletters)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateQCDIndicatorsValue(Expression<Func<UpdateQCDIndicatorsValueInput>> body)
         {
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyletters = WorkflowExpression.Compile(bodyletters, nameof(bodyletters), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qcd/indicators-values";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                bodypropCount++;
-                body["letters"] = ExpressionConverter.ConvertO(__workflow_bodyletters);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -200,31 +144,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<UpdateGaugeInput>> body)
         {
             var __workflow_gaugeId = WorkflowExpression.Compile(gaugeId, nameof(gaugeId), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gauges/{0}", __workflow_gaugeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -277,6 +206,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 
         [JsonProperty("domainId")]
         public string DomainId { get; set; }
+    }
+
+    public class CreateRoomsInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("domainName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DomainName { get; set; }
+
+        [JsonProperty("maximumBoards")]
+        public int? MaximumBoards { get; set; }
+
+        [JsonProperty("maximumUsers")]
+        public int? MaximumUsers { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("administrator")]
+        public string Administrator { get; set; }
     }
 
     public class ListBoardsResponse
@@ -376,6 +329,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         QCDAction
     }
 
+    public class UpdateQCDIndicatorsValueInput
+    {
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("letters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Letters { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum wedgeRingInput
     {
@@ -427,6 +389,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
+    }
+
+    public class UpdateGaugeInput
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Value { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
     }
 }
 

@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
     public class ContentunderstandingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentunderstanding")]
-        public IBodyWorkflowAction<AnalyzeOperationResult, ApiConnectionActionConfiguration> AnalyzeContent(Expression<Func<string>> analyzerId, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyinputFileURL = null, Expression<Func<string>> bodyrange = null, Expression<Func<string>> bodyfileMIMEType = null, Expression<Func<AnalysisInput[]>> bodyinputs = null, Expression<Func<processingLocationInput>> processingLocation = null, Expression<Func<string>> stringEncoding = null)
+        public IBodyWorkflowAction<AnalyzeOperationResult, ApiConnectionActionConfiguration> AnalyzeContent(Expression<Func<string>> analyzerId, Expression<Func<AnalyzeContentInput>> body = null, Expression<Func<processingLocationInput>> processingLocation = null, Expression<Func<string>> stringEncoding = null)
         {
             var __workflow_analyzerId = WorkflowExpression.Compile(analyzerId, nameof(analyzerId), required: true);
-            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodyinputFileURL = WorkflowExpression.Compile(bodyinputFileURL, nameof(bodyinputFileURL), required: false);
-            var __workflow_bodyrange = WorkflowExpression.Compile(bodyrange, nameof(bodyrange), required: false);
-            var __workflow_bodyfileMIMEType = WorkflowExpression.Compile(bodyfileMIMEType, nameof(bodyfileMIMEType), required: false);
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_processingLocation = WorkflowExpression.Compile(processingLocation, nameof(processingLocation), required: false);
             var __workflow_stringEncoding = WorkflowExpression.Compile(stringEncoding, nameof(stringEncoding), required: false);
             return new DeferredBodyAction<AnalyzeOperationResult, ApiConnectionActionConfiguration>(() =>
@@ -33,43 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
                     callPayload.Queries["processingLocation"] = ExpressionConverter.Convert(__workflow_processingLocation);
                 if (__workflow_stringEncoding != null)
                     callPayload.Queries["stringEncoding"] = ExpressionConverter.Convert(__workflow_stringEncoding);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileContent != null)
-                {
-                    body["inputFileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinputFileURL != null)
-                {
-                    body["inputFileUrl"] = ExpressionConverter.ConvertO(__workflow_bodyinputFileURL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrange != null)
-                {
-                    body["range"] = ExpressionConverter.ConvertO(__workflow_bodyrange);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileMIMEType != null)
-                {
-                    body["inputFileMimeType"] = ExpressionConverter.ConvertO(__workflow_bodyfileMIMEType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinputs != null)
-                {
-                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AnalyzeOperationResult>(callPayload);
             });
         }
@@ -174,6 +135,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
         Document,
         [EnumMember(Value = "audioVisual")]
         AudioVisual
+    }
+
+    public class AnalyzeContentInput
+    {
+        [JsonProperty("inputFileContent")]
+        public string FileContent { get; set; }
+
+        [JsonProperty("inputFileUrl")]
+        public string InputFileURL { get; set; }
+
+        [JsonProperty("range")]
+        public string Range { get; set; }
+
+        [JsonProperty("inputFileMimeType")]
+        public string FileMIMEType { get; set; }
+
+        [JsonProperty("inputs")]
+        public AnalysisInput[] Inputs { get; set; }
     }
 
     public class AnalysisInput

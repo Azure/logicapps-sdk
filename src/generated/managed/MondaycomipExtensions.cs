@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
     public class MondaycomipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mondaycomip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallGraphQL(Expression<Func<string>> bodyquery = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallGraphQL(Expression<Func<CallGraphQLInput>> body = null)
         {
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyquery != null)
-                {
-                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -42,6 +31,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
 
     public class MondaycomipTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class CallGraphQLInput
+    {
+        [JsonProperty("query")]
+        public string Query { get; set; }
     }
 }
 

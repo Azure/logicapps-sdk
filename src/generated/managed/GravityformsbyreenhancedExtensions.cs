@@ -16,28 +16,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<string>> webhookform, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookInput>> webhook, FlowRecurrence recurrence = null)
         {
-            var __workflow_webhookform = WorkflowExpression.Compile(webhookform, nameof(webhookform), required: true);
+            var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhook = new JObject();
-                var webhookpropCount = 0;
-                webhook["callback_url"] = "#{listCallbackUrl()}";
-                webhookpropCount++;
-                webhookpropCount++;
-                webhook["form_id"] = ExpressionConverter.ConvertO(__workflow_webhookform);
-                if (webhookpropCount > 0)
-                {
-                    callPayload.Body = webhook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhook);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class CreateWebhookInput
+    {
+        [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Form { get; set; }
     }
 }
 

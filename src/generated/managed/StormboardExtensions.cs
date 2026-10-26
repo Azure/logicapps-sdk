@@ -13,83 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
     public class StormboardActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateIdeaResponse, ApiConnectionActionConfiguration> CreateIdea(Expression<Func<int>> bodystormid, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydata, Expression<Func<bodycolorInput>> bodycolor)
+        public IBodyWorkflowAction<CreateIdeaResponse, ApiConnectionActionConfiguration> CreateIdea(Expression<Func<CreateIdeaInput>> body = null)
         {
-            var __workflow_bodystormid = WorkflowExpression.Compile(bodystormid, nameof(bodystormid), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateIdeaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ideas";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["stormid"] = ExpressionConverter.ConvertO(__workflow_bodystormid);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                bodypropCount++;
-                body["color"] = ExpressionConverter.ConvertO(__workflow_bodycolor);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateIdeaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateStormResponse, ApiConnectionActionConfiguration> CreateStorm(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyplan, Expression<Func<string>> bodygoals = null, Expression<Func<bool>> bodyideacreator = null)
+        public IBodyWorkflowAction<CreateStormResponse, ApiConnectionActionConfiguration> CreateStorm(Expression<Func<CreateStormInput>> body = null)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyplan = WorkflowExpression.Compile(bodyplan, nameof(bodyplan), required: true);
-            var __workflow_bodygoals = WorkflowExpression.Compile(bodygoals, nameof(bodygoals), required: false);
-            var __workflow_bodyideacreator = WorkflowExpression.Compile(bodyideacreator, nameof(bodyideacreator), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateStormResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["plan"] = ExpressionConverter.ConvertO(__workflow_bodyplan);
-                if (__workflow_bodygoals != null)
-                {
-                    body["goals"] = ExpressionConverter.ConvertO(__workflow_bodygoals);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyideacreator != null)
-                {
-                    if (__workflow_bodyideacreator != null)
-                    {
-                        body["ideacreator"] = ExpressionConverter.ConvertO(__workflow_bodyideacreator);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["ideacreator"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateStormResponse>(callPayload);
             });
         }
@@ -97,127 +47,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 
     public class StormboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> LegendChange(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> LegendChange(Expression<Func<LegendChangeInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["service"] = "MicrosoftFlow";
-                bodypropCount++;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["events"] = "idea.color";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaSection(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaSection(Expression<Func<IdeaSectionInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/ideaSection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["service"] = "MicrosoftFlow";
-                bodypropCount++;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["events"] = "idea.section";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaCreated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaCreated(Expression<Func<IdeaCreatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/ideaCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["service"] = "MicrosoftFlow";
-                bodypropCount++;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["events"] = "idea.create";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaDeleted(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaDeleted(Expression<Func<IdeaDeletedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/ideaDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["service"] = "MicrosoftFlow";
-                bodypropCount++;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["events"] = "idea.delete";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CommentCreated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CommentCreated(Expression<Func<CommentCreatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/commentCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["service"] = "MicrosoftFlow";
-                bodypropCount++;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["events"] = "comment.create";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -268,8 +163,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         public string Text { get; set; }
     }
 
+    public class CreateIdeaInput
+    {
+        [JsonProperty("stormid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Stormid { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateIdeaInputTypeType Type { get; set; } = CreateIdeaInputTypeType.Text;
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+
+        [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateIdeaInputColorType Color { get; set; } = CreateIdeaInputColorType.Yellow;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum CreateIdeaInputTypeType
     {
         [EnumMember(Value = "text")]
         Text,
@@ -278,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycolorInput
+    public enum CreateIdeaInputColorType
     {
         [EnumMember(Value = "yellow")]
         Yellow,
@@ -316,6 +226,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 
         [JsonProperty("lastactivity")]
         public string Lastactivity { get; set; }
+    }
+
+    public class CreateStormInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("plan", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Plan { get; set; } = "0";
+
+        [JsonProperty("goals")]
+        public string Goals { get; set; }
+
+        [JsonProperty("ideacreator", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Ideacreator { get; set; } = true;
+    }
+
+    public class LegendChangeInput
+    {
+        [JsonProperty("service", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "MicrosoftFlow";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "idea.color";
+    }
+
+    public class IdeaSectionInput
+    {
+        [JsonProperty("service", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "MicrosoftFlow";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "idea.section";
+    }
+
+    public class IdeaCreatedInput
+    {
+        [JsonProperty("service", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "MicrosoftFlow";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "idea.create";
+    }
+
+    public class IdeaDeletedInput
+    {
+        [JsonProperty("service", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "MicrosoftFlow";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "idea.delete";
+    }
+
+    public class CommentCreatedInput
+    {
+        [JsonProperty("service", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Service { get; set; } = "MicrosoftFlow";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "comment.create";
     }
 }
 

@@ -16,55 +16,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 
     public class ReceptfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration> VisitEvents(Expression<Func<VisitEventsInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
-            var __workflow_bodyregionId = WorkflowExpression.Compile(bodyregionId, nameof(bodyregionId), required: false);
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodybuttonId = WorkflowExpression.Compile(bodybuttonId, nameof(bodybuttonId), required: false);
-            var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
-                body["source"] = "microsoft";
-                bodypropCount++;
-                if (__workflow_bodyregionId != null)
-                {
-                    body["region_id"] = ExpressionConverter.ConvertO(__workflow_bodyregionId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationId != null)
-                {
-                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybuttonId != null)
-                {
-                    body["button_id"] = ExpressionConverter.ConvertO(__workflow_bodybuttonId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconfigId != null)
-                {
-                    body["config_id"] = ExpressionConverter.ConvertO(__workflow_bodyconfigId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<VisitEventsResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -76,8 +36,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
         public string Id { get; set; }
     }
 
+    public class VisitEventsInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        public VisitEventsInputEventType Event { get; set; } = VisitEventsInputEventType.CheckedIn;
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Source { get; set; } = "microsoft";
+
+        [JsonProperty("region_id")]
+        public string RegionId { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("button_id")]
+        public string ButtonId { get; set; }
+
+        [JsonProperty("config_id")]
+        public string ConfigId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyEventInput
+    public enum VisitEventsInputEventType
     {
         [EnumMember(Value = "checked_in")]
         CheckedIn,

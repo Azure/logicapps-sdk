@@ -13,15 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
     public class SmartcommondemanddocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
-        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<string>> bodytransactionData, Expression<Func<int>> bodybatchConfigResId, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytransactionRange = null, Expression<Func<bodytransactionDataTypeInput>> bodytransactionDataType = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
+        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<GenerateDocumentInput>> body)
         {
             var __workflow_includeDocumentData = WorkflowExpression.Compile(includeDocumentData, nameof(includeDocumentData), required: true);
-            var __workflow_bodytransactionData = WorkflowExpression.Compile(bodytransactionData, nameof(bodytransactionData), required: true);
-            var __workflow_bodybatchConfigResId = WorkflowExpression.Compile(bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodytransactionRange = WorkflowExpression.Compile(bodytransactionRange, nameof(bodytransactionRange), required: false);
-            var __workflow_bodytransactionDataType = WorkflowExpression.Compile(bodytransactionDataType, nameof(bodytransactionDataType), required: false);
-            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";
@@ -30,61 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
                 callPayload.Queries["includeDocumentData"] = ExpressionConverter.Convert(__workflow_includeDocumentData);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["transactionData"] = ExpressionConverter.ConvertO(__workflow_bodytransactionData);
-                bodypropCount++;
-                body["batchConfigResId"] = ExpressionConverter.ConvertO(__workflow_bodybatchConfigResId);
-                if (__workflow_bodytransactionRange != null)
-                {
-                    if (__workflow_bodytransactionRange != null)
-                    {
-                        body["transactionRange"] = ExpressionConverter.ConvertO(__workflow_bodytransactionRange);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["transactionRange"] = 1;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytransactionDataType != null)
-                {
-                    if (__workflow_bodytransactionDataType != null)
-                    {
-                        body["transactionDataType"] = ExpressionConverter.ConvertO(__workflow_bodytransactionDataType);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["transactionDataType"] = "application/xml";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyproperties != null)
-                {
-                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
             });
         }
@@ -259,8 +200,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         public int ChannelId { get; set; }
     }
 
+    public class GenerateDocumentInput
+    {
+        [JsonProperty("projectId")]
+        public int? ProjectId { get; set; }
+
+        [JsonProperty("transactionData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TransactionData { get; set; }
+
+        [JsonProperty("batchConfigResId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int BatchConfigResId { get; set; }
+
+        [JsonProperty("transactionRange", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TransactionRange { get; set; } = 1;
+
+        [JsonProperty("transactionDataType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateDocumentInputTransactionDataTypeType? TransactionDataType { get; set; } = GenerateDocumentInputTransactionDataTypeType.ApplicationXml;
+
+        [JsonProperty("properties")]
+        public GenerateDocumentInputPropertiesTypeItem[] Properties { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytransactionDataTypeInput
+    public enum GenerateDocumentInputTransactionDataTypeType
     {
         [EnumMember(Value = "application/xml")]
         ApplicationXml,
@@ -268,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         ApplicationJson
     }
 
-    public class bodypropertiesInputItem
+    public class GenerateDocumentInputPropertiesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

@@ -13,57 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
     public class GlobalgivingprojectipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<AccessTokenGetResponse, ApiConnectionActionConfiguration> AccessTokenGet(Expression<Func<string>> bodyauthRequestuseremail = null, Expression<Func<string>> bodyauthRequestuserpassword = null, Expression<Func<string>> bodyauthRequestapiKey = null)
+        public IBodyWorkflowAction<AccessTokenGetResponse, ApiConnectionActionConfiguration> AccessTokenGet(Expression<Func<AccessTokenGetInput>> body = null)
         {
-            var __workflow_bodyauthRequestuseremail = WorkflowExpression.Compile(bodyauthRequestuseremail, nameof(bodyauthRequestuseremail), required: false);
-            var __workflow_bodyauthRequestuserpassword = WorkflowExpression.Compile(bodyauthRequestuserpassword, nameof(bodyauthRequestuserpassword), required: false);
-            var __workflow_bodyauthRequestapiKey = WorkflowExpression.Compile(bodyauthRequestapiKey, nameof(bodyauthRequestapiKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AccessTokenGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/userservice/tokens";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var authRequestObject = new JObject();
-                var authRequestObjectpropCount = 0;
-                var userObject = new JObject();
-                var userObjectpropCount = 0;
-                if (__workflow_bodyauthRequestuseremail != null)
-                {
-                    userObject["email"] = ExpressionConverter.ConvertO(__workflow_bodyauthRequestuseremail);
-                    userObjectpropCount++;
-                }
-
-                if (__workflow_bodyauthRequestuserpassword != null)
-                {
-                    userObject["password"] = ExpressionConverter.ConvertO(__workflow_bodyauthRequestuserpassword);
-                    userObjectpropCount++;
-                }
-
-                if (userObjectpropCount > 0)
-                {
-                    authRequestObject["user"] = userObject;
-                    authRequestObjectpropCount++;
-                }
-
-                if (__workflow_bodyauthRequestapiKey != null)
-                {
-                    authRequestObject["api_key"] = ExpressionConverter.ConvertO(__workflow_bodyauthRequestapiKey);
-                    authRequestObjectpropCount++;
-                }
-
-                if (authRequestObjectpropCount > 0)
-                {
-                    body["auth_request"] = authRequestObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AccessTokenGetResponse>(callPayload);
             });
         }
@@ -466,28 +425,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<DonationSubmitResponse, ApiConnectionActionConfiguration> DonationSubmit(Expression<Func<bool>> isTest = null, Expression<Func<int>> bodydonationrefcode = null, Expression<Func<string>> bodydonationtransactionId = null, Expression<Func<string>> bodydonationemail = null, Expression<Func<double>> bodydonationamount = null, Expression<Func<int>> bodydonationprojectid = null, Expression<Func<bool>> bodydonationsignupForGGNewsletter = null, Expression<Func<bool>> bodydonationsignupForCharityNewsletter = null, Expression<Func<string>> bodydonationpaymentDetailfirstname = null, Expression<Func<string>> bodydonationpaymentDetaillastname = null, Expression<Func<string>> bodydonationpaymentDetailaddress = null, Expression<Func<string>> bodydonationpaymentDetailaddress2 = null, Expression<Func<string>> bodydonationpaymentDetailcity = null, Expression<Func<string>> bodydonationpaymentDetailstate = null, Expression<Func<string>> bodydonationpaymentDetailiso3166CountryCode = null, Expression<Func<string>> bodydonationpaymentDetailpaymentGateway = null, Expression<Func<string>> bodydonationpaymentDetailpaymentGatewayKey = null, Expression<Func<string>> bodydonationpaymentDetailpaymentGatewayNonce = null, Expression<Func<string>> bodydonationipAddress = null, Expression<Func<string>> bodydonationuserAgent = null)
+        public IBodyWorkflowAction<DonationSubmitResponse, ApiConnectionActionConfiguration> DonationSubmit(Expression<Func<bool>> isTest = null, Expression<Func<DonationSubmitInput>> body = null)
         {
             var __workflow_isTest = WorkflowExpression.Compile(isTest, nameof(isTest), required: false);
-            var __workflow_bodydonationrefcode = WorkflowExpression.Compile(bodydonationrefcode, nameof(bodydonationrefcode), required: false);
-            var __workflow_bodydonationtransactionId = WorkflowExpression.Compile(bodydonationtransactionId, nameof(bodydonationtransactionId), required: false);
-            var __workflow_bodydonationemail = WorkflowExpression.Compile(bodydonationemail, nameof(bodydonationemail), required: false);
-            var __workflow_bodydonationamount = WorkflowExpression.Compile(bodydonationamount, nameof(bodydonationamount), required: false);
-            var __workflow_bodydonationprojectid = WorkflowExpression.Compile(bodydonationprojectid, nameof(bodydonationprojectid), required: false);
-            var __workflow_bodydonationsignupForGGNewsletter = WorkflowExpression.Compile(bodydonationsignupForGGNewsletter, nameof(bodydonationsignupForGGNewsletter), required: false);
-            var __workflow_bodydonationsignupForCharityNewsletter = WorkflowExpression.Compile(bodydonationsignupForCharityNewsletter, nameof(bodydonationsignupForCharityNewsletter), required: false);
-            var __workflow_bodydonationpaymentDetailfirstname = WorkflowExpression.Compile(bodydonationpaymentDetailfirstname, nameof(bodydonationpaymentDetailfirstname), required: false);
-            var __workflow_bodydonationpaymentDetaillastname = WorkflowExpression.Compile(bodydonationpaymentDetaillastname, nameof(bodydonationpaymentDetaillastname), required: false);
-            var __workflow_bodydonationpaymentDetailaddress = WorkflowExpression.Compile(bodydonationpaymentDetailaddress, nameof(bodydonationpaymentDetailaddress), required: false);
-            var __workflow_bodydonationpaymentDetailaddress2 = WorkflowExpression.Compile(bodydonationpaymentDetailaddress2, nameof(bodydonationpaymentDetailaddress2), required: false);
-            var __workflow_bodydonationpaymentDetailcity = WorkflowExpression.Compile(bodydonationpaymentDetailcity, nameof(bodydonationpaymentDetailcity), required: false);
-            var __workflow_bodydonationpaymentDetailstate = WorkflowExpression.Compile(bodydonationpaymentDetailstate, nameof(bodydonationpaymentDetailstate), required: false);
-            var __workflow_bodydonationpaymentDetailiso3166CountryCode = WorkflowExpression.Compile(bodydonationpaymentDetailiso3166CountryCode, nameof(bodydonationpaymentDetailiso3166CountryCode), required: false);
-            var __workflow_bodydonationpaymentDetailpaymentGateway = WorkflowExpression.Compile(bodydonationpaymentDetailpaymentGateway, nameof(bodydonationpaymentDetailpaymentGateway), required: false);
-            var __workflow_bodydonationpaymentDetailpaymentGatewayKey = WorkflowExpression.Compile(bodydonationpaymentDetailpaymentGatewayKey, nameof(bodydonationpaymentDetailpaymentGatewayKey), required: false);
-            var __workflow_bodydonationpaymentDetailpaymentGatewayNonce = WorkflowExpression.Compile(bodydonationpaymentDetailpaymentGatewayNonce, nameof(bodydonationpaymentDetailpaymentGatewayNonce), required: false);
-            var __workflow_bodydonationipAddress = WorkflowExpression.Compile(bodydonationipAddress, nameof(bodydonationipAddress), required: false);
-            var __workflow_bodydonationuserAgent = WorkflowExpression.Compile(bodydonationuserAgent, nameof(bodydonationuserAgent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DonationSubmitResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/secure/givingservice/donationsclient";
@@ -495,151 +436,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_isTest != null)
                     callPayload.Queries["is_test"] = ExpressionConverter.Convert(__workflow_isTest);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var donationObject = new JObject();
-                var donationObjectpropCount = 0;
-                if (__workflow_bodydonationrefcode != null)
-                {
-                    donationObject["refcode"] = ExpressionConverter.ConvertO(__workflow_bodydonationrefcode);
-                    donationObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationtransactionId != null)
-                {
-                    donationObject["transactionId"] = ExpressionConverter.ConvertO(__workflow_bodydonationtransactionId);
-                    donationObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationemail != null)
-                {
-                    donationObject["email"] = ExpressionConverter.ConvertO(__workflow_bodydonationemail);
-                    donationObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationamount != null)
-                {
-                    donationObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodydonationamount);
-                    donationObjectpropCount++;
-                }
-
-                var projectObject = new JObject();
-                var projectObjectpropCount = 0;
-                if (__workflow_bodydonationprojectid != null)
-                {
-                    projectObject["id"] = ExpressionConverter.ConvertO(__workflow_bodydonationprojectid);
-                    projectObjectpropCount++;
-                }
-
-                if (projectObjectpropCount > 0)
-                {
-                    donationObject["project"] = projectObject;
-                    donationObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationsignupForGGNewsletter != null)
-                {
-                    donationObject["signupForGGNewsletter"] = ExpressionConverter.ConvertO(__workflow_bodydonationsignupForGGNewsletter);
-                    donationObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationsignupForCharityNewsletter != null)
-                {
-                    donationObject["signupForCharityNewsletter"] = ExpressionConverter.ConvertO(__workflow_bodydonationsignupForCharityNewsletter);
-                    donationObjectpropCount++;
-                }
-
-                var paymentDetailObject = new JObject();
-                var paymentDetailObjectpropCount = 0;
-                if (__workflow_bodydonationpaymentDetailfirstname != null)
-                {
-                    paymentDetailObject["firstname"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailfirstname);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetaillastname != null)
-                {
-                    paymentDetailObject["lastname"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetaillastname);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailaddress != null)
-                {
-                    paymentDetailObject["address"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailaddress);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailaddress2 != null)
-                {
-                    paymentDetailObject["address2"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailaddress2);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailcity != null)
-                {
-                    paymentDetailObject["city"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailcity);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailstate != null)
-                {
-                    paymentDetailObject["state"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailstate);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailiso3166CountryCode != null)
-                {
-                    paymentDetailObject["iso3166CountryCode"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailiso3166CountryCode);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailpaymentGateway != null)
-                {
-                    paymentDetailObject["paymentGateway"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailpaymentGateway);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailpaymentGatewayKey != null)
-                {
-                    paymentDetailObject["paymentGatewayKey"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailpaymentGatewayKey);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationpaymentDetailpaymentGatewayNonce != null)
-                {
-                    paymentDetailObject["paymentGatewayNonce"] = ExpressionConverter.ConvertO(__workflow_bodydonationpaymentDetailpaymentGatewayNonce);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (paymentDetailObjectpropCount > 0)
-                {
-                    donationObject["payment_detail"] = paymentDetailObject;
-                    donationObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationipAddress != null)
-                {
-                    donationObject["ipAddress"] = ExpressionConverter.ConvertO(__workflow_bodydonationipAddress);
-                    donationObjectpropCount++;
-                }
-
-                if (__workflow_bodydonationuserAgent != null)
-                {
-                    donationObject["userAgent"] = ExpressionConverter.ConvertO(__workflow_bodydonationuserAgent);
-                    donationObjectpropCount++;
-                }
-
-                if (donationObjectpropCount > 0)
-                {
-                    body["donation"] = donationObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DonationSubmitResponse>(callPayload);
             });
         }
@@ -657,34 +455,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<GiftCardSendResponse, ApiConnectionActionConfiguration> GiftCardSend(Expression<Func<bool>> isTest = null, Expression<Func<int>> bodygiftCardrefcode = null, Expression<Func<string>> bodygiftCardtransactionId = null, Expression<Func<string>> bodygiftCardemail = null, Expression<Func<double>> bodygiftCardamount = null, Expression<Func<string>> bodygiftCardpaymentDetailfirstname = null, Expression<Func<string>> bodygiftCardpaymentDetaillastname = null, Expression<Func<string>> bodygiftCardpaymentDetailaddress = null, Expression<Func<string>> bodygiftCardpaymentDetailaddress2 = null, Expression<Func<string>> bodygiftCardpaymentDetailcity = null, Expression<Func<string>> bodygiftCardpaymentDetailstate = null, Expression<Func<string>> bodygiftCardpaymentDetailiso3166CountryCode = null, Expression<Func<int>> bodygiftCardpaymentDetailzip = null, Expression<Func<int>> bodygiftCardpaymentDetailcreditCardNumber = null, Expression<Func<int>> bodygiftCardpaymentDetailsecurityCode = null, Expression<Func<int>> bodygiftCardpaymentDetailexpiryDateMonth = null, Expression<Func<int>> bodygiftCardpaymentDetailexpiryDateYear = null, Expression<Func<int>> bodygiftCardgiftCardDesignid = null, Expression<Func<string>> bodygiftCardgiftCardDetaildateToSend = null, Expression<Func<string>> bodygiftCardgiftCardDetailfirstname = null, Expression<Func<string>> bodygiftCardgiftCardDetaillastname = null, Expression<Func<string>> bodygiftCardgiftCardDetailemail = null, Expression<Func<string>> bodygiftCardgiftCardDetailphone = null, Expression<Func<string>> bodygiftCardgiftCardDetailto = null, Expression<Func<string>> bodygiftCardgiftCardDetailfrom = null, Expression<Func<string>> bodygiftCardgiftCardDetailmessage = null)
+        public IBodyWorkflowAction<GiftCardSendResponse, ApiConnectionActionConfiguration> GiftCardSend(Expression<Func<bool>> isTest = null, Expression<Func<GiftCardSendInput>> body = null)
         {
             var __workflow_isTest = WorkflowExpression.Compile(isTest, nameof(isTest), required: false);
-            var __workflow_bodygiftCardrefcode = WorkflowExpression.Compile(bodygiftCardrefcode, nameof(bodygiftCardrefcode), required: false);
-            var __workflow_bodygiftCardtransactionId = WorkflowExpression.Compile(bodygiftCardtransactionId, nameof(bodygiftCardtransactionId), required: false);
-            var __workflow_bodygiftCardemail = WorkflowExpression.Compile(bodygiftCardemail, nameof(bodygiftCardemail), required: false);
-            var __workflow_bodygiftCardamount = WorkflowExpression.Compile(bodygiftCardamount, nameof(bodygiftCardamount), required: false);
-            var __workflow_bodygiftCardpaymentDetailfirstname = WorkflowExpression.Compile(bodygiftCardpaymentDetailfirstname, nameof(bodygiftCardpaymentDetailfirstname), required: false);
-            var __workflow_bodygiftCardpaymentDetaillastname = WorkflowExpression.Compile(bodygiftCardpaymentDetaillastname, nameof(bodygiftCardpaymentDetaillastname), required: false);
-            var __workflow_bodygiftCardpaymentDetailaddress = WorkflowExpression.Compile(bodygiftCardpaymentDetailaddress, nameof(bodygiftCardpaymentDetailaddress), required: false);
-            var __workflow_bodygiftCardpaymentDetailaddress2 = WorkflowExpression.Compile(bodygiftCardpaymentDetailaddress2, nameof(bodygiftCardpaymentDetailaddress2), required: false);
-            var __workflow_bodygiftCardpaymentDetailcity = WorkflowExpression.Compile(bodygiftCardpaymentDetailcity, nameof(bodygiftCardpaymentDetailcity), required: false);
-            var __workflow_bodygiftCardpaymentDetailstate = WorkflowExpression.Compile(bodygiftCardpaymentDetailstate, nameof(bodygiftCardpaymentDetailstate), required: false);
-            var __workflow_bodygiftCardpaymentDetailiso3166CountryCode = WorkflowExpression.Compile(bodygiftCardpaymentDetailiso3166CountryCode, nameof(bodygiftCardpaymentDetailiso3166CountryCode), required: false);
-            var __workflow_bodygiftCardpaymentDetailzip = WorkflowExpression.Compile(bodygiftCardpaymentDetailzip, nameof(bodygiftCardpaymentDetailzip), required: false);
-            var __workflow_bodygiftCardpaymentDetailcreditCardNumber = WorkflowExpression.Compile(bodygiftCardpaymentDetailcreditCardNumber, nameof(bodygiftCardpaymentDetailcreditCardNumber), required: false);
-            var __workflow_bodygiftCardpaymentDetailsecurityCode = WorkflowExpression.Compile(bodygiftCardpaymentDetailsecurityCode, nameof(bodygiftCardpaymentDetailsecurityCode), required: false);
-            var __workflow_bodygiftCardpaymentDetailexpiryDateMonth = WorkflowExpression.Compile(bodygiftCardpaymentDetailexpiryDateMonth, nameof(bodygiftCardpaymentDetailexpiryDateMonth), required: false);
-            var __workflow_bodygiftCardpaymentDetailexpiryDateYear = WorkflowExpression.Compile(bodygiftCardpaymentDetailexpiryDateYear, nameof(bodygiftCardpaymentDetailexpiryDateYear), required: false);
-            var __workflow_bodygiftCardgiftCardDesignid = WorkflowExpression.Compile(bodygiftCardgiftCardDesignid, nameof(bodygiftCardgiftCardDesignid), required: false);
-            var __workflow_bodygiftCardgiftCardDetaildateToSend = WorkflowExpression.Compile(bodygiftCardgiftCardDetaildateToSend, nameof(bodygiftCardgiftCardDetaildateToSend), required: false);
-            var __workflow_bodygiftCardgiftCardDetailfirstname = WorkflowExpression.Compile(bodygiftCardgiftCardDetailfirstname, nameof(bodygiftCardgiftCardDetailfirstname), required: false);
-            var __workflow_bodygiftCardgiftCardDetaillastname = WorkflowExpression.Compile(bodygiftCardgiftCardDetaillastname, nameof(bodygiftCardgiftCardDetaillastname), required: false);
-            var __workflow_bodygiftCardgiftCardDetailemail = WorkflowExpression.Compile(bodygiftCardgiftCardDetailemail, nameof(bodygiftCardgiftCardDetailemail), required: false);
-            var __workflow_bodygiftCardgiftCardDetailphone = WorkflowExpression.Compile(bodygiftCardgiftCardDetailphone, nameof(bodygiftCardgiftCardDetailphone), required: false);
-            var __workflow_bodygiftCardgiftCardDetailto = WorkflowExpression.Compile(bodygiftCardgiftCardDetailto, nameof(bodygiftCardgiftCardDetailto), required: false);
-            var __workflow_bodygiftCardgiftCardDetailfrom = WorkflowExpression.Compile(bodygiftCardgiftCardDetailfrom, nameof(bodygiftCardgiftCardDetailfrom), required: false);
-            var __workflow_bodygiftCardgiftCardDetailmessage = WorkflowExpression.Compile(bodygiftCardgiftCardDetailmessage, nameof(bodygiftCardgiftCardDetailmessage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GiftCardSendResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/secure/givingservice/giftcards";
@@ -692,208 +466,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_isTest != null)
                     callPayload.Queries["is_test"] = ExpressionConverter.Convert(__workflow_isTest);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var giftCardObject = new JObject();
-                var giftCardObjectpropCount = 0;
-                if (__workflow_bodygiftCardrefcode != null)
-                {
-                    giftCardObject["refcode"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardrefcode);
-                    giftCardObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardtransactionId != null)
-                {
-                    giftCardObject["transactionId"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardtransactionId);
-                    giftCardObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardemail != null)
-                {
-                    giftCardObject["email"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardemail);
-                    giftCardObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardamount != null)
-                {
-                    giftCardObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardamount);
-                    giftCardObjectpropCount++;
-                }
-
-                var paymentDetailObject = new JObject();
-                var paymentDetailObjectpropCount = 0;
-                if (__workflow_bodygiftCardpaymentDetailfirstname != null)
-                {
-                    paymentDetailObject["firstname"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailfirstname);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetaillastname != null)
-                {
-                    paymentDetailObject["lastname"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetaillastname);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailaddress != null)
-                {
-                    paymentDetailObject["address"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailaddress);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailaddress2 != null)
-                {
-                    paymentDetailObject["address2"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailaddress2);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailcity != null)
-                {
-                    paymentDetailObject["city"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailcity);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailstate != null)
-                {
-                    paymentDetailObject["state"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailstate);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailiso3166CountryCode != null)
-                {
-                    paymentDetailObject["iso3166CountryCode"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailiso3166CountryCode);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailzip != null)
-                {
-                    paymentDetailObject["zip"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailzip);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailcreditCardNumber != null)
-                {
-                    paymentDetailObject["creditCardNumber"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailcreditCardNumber);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailsecurityCode != null)
-                {
-                    paymentDetailObject["securityCode"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailsecurityCode);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailexpiryDateMonth != null)
-                {
-                    paymentDetailObject["expiryDateMonth"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailexpiryDateMonth);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardpaymentDetailexpiryDateYear != null)
-                {
-                    paymentDetailObject["expiryDateYear"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardpaymentDetailexpiryDateYear);
-                    paymentDetailObjectpropCount++;
-                }
-
-                if (paymentDetailObjectpropCount > 0)
-                {
-                    giftCardObject["payment_detail"] = paymentDetailObject;
-                    giftCardObjectpropCount++;
-                }
-
-                var giftCardDesignObject = new JObject();
-                var giftCardDesignObjectpropCount = 0;
-                if (__workflow_bodygiftCardgiftCardDesignid != null)
-                {
-                    giftCardDesignObject["id"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDesignid);
-                    giftCardDesignObjectpropCount++;
-                }
-
-                if (giftCardDesignObjectpropCount > 0)
-                {
-                    giftCardObject["giftCardDesign"] = giftCardDesignObject;
-                    giftCardObjectpropCount++;
-                }
-
-                var giftCardDetailObject = new JObject();
-                var giftCardDetailObjectpropCount = 0;
-                if (__workflow_bodygiftCardgiftCardDetaildateToSend != null)
-                {
-                    giftCardDetailObject["dateToSend"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetaildateToSend);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardgiftCardDetailfirstname != null)
-                {
-                    giftCardDetailObject["firstname"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetailfirstname);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardgiftCardDetaillastname != null)
-                {
-                    giftCardDetailObject["lastname"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetaillastname);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardgiftCardDetailemail != null)
-                {
-                    giftCardDetailObject["email"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetailemail);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardgiftCardDetailphone != null)
-                {
-                    giftCardDetailObject["phone"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetailphone);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardgiftCardDetailto != null)
-                {
-                    giftCardDetailObject["to"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetailto);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardgiftCardDetailfrom != null)
-                {
-                    giftCardDetailObject["from"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetailfrom);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardgiftCardDetailmessage != null)
-                {
-                    giftCardDetailObject["message"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardgiftCardDetailmessage);
-                    giftCardDetailObjectpropCount++;
-                }
-
-                if (giftCardDetailObjectpropCount > 0)
-                {
-                    giftCardObject["giftCard_detail"] = giftCardDetailObject;
-                    giftCardObjectpropCount++;
-                }
-
-                if (giftCardObjectpropCount > 0)
-                {
-                    body["giftCard"] = giftCardObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftCardSendResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<GiftCertificateOrderResponse, ApiConnectionActionConfiguration> GiftCertificateOrder(Expression<Func<bool>> isTest = null, Expression<Func<int>> bodygiftCertificaterefcode = null, Expression<Func<double>> bodygiftCertificateamount = null, Expression<Func<string>> bodygiftCertificatethirdPartyIdentifier = null, Expression<Func<string>> bodygiftCertificatecurrencyCode = null, Expression<Func<string>> bodygiftCertificateexpirationDate = null)
+        public IBodyWorkflowAction<GiftCertificateOrderResponse, ApiConnectionActionConfiguration> GiftCertificateOrder(Expression<Func<GiftCertificateOrderInput>> body, Expression<Func<bool>> isTest = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_isTest = WorkflowExpression.Compile(isTest, nameof(isTest), required: false);
-            var __workflow_bodygiftCertificaterefcode = WorkflowExpression.Compile(bodygiftCertificaterefcode, nameof(bodygiftCertificaterefcode), required: false);
-            var __workflow_bodygiftCertificateamount = WorkflowExpression.Compile(bodygiftCertificateamount, nameof(bodygiftCertificateamount), required: false);
-            var __workflow_bodygiftCertificatethirdPartyIdentifier = WorkflowExpression.Compile(bodygiftCertificatethirdPartyIdentifier, nameof(bodygiftCertificatethirdPartyIdentifier), required: false);
-            var __workflow_bodygiftCertificatecurrencyCode = WorkflowExpression.Compile(bodygiftCertificatecurrencyCode, nameof(bodygiftCertificatecurrencyCode), required: false);
-            var __workflow_bodygiftCertificateexpirationDate = WorkflowExpression.Compile(bodygiftCertificateexpirationDate, nameof(bodygiftCertificateexpirationDate), required: false);
             return new DeferredBodyAction<GiftCertificateOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/secure/givingservice/giftcertificates";
@@ -901,51 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_isTest != null)
                     callPayload.Queries["is_test"] = ExpressionConverter.Convert(__workflow_isTest);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var giftCertificateObject = new JObject();
-                var giftCertificateObjectpropCount = 0;
-                if (__workflow_bodygiftCertificaterefcode != null)
-                {
-                    giftCertificateObject["refcode"] = ExpressionConverter.ConvertO(__workflow_bodygiftCertificaterefcode);
-                    giftCertificateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCertificateamount != null)
-                {
-                    giftCertificateObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodygiftCertificateamount);
-                    giftCertificateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCertificatethirdPartyIdentifier != null)
-                {
-                    giftCertificateObject["thirdPartyIdentifier"] = ExpressionConverter.ConvertO(__workflow_bodygiftCertificatethirdPartyIdentifier);
-                    giftCertificateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCertificatecurrencyCode != null)
-                {
-                    giftCertificateObject["currencyCode"] = ExpressionConverter.ConvertO(__workflow_bodygiftCertificatecurrencyCode);
-                    giftCertificateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCertificateexpirationDate != null)
-                {
-                    giftCertificateObject["expirationDate"] = ExpressionConverter.ConvertO(__workflow_bodygiftCertificateexpirationDate);
-                    giftCertificateObjectpropCount++;
-                }
-
-                if (giftCertificateObjectpropCount > 0)
-                {
-                    body["giftCertificate"] = giftCertificateObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftCertificateOrderResponse>(callPayload);
             });
         }
@@ -978,6 +517,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }
+    }
+
+    public class AccessTokenGetInput
+    {
+        [JsonProperty("auth_request")]
+        public AccessTokenGetInputAuthRequestType AuthRequest { get; set; }
+    }
+
+    public class AccessTokenGetInputAuthRequestType
+    {
+        [JsonProperty("user")]
+        public AccessTokenGetInputAuthRequestTypeUserType User { get; set; }
+
+        [JsonProperty("api_key")]
+        public string ApiKey { get; set; }
+    }
+
+    public class AccessTokenGetInputAuthRequestTypeUserType
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
     }
 
     public class ProjectInformationGetResponse
@@ -5546,6 +5109,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public double TotalAmountBilled { get; set; }
     }
 
+    public class DonationSubmitInput
+    {
+        [JsonProperty("donation")]
+        public DonationSubmitInputDonationType Donation { get; set; }
+    }
+
+    public class DonationSubmitInputDonationType
+    {
+        [JsonProperty("refcode")]
+        public int? Refcode { get; set; }
+
+        [JsonProperty("transactionId")]
+        public string TransactionId { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("amount")]
+        public double? Amount { get; set; }
+
+        [JsonProperty("project")]
+        public DonationSubmitInputDonationTypeProjectType Project { get; set; }
+
+        [JsonProperty("signupForGGNewsletter")]
+        public bool? SignupForGGNewsletter { get; set; }
+
+        [JsonProperty("signupForCharityNewsletter")]
+        public bool? SignupForCharityNewsletter { get; set; }
+
+        [JsonProperty("payment_detail")]
+        public DonationSubmitInputDonationTypePaymentDetailType PaymentDetail { get; set; }
+
+        [JsonProperty("ipAddress")]
+        public string IpAddress { get; set; }
+
+        [JsonProperty("userAgent")]
+        public string UserAgent { get; set; }
+    }
+
+    public class DonationSubmitInputDonationTypeProjectType
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+    }
+
+    public class DonationSubmitInputDonationTypePaymentDetailType
+    {
+        [JsonProperty("firstname")]
+        public string Firstname { get; set; }
+
+        [JsonProperty("lastname")]
+        public string Lastname { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("address2")]
+        public string Address2 { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("iso3166CountryCode")]
+        public string Iso3166CountryCode { get; set; }
+
+        [JsonProperty("paymentGateway")]
+        public string PaymentGateway { get; set; }
+
+        [JsonProperty("paymentGatewayKey")]
+        public string PaymentGatewayKey { get; set; }
+
+        [JsonProperty("paymentGatewayNonce")]
+        public string PaymentGatewayNonce { get; set; }
+    }
+
     public class GiftCardDesignsResponse
     {
         [JsonProperty("giftCardDesigns")]
@@ -5759,6 +5400,108 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Message { get; set; }
     }
 
+    public class GiftCardSendInput
+    {
+        [JsonProperty("giftCard")]
+        public GiftCardSendInputGiftCardType GiftCard { get; set; }
+    }
+
+    public class GiftCardSendInputGiftCardType
+    {
+        [JsonProperty("refcode")]
+        public int? Refcode { get; set; }
+
+        [JsonProperty("transactionId")]
+        public string TransactionId { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("amount")]
+        public double? Amount { get; set; }
+
+        [JsonProperty("payment_detail")]
+        public GiftCardSendInputGiftCardTypePaymentDetailType PaymentDetail { get; set; }
+
+        [JsonProperty("giftCardDesign")]
+        public GiftCardSendInputGiftCardTypeGiftCardDesignType GiftCardDesign { get; set; }
+
+        [JsonProperty("giftCard_detail")]
+        public GiftCardSendInputGiftCardTypeGiftCardDetailType GiftCardDetail { get; set; }
+    }
+
+    public class GiftCardSendInputGiftCardTypePaymentDetailType
+    {
+        [JsonProperty("firstname")]
+        public string Firstname { get; set; }
+
+        [JsonProperty("lastname")]
+        public string Lastname { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("address2")]
+        public string Address2 { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("iso3166CountryCode")]
+        public string Iso3166CountryCode { get; set; }
+
+        [JsonProperty("zip")]
+        public int? Zip { get; set; }
+
+        [JsonProperty("creditCardNumber")]
+        public int? CreditCardNumber { get; set; }
+
+        [JsonProperty("securityCode")]
+        public int? SecurityCode { get; set; }
+
+        [JsonProperty("expiryDateMonth")]
+        public int? ExpiryDateMonth { get; set; }
+
+        [JsonProperty("expiryDateYear")]
+        public int? ExpiryDateYear { get; set; }
+    }
+
+    public class GiftCardSendInputGiftCardTypeGiftCardDesignType
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+    }
+
+    public class GiftCardSendInputGiftCardTypeGiftCardDetailType
+    {
+        [JsonProperty("dateToSend")]
+        public string DateToSend { get; set; }
+
+        [JsonProperty("firstname")]
+        public string Firstname { get; set; }
+
+        [JsonProperty("lastname")]
+        public string Lastname { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
+
     public class GiftCertificateOrderResponse
     {
         [JsonProperty("giftCertificate_detail")]
@@ -5781,6 +5524,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
 
         [JsonProperty("redeemUrl")]
         public string RedeemUrl { get; set; }
+
+        [JsonProperty("expirationDate")]
+        public string ExpirationDate { get; set; }
+    }
+
+    public class GiftCertificateOrderInput
+    {
+        [JsonProperty("giftCertificate")]
+        public GiftCertificateOrderInputGiftCertificateType GiftCertificate { get; set; }
+    }
+
+    public class GiftCertificateOrderInputGiftCertificateType
+    {
+        [JsonProperty("refcode")]
+        public int? Refcode { get; set; }
+
+        [JsonProperty("amount")]
+        public double? Amount { get; set; }
+
+        [JsonProperty("thirdPartyIdentifier")]
+        public string ThirdPartyIdentifier { get; set; }
+
+        [JsonProperty("currencyCode")]
+        public string CurrencyCode { get; set; }
 
         [JsonProperty("expirationDate")]
         public string ExpirationDate { get; set; }

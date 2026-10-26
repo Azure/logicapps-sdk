@@ -13,18 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
     public class OqshaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<CreateIncidentResponse, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
+        public IBodyWorkflowAction<CreateIncidentResponse, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<CreateIncidentInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: false);
-            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: false);
-            var __workflow_bodydivisionId = WorkflowExpression.Compile(bodydivisionId, nameof(bodydivisionId), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyanonymouslyReported = WorkflowExpression.Compile(bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
-            var __workflow_bodycheckListData = WorkflowExpression.Compile(bodycheckListData, nameof(bodycheckListData), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateIncidentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Organisations/3/Incidents";
@@ -35,73 +28,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 if (__workflow_accessToken != null)
                     callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylocation != null)
-                {
-                    body["Location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationId != null)
-                {
-                    body["LocationId"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylatitude != null)
-                {
-                    body["Latitude"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylongitude != null)
-                {
-                    body["Longitude"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydivisionId != null)
-                {
-                    body["DivisionId"] = ExpressionConverter.ConvertO(__workflow_bodydivisionId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["UserId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyanonymouslyReported != null)
-                {
-                    body["AnonymouslyReported"] = ExpressionConverter.ConvertO(__workflow_bodyanonymouslyReported);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycheckListData != null)
-                {
-                    body["CheckListData"] = ExpressionConverter.ConvertO(__workflow_bodycheckListData);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateIncidentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> contentType = null, Expression<Func<LoginInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_bodyuserUid = WorkflowExpression.Compile(bodyuserUid, nameof(bodyuserUid), required: false);
-            var __workflow_bodyappPassword = WorkflowExpression.Compile(bodyappPassword, nameof(bodyappPassword), required: false);
-            var __workflow_bodyacceptConditions = WorkflowExpression.Compile(bodyacceptConditions, nameof(bodyacceptConditions), required: false);
-            var __workflow_bodyisOqsha = WorkflowExpression.Compile(bodyisOqsha, nameof(bodyisOqsha), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<LoginResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/App/Login";
@@ -110,37 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyuserUid != null)
-                {
-                    body["UserUid"] = ExpressionConverter.ConvertO(__workflow_bodyuserUid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyappPassword != null)
-                {
-                    body["AppPassword"] = ExpressionConverter.ConvertO(__workflow_bodyappPassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyacceptConditions != null)
-                {
-                    body["acceptConditions"] = ExpressionConverter.ConvertO(__workflow_bodyacceptConditions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisOqsha != null)
-                {
-                    body["IsOqsha"] = ExpressionConverter.ConvertO(__workflow_bodyisOqsha);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoginResponse>(callPayload);
             });
         }
@@ -194,7 +102,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         public int OrgOwnerId { get; set; }
     }
 
-    public class bodycheckListDataInputItem
+    public class CreateIncidentInput
+    {
+        public string Location { get; set; }
+        public string LocationId { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
+        public string DivisionId { get; set; }
+        public string UserId { get; set; }
+        public bool? AnonymouslyReported { get; set; }
+        public CreateIncidentInputCheckListDataTypeItem[] CheckListData { get; set; }
+    }
+
+    public class CreateIncidentInputCheckListDataTypeItem
     {
         [JsonProperty("checkListId")]
         public string CheckListId { get; set; }
@@ -255,6 +175,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         public string FeatureName { get; set; }
         public string FeatureThreshold { get; set; }
         public bool Enabled { get; set; }
+    }
+
+    public class LoginInput
+    {
+        public string UserUid { get; set; }
+        public string AppPassword { get; set; }
+
+        [JsonProperty("acceptConditions")]
+        public bool? AcceptConditions { get; set; }
+        public bool? IsOqsha { get; set; }
     }
 }
 

@@ -13,40 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
     public class WebexActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration> CreateSpaceMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyroomId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
+        public IBodyWorkflowAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration> CreateSpaceMember(Expression<Func<CreateSpaceMemberInput>> body = null)
         {
-            var __workflow_bodyisModerator = WorkflowExpression.Compile(bodyisModerator, nameof(bodyisModerator), required: true);
-            var __workflow_bodyroomId = WorkflowExpression.Compile(bodyroomId, nameof(bodyroomId), required: true);
-            var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
-            var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/memberships";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["isModerator"] = ExpressionConverter.ConvertO(__workflow_bodyisModerator);
-                if (__workflow_bodypersonEmail != null)
-                {
-                    body["personEmail"] = ExpressionConverter.ConvertO(__workflow_bodypersonEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypersonId != null)
-                {
-                    body["personId"] = ExpressionConverter.ConvertO(__workflow_bodypersonId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["roomId"] = ExpressionConverter.ConvertO(__workflow_bodyroomId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSpaceMemberResponse>(callPayload);
             });
         }
@@ -78,62 +54,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodymarkdown = null, Expression<Func<string>> bodyroomId = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytoPersonEmail = null, Expression<Func<string>> bodytoPersonId = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> body)
         {
-            var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: false);
-            var __workflow_bodymarkdown = WorkflowExpression.Compile(bodymarkdown, nameof(bodymarkdown), required: false);
-            var __workflow_bodyroomId = WorkflowExpression.Compile(bodyroomId, nameof(bodyroomId), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodytoPersonEmail = WorkflowExpression.Compile(bodytoPersonEmail, nameof(bodytoPersonEmail), required: false);
-            var __workflow_bodytoPersonId = WorkflowExpression.Compile(bodytoPersonId, nameof(bodytoPersonId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfiles != null)
-                {
-                    body["files"] = ExpressionConverter.ConvertO(__workflow_bodyfiles);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymarkdown != null)
-                {
-                    body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdown);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyroomId != null)
-                {
-                    body["roomId"] = ExpressionConverter.ConvertO(__workflow_bodyroomId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytoPersonEmail != null)
-                {
-                    body["toPersonEmail"] = ExpressionConverter.ConvertO(__workflow_bodytoPersonEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytoPersonId != null)
-                {
-                    body["toPersonId"] = ExpressionConverter.ConvertO(__workflow_bodytoPersonId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
             });
         }
@@ -204,30 +133,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceResponse, ApiConnectionActionConfiguration> CreateSpace(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyteamId = null)
+        public IBodyWorkflowAction<CreateSpaceResponse, ApiConnectionActionConfiguration> CreateSpace(Expression<Func<CreateSpaceInput>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyteamId = WorkflowExpression.Compile(bodyteamId, nameof(bodyteamId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSpaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/rooms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyteamId != null)
-                {
-                    body["teamId"] = ExpressionConverter.ConvertO(__workflow_bodyteamId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSpaceResponse>(callPayload);
             });
         }
@@ -246,40 +160,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration> CreateTeamMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyteamId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
+        public IBodyWorkflowAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration> CreateTeamMember(Expression<Func<CreateTeamMemberInput>> body = null)
         {
-            var __workflow_bodyisModerator = WorkflowExpression.Compile(bodyisModerator, nameof(bodyisModerator), required: true);
-            var __workflow_bodyteamId = WorkflowExpression.Compile(bodyteamId, nameof(bodyteamId), required: true);
-            var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
-            var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/team/memberships";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["isModerator"] = ExpressionConverter.ConvertO(__workflow_bodyisModerator);
-                if (__workflow_bodypersonEmail != null)
-                {
-                    body["personEmail"] = ExpressionConverter.ConvertO(__workflow_bodypersonEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypersonId != null)
-                {
-                    body["personId"] = ExpressionConverter.ConvertO(__workflow_bodypersonId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["teamId"] = ExpressionConverter.ConvertO(__workflow_bodyteamId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTeamMemberResponse>(callPayload);
             });
         }
@@ -287,184 +177,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class WebexTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration> MembershipsUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration> MembershipsUpdated(Expression<Func<MembershipsUpdatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["event"] = "updated";
-                bodypropCount++;
-                body["name"] = "MembershipUpdated";
-                bodypropCount++;
-                body["resource"] = "memberships";
-                bodypropCount++;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration> MembershipsDeleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration> MembershipsDeleted(Expression<Func<MembershipsDeletedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["event"] = "deleted";
-                bodypropCount++;
-                body["name"] = "MembershipDeleted";
-                bodypropCount++;
-                body["resource"] = "memberships";
-                bodypropCount++;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration> MembershipsCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration> MembershipsCreated(Expression<Func<MembershipsCreatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["event"] = "created";
-                bodypropCount++;
-                body["name"] = "MembershipCreated";
-                bodypropCount++;
-                body["resource"] = "memberships";
-                bodypropCount++;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration> MessagesCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration> MessagesCreated(Expression<Func<MessagesCreatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/4";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["event"] = "created";
-                bodypropCount++;
-                body["name"] = "MessageCreated";
-                bodypropCount++;
-                body["resource"] = "messages";
-                bodypropCount++;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration> MessagesDeleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration> MessagesDeleted(Expression<Func<MessagesDeletedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/5";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["event"] = "deleted";
-                bodypropCount++;
-                body["name"] = "MessageDeleted";
-                bodypropCount++;
-                body["resource"] = "messages";
-                bodypropCount++;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration> SpaceCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration> SpaceCreated(Expression<Func<SpaceCreatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/6";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["event"] = "created";
-                bodypropCount++;
-                body["name"] = "SpaceCreated";
-                bodypropCount++;
-                body["resource"] = "rooms";
-                bodypropCount++;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration> SpaceUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration> SpaceUpdated(Expression<Func<SpaceUpdatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/7";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["event"] = "updated";
-                bodypropCount++;
-                body["name"] = "SpaceUpdated";
-                bodypropCount++;
-                body["resource"] = "rooms";
-                bodypropCount++;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<SpaceUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -497,6 +296,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string PersonOrgId { get; set; }
 
         [JsonProperty("roomId")]
+        public string RoomId { get; set; }
+    }
+
+    public class CreateSpaceMemberInput
+    {
+        [JsonProperty("isModerator", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsModerator { get; set; } = false;
+
+        [JsonProperty("personEmail")]
+        public string PersonEmail { get; set; }
+
+        [JsonProperty("personId")]
+        public string PersonId { get; set; }
+
+        [JsonProperty("roomId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoomId { get; set; }
     }
 
@@ -555,6 +369,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
         [JsonProperty("toPersonEmail")]
         public string ToPersonEmail { get; set; }
+    }
+
+    public class SendMessageInput
+    {
+        [JsonProperty("files")]
+        public string[] Files { get; set; }
+
+        [JsonProperty("markdown")]
+        public string Markdown { get; set; }
+
+        [JsonProperty("roomId")]
+        public string RoomId { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("toPersonEmail")]
+        public string ToPersonEmail { get; set; }
+
+        [JsonProperty("toPersonId")]
+        public string ToPersonId { get; set; }
     }
 
     public class GetMessageDetailsResponse
@@ -782,6 +617,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Type { get; set; }
     }
 
+    public class CreateSpaceInput
+    {
+        [JsonProperty("teamId")]
+        public string TeamId { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+    }
+
     public class GetSpaceDetailResponse
     {
         [JsonProperty("created")]
@@ -833,6 +677,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string TeamId { get; set; }
     }
 
+    public class CreateTeamMemberInput
+    {
+        [JsonProperty("isModerator", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsModerator { get; set; } = false;
+
+        [JsonProperty("personEmail")]
+        public string PersonEmail { get; set; }
+
+        [JsonProperty("personId")]
+        public string PersonId { get; set; }
+
+        [JsonProperty("teamId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TeamId { get; set; }
+    }
+
     public class MembershipsUpdatedResponse
     {
         [JsonProperty("created")]
@@ -861,6 +720,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class MembershipsUpdatedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "updated";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "MembershipUpdated";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "memberships";
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class MembershipsDeletedResponse
@@ -893,6 +767,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
+    public class MembershipsDeletedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "deleted";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "MembershipDeleted";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "memberships";
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
     public class MembershipsCreatedResponse
     {
         [JsonProperty("created")]
@@ -921,6 +810,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class MembershipsCreatedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "created";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "MembershipCreated";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "memberships";
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class MessagesCreatedResponse
@@ -953,6 +857,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
+    public class MessagesCreatedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "created";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "MessageCreated";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "messages";
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
     public class MessagesDeletedResponse
     {
         [JsonProperty("created")]
@@ -981,6 +900,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class MessagesDeletedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "deleted";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "MessageDeleted";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "messages";
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class SpaceCreatedResponse
@@ -1013,6 +947,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
+    public class SpaceCreatedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "created";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "SpaceCreated";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "rooms";
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
     public class SpaceUpdatedResponse
     {
         [JsonProperty("created")]
@@ -1041,6 +990,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class SpaceUpdatedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "updated";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "SpaceUpdated";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "rooms";
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

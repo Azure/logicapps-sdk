@@ -13,11 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
     public class MongodbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> InsertDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> InsertDocument(Expression<Func<InsertDocumentInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InsertDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/insertOne";
@@ -25,37 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InsertDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindDocumentResponse, ApiConnectionActionConfiguration> FindDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<FindDocumentResponse, ApiConnectionActionConfiguration> FindDocument(Expression<Func<FindDocumentInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/findOne";
@@ -64,46 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                var projectionObject = new JObject();
-                var projectionObjectpropCount = 0;
-                if (projectionObjectpropCount > 0)
-                {
-                    body["projection"] = projectionObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FindDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<UpdateDocumentInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            var __workflow_bodyupsert = WorkflowExpression.Compile(bodyupsert, nameof(bodyupsert), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/updateOne";
@@ -111,51 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                var updateObject = new JObject();
-                var updateObjectpropCount = 0;
-                if (updateObjectpropCount > 0)
-                {
-                    body["update"] = updateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupsert != null)
-                {
-                    body["upsert"] = ExpressionConverter.ConvertO(__workflow_bodyupsert);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteDocumentResponse, ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<DeleteDocumentResponse, ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<DeleteDocumentInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/deleteOne";
@@ -163,38 +72,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration> InsertMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodydocuments)
+        public IBodyWorkflowAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration> InsertMultipleDocuments(Expression<Func<InsertMultipleDocumentsInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/insertMany";
@@ -202,33 +88,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                bodypropCount++;
-                body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InsertMultipleDocumentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration> FindMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyskip = null)
+        public IBodyWorkflowAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration> FindMultipleDocuments(Expression<Func<FindMultipleDocumentsInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/find";
@@ -237,66 +105,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                var projectionObject = new JObject();
-                var projectionObjectpropCount = 0;
-                if (projectionObjectpropCount > 0)
-                {
-                    body["projection"] = projectionObject;
-                    bodypropCount++;
-                }
-
-                var sortObject = new JObject();
-                var sortObjectpropCount = 0;
-                if (sortObjectpropCount > 0)
-                {
-                    body["sort"] = sortObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskip != null)
-                {
-                    body["skip"] = ExpressionConverter.ConvertO(__workflow_bodyskip);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FindMultipleDocumentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration> UpdateMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration> UpdateMultipleDocuments(Expression<Func<UpdateMultipleDocumentsInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            var __workflow_bodyupsert = WorkflowExpression.Compile(bodyupsert, nameof(bodyupsert), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/updateMany";
@@ -304,51 +121,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                var updateObject = new JObject();
-                var updateObjectpropCount = 0;
-                if (updateObjectpropCount > 0)
-                {
-                    body["update"] = updateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupsert != null)
-                {
-                    body["upsert"] = ExpressionConverter.ConvertO(__workflow_bodyupsert);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateMultipleDocumentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration> DeleteManyDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration> DeleteManyDocuments(Expression<Func<DeleteManyDocumentsInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/deleteMany";
@@ -356,38 +137,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteManyDocumentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration> RunAggregationPipeline(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodypipeline)
+        public IBodyWorkflowAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration> RunAggregationPipeline(Expression<Func<RunAggregationPipelineInput>> body)
         {
-            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
-            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            var __workflow_bodypipeline = WorkflowExpression.Compile(bodypipeline, nameof(bodypipeline), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/aggregate";
@@ -396,21 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
-                bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
-                bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
-                bodypropCount++;
-                body["pipeline"] = ExpressionConverter.ConvertO(__workflow_bodypipeline);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RunAggregationPipelineResponse>(callPayload);
             });
         }
@@ -426,10 +170,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public string InsertedId { get; set; }
     }
 
+    public class InsertDocumentInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Document { get; set; }
+    }
+
     public class FindDocumentResponse
     {
         [JsonProperty("document")]
         public JToken Document { get; set; }
+    }
+
+    public class FindDocumentInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("filter")]
+        public JToken Filter { get; set; }
+
+        [JsonProperty("projection")]
+        public JToken Projection { get; set; }
     }
 
     public class UpdateDocumentResponse
@@ -441,10 +218,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public int ModifiedCount { get; set; }
     }
 
+    public class UpdateDocumentInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Filter { get; set; }
+
+        [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Update { get; set; }
+
+        [JsonProperty("upsert")]
+        public bool? Upsert { get; set; }
+    }
+
     public class DeleteDocumentResponse
     {
         [JsonProperty("deletedCount")]
         public int DeletedCount { get; set; }
+    }
+
+    public class DeleteDocumentInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Filter { get; set; }
     }
 
     public class InsertMultipleDocumentsResponse
@@ -453,10 +266,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public string[] InsertedIds { get; set; }
     }
 
+    public class InsertMultipleDocumentsInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Documents { get; set; }
+    }
+
     public class FindMultipleDocumentsResponse
     {
         [JsonProperty("documents")]
         public JToken[] Documents { get; set; }
+    }
+
+    public class FindMultipleDocumentsInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("filter")]
+        public JToken Filter { get; set; }
+
+        [JsonProperty("projection")]
+        public JToken Projection { get; set; }
+
+        [JsonProperty("sort")]
+        public JToken Sort { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("skip")]
+        public int? Skip { get; set; }
     }
 
     public class UpdateMultipleDocumentsResponse
@@ -468,16 +323,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public int ModifiedCount { get; set; }
     }
 
+    public class UpdateMultipleDocumentsInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Filter { get; set; }
+
+        [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Update { get; set; }
+
+        [JsonProperty("upsert")]
+        public bool? Upsert { get; set; }
+    }
+
     public class DeleteManyDocumentsResponse
     {
         [JsonProperty("deletedCount")]
         public int DeletedCount { get; set; }
     }
 
+    public class DeleteManyDocumentsInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Filter { get; set; }
+    }
+
     public class RunAggregationPipelineResponse
     {
         [JsonProperty("documents")]
         public JToken[] Documents { get; set; }
+    }
+
+    public class RunAggregationPipelineInput
+    {
+        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataSource { get; set; }
+
+        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Database { get; set; }
+
+        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Collection { get; set; }
+
+        [JsonProperty("pipeline", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Pipeline { get; set; }
     }
 }
 

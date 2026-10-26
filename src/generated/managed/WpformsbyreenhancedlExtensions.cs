@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["form_id"] = ExpressionConverter.Convert(__workflow_formId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetEntriesResponseItem[]>(callPayload);
             });
         }
@@ -46,33 +47,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFlow(Expression<Func<string>> bodyformId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFlow(Expression<Func<CreateFlowInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/resources/flows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                metaObject["powerAutomateUrl"] = "#{listCallbackUrl()}";
-                metaObjectpropCount++;
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -82,6 +65,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
     {
         [JsonProperty("fields")]
         public JToken Fields { get; set; }
+    }
+
+    public class CreateFlowInput
+    {
+        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FormId { get; set; }
+
+        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateFlowInputMetaType Meta { get; set; }
+    }
+
+    public class CreateFlowInputMetaType
+    {
+        [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -13,157 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
     public class LeankitActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardInput>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/io/board";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateBoardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodytype, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<string>> bodyplannedFinishDate = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<CreateCardInput>> body)
         {
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodylaneId = WorkflowExpression.Compile(bodylaneId, nameof(bodylaneId), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodyplannedFinishDate = WorkflowExpression.Compile(bodyplannedFinishDate, nameof(bodyplannedFinishDate), required: false);
-            var __workflow_bodycardId = WorkflowExpression.Compile(bodycardId, nameof(bodycardId), required: false);
-            var __workflow_bodyisBlocked = WorkflowExpression.Compile(bodyisBlocked, nameof(bodyisBlocked), required: false);
-            var __workflow_bodyblockReason = WorkflowExpression.Compile(bodyblockReason, nameof(bodyblockReason), required: false);
-            var __workflow_bodyexternalLinkexternalLinkLabel = WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
-            var __workflow_bodyexternalLinkexternalLinkURL = WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
-            var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/io/card";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                bodypropCount++;
-                body["typeId"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylaneId != null)
-                {
-                    body["laneId"] = ExpressionConverter.ConvertO(__workflow_bodylaneId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysize != null)
-                {
-                    body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDate != null)
-                {
-                    body["plannedStart"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedFinishDate != null)
-                {
-                    body["plannedFinish"] = ExpressionConverter.ConvertO(__workflow_bodyplannedFinishDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycardId != null)
-                {
-                    body["customId"] = ExpressionConverter.ConvertO(__workflow_bodycardId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisBlocked != null)
-                {
-                    body["isBlocked"] = ExpressionConverter.ConvertO(__workflow_bodyisBlocked);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyblockReason != null)
-                {
-                    body["blockReason"] = ExpressionConverter.ConvertO(__workflow_bodyblockReason);
-                    bodypropCount++;
-                }
-
-                var externalLinkObject = new JObject();
-                var externalLinkObjectpropCount = 0;
-                if (__workflow_bodyexternalLinkexternalLinkLabel != null)
-                {
-                    externalLinkObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyexternalLinkexternalLinkLabel);
-                    externalLinkObjectpropCount++;
-                }
-
-                if (__workflow_bodyexternalLinkexternalLinkURL != null)
-                {
-                    externalLinkObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyexternalLinkexternalLinkURL);
-                    externalLinkObjectpropCount++;
-                }
-
-                if (externalLinkObjectpropCount > 0)
-                {
-                    body["externalLink"] = externalLinkObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignees != null)
-                {
-                    body["assignedUserIds"] = ExpressionConverter.ConvertO(__workflow_bodyassignees);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCardResponse>(callPayload);
             });
         }
@@ -182,134 +54,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse, ApiConnectionActionConfiguration> UpdateCard(Expression<Func<string>> cardId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDateTime = null, Expression<Func<string>> bodyplannedFinishDateTime = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
+        public IBodyWorkflowAction<CardResponse, ApiConnectionActionConfiguration> UpdateCard(Expression<Func<string>> cardId, Expression<Func<UpdateCardInput>> body)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodylaneId = WorkflowExpression.Compile(bodylaneId, nameof(bodylaneId), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodyplannedStartDateTime = WorkflowExpression.Compile(bodyplannedStartDateTime, nameof(bodyplannedStartDateTime), required: false);
-            var __workflow_bodyplannedFinishDateTime = WorkflowExpression.Compile(bodyplannedFinishDateTime, nameof(bodyplannedFinishDateTime), required: false);
-            var __workflow_bodycardId = WorkflowExpression.Compile(bodycardId, nameof(bodycardId), required: false);
-            var __workflow_bodyisBlocked = WorkflowExpression.Compile(bodyisBlocked, nameof(bodyisBlocked), required: false);
-            var __workflow_bodyblockReason = WorkflowExpression.Compile(bodyblockReason, nameof(bodyblockReason), required: false);
-            var __workflow_bodyexternalLinkexternalLinkLabel = WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
-            var __workflow_bodyexternalLinkexternalLinkURL = WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
-            var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["typeId"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylaneId != null)
-                {
-                    body["laneId"] = ExpressionConverter.ConvertO(__workflow_bodylaneId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysize != null)
-                {
-                    body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedStartDateTime != null)
-                {
-                    body["plannedStart"] = ExpressionConverter.ConvertO(__workflow_bodyplannedStartDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplannedFinishDateTime != null)
-                {
-                    body["plannedFinish"] = ExpressionConverter.ConvertO(__workflow_bodyplannedFinishDateTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycardId != null)
-                {
-                    body["customId"] = ExpressionConverter.ConvertO(__workflow_bodycardId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisBlocked != null)
-                {
-                    body["isBlocked"] = ExpressionConverter.ConvertO(__workflow_bodyisBlocked);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyblockReason != null)
-                {
-                    body["blockReason"] = ExpressionConverter.ConvertO(__workflow_bodyblockReason);
-                    bodypropCount++;
-                }
-
-                var externalLinkObject = new JObject();
-                var externalLinkObjectpropCount = 0;
-                if (__workflow_bodyexternalLinkexternalLinkLabel != null)
-                {
-                    externalLinkObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyexternalLinkexternalLinkLabel);
-                    externalLinkObjectpropCount++;
-                }
-
-                if (__workflow_bodyexternalLinkexternalLinkURL != null)
-                {
-                    externalLinkObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyexternalLinkexternalLinkURL);
-                    externalLinkObjectpropCount++;
-                }
-
-                if (externalLinkObjectpropCount > 0)
-                {
-                    body["externalLink"] = externalLinkObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignees != null)
-                {
-                    body["assignedUserIds"] = ExpressionConverter.ConvertO(__workflow_bodyassignees);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CardResponse>(callPayload);
             });
         }
@@ -328,24 +82,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<AddCommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> cardId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<AddCommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> cardId, Expression<Func<AddCommentInput>> body)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddCommentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}/comment", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddCommentResponse>(callPayload);
             });
         }
@@ -390,10 +136,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string BoardId { get; set; }
     }
 
+    public class CreateBoardInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     public class CreateCardResponse
     {
         [JsonProperty("id")]
         public string CardId { get; set; }
+    }
+
+    public class CreateCardInput
+    {
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("typeId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("laneId")]
+        public string LaneId { get; set; }
+
+        [JsonProperty("priority")]
+        public string Priority { get; set; }
+
+        [JsonProperty("size")]
+        public int? Size { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("plannedStart")]
+        public string PlannedStartDate { get; set; }
+
+        [JsonProperty("plannedFinish")]
+        public string PlannedFinishDate { get; set; }
+
+        [JsonProperty("customId")]
+        public string CardId { get; set; }
+
+        [JsonProperty("isBlocked")]
+        public bool? IsBlocked { get; set; }
+
+        [JsonProperty("blockReason")]
+        public string BlockReason { get; set; }
+
+        [JsonProperty("externalLink")]
+        public CreateCardInputExternalLinkType ExternalLink { get; set; }
+
+        [JsonProperty("assignedUserIds")]
+        public string[] Assignees { get; set; }
+    }
+
+    public class CreateCardInputExternalLinkType
+    {
+        [JsonProperty("label")]
+        public string ExternalLinkLabel { get; set; }
+
+        [JsonProperty("url")]
+        public string ExternalLinkURL { get; set; }
     }
 
     public class CardResponse
@@ -510,6 +322,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string Type { get; set; }
     }
 
+    public class UpdateCardInput
+    {
+        [JsonProperty("typeId")]
+        public string Type { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("laneId")]
+        public string LaneId { get; set; }
+
+        [JsonProperty("priority")]
+        public string Priority { get; set; }
+
+        [JsonProperty("size")]
+        public int? Size { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("plannedStart")]
+        public string PlannedStartDateTime { get; set; }
+
+        [JsonProperty("plannedFinish")]
+        public string PlannedFinishDateTime { get; set; }
+
+        [JsonProperty("customId")]
+        public string CardId { get; set; }
+
+        [JsonProperty("isBlocked")]
+        public bool? IsBlocked { get; set; }
+
+        [JsonProperty("blockReason")]
+        public string BlockReason { get; set; }
+
+        [JsonProperty("externalLink")]
+        public UpdateCardInputExternalLinkType ExternalLink { get; set; }
+
+        [JsonProperty("assignedUserIds")]
+        public string[] Assignees { get; set; }
+    }
+
+    public class UpdateCardInputExternalLinkType
+    {
+        [JsonProperty("label")]
+        public string ExternalLinkLabel { get; set; }
+
+        [JsonProperty("url")]
+        public string ExternalLinkURL { get; set; }
+    }
+
     public class AddCommentResponse
     {
         [JsonProperty("id")]
@@ -535,6 +401,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
         [JsonProperty("fullName")]
         public string Name { get; set; }
+    }
+
+    public class AddCommentInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
     }
 }
 

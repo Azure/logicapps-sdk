@@ -13,12 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
     public class XcgatepreviewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<LoginAuthResponse, ApiConnectionActionConfiguration> LoginAuth(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserCd = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<LoginAuthResponse, ApiConnectionActionConfiguration> LoginAuth(Expression<Func<string>> host = null, Expression<Func<LoginAuthInput>> body = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
-            var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
-            var __workflow_bodyuserCd = WorkflowExpression.Compile(bodyuserCd, nameof(bodyuserCd), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<LoginAuthResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webapi/login/auth";
@@ -26,50 +24,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_host != null)
                     callPayload.Queries["host"] = ExpressionConverter.Convert(__workflow_host);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycompanyCd != null)
-                {
-                    body["companyCd"] = ExpressionConverter.ConvertO(__workflow_bodycompanyCd);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserCd != null)
-                {
-                    body["userCd"] = ExpressionConverter.ConvertO(__workflow_bodyuserCd);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoginAuthResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionFindResponse, ApiConnectionActionConfiguration> ActionFind(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string[]>> bodyreportCdList = null, Expression<Func<string>> bodyfindstatement = null, Expression<Func<bodyfindstatementListInputItem[]>> bodyfindstatementList = null, Expression<Func<bodysortListInputItem[]>> bodysortList = null, Expression<Func<string>> bodypageSize = null, Expression<Func<string>> bodypageNo = null, Expression<Func<bodyrequestListInputItem[]>> bodyrequestList = null, Expression<Func<string>> bodyenableEpoch = null)
+        public IBodyWorkflowAction<ActionFindResponse, ApiConnectionActionConfiguration> ActionFind(Expression<Func<string>> host = null, Expression<Func<ActionFindInput>> body = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
-            var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
-            var __workflow_bodyuserUCd = WorkflowExpression.Compile(bodyuserUCd, nameof(bodyuserUCd), required: false);
-            var __workflow_bodyauthKey = WorkflowExpression.Compile(bodyauthKey, nameof(bodyauthKey), required: false);
-            var __workflow_bodyreportCdList = WorkflowExpression.Compile(bodyreportCdList, nameof(bodyreportCdList), required: false);
-            var __workflow_bodyfindstatement = WorkflowExpression.Compile(bodyfindstatement, nameof(bodyfindstatement), required: false);
-            var __workflow_bodyfindstatementList = WorkflowExpression.Compile(bodyfindstatementList, nameof(bodyfindstatementList), required: false);
-            var __workflow_bodysortList = WorkflowExpression.Compile(bodysortList, nameof(bodysortList), required: false);
-            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
-            var __workflow_bodypageNo = WorkflowExpression.Compile(bodypageNo, nameof(bodypageNo), required: false);
-            var __workflow_bodyrequestList = WorkflowExpression.Compile(bodyrequestList, nameof(bodyrequestList), required: false);
-            var __workflow_bodyenableEpoch = WorkflowExpression.Compile(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ActionFindResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webapi/action/find";
@@ -77,102 +42,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_host != null)
                     callPayload.Queries["host"] = ExpressionConverter.Convert(__workflow_host);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycompanyCd != null)
-                {
-                    body["companyCd"] = ExpressionConverter.ConvertO(__workflow_bodycompanyCd);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserUCd != null)
-                {
-                    body["userUCd"] = ExpressionConverter.ConvertO(__workflow_bodyuserUCd);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyauthKey != null)
-                {
-                    body["authKey"] = ExpressionConverter.ConvertO(__workflow_bodyauthKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreportCdList != null)
-                {
-                    body["reportCdList"] = ExpressionConverter.ConvertO(__workflow_bodyreportCdList);
-                    bodypropCount++;
-                }
-
-                var findObject = new JObject();
-                var findObjectpropCount = 0;
-                if (__workflow_bodyfindstatement != null)
-                {
-                    findObject["statement"] = ExpressionConverter.ConvertO(__workflow_bodyfindstatement);
-                    findObjectpropCount++;
-                }
-
-                if (__workflow_bodyfindstatementList != null)
-                {
-                    findObject["statementList"] = ExpressionConverter.ConvertO(__workflow_bodyfindstatementList);
-                    findObjectpropCount++;
-                }
-
-                if (findObjectpropCount > 0)
-                {
-                    body["find"] = findObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysortList != null)
-                {
-                    body["sortList"] = ExpressionConverter.ConvertO(__workflow_bodysortList);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypageSize != null)
-                {
-                    body["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypageSize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypageNo != null)
-                {
-                    body["pageNo"] = ExpressionConverter.ConvertO(__workflow_bodypageNo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequestList != null)
-                {
-                    body["requestList"] = ExpressionConverter.ConvertO(__workflow_bodyrequestList);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyenableEpoch != null)
-                {
-                    body["enableEpoch"] = ExpressionConverter.ConvertO(__workflow_bodyenableEpoch);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ActionFindResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionGetResponse, ApiConnectionActionConfiguration> ActionGet(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string>> bodyreportCd = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytrxCdx = null, Expression<Func<string>> bodyenableEpoch = null)
+        public IBodyWorkflowAction<ActionGetResponse, ApiConnectionActionConfiguration> ActionGet(Expression<Func<string>> host = null, Expression<Func<ActionGetInput>> body = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
-            var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
-            var __workflow_bodyuserUCd = WorkflowExpression.Compile(bodyuserUCd, nameof(bodyuserUCd), required: false);
-            var __workflow_bodyauthKey = WorkflowExpression.Compile(bodyauthKey, nameof(bodyauthKey), required: false);
-            var __workflow_bodyreportCd = WorkflowExpression.Compile(bodyreportCd, nameof(bodyreportCd), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytrxCdx = WorkflowExpression.Compile(bodytrxCdx, nameof(bodytrxCdx), required: false);
-            var __workflow_bodyenableEpoch = WorkflowExpression.Compile(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ActionGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webapi/action/get";
@@ -180,55 +60,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_host != null)
                     callPayload.Queries["host"] = ExpressionConverter.Convert(__workflow_host);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycompanyCd != null)
-                {
-                    body["companyCd"] = ExpressionConverter.ConvertO(__workflow_bodycompanyCd);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserUCd != null)
-                {
-                    body["userUCd"] = ExpressionConverter.ConvertO(__workflow_bodyuserUCd);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyauthKey != null)
-                {
-                    body["authKey"] = ExpressionConverter.ConvertO(__workflow_bodyauthKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreportCd != null)
-                {
-                    body["reportCd"] = ExpressionConverter.ConvertO(__workflow_bodyreportCd);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytrxCdx != null)
-                {
-                    body["trxCdx"] = ExpressionConverter.ConvertO(__workflow_bodytrxCdx);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyenableEpoch != null)
-                {
-                    body["enableEpoch"] = ExpressionConverter.ConvertO(__workflow_bodyenableEpoch);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ActionGetResponse>(callPayload);
             });
         }
@@ -257,6 +90,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
 
         [JsonProperty("error")]
         public string Error { get; set; }
+    }
+
+    public class LoginAuthInput
+    {
+        [JsonProperty("companyCd")]
+        public string CompanyCd { get; set; }
+
+        [JsonProperty("userCd")]
+        public string UserCd { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
     }
 
     public class ActionFindResponse
@@ -946,7 +791,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class bodyfindstatementListInputItem
+    public class ActionFindInput
+    {
+        [JsonProperty("companyCd")]
+        public string CompanyCd { get; set; }
+
+        [JsonProperty("userUCd")]
+        public string UserUCd { get; set; }
+
+        [JsonProperty("authKey")]
+        public string AuthKey { get; set; }
+
+        [JsonProperty("reportCdList")]
+        public string[] ReportCdList { get; set; }
+
+        [JsonProperty("find")]
+        public ActionFindInputFindType Find { get; set; }
+
+        [JsonProperty("sortList")]
+        public ActionFindInputSortListTypeItem[] SortList { get; set; }
+
+        [JsonProperty("pageSize")]
+        public string PageSize { get; set; }
+
+        [JsonProperty("pageNo")]
+        public string PageNo { get; set; }
+
+        [JsonProperty("requestList")]
+        public ActionFindInputRequestListTypeItem[] RequestList { get; set; }
+
+        [JsonProperty("enableEpoch")]
+        public string EnableEpoch { get; set; }
+    }
+
+    public class ActionFindInputFindType
+    {
+        [JsonProperty("statement")]
+        public string Statement { get; set; }
+
+        [JsonProperty("statementList")]
+        public ActionFindInputFindTypeStatementListTypeItem[] StatementList { get; set; }
+    }
+
+    public class ActionFindInputFindTypeStatementListTypeItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -958,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string Value { get; set; }
     }
 
-    public class bodysortListInputItem
+    public class ActionFindInputSortListTypeItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -967,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string Value { get; set; }
     }
 
-    public class bodyrequestListInputItem
+    public class ActionFindInputRequestListTypeItem
     {
         [JsonProperty("fieldName")]
         public string FieldName { get; set; }
@@ -1091,6 +978,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
     {
         [JsonProperty("contentURL")]
         public string ContentURL { get; set; }
+    }
+
+    public class ActionGetInput
+    {
+        [JsonProperty("companyCd")]
+        public string CompanyCd { get; set; }
+
+        [JsonProperty("userUCd")]
+        public string UserUCd { get; set; }
+
+        [JsonProperty("authKey")]
+        public string AuthKey { get; set; }
+
+        [JsonProperty("reportCd")]
+        public string ReportCd { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("trxCdx")]
+        public string TrxCdx { get; set; }
+
+        [JsonProperty("enableEpoch")]
+        public string EnableEpoch { get; set; }
     }
 }
 

@@ -16,56 +16,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
     public class LawliftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse, ApiConnectionTriggerConfiguration> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse, ApiConnectionTriggerConfiguration> LawliftExportTrigger(Expression<Func<LawliftExportTriggerInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyflowName = WorkflowExpression.Compile(bodyflowName, nameof(bodyflowName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<LawliftExportTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/export";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyflowName != null)
-                {
-                    body["flowName"] = ExpressionConverter.ConvertO(__workflow_bodyflowName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse, ApiConnectionTriggerConfiguration> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse, ApiConnectionTriggerConfiguration> LawliftNotificationTrigger(Expression<Func<LawliftNotificationTriggerInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyflowName = WorkflowExpression.Compile(bodyflowName, nameof(bodyflowName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<LawliftNotificationTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/notifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyflowName != null)
-                {
-                    body["flowName"] = ExpressionConverter.ConvertO(__workflow_bodyflowName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -77,10 +51,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
         public string Message { get; set; }
     }
 
+    public class LawliftExportTriggerInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("flowName")]
+        public string FlowName { get; set; }
+    }
+
     public class LawliftNotificationTriggerResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class LawliftNotificationTriggerInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("flowName")]
+        public string FlowName { get; set; }
     }
 }
 

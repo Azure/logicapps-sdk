@@ -16,32 +16,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
 
     public class EnvoyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InviteCreated(Expression<Func<string>> bodytoken = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InviteCreated(Expression<Func<InviteCreatedInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytoken = WorkflowExpression.Compile(bodytoken, nameof(bodytoken), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/register-invite-created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytoken != null)
-                {
-                    body["token"] = ExpressionConverter.ConvertO(__workflow_bodytoken);
-                    bodypropCount++;
-                }
-
-                body["callback-url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class InviteCreatedInput
+    {
+        [JsonProperty("token")]
+        public string Token { get; set; }
+
+        [JsonProperty("callback-url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

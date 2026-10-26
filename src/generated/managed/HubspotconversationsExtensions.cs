@@ -69,12 +69,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<UpdateAThreadResponse, ApiConnectionActionConfiguration> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodyarchived = null)
+        public IBodyWorkflowAction<UpdateAThreadResponse, ApiConnectionActionConfiguration> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<UpdateAThreadInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
             return new DeferredBodyAction<UpdateAThreadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}", __workflow_threadId.WithUrlEncoding(1)));
@@ -82,25 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyarchived != null)
-                {
-                    body["archived"] = ExpressionConverter.ConvertO(__workflow_bodyarchived);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateAThreadResponse>(callPayload);
             });
         }
@@ -438,6 +419,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
 
         [JsonProperty("archived")]
         public bool Archived { get; set; }
+    }
+
+    public class UpdateAThreadInput
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("archived")]
+        public bool? Archived { get; set; }
     }
 
     public class GetTheOriginalContentOfASingleMessageResponse

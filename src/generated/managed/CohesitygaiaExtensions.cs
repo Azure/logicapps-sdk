@@ -37,32 +37,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
-        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> SendQuery(Expression<Func<string>> bodyllmName, Expression<Func<string>> bodyllmId, Expression<Func<string[]>> bodydatasetNames, Expression<Func<string>> bodyqueryString)
+        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> SendQuery(Expression<Func<SendQueryInput>> body)
         {
-            var __workflow_bodyllmName = WorkflowExpression.Compile(bodyllmName, nameof(bodyllmName), required: true);
-            var __workflow_bodyllmId = WorkflowExpression.Compile(bodyllmId, nameof(bodyllmId), required: true);
-            var __workflow_bodydatasetNames = WorkflowExpression.Compile(bodydatasetNames, nameof(bodydatasetNames), required: true);
-            var __workflow_bodyqueryString = WorkflowExpression.Compile(bodyqueryString, nameof(bodyqueryString), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcm/gaia/ask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["llmName"] = ExpressionConverter.ConvertO(__workflow_bodyllmName);
-                bodypropCount++;
-                body["llmId"] = ExpressionConverter.ConvertO(__workflow_bodyllmId);
-                bodypropCount++;
-                body["datasetNames"] = ExpressionConverter.ConvertO(__workflow_bodydatasetNames);
-                bodypropCount++;
-                body["queryString"] = ExpressionConverter.ConvertO(__workflow_bodyqueryString);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryResponse>(callPayload);
             });
         }
@@ -286,6 +269,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
 
         [JsonProperty("regionId")]
         public string RegionId { get; set; }
+    }
+
+    public class SendQueryInput
+    {
+        [JsonProperty("llmName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LlmName { get; set; }
+
+        [JsonProperty("llmId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LlmId { get; set; }
+
+        [JsonProperty("datasetNames", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] DatasetNames { get; set; }
+
+        [JsonProperty("queryString", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string QueryString { get; set; }
     }
 }
 

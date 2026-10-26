@@ -26,83 +26,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EventRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EventRegistration(Expression<Func<EventRegistrationInput>> body)
         {
-            var __workflow_bodysignatureTokenToMsSignatureHeader = WorkflowExpression.Compile(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
-            var __workflow_bodywebhookEvents = WorkflowExpression.Compile(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
-            var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/v1/registration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodysignatureTokenToMsSignatureHeader != null)
-                {
-                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(__workflow_bodysignatureTokenToMsSignatureHeader);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebhookEvents != null)
-                {
-                    body["WebhookEvents"] = ExpressionConverter.ConvertO(__workflow_bodywebhookEvents);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebhookUrl != null)
-                {
-                    body["WebhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IBodyWorkflowAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration> UpdateRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
+        public IBodyWorkflowAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration> UpdateRegistration(Expression<Func<UpdateRegistrationInput>> body)
         {
-            var __workflow_bodysignatureTokenToMsSignatureHeader = WorkflowExpression.Compile(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
-            var __workflow_bodywebhookEvents = WorkflowExpression.Compile(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
-            var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/v1/registration";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodysignatureTokenToMsSignatureHeader != null)
-                {
-                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(__workflow_bodysignatureTokenToMsSignatureHeader);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebhookEvents != null)
-                {
-                    body["WebhookEvents"] = ExpressionConverter.ConvertO(__workflow_bodywebhookEvents);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebhookUrl != null)
-                {
-                    body["WebhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateRegistrationResponse>(callPayload);
             });
         }
@@ -118,9 +66,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         public string WebhookUrl { get; set; }
     }
 
+    public class EventRegistrationInput
+    {
+        public string SignatureTokenToMsSignatureHeader { get; set; }
+        public string[] WebhookEvents { get; set; }
+        public string WebhookUrl { get; set; }
+    }
+
     public class UpdateRegistrationResponse
     {
         public string SubscriberId { get; set; }
+        public string[] WebhookEvents { get; set; }
+        public string WebhookUrl { get; set; }
+    }
+
+    public class UpdateRegistrationInput
+    {
+        public string SignatureTokenToMsSignatureHeader { get; set; }
         public string[] WebhookEvents { get; set; }
         public string WebhookUrl { get; set; }
     }

@@ -67,28 +67,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditByIdResponse, ApiConnectionActionConfiguration> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<bool>> bodyarchived = null)
+        public IBodyWorkflowAction<GetAuditByIdResponse, ApiConnectionActionConfiguration> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<ArchiveRestoreAuditInput>> body = null)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
-            var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetAuditByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyarchived != null)
-                {
-                    body["archived"] = ExpressionConverter.ConvertO(__workflow_bodyarchived);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
             });
         }
@@ -171,175 +160,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ActionsSearchResponse, ApiConnectionActionConfiguration> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIdS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
+        public IBodyWorkflowAction<ActionsSearchResponse, ApiConnectionActionConfiguration> SearchActions(Expression<Func<SearchActionsInput>> searchActionsBody = null)
         {
-            var __workflow_searchActionsBodyauditIdS = WorkflowExpression.Compile(searchActionsBodyauditIdS, nameof(searchActionsBodyauditIdS), required: false);
-            var __workflow_searchActionsBodyassignees = WorkflowExpression.Compile(searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
-            var __workflow_searchActionsBodycreatedafterDate = WorkflowExpression.Compile(searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
-            var __workflow_searchActionsBodycreatedbeforeDate = WorkflowExpression.Compile(searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
-            var __workflow_searchActionsBodymodifiedafterDate = WorkflowExpression.Compile(searchActionsBodymodifiedafterDate, nameof(searchActionsBodymodifiedafterDate), required: false);
-            var __workflow_searchActionsBodymodifiedbeforeDate = WorkflowExpression.Compile(searchActionsBodymodifiedbeforeDate, nameof(searchActionsBodymodifiedbeforeDate), required: false);
-            var __workflow_searchActionsBodydueafterDate = WorkflowExpression.Compile(searchActionsBodydueafterDate, nameof(searchActionsBodydueafterDate), required: false);
-            var __workflow_searchActionsBodyduebeforeDate = WorkflowExpression.Compile(searchActionsBodyduebeforeDate, nameof(searchActionsBodyduebeforeDate), required: false);
+            var __workflow_searchActionsBody = WorkflowExpression.Compile(searchActionsBody, nameof(searchActionsBody), required: false);
             return new DeferredBodyAction<ActionsSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var searchActionsBody = new JObject();
-                var searchActionsBodypropCount = 0;
-                if (__workflow_searchActionsBodyauditIdS != null)
-                {
-                    searchActionsBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyauditIdS);
-                    searchActionsBodypropCount++;
-                }
-
-                if (__workflow_searchActionsBodyassignees != null)
-                {
-                    searchActionsBody["assignees"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyassignees);
-                    searchActionsBodypropCount++;
-                }
-
-                var createdAtObject = new JObject();
-                var createdAtObjectpropCount = 0;
-                if (__workflow_searchActionsBodycreatedafterDate != null)
-                {
-                    createdAtObject["from"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodycreatedafterDate);
-                    createdAtObjectpropCount++;
-                }
-
-                if (__workflow_searchActionsBodycreatedbeforeDate != null)
-                {
-                    createdAtObject["to"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodycreatedbeforeDate);
-                    createdAtObjectpropCount++;
-                }
-
-                if (createdAtObjectpropCount > 0)
-                {
-                    searchActionsBody["created_at"] = createdAtObject;
-                    searchActionsBodypropCount++;
-                }
-
-                var modifiedAtObject = new JObject();
-                var modifiedAtObjectpropCount = 0;
-                if (__workflow_searchActionsBodymodifiedafterDate != null)
-                {
-                    modifiedAtObject["from"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodymodifiedafterDate);
-                    modifiedAtObjectpropCount++;
-                }
-
-                if (__workflow_searchActionsBodymodifiedbeforeDate != null)
-                {
-                    modifiedAtObject["to"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodymodifiedbeforeDate);
-                    modifiedAtObjectpropCount++;
-                }
-
-                if (modifiedAtObjectpropCount > 0)
-                {
-                    searchActionsBody["modified_at"] = modifiedAtObject;
-                    searchActionsBodypropCount++;
-                }
-
-                var dueAtObject = new JObject();
-                var dueAtObjectpropCount = 0;
-                if (__workflow_searchActionsBodydueafterDate != null)
-                {
-                    dueAtObject["from"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodydueafterDate);
-                    dueAtObjectpropCount++;
-                }
-
-                if (__workflow_searchActionsBodyduebeforeDate != null)
-                {
-                    dueAtObject["to"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyduebeforeDate);
-                    dueAtObjectpropCount++;
-                }
-
-                if (dueAtObjectpropCount > 0)
-                {
-                    searchActionsBody["due_at"] = dueAtObject;
-                    searchActionsBodypropCount++;
-                }
-
-                if (searchActionsBodypropCount > 0)
-                {
-                    callPayload.Body = searchActionsBody;
-                }
-
+                if (__workflow_searchActionsBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_searchActionsBody);
                 return new ApiConnectionAction<ActionsSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> CreateAction(Expression<Func<string>> createActionBodyauditId = null, Expression<Func<string>> createActionBodyitemId = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
+        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> CreateAction(Expression<Func<CreateActionInput>> createActionBody)
         {
-            var __workflow_createActionBodyauditId = WorkflowExpression.Compile(createActionBodyauditId, nameof(createActionBodyauditId), required: false);
-            var __workflow_createActionBodyitemId = WorkflowExpression.Compile(createActionBodyitemId, nameof(createActionBodyitemId), required: false);
-            var __workflow_createActionBodytitle = WorkflowExpression.Compile(createActionBodytitle, nameof(createActionBodytitle), required: false);
-            var __workflow_createActionBodydescription = WorkflowExpression.Compile(createActionBodydescription, nameof(createActionBodydescription), required: false);
-            var __workflow_createActionBodypriority = WorkflowExpression.Compile(createActionBodypriority, nameof(createActionBodypriority), required: false);
-            var __workflow_createActionBodystatus = WorkflowExpression.Compile(createActionBodystatus, nameof(createActionBodystatus), required: false);
-            var __workflow_createActionBodydueAt = WorkflowExpression.Compile(createActionBodydueAt, nameof(createActionBodydueAt), required: false);
-            var __workflow_createActionBodyassignees = WorkflowExpression.Compile(createActionBodyassignees, nameof(createActionBodyassignees), required: false);
+            var __workflow_createActionBody = WorkflowExpression.Compile(createActionBody, nameof(createActionBody), required: true);
             return new DeferredBodyAction<Action, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var createActionBody = new JObject();
-                var createActionBodypropCount = 0;
-                if (__workflow_createActionBodyauditId != null)
-                {
-                    createActionBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyauditId);
-                    createActionBodypropCount++;
-                }
-
-                if (__workflow_createActionBodyitemId != null)
-                {
-                    createActionBody["item_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyitemId);
-                    createActionBodypropCount++;
-                }
-
-                if (__workflow_createActionBodytitle != null)
-                {
-                    createActionBody["title"] = ExpressionConverter.ConvertO(__workflow_createActionBodytitle);
-                    createActionBodypropCount++;
-                }
-
-                if (__workflow_createActionBodydescription != null)
-                {
-                    createActionBody["description"] = ExpressionConverter.ConvertO(__workflow_createActionBodydescription);
-                    createActionBodypropCount++;
-                }
-
-                if (__workflow_createActionBodypriority != null)
-                {
-                    createActionBody["priority"] = ExpressionConverter.ConvertO(__workflow_createActionBodypriority);
-                    createActionBodypropCount++;
-                }
-
-                if (__workflow_createActionBodystatus != null)
-                {
-                    createActionBody["status"] = ExpressionConverter.ConvertO(__workflow_createActionBodystatus);
-                    createActionBodypropCount++;
-                }
-
-                if (__workflow_createActionBodydueAt != null)
-                {
-                    createActionBody["due_at"] = ExpressionConverter.ConvertO(__workflow_createActionBodydueAt);
-                    createActionBodypropCount++;
-                }
-
-                if (__workflow_createActionBodyassignees != null)
-                {
-                    createActionBody["assignees"] = ExpressionConverter.ConvertO(__workflow_createActionBodyassignees);
-                    createActionBodypropCount++;
-                }
-
-                if (createActionBodypropCount > 0)
-                {
-                    callPayload.Body = createActionBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createActionBody);
                 return new ApiConnectionAction<Action>(callPayload);
             });
         }
@@ -358,63 +202,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> UpdateAction(Expression<Func<string>> actionId, Expression<Func<string>> updateActionBodytitle = null, Expression<Func<string>> updateActionBodydescription = null, Expression<Func<updateActionBodypriorityInput>> updateActionBodypriority = null, Expression<Func<updateActionBodystatusInput>> updateActionBodystatus = null, Expression<Func<string>> updateActionBodydueAt = null, Expression<Func<updateActionBodyassigneesInputItem[]>> updateActionBodyassignees = null)
+        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> UpdateAction(Expression<Func<string>> actionId, Expression<Func<UpdateActionInput>> updateActionBody)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            var __workflow_updateActionBodytitle = WorkflowExpression.Compile(updateActionBodytitle, nameof(updateActionBodytitle), required: false);
-            var __workflow_updateActionBodydescription = WorkflowExpression.Compile(updateActionBodydescription, nameof(updateActionBodydescription), required: false);
-            var __workflow_updateActionBodypriority = WorkflowExpression.Compile(updateActionBodypriority, nameof(updateActionBodypriority), required: false);
-            var __workflow_updateActionBodystatus = WorkflowExpression.Compile(updateActionBodystatus, nameof(updateActionBodystatus), required: false);
-            var __workflow_updateActionBodydueAt = WorkflowExpression.Compile(updateActionBodydueAt, nameof(updateActionBodydueAt), required: false);
-            var __workflow_updateActionBodyassignees = WorkflowExpression.Compile(updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
+            var __workflow_updateActionBody = WorkflowExpression.Compile(updateActionBody, nameof(updateActionBody), required: true);
             return new DeferredBodyAction<Action, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var updateActionBody = new JObject();
-                var updateActionBodypropCount = 0;
-                if (__workflow_updateActionBodytitle != null)
-                {
-                    updateActionBody["title"] = ExpressionConverter.ConvertO(__workflow_updateActionBodytitle);
-                    updateActionBodypropCount++;
-                }
-
-                if (__workflow_updateActionBodydescription != null)
-                {
-                    updateActionBody["description"] = ExpressionConverter.ConvertO(__workflow_updateActionBodydescription);
-                    updateActionBodypropCount++;
-                }
-
-                if (__workflow_updateActionBodypriority != null)
-                {
-                    updateActionBody["priority"] = ExpressionConverter.ConvertO(__workflow_updateActionBodypriority);
-                    updateActionBodypropCount++;
-                }
-
-                if (__workflow_updateActionBodystatus != null)
-                {
-                    updateActionBody["status"] = ExpressionConverter.ConvertO(__workflow_updateActionBodystatus);
-                    updateActionBodypropCount++;
-                }
-
-                if (__workflow_updateActionBodydueAt != null)
-                {
-                    updateActionBody["due_at"] = ExpressionConverter.ConvertO(__workflow_updateActionBodydueAt);
-                    updateActionBodypropCount++;
-                }
-
-                if (__workflow_updateActionBodyassignees != null)
-                {
-                    updateActionBody["assignees"] = ExpressionConverter.ConvertO(__workflow_updateActionBodyassignees);
-                    updateActionBodypropCount++;
-                }
-
-                if (updateActionBodypropCount > 0)
-                {
-                    callPayload.Body = updateActionBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateActionBody);
                 return new ApiConnectionAction<Action>(callPayload);
             });
         }
@@ -434,45 +231,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitInspectionExportResponse, ApiConnectionActionConfiguration> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceId = null)
+        public IBodyWorkflowAction<InitInspectionExportResponse, ApiConnectionActionConfiguration> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<InitiateInspectionExportInput>> format)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
-            var __workflow_formatexportFormat = WorkflowExpression.Compile(formatexportFormat, nameof(formatexportFormat), required: false);
-            var __workflow_formatpreferenceId = WorkflowExpression.Compile(formatpreferenceId, nameof(formatpreferenceId), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<InitInspectionExportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/report", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var format = new JObject();
-                var formatpropCount = 0;
-                if (__workflow_formatexportFormat != null)
-                {
-                    if (__workflow_formatexportFormat != null)
-                    {
-                        format["format"] = ExpressionConverter.ConvertO(__workflow_formatexportFormat);
-                        formatpropCount++;
-                    }
-
-                    formatpropCount++;
-                }
-                else
-                {
-                    format["format"] = "PDF";
-                    formatpropCount++;
-                }
-
-                if (__workflow_formatpreferenceId != null)
-                {
-                    format["preference_id"] = ExpressionConverter.ConvertO(__workflow_formatpreferenceId);
-                    formatpropCount++;
-                }
-
-                if (formatpropCount > 0)
-                {
-                    callPayload.Body = format;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_format);
                 return new ApiConnectionAction<InitInspectionExportResponse>(callPayload);
             });
         }
@@ -655,6 +423,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string TemplateName { get; set; }
     }
 
+    public class ArchiveRestoreAuditInput
+    {
+        [JsonProperty("archived")]
+        public bool? Archived { get; set; }
+    }
+
     public class InitExportResponse
     {
         [JsonProperty("id")]
@@ -820,17 +594,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string CreatorName { get; set; }
     }
 
-    public class searchActionsBodyassigneesInputItem
+    public class SearchActionsInput
+    {
+        [JsonProperty("audit_id")]
+        public string[] AuditId { get; set; }
+
+        [JsonProperty("assignees")]
+        public AssigneesArrayItem[] Assignees { get; set; }
+
+        [JsonProperty("created_at")]
+        public CreatedAt CreatedAt { get; set; }
+
+        [JsonProperty("modified_at")]
+        public ModifiedAt ModifiedAt { get; set; }
+
+        [JsonProperty("due_at")]
+        public DueAt DueAt { get; set; }
+    }
+
+    public class AssigneesArrayItem
     {
         [JsonProperty("id")]
         public string AssigneeId { get; set; }
 
         [JsonProperty("type")]
-        public searchActionsBodyassigneesInputItemTypeType Type { get; set; }
+        public AssigneesArrayItemTypeType Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchActionsBodyassigneesInputItemTypeType
+    public enum AssigneesArrayItemTypeType
     {
         [EnumMember(Value = "user")]
         User,
@@ -838,8 +630,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         Email
     }
 
+    public class CreatedAt
+    {
+        [JsonProperty("from")]
+        public string AfterDate { get; set; }
+
+        [JsonProperty("to")]
+        public string BeforeDate { get; set; }
+    }
+
+    public class ModifiedAt
+    {
+        [JsonProperty("from")]
+        public string AfterDate { get; set; }
+
+        [JsonProperty("to")]
+        public string BeforeDate { get; set; }
+    }
+
+    public class DueAt
+    {
+        [JsonProperty("from")]
+        public string AfterDate { get; set; }
+
+        [JsonProperty("to")]
+        public string BeforeDate { get; set; }
+    }
+
+    public class CreateActionInput
+    {
+        [JsonProperty("audit_id")]
+        public string AuditId { get; set; }
+
+        [JsonProperty("item_id")]
+        public string ItemId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("priority")]
+        public CreateActionInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("status")]
+        public CreateActionInputStatusType? Status { get; set; }
+
+        [JsonProperty("due_at")]
+        public string DueAt { get; set; }
+
+        [JsonProperty("assignees")]
+        public AssigneesArrayItem2[] Assignees { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum createActionBodypriorityInput
+    public enum CreateActionInputPriorityType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -852,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum createActionBodystatusInput
+    public enum CreateActionInputStatusType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -864,22 +710,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         _60
     }
 
-    public class createActionBodyassigneesInputItem
+    public class AssigneesArrayItem2
     {
         [JsonProperty("id")]
         public string AssigneeId { get; set; }
 
         [JsonProperty("type")]
-        public createActionBodyassigneesInputItemTypeType Type { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum createActionBodyassigneesInputItemTypeType
-    {
-        [EnumMember(Value = "user")]
-        User,
-        [EnumMember(Value = "email")]
-        Email
+        public AssigneesArrayItemTypeType Type { get; set; }
     }
 
     public class DeleteActionResponse
@@ -888,8 +725,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public bool Ok { get; set; }
     }
 
+    public class UpdateActionInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("priority")]
+        public UpdateActionInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("status")]
+        public UpdateActionInputStatusType? Status { get; set; }
+
+        [JsonProperty("due_at")]
+        public string DueAt { get; set; }
+
+        [JsonProperty("assignees")]
+        public AssigneesArrayItem22[] Assignees { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updateActionBodypriorityInput
+    public enum UpdateActionInputPriorityType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -902,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updateActionBodystatusInput
+    public enum UpdateActionInputStatusType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -914,22 +772,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         _60
     }
 
-    public class updateActionBodyassigneesInputItem
+    public class AssigneesArrayItem22
     {
         [JsonProperty("id")]
         public string AssigneeId { get; set; }
 
         [JsonProperty("type")]
-        public updateActionBodyassigneesInputItemTypeType Type { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updateActionBodyassigneesInputItemTypeType
-    {
-        [EnumMember(Value = "user")]
-        User,
-        [EnumMember(Value = "email")]
-        Email
+        public AssigneesArrayItemTypeType Type { get; set; }
     }
 
     public class InitInspectionExportResponse
@@ -938,8 +787,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string ExportTaskId { get; set; }
     }
 
+    public class InitiateInspectionExportInput
+    {
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InitiateInspectionExportInputExportFormatType? ExportFormat { get; set; } = InitiateInspectionExportInputExportFormatType.PDF;
+
+        [JsonProperty("preference_id")]
+        public string PreferenceId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatexportFormatInput
+    public enum InitiateInspectionExportInputExportFormatType
     {
         PDF,
         WORD

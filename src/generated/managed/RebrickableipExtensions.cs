@@ -487,7 +487,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UsersTokenCreateResponse>(callPayload);
             });
         }
@@ -686,39 +687,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
-        public IBodyWorkflowAction<UsersPartlistsUpdateResponse, ApiConnectionActionConfiguration> UsersPartlistsUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyisBuildable = null, Expression<Func<int>> bodynumParts = null)
+        public IBodyWorkflowAction<UsersPartlistsUpdateResponse, ApiConnectionActionConfiguration> UsersPartlistsUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<UsersPartlistsUpdateInput>> body)
         {
             var __workflow_userToken = WorkflowExpression.Compile(userToken, nameof(userToken), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyisBuildable = WorkflowExpression.Compile(bodyisBuildable, nameof(bodyisBuildable), required: false);
-            var __workflow_bodynumParts = WorkflowExpression.Compile(bodynumParts, nameof(bodynumParts), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UsersPartlistsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/users/{0}/partlists/{1}/", __workflow_userToken.WithUrlEncoding(1), __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyisBuildable != null)
-                {
-                    body["is_buildable"] = ExpressionConverter.ConvertO(__workflow_bodyisBuildable);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodynumParts != null)
-                {
-                    body["num_parts"] = ExpressionConverter.ConvertO(__workflow_bodynumParts);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UsersPartlistsUpdateResponse>(callPayload);
             });
         }
@@ -879,43 +858,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
-        public IBodyWorkflowAction<UsersSetlistsPartialUpdateResponse, ApiConnectionActionConfiguration> UsersSetlistsPartialUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<bool>> bodyisBuildable = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodynumSets = null)
+        public IBodyWorkflowAction<UsersSetlistsPartialUpdateResponse, ApiConnectionActionConfiguration> UsersSetlistsPartialUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<UsersSetlistsPartialUpdateInput>> body = null)
         {
             var __workflow_userToken = WorkflowExpression.Compile(userToken, nameof(userToken), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_bodyisBuildable = WorkflowExpression.Compile(bodyisBuildable, nameof(bodyisBuildable), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynumSets = WorkflowExpression.Compile(bodynumSets, nameof(bodynumSets), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UsersSetlistsPartialUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/users/{0}/setlists/{1}/", __workflow_userToken.WithUrlEncoding(1), __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyisBuildable != null)
-                {
-                    body["is_buildable"] = ExpressionConverter.ConvertO(__workflow_bodyisBuildable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynumSets != null)
-                {
-                    body["num_sets"] = ExpressionConverter.ConvertO(__workflow_bodynumSets);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UsersSetlistsPartialUpdateResponse>(callPayload);
             });
         }
@@ -2714,6 +2668,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public int NumParts { get; set; }
     }
 
+    public class UsersPartlistsUpdateInput
+    {
+        [JsonProperty("is_buildable")]
+        public bool? IsBuildable { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("num_parts")]
+        public int? NumParts { get; set; }
+    }
+
     public class UsersPartlistsPartsListResponse
     {
         [JsonProperty("count")]
@@ -3200,6 +3166,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
 
         [JsonProperty("num_sets")]
         public int NumSets { get; set; }
+    }
+
+    public class UsersSetlistsPartialUpdateInput
+    {
+        [JsonProperty("is_buildable")]
+        public bool? IsBuildable { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("num_sets")]
+        public int? NumSets { get; set; }
     }
 
     public class UsersSetlistsSetsListResponse

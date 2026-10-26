@@ -71,133 +71,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
-        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
+        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<UpdateCalendarEventInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: true);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodystartstartTime = WorkflowExpression.Compile(bodystartstartTime, nameof(bodystartstartTime), required: false);
-            var __workflow_bodyendendTime = WorkflowExpression.Compile(bodyendendTime, nameof(bodyendendTime), required: false);
-            var __workflow_bodybodybody = WorkflowExpression.Compile(bodybodybody, nameof(bodybodybody), required: false);
-            var __workflow_bodylocationlocation = WorkflowExpression.Compile(bodylocationlocation, nameof(bodylocationlocation), required: false);
-            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
-            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            var __workflow_bodyreminderStartDuration = WorkflowExpression.Compile(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
-            var __workflow_bodyshowAs = WorkflowExpression.Compile(bodyshowAs, nameof(bodyshowAs), required: false);
-            var __workflow_bodyresponseRequested = WorkflowExpression.Compile(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/events/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_event.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                var startObject = new JObject();
-                var startObjectpropCount = 0;
-                if (__workflow_bodystartstartTime != null)
-                {
-                    startObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartstartTime);
-                    startObjectpropCount++;
-                }
-
-                startObject["timeZone"] = "UTC";
-                startObjectpropCount++;
-                if (startObjectpropCount > 0)
-                {
-                    body["start"] = startObject;
-                    bodypropCount++;
-                }
-
-                var endObject = new JObject();
-                var endObjectpropCount = 0;
-                if (__workflow_bodyendendTime != null)
-                {
-                    endObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyendendTime);
-                    endObjectpropCount++;
-                }
-
-                endObject["timeZone"] = "UTC";
-                endObjectpropCount++;
-                if (endObjectpropCount > 0)
-                {
-                    body["end"] = endObject;
-                    bodypropCount++;
-                }
-
-                var bodyObject = new JObject();
-                var bodyObjectpropCount = 0;
-                if (__workflow_bodybodybody != null)
-                {
-                    bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodybodybody);
-                    bodyObjectpropCount++;
-                }
-
-                bodyObject["contentType"] = "Html";
-                bodyObjectpropCount++;
-                if (bodyObjectpropCount > 0)
-                {
-                    body["body"] = bodyObject;
-                    bodypropCount++;
-                }
-
-                var locationObject = new JObject();
-                var locationObjectpropCount = 0;
-                if (__workflow_bodylocationlocation != null)
-                {
-                    locationObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodylocationlocation);
-                    locationObjectpropCount++;
-                }
-
-                if (locationObjectpropCount > 0)
-                {
-                    body["location"] = locationObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimportance != null)
-                {
-                    body["importance"] = ExpressionConverter.ConvertO(__workflow_bodyimportance);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAllDay != null)
-                {
-                    body["isAllDay"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisReminderOn != null)
-                {
-                    body["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_bodyisReminderOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreminderStartDuration != null)
-                {
-                    body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(__workflow_bodyreminderStartDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshowAs != null)
-                {
-                    body["showAs"] = ExpressionConverter.ConvertO(__workflow_bodyshowAs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresponseRequested != null)
-                {
-                    body["responseRequested"] = ExpressionConverter.ConvertO(__workflow_bodyresponseRequested);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCalendarEventResponse>(callPayload);
             });
         }
@@ -271,132 +155,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
-        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> CreateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
+        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> CreateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<CreateCalendarEventV2Input>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodystartstartTime = WorkflowExpression.Compile(bodystartstartTime, nameof(bodystartstartTime), required: false);
-            var __workflow_bodyendendTime = WorkflowExpression.Compile(bodyendendTime, nameof(bodyendendTime), required: false);
-            var __workflow_bodybodybody = WorkflowExpression.Compile(bodybodybody, nameof(bodybodybody), required: false);
-            var __workflow_bodylocationlocation = WorkflowExpression.Compile(bodylocationlocation, nameof(bodylocationlocation), required: false);
-            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
-            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            var __workflow_bodyreminderStartDuration = WorkflowExpression.Compile(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
-            var __workflow_bodyshowAs = WorkflowExpression.Compile(bodyshowAs, nameof(bodyshowAs), required: false);
-            var __workflow_bodyresponseRequested = WorkflowExpression.Compile(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/groups/{0}/events", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                var startObject = new JObject();
-                var startObjectpropCount = 0;
-                if (__workflow_bodystartstartTime != null)
-                {
-                    startObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartstartTime);
-                    startObjectpropCount++;
-                }
-
-                startObject["timeZone"] = "UTC";
-                startObjectpropCount++;
-                if (startObjectpropCount > 0)
-                {
-                    body["start"] = startObject;
-                    bodypropCount++;
-                }
-
-                var endObject = new JObject();
-                var endObjectpropCount = 0;
-                if (__workflow_bodyendendTime != null)
-                {
-                    endObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyendendTime);
-                    endObjectpropCount++;
-                }
-
-                endObject["timeZone"] = "UTC";
-                endObjectpropCount++;
-                if (endObjectpropCount > 0)
-                {
-                    body["end"] = endObject;
-                    bodypropCount++;
-                }
-
-                var bodyObject = new JObject();
-                var bodyObjectpropCount = 0;
-                if (__workflow_bodybodybody != null)
-                {
-                    bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodybodybody);
-                    bodyObjectpropCount++;
-                }
-
-                bodyObject["contentType"] = "Html";
-                bodyObjectpropCount++;
-                if (bodyObjectpropCount > 0)
-                {
-                    body["body"] = bodyObject;
-                    bodypropCount++;
-                }
-
-                var locationObject = new JObject();
-                var locationObjectpropCount = 0;
-                if (__workflow_bodylocationlocation != null)
-                {
-                    locationObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodylocationlocation);
-                    locationObjectpropCount++;
-                }
-
-                if (locationObjectpropCount > 0)
-                {
-                    body["location"] = locationObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimportance != null)
-                {
-                    body["importance"] = ExpressionConverter.ConvertO(__workflow_bodyimportance);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAllDay != null)
-                {
-                    body["isAllDay"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisReminderOn != null)
-                {
-                    body["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_bodyisReminderOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreminderStartDuration != null)
-                {
-                    body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(__workflow_bodyreminderStartDuration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshowAs != null)
-                {
-                    body["showAs"] = ExpressionConverter.ConvertO(__workflow_bodyshowAs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresponseRequested != null)
-                {
-                    body["responseRequested"] = ExpressionConverter.ConvertO(__workflow_bodyresponseRequested);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCalendarEventResponse>(callPayload);
             });
         }
@@ -433,7 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
                     callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
                 if (__workflow_customHeader5 != null)
                     callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -693,8 +462,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public string Name { get; set; }
     }
 
+    public class UpdateCalendarEventInput
+    {
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateCalendarEventInputStartType Start { get; set; }
+
+        [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateCalendarEventInputEndType End { get; set; }
+
+        [JsonProperty("body")]
+        public UpdateCalendarEventInputBodyType Body { get; set; }
+
+        [JsonProperty("location")]
+        public UpdateCalendarEventInputLocationType Location { get; set; }
+
+        [JsonProperty("importance")]
+        public UpdateCalendarEventInputImportanceType? Importance { get; set; }
+
+        [JsonProperty("isAllDay")]
+        public bool? IsAllDay { get; set; }
+
+        [JsonProperty("isReminderOn")]
+        public bool? IsReminderOn { get; set; }
+
+        [JsonProperty("reminderMinutesBeforeStart")]
+        public int? ReminderStartDuration { get; set; }
+
+        [JsonProperty("showAs")]
+        public UpdateCalendarEventInputShowAsType? ShowAs { get; set; }
+
+        [JsonProperty("responseRequested")]
+        public bool? ResponseRequested { get; set; }
+    }
+
+    public class UpdateCalendarEventInputStartType
+    {
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TimeZone { get; set; } = "UTC";
+    }
+
+    public class UpdateCalendarEventInputEndType
+    {
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndTime { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TimeZone { get; set; } = "UTC";
+    }
+
+    public class UpdateCalendarEventInputBodyType
+    {
+        [JsonProperty("content")]
+        public string Body { get; set; }
+
+        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string BodyContentType { get; set; } = "Html";
+    }
+
+    public class UpdateCalendarEventInputLocationType
+    {
+        [JsonProperty("displayName")]
+        public string Location { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyimportanceInput
+    public enum UpdateCalendarEventInputImportanceType
     {
         Low,
         Normal,
@@ -702,7 +540,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyshowAsInput
+    public enum UpdateCalendarEventInputShowAsType
+    {
+        Free,
+        Tentative,
+        Busy,
+        Oof,
+        WorkingElsewhere,
+        Unknown
+    }
+
+    public class CreateCalendarEventV2Input
+    {
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateCalendarEventV2InputStartType Start { get; set; }
+
+        [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateCalendarEventV2InputEndType End { get; set; }
+
+        [JsonProperty("body")]
+        public CreateCalendarEventV2InputBodyType Body { get; set; }
+
+        [JsonProperty("location")]
+        public CreateCalendarEventV2InputLocationType Location { get; set; }
+
+        [JsonProperty("importance")]
+        public CreateCalendarEventV2InputImportanceType? Importance { get; set; }
+
+        [JsonProperty("isAllDay")]
+        public bool? IsAllDay { get; set; }
+
+        [JsonProperty("isReminderOn")]
+        public bool? IsReminderOn { get; set; }
+
+        [JsonProperty("reminderMinutesBeforeStart")]
+        public int? ReminderStartDuration { get; set; }
+
+        [JsonProperty("showAs")]
+        public CreateCalendarEventV2InputShowAsType? ShowAs { get; set; }
+
+        [JsonProperty("responseRequested")]
+        public bool? ResponseRequested { get; set; }
+    }
+
+    public class CreateCalendarEventV2InputStartType
+    {
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TimeZone { get; set; } = "UTC";
+    }
+
+    public class CreateCalendarEventV2InputEndType
+    {
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndTime { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TimeZone { get; set; } = "UTC";
+    }
+
+    public class CreateCalendarEventV2InputBodyType
+    {
+        [JsonProperty("content")]
+        public string Body { get; set; }
+
+        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string BodyContentType { get; set; } = "Html";
+    }
+
+    public class CreateCalendarEventV2InputLocationType
+    {
+        [JsonProperty("displayName")]
+        public string Location { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateCalendarEventV2InputImportanceType
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateCalendarEventV2InputShowAsType
     {
         Free,
         Tentative,

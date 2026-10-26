@@ -28,31 +28,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<TriggerActionResponse, ApiConnectionActionConfiguration> TriggerAction(Expression<Func<string>> activityId, Expression<Func<int>> bodyactionId, Expression<Func<int>> bodyactivityId, Expression<Func<string>> bodycIId)
+        public IBodyWorkflowAction<TriggerActionResponse, ApiConnectionActionConfiguration> TriggerAction(Expression<Func<string>> activityId, Expression<Func<TriggerActionInput>> body)
         {
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
-            var __workflow_bodyactionId = WorkflowExpression.Compile(bodyactionId, nameof(bodyactionId), required: true);
-            var __workflow_bodyactivityId = WorkflowExpression.Compile(bodyactivityId, nameof(bodyactivityId), required: true);
-            var __workflow_bodycIId = WorkflowExpression.Compile(bodycIId, nameof(bodycIId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TriggerActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/portal/ino/api/v3/collab/activity/{0}/actions", __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ttype"] = Convert.ToString("TriggerActionExternal");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["ActionId"] = ExpressionConverter.ConvertO(__workflow_bodyactionId);
-                bodypropCount++;
-                body["ActivityId"] = ExpressionConverter.ConvertO(__workflow_bodyactivityId);
-                bodypropCount++;
-                body["CIId"] = ExpressionConverter.ConvertO(__workflow_bodycIId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TriggerActionResponse>(callPayload);
             });
         }
@@ -72,22 +58,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<SetActivityAdditionalAttributeResponse, ApiConnectionActionConfiguration> SetActivityAdditionalAttribute(Expression<Func<string>> activityId)
+        public IBodyWorkflowAction<SetActivityAdditionalAttributeResponse, ApiConnectionActionConfiguration> SetActivityAdditionalAttribute(Expression<Func<string>> activityId, Expression<Func<object>> body)
         {
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SetActivityAdditionalAttributeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/portal/ino/api/v3/collab/activity/{0}/attributes", __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ttype"] = Convert.ToString("InsertUpdate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetActivityAdditionalAttributeResponse>(callPayload);
             });
         }
@@ -107,189 +88,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<TriggerISResponse, ApiConnectionActionConfiguration> TriggerIS(Expression<Func<string>> activityId, Expression<Func<string>> bodyskillId)
+        public IBodyWorkflowAction<TriggerISResponse, ApiConnectionActionConfiguration> TriggerIS(Expression<Func<string>> activityId, Expression<Func<TriggerISInput>> body)
         {
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
-            var __workflow_bodyskillId = WorkflowExpression.Compile(bodyskillId, nameof(bodyskillId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TriggerISResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/portal/ino/api/v3/collab/activity/{0}", __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ttype"] = Convert.ToString("TriggerIS");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["SkillId"] = ExpressionConverter.ConvertO(__workflow_bodyskillId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TriggerISResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<UpdateActionOutputResponse, ApiConnectionActionConfiguration> UpdateActionOutput(Expression<Func<string>> activityActionId, Expression<Func<string>> bodyoutput, Expression<Func<bodyexecutionStatusInput>> bodyexecutionStatus = null)
+        public IBodyWorkflowAction<UpdateActionOutputResponse, ApiConnectionActionConfiguration> UpdateActionOutput(Expression<Func<string>> activityActionId, Expression<Func<UpdateActionOutputInput>> body)
         {
             var __workflow_activityActionId = WorkflowExpression.Compile(activityActionId, nameof(activityActionId), required: true);
-            var __workflow_bodyoutput = WorkflowExpression.Compile(bodyoutput, nameof(bodyoutput), required: true);
-            var __workflow_bodyexecutionStatus = WorkflowExpression.Compile(bodyexecutionStatus, nameof(bodyexecutionStatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateActionOutputResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/portal/ino/api/v3/collab/activityaction/{0}", __workflow_activityActionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["output"] = ExpressionConverter.ConvertO(__workflow_bodyoutput);
-                if (__workflow_bodyexecutionStatus != null)
-                {
-                    body["ActionExecutionStatus"] = ExpressionConverter.ConvertO(__workflow_bodyexecutionStatus);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateActionOutputResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<LinkAsChildActivityResponse, ApiConnectionActionConfiguration> LinkAsChildActivity(Expression<Func<string>> activityId, Expression<Func<int>> bodychildId)
+        public IBodyWorkflowAction<LinkAsChildActivityResponse, ApiConnectionActionConfiguration> LinkAsChildActivity(Expression<Func<string>> activityId, Expression<Func<LinkAsChildActivityInput>> body)
         {
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
-            var __workflow_bodychildId = WorkflowExpression.Compile(bodychildId, nameof(bodychildId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LinkAsChildActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/portal/ino/api/v3/collab/activity/{0}/v1/link", __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ttype"] = Convert.ToString("AddChild");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["ChildId"] = ExpressionConverter.ConvertO(__workflow_bodychildId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LinkAsChildActivityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription, Expression<Func<string>> bodycIId, Expression<Func<string>> bodycustomerId, Expression<Func<string>> bodyrunId = null, Expression<Func<string>> bodyworkflowRunURL = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyassignmentGroup = null)
+        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<CreateActivityInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodycIId = WorkflowExpression.Compile(bodycIId, nameof(bodycIId), required: true);
-            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: true);
-            var __workflow_bodyrunId = WorkflowExpression.Compile(bodyrunId, nameof(bodyrunId), required: false);
-            var __workflow_bodyworkflowRunURL = WorkflowExpression.Compile(bodyworkflowRunURL, nameof(bodyworkflowRunURL), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyassignmentGroup = WorkflowExpression.Compile(bodyassignmentGroup, nameof(bodyassignmentGroup), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/portal/ino/api/v3/collab/activity";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyrunId != null)
-                {
-                    if (__workflow_bodyrunId != null)
-                    {
-                        body["pa_run_id"] = ExpressionConverter.ConvertO(__workflow_bodyrunId);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["pa_run_id"] = "@{workflow().run.name}";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworkflowRunURL != null)
-                {
-                    if (__workflow_bodyworkflowRunURL != null)
-                    {
-                        body["pa_run_name"] = ExpressionConverter.ConvertO(__workflow_bodyworkflowRunURL);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["pa_run_name"] = "@{concat('https://india.flow.microsoft.com/manage/environments/',workflow().tags.environmentName,'/flows/',workflow().name,'/runs/',workflow().run.name)}";
-                    bodypropCount++;
-                }
-
-                body["SourceId"] = 11;
-                bodypropCount++;
-                bodypropCount++;
-                body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["Description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                bodypropCount++;
-                body["CIId"] = ExpressionConverter.ConvertO(__workflow_bodycIId);
-                if (__workflow_bodyuserId != null)
-                {
-                    body["OwnerId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignmentGroup != null)
-                {
-                    body["AssignmentGroup"] = ExpressionConverter.ConvertO(__workflow_bodyassignmentGroup);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["CustomerId"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateActivityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<CreateaActivityLogResponse, ApiConnectionActionConfiguration> CreateaActivityLog(Expression<Func<int>> bodyactivityId, Expression<Func<string>> bodylogMessage, Expression<Func<int>> bodyuserId)
+        public IBodyWorkflowAction<CreateaActivityLogResponse, ApiConnectionActionConfiguration> CreateaActivityLog(Expression<Func<CreateaActivityLogInput>> body)
         {
-            var __workflow_bodyactivityId = WorkflowExpression.Compile(bodyactivityId, nameof(bodyactivityId), required: true);
-            var __workflow_bodylogMessage = WorkflowExpression.Compile(bodylogMessage, nameof(bodylogMessage), required: true);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateaActivityLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/portal/ino/api/v3/collab/activity/0/logs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ttype"] = Convert.ToString("NewRecord");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["ActivityId"] = ExpressionConverter.ConvertO(__workflow_bodyactivityId);
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodylogMessage);
-                bodypropCount++;
-                body["CreatedById"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateaActivityLogResponse>(callPayload);
             });
         }
@@ -335,6 +204,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public bool Success { get; set; }
         public string Msg { get; set; }
         public string TransactionKey { get; set; }
+    }
+
+    public class TriggerActionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ActionId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ActivityId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CIId { get; set; } = "ActivityCI";
     }
 
     public class ReadActivityAttributeResponse
@@ -389,6 +270,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
+    public class TriggerISInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SkillId { get; set; }
+    }
+
     public class UpdateActionOutputResponse
     {
         public bool Success { get; set; }
@@ -396,7 +283,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
-    public enum bodyexecutionStatusInput
+    public class UpdateActionOutputInput
+    {
+        [JsonProperty("output", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Output { get; set; }
+
+        [JsonProperty("ActionExecutionStatus")]
+        public UpdateActionOutputInputExecutionStatusType? ExecutionStatus { get; set; }
+    }
+
+    public enum UpdateActionOutputInputExecutionStatusType
     {
         _1 = 1,
         _2 = 2
@@ -409,6 +305,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
+    public class LinkAsChildActivityInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ChildId { get; set; }
+    }
+
     public class CreateActivityResponse
     {
         public int Id { get; set; }
@@ -417,11 +319,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
+    public class CreateActivityInput
+    {
+        [JsonProperty("pa_run_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RunId { get; set; } = "@{workflow().run.name}";
+
+        [JsonProperty("pa_run_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkflowRunURL { get; set; } = "@{concat('https://india.flow.microsoft.com/manage/environments/',workflow().tags.environmentName,'/flows/',workflow().name,'/runs/',workflow().run.name)}";
+
+        [JsonProperty("SourceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int SetSourceidAs11ToCreateActivityUnderGeneralCategory { get; set; } = 11;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CIId { get; set; }
+
+        [JsonProperty("OwnerId")]
+        public string UserId { get; set; }
+        public string AssignmentGroup { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CustomerId { get; set; }
+    }
+
     public class CreateaActivityLogResponse
     {
         public bool Success { get; set; }
         public string Msg { get; set; }
         public string TransactionKey { get; set; }
+    }
+
+    public class CreateaActivityLogInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ActivityId { get; set; }
+
+        [JsonProperty("Comment", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LogMessage { get; set; } = "Triggered by PowerAutomate. Run id: @{workflow().run.name} Workflow: @{concat('https://india.flow.microsoft.com/manage/environments/',workflow().tags.environmentName,'/flows/',workflow().name,'/runs/',workflow().run.name)}";
+
+        [JsonProperty("CreatedById", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UserId { get; set; }
     }
 }
 

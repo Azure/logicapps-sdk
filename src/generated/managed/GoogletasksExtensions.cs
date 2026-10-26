@@ -25,23 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskListEntry, ApiConnectionActionConfiguration> CreateTaskList(Expression<Func<string>> listtitle)
+        public IBodyWorkflowAction<TaskListEntry, ApiConnectionActionConfiguration> CreateTaskList(Expression<Func<CreateTaskListInput>> list)
         {
-            var __workflow_listtitle = WorkflowExpression.Compile(listtitle, nameof(listtitle), required: true);
+            var __workflow_list = WorkflowExpression.Compile(list, nameof(list), required: true);
             return new DeferredBodyAction<TaskListEntry, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users/@me/lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var list = new JObject();
-                var listpropCount = 0;
-                listpropCount++;
-                list["title"] = ExpressionConverter.ConvertO(__workflow_listtitle);
-                if (listpropCount > 0)
-                {
-                    callPayload.Body = list;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_list);
                 return new ApiConnectionAction<TaskListEntry>(callPayload);
             });
         }
@@ -60,38 +52,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CraeteTask(Expression<Func<string>> taskListId, Expression<Func<string>> tasktitle, Expression<Func<string>> tasknotes = null, Expression<Func<string>> taskdue = null)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CraeteTask(Expression<Func<string>> taskListId, Expression<Func<CraeteTaskInput>> task)
         {
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
-            var __workflow_tasktitle = WorkflowExpression.Compile(tasktitle, nameof(tasktitle), required: true);
-            var __workflow_tasknotes = WorkflowExpression.Compile(tasknotes, nameof(tasknotes), required: false);
-            var __workflow_taskdue = WorkflowExpression.Compile(taskdue, nameof(taskdue), required: false);
+            var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
             return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var task = new JObject();
-                var taskpropCount = 0;
-                taskpropCount++;
-                task["title"] = ExpressionConverter.ConvertO(__workflow_tasktitle);
-                if (__workflow_tasknotes != null)
-                {
-                    task["notes"] = ExpressionConverter.ConvertO(__workflow_tasknotes);
-                    taskpropCount++;
-                }
-
-                if (__workflow_taskdue != null)
-                {
-                    task["due"] = ExpressionConverter.ConvertO(__workflow_taskdue);
-                    taskpropCount++;
-                }
-
-                if (taskpropCount > 0)
-                {
-                    callPayload.Body = task;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_task);
                 return new ApiConnectionAction<TaskObject>(callPayload);
             });
         }
@@ -182,6 +152,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         public string UpdatedTime { get; set; }
     }
 
+    public class CreateTaskListInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+    }
+
     public class TaskList
     {
         [JsonProperty("items")]
@@ -219,6 +195,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
         [JsonProperty("completed")]
         public string Completed { get; set; }
+    }
+
+    public class CraeteTaskInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("due")]
+        public string Due { get; set; }
     }
 }
 

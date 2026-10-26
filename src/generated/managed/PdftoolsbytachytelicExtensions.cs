@@ -13,91 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
     public class PdftoolsbytachytelicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
-        public IBodyWorkflowAction<OptimizePdfResponse, ApiConnectionActionConfiguration> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
+        public IBodyWorkflowAction<OptimizePdfResponse, ApiConnectionActionConfiguration> OptimizePdf(Expression<Func<OptimizePdfInput>> body)
         {
-            var __workflow_bodypDFFileContent = WorkflowExpression.Compile(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
-            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
-            var __workflow_bodygarbageLevel = WorkflowExpression.Compile(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
-            var __workflow_bodydeflate = WorkflowExpression.Compile(bodydeflate, nameof(bodydeflate), required: false);
-            var __workflow_bodyclean = WorkflowExpression.Compile(bodyclean, nameof(bodyclean), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OptimizePdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/optimize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["PdfFileContent"] = ExpressionConverter.ConvertO(__workflow_bodypDFFileContent);
-                if (__workflow_bodymode != null)
-                {
-                    if (__workflow_bodymode != null)
-                    {
-                        body["Mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["Mode"] = "aggressive";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygarbageLevel != null)
-                {
-                    if (__workflow_bodygarbageLevel != null)
-                    {
-                        body["Garbage"] = ExpressionConverter.ConvertO(__workflow_bodygarbageLevel);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["Garbage"] = 4;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeflate != null)
-                {
-                    if (__workflow_bodydeflate != null)
-                    {
-                        body["Deflate"] = ExpressionConverter.ConvertO(__workflow_bodydeflate);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["Deflate"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclean != null)
-                {
-                    if (__workflow_bodyclean != null)
-                    {
-                        body["Clean"] = ExpressionConverter.ConvertO(__workflow_bodyclean);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["Clean"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OptimizePdfResponse>(callPayload);
             });
         }
@@ -113,8 +37,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
         public string OptimizedPDF { get; set; }
     }
 
+    public class OptimizePdfInput
+    {
+        [JsonProperty("PdfFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PDFFileContent { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public OptimizePdfInputModeType? Mode { get; set; } = OptimizePdfInputModeType.Aggressive;
+
+        [JsonProperty("Garbage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? GarbageLevel { get; set; } = 4;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Deflate { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Clean { get; set; } = true;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodeInput
+    public enum OptimizePdfInputModeType
     {
         [EnumMember(Value = "aggressive")]
         Aggressive,

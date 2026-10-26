@@ -13,29 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
     public class CioplenuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cioplenu")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> taskDatatitle, Expression<Func<string>> taskDatadescription, Expression<Func<int>> taskDatapriority)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> taskData)
         {
-            var __workflow_taskDatatitle = WorkflowExpression.Compile(taskDatatitle, nameof(taskDatatitle), required: true);
-            var __workflow_taskDatadescription = WorkflowExpression.Compile(taskDatadescription, nameof(taskDatadescription), required: true);
-            var __workflow_taskDatapriority = WorkflowExpression.Compile(taskDatapriority, nameof(taskDatapriority), required: true);
+            var __workflow_taskData = WorkflowExpression.Compile(taskData, nameof(taskData), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var taskData = new JObject();
-                var taskDatapropCount = 0;
-                taskDatapropCount++;
-                taskData["title"] = ExpressionConverter.ConvertO(__workflow_taskDatatitle);
-                taskDatapropCount++;
-                taskData["description"] = ExpressionConverter.ConvertO(__workflow_taskDatadescription);
-                taskDatapropCount++;
-                taskData["priority"] = ExpressionConverter.ConvertO(__workflow_taskDatapriority);
-                if (taskDatapropCount > 0)
-                {
-                    callPayload.Body = taskData;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_taskData);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
@@ -49,6 +35,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
     {
         [JsonProperty("id")]
         public int Id { get; set; }
+    }
+
+    public class CreateTaskInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; } = "";
+
+        [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Priority { get; set; } = 5;
     }
 }
 

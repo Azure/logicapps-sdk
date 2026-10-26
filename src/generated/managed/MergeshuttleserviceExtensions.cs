@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
                 var apiCallPath = "/api/shuttle/fixedrouteschedule";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }

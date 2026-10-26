@@ -13,73 +13,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
     public class RobotsforpowerbiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistEnableResponse, ApiConnectionActionConfiguration> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistEnableResponse, ApiConnectionActionConfiguration> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<PlaylistEnableInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlaylistEnableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.enable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Account Id"] = ExpressionConverter.Convert(__workflow_accountId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlaylistEnableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistDisableResponse, ApiConnectionActionConfiguration> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistDisableResponse, ApiConnectionActionConfiguration> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<PlaylistDisableInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlaylistDisableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.disable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Account Id"] = ExpressionConverter.Convert(__workflow_accountId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlaylistDisableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistExecuteResponse, ApiConnectionActionConfiguration> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistExecuteResponse, ApiConnectionActionConfiguration> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<PlaylistExecuteInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlaylistExecuteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.execute";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Account Id"] = ExpressionConverter.Convert(__workflow_accountId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlaylistExecuteResponse>(callPayload);
             });
         }
@@ -113,6 +89,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         public string CronExpression { get; set; }
     }
 
+    public class PlaylistEnableInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+    }
+
     public class PlaylistDisableResponse
     {
         [JsonProperty("playlist")]
@@ -137,6 +119,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         public string CronExpression { get; set; }
     }
 
+    public class PlaylistDisableInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+    }
+
     public class PlaylistExecuteResponse
     {
         [JsonProperty("playlist")]
@@ -159,6 +147,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
 
         [JsonProperty("cronExpression")]
         public string CronExpression { get; set; }
+    }
+
+    public class PlaylistExecuteInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
     }
 }
 

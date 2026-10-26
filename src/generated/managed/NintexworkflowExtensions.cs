@@ -13,30 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
     public class NintexworkflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<object>> bodystartData = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<CreateWorkflowInstanceInput>> body)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            var __workflow_bodystartData = WorkflowExpression.Compile(bodystartData, nameof(bodystartData), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflows/v1/designs/{0}/instances", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystartData != null)
-                {
-                    body["startData"] = ExpressionConverter.ConvertO(__workflow_bodystartData);
-                    bodypropCount++;
-                }
-
-                body["x-ntx-callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -44,6 +30,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
 
     public class NintexworkflowTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class CreateWorkflowInstanceInput
+    {
+        [JsonProperty("startData")]
+        public JToken StartData { get; set; }
+
+        [JsonProperty("x-ntx-callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string XNtxCallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -13,41 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
     public class ImanagedatamartsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse, ApiConnectionActionConfiguration> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType)
+        public IBodyWorkflowAction<ItemBatchResponse, ApiConnectionActionConfiguration> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType, Expression<Func<object>> body)
         {
             var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ItemBatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/batch/{0}/metadata", __workflow_itemType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ItemBatchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse, ApiConnectionActionConfiguration> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType)
+        public IBodyWorkflowAction<ItemBatchResponse, ApiConnectionActionConfiguration> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType, Expression<Func<object>> body)
         {
             var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ItemBatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/batch/{0}/metadata", __workflow_itemType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ItemBatchResponse>(callPayload);
             });
         }

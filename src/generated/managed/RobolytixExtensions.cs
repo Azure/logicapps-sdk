@@ -13,37 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
     public class RobolytixActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robolytix")]
-        public IBodyWorkflowAction<SonarResponse, ApiConnectionActionConfiguration> Sonar(Expression<Func<string>> bodyname, Expression<Func<string>> bodyprocessid, Expression<Func<string>> bodytype, Expression<Func<string>> bodyrunid = null)
+        public IBodyWorkflowAction<SonarResponse, ApiConnectionActionConfiguration> Sonar(Expression<Func<SonarInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyprocessid = WorkflowExpression.Compile(bodyprocessid, nameof(bodyprocessid), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyrunid = WorkflowExpression.Compile(bodyrunid, nameof(bodyrunid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SonarResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["processid"] = ExpressionConverter.ConvertO(__workflow_bodyprocessid);
-                if (__workflow_bodyrunid != null)
-                {
-                    body["runid"] = ExpressionConverter.ConvertO(__workflow_bodyrunid);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SonarResponse>(callPayload);
             });
         }
@@ -63,6 +42,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
     {
         [JsonProperty("runid")]
         public string Runid { get; set; }
+    }
+
+    public class SonarInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("processid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Processid { get; set; }
+
+        [JsonProperty("runid")]
+        public string Runid { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
     }
 }
 

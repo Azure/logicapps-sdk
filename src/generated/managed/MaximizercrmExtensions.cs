@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
             });
         }
@@ -52,7 +53,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(__workflow_applyActionTo);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AbEntryCreateSchema>(callPayload);
             });
         }
@@ -83,7 +85,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AbEntryUpdateSchema>(callPayload);
             });
         }
@@ -114,7 +117,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
             });
         }
@@ -131,7 +135,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_linkWithType != null)
                     callPayload.Queries["linkWithType"] = ExpressionConverter.Convert(__workflow_linkWithType);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
             });
         }
@@ -145,7 +150,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Appointment/action/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AppointmentUpdateSchema>(callPayload);
             });
         }
@@ -159,7 +165,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Appointment/action/find";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
             });
         }
@@ -173,7 +180,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Appointment/action/delete";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
             });
         }
@@ -187,7 +195,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Case/action/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PACaseView>(callPayload);
             });
         }
@@ -201,7 +210,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Case/action/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PACaseView>(callPayload);
             });
         }
@@ -230,7 +240,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CaseFindOrCreateSchema>(callPayload);
             });
         }
@@ -246,7 +257,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["parentType"] = ExpressionConverter.Convert(__workflow_parentType);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HotlistTaskCreateSchema>(callPayload);
             });
         }
@@ -260,7 +272,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Interaction/action/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InteractionLogCreateSchema>(callPayload);
             });
         }
@@ -289,7 +302,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LeadFindSchema>(callPayload);
             });
         }
@@ -303,7 +317,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Lead/action/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LeadCreateSchema>(callPayload);
             });
         }
@@ -332,7 +347,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LeadUpdateSchema>(callPayload);
             });
         }
@@ -361,7 +377,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LeadFindOrCreateSchema>(callPayload);
             });
         }
@@ -387,7 +404,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 callPayload.Queries["doNotCreateAnOpportunity"] = Convert.ToString("false");
                 if (__workflow_doNotCreateAnOpportunity != null)
                     callPayload.Queries["doNotCreateAnOpportunity"] = ExpressionConverter.Convert(__workflow_doNotCreateAnOpportunity);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LeadConvertSchema>(callPayload);
             });
         }
@@ -403,7 +421,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["parentType"] = ExpressionConverter.Convert(__workflow_parentType);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NoteCreateSchema>(callPayload);
             });
         }
@@ -432,7 +451,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpportunityFindSchema>(callPayload);
             });
         }
@@ -446,7 +466,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Opportunity/action/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpportunityCreateSchema>(callPayload);
             });
         }
@@ -475,7 +496,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                     callPayload.Queries["udf4"] = ExpressionConverter.Convert(__workflow_udf4);
                 if (__workflow_udf5 != null)
                     callPayload.Queries["udf5"] = ExpressionConverter.Convert(__workflow_udf5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpportunityFindOrCreateSchema>(callPayload);
             });
         }
@@ -489,7 +511,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Opportunity/action/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpportunityUpdateSchema>(callPayload);
             });
         }
@@ -503,7 +526,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/PTask/action/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PersonalTaskCreateSchema>(callPayload);
             });
         }
@@ -517,7 +541,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/User/action/find";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserFindSchema>(callPayload);
             });
         }
@@ -525,9 +550,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
 
     public class MaximizercrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryUpdated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/AbEntry/trigger/updated";
@@ -538,9 +563,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryCreated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/AbEntry/trigger/created";
@@ -551,9 +576,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryDateNotification(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAbEntryDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AbEntryTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/AbEntry/trigger/DateNotification";
@@ -564,9 +589,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentUpdated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Appointment/trigger/Updated";
@@ -577,9 +602,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentCreated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Appointment/trigger/created";
@@ -590,9 +615,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentDateNotification(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration> TriggerAppointmentDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AppointmentTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Appointment/trigger/DateNotification";
@@ -603,9 +628,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseUpdated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Case/api/Case/trigger/Updated";
@@ -616,9 +641,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseDateNotification(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Case/trigger/DateNotification";
@@ -629,9 +654,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseCreated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration> TriggerCaseCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CaseTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Case/api/Case/trigger/Created";
@@ -642,9 +667,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema, ApiConnectionTriggerConfiguration> TriggerHTaskCreated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema, ApiConnectionTriggerConfiguration> TriggerHTaskCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<HotlistTaskTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/HotlistTask/trigger/created";
@@ -655,9 +680,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadDateNotification(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Lead/trigger/DateNotification";
@@ -668,9 +693,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadUpdated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Lead/trigger/updated";
@@ -681,9 +706,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadCreated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration> TriggerLeadCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<LeadTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Lead/trigger/created";
@@ -702,14 +727,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookCreated>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOppCreated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOppCreated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity/trigger/Created";
@@ -720,9 +746,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOppUpdated(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOppUpdated(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity/trigger/Updated";
@@ -733,9 +759,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
             });
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOpportunityDateNotification(Expression<Func<object>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration> TriggerOpportunityDateNotification(Expression<Func<object>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<OpportunityTriggerSchema, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity/trigger/DateNotification";

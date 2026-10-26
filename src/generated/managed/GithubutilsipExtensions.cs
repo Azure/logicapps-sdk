@@ -13,12 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     public class GithubutilsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdown(Expression<Func<string>> bodytext, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<string>> bodycontext = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdown(Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<PostMarkdownInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
-            var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/markdown";
@@ -28,47 +26,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodymode != null)
-                {
-                    if (__workflow_bodymode != null)
-                    {
-                        body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["mode"] = "markdown";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontext != null)
-                {
-                    body["context"] = ExpressionConverter.ConvertO(__workflow_bodycontext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdownRaw(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdownRaw(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> body, Expression<Func<string>> xGitHubApiVersion = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/markdown/raw";
@@ -199,8 +168,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     {
     }
 
+    public class PostMarkdownInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostMarkdownInputModeType? Mode { get; set; } = PostMarkdownInputModeType.Markdown;
+
+        [JsonProperty("context")]
+        public string Context { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodeInput
+    public enum PostMarkdownInputModeType
     {
         [EnumMember(Value = "markdown")]
         Markdown,

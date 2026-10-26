@@ -13,78 +13,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
     public class Office365usersActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyProfile(Expression<Func<string>> bodyaboutMe = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string[]>> bodyinterests = null, Expression<Func<string>> bodymySite = null, Expression<Func<string[]>> bodypastProjects = null, Expression<Func<string[]>> bodyschools = null, Expression<Func<string[]>> bodyskills = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyProfile(Expression<Func<UpdateMyProfileInput>> body = null)
         {
-            var __workflow_bodyaboutMe = WorkflowExpression.Compile(bodyaboutMe, nameof(bodyaboutMe), required: false);
-            var __workflow_bodybirthday = WorkflowExpression.Compile(bodybirthday, nameof(bodybirthday), required: false);
-            var __workflow_bodyinterests = WorkflowExpression.Compile(bodyinterests, nameof(bodyinterests), required: false);
-            var __workflow_bodymySite = WorkflowExpression.Compile(bodymySite, nameof(bodymySite), required: false);
-            var __workflow_bodypastProjects = WorkflowExpression.Compile(bodypastProjects, nameof(bodypastProjects), required: false);
-            var __workflow_bodyschools = WorkflowExpression.Compile(bodyschools, nameof(bodyschools), required: false);
-            var __workflow_bodyskills = WorkflowExpression.Compile(bodyskills, nameof(bodyskills), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/v1.0/me";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyaboutMe != null)
-                {
-                    body["aboutMe"] = ExpressionConverter.ConvertO(__workflow_bodyaboutMe);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybirthday != null)
-                {
-                    body["birthday"] = ExpressionConverter.ConvertO(__workflow_bodybirthday);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinterests != null)
-                {
-                    body["interests"] = ExpressionConverter.ConvertO(__workflow_bodyinterests);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymySite != null)
-                {
-                    body["mySite"] = ExpressionConverter.ConvertO(__workflow_bodymySite);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypastProjects != null)
-                {
-                    body["pastProjects"] = ExpressionConverter.ConvertO(__workflow_bodypastProjects);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyschools != null)
-                {
-                    body["schools"] = ExpressionConverter.ConvertO(__workflow_bodyschools);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskills != null)
-                {
-                    body["skills"] = ExpressionConverter.ConvertO(__workflow_bodyskills);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyPhoto(Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMyPhoto(Expression<Func<string>> body, Expression<Func<string>> contentType)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/v1.0/me/photo/$value";
@@ -198,7 +145,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
                     callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
                 if (__workflow_customHeader5 != null)
                     callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -307,6 +255,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
 
     public class Office365usersTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class UpdateMyProfileInput
+    {
+        [JsonProperty("aboutMe")]
+        public string AboutMe { get; set; }
+
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+
+        [JsonProperty("interests")]
+        public string[] Interests { get; set; }
+
+        [JsonProperty("mySite")]
+        public string MySite { get; set; }
+
+        [JsonProperty("pastProjects")]
+        public string[] PastProjects { get; set; }
+
+        [JsonProperty("schools")]
+        public string[] Schools { get; set; }
+
+        [JsonProperty("skills")]
+        public string[] Skills { get; set; }
     }
 
     public class MyTrendingDocumentsResponse

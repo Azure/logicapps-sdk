@@ -13,107 +13,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
     public class MaqtextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
+        public IBodyWorkflowAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration> SentimentClassifier(Expression<Func<SentimentClassifierInput>> body)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/SentimentClassifier";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SentimentClassifierResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<PIIScrubberResponse, ApiConnectionActionConfiguration> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
+        public IBodyWorkflowAction<PIIScrubberResponse, ApiConnectionActionConfiguration> PIIScrubber(Expression<Func<PIIScrubberInput>> body = null)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            var __workflow_bodyentityList = WorkflowExpression.Compile(bodyentityList, nameof(bodyentityList), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PIIScrubberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/PIIScrubber";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyentityList != null)
-                {
-                    body["entity_list"] = ExpressionConverter.ConvertO(__workflow_bodyentityList);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PIIScrubberResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
+        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration> KeyPhraseExtractor(Expression<Func<KeyPhraseExtractorInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodykeyphrasesCount = WorkflowExpression.Compile(bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
-            var __workflow_bodydiversityThreshold = WorkflowExpression.Compile(bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
-            var __workflow_bodyaliasThreshold = WorkflowExpression.Compile(bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/KeyPhrase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodykeyphrasesCount != null)
-                {
-                    body["keyphrases_count"] = ExpressionConverter.ConvertO(__workflow_bodykeyphrasesCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydiversityThreshold != null)
-                {
-                    body["diversity_threshold"] = ExpressionConverter.ConvertO(__workflow_bodydiversityThreshold);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaliasThreshold != null)
-                {
-                    body["alias_threshold"] = ExpressionConverter.ConvertO(__workflow_bodyaliasThreshold);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<KeyPhraseExtractorResponseItem[]>(callPayload);
             });
         }
@@ -132,10 +70,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         public double Sentiment { get; set; }
     }
 
-    public class bodydataInputItem
+    public class SentimentClassifierInput
+    {
+        [JsonProperty("data")]
+        public SentimentClassifierInputDataTypeItem[] Data { get; set; }
+    }
+
+    public class SentimentClassifierInputDataTypeItem
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -147,11 +91,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         public string ScrubbedText { get; set; }
     }
 
+    public class PIIScrubberInput
+    {
+        [JsonProperty("data")]
+        public string Data { get; set; }
+
+        [JsonProperty("entity_list")]
+        public string EntityList { get; set; }
+    }
+
     public class KeyPhraseExtractorResponseItem
     {
         public string KeyPhrase { get; set; }
         public double Score { get; set; }
         public string[] Similar { get; set; }
+    }
+
+    public class KeyPhraseExtractorInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("keyphrases_count")]
+        public int? KeyphrasesCount { get; set; }
+
+        [JsonProperty("diversity_threshold")]
+        public double? DiversityThreshold { get; set; }
+
+        [JsonProperty("alias_threshold")]
+        public double? AliasThreshold { get; set; }
     }
 }
 

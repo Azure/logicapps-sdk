@@ -25,27 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<PlantPostResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<int>> bodycount = null)
+        public IBodyWorkflowAction<PlantPostResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<PlantPostInput>> body)
         {
-            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlantPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/plant/trees";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycount != null)
-                {
-                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodycount);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlantPostResponse>(callPayload);
             });
         }
@@ -89,6 +77,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+    }
+
+    public class PlantPostInput
+    {
+        [JsonProperty("count")]
+        public int? Count { get; set; }
     }
 }
 

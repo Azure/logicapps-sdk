@@ -161,7 +161,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_tweetText != null)
                     callPayload.Queries["tweetText"] = ExpressionConverter.Convert(__workflow_tweetText);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TweetResponseModel>(callPayload);
             });
         }

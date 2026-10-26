@@ -13,29 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
     public class DraupActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetCompanyPrioritiesResponse, ApiConnectionActionConfiguration> GetCompanyPriorities(Expression<Func<int>> accountId, Expression<Func<string>> bodyworkload = null)
+        public IBodyWorkflowAction<GetCompanyPrioritiesResponse, ApiConnectionActionConfiguration> GetCompanyPriorities(Expression<Func<int>> accountId, Expression<Func<GetCompanyPrioritiesInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyworkload = WorkflowExpression.Compile(bodyworkload, nameof(bodyworkload), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetCompanyPrioritiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasub/accounts/api/priorities/{0}/account_priorities/", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkload != null)
-                {
-                    body["workload"] = ExpressionConverter.ConvertO(__workflow_bodyworkload);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetCompanyPrioritiesResponse>(callPayload);
             });
         }
@@ -55,75 +44,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetDecisionMakersResponse, ApiConnectionActionConfiguration> GetDecisionMakers(Expression<Func<int>> accountId, Expression<Func<string>> bodyworkload = null)
+        public IBodyWorkflowAction<GetDecisionMakersResponse, ApiConnectionActionConfiguration> GetDecisionMakers(Expression<Func<int>> accountId, Expression<Func<GetDecisionMakersInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyworkload = WorkflowExpression.Compile(bodyworkload, nameof(bodyworkload), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetDecisionMakersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasub/accounts/executives/{0}/key_executives/", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkload != null)
-                {
-                    body["workload"] = ExpressionConverter.ConvertO(__workflow_bodyworkload);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetDecisionMakersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetRelevantWorkloadsResponse, ApiConnectionActionConfiguration> GetRelevantWorkloads(Expression<Func<string>> bodyuserDescription)
+        public IBodyWorkflowAction<GetRelevantWorkloadsResponse, ApiConnectionActionConfiguration> GetRelevantWorkloads(Expression<Func<GetRelevantWorkloadsInput>> body)
         {
-            var __workflow_bodyuserDescription = WorkflowExpression.Compile(bodyuserDescription, nameof(bodyuserDescription), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetRelevantWorkloadsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasub/universe/get_relevant_workloads/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["user_description"] = ExpressionConverter.ConvertO(__workflow_bodyuserDescription);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetRelevantWorkloadsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetAccountIdsResponse, ApiConnectionActionConfiguration> GetAccountIds(Expression<Func<string>> bodysearchKey)
+        public IBodyWorkflowAction<GetAccountIdsResponse, ApiConnectionActionConfiguration> GetAccountIds(Expression<Func<GetAccountIdsInput>> body)
         {
-            var __workflow_bodysearchKey = WorkflowExpression.Compile(bodysearchKey, nameof(bodysearchKey), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAccountIdsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasub/universe/search/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["search_key"] = ExpressionConverter.ConvertO(__workflow_bodysearchKey);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetAccountIdsResponse>(callPayload);
             });
         }
@@ -143,29 +105,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetCompetitorsResponse, ApiConnectionActionConfiguration> GetCompetitors(Expression<Func<int>> accountId, Expression<Func<string>> bodyworkload = null)
+        public IBodyWorkflowAction<GetCompetitorsResponse, ApiConnectionActionConfiguration> GetCompetitors(Expression<Func<int>> accountId, Expression<Func<GetCompetitorsInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyworkload = WorkflowExpression.Compile(bodyworkload, nameof(bodyworkload), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetCompetitorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasub/accounts/{0}/get_product_competitors/", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkload != null)
-                {
-                    body["workload"] = ExpressionConverter.ConvertO(__workflow_bodyworkload);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetCompetitorsResponse>(callPayload);
             });
         }
@@ -213,29 +164,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetOutsourcingDetailsResponse, ApiConnectionActionConfiguration> GetOutsourcingDetails(Expression<Func<int>> accountId, Expression<Func<string>> bodyoutsourcingInWorkloads = null)
+        public IBodyWorkflowAction<GetOutsourcingDetailsResponse, ApiConnectionActionConfiguration> GetOutsourcingDetails(Expression<Func<int>> accountId, Expression<Func<GetOutsourcingDetailsInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyoutsourcingInWorkloads = WorkflowExpression.Compile(bodyoutsourcingInWorkloads, nameof(bodyoutsourcingInWorkloads), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetOutsourcingDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasub/accounts/{0}/outsourcing/engagement_details/", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyoutsourcingInWorkloads != null)
-                {
-                    body["outsourcing_in_workloads"] = ExpressionConverter.ConvertO(__workflow_bodyoutsourcingInWorkloads);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetOutsourcingDetailsResponse>(callPayload);
             });
         }
@@ -301,147 +241,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetKeyTrendsResponse, ApiConnectionActionConfiguration> GetKeyTrends(Expression<Func<string>> bodyvertical)
+        public IBodyWorkflowAction<GetKeyTrendsResponse, ApiConnectionActionConfiguration> GetKeyTrends(Expression<Func<GetKeyTrendsInput>> body)
         {
-            var __workflow_bodyvertical = WorkflowExpression.Compile(bodyvertical, nameof(bodyvertical), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetKeyTrendsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasub/ecosystem/api/v2/vertical_key_priorities/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["vertical"] = ExpressionConverter.ConvertO(__workflow_bodyvertical);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetKeyTrendsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetEcosystemTechStackResponse, ApiConnectionActionConfiguration> GetEcosystemTechStack(Expression<Func<string>> bodywidget, Expression<Func<string>> bodyvertical)
+        public IBodyWorkflowAction<GetEcosystemTechStackResponse, ApiConnectionActionConfiguration> GetEcosystemTechStack(Expression<Func<GetEcosystemTechStackInput>> body)
         {
-            var __workflow_bodywidget = WorkflowExpression.Compile(bodywidget, nameof(bodywidget), required: true);
-            var __workflow_bodyvertical = WorkflowExpression.Compile(bodyvertical, nameof(bodyvertical), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetEcosystemTechStackResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasub/ecosystem/api/v2/tech_stack/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["widget"] = ExpressionConverter.ConvertO(__workflow_bodywidget);
-                bodypropCount++;
-                body["vertical"] = ExpressionConverter.ConvertO(__workflow_bodyvertical);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetEcosystemTechStackResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetVerticalOutsourcingDataResponse, ApiConnectionActionConfiguration> GetVerticalOutsourcingData(Expression<Func<string>> bodywidget, Expression<Func<string>> bodyvertical)
+        public IBodyWorkflowAction<GetVerticalOutsourcingDataResponse, ApiConnectionActionConfiguration> GetVerticalOutsourcingData(Expression<Func<GetVerticalOutsourcingDataInput>> body)
         {
-            var __workflow_bodywidget = WorkflowExpression.Compile(bodywidget, nameof(bodywidget), required: true);
-            var __workflow_bodyvertical = WorkflowExpression.Compile(bodyvertical, nameof(bodyvertical), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetVerticalOutsourcingDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasub/ecosystem/api/v2/vertical_outsourcing/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["widget"] = ExpressionConverter.ConvertO(__workflow_bodywidget);
-                bodypropCount++;
-                body["vertical"] = ExpressionConverter.ConvertO(__workflow_bodyvertical);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetVerticalOutsourcingDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetEmployersDataResponse, ApiConnectionActionConfiguration> GetEmployersData(Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyvertical = null, Expression<Func<bool>> bodyisCountry = null, Expression<Func<string>> bodyanalysisType = null)
+        public IBodyWorkflowAction<GetEmployersDataResponse, ApiConnectionActionConfiguration> GetEmployersData(Expression<Func<GetEmployersDataInput>> body)
         {
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodyvertical = WorkflowExpression.Compile(bodyvertical, nameof(bodyvertical), required: false);
-            var __workflow_bodyisCountry = WorkflowExpression.Compile(bodyisCountry, nameof(bodyisCountry), required: false);
-            var __workflow_bodyanalysisType = WorkflowExpression.Compile(bodyanalysisType, nameof(bodyanalysisType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetEmployersDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasub/ecosystem/v2/get_employers_data/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylocation != null)
-                {
-                    body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvertical != null)
-                {
-                    body["vertical"] = ExpressionConverter.ConvertO(__workflow_bodyvertical);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisCountry != null)
-                {
-                    body["is_country"] = ExpressionConverter.ConvertO(__workflow_bodyisCountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyanalysisType != null)
-                {
-                    body["analysis_type"] = ExpressionConverter.ConvertO(__workflow_bodyanalysisType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetEmployersDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration> ExtractEntities(Expression<Func<string>> bodyuserQuery)
+        public IBodyWorkflowAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration> ExtractEntities(Expression<Func<ExtractEntitiesInput>> body)
         {
-            var __workflow_bodyuserQuery = WorkflowExpression.Compile(bodyuserQuery, nameof(bodyuserQuery), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasub/core/extract_entities/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["product-id"] = Convert.ToString(4);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["user_query"] = ExpressionConverter.ConvertO(__workflow_bodyuserQuery);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractEntitiesResponse>(callPayload);
             });
         }
@@ -497,6 +366,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class GetCompanyPrioritiesInput
+    {
+        [JsonProperty("workload")]
+        public string Workload { get; set; }
     }
 
     public class GetFinancialsResponse
@@ -748,10 +623,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string LevelInOrgDesignation { get; set; }
     }
 
+    public class GetDecisionMakersInput
+    {
+        [JsonProperty("workload")]
+        public string Workload { get; set; }
+    }
+
     public class GetRelevantWorkloadsResponse
     {
         [JsonProperty("workloads")]
         public string[] Workloads { get; set; }
+    }
+
+    public class GetRelevantWorkloadsInput
+    {
+        [JsonProperty("user_description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserDescription { get; set; }
     }
 
     public class GetAccountIdsResponse
@@ -776,6 +663,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
         [JsonProperty("score")]
         public double Score { get; set; }
+    }
+
+    public class GetAccountIdsInput
+    {
+        [JsonProperty("search_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchKey { get; set; }
     }
 
     public class GetItSpendResponse
@@ -815,6 +708,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
         [JsonProperty("total_product_count")]
         public int TotalProductCount { get; set; }
+    }
+
+    public class GetCompetitorsInput
+    {
+        [JsonProperty("workload")]
+        public string Workload { get; set; }
     }
 
     public class GetCompanySignalsResponse
@@ -947,6 +846,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
         [JsonProperty("headerName")]
         public string HeaderName { get; set; }
+    }
+
+    public class GetOutsourcingDetailsInput
+    {
+        [JsonProperty("outsourcing_in_workloads")]
+        public string OutsourcingInWorkloads { get; set; }
     }
 
     public class GetCompanyDetailsResponse
@@ -1111,6 +1016,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public bool IsRelevant { get; set; }
     }
 
+    public class GetKeyTrendsInput
+    {
+        [JsonProperty("vertical", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Vertical { get; set; }
+    }
+
     public class GetEcosystemTechStackResponse
     {
         [JsonProperty("hml")]
@@ -1142,6 +1053,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
         [JsonProperty("product_name")]
         public string ProductName { get; set; }
+    }
+
+    public class GetEcosystemTechStackInput
+    {
+        [JsonProperty("widget", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Widget { get; set; }
+
+        [JsonProperty("vertical", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Vertical { get; set; }
     }
 
     public class GetVerticalOutsourcingDataResponse
@@ -1177,6 +1097,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string LogoUrl { get; set; }
     }
 
+    public class GetVerticalOutsourcingDataInput
+    {
+        [JsonProperty("widget", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Widget { get; set; }
+
+        [JsonProperty("vertical", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Vertical { get; set; }
+    }
+
     public class GetEmployersDataResponse
     {
         [JsonProperty("hml")]
@@ -1210,6 +1139,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string AccountName { get; set; }
     }
 
+    public class GetEmployersDataInput
+    {
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("vertical")]
+        public string Vertical { get; set; }
+
+        [JsonProperty("is_country")]
+        public bool? IsCountry { get; set; }
+
+        [JsonProperty("analysis_type")]
+        public string AnalysisType { get; set; }
+    }
+
     public class ExtractEntitiesResponse
     {
         [JsonProperty("entities")]
@@ -1223,6 +1167,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
         [JsonProperty("entity_type")]
         public string EntityType { get; set; }
+    }
+
+    public class ExtractEntitiesInput
+    {
+        [JsonProperty("user_query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserQuery { get; set; }
     }
 }
 

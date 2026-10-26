@@ -28,32 +28,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 
     public class SigninghubwebhooksTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeTrigger(Expression<Func<bodyeventTypeInput>> bodyeventType, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeTrigger(Expression<Func<WebhookSubscribeTriggerInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/powerautomate/webhook/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
+    public class WebhookSubscribeTriggerInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebhookSubscribeTriggerInputEventTypeType EventType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventTypeInput
+    public enum WebhookSubscribeTriggerInputEventTypeType
     {
         SHARED,
         SIGNED,

@@ -13,110 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
     public class OttobotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendAttachmentsToUrl(Expression<Func<string>> bodyaPIURL, Expression<Func<string>> bodyattachmentURL, Expression<Func<string>> bodyattachmentFileName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendAttachmentsToUrl(Expression<Func<SendAttachmentsToUrlInput>> body = null)
         {
-            var __workflow_bodyaPIURL = WorkflowExpression.Compile(bodyaPIURL, nameof(bodyaPIURL), required: true);
-            var __workflow_bodyattachmentURL = WorkflowExpression.Compile(bodyattachmentURL, nameof(bodyattachmentURL), required: true);
-            var __workflow_bodyattachmentFileName = WorkflowExpression.Compile(bodyattachmentFileName, nameof(bodyattachmentFileName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var additionalParametersObject = new JObject();
-                var additionalParametersObjectpropCount = 0;
-                if (additionalParametersObjectpropCount > 0)
-                {
-                    body["additionalParameters"] = additionalParametersObject;
-                    bodypropCount++;
-                }
-
-                var apiRequestHeadersObject = new JObject();
-                var apiRequestHeadersObjectpropCount = 0;
-                if (apiRequestHeadersObjectpropCount > 0)
-                {
-                    body["apiRequestHeaders"] = apiRequestHeadersObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["apiUrl"] = ExpressionConverter.ConvertO(__workflow_bodyaPIURL);
-                bodypropCount++;
-                body["attachmentUrl"] = ExpressionConverter.ConvertO(__workflow_bodyattachmentURL);
-                bodypropCount++;
-                body["filename"] = ExpressionConverter.ConvertO(__workflow_bodyattachmentFileName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<string>> bodyadaptiveCardadaptiveCardSchema, Expression<Func<string>> bodyadaptiveCardadaptiveCardType, Expression<Func<string>> bodyadaptiveCardadaptiveCardVersion, Expression<Func<string>> bodytext, Expression<Func<bool>> bodyendRequest, Expression<Func<JToken[]>> bodyadaptiveCardadaptiveCardActions = null, Expression<Func<JToken[]>> bodyadaptiveCardadaptiveCardBody = null, Expression<Func<bool>> bodyrenderPreformattedText = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<ReturnResultsToBotInput>> body = null)
         {
             var __workflow_returnResultURL = WorkflowExpression.Compile(returnResultURL, nameof(returnResultURL), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardSchema = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardSchema, nameof(bodyadaptiveCardadaptiveCardSchema), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardType = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardType, nameof(bodyadaptiveCardadaptiveCardType), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardVersion = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardVersion, nameof(bodyadaptiveCardadaptiveCardVersion), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyendRequest = WorkflowExpression.Compile(bodyendRequest, nameof(bodyendRequest), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardActions = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardActions, nameof(bodyadaptiveCardadaptiveCardActions), required: false);
-            var __workflow_bodyadaptiveCardadaptiveCardBody = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardBody, nameof(bodyadaptiveCardadaptiveCardBody), required: false);
-            var __workflow_bodyrenderPreformattedText = WorkflowExpression.Compile(bodyrenderPreformattedText, nameof(bodyrenderPreformattedText), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/skills/results";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["returnResultURL"] = ExpressionConverter.Convert(__workflow_returnResultURL);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var adaptiveCardObject = new JObject();
-                var adaptiveCardObjectpropCount = 0;
-                adaptiveCardObjectpropCount++;
-                adaptiveCardObject["$schema"] = ExpressionConverter.ConvertO(__workflow_bodyadaptiveCardadaptiveCardSchema);
-                if (__workflow_bodyadaptiveCardadaptiveCardActions != null)
-                {
-                    adaptiveCardObject["actions"] = ExpressionConverter.ConvertO(__workflow_bodyadaptiveCardadaptiveCardActions);
-                    adaptiveCardObjectpropCount++;
-                }
-
-                if (__workflow_bodyadaptiveCardadaptiveCardBody != null)
-                {
-                    adaptiveCardObject["body"] = ExpressionConverter.ConvertO(__workflow_bodyadaptiveCardadaptiveCardBody);
-                    adaptiveCardObjectpropCount++;
-                }
-
-                adaptiveCardObjectpropCount++;
-                adaptiveCardObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyadaptiveCardadaptiveCardType);
-                adaptiveCardObjectpropCount++;
-                adaptiveCardObject["version"] = ExpressionConverter.ConvertO(__workflow_bodyadaptiveCardadaptiveCardVersion);
-                if (adaptiveCardObjectpropCount > 0)
-                {
-                    body["adaptiveCard"] = adaptiveCardObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrenderPreformattedText != null)
-                {
-                    body["renderPreformattedText"] = ExpressionConverter.ConvertO(__workflow_bodyrenderPreformattedText);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                bodypropCount++;
-                body["endRequest"] = ExpressionConverter.ConvertO(__workflow_bodyendRequest);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Response>(callPayload);
             });
         }
@@ -126,10 +49,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
     {
     }
 
+    public class SendAttachmentsToUrlInput
+    {
+        [JsonProperty("additionalParameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AdditionalParameters { get; set; } = JToken.Parse("{}");
+
+        [JsonProperty("apiRequestHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken ApiRequestHeaders { get; set; } = JToken.Parse("{}");
+
+        [JsonProperty("apiUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string APIURL { get; set; }
+
+        [JsonProperty("attachmentUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AttachmentURL { get; set; }
+
+        [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AttachmentFileName { get; set; }
+    }
+
     public class Response
     {
         [JsonProperty("message")]
         public string ResultMessage { get; set; }
+    }
+
+    public class ReturnResultsToBotInput
+    {
+        [JsonProperty("adaptiveCard")]
+        public AdaptiveCard AdaptiveCard { get; set; }
+
+        [JsonProperty("renderPreformattedText")]
+        public bool? RenderPreformattedText { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("endRequest", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EndRequest { get; set; }
+    }
+
+    public class AdaptiveCard
+    {
+        [JsonProperty("$schema")]
+        public string AdaptiveCardSchema { get; set; }
+
+        [JsonProperty("actions")]
+        public JToken[] AdaptiveCardActions { get; set; }
+
+        [JsonProperty("body")]
+        public JToken[] AdaptiveCardBody { get; set; }
+
+        [JsonProperty("type")]
+        public string AdaptiveCardType { get; set; }
+
+        [JsonProperty("version")]
+        public string AdaptiveCardVersion { get; set; }
     }
 }
 

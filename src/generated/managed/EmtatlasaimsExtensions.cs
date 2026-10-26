@@ -45,86 +45,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<AssetSearchResult, ApiConnectionActionConfiguration> AssetsSearch(Expression<Func<string>> baseUrl, Expression<Func<string>> bodycontractId = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodymodifiedDategreaterThan = null, Expression<Func<string>> bodymodifiedDatelessThan = null, Expression<Func<string>> bodysortKey = null, Expression<Func<string>> bodysortOrder = null, Expression<Func<string[]>> bodyfilteredAssetClassCode = null)
+        public IBodyWorkflowAction<AssetSearchResult, ApiConnectionActionConfiguration> AssetsSearch(Expression<Func<AssetsSearchInput>> body, Expression<Func<string>> baseUrl)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
-            var __workflow_bodycontractId = WorkflowExpression.Compile(bodycontractId, nameof(bodycontractId), required: false);
-            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
-            var __workflow_bodymodifiedDategreaterThan = WorkflowExpression.Compile(bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
-            var __workflow_bodymodifiedDatelessThan = WorkflowExpression.Compile(bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
-            var __workflow_bodysortKey = WorkflowExpression.Compile(bodysortKey, nameof(bodysortKey), required: false);
-            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
-            var __workflow_bodyfilteredAssetClassCode = WorkflowExpression.Compile(bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
             return new DeferredBodyAction<AssetSearchResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/aimsapi/assets/search/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontractId != null)
-                {
-                    body["contract"] = ExpressionConverter.ConvertO(__workflow_bodycontractId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypageNumber != null)
-                {
-                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypageSize != null)
-                {
-                    body["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypageSize);
-                    bodypropCount++;
-                }
-
-                var modifiedDateObject = new JObject();
-                var modifiedDateObjectpropCount = 0;
-                if (__workflow_bodymodifiedDategreaterThan != null)
-                {
-                    modifiedDateObject["gt"] = ExpressionConverter.ConvertO(__workflow_bodymodifiedDategreaterThan);
-                    modifiedDateObjectpropCount++;
-                }
-
-                if (__workflow_bodymodifiedDatelessThan != null)
-                {
-                    modifiedDateObject["lt"] = ExpressionConverter.ConvertO(__workflow_bodymodifiedDatelessThan);
-                    modifiedDateObjectpropCount++;
-                }
-
-                if (modifiedDateObjectpropCount > 0)
-                {
-                    body["modified_date"] = modifiedDateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysortKey != null)
-                {
-                    body["sortKey"] = ExpressionConverter.ConvertO(__workflow_bodysortKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysortOrder != null)
-                {
-                    body["sortOrder"] = ExpressionConverter.ConvertO(__workflow_bodysortOrder);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilteredAssetClassCode != null)
-                {
-                    body["filteredAssetClassCode"] = ExpressionConverter.ConvertO(__workflow_bodyfilteredAssetClassCode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AssetSearchResult>(callPayload);
             });
         }
@@ -257,6 +188,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
 
         [JsonProperty("num_parent_relations")]
         public int NumberOfParentRelations { get; set; }
+    }
+
+    public class AssetsSearchInput
+    {
+        [JsonProperty("contract")]
+        public string ContractId { get; set; }
+
+        [JsonProperty("page")]
+        public int? PageNumber { get; set; }
+
+        [JsonProperty("pageSize")]
+        public int? PageSize { get; set; }
+
+        [JsonProperty("modified_date")]
+        public AssetsSearchInputModifiedDateType ModifiedDate { get; set; }
+
+        [JsonProperty("sortKey")]
+        public string SortKey { get; set; }
+
+        [JsonProperty("sortOrder")]
+        public string SortOrder { get; set; }
+
+        [JsonProperty("filteredAssetClassCode")]
+        public string[] FilteredAssetClassCode { get; set; }
+    }
+
+    public class AssetsSearchInputModifiedDateType
+    {
+        [JsonProperty("gt")]
+        public string GreaterThan { get; set; }
+
+        [JsonProperty("lt")]
+        public string LessThan { get; set; }
     }
 
     public class UserDataResponseDoc

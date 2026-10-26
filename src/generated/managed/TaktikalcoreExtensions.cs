@@ -110,40 +110,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<SealingResponse, ApiConnectionActionConfiguration> SealingRequestsealing(Expression<Func<string>> bodypdfDocument, Expression<Func<string>> bodyflowKey, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylanguageType = null)
+        public IBodyWorkflowAction<SealingResponse, ApiConnectionActionConfiguration> SealingRequestsealing(Expression<Func<SealingRequestsealingPostInput>> body = null)
         {
-            var __workflow_bodypdfDocument = WorkflowExpression.Compile(bodypdfDocument, nameof(bodypdfDocument), required: true);
-            var __workflow_bodyflowKey = WorkflowExpression.Compile(bodyflowKey, nameof(bodyflowKey), required: true);
-            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
-            var __workflow_bodylanguageType = WorkflowExpression.Compile(bodylanguageType, nameof(bodylanguageType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SealingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/management/sealing";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["pdfDocument"] = ExpressionConverter.ConvertO(__workflow_bodypdfDocument);
-                bodypropCount++;
-                body["flowKey"] = ExpressionConverter.ConvertO(__workflow_bodyflowKey);
-                if (__workflow_bodyreason != null)
-                {
-                    body["reason"] = ExpressionConverter.ConvertO(__workflow_bodyreason);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguageType != null)
-                {
-                    body["languageType"] = ExpressionConverter.ConvertO(__workflow_bodylanguageType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SealingResponse>(callPayload);
             });
         }
@@ -167,147 +143,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<SigningProcess, ApiConnectionActionConfiguration> CreateSigningProcesssigning(Expression<Func<string>> bodyflowKey, Expression<Func<string>> bodypdfDocument = null, Expression<Func<string>> bodypdfFileName = null, Expression<Func<CreateSignee[]>> bodycreateSignees = null, Expression<Func<SigningAttachment[]>> bodyattachments = null, Expression<Func<AttachmentReference[]>> bodyattachmentReferences = null, Expression<Func<bool>> bodyrequiresAuth = null, Expression<Func<bool>> bodysignInOrder = null, Expression<Func<bodysignatureLocationInput>> bodysignatureLocation = null, Expression<Func<string>> bodyuser = null, Expression<Func<string>> bodysequenceKey = null, Expression<Func<string>> bodyactivityDisplayName = null, Expression<Func<bool>> bodyflattenDocument = null, Expression<Func<string>> bodyreminderRule = null)
+        public IBodyWorkflowAction<SigningProcess, ApiConnectionActionConfiguration> CreateSigningProcesssigning(Expression<Func<CreateSigningProcesssigningPostInput>> body = null)
         {
-            var __workflow_bodyflowKey = WorkflowExpression.Compile(bodyflowKey, nameof(bodyflowKey), required: true);
-            var __workflow_bodypdfDocument = WorkflowExpression.Compile(bodypdfDocument, nameof(bodypdfDocument), required: false);
-            var __workflow_bodypdfFileName = WorkflowExpression.Compile(bodypdfFileName, nameof(bodypdfFileName), required: false);
-            var __workflow_bodycreateSignees = WorkflowExpression.Compile(bodycreateSignees, nameof(bodycreateSignees), required: false);
-            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
-            var __workflow_bodyattachmentReferences = WorkflowExpression.Compile(bodyattachmentReferences, nameof(bodyattachmentReferences), required: false);
-            var __workflow_bodyrequiresAuth = WorkflowExpression.Compile(bodyrequiresAuth, nameof(bodyrequiresAuth), required: false);
-            var __workflow_bodysignInOrder = WorkflowExpression.Compile(bodysignInOrder, nameof(bodysignInOrder), required: false);
-            var __workflow_bodysignatureLocation = WorkflowExpression.Compile(bodysignatureLocation, nameof(bodysignatureLocation), required: false);
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
-            var __workflow_bodysequenceKey = WorkflowExpression.Compile(bodysequenceKey, nameof(bodysequenceKey), required: false);
-            var __workflow_bodyactivityDisplayName = WorkflowExpression.Compile(bodyactivityDisplayName, nameof(bodyactivityDisplayName), required: false);
-            var __workflow_bodyflattenDocument = WorkflowExpression.Compile(bodyflattenDocument, nameof(bodyflattenDocument), required: false);
-            var __workflow_bodyreminderRule = WorkflowExpression.Compile(bodyreminderRule, nameof(bodyreminderRule), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SigningProcess, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/management/signing";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypdfDocument != null)
-                {
-                    body["pdfDocument"] = ExpressionConverter.ConvertO(__workflow_bodypdfDocument);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypdfFileName != null)
-                {
-                    body["pdfFileName"] = ExpressionConverter.ConvertO(__workflow_bodypdfFileName);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["flowKey"] = ExpressionConverter.ConvertO(__workflow_bodyflowKey);
-                if (__workflow_bodycreateSignees != null)
-                {
-                    body["createSignees"] = ExpressionConverter.ConvertO(__workflow_bodycreateSignees);
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyattachments != null)
-                {
-                    body["attachments"] = ExpressionConverter.ConvertO(__workflow_bodyattachments);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyattachmentReferences != null)
-                {
-                    body["attachmentReferences"] = ExpressionConverter.ConvertO(__workflow_bodyattachmentReferences);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequiresAuth != null)
-                {
-                    body["requiresAuth"] = ExpressionConverter.ConvertO(__workflow_bodyrequiresAuth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysignInOrder != null)
-                {
-                    body["signInOrder"] = ExpressionConverter.ConvertO(__workflow_bodysignInOrder);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysignatureLocation != null)
-                {
-                    body["signatureLocation"] = ExpressionConverter.ConvertO(__workflow_bodysignatureLocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuser != null)
-                {
-                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysequenceKey != null)
-                {
-                    body["sequenceKey"] = ExpressionConverter.ConvertO(__workflow_bodysequenceKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactivityDisplayName != null)
-                {
-                    body["activityDisplayName"] = ExpressionConverter.ConvertO(__workflow_bodyactivityDisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyflattenDocument != null)
-                {
-                    body["flattenDocument"] = ExpressionConverter.ConvertO(__workflow_bodyflattenDocument);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreminderRule != null)
-                {
-                    body["reminderRule"] = ExpressionConverter.ConvertO(__workflow_bodyreminderRule);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SigningProcess>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SealingXmlRequestsealingxml(Expression<Func<string>> bodyxmlDocument, Expression<Func<string>> bodyflowKey)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SealingXmlRequestsealingxml(Expression<Func<SealingXmlRequestsealingxmlPostInput>> body = null)
         {
-            var __workflow_bodyxmlDocument = WorkflowExpression.Compile(bodyxmlDocument, nameof(bodyxmlDocument), required: true);
-            var __workflow_bodyflowKey = WorkflowExpression.Compile(bodyflowKey, nameof(bodyflowKey), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/management/sealing/xml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["xmlDocument"] = ExpressionConverter.ConvertO(__workflow_bodyxmlDocument);
-                bodypropCount++;
-                body["flowKey"] = ExpressionConverter.ConvertO(__workflow_bodyflowKey);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -329,136 +189,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<SequentialSigning, ApiConnectionActionConfiguration> CreateSequentialSigningsigningsequential(Expression<Func<CreateSigningProcess[]>> bodycreateSigningProcesses, Expression<Func<string>> bodyuser, Expression<Func<bool>> bodyrequiresAuth = null, Expression<Func<bool>> bodysignInOrder = null)
+        public IBodyWorkflowAction<SequentialSigning, ApiConnectionActionConfiguration> CreateSequentialSigningsigningsequential(Expression<Func<CreateSequentialSigningsigningsequentialPostInput>> body = null)
         {
-            var __workflow_bodycreateSigningProcesses = WorkflowExpression.Compile(bodycreateSigningProcesses, nameof(bodycreateSigningProcesses), required: true);
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
-            var __workflow_bodyrequiresAuth = WorkflowExpression.Compile(bodyrequiresAuth, nameof(bodyrequiresAuth), required: false);
-            var __workflow_bodysignInOrder = WorkflowExpression.Compile(bodysignInOrder, nameof(bodysignInOrder), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SequentialSigning, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/management/signing/sequential";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["createSigningProcesses"] = ExpressionConverter.ConvertO(__workflow_bodycreateSigningProcesses);
-                bodypropCount++;
-                body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                if (__workflow_bodyrequiresAuth != null)
-                {
-                    body["requiresAuth"] = ExpressionConverter.ConvertO(__workflow_bodyrequiresAuth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysignInOrder != null)
-                {
-                    body["signInOrder"] = ExpressionConverter.ConvertO(__workflow_bodysignInOrder);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SequentialSigning>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<StartAuthResponse, ApiConnectionActionConfiguration> AuthStartStart(Expression<Func<string>> bodyflowKey, Expression<Func<bodyauthenticationContextTypeInput>> bodyauthenticationContextType, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodyphoneNumber = null)
+        public IBodyWorkflowAction<StartAuthResponse, ApiConnectionActionConfiguration> AuthStartStart(Expression<Func<AuthStartStartPostInput>> body = null)
         {
-            var __workflow_bodyflowKey = WorkflowExpression.Compile(bodyflowKey, nameof(bodyflowKey), required: true);
-            var __workflow_bodyauthenticationContextType = WorkflowExpression.Compile(bodyauthenticationContextType, nameof(bodyauthenticationContextType), required: true);
-            var __workflow_bodyssn = WorkflowExpression.Compile(bodyssn, nameof(bodyssn), required: false);
-            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<StartAuthResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Auth/Start";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyssn != null)
-                {
-                    body["ssn"] = ExpressionConverter.ConvertO(__workflow_bodyssn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphoneNumber != null)
-                {
-                    body["phoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["flowKey"] = ExpressionConverter.ConvertO(__workflow_bodyflowKey);
-                bodypropCount++;
-                body["authenticationContextType"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationContextType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StartAuthResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<PollCustomer, ApiConnectionActionConfiguration> AuthPollPoll(Expression<Func<string>> bodyauthRequestId, Expression<Func<string>> bodyflowKey, Expression<Func<bodylookupTypeInput>> bodylookupType)
+        public IBodyWorkflowAction<PollCustomer, ApiConnectionActionConfiguration> AuthPollPoll(Expression<Func<AuthPollPollPostInput>> body = null)
         {
-            var __workflow_bodyauthRequestId = WorkflowExpression.Compile(bodyauthRequestId, nameof(bodyauthRequestId), required: true);
-            var __workflow_bodyflowKey = WorkflowExpression.Compile(bodyflowKey, nameof(bodyflowKey), required: true);
-            var __workflow_bodylookupType = WorkflowExpression.Compile(bodylookupType, nameof(bodylookupType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PollCustomer, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Auth/Poll";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["authRequestId"] = ExpressionConverter.ConvertO(__workflow_bodyauthRequestId);
-                bodypropCount++;
-                body["flowKey"] = ExpressionConverter.ConvertO(__workflow_bodyflowKey);
-                bodypropCount++;
-                body["lookupType"] = ExpressionConverter.ConvertO(__workflow_bodylookupType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PollCustomer>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<StartAuthResponse, ApiConnectionActionConfiguration> RequestToViewSequenceStartsequentialSequenceKeyauth(Expression<Func<string>> sequenceKey, Expression<Func<string>> bodysequenceKey, Expression<Func<string>> bodyloginHint, Expression<Func<bodyauthenticationContextTypeInput>> bodyauthenticationContextType)
+        public IBodyWorkflowAction<StartAuthResponse, ApiConnectionActionConfiguration> RequestToViewSequenceStartsequentialSequenceKeyauth(Expression<Func<string>> sequenceKey, Expression<Func<RequestToViewSequenceStartsequentialSequenceKeyauthPostInput>> body = null)
         {
             var __workflow_sequenceKey = WorkflowExpression.Compile(sequenceKey, nameof(sequenceKey), required: true);
-            var __workflow_bodysequenceKey = WorkflowExpression.Compile(bodysequenceKey, nameof(bodysequenceKey), required: true);
-            var __workflow_bodyloginHint = WorkflowExpression.Compile(bodyloginHint, nameof(bodyloginHint), required: true);
-            var __workflow_bodyauthenticationContextType = WorkflowExpression.Compile(bodyauthenticationContextType, nameof(bodyauthenticationContextType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<StartAuthResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signing/sequential/{0}/auth", __workflow_sequenceKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["sequenceKey"] = ExpressionConverter.ConvertO(__workflow_bodysequenceKey);
-                bodypropCount++;
-                body["loginHint"] = ExpressionConverter.ConvertO(__workflow_bodyloginHint);
-                bodypropCount++;
-                body["authenticationContextType"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationContextType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StartAuthResponse>(callPayload);
             });
         }
@@ -481,70 +267,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
-        public IBodyWorkflowAction<Signee, ApiConnectionActionConfiguration> UpdateSigneeProcessKeysigneeSigneeKeyCreate(Expression<Func<string>> signeeKey, Expression<Func<string>> processKey, Expression<Func<string>> bodysigneeKey, Expression<Func<string>> bodyprocessKey, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodyuser = null)
+        public IBodyWorkflowAction<Signee, ApiConnectionActionConfiguration> UpdateSigneeProcessKeysigneeSigneeKeyCreate(Expression<Func<string>> signeeKey, Expression<Func<string>> processKey, Expression<Func<UpdateSigneeProcessKeysigneeSigneeKeyCreateInput>> body = null)
         {
             var __workflow_signeeKey = WorkflowExpression.Compile(signeeKey, nameof(signeeKey), required: true);
             var __workflow_processKey = WorkflowExpression.Compile(processKey, nameof(processKey), required: true);
-            var __workflow_bodysigneeKey = WorkflowExpression.Compile(bodysigneeKey, nameof(bodysigneeKey), required: true);
-            var __workflow_bodyprocessKey = WorkflowExpression.Compile(bodyprocessKey, nameof(bodyprocessKey), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
-            var __workflow_bodypostalCode = WorkflowExpression.Compile(bodypostalCode, nameof(bodypostalCode), required: false);
-            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
-            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Signee, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signing/{0}/signee/{1}", __workflow_processKey.WithUrlEncoding(1), __workflow_signeeKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddress != null)
-                {
-                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypostalCode != null)
-                {
-                    body["postalCode"] = ExpressionConverter.ConvertO(__workflow_bodypostalCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycity != null)
-                {
-                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["signeeKey"] = ExpressionConverter.ConvertO(__workflow_bodysigneeKey);
-                bodypropCount++;
-                body["processKey"] = ExpressionConverter.ConvertO(__workflow_bodyprocessKey);
-                if (__workflow_bodyreason != null)
-                {
-                    body["reason"] = ExpressionConverter.ConvertO(__workflow_bodyreason);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuser != null)
-                {
-                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Signee>(callPayload);
             });
         }
@@ -731,6 +465,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string PdfDocument { get; set; }
     }
 
+    public class SealingRequestsealingPostInput
+    {
+        [JsonProperty("pdfDocument", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PdfDocument { get; set; }
+
+        [JsonProperty("flowKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FlowKey { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("languageType")]
+        public string LanguageType { get; set; }
+    }
+
     public class SigningProcess
     {
         [JsonProperty("key")]
@@ -842,6 +591,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string FileContent { get; set; }
     }
 
+    public class CreateSigningProcesssigningPostInput
+    {
+        [JsonProperty("pdfDocument")]
+        public string PdfDocument { get; set; }
+
+        [JsonProperty("pdfFileName")]
+        public string PdfFileName { get; set; }
+
+        [JsonProperty("flowKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FlowKey { get; set; }
+
+        [JsonProperty("createSignees")]
+        public CreateSignee[] CreateSignees { get; set; }
+
+        [JsonProperty("meta")]
+        public JToken Meta { get; set; }
+
+        [JsonProperty("attachments")]
+        public SigningAttachment[] Attachments { get; set; }
+
+        [JsonProperty("attachmentReferences")]
+        public AttachmentReference[] AttachmentReferences { get; set; }
+
+        [JsonProperty("requiresAuth")]
+        public bool? RequiresAuth { get; set; }
+
+        [JsonProperty("signInOrder")]
+        public bool? SignInOrder { get; set; }
+
+        [JsonProperty("signatureLocation")]
+        public CreateSigningProcesssigningPostInputSignatureLocationType? SignatureLocation { get; set; }
+
+        [JsonProperty("user")]
+        public string User { get; set; }
+
+        [JsonProperty("sequenceKey")]
+        public string SequenceKey { get; set; }
+
+        [JsonProperty("activityDisplayName")]
+        public string ActivityDisplayName { get; set; }
+
+        [JsonProperty("flattenDocument")]
+        public bool? FlattenDocument { get; set; }
+
+        [JsonProperty("reminderRule")]
+        public string ReminderRule { get; set; }
+    }
+
     public class CreateSignee
     {
         [JsonProperty("processKey")]
@@ -888,10 +685,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysignatureLocationInput
+    public enum CreateSigningProcesssigningPostInputSignatureLocationType
     {
         TopFirstPage,
         BottomLastPage
+    }
+
+    public class SealingXmlRequestsealingxmlPostInput
+    {
+        [JsonProperty("xmlDocument", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string XmlDocument { get; set; }
+
+        [JsonProperty("flowKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FlowKey { get; set; }
     }
 
     public class SequentialSigning
@@ -928,6 +734,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
 
         [JsonProperty("signingKeys")]
         public SigneeKeys[] SigningKeys { get; set; }
+    }
+
+    public class CreateSequentialSigningsigningsequentialPostInput
+    {
+        [JsonProperty("createSigningProcesses", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateSigningProcess[] CreateSigningProcesses { get; set; }
+
+        [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string User { get; set; }
+
+        [JsonProperty("requiresAuth")]
+        public bool? RequiresAuth { get; set; }
+
+        [JsonProperty("signInOrder")]
+        public bool? SignInOrder { get; set; }
     }
 
     public class CreateSigningProcess
@@ -994,8 +815,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string VerificationCode { get; set; }
     }
 
+    public class AuthStartStartPostInput
+    {
+        [JsonProperty("ssn")]
+        public string Ssn { get; set; }
+
+        [JsonProperty("phoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("flowKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FlowKey { get; set; }
+
+        [JsonProperty("authenticationContextType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AuthStartStartPostInputAuthenticationContextTypeType AuthenticationContextType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyauthenticationContextTypeInput
+    public enum AuthStartStartPostInputAuthenticationContextTypeType
     {
         Sim,
         App
@@ -1046,12 +882,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public JToken Meta { get; set; }
     }
 
+    public class AuthPollPollPostInput
+    {
+        [JsonProperty("authRequestId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AuthRequestId { get; set; }
+
+        [JsonProperty("flowKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FlowKey { get; set; }
+
+        [JsonProperty("lookupType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AuthPollPollPostInputLookupTypeType LookupType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylookupTypeInput
+    public enum AuthPollPollPostInputLookupTypeType
     {
         NameAddress,
         Name,
         NameAddressFamily
+    }
+
+    public class RequestToViewSequenceStartsequentialSequenceKeyauthPostInput
+    {
+        [JsonProperty("sequenceKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SequenceKey { get; set; }
+
+        [JsonProperty("loginHint", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LoginHint { get; set; }
+
+        [JsonProperty("authenticationContextType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestToViewSequenceStartsequentialSequenceKeyauthPostInputAuthenticationContextTypeType AuthenticationContextType { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum RequestToViewSequenceStartsequentialSequenceKeyauthPostInputAuthenticationContextTypeType
+    {
+        Sim,
+        App
+    }
+
+    public class UpdateSigneeProcessKeysigneeSigneeKeyCreateInput
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("signeeKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SigneeKey { get; set; }
+
+        [JsonProperty("processKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessKey { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("user")]
+        public string User { get; set; }
     }
 }
 

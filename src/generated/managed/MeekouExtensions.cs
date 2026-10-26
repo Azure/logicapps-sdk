@@ -67,11 +67,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodypath = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<SumInput>> body = null)
         {
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Math/Sum";
@@ -79,25 +78,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xCustomHost != null)
                     callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypath != null)
-                {
-                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Response>(callPayload);
             });
         }
@@ -121,11 +103,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodypattern = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<RegexInput>> body = null)
         {
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Text/Regex";
@@ -133,25 +114,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xCustomHost != null)
                     callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypattern != null)
-                {
-                    body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Response>(callPayload);
             });
         }
@@ -183,6 +147,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
 
         [JsonProperty("details")]
         public string Details { get; set; }
+    }
+
+    public class SumInput
+    {
+        [JsonProperty("data")]
+        public string Data { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+    }
+
+    public class RegexInput
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("pattern")]
+        public string Pattern { get; set; }
     }
 }
 

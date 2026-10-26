@@ -31,87 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoCreateResponse, ApiConnectionActionConfiguration> VideoCreate(Expression<Func<bodyinputInputItem[]>> bodyinput, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodycallbackId = null, Expression<Func<string>> bodysoundtrack = null)
+        public IBodyWorkflowAction<VideoCreateResponse, ApiConnectionActionConfiguration> VideoCreate(Expression<Func<VideoCreateInput>> body)
         {
-            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
-            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
-            var __workflow_bodyctaSettingslabel = WorkflowExpression.Compile(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
-            var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
-            var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
-            var __workflow_bodysoundtrack = WorkflowExpression.Compile(bodysoundtrack, nameof(bodysoundtrack), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VideoCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/videos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytest != null)
-                {
-                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvisibility != null)
-                {
-                    body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
-                    bodypropCount++;
-                }
-
-                var ctaSettingsObject = new JObject();
-                var ctaSettingsObjectpropCount = 0;
-                if (__workflow_bodyctaSettingslabel != null)
-                {
-                    ctaSettingsObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingslabel);
-                    ctaSettingsObjectpropCount++;
-                }
-
-                if (__workflow_bodyctaSettingsurl != null)
-                {
-                    ctaSettingsObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingsurl);
-                    ctaSettingsObjectpropCount++;
-                }
-
-                if (ctaSettingsObjectpropCount > 0)
-                {
-                    body["ctaSettings"] = ctaSettingsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallbackId != null)
-                {
-                    body["callbackId"] = ExpressionConverter.ConvertO(__workflow_bodycallbackId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
-                if (__workflow_bodysoundtrack != null)
-                {
-                    body["soundtrack"] = ExpressionConverter.ConvertO(__workflow_bodysoundtrack);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<VideoCreateResponse>(callPayload);
             });
         }
@@ -143,64 +71,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoPatchResponse, ApiConnectionActionConfiguration> VideoPatch(Expression<Func<string>> videoId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodyvisibility = null)
+        public IBodyWorkflowAction<VideoPatchResponse, ApiConnectionActionConfiguration> VideoPatch(Expression<Func<string>> videoId, Expression<Func<VideoPatchInput>> body)
         {
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyctaSettingslabel = WorkflowExpression.Compile(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
-            var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
-            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VideoPatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                var ctaSettingsObject = new JObject();
-                var ctaSettingsObjectpropCount = 0;
-                if (__workflow_bodyctaSettingslabel != null)
-                {
-                    ctaSettingsObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingslabel);
-                    ctaSettingsObjectpropCount++;
-                }
-
-                if (__workflow_bodyctaSettingsurl != null)
-                {
-                    ctaSettingsObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyctaSettingsurl);
-                    ctaSettingsObjectpropCount++;
-                }
-
-                if (ctaSettingsObjectpropCount > 0)
-                {
-                    body["ctaSettings"] = ctaSettingsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvisibility != null)
-                {
-                    body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<VideoPatchResponse>(callPayload);
             });
         }
@@ -237,73 +117,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration> VideoCreateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodytemplateDataname = null, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodycallbackId = null)
+        public IBodyWorkflowAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration> VideoCreateTemplate(Expression<Func<VideoCreateTemplateInput>> body)
         {
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
-            var __workflow_bodytemplateDataname = WorkflowExpression.Compile(bodytemplateDataname, nameof(bodytemplateDataname), required: false);
-            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
-            var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/videos/fromTemplate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvisibility != null)
-                {
-                    body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                var templateDataObject = new JObject();
-                var templateDataObjectpropCount = 0;
-                if (__workflow_bodytemplateDataname != null)
-                {
-                    templateDataObject["name"] = ExpressionConverter.ConvertO(__workflow_bodytemplateDataname);
-                    templateDataObjectpropCount++;
-                }
-
-                if (templateDataObjectpropCount > 0)
-                {
-                    body["templateData"] = templateDataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytest != null)
-                {
-                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallbackId != null)
-                {
-                    body["callbackId"] = ExpressionConverter.ConvertO(__workflow_bodycallbackId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<VideoCreateTemplateResponse>(callPayload);
             });
         }
@@ -403,9 +225,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Url { get; set; }
     }
 
-    public class bodyinputInputItem
+    public class VideoCreateInput
     {
-        [JsonProperty("scriptText")]
+        [JsonProperty("test")]
+        public bool? Test { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("visibility")]
+        public string Visibility { get; set; }
+
+        [JsonProperty("ctaSettings")]
+        public VideoCreateInputCtaSettingsType CtaSettings { get; set; }
+
+        [JsonProperty("callbackId")]
+        public string CallbackId { get; set; }
+
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public VideoCreateInputInputTypeItem[] Input { get; set; }
+
+        [JsonProperty("soundtrack")]
+        public string Soundtrack { get; set; }
+    }
+
+    public class VideoCreateInputCtaSettingsType
+    {
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class VideoCreateInputInputTypeItem
+    {
+        [JsonProperty("scriptText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScriptText { get; set; }
 
         [JsonProperty("scriptAudio")]
@@ -414,20 +272,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [JsonProperty("scriptLanguage")]
         public string ScriptLanguage { get; set; }
 
-        [JsonProperty("avatar")]
+        [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Avatar { get; set; }
 
         [JsonProperty("avatarSettings")]
-        public bodyinputInputItemAvatarSettingsType AvatarSettings { get; set; }
+        public VideoCreateInputInputTypeItemAvatarSettingsType AvatarSettings { get; set; }
 
-        [JsonProperty("background")]
+        [JsonProperty("background", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Background { get; set; }
 
         [JsonProperty("backgroundSettings")]
-        public bodyinputInputItemBackgroundSettingsType BackgroundSettings { get; set; }
+        public VideoCreateInputInputTypeItemBackgroundSettingsType BackgroundSettings { get; set; }
     }
 
-    public class bodyinputInputItemAvatarSettingsType
+    public class VideoCreateInputInputTypeItemAvatarSettingsType
     {
         [JsonProperty("voice")]
         public string Voice { get; set; }
@@ -436,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string HorizontalAlign { get; set; }
 
         [JsonProperty("scale")]
-        public int Scale { get; set; }
+        public int? Scale { get; set; }
 
         [JsonProperty("style")]
         public string Style { get; set; }
@@ -445,16 +303,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string BackgroundColor { get; set; }
 
         [JsonProperty("seamless")]
-        public bool Seamless { get; set; }
+        public bool? Seamless { get; set; }
     }
 
-    public class bodyinputInputItemBackgroundSettingsType
+    public class VideoCreateInputInputTypeItemBackgroundSettingsType
     {
         [JsonProperty("videoSettings")]
-        public bodyinputInputItemBackgroundSettingsTypeVideoSettingsType VideoSettings { get; set; }
+        public VideoCreateInputInputTypeItemBackgroundSettingsTypeVideoSettingsType VideoSettings { get; set; }
     }
 
-    public class bodyinputInputItemBackgroundSettingsTypeVideoSettingsType
+    public class VideoCreateInputInputTypeItemBackgroundSettingsTypeVideoSettingsType
     {
         [JsonProperty("shortBackgroundContentMatchMode")]
         public string ShortBackgroundContentMatchMode { get; set; }
@@ -553,6 +411,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Url { get; set; }
     }
 
+    public class VideoPatchInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("ctaSettings")]
+        public VideoPatchInputCtaSettingsType CtaSettings { get; set; }
+
+        [JsonProperty("visibility")]
+        public string Visibility { get; set; }
+    }
+
+    public class VideoPatchInputCtaSettingsType
+    {
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
     public class TemplateListResponse
     {
         [JsonProperty("nextOffset")]
@@ -629,6 +511,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
 
         [JsonProperty("visibility")]
         public string Visibility { get; set; }
+    }
+
+    public class VideoCreateTemplateInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("visibility")]
+        public string Visibility { get; set; }
+
+        [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("templateData")]
+        public VideoCreateTemplateInputTemplateDataType TemplateData { get; set; }
+
+        [JsonProperty("test")]
+        public bool? Test { get; set; }
+
+        [JsonProperty("callbackId")]
+        public string CallbackId { get; set; }
+    }
+
+    public class VideoCreateTemplateInputTemplateDataType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }
 

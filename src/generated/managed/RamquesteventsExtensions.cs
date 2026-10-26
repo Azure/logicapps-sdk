@@ -16,69 +16,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CCEEventTrigger(Expression<Func<CCEEventTriggerInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/register/cce";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webHook"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyaction != null)
-                {
-                    body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> HorizonEventTrigger(Expression<Func<string>> bodyaction = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> HorizonEventTrigger(Expression<Func<HorizonEventTriggerInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/register/horizon";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webHook"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyaction != null)
-                {
-                    body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
+    public class CCEEventTriggerInput
+    {
+        [JsonProperty("webHook", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHook { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("action")]
+        public CCEEventTriggerInputActionType? Action { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyactionInput
+    public enum CCEEventTriggerInputActionType
     {
         TaskEvent,
         DocumentEvent,
         File,
         Commitment,
         CheckWriting
+    }
+
+    public class HorizonEventTriggerInput
+    {
+        [JsonProperty("webHook", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHook { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("action")]
+        public string Action { get; set; }
     }
 }
 

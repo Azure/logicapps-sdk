@@ -13,31 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public class TimemachineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> SetTopicQuizSettings(Expression<Func<string>> topicId, Expression<Func<string>> bodyquestionType, Expression<Func<int>> bodycount = null)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> SetTopicQuizSettings(Expression<Func<string>> topicId, Expression<Func<SetTopicQuizSettingsInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyquestionType = WorkflowExpression.Compile(bodyquestionType, nameof(bodyquestionType), required: true);
-            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopicDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/quiz-settings", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["questionType"] = ExpressionConverter.ConvertO(__workflow_bodyquestionType);
-                if (__workflow_bodycount != null)
-                {
-                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodycount);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TopicDto>(callPayload);
             });
         }
@@ -69,58 +54,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetTopicIntro(Expression<Func<string>> topicId, Expression<Func<string>> bodyintroduction = null)
+        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetTopicIntro(Expression<Func<string>> topicId, Expression<Func<SetTopicIntroInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyintroduction = WorkflowExpression.Compile(bodyintroduction, nameof(bodyintroduction), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IntroDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/intro", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyintroduction != null)
-                {
-                    body["introduction"] = ExpressionConverter.ConvertO(__workflow_bodyintroduction);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IntroDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> SetModuleQuizSettings(Expression<Func<string>> moduleId, Expression<Func<string>> bodyquestionType, Expression<Func<int>> bodycount = null)
+        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> SetModuleQuizSettings(Expression<Func<string>> moduleId, Expression<Func<SetModuleQuizSettingsInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
-            var __workflow_bodyquestionType = WorkflowExpression.Compile(bodyquestionType, nameof(bodyquestionType), required: true);
-            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModuleDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}/quiz-settings", __workflow_moduleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["questionType"] = ExpressionConverter.ConvertO(__workflow_bodyquestionType);
-                if (__workflow_bodycount != null)
-                {
-                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodycount);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModuleDetailDto>(callPayload);
             });
         }
@@ -152,28 +110,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetModuleIntro(Expression<Func<string>> moduleId, Expression<Func<string>> bodyintroduction = null)
+        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetModuleIntro(Expression<Func<string>> moduleId, Expression<Func<SetModuleIntroInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
-            var __workflow_bodyintroduction = WorkflowExpression.Compile(bodyintroduction, nameof(bodyintroduction), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IntroDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}/intro", __workflow_moduleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyintroduction != null)
-                {
-                    body["introduction"] = ExpressionConverter.ConvertO(__workflow_bodyintroduction);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IntroDto>(callPayload);
             });
         }
@@ -205,35 +151,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<MediaDetailDto, ApiConnectionActionConfiguration> UpdateMediaMetadata(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<MediaDetailDto, ApiConnectionActionConfiguration> UpdateMediaMetadata(Expression<Func<string>> id, Expression<Func<UpdateMediaMetadataInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MediaDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/media/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MediaDetailDto>(callPayload);
             });
         }
@@ -265,35 +192,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DocumentDetailDto, ApiConnectionActionConfiguration> UpdateDocumentMetadata(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<DocumentDetailDto, ApiConnectionActionConfiguration> UpdateDocumentMetadata(Expression<Func<string>> id, Expression<Func<UpdateDocumentMetadataInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DocumentDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DocumentDetailDto>(callPayload);
             });
         }
@@ -332,51 +240,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string[]>> bodydepartmentRoleIds = null)
+        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyisAdmin = WorkflowExpression.Compile(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            var __workflow_bodydepartmentRoleIds = WorkflowExpression.Compile(bodydepartmentRoleIds, nameof(bodydepartmentRoleIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAdmin != null)
-                {
-                    body["isAdmin"] = ExpressionConverter.ConvertO(__workflow_bodyisAdmin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartmentRoleIds != null)
-                {
-                    body["departmentRoleIds"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentRoleIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserDto>(callPayload);
             });
         }
@@ -421,101 +293,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodytext, Expression<Func<int>> bodyordinalNumber = null, Expression<Func<QuestionOptionInput[]>> bodyoptions = null, Expression<Func<string>> bodyexpectedAnswer = null)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<AddTopicQuizQuestionInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyordinalNumber = WorkflowExpression.Compile(bodyordinalNumber, nameof(bodyordinalNumber), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
-            var __workflow_bodyexpectedAnswer = WorkflowExpression.Compile(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/quiz-questions", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodyordinalNumber != null)
-                {
-                    body["ordinalNumber"] = ExpressionConverter.ConvertO(__workflow_bodyordinalNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedAnswer != null)
-                {
-                    body["expectedAnswer"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAnswer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderTopicQuizQuestions(Expression<Func<string>> topicId, Expression<Func<string[]>> bodyquestionIds)
+        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderTopicQuizQuestions(Expression<Func<string>> topicId, Expression<Func<ReorderTopicQuizQuestionsInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyquestionIds = WorkflowExpression.Compile(bodyquestionIds, nameof(bodyquestionIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/quiz-questions/reorder", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["questionIds"] = ExpressionConverter.ConvertO(__workflow_bodyquestionIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> MoveTopic(Expression<Func<string>> topicId, Expression<Func<string>> bodytargetModuleId, Expression<Func<int>> bodytargetOrdinalNumber = null)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> MoveTopic(Expression<Func<string>> topicId, Expression<Func<MoveTopicInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodytargetModuleId = WorkflowExpression.Compile(bodytargetModuleId, nameof(bodytargetModuleId), required: true);
-            var __workflow_bodytargetOrdinalNumber = WorkflowExpression.Compile(bodytargetOrdinalNumber, nameof(bodytargetOrdinalNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopicDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/move", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["targetModuleId"] = ExpressionConverter.ConvertO(__workflow_bodytargetModuleId);
-                if (__workflow_bodytargetOrdinalNumber != null)
-                {
-                    body["targetOrdinalNumber"] = ExpressionConverter.ConvertO(__workflow_bodytargetOrdinalNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TopicDto>(callPayload);
             });
         }
@@ -543,24 +360,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LinkDocumentsToTopic(Expression<Func<string>> topicId, Expression<Func<string[]>> bodydocumentIds)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LinkDocumentsToTopic(Expression<Func<string>> topicId, Expression<Func<LinkDocumentsToTopicInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodydocumentIds = WorkflowExpression.Compile(bodydocumentIds, nameof(bodydocumentIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/linked-documents", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["documentIds"] = ExpressionConverter.ConvertO(__workflow_bodydocumentIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -579,168 +388,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> AddLearningByteToTopic(Expression<Func<string>> topicId, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> AddLearningByteToTopic(Expression<Func<string>> topicId, Expression<Func<AddLearningByteToTopicInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LearningByteDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/learning-bytes", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LearningByteDetailDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVoiceExercise(Expression<Func<string>> topicId, Expression<Func<string>> bodyprompt = null, Expression<Func<string>> bodyavatarPictureId = null, Expression<Func<string>> bodyavatarCharacteristics = null, Expression<Func<bool>> bodyreverseRolePlayEnabled = null, Expression<Func<bool>> bodyreverseRolePlayMandatory = null)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVoiceExercise(Expression<Func<string>> topicId, Expression<Func<AddRpeVoiceExerciseInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
-            var __workflow_bodyavatarPictureId = WorkflowExpression.Compile(bodyavatarPictureId, nameof(bodyavatarPictureId), required: false);
-            var __workflow_bodyavatarCharacteristics = WorkflowExpression.Compile(bodyavatarCharacteristics, nameof(bodyavatarCharacteristics), required: false);
-            var __workflow_bodyreverseRolePlayEnabled = WorkflowExpression.Compile(bodyreverseRolePlayEnabled, nameof(bodyreverseRolePlayEnabled), required: false);
-            var __workflow_bodyreverseRolePlayMandatory = WorkflowExpression.Compile(bodyreverseRolePlayMandatory, nameof(bodyreverseRolePlayMandatory), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExerciseDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/exercises/rpe-voice", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprompt != null)
-                {
-                    body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarPictureId != null)
-                {
-                    body["avatarPictureId"] = ExpressionConverter.ConvertO(__workflow_bodyavatarPictureId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarCharacteristics != null)
-                {
-                    body["avatarCharacteristics"] = ExpressionConverter.ConvertO(__workflow_bodyavatarCharacteristics);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreverseRolePlayEnabled != null)
-                {
-                    body["reverseRolePlayEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyreverseRolePlayEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreverseRolePlayMandatory != null)
-                {
-                    body["reverseRolePlayMandatory"] = ExpressionConverter.ConvertO(__workflow_bodyreverseRolePlayMandatory);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExerciseDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVideoExercise(Expression<Func<string>> topicId, Expression<Func<string>> bodyprompt = null, Expression<Func<string>> bodyavatarPictureId = null, Expression<Func<string>> bodyavatarCharacteristics = null, Expression<Func<bool>> bodyreverseRolePlayEnabled = null, Expression<Func<bool>> bodyreverseRolePlayMandatory = null)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVideoExercise(Expression<Func<string>> topicId, Expression<Func<AddRpeVideoExerciseInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
-            var __workflow_bodyavatarPictureId = WorkflowExpression.Compile(bodyavatarPictureId, nameof(bodyavatarPictureId), required: false);
-            var __workflow_bodyavatarCharacteristics = WorkflowExpression.Compile(bodyavatarCharacteristics, nameof(bodyavatarCharacteristics), required: false);
-            var __workflow_bodyreverseRolePlayEnabled = WorkflowExpression.Compile(bodyreverseRolePlayEnabled, nameof(bodyreverseRolePlayEnabled), required: false);
-            var __workflow_bodyreverseRolePlayMandatory = WorkflowExpression.Compile(bodyreverseRolePlayMandatory, nameof(bodyreverseRolePlayMandatory), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExerciseDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/exercises/rpe-video", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprompt != null)
-                {
-                    body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarPictureId != null)
-                {
-                    body["avatarPictureId"] = ExpressionConverter.ConvertO(__workflow_bodyavatarPictureId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarCharacteristics != null)
-                {
-                    body["avatarCharacteristics"] = ExpressionConverter.ConvertO(__workflow_bodyavatarCharacteristics);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreverseRolePlayEnabled != null)
-                {
-                    body["reverseRolePlayEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyreverseRolePlayEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreverseRolePlayMandatory != null)
-                {
-                    body["reverseRolePlayMandatory"] = ExpressionConverter.ConvertO(__workflow_bodyreverseRolePlayMandatory);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExerciseDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddIleTextExercise(Expression<Func<string>> topicId, Expression<Func<string>> bodyprompt = null)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddIleTextExercise(Expression<Func<string>> topicId, Expression<Func<AddIleTextExerciseInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExerciseDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/exercises/ile-text", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprompt != null)
-                {
-                    body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExerciseDto>(callPayload);
             });
         }
@@ -759,54 +461,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> AddTopicToModule(Expression<Func<string>> moduleId, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> AddTopicToModule(Expression<Func<string>> moduleId, Expression<Func<AddTopicToModuleInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopicDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}/topics", __workflow_moduleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TopicDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicListResponse, ApiConnectionActionConfiguration> ReorderTopicsInModule(Expression<Func<string>> moduleId, Expression<Func<string[]>> bodytopicIds)
+        public IBodyWorkflowAction<TopicListResponse, ApiConnectionActionConfiguration> ReorderTopicsInModule(Expression<Func<string>> moduleId, Expression<Func<ReorderTopicsInModuleInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
-            var __workflow_bodytopicIds = WorkflowExpression.Compile(bodytopicIds, nameof(bodytopicIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopicListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}/topics/reorder", __workflow_moduleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["topicIds"] = ExpressionConverter.ConvertO(__workflow_bodytopicIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TopicListResponse>(callPayload);
             });
         }
@@ -825,71 +504,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodytext, Expression<Func<int>> bodyordinalNumber = null, Expression<Func<QuestionOptionInput[]>> bodyoptions = null, Expression<Func<string>> bodyexpectedAnswer = null)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<AddModuleQuizQuestionInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyordinalNumber = WorkflowExpression.Compile(bodyordinalNumber, nameof(bodyordinalNumber), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
-            var __workflow_bodyexpectedAnswer = WorkflowExpression.Compile(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}/quiz-questions", __workflow_moduleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodyordinalNumber != null)
-                {
-                    body["ordinalNumber"] = ExpressionConverter.ConvertO(__workflow_bodyordinalNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedAnswer != null)
-                {
-                    body["expectedAnswer"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAnswer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderModuleQuizQuestions(Expression<Func<string>> moduleId, Expression<Func<string[]>> bodyquestionIds)
+        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderModuleQuizQuestions(Expression<Func<string>> moduleId, Expression<Func<ReorderModuleQuizQuestionsInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
-            var __workflow_bodyquestionIds = WorkflowExpression.Compile(bodyquestionIds, nameof(bodyquestionIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}/quiz-questions/reorder", __workflow_moduleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["questionIds"] = ExpressionConverter.ConvertO(__workflow_bodyquestionIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionListResponse>(callPayload);
             });
         }
@@ -935,71 +574,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodytext, Expression<Func<int>> bodyordinalNumber = null, Expression<Func<QuestionOptionInput[]>> bodyoptions = null, Expression<Func<string>> bodyexpectedAnswer = null)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<AddLessonQuestionInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyordinalNumber = WorkflowExpression.Compile(bodyordinalNumber, nameof(bodyordinalNumber), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
-            var __workflow_bodyexpectedAnswer = WorkflowExpression.Compile(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/lessons/{0}/questions", __workflow_lessonId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodyordinalNumber != null)
-                {
-                    body["ordinalNumber"] = ExpressionConverter.ConvertO(__workflow_bodyordinalNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedAnswer != null)
-                {
-                    body["expectedAnswer"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAnswer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderLessonQuestions(Expression<Func<string>> lessonId, Expression<Func<string[]>> bodyquestionIds)
+        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderLessonQuestions(Expression<Func<string>> lessonId, Expression<Func<ReorderLessonQuestionsInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
-            var __workflow_bodyquestionIds = WorkflowExpression.Compile(bodyquestionIds, nameof(bodyquestionIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/lessons/{0}/questions/reorder", __workflow_lessonId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["questionIds"] = ExpressionConverter.ConvertO(__workflow_bodyquestionIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionListResponse>(callPayload);
             });
         }
@@ -1018,24 +617,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> AddLessonToLearningByte(Expression<Func<string>> lbId, Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> AddLessonToLearningByte(Expression<Func<string>> lbId, Expression<Func<AddLessonToLearningByteInput>> body)
         {
             var __workflow_lbId = WorkflowExpression.Compile(lbId, nameof(lbId), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LessonDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/learning-bytes/{0}/lessons", __workflow_lbId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LessonDetailDto>(callPayload);
             });
         }
@@ -1054,70 +645,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignRolesToExpert(Expression<Func<string>> id, Expression<Func<string[]>> bodyroleIds)
+        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignRolesToExpert(Expression<Func<string>> id, Expression<Func<AssignRolesToExpertInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyroleIds = WorkflowExpression.Compile(bodyroleIds, nameof(bodyroleIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExpertDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/experts/{0}/roles", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["roleIds"] = ExpressionConverter.ConvertO(__workflow_bodyroleIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExpertDetailDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignDocumentsToExpert(Expression<Func<string>> id, Expression<Func<string[]>> bodydocumentIds)
+        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignDocumentsToExpert(Expression<Func<string>> id, Expression<Func<AssignDocumentsToExpertInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodydocumentIds = WorkflowExpression.Compile(bodydocumentIds, nameof(bodydocumentIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExpertDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/experts/{0}/documents", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["documentIds"] = ExpressionConverter.ConvertO(__workflow_bodydocumentIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExpertDetailDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<AskResponse, ApiConnectionActionConfiguration> AskExpert(Expression<Func<string>> id, Expression<Func<string>> bodyquestion)
+        public IBodyWorkflowAction<AskResponse, ApiConnectionActionConfiguration> AskExpert(Expression<Func<string>> id, Expression<Func<AskExpertInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/experts/{0}/ask", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AskResponse>(callPayload);
             });
         }
@@ -1162,91 +729,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateDepartment(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateDepartment(Expression<Func<CreateDepartmentInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DepartmentDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/departments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DepartmentDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateRoleInDepartment(Expression<Func<string>> id, Expression<Func<string>> bodyname, Expression<Func<string>> bodyfullName = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateRoleInDepartment(Expression<Func<string>> id, Expression<Func<CreateRoleInDepartmentInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DepartmentDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/departments/{0}/roles", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyfullName != null)
-                {
-                    body["fullName"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DepartmentDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> AssignUserToRole(Expression<Func<string>> id, Expression<Func<string>> roleId, Expression<Func<string>> bodyuserId)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> AssignUserToRole(Expression<Func<string>> id, Expression<Func<string>> roleId, Expression<Func<AssignUserToRoleInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_roleId = WorkflowExpression.Compile(roleId, nameof(roleId), required: true);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DepartmentDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/departments/{0}/roles/{1}/assign", __workflow_id.WithUrlEncoding(1), __workflow_roleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DepartmentDto>(callPayload);
             });
         }
@@ -1285,100 +807,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> CreateDemoTraining(Expression<Func<string>> bodyname, Expression<Func<bodytrainingTypeInput>> bodytrainingType, Expression<Func<string>> bodyvideoFileId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyprocessingPrompt = null)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> CreateDemoTraining(Expression<Func<CreateDemoTrainingInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytrainingType = WorkflowExpression.Compile(bodytrainingType, nameof(bodytrainingType), required: true);
-            var __workflow_bodyvideoFileId = WorkflowExpression.Compile(bodyvideoFileId, nameof(bodyvideoFileId), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyprocessingPrompt = WorkflowExpression.Compile(bodyprocessingPrompt, nameof(bodyprocessingPrompt), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DemoTrainingDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/demo-trainings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["trainingType"] = ExpressionConverter.ConvertO(__workflow_bodytrainingType);
-                bodypropCount++;
-                body["videoFileId"] = ExpressionConverter.ConvertO(__workflow_bodyvideoFileId);
-                if (__workflow_bodydepartmentId != null)
-                {
-                    body["departmentId"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprocessingPrompt != null)
-                {
-                    body["processingPrompt"] = ExpressionConverter.ConvertO(__workflow_bodyprocessingPrompt);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DemoTrainingDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> ReprocessDemoTraining(Expression<Func<string>> id, Expression<Func<string>> bodyprocessingPrompt = null)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> ReprocessDemoTraining(Expression<Func<string>> id, Expression<Func<ReprocessDemoTrainingInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyprocessingPrompt = WorkflowExpression.Compile(bodyprocessingPrompt, nameof(bodyprocessingPrompt), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DemoTrainingDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/demo-trainings/{0}/reprocess", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprocessingPrompt != null)
-                {
-                    body["processingPrompt"] = ExpressionConverter.ConvertO(__workflow_bodyprocessingPrompt);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DemoTrainingDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTrainingAvailability(Expression<Func<string>> id, Expression<Func<bool>> bodyavailable)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTrainingAvailability(Expression<Func<string>> id, Expression<Func<UpdateDemoTrainingAvailabilityInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyavailable = WorkflowExpression.Compile(bodyavailable, nameof(bodyavailable), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DemoTrainingDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/demo-trainings/{0}/availability", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["available"] = ExpressionConverter.ConvertO(__workflow_bodyavailable);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DemoTrainingDto>(callPayload);
             });
         }
@@ -1411,23 +879,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<CreateCourseInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CourseDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/courses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CourseDetailDto>(callPayload);
             });
         }
@@ -1446,24 +906,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> AssignRolesToCourse(Expression<Func<string>> id, Expression<Func<string[]>> bodyroleIds)
+        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> AssignRolesToCourse(Expression<Func<string>> id, Expression<Func<AssignRolesToCourseInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyroleIds = WorkflowExpression.Compile(bodyroleIds, nameof(bodyroleIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CourseDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/courses/{0}/roles", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["roleIds"] = ExpressionConverter.ConvertO(__workflow_bodyroleIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CourseDetailDto>(callPayload);
             });
         }
@@ -1482,24 +934,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> GenerateCourseContent(Expression<Func<string>> id, Expression<Func<string[]>> bodytopicIds)
+        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> GenerateCourseContent(Expression<Func<string>> id, Expression<Func<GenerateCourseContentInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodytopicIds = WorkflowExpression.Compile(bodytopicIds, nameof(bodytopicIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerationRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/courses/{0}/generate-content", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["topicIds"] = ExpressionConverter.ConvertO(__workflow_bodytopicIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerationRequestResponse>(callPayload);
             });
         }
@@ -1518,118 +962,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> AddModuleToCourse(Expression<Func<string>> courseId, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> AddModuleToCourse(Expression<Func<string>> courseId, Expression<Func<AddModuleToCourseInput>> body)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModuleDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/courses/{0}/modules", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModuleDetailDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleListResponse, ApiConnectionActionConfiguration> ReorderModulesInCourse(Expression<Func<string>> courseId, Expression<Func<string[]>> bodymoduleIds)
+        public IBodyWorkflowAction<ModuleListResponse, ApiConnectionActionConfiguration> ReorderModulesInCourse(Expression<Func<string>> courseId, Expression<Func<ReorderModulesInCourseInput>> body)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
-            var __workflow_bodymoduleIds = WorkflowExpression.Compile(bodymoduleIds, nameof(bodymoduleIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModuleListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/courses/{0}/modules/reorder", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["moduleIds"] = ExpressionConverter.ConvertO(__workflow_bodymoduleIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModuleListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> RegenerateCourseItem(Expression<Func<bodytargetInput>> bodytarget, Expression<Func<string>> bodytargetId, Expression<Func<bodyparentTypeInput>> bodyparentType = null)
+        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> RegenerateCourseItem(Expression<Func<RegenerateCourseItemInput>> body)
         {
-            var __workflow_bodytarget = WorkflowExpression.Compile(bodytarget, nameof(bodytarget), required: true);
-            var __workflow_bodytargetId = WorkflowExpression.Compile(bodytargetId, nameof(bodytargetId), required: true);
-            var __workflow_bodyparentType = WorkflowExpression.Compile(bodyparentType, nameof(bodyparentType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerationRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/courses/regenerate-item";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["target"] = ExpressionConverter.ConvertO(__workflow_bodytarget);
-                bodypropCount++;
-                body["targetId"] = ExpressionConverter.ConvertO(__workflow_bodytargetId);
-                if (__workflow_bodyparentType != null)
-                {
-                    body["parentType"] = ExpressionConverter.ConvertO(__workflow_bodyparentType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerationRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<GenerateCourseResponse, ApiConnectionActionConfiguration> GenerateCourse(Expression<Func<string>> bodyname, Expression<Func<ModuleInput[]>> bodymodules, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<GenerateCourseResponse, ApiConnectionActionConfiguration> GenerateCourse(Expression<Func<GenerateCourseInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodymodules = WorkflowExpression.Compile(bodymodules, nameof(bodymodules), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateCourseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/courses/generate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["modules"] = ExpressionConverter.ConvertO(__workflow_bodymodules);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerateCourseResponse>(callPayload);
             });
         }
@@ -1648,49 +1033,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string[]>> bodydepartmentRoleIds = null)
+        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> id, Expression<Func<UpdateUserInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyisAdmin = WorkflowExpression.Compile(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            var __workflow_bodydepartmentRoleIds = WorkflowExpression.Compile(bodydepartmentRoleIds, nameof(bodydepartmentRoleIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/users/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAdmin != null)
-                {
-                    body["isAdmin"] = ExpressionConverter.ConvertO(__workflow_bodyisAdmin);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartmentRoleIds != null)
-                {
-                    body["departmentRoleIds"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentRoleIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserDto>(callPayload);
             });
         }
@@ -1722,35 +1074,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> UpdateTopic(Expression<Func<string>> topicId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> UpdateTopic(Expression<Func<string>> topicId, Expression<Func<UpdateTopicInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopicDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}", __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TopicDto>(callPayload);
             });
         }
@@ -1784,43 +1117,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<string>> questionId, Expression<Func<string>> bodytext = null, Expression<Func<QuestionOptionInput[]>> bodyoptions = null, Expression<Func<string>> bodyexpectedAnswer = null)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<string>> questionId, Expression<Func<UpdateTopicQuizQuestionInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
-            var __workflow_bodyexpectedAnswer = WorkflowExpression.Compile(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/topics/{0}/quiz-questions/{1}", __workflow_topicId.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedAnswer != null)
-                {
-                    body["expectedAnswer"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAnswer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionDto>(callPayload);
             });
         }
@@ -1852,35 +1159,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> UpdateModule(Expression<Func<string>> moduleId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> UpdateModule(Expression<Func<string>> moduleId, Expression<Func<UpdateModuleInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModuleDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}", __workflow_moduleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModuleDetailDto>(callPayload);
             });
         }
@@ -1914,43 +1202,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<string>> questionId, Expression<Func<string>> bodytext = null, Expression<Func<QuestionOptionInput[]>> bodyoptions = null, Expression<Func<string>> bodyexpectedAnswer = null)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<string>> questionId, Expression<Func<UpdateModuleQuizQuestionInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
-            var __workflow_bodyexpectedAnswer = WorkflowExpression.Compile(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/modules/{0}/quiz-questions/{1}", __workflow_moduleId.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedAnswer != null)
-                {
-                    body["expectedAnswer"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAnswer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionDto>(callPayload);
             });
         }
@@ -1982,28 +1244,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> UpdateLesson(Expression<Func<string>> lessonId, Expression<Func<string>> bodycontent = null)
+        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> UpdateLesson(Expression<Func<string>> lessonId, Expression<Func<UpdateLessonInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LessonDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/lessons/{0}", __workflow_lessonId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LessonDetailDto>(callPayload);
             });
         }
@@ -2037,43 +1287,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<string>> questionId, Expression<Func<string>> bodytext = null, Expression<Func<QuestionOptionInput[]>> bodyoptions = null, Expression<Func<string>> bodyexpectedAnswer = null)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<string>> questionId, Expression<Func<UpdateLessonQuestionInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
-            var __workflow_bodyexpectedAnswer = WorkflowExpression.Compile(bodyexpectedAnswer, nameof(bodyexpectedAnswer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuestionDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/lessons/{0}/questions/{1}", __workflow_lessonId.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedAnswer != null)
-                {
-                    body["expectedAnswer"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAnswer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QuestionDto>(callPayload);
             });
         }
@@ -2105,35 +1329,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> UpdateLearningByte(Expression<Func<string>> lbId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> UpdateLearningByte(Expression<Func<string>> lbId, Expression<Func<UpdateLearningByteInput>> body)
         {
             var __workflow_lbId = WorkflowExpression.Compile(lbId, nameof(lbId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LearningByteDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/learning-bytes/{0}", __workflow_lbId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LearningByteDetailDto>(callPayload);
             });
         }
@@ -2165,106 +1370,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> UpdateExercise(Expression<Func<string>> id, Expression<Func<string>> bodyprompt = null, Expression<Func<string>> bodyavatarPictureId = null, Expression<Func<string>> bodyavatarCharacteristics = null, Expression<Func<bool>> bodyreverseRolePlayEnabled = null, Expression<Func<bool>> bodyreverseRolePlayMandatory = null, Expression<Func<string>> bodygeneratedContentscenario = null, Expression<Func<string>> bodygeneratedContenttraineeRole = null, Expression<Func<string>> bodygeneratedContentavatarName = null, Expression<Func<string>> bodygeneratedContentavatarDescription = null, Expression<Func<string>> bodygeneratedContentoperationalChallenge = null, Expression<Func<string>> bodygeneratedContentsuccessMetric = null)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> UpdateExercise(Expression<Func<string>> id, Expression<Func<UpdateExerciseInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
-            var __workflow_bodyavatarPictureId = WorkflowExpression.Compile(bodyavatarPictureId, nameof(bodyavatarPictureId), required: false);
-            var __workflow_bodyavatarCharacteristics = WorkflowExpression.Compile(bodyavatarCharacteristics, nameof(bodyavatarCharacteristics), required: false);
-            var __workflow_bodyreverseRolePlayEnabled = WorkflowExpression.Compile(bodyreverseRolePlayEnabled, nameof(bodyreverseRolePlayEnabled), required: false);
-            var __workflow_bodyreverseRolePlayMandatory = WorkflowExpression.Compile(bodyreverseRolePlayMandatory, nameof(bodyreverseRolePlayMandatory), required: false);
-            var __workflow_bodygeneratedContentscenario = WorkflowExpression.Compile(bodygeneratedContentscenario, nameof(bodygeneratedContentscenario), required: false);
-            var __workflow_bodygeneratedContenttraineeRole = WorkflowExpression.Compile(bodygeneratedContenttraineeRole, nameof(bodygeneratedContenttraineeRole), required: false);
-            var __workflow_bodygeneratedContentavatarName = WorkflowExpression.Compile(bodygeneratedContentavatarName, nameof(bodygeneratedContentavatarName), required: false);
-            var __workflow_bodygeneratedContentavatarDescription = WorkflowExpression.Compile(bodygeneratedContentavatarDescription, nameof(bodygeneratedContentavatarDescription), required: false);
-            var __workflow_bodygeneratedContentoperationalChallenge = WorkflowExpression.Compile(bodygeneratedContentoperationalChallenge, nameof(bodygeneratedContentoperationalChallenge), required: false);
-            var __workflow_bodygeneratedContentsuccessMetric = WorkflowExpression.Compile(bodygeneratedContentsuccessMetric, nameof(bodygeneratedContentsuccessMetric), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExerciseDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/exercises/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprompt != null)
-                {
-                    body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarPictureId != null)
-                {
-                    body["avatarPictureId"] = ExpressionConverter.ConvertO(__workflow_bodyavatarPictureId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarCharacteristics != null)
-                {
-                    body["avatarCharacteristics"] = ExpressionConverter.ConvertO(__workflow_bodyavatarCharacteristics);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreverseRolePlayEnabled != null)
-                {
-                    body["reverseRolePlayEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyreverseRolePlayEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreverseRolePlayMandatory != null)
-                {
-                    body["reverseRolePlayMandatory"] = ExpressionConverter.ConvertO(__workflow_bodyreverseRolePlayMandatory);
-                    bodypropCount++;
-                }
-
-                var generatedContentObject = new JObject();
-                var generatedContentObjectpropCount = 0;
-                if (__workflow_bodygeneratedContentscenario != null)
-                {
-                    generatedContentObject["scenario"] = ExpressionConverter.ConvertO(__workflow_bodygeneratedContentscenario);
-                    generatedContentObjectpropCount++;
-                }
-
-                if (__workflow_bodygeneratedContenttraineeRole != null)
-                {
-                    generatedContentObject["traineeRole"] = ExpressionConverter.ConvertO(__workflow_bodygeneratedContenttraineeRole);
-                    generatedContentObjectpropCount++;
-                }
-
-                if (__workflow_bodygeneratedContentavatarName != null)
-                {
-                    generatedContentObject["avatarName"] = ExpressionConverter.ConvertO(__workflow_bodygeneratedContentavatarName);
-                    generatedContentObjectpropCount++;
-                }
-
-                if (__workflow_bodygeneratedContentavatarDescription != null)
-                {
-                    generatedContentObject["avatarDescription"] = ExpressionConverter.ConvertO(__workflow_bodygeneratedContentavatarDescription);
-                    generatedContentObjectpropCount++;
-                }
-
-                if (__workflow_bodygeneratedContentoperationalChallenge != null)
-                {
-                    generatedContentObject["operationalChallenge"] = ExpressionConverter.ConvertO(__workflow_bodygeneratedContentoperationalChallenge);
-                    generatedContentObjectpropCount++;
-                }
-
-                if (__workflow_bodygeneratedContentsuccessMetric != null)
-                {
-                    generatedContentObject["successMetric"] = ExpressionConverter.ConvertO(__workflow_bodygeneratedContentsuccessMetric);
-                    generatedContentObjectpropCount++;
-                }
-
-                if (generatedContentObjectpropCount > 0)
-                {
-                    body["generatedContent"] = generatedContentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExerciseDto>(callPayload);
             });
         }
@@ -2283,35 +1398,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> UpdateDepartment(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> UpdateDepartment(Expression<Func<string>> id, Expression<Func<UpdateDepartmentInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DepartmentDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/departments/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DepartmentDto>(callPayload);
             });
         }
@@ -2343,56 +1439,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTraining(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<bodytrainingTypeInput>> bodytrainingType = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string[]>> bodyassignedRoleIds = null)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTraining(Expression<Func<string>> id, Expression<Func<UpdateDemoTrainingInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytrainingType = WorkflowExpression.Compile(bodytrainingType, nameof(bodytrainingType), required: false);
-            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyassignedRoleIds = WorkflowExpression.Compile(bodyassignedRoleIds, nameof(bodyassignedRoleIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DemoTrainingDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/demo-trainings/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytrainingType != null)
-                {
-                    body["trainingType"] = ExpressionConverter.ConvertO(__workflow_bodytrainingType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartmentId != null)
-                {
-                    body["departmentId"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignedRoleIds != null)
-                {
-                    body["assignedRoleIds"] = ExpressionConverter.ConvertO(__workflow_bodyassignedRoleIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DemoTrainingDto>(callPayload);
             });
         }
@@ -2424,28 +1480,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> UpdateCourse(Expression<Func<string>> id, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> UpdateCourse(Expression<Func<string>> id, Expression<Func<UpdateCourseInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CourseDetailDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/courses/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CourseDetailDto>(callPayload);
             });
         }
@@ -2732,6 +1776,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int Count { get; set; }
     }
 
+    public class SetTopicQuizSettingsInput
+    {
+        [JsonProperty("questionType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string QuestionType { get; set; }
+
+        [JsonProperty("count")]
+        public int? Count { get; set; }
+    }
+
     public class IntroDto
     {
         [JsonProperty("id")]
@@ -2754,6 +1807,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class SetTopicIntroInput
+    {
+        [JsonProperty("introduction")]
+        public string Introduction { get; set; }
     }
 
     public class ModuleDetailDto
@@ -2784,6 +1843,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("topics")]
         public TopicDto[] Topics { get; set; }
+    }
+
+    public class SetModuleQuizSettingsInput
+    {
+        [JsonProperty("questionType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string QuestionType { get; set; }
+
+        [JsonProperty("count")]
+        public int? Count { get; set; }
+    }
+
+    public class SetModuleIntroInput
+    {
+        [JsonProperty("introduction")]
+        public string Introduction { get; set; }
     }
 
     public class MediaDetailDto
@@ -2834,6 +1908,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string Name { get; set; }
     }
 
+    public class UpdateMediaMetadataInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     public class DocumentDetailDto
     {
         [JsonProperty("id")]
@@ -2862,6 +1945,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("downloadUrl")]
         public string DownloadUrl { get; set; }
+    }
+
+    public class UpdateDocumentMetadataInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 
     public class UserListResponse
@@ -2933,6 +2025,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int TotalPages { get; set; }
     }
 
+    public class CreateUserInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("isAdmin")]
+        public bool? IsAdmin { get; set; }
+
+        [JsonProperty("departmentRoleIds")]
+        public string[] DepartmentRoleIds { get; set; }
+    }
+
     public class QuestionListResponse
     {
         [JsonProperty("items")]
@@ -2987,8 +2097,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int OrdinalNumber { get; set; }
     }
 
+    public class AddTopicQuizQuestionInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddTopicQuizQuestionInputTypeType Type { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("ordinalNumber")]
+        public int? OrdinalNumber { get; set; }
+
+        [JsonProperty("options")]
+        public QuestionOptionInput[] Options { get; set; }
+
+        [JsonProperty("expectedAnswer")]
+        public string ExpectedAnswer { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum AddTopicQuizQuestionInputTypeType
     {
         [EnumMember(Value = "MULTIPLE_CHOICE")]
         MULTIPLECHOICE,
@@ -3003,6 +2131,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("isCorrect")]
         public bool IsCorrect { get; set; }
+    }
+
+    public class ReorderTopicQuizQuestionsInput
+    {
+        [JsonProperty("questionIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] QuestionIds { get; set; }
+    }
+
+    public class MoveTopicInput
+    {
+        [JsonProperty("targetModuleId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetModuleId { get; set; }
+
+        [JsonProperty("targetOrdinalNumber")]
+        public int? TargetOrdinalNumber { get; set; }
     }
 
     public class TopicLinkedDocumentListResponse
@@ -3042,6 +2185,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("linkedAt")]
         public string LinkedAt { get; set; }
+    }
+
+    public class LinkDocumentsToTopicInput
+    {
+        [JsonProperty("documentIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] DocumentIds { get; set; }
     }
 
     public class LearningByteListResponse
@@ -3140,6 +2289,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string UpdatedAt { get; set; }
     }
 
+    public class AddLearningByteToTopicInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     public class ExerciseDto
     {
         [JsonProperty("id")]
@@ -3224,10 +2382,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string TopicKnowledgeBase { get; set; }
     }
 
+    public class AddRpeVoiceExerciseInput
+    {
+        [JsonProperty("prompt")]
+        public string Prompt { get; set; }
+
+        [JsonProperty("avatarPictureId")]
+        public string AvatarPictureId { get; set; }
+
+        [JsonProperty("avatarCharacteristics")]
+        public string AvatarCharacteristics { get; set; }
+
+        [JsonProperty("reverseRolePlayEnabled")]
+        public bool? ReverseRolePlayEnabled { get; set; }
+
+        [JsonProperty("reverseRolePlayMandatory")]
+        public bool? ReverseRolePlayMandatory { get; set; }
+    }
+
+    public class AddRpeVideoExerciseInput
+    {
+        [JsonProperty("prompt")]
+        public string Prompt { get; set; }
+
+        [JsonProperty("avatarPictureId")]
+        public string AvatarPictureId { get; set; }
+
+        [JsonProperty("avatarCharacteristics")]
+        public string AvatarCharacteristics { get; set; }
+
+        [JsonProperty("reverseRolePlayEnabled")]
+        public bool? ReverseRolePlayEnabled { get; set; }
+
+        [JsonProperty("reverseRolePlayMandatory")]
+        public bool? ReverseRolePlayMandatory { get; set; }
+    }
+
+    public class AddIleTextExerciseInput
+    {
+        [JsonProperty("prompt")]
+        public string Prompt { get; set; }
+    }
+
     public class TopicListResponse
     {
         [JsonProperty("items")]
         public TopicDto[] Items { get; set; }
+    }
+
+    public class AddTopicToModuleInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class ReorderTopicsInModuleInput
+    {
+        [JsonProperty("topicIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] TopicIds { get; set; }
+    }
+
+    public class AddModuleQuizQuestionInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddModuleQuizQuestionInputTypeType Type { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("ordinalNumber")]
+        public int? OrdinalNumber { get; set; }
+
+        [JsonProperty("options")]
+        public QuestionOptionInput[] Options { get; set; }
+
+        [JsonProperty("expectedAnswer")]
+        public string ExpectedAnswer { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddModuleQuizQuestionInputTypeType
+    {
+        [EnumMember(Value = "MULTIPLE_CHOICE")]
+        MULTIPLECHOICE,
+        [EnumMember(Value = "OPEN_ENDED")]
+        OPENENDED
+    }
+
+    public class ReorderModuleQuizQuestionsInput
+    {
+        [JsonProperty("questionIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] QuestionIds { get; set; }
     }
 
     public class MediaListResponse
@@ -3270,6 +2518,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("uploadedBy")]
         public UploadedByDto UploadedBy { get; set; }
+    }
+
+    public class AddLessonQuestionInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddLessonQuestionInputTypeType Type { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("ordinalNumber")]
+        public int? OrdinalNumber { get; set; }
+
+        [JsonProperty("options")]
+        public QuestionOptionInput[] Options { get; set; }
+
+        [JsonProperty("expectedAnswer")]
+        public string ExpectedAnswer { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddLessonQuestionInputTypeType
+    {
+        [EnumMember(Value = "MULTIPLE_CHOICE")]
+        MULTIPLECHOICE,
+        [EnumMember(Value = "OPEN_ENDED")]
+        OPENENDED
+    }
+
+    public class ReorderLessonQuestionsInput
+    {
+        [JsonProperty("questionIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] QuestionIds { get; set; }
     }
 
     public class LessonListResponse
@@ -3321,6 +2602,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("source")]
         public string Source { get; set; }
+    }
+
+    public class AddLessonToLearningByteInput
+    {
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
     }
 
     public class ExpertDetailDto
@@ -3377,6 +2664,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string LinkedAt { get; set; }
     }
 
+    public class AssignRolesToExpertInput
+    {
+        [JsonProperty("roleIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] RoleIds { get; set; }
+    }
+
+    public class AssignDocumentsToExpertInput
+    {
+        [JsonProperty("documentIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] DocumentIds { get; set; }
+    }
+
     public class AskResponse
     {
         [JsonProperty("answer")]
@@ -3384,6 +2683,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("durationMs")]
         public int DurationMs { get; set; }
+    }
+
+    public class AskExpertInput
+    {
+        [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Question { get; set; }
     }
 
     public class DocumentListResponse
@@ -3447,6 +2752,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("roles")]
         public DepartmentRoleDto[] Roles { get; set; }
+    }
+
+    public class CreateDepartmentInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class CreateRoleInDepartmentInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("fullName")]
+        public string FullName { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class AssignUserToRoleInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserId { get; set; }
     }
 
     public class DemoTrainingListResponse
@@ -3563,13 +2895,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int DurationSeconds { get; set; }
     }
 
+    public class CreateDemoTrainingInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("trainingType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateDemoTrainingInputTrainingTypeType TrainingType { get; set; }
+
+        [JsonProperty("videoFileId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string VideoFileId { get; set; }
+
+        [JsonProperty("departmentId")]
+        public string DepartmentId { get; set; }
+
+        [JsonProperty("processingPrompt")]
+        public string ProcessingPrompt { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytrainingTypeInput
+    public enum CreateDemoTrainingInputTrainingTypeType
     {
         [EnumMember(Value = "DEMO_TRAINING")]
         DEMOTRAINING,
         [EnumMember(Value = "APPLICATION_TRAINING")]
         APPLICATIONTRAINING
+    }
+
+    public class ReprocessDemoTrainingInput
+    {
+        [JsonProperty("processingPrompt")]
+        public string ProcessingPrompt { get; set; }
+    }
+
+    public class UpdateDemoTrainingAvailabilityInput
+    {
+        [JsonProperty("available", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Available { get; set; }
     }
 
     public class CourseListResponse
@@ -3665,6 +3030,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int TopicCount { get; set; }
     }
 
+    public class CreateCourseInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
+    public class AssignRolesToCourseInput
+    {
+        [JsonProperty("roleIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] RoleIds { get; set; }
+    }
+
     public class GenerationRequestResponse
     {
         [JsonProperty("id")]
@@ -3672,6 +3049,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class GenerateCourseContentInput
+    {
+        [JsonProperty("topicIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] TopicIds { get; set; }
     }
 
     public class ModuleListResponse
@@ -3710,8 +3093,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public QuizSettingDto[] QuizSettings { get; set; }
     }
 
+    public class AddModuleToCourseInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class ReorderModulesInCourseInput
+    {
+        [JsonProperty("moduleIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] ModuleIds { get; set; }
+    }
+
+    public class RegenerateCourseItemInput
+    {
+        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RegenerateCourseItemInputTargetType Target { get; set; }
+
+        [JsonProperty("targetId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetId { get; set; }
+
+        [JsonProperty("parentType")]
+        public RegenerateCourseItemInputParentTypeType? ParentType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytargetInput
+    public enum RegenerateCourseItemInputTargetType
     {
         LESSON,
         [EnumMember(Value = "LESSON_QUESTIONS")]
@@ -3722,7 +3132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyparentTypeInput
+    public enum RegenerateCourseItemInputParentTypeType
     {
         MODULE,
         TOPIC
@@ -3735,6 +3145,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("generationRequestId")]
         public string GenerationRequestId { get; set; }
+    }
+
+    public class GenerateCourseInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("modules", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ModuleInput[] Modules { get; set; }
     }
 
     public class ModuleInput
@@ -3756,6 +3178,174 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("description")]
         public string Description { get; set; }
+    }
+
+    public class UpdateUserInput
+    {
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("isAdmin")]
+        public bool? IsAdmin { get; set; }
+
+        [JsonProperty("departmentRoleIds")]
+        public string[] DepartmentRoleIds { get; set; }
+    }
+
+    public class UpdateTopicInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class UpdateTopicQuizQuestionInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("options")]
+        public QuestionOptionInput[] Options { get; set; }
+
+        [JsonProperty("expectedAnswer")]
+        public string ExpectedAnswer { get; set; }
+    }
+
+    public class UpdateModuleInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class UpdateModuleQuizQuestionInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("options")]
+        public QuestionOptionInput[] Options { get; set; }
+
+        [JsonProperty("expectedAnswer")]
+        public string ExpectedAnswer { get; set; }
+    }
+
+    public class UpdateLessonInput
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
+    }
+
+    public class UpdateLessonQuestionInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("options")]
+        public QuestionOptionInput[] Options { get; set; }
+
+        [JsonProperty("expectedAnswer")]
+        public string ExpectedAnswer { get; set; }
+    }
+
+    public class UpdateLearningByteInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class UpdateExerciseInput
+    {
+        [JsonProperty("prompt")]
+        public string Prompt { get; set; }
+
+        [JsonProperty("avatarPictureId")]
+        public string AvatarPictureId { get; set; }
+
+        [JsonProperty("avatarCharacteristics")]
+        public string AvatarCharacteristics { get; set; }
+
+        [JsonProperty("reverseRolePlayEnabled")]
+        public bool? ReverseRolePlayEnabled { get; set; }
+
+        [JsonProperty("reverseRolePlayMandatory")]
+        public bool? ReverseRolePlayMandatory { get; set; }
+
+        [JsonProperty("generatedContent")]
+        public ExerciseGeneratedContentInput GeneratedContent { get; set; }
+    }
+
+    public class ExerciseGeneratedContentInput
+    {
+        [JsonProperty("scenario")]
+        public string Scenario { get; set; }
+
+        [JsonProperty("traineeRole")]
+        public string TraineeRole { get; set; }
+
+        [JsonProperty("avatarName")]
+        public string AvatarName { get; set; }
+
+        [JsonProperty("avatarDescription")]
+        public string AvatarDescription { get; set; }
+
+        [JsonProperty("operationalChallenge")]
+        public string OperationalChallenge { get; set; }
+
+        [JsonProperty("successMetric")]
+        public string SuccessMetric { get; set; }
+    }
+
+    public class UpdateDepartmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class UpdateDemoTrainingInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("trainingType")]
+        public UpdateDemoTrainingInputTrainingTypeType? TrainingType { get; set; }
+
+        [JsonProperty("departmentId")]
+        public string DepartmentId { get; set; }
+
+        [JsonProperty("assignedRoleIds")]
+        public string[] AssignedRoleIds { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateDemoTrainingInputTrainingTypeType
+    {
+        [EnumMember(Value = "DEMO_TRAINING")]
+        DEMOTRAINING,
+        [EnumMember(Value = "APPLICATION_TRAINING")]
+        APPLICATIONTRAINING
+    }
+
+    public class UpdateCourseInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class ExerciseListResponse

@@ -189,37 +189,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<WhoisCurrent, ApiConnectionActionConfiguration> CurrentWhois(Expression<Func<string>> bodyappliedFiltersdomain = null)
+        public IBodyWorkflowAction<WhoisCurrent, ApiConnectionActionConfiguration> CurrentWhois(Expression<Func<CurrentWhoisInput>> body)
         {
-            var __workflow_bodyappliedFiltersdomain = WorkflowExpression.Compile(bodyappliedFiltersdomain, nameof(bodyappliedFiltersdomain), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WhoisCurrent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/whois/v1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var appliedFiltersObject = new JObject();
-                var appliedFiltersObjectpropCount = 0;
-                if (__workflow_bodyappliedFiltersdomain != null)
-                {
-                    appliedFiltersObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyappliedFiltersdomain);
-                    appliedFiltersObjectpropCount++;
-                }
-
-                appliedFiltersObject["current"] = true;
-                appliedFiltersObjectpropCount++;
-                if (appliedFiltersObjectpropCount > 0)
-                {
-                    body["applied_filters"] = appliedFiltersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<WhoisCurrent>(callPayload);
             });
         }
@@ -856,6 +834,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("whois_related_type")]
         public string WhoisRelatedType { get; set; }
+    }
+
+    public class CurrentWhoisInput
+    {
+        [JsonProperty("applied_filters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CurrentWhoisInputAppliedFiltersType AppliedFilters { get; set; }
+    }
+
+    public class CurrentWhoisInputAppliedFiltersType
+    {
+        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Domain { get; set; }
+
+        [JsonProperty("current", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Current { get; set; } = true;
     }
 }
 

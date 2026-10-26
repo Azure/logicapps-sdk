@@ -65,23 +65,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<ImageHashtagsPostResponse, ApiConnectionActionConfiguration> ImageHashtags(Expression<Func<string>> bodyimage)
+        public IBodyWorkflowAction<ImageHashtagsPostResponse, ApiConnectionActionConfiguration> ImageHashtags(Expression<Func<ImageHashtagsPostInput>> body)
         {
-            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageHashtagsPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tag/generate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImageHashtagsPostResponse>(callPayload);
             });
         }
@@ -182,6 +174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
     {
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
+    }
+
+    public class ImageHashtagsPostInput
+    {
+        [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Image { get; set; }
     }
 
     public class CategoriesGetResponse

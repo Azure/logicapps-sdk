@@ -174,15 +174,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
-        public IBodyWorkflowAction<MessageListV2, ApiConnectionActionConfiguration> PostMessage(Expression<Func<int>> inputgroupId, Expression<Func<string>> inputmessageText, Expression<Func<string>> networkId = null, Expression<Func<int>> inputrepliedToId = null, Expression<Func<int>> inputdirectToId = null, Expression<Func<bool>> inputbroadcast = null, Expression<Func<string>> inputtitle = null)
+        public IBodyWorkflowAction<MessageListV2, ApiConnectionActionConfiguration> PostMessage(Expression<Func<PostMessageV2Input>> input, Expression<Func<string>> networkId = null)
         {
-            var __workflow_inputgroupId = WorkflowExpression.Compile(inputgroupId, nameof(inputgroupId), required: true);
-            var __workflow_inputmessageText = WorkflowExpression.Compile(inputmessageText, nameof(inputmessageText), required: true);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
-            var __workflow_inputrepliedToId = WorkflowExpression.Compile(inputrepliedToId, nameof(inputrepliedToId), required: false);
-            var __workflow_inputdirectToId = WorkflowExpression.Compile(inputdirectToId, nameof(inputdirectToId), required: false);
-            var __workflow_inputbroadcast = WorkflowExpression.Compile(inputbroadcast, nameof(inputbroadcast), required: false);
-            var __workflow_inputtitle = WorkflowExpression.Compile(inputtitle, nameof(inputtitle), required: false);
             return new DeferredBodyAction<MessageListV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/messages.json";
@@ -191,41 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
                 callPayload.Queries["network_id"] = Convert.ToString("Default");
                 if (__workflow_networkId != null)
                     callPayload.Queries["network_id"] = ExpressionConverter.Convert(__workflow_networkId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                inputpropCount++;
-                input["group_id"] = ExpressionConverter.ConvertO(__workflow_inputgroupId);
-                inputpropCount++;
-                input["body"] = ExpressionConverter.ConvertO(__workflow_inputmessageText);
-                if (__workflow_inputrepliedToId != null)
-                {
-                    input["replied_to_id"] = ExpressionConverter.ConvertO(__workflow_inputrepliedToId);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputdirectToId != null)
-                {
-                    input["direct_to_id"] = ExpressionConverter.ConvertO(__workflow_inputdirectToId);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputbroadcast != null)
-                {
-                    input["broadcast"] = ExpressionConverter.ConvertO(__workflow_inputbroadcast);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputtitle != null)
-                {
-                    input["title"] = ExpressionConverter.ConvertO(__workflow_inputtitle);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<MessageListV2>(callPayload);
             });
         }
@@ -436,6 +397,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
     {
         [JsonProperty("messages")]
         public MessageV2[] Messages { get; set; }
+    }
+
+    public class PostMessageV2Input
+    {
+        [JsonProperty("group_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int GroupId { get; set; }
+
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MessageText { get; set; }
+
+        [JsonProperty("replied_to_id")]
+        public int? RepliedToId { get; set; }
+
+        [JsonProperty("direct_to_id")]
+        public int? DirectToId { get; set; }
+
+        [JsonProperty("broadcast")]
+        public bool? Broadcast { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
     }
 }
 

@@ -39,24 +39,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<NewMessage, ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<NewMessage, ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> roomId, Expression<Func<PostMessageInput>> body)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NewMessage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/room/{0}/message", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewMessage>(callPayload);
             });
         }
@@ -157,6 +149,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
         [JsonProperty("timestamp")]
         public string DatePosted { get; set; }
+    }
+
+    public class PostMessageInput
+    {
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
     }
 
     public class HistoryResponse

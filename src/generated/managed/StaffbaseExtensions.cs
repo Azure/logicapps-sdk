@@ -44,42 +44,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChannelsPost(Expression<Func<string>> channelId, Expression<Func<string>> bodyexternalId = null, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<string>> bodypublished = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChannelsPost(Expression<Func<string>> channelId, Expression<Func<ChannelsPostPostInput>> body = null)
         {
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
-            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
-            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
-            var __workflow_bodypublished = WorkflowExpression.Compile(bodypublished, nameof(bodypublished), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/channels/{0}/posts", __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyexternalId != null)
-                {
-                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontents != null)
-                {
-                    body["contents"] = ExpressionConverter.ConvertO(__workflow_bodycontents);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublished != null)
-                {
-                    body["published"] = ExpressionConverter.ConvertO(__workflow_bodypublished);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -155,49 +130,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<NotificationPostResponse, ApiConnectionActionConfiguration> Notification(Expression<Func<string[]>> bodyrecipientsaccessorIds = null, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<string>> bodylink = null)
+        public IBodyWorkflowAction<NotificationPostResponse, ApiConnectionActionConfiguration> Notification(Expression<Func<NotificationPostInput>> body = null)
         {
-            var __workflow_bodyrecipientsaccessorIds = WorkflowExpression.Compile(bodyrecipientsaccessorIds, nameof(bodyrecipientsaccessorIds), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<NotificationPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var recipientsObject = new JObject();
-                var recipientsObjectpropCount = 0;
-                if (__workflow_bodyrecipientsaccessorIds != null)
-                {
-                    recipientsObject["accessorIds"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientsaccessorIds);
-                    recipientsObjectpropCount++;
-                }
-
-                if (recipientsObjectpropCount > 0)
-                {
-                    body["recipients"] = recipientsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylink != null)
-                {
-                    body["link"] = ExpressionConverter.ConvertO(__workflow_bodylink);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NotificationPostResponse>(callPayload);
             });
         }
@@ -257,35 +199,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostsPut(Expression<Func<string>> pageId, Expression<Func<string>> bodyexternalId = null, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostsPut(Expression<Func<string>> pageId, Expression<Func<PostsPutInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
-            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
-            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/posts/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyexternalId != null)
-                {
-                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontents != null)
-                {
-                    body["contents"] = ExpressionConverter.ConvertO(__workflow_bodycontents);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -309,41 +233,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> User(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> User(Expression<Func<UserPostInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -375,134 +274,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodypublicEmailAddress = null, Expression<Func<string>> bodyconfiglocale = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null, Expression<Func<string[]>> bodygroupIDs = null, Expression<Func<string>> bodyposition = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyupdated = null, Expression<Func<string>> bodyactivated = null)
+        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userId, Expression<Func<UserPutInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodypublicEmailAddress = WorkflowExpression.Compile(bodypublicEmailAddress, nameof(bodypublicEmailAddress), required: false);
-            var __workflow_bodyconfiglocale = WorkflowExpression.Compile(bodyconfiglocale, nameof(bodyconfiglocale), required: false);
-            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
-            var __workflow_bodygroupIDs = WorkflowExpression.Compile(bodygroupIDs, nameof(bodygroupIDs), required: false);
-            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodydepartment = WorkflowExpression.Compile(bodydepartment, nameof(bodydepartment), required: false);
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: false);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: false);
-            var __workflow_bodyactivated = WorkflowExpression.Compile(bodyactivated, nameof(bodyactivated), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UserData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalId != null)
-                {
-                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublicEmailAddress != null)
-                {
-                    body["publicEmailAddress"] = ExpressionConverter.ConvertO(__workflow_bodypublicEmailAddress);
-                    bodypropCount++;
-                }
-
-                var configObject = new JObject();
-                var configObjectpropCount = 0;
-                if (__workflow_bodyconfiglocale != null)
-                {
-                    configObject["locale"] = ExpressionConverter.ConvertO(__workflow_bodyconfiglocale);
-                    configObjectpropCount++;
-                }
-
-                if (configObjectpropCount > 0)
-                {
-                    body["config"] = configObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemails != null)
-                {
-                    body["emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupIDs != null)
-                {
-                    body["groupIDs"] = ExpressionConverter.ConvertO(__workflow_bodygroupIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyposition != null)
-                {
-                    body["position"] = ExpressionConverter.ConvertO(__workflow_bodyposition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartment != null)
-                {
-                    body["department"] = ExpressionConverter.ConvertO(__workflow_bodydepartment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocation != null)
-                {
-                    body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphoneNumber != null)
-                {
-                    body["phoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreated != null)
-                {
-                    body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdated != null)
-                {
-                    body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactivated != null)
-                {
-                    body["activated"] = ExpressionConverter.ConvertO(__workflow_bodyactivated);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserData>(callPayload);
             });
         }
@@ -828,7 +610,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Locale { get; set; }
     }
 
-    public class bodycontentsInputItem
+    public class ChannelsPostPostInput
+    {
+        [JsonProperty("externalID")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("contents")]
+        public ChannelsPostPostInputContentsTypeItem[] Contents { get; set; }
+
+        [JsonProperty("published")]
+        public string Published { get; set; }
+    }
+
+    public class ChannelsPostPostInputContentsTypeItem
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -1022,7 +816,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Locale { get; set; }
     }
 
-    public class bodycontentInputItem
+    public class NotificationPostInput
+    {
+        [JsonProperty("recipients")]
+        public NotificationPostInputRecipientsType Recipients { get; set; }
+
+        [JsonProperty("content")]
+        public NotificationPostInputContentTypeItem[] Content { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+    }
+
+    public class NotificationPostInputRecipientsType
+    {
+        [JsonProperty("accessorIds")]
+        public string[] AccessorIds { get; set; }
+    }
+
+    public class NotificationPostInputContentTypeItem
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -1072,7 +884,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Type { get; set; }
     }
 
-    public class bodycontentsInputItem2
+    public class PostsPutInput
+    {
+        [JsonProperty("externalID")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("contents")]
+        public PostsPutInputContentsTypeItem[] Contents { get; set; }
+    }
+
+    public class PostsPutInputContentsTypeItem
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -1091,6 +912,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
 
         [JsonProperty("published")]
         public string Published { get; set; }
+    }
+
+    public class UserPostInput
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
     }
 
     public class UserData
@@ -1156,13 +989,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public bool Primary { get; set; }
     }
 
-    public class bodyemailsInputItem
+    public class UserPutInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("externalID")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("publicEmailAddress")]
+        public string PublicEmailAddress { get; set; }
+
+        [JsonProperty("config")]
+        public UserPutInputConfigType Config { get; set; }
+
+        [JsonProperty("emails")]
+        public UserPutInputEmailsTypeItem[] Emails { get; set; }
+
+        [JsonProperty("groupIDs")]
+        public string[] GroupIDs { get; set; }
+
+        [JsonProperty("position")]
+        public string Position { get; set; }
+
+        [JsonProperty("department")]
+        public string Department { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("phoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("created")]
+        public string Created { get; set; }
+
+        [JsonProperty("updated")]
+        public string Updated { get; set; }
+
+        [JsonProperty("activated")]
+        public string Activated { get; set; }
+    }
+
+    public class UserPutInputConfigType
+    {
+        [JsonProperty("locale")]
+        public string Locale { get; set; }
+    }
+
+    public class UserPutInputEmailsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
 
         [JsonProperty("primary")]
-        public bool Primary { get; set; }
+        public bool? Primary { get; set; }
     }
 }
 

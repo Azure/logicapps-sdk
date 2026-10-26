@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null, Expression<Func<bool>> readFileMetadataFromServer = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body, Expression<Func<bool>> readFileMetadataFromServer = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_readFileMetadataFromServer = WorkflowExpression.Compile(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
             return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<bool>> readFileMetadataFromServer = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body, Expression<Func<bool>> readFileMetadataFromServer = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_readFileMetadataFromServer = WorkflowExpression.Compile(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
             return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {

@@ -13,42 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
     public class CloudmersivedvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ParseAddressResponse, ApiConnectionActionConfiguration> AddressParseString(Expression<Func<string>> inputaddressString = null, Expression<Func<string>> inputcapitalizationMode = null)
+        public IBodyWorkflowAction<ParseAddressResponse, ApiConnectionActionConfiguration> AddressParseString(Expression<Func<AddressParseStringInput>> input)
         {
-            var __workflow_inputaddressString = WorkflowExpression.Compile(inputaddressString, nameof(inputaddressString), required: false);
-            var __workflow_inputcapitalizationMode = WorkflowExpression.Compile(inputcapitalizationMode, nameof(inputcapitalizationMode), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<ParseAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/address/parse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputaddressString != null)
-                {
-                    input["AddressString"] = ExpressionConverter.ConvertO(__workflow_inputaddressString);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputcapitalizationMode != null)
-                {
-                    input["CapitalizationMode"] = ExpressionConverter.ConvertO(__workflow_inputcapitalizationMode);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<ParseAddressResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<CheckResponse, ApiConnectionActionConfiguration> DomainCheck(Expression<Func<string>> domain = null)
+        public IBodyWorkflowAction<CheckResponse, ApiConnectionActionConfiguration> DomainCheck(Expression<Func<string>> domain)
         {
-            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             return new DeferredBodyAction<CheckResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/domain/check";
@@ -60,61 +41,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseFull, ApiConnectionActionConfiguration> DomainUrlFull(Expression<Func<string>> requestuRL = null)
+        public IBodyWorkflowAction<ValidateUrlResponseFull, ApiConnectionActionConfiguration> DomainUrlFull(Expression<Func<DomainUrlFullInput>> request)
         {
-            var __workflow_requestuRL = WorkflowExpression.Compile(requestuRL, nameof(requestuRL), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ValidateUrlResponseFull, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/domain/url/full";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestuRL != null)
-                {
-                    request["URL"] = ExpressionConverter.ConvertO(__workflow_requestuRL);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ValidateUrlResponseFull>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly, ApiConnectionActionConfiguration> DomainUrlSyntaxOnly(Expression<Func<string>> requestuRL = null)
+        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly, ApiConnectionActionConfiguration> DomainUrlSyntaxOnly(Expression<Func<DomainUrlSyntaxOnlyInput>> request)
         {
-            var __workflow_requestuRL = WorkflowExpression.Compile(requestuRL, nameof(requestuRL), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ValidateUrlResponseSyntaxOnly, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/domain/url/syntax-only";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestuRL != null)
-                {
-                    request["URL"] = ExpressionConverter.ConvertO(__workflow_requestuRL);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ValidateUrlResponseSyntaxOnly>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<WhoisResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<string>> domain = null)
+        public IBodyWorkflowAction<WhoisResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<string>> domain)
         {
-            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             return new DeferredBodyAction<WhoisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/domain/whois";
@@ -126,9 +83,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FullEmailValidationResponse, ApiConnectionActionConfiguration> EmailFullValidation(Expression<Func<string>> email = null)
+        public IBodyWorkflowAction<FullEmailValidationResponse, ApiConnectionActionConfiguration> EmailFullValidation(Expression<Func<string>> email)
         {
-            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<FullEmailValidationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/email/address/full";
@@ -140,9 +97,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GeolocateResponse, ApiConnectionActionConfiguration> IPAddress(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<GeolocateResponse, ApiConnectionActionConfiguration> IPAddress(Expression<Func<string>> value)
         {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<GeolocateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/ip/geolocate";
@@ -154,272 +111,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FirstNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFirstName(Expression<Func<string>> inputfirstName = null)
+        public IBodyWorkflowAction<FirstNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFirstName(Expression<Func<NameValidateFirstNameInput>> input)
         {
-            var __workflow_inputfirstName = WorkflowExpression.Compile(inputfirstName, nameof(inputfirstName), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<FirstNameValidationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/name/first";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputfirstName != null)
-                {
-                    input["FirstName"] = ExpressionConverter.ConvertO(__workflow_inputfirstName);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<FirstNameValidationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FullNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFullName(Expression<Func<string>> inputfullNameString = null)
+        public IBodyWorkflowAction<FullNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFullName(Expression<Func<NameValidateFullNameInput>> input)
         {
-            var __workflow_inputfullNameString = WorkflowExpression.Compile(inputfullNameString, nameof(inputfullNameString), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<FullNameValidationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/name/full-name";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputfullNameString != null)
-                {
-                    input["FullNameString"] = ExpressionConverter.ConvertO(__workflow_inputfullNameString);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<FullNameValidationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GetGenderResponse, ApiConnectionActionConfiguration> NameGetGender(Expression<Func<string>> inputcountryCode = null, Expression<Func<string>> inputfirstName = null)
+        public IBodyWorkflowAction<GetGenderResponse, ApiConnectionActionConfiguration> NameGetGender(Expression<Func<NameGetGenderInput>> input)
         {
-            var __workflow_inputcountryCode = WorkflowExpression.Compile(inputcountryCode, nameof(inputcountryCode), required: false);
-            var __workflow_inputfirstName = WorkflowExpression.Compile(inputfirstName, nameof(inputfirstName), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetGenderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/name/get-gender";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputcountryCode != null)
-                {
-                    input["CountryCode"] = ExpressionConverter.ConvertO(__workflow_inputcountryCode);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputfirstName != null)
-                {
-                    input["FirstName"] = ExpressionConverter.ConvertO(__workflow_inputfirstName);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<GetGenderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateIdentifierResponse, ApiConnectionActionConfiguration> NameIdentifier(Expression<Func<bool>> inputallowHyphens = null, Expression<Func<bool>> inputallowNumbers = null, Expression<Func<bool>> inputallowPeriods = null, Expression<Func<bool>> inputallowUnderscore = null, Expression<Func<bool>> inputallowWhitespace = null, Expression<Func<string>> inputinput = null, Expression<Func<int>> inputmaxLength = null, Expression<Func<int>> inputminLength = null)
+        public IBodyWorkflowAction<ValidateIdentifierResponse, ApiConnectionActionConfiguration> NameIdentifier(Expression<Func<NameIdentifierInput>> input)
         {
-            var __workflow_inputallowHyphens = WorkflowExpression.Compile(inputallowHyphens, nameof(inputallowHyphens), required: false);
-            var __workflow_inputallowNumbers = WorkflowExpression.Compile(inputallowNumbers, nameof(inputallowNumbers), required: false);
-            var __workflow_inputallowPeriods = WorkflowExpression.Compile(inputallowPeriods, nameof(inputallowPeriods), required: false);
-            var __workflow_inputallowUnderscore = WorkflowExpression.Compile(inputallowUnderscore, nameof(inputallowUnderscore), required: false);
-            var __workflow_inputallowWhitespace = WorkflowExpression.Compile(inputallowWhitespace, nameof(inputallowWhitespace), required: false);
-            var __workflow_inputinput = WorkflowExpression.Compile(inputinput, nameof(inputinput), required: false);
-            var __workflow_inputmaxLength = WorkflowExpression.Compile(inputmaxLength, nameof(inputmaxLength), required: false);
-            var __workflow_inputminLength = WorkflowExpression.Compile(inputminLength, nameof(inputminLength), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<ValidateIdentifierResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/name/identifier";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputallowHyphens != null)
-                {
-                    input["AllowHyphens"] = ExpressionConverter.ConvertO(__workflow_inputallowHyphens);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputallowNumbers != null)
-                {
-                    input["AllowNumbers"] = ExpressionConverter.ConvertO(__workflow_inputallowNumbers);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputallowPeriods != null)
-                {
-                    input["AllowPeriods"] = ExpressionConverter.ConvertO(__workflow_inputallowPeriods);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputallowUnderscore != null)
-                {
-                    input["AllowUnderscore"] = ExpressionConverter.ConvertO(__workflow_inputallowUnderscore);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputallowWhitespace != null)
-                {
-                    input["AllowWhitespace"] = ExpressionConverter.ConvertO(__workflow_inputallowWhitespace);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputinput != null)
-                {
-                    input["Input"] = ExpressionConverter.ConvertO(__workflow_inputinput);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputmaxLength != null)
-                {
-                    input["MaxLength"] = ExpressionConverter.ConvertO(__workflow_inputmaxLength);
-                    inputpropCount++;
-                }
-
-                if (__workflow_inputminLength != null)
-                {
-                    input["MinLength"] = ExpressionConverter.ConvertO(__workflow_inputminLength);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<ValidateIdentifierResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<LastNameValidationResponse, ApiConnectionActionConfiguration> NameValidateLastName(Expression<Func<string>> inputlastName = null)
+        public IBodyWorkflowAction<LastNameValidationResponse, ApiConnectionActionConfiguration> NameValidateLastName(Expression<Func<NameValidateLastNameInput>> input)
         {
-            var __workflow_inputlastName = WorkflowExpression.Compile(inputlastName, nameof(inputlastName), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<LastNameValidationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/name/last";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputlastName != null)
-                {
-                    input["LastName"] = ExpressionConverter.ConvertO(__workflow_inputlastName);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<LastNameValidationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<PhoneNumberValidationResponse, ApiConnectionActionConfiguration> PhoneNumberSyntaxOnly(Expression<Func<string>> valuedefaultCountryCode = null, Expression<Func<string>> valuephoneNumber = null)
+        public IBodyWorkflowAction<PhoneNumberValidationResponse, ApiConnectionActionConfiguration> PhoneNumberSyntaxOnly(Expression<Func<PhoneNumberSyntaxOnlyInput>> value)
         {
-            var __workflow_valuedefaultCountryCode = WorkflowExpression.Compile(valuedefaultCountryCode, nameof(valuedefaultCountryCode), required: false);
-            var __workflow_valuephoneNumber = WorkflowExpression.Compile(valuephoneNumber, nameof(valuephoneNumber), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<PhoneNumberValidationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/phonenumber/basic";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var value = new JObject();
-                var valuepropCount = 0;
-                if (__workflow_valuedefaultCountryCode != null)
-                {
-                    value["DefaultCountryCode"] = ExpressionConverter.ConvertO(__workflow_valuedefaultCountryCode);
-                    valuepropCount++;
-                }
-
-                if (__workflow_valuephoneNumber != null)
-                {
-                    value["PhoneNumber"] = ExpressionConverter.ConvertO(__workflow_valuephoneNumber);
-                    valuepropCount++;
-                }
-
-                if (valuepropCount > 0)
-                {
-                    callPayload.Body = value;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
                 return new ApiConnectionAction<PhoneNumberValidationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<UserAgentValidateResponse, ApiConnectionActionConfiguration> UserAgentParse(Expression<Func<string>> requestuserAgentString = null)
+        public IBodyWorkflowAction<UserAgentValidateResponse, ApiConnectionActionConfiguration> UserAgentParse(Expression<Func<UserAgentParseInput>> request)
         {
-            var __workflow_requestuserAgentString = WorkflowExpression.Compile(requestuserAgentString, nameof(requestuserAgentString), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<UserAgentValidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/useragent/parse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestuserAgentString != null)
-                {
-                    request["UserAgentString"] = ExpressionConverter.ConvertO(__workflow_requestuserAgentString);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<UserAgentValidateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<VatLookupResponse, ApiConnectionActionConfiguration> VatVatLookup(Expression<Func<string>> inputvatCode = null)
+        public IBodyWorkflowAction<VatLookupResponse, ApiConnectionActionConfiguration> VatVatLookup(Expression<Func<VatVatLookupInput>> input)
         {
-            var __workflow_inputvatCode = WorkflowExpression.Compile(inputvatCode, nameof(inputvatCode), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<VatLookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate/vat/lookup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputvatCode != null)
-                {
-                    input["VatCode"] = ExpressionConverter.ConvertO(__workflow_inputvatCode);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<VatLookupResponse>(callPayload);
             });
         }
@@ -439,6 +237,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string Street { get; set; }
         public string StreetNumber { get; set; }
         public bool Successful { get; set; }
+    }
+
+    public class AddressParseStringInput
+    {
+        public string AddressString { get; set; }
+        public string CapitalizationMode { get; set; }
     }
 
     public class CheckResponse
@@ -461,10 +265,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string WellFormedURL { get; set; }
     }
 
+    public class DomainUrlFullInput
+    {
+        public string URL { get; set; }
+    }
+
     public class ValidateUrlResponseSyntaxOnly
     {
         public bool ValidURL { get; set; }
         public string WellFormedURL { get; set; }
+    }
+
+    public class DomainUrlSyntaxOnlyInput
+    {
+        public string URL { get; set; }
     }
 
     public class WhoisResponse
@@ -513,6 +327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string ValidationResult { get; set; }
     }
 
+    public class NameValidateFirstNameInput
+    {
+        public string FirstName { get; set; }
+    }
+
     public class FullNameValidationResponse
     {
         public string DisplayName { get; set; }
@@ -531,10 +350,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string ValidationResultLastName { get; set; }
     }
 
+    public class NameValidateFullNameInput
+    {
+        public string FullNameString { get; set; }
+    }
+
     public class GetGenderResponse
     {
         public string Gender { get; set; }
         public bool Successful { get; set; }
+    }
+
+    public class NameGetGenderInput
+    {
+        public string CountryCode { get; set; }
+        public string FirstName { get; set; }
     }
 
     public class ValidateIdentifierResponse
@@ -543,10 +373,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool ValidIdentifier { get; set; }
     }
 
+    public class NameIdentifierInput
+    {
+        public bool? AllowHyphens { get; set; }
+        public bool? AllowNumbers { get; set; }
+        public bool? AllowPeriods { get; set; }
+        public bool? AllowUnderscore { get; set; }
+        public bool? AllowWhitespace { get; set; }
+        public string Input { get; set; }
+        public int? MaxLength { get; set; }
+        public int? MinLength { get; set; }
+    }
+
     public class LastNameValidationResponse
     {
         public bool Successful { get; set; }
         public string ValidationResult { get; set; }
+    }
+
+    public class NameValidateLastNameInput
+    {
+        public string LastName { get; set; }
     }
 
     public class PhoneNumberValidationResponse
@@ -559,6 +406,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string NationalFormat { get; set; }
         public string PhoneNumberType { get; set; }
         public bool Successful { get; set; }
+    }
+
+    public class PhoneNumberSyntaxOnlyInput
+    {
+        public string DefaultCountryCode { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class UserAgentValidateResponse
@@ -579,6 +432,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool Successful { get; set; }
     }
 
+    public class UserAgentParseInput
+    {
+        public string UserAgentString { get; set; }
+    }
+
     public class VatLookupResponse
     {
         public string BusinessAddress { get; set; }
@@ -586,6 +444,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string CountryCode { get; set; }
         public bool IsValid { get; set; }
         public string VatNumber { get; set; }
+    }
+
+    public class VatVatLookupInput
+    {
+        public string VatCode { get; set; }
     }
 }
 

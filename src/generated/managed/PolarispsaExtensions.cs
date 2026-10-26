@@ -13,543 +13,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
     public class PolarispsaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IBodyWorkflowAction<ProjectDetailsResponse, ApiConnectionActionConfiguration> BulkGetProjectDetails3(Expression<Func<string>> hostUrl, Expression<Func<bodyprojectsInputItem[]>> bodyprojects = null)
+        public IBodyWorkflowAction<ProjectDetailsResponse, ApiConnectionActionConfiguration> BulkGetProjectDetails3(Expression<Func<string>> hostUrl, Expression<Func<BulkGetProjectDetails3Input>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodyprojects = WorkflowExpression.Compile(bodyprojects, nameof(bodyprojects), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ProjectDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/ProjectService1.svc/BulkGetProjectDetails3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprojects != null)
-                {
-                    body["projects"] = ExpressionConverter.ConvertO(__workflow_bodyprojects);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IBodyWorkflowAction<CreateProjectOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateProjectOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<string>> bodymodificationsnameToApplyvalue = null, Expression<Func<string>> bodymodificationscodeToApplyvalue = null, Expression<Func<string>> bodymodificationspercentCompletedToApply = null, Expression<Func<int>> bodymodificationsstartDateToApplydateyear = null, Expression<Func<int>> bodymodificationsstartDateToApplydatemonth = null, Expression<Func<int>> bodymodificationsstartDateToApplydateday = null, Expression<Func<int>> bodymodificationsendDateToApplydateyear = null, Expression<Func<int>> bodymodificationsendDateToApplydatemonth = null, Expression<Func<int>> bodymodificationsendDateToApplydateday = null, Expression<Func<string>> bodymodificationsbillingTypeToApplyvalue = null, Expression<Func<string>> bodymodificationsisProjectLeaderApprovalRequired = null, Expression<Func<string>> bodymodificationsisTimeEntryAllowed = null, Expression<Func<string>> bodymodificationsdefaultBillingCurrencyToApplycurrencyname = null, Expression<Func<string>> bodymodificationsbillingContractToApplyname = null, Expression<Func<bodymodificationskeyValuesToApplyInputItem[]>> bodymodificationskeyValuesToApply = null, Expression<Func<string>> bodyprojectModificationOptionUri = null, Expression<Func<string>> bodyunitOfWorkId = null)
+        public IBodyWorkflowAction<CreateProjectOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateProjectOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<CreateProjectOrApplyModificationsInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodymodificationsnameToApplyvalue = WorkflowExpression.Compile(bodymodificationsnameToApplyvalue, nameof(bodymodificationsnameToApplyvalue), required: false);
-            var __workflow_bodymodificationscodeToApplyvalue = WorkflowExpression.Compile(bodymodificationscodeToApplyvalue, nameof(bodymodificationscodeToApplyvalue), required: false);
-            var __workflow_bodymodificationspercentCompletedToApply = WorkflowExpression.Compile(bodymodificationspercentCompletedToApply, nameof(bodymodificationspercentCompletedToApply), required: false);
-            var __workflow_bodymodificationsstartDateToApplydateyear = WorkflowExpression.Compile(bodymodificationsstartDateToApplydateyear, nameof(bodymodificationsstartDateToApplydateyear), required: false);
-            var __workflow_bodymodificationsstartDateToApplydatemonth = WorkflowExpression.Compile(bodymodificationsstartDateToApplydatemonth, nameof(bodymodificationsstartDateToApplydatemonth), required: false);
-            var __workflow_bodymodificationsstartDateToApplydateday = WorkflowExpression.Compile(bodymodificationsstartDateToApplydateday, nameof(bodymodificationsstartDateToApplydateday), required: false);
-            var __workflow_bodymodificationsendDateToApplydateyear = WorkflowExpression.Compile(bodymodificationsendDateToApplydateyear, nameof(bodymodificationsendDateToApplydateyear), required: false);
-            var __workflow_bodymodificationsendDateToApplydatemonth = WorkflowExpression.Compile(bodymodificationsendDateToApplydatemonth, nameof(bodymodificationsendDateToApplydatemonth), required: false);
-            var __workflow_bodymodificationsendDateToApplydateday = WorkflowExpression.Compile(bodymodificationsendDateToApplydateday, nameof(bodymodificationsendDateToApplydateday), required: false);
-            var __workflow_bodymodificationsbillingTypeToApplyvalue = WorkflowExpression.Compile(bodymodificationsbillingTypeToApplyvalue, nameof(bodymodificationsbillingTypeToApplyvalue), required: false);
-            var __workflow_bodymodificationsisProjectLeaderApprovalRequired = WorkflowExpression.Compile(bodymodificationsisProjectLeaderApprovalRequired, nameof(bodymodificationsisProjectLeaderApprovalRequired), required: false);
-            var __workflow_bodymodificationsisTimeEntryAllowed = WorkflowExpression.Compile(bodymodificationsisTimeEntryAllowed, nameof(bodymodificationsisTimeEntryAllowed), required: false);
-            var __workflow_bodymodificationsdefaultBillingCurrencyToApplycurrencyname = WorkflowExpression.Compile(bodymodificationsdefaultBillingCurrencyToApplycurrencyname, nameof(bodymodificationsdefaultBillingCurrencyToApplycurrencyname), required: false);
-            var __workflow_bodymodificationsbillingContractToApplyname = WorkflowExpression.Compile(bodymodificationsbillingContractToApplyname, nameof(bodymodificationsbillingContractToApplyname), required: false);
-            var __workflow_bodymodificationskeyValuesToApply = WorkflowExpression.Compile(bodymodificationskeyValuesToApply, nameof(bodymodificationskeyValuesToApply), required: false);
-            var __workflow_bodyprojectModificationOptionUri = WorkflowExpression.Compile(bodyprojectModificationOptionUri, nameof(bodyprojectModificationOptionUri), required: false);
-            var __workflow_bodyunitOfWorkId = WorkflowExpression.Compile(bodyunitOfWorkId, nameof(bodyunitOfWorkId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateProjectOrApplyModificationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/ProjectService1.svc/CreateProjectOrApplyModifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var targetObject = new JObject();
-                var targetObjectpropCount = 0;
-                if (targetObjectpropCount > 0)
-                {
-                    body["target"] = targetObject;
-                    bodypropCount++;
-                }
-
-                var modificationsObject = new JObject();
-                var modificationsObjectpropCount = 0;
-                var nameToApplyObject = new JObject();
-                var nameToApplyObjectpropCount = 0;
-                if (__workflow_bodymodificationsnameToApplyvalue != null)
-                {
-                    nameToApplyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsnameToApplyvalue);
-                    nameToApplyObjectpropCount++;
-                }
-
-                if (nameToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["nameToApply"] = nameToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                var codeToApplyObject = new JObject();
-                var codeToApplyObjectpropCount = 0;
-                if (__workflow_bodymodificationscodeToApplyvalue != null)
-                {
-                    codeToApplyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymodificationscodeToApplyvalue);
-                    codeToApplyObjectpropCount++;
-                }
-
-                if (codeToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["codeToApply"] = codeToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                var descriptionToApplyObject = new JObject();
-                var descriptionToApplyObjectpropCount = 0;
-                if (descriptionToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["descriptionToApply"] = descriptionToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                if (__workflow_bodymodificationspercentCompletedToApply != null)
-                {
-                    modificationsObject["percentCompletedToApply"] = ExpressionConverter.ConvertO(__workflow_bodymodificationspercentCompletedToApply);
-                    modificationsObjectpropCount++;
-                }
-
-                var startDateToApplyObject = new JObject();
-                var startDateToApplyObjectpropCount = 0;
-                var dateObject = new JObject();
-                var dateObjectpropCount = 0;
-                if (__workflow_bodymodificationsstartDateToApplydateyear != null)
-                {
-                    dateObject["year"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsstartDateToApplydateyear);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodymodificationsstartDateToApplydatemonth != null)
-                {
-                    dateObject["month"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsstartDateToApplydatemonth);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodymodificationsstartDateToApplydateday != null)
-                {
-                    dateObject["day"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsstartDateToApplydateday);
-                    dateObjectpropCount++;
-                }
-
-                if (dateObjectpropCount > 0)
-                {
-                    startDateToApplyObject["date"] = dateObject;
-                    startDateToApplyObjectpropCount++;
-                }
-
-                if (startDateToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["startDateToApply"] = startDateToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                var endDateToApplyObject = new JObject();
-                var endDateToApplyObjectpropCount = 0;
-                var dateObject2 = new JObject();
-                var dateObject2propCount = 0;
-                if (__workflow_bodymodificationsendDateToApplydateyear != null)
-                {
-                    dateObject2["year"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsendDateToApplydateyear);
-                    dateObject2propCount++;
-                }
-
-                if (__workflow_bodymodificationsendDateToApplydatemonth != null)
-                {
-                    dateObject2["month"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsendDateToApplydatemonth);
-                    dateObject2propCount++;
-                }
-
-                if (__workflow_bodymodificationsendDateToApplydateday != null)
-                {
-                    dateObject2["day"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsendDateToApplydateday);
-                    dateObject2propCount++;
-                }
-
-                if (dateObject2propCount > 0)
-                {
-                    endDateToApplyObject["date"] = dateObject2;
-                    endDateToApplyObjectpropCount++;
-                }
-
-                if (endDateToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["endDateToApply"] = endDateToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                var billingTypeToApplyObject = new JObject();
-                var billingTypeToApplyObjectpropCount = 0;
-                if (__workflow_bodymodificationsbillingTypeToApplyvalue != null)
-                {
-                    billingTypeToApplyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsbillingTypeToApplyvalue);
-                    billingTypeToApplyObjectpropCount++;
-                }
-
-                if (billingTypeToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["billingTypeToApply"] = billingTypeToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                var projectLeaderToApplyObject = new JObject();
-                var projectLeaderToApplyObjectpropCount = 0;
-                if (projectLeaderToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["projectLeaderToApply"] = projectLeaderToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                if (__workflow_bodymodificationsisProjectLeaderApprovalRequired != null)
-                {
-                    modificationsObject["isProjectLeaderApprovalRequired"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsisProjectLeaderApprovalRequired);
-                    modificationsObjectpropCount++;
-                }
-
-                if (__workflow_bodymodificationsisTimeEntryAllowed != null)
-                {
-                    modificationsObject["isTimeEntryAllowed"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsisTimeEntryAllowed);
-                    modificationsObjectpropCount++;
-                }
-
-                var defaultBillingCurrencyToApplyObject = new JObject();
-                var defaultBillingCurrencyToApplyObjectpropCount = 0;
-                var currencyObject = new JObject();
-                var currencyObjectpropCount = 0;
-                if (__workflow_bodymodificationsdefaultBillingCurrencyToApplycurrencyname != null)
-                {
-                    currencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsdefaultBillingCurrencyToApplycurrencyname);
-                    currencyObjectpropCount++;
-                }
-
-                if (currencyObjectpropCount > 0)
-                {
-                    defaultBillingCurrencyToApplyObject["currency"] = currencyObject;
-                    defaultBillingCurrencyToApplyObjectpropCount++;
-                }
-
-                if (defaultBillingCurrencyToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["defaultBillingCurrencyToApply"] = defaultBillingCurrencyToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                var billingContractToApplyObject = new JObject();
-                var billingContractToApplyObjectpropCount = 0;
-                if (__workflow_bodymodificationsbillingContractToApplyname != null)
-                {
-                    billingContractToApplyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodymodificationsbillingContractToApplyname);
-                    billingContractToApplyObjectpropCount++;
-                }
-
-                if (billingContractToApplyObjectpropCount > 0)
-                {
-                    modificationsObject["billingContractToApply"] = billingContractToApplyObject;
-                    modificationsObjectpropCount++;
-                }
-
-                if (__workflow_bodymodificationskeyValuesToApply != null)
-                {
-                    modificationsObject["keyValuesToApply"] = ExpressionConverter.ConvertO(__workflow_bodymodificationskeyValuesToApply);
-                    modificationsObjectpropCount++;
-                }
-
-                if (modificationsObjectpropCount > 0)
-                {
-                    body["modifications"] = modificationsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectModificationOptionUri != null)
-                {
-                    body["projectModificationOptionUri"] = ExpressionConverter.ConvertO(__workflow_bodyprojectModificationOptionUri);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyunitOfWorkId != null)
-                {
-                    body["unitOfWorkId"] = ExpressionConverter.ConvertO(__workflow_bodyunitOfWorkId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateProjectOrApplyModificationsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IBodyWorkflowAction<UserListServiceGetDataResponse, ApiConnectionActionConfiguration> UserListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<string>> bodypage = null, Expression<Func<string>> bodypagesize = null, Expression<Func<string[]>> bodycolumnUris = null, Expression<Func<JToken[]>> bodysort = null)
+        public IBodyWorkflowAction<UserListServiceGetDataResponse, ApiConnectionActionConfiguration> UserListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<UserListServiceGetDataInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodypage = WorkflowExpression.Compile(bodypage, nameof(bodypage), required: false);
-            var __workflow_bodypagesize = WorkflowExpression.Compile(bodypagesize, nameof(bodypagesize), required: false);
-            var __workflow_bodycolumnUris = WorkflowExpression.Compile(bodycolumnUris, nameof(bodycolumnUris), required: false);
-            var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UserListServiceGetDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/UserListService1.svc/GetData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypage != null)
-                {
-                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypagesize != null)
-                {
-                    body["pagesize"] = ExpressionConverter.ConvertO(__workflow_bodypagesize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycolumnUris != null)
-                {
-                    body["columnUris"] = ExpressionConverter.ConvertO(__workflow_bodycolumnUris);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysort != null)
-                {
-                    body["sort"] = ExpressionConverter.ConvertO(__workflow_bodysort);
-                    bodypropCount++;
-                }
-
-                var filterExpressionObject = new JObject();
-                var filterExpressionObjectpropCount = 0;
-                if (filterExpressionObjectpropCount > 0)
-                {
-                    body["filterExpression"] = filterExpressionObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserListServiceGetDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDescendantTaskDetails(Expression<Func<string>> hostUrl, Expression<Func<string>> bodyparentUri = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDescendantTaskDetails(Expression<Func<string>> hostUrl, Expression<Func<GetDescendantTaskDetailsInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodyparentUri = WorkflowExpression.Compile(bodyparentUri, nameof(bodyparentUri), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/TaskService1.svc/GetDescendantTaskDetails";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyparentUri != null)
-                {
-                    body["parentUri"] = ExpressionConverter.ConvertO(__workflow_bodyparentUri);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IBodyWorkflowAction<CreateTaskHierarchyOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateTaskHierarchyOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<string>> bodyprojecturi = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyprojectcode = null, Expression<Func<string>> bodyprojectparameterCorrelationId = null, Expression<Func<bodytaskHierarchyInputItem[]>> bodytaskHierarchy = null, Expression<Func<string>> bodytaskModificationOptionUri = null, Expression<Func<string>> bodyunitOfWorkId = null)
+        public IBodyWorkflowAction<CreateTaskHierarchyOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateTaskHierarchyOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<CreateTaskHierarchyOrApplyModificationsInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodyprojecturi = WorkflowExpression.Compile(bodyprojecturi, nameof(bodyprojecturi), required: false);
-            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyprojectcode = WorkflowExpression.Compile(bodyprojectcode, nameof(bodyprojectcode), required: false);
-            var __workflow_bodyprojectparameterCorrelationId = WorkflowExpression.Compile(bodyprojectparameterCorrelationId, nameof(bodyprojectparameterCorrelationId), required: false);
-            var __workflow_bodytaskHierarchy = WorkflowExpression.Compile(bodytaskHierarchy, nameof(bodytaskHierarchy), required: false);
-            var __workflow_bodytaskModificationOptionUri = WorkflowExpression.Compile(bodytaskModificationOptionUri, nameof(bodytaskModificationOptionUri), required: false);
-            var __workflow_bodyunitOfWorkId = WorkflowExpression.Compile(bodyunitOfWorkId, nameof(bodyunitOfWorkId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateTaskHierarchyOrApplyModificationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/TaskService1.svc/CreateTaskHierarchyOrApplyModifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var projectObject = new JObject();
-                var projectObjectpropCount = 0;
-                if (__workflow_bodyprojecturi != null)
-                {
-                    projectObject["uri"] = ExpressionConverter.ConvertO(__workflow_bodyprojecturi);
-                    projectObjectpropCount++;
-                }
-
-                if (__workflow_bodyprojectname != null)
-                {
-                    projectObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
-                    projectObjectpropCount++;
-                }
-
-                if (__workflow_bodyprojectcode != null)
-                {
-                    projectObject["code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectcode);
-                    projectObjectpropCount++;
-                }
-
-                if (__workflow_bodyprojectparameterCorrelationId != null)
-                {
-                    projectObject["parameterCorrelationId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectparameterCorrelationId);
-                    projectObjectpropCount++;
-                }
-
-                if (projectObjectpropCount > 0)
-                {
-                    body["project"] = projectObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskHierarchy != null)
-                {
-                    body["taskHierarchy"] = ExpressionConverter.ConvertO(__workflow_bodytaskHierarchy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskModificationOptionUri != null)
-                {
-                    body["taskModificationOptionUri"] = ExpressionConverter.ConvertO(__workflow_bodytaskModificationOptionUri);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyunitOfWorkId != null)
-                {
-                    body["unitOfWorkId"] = ExpressionConverter.ConvertO(__workflow_bodyunitOfWorkId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskHierarchyOrApplyModificationsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTask(Expression<Func<string>> hostUrl, Expression<Func<string>> bodytaskUri = null, Expression<Func<string>> bodytargetUri = null, Expression<Func<string>> bodymoveTaskMethodUri = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTask(Expression<Func<string>> hostUrl, Expression<Func<MoveTaskInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodytaskUri = WorkflowExpression.Compile(bodytaskUri, nameof(bodytaskUri), required: false);
-            var __workflow_bodytargetUri = WorkflowExpression.Compile(bodytargetUri, nameof(bodytargetUri), required: false);
-            var __workflow_bodymoveTaskMethodUri = WorkflowExpression.Compile(bodymoveTaskMethodUri, nameof(bodymoveTaskMethodUri), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/TaskService1.svc/MoveTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytaskUri != null)
-                {
-                    body["taskUri"] = ExpressionConverter.ConvertO(__workflow_bodytaskUri);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytargetUri != null)
-                {
-                    body["targetUri"] = ExpressionConverter.ConvertO(__workflow_bodytargetUri);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymoveTaskMethodUri != null)
-                {
-                    body["moveTaskMethodUri"] = ExpressionConverter.ConvertO(__workflow_bodymoveTaskMethodUri);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IBodyWorkflowAction<TaskListServiceGetDataResponse, ApiConnectionActionConfiguration> TaskListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<string>> bodypage = null, Expression<Func<string>> bodypagesize = null, Expression<Func<string[]>> bodycolumnUris = null, Expression<Func<JToken[]>> bodysort = null)
+        public IBodyWorkflowAction<TaskListServiceGetDataResponse, ApiConnectionActionConfiguration> TaskListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<TaskListServiceGetDataInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodypage = WorkflowExpression.Compile(bodypage, nameof(bodypage), required: false);
-            var __workflow_bodypagesize = WorkflowExpression.Compile(bodypagesize, nameof(bodypagesize), required: false);
-            var __workflow_bodycolumnUris = WorkflowExpression.Compile(bodycolumnUris, nameof(bodycolumnUris), required: false);
-            var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TaskListServiceGetDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/TaskListService1.svc/GetData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypage != null)
-                {
-                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypagesize != null)
-                {
-                    body["pagesize"] = ExpressionConverter.ConvertO(__workflow_bodypagesize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycolumnUris != null)
-                {
-                    body["columnUris"] = ExpressionConverter.ConvertO(__workflow_bodycolumnUris);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysort != null)
-                {
-                    body["sort"] = ExpressionConverter.ConvertO(__workflow_bodysort);
-                    bodypropCount++;
-                }
-
-                var filterExpressionObject = new JObject();
-                var filterExpressionObjectpropCount = 0;
-                if (filterExpressionObjectpropCount > 0)
-                {
-                    body["filterExpression"] = filterExpressionObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaskListServiceGetDataResponse>(callPayload);
             });
         }
@@ -565,63 +142,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IBodyWorkflowAction<GetTimesheetSummaryResponse, ApiConnectionActionConfiguration> GetTimesheetSummary(Expression<Func<string>> hostUrl, Expression<Func<string>> bodytimesheetUri = null)
+        public IBodyWorkflowAction<GetTimesheetSummaryResponse, ApiConnectionActionConfiguration> GetTimesheetSummary(Expression<Func<string>> hostUrl, Expression<Func<GetTimesheetSummaryInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodytimesheetUri = WorkflowExpression.Compile(bodytimesheetUri, nameof(bodytimesheetUri), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetTimesheetSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/TimesheetService1.svc/GetTimesheetSummary";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytimesheetUri != null)
-                {
-                    body["timesheetUri"] = ExpressionConverter.ConvertO(__workflow_bodytimesheetUri);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetTimesheetSummaryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polarispsa")]
-        public IBodyWorkflowAction<BulkGetTimeEnteredSummaryResponse, ApiConnectionActionConfiguration> BulkGetTimeEnteredSummary(Expression<Func<string>> hostUrl, Expression<Func<string[]>> bodytaskUris = null)
+        public IBodyWorkflowAction<BulkGetTimeEnteredSummaryResponse, ApiConnectionActionConfiguration> BulkGetTimeEnteredSummary(Expression<Func<string>> hostUrl, Expression<Func<BulkGetTimeEnteredSummaryInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodytaskUris = WorkflowExpression.Compile(bodytaskUris, nameof(bodytaskUris), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BulkGetTimeEnteredSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/services/TaskService1.svc/BulkGetTimeEnteredSummary";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytaskUris != null)
-                {
-                    body["taskUris"] = ExpressionConverter.ConvertO(__workflow_bodytaskUris);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BulkGetTimeEnteredSummaryResponse>(callPayload);
             });
         }
@@ -641,31 +197,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
 
     public class PolarispsaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> WebhookSubscriptionsRestAPI(Expression<Func<string>> hostUrl, Expression<Func<string>> bodyeventType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> WebhookSubscriptionsRestAPI(Expression<Func<string>> hostUrl, Expression<Func<WebhookSubscriptionsRestAPIInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook-api/api/subscription";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["hostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyeventType != null)
-                {
-                    body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                    bodypropCount++;
-                }
-
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -989,7 +531,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public string Uri { get; set; }
     }
 
-    public class bodyprojectsInputItem
+    public class BulkGetProjectDetails3Input
+    {
+        [JsonProperty("projects")]
+        public BulkGetProjectDetails3InputProjectsTypeItem[] Projects { get; set; }
+    }
+
+    public class BulkGetProjectDetails3InputProjectsTypeItem
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -1028,25 +576,154 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public string Uri { get; set; }
     }
 
-    public class bodymodificationskeyValuesToApplyInputItem
+    public class CreateProjectOrApplyModificationsInput
+    {
+        [JsonProperty("target")]
+        public JToken Target { get; set; }
+
+        [JsonProperty("modifications")]
+        public CreateProjectOrApplyModificationsInputModificationsType Modifications { get; set; }
+
+        [JsonProperty("projectModificationOptionUri")]
+        public string ProjectModificationOptionUri { get; set; }
+
+        [JsonProperty("unitOfWorkId")]
+        public string UnitOfWorkId { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsType
+    {
+        [JsonProperty("nameToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeNameToApplyType NameToApply { get; set; }
+
+        [JsonProperty("codeToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeCodeToApplyType CodeToApply { get; set; }
+
+        [JsonProperty("descriptionToApply")]
+        public JToken DescriptionToApply { get; set; }
+
+        [JsonProperty("percentCompletedToApply")]
+        public string PercentCompletedToApply { get; set; }
+
+        [JsonProperty("startDateToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyType StartDateToApply { get; set; }
+
+        [JsonProperty("endDateToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyType EndDateToApply { get; set; }
+
+        [JsonProperty("billingTypeToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeBillingTypeToApplyType BillingTypeToApply { get; set; }
+
+        [JsonProperty("projectLeaderToApply")]
+        public JToken ProjectLeaderToApply { get; set; }
+
+        [JsonProperty("isProjectLeaderApprovalRequired")]
+        public string IsProjectLeaderApprovalRequired { get; set; }
+
+        [JsonProperty("isTimeEntryAllowed")]
+        public string IsTimeEntryAllowed { get; set; }
+
+        [JsonProperty("defaultBillingCurrencyToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyType DefaultBillingCurrencyToApply { get; set; }
+
+        [JsonProperty("billingContractToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeBillingContractToApplyType BillingContractToApply { get; set; }
+
+        [JsonProperty("keyValuesToApply")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItem[] KeyValuesToApply { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeNameToApplyType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeCodeToApplyType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyType
+    {
+        [JsonProperty("date")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyTypeDateType Date { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyTypeDateType
+    {
+        [JsonProperty("year")]
+        public int? Year { get; set; }
+
+        [JsonProperty("month")]
+        public int? Month { get; set; }
+
+        [JsonProperty("day")]
+        public int? Day { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyType
+    {
+        [JsonProperty("date")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyTypeDateType Date { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyTypeDateType
+    {
+        [JsonProperty("year")]
+        public int? Year { get; set; }
+
+        [JsonProperty("month")]
+        public int? Month { get; set; }
+
+        [JsonProperty("day")]
+        public int? Day { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeBillingTypeToApplyType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyType
+    {
+        [JsonProperty("currency")]
+        public CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyTypeCurrencyType Currency { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyTypeCurrencyType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeBillingContractToApplyType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItem
     {
         [JsonProperty("keyUri")]
         public string KeyUri { get; set; }
 
         [JsonProperty("value")]
-        public bodymodificationskeyValuesToApplyInputItemValueType Value { get; set; }
+        public CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueType Value { get; set; }
     }
 
-    public class bodymodificationskeyValuesToApplyInputItemValueType
+    public class CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueType
     {
         [JsonProperty("collection")]
-        public bodymodificationskeyValuesToApplyInputItemValueTypeCollectionTypeItem[] Collection { get; set; }
+        public CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueTypeCollectionTypeItem[] Collection { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
     }
 
-    public class bodymodificationskeyValuesToApplyInputItemValueTypeCollectionTypeItem
+    public class CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueTypeCollectionTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -1103,6 +780,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public string Uri { get; set; }
     }
 
+    public class UserListServiceGetDataInput
+    {
+        [JsonProperty("page")]
+        public string Page { get; set; }
+
+        [JsonProperty("pagesize")]
+        public string Pagesize { get; set; }
+
+        [JsonProperty("columnUris")]
+        public string[] ColumnUris { get; set; }
+
+        [JsonProperty("sort")]
+        public JToken[] Sort { get; set; }
+
+        [JsonProperty("filterExpression")]
+        public JToken FilterExpression { get; set; }
+    }
+
+    public class GetDescendantTaskDetailsInput
+    {
+        [JsonProperty("parentUri")]
+        public string ParentUri { get; set; }
+    }
+
     public class CreateTaskHierarchyOrApplyModificationsResponse
     {
         [JsonProperty("d")]
@@ -1133,7 +834,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public string Uri { get; set; }
     }
 
-    public class bodytaskHierarchyInputItem
+    public class CreateTaskHierarchyOrApplyModificationsInput
+    {
+        [JsonProperty("project")]
+        public CreateTaskHierarchyOrApplyModificationsInputProjectType Project { get; set; }
+
+        [JsonProperty("taskHierarchy")]
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItem[] TaskHierarchy { get; set; }
+
+        [JsonProperty("taskModificationOptionUri")]
+        public string TaskModificationOptionUri { get; set; }
+
+        [JsonProperty("unitOfWorkId")]
+        public string UnitOfWorkId { get; set; }
+    }
+
+    public class CreateTaskHierarchyOrApplyModificationsInputProjectType
+    {
+        [JsonProperty("uri")]
+        public string Uri { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("parameterCorrelationId")]
+        public string ParameterCorrelationId { get; set; }
+    }
+
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItem
     {
         [JsonProperty("target")]
         public JToken Target { get; set; }
@@ -1142,31 +873,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public string ParameterCorrelationId { get; set; }
 
         [JsonProperty("taskModificationToApply")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyType TaskModificationToApply { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyType TaskModificationToApply { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("codeToApply")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeCodeToApplyType CodeToApply { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeCodeToApplyType CodeToApply { get; set; }
 
         [JsonProperty("descriptionToApply")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeDescriptionToApplyType DescriptionToApply { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeDescriptionToApplyType DescriptionToApply { get; set; }
 
         [JsonProperty("isClosed")]
         public string IsClosed { get; set; }
 
         [JsonProperty("timeEntryStartDateToApply")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType TimeEntryStartDateToApply { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType TimeEntryStartDateToApply { get; set; }
 
         [JsonProperty("timeEntryEndDateToApply")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType TimeEntryEndDateToApply { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType TimeEntryEndDateToApply { get; set; }
 
         [JsonProperty("timeAndExpenseEntryTypeToApply")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType TimeAndExpenseEntryTypeToApply { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType TimeAndExpenseEntryTypeToApply { get; set; }
 
         [JsonProperty("isTimeEntryAllowed")]
         public string IsTimeEntryAllowed { get; set; }
@@ -1181,7 +912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public JToken EstimatedCostToApply { get; set; }
 
         [JsonProperty("resourceAssignmentModifications")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeResourceAssignmentModificationsType ResourceAssignmentModifications { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeResourceAssignmentModificationsType ResourceAssignmentModifications { get; set; }
 
         [JsonProperty("customFieldsToApply")]
         public JToken[] CustomFieldsToApply { get; set; }
@@ -1193,67 +924,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public JToken[] ObjectExtensionFieldsToApply { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeCodeToApplyType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeCodeToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeDescriptionToApplyType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeDescriptionToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType
     {
         [JsonProperty("date")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType Date { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType Date { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType
     {
         [JsonProperty("year")]
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         [JsonProperty("month")]
-        public int Month { get; set; }
+        public int? Month { get; set; }
 
         [JsonProperty("day")]
-        public int Day { get; set; }
+        public int? Day { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType
     {
         [JsonProperty("date")]
-        public bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType Date { get; set; }
+        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType Date { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType
     {
         [JsonProperty("year")]
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         [JsonProperty("month")]
-        public int Month { get; set; }
+        public int? Month { get; set; }
 
         [JsonProperty("day")]
-        public int Day { get; set; }
+        public int? Day { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class bodytaskHierarchyInputItemTaskModificationToApplyTypeResourceAssignmentModificationsType
+    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeResourceAssignmentModificationsType
     {
         [JsonProperty("resourcesToAdd")]
         public string[] ResourcesToAdd { get; set; }
 
         [JsonProperty("resourcesToRemove")]
         public string[] ResourcesToRemove { get; set; }
+    }
+
+    public class MoveTaskInput
+    {
+        [JsonProperty("taskUri")]
+        public string TaskUri { get; set; }
+
+        [JsonProperty("targetUri")]
+        public string TargetUri { get; set; }
+
+        [JsonProperty("moveTaskMethodUri")]
+        public string MoveTaskMethodUri { get; set; }
     }
 
     public class TaskListServiceGetDataResponse
@@ -1323,6 +1066,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
+    }
+
+    public class TaskListServiceGetDataInput
+    {
+        [JsonProperty("page")]
+        public string Page { get; set; }
+
+        [JsonProperty("pagesize")]
+        public string Pagesize { get; set; }
+
+        [JsonProperty("columnUris")]
+        public string[] ColumnUris { get; set; }
+
+        [JsonProperty("sort")]
+        public JToken[] Sort { get; set; }
+
+        [JsonProperty("filterExpression")]
+        public JToken FilterExpression { get; set; }
     }
 
     public class bodyInputItem
@@ -1688,6 +1449,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
         public string Uri { get; set; }
     }
 
+    public class GetTimesheetSummaryInput
+    {
+        [JsonProperty("timesheetUri")]
+        public string TimesheetUri { get; set; }
+    }
+
     public class BulkGetTimeEnteredSummaryResponse
     {
         [JsonProperty("d")]
@@ -1707,6 +1474,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
 
         [JsonProperty("timeEnteredTotalEstimatedAtCompletion")]
         public Duration TimeEnteredTotalEstimatedAtCompletion { get; set; }
+    }
+
+    public class BulkGetTimeEnteredSummaryInput
+    {
+        [JsonProperty("taskUris")]
+        public string[] TaskUris { get; set; }
     }
 
     public class TenantEndpointDetails
@@ -1776,6 +1549,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polarispsa
 
         [JsonProperty("authType")]
         public string AuthType { get; set; }
+    }
+
+    public class WebhookSubscriptionsRestAPIInput
+    {
+        [JsonProperty("eventType")]
+        public string EventType { get; set; }
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

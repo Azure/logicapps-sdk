@@ -53,29 +53,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration> AskSirvaBotAboutTopic(Expression<Func<AskSirvaBotAboutTopicInput>> body = null)
         {
-            var __workflow_bodyrelocationId = WorkflowExpression.Compile(bodyrelocationId, nameof(bodyrelocationId), required: true);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/topic";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["RelocationId"] = ExpressionConverter.ConvertO(__workflow_bodyrelocationId);
-                bodypropCount++;
-                body["Query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                bodypropCount++;
-                body["Topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AskSirvaBotAboutTopicResponse>(callPayload);
             });
         }
@@ -646,8 +633,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string Answer { get; set; }
     }
 
+    public class AskSirvaBotAboutTopicInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RelocationId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AskSirvaBotAboutTopicInputTopicType Topic { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytopicInput
+    public enum AskSirvaBotAboutTopicInputTopicType
     {
         Counselor,
         Contacts,

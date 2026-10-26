@@ -13,53 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
     public class LettriaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ComprehendPostResponseItem[], ApiConnectionActionConfiguration> Comprehend(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ComprehendPostResponseItem[], ApiConnectionActionConfiguration> Comprehend(Expression<Func<ComprehendPostInput>> body = null)
         {
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ComprehendPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ComprehendPostResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ClassifyPostResponseItem[], ApiConnectionActionConfiguration> Classify(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ClassifyPostResponseItem[], ApiConnectionActionConfiguration> Classify(Expression<Func<ClassifyPostInput>> body = null)
         {
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ClassifyPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nls/classification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ClassifyPostResponseItem[]>(callPayload);
             });
         }
@@ -994,6 +972,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
 
         [JsonProperty("value")]
         public int Value { get; set; }
+    }
+
+    public class ComprehendPostInput
+    {
+        [JsonProperty("documents")]
+        public string[] Documents { get; set; }
     }
 
     public class ClassifyPostResponseItem
@@ -1967,6 +1951,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
     {
         [JsonProperty("api_call")]
         public int ApiCall { get; set; }
+    }
+
+    public class ClassifyPostInput
+    {
+        [JsonProperty("documents")]
+        public string[] Documents { get; set; }
     }
 }
 

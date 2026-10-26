@@ -13,372 +13,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     public class VenaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<ExportAttributesInput>> lidsBody)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_lidsBodyshowHeader = WorkflowExpression.Compile(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
-            var __workflow_lidsBodymQLQueryString = WorkflowExpression.Compile(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
-            var __workflow_lidsBodyfileFormat = WorkflowExpression.Compile(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
-            var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
+            var __workflow_lidsBody = WorkflowExpression.Compile(lidsBody, nameof(lidsBody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/attributes", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var lidsBody = new JObject();
-                var lidsBodypropCount = 0;
-                if (__workflow_lidsBodyshowHeader != null)
-                {
-                    if (__workflow_lidsBodyshowHeader != null)
-                    {
-                        lidsBody["showHeaders"] = ExpressionConverter.ConvertO(__workflow_lidsBodyshowHeader);
-                        lidsBodypropCount++;
-                    }
-
-                    lidsBodypropCount++;
-                }
-                else
-                {
-                    lidsBody["showHeaders"] = false;
-                    lidsBodypropCount++;
-                }
-
-                if (__workflow_lidsBodymQLQueryString != null)
-                {
-                    lidsBody["queryString"] = ExpressionConverter.ConvertO(__workflow_lidsBodymQLQueryString);
-                    lidsBodypropCount++;
-                }
-
-                if (__workflow_lidsBodyfileFormat != null)
-                {
-                    if (__workflow_lidsBodyfileFormat != null)
-                    {
-                        lidsBody["format"] = ExpressionConverter.ConvertO(__workflow_lidsBodyfileFormat);
-                        lidsBodypropCount++;
-                    }
-
-                    lidsBodypropCount++;
-                }
-                else
-                {
-                    lidsBody["format"] = "CSV";
-                    lidsBodypropCount++;
-                }
-
-                if (__workflow_lidsBodyfileEncoding != null)
-                {
-                    if (__workflow_lidsBodyfileEncoding != null)
-                    {
-                        lidsBody["encoding"] = ExpressionConverter.ConvertO(__workflow_lidsBodyfileEncoding);
-                        lidsBodypropCount++;
-                    }
-
-                    lidsBodypropCount++;
-                }
-                else
-                {
-                    lidsBody["encoding"] = "UTF-8";
-                    lidsBodypropCount++;
-                }
-
-                lidsBody["destination"] = "ToCSV";
-                lidsBodypropCount++;
-                if (lidsBodypropCount > 0)
-                {
-                    callPayload.Body = lidsBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_lidsBody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<bool>> hierarchiesBodyshowHeader = null, Expression<Func<string>> hierarchiesBodymQLQueryString = null, Expression<Func<hierarchiesBodyfileFormatInput>> hierarchiesBodyfileFormat = null, Expression<Func<hierarchiesBodyfileEncodingInput>> hierarchiesBodyfileEncoding = null, Expression<Func<bool>> hierarchiesBodyexportMemberIDs = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<ExportHierarchiesInput>> hierarchiesBody = null)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_hierarchiesBodyshowHeader = WorkflowExpression.Compile(hierarchiesBodyshowHeader, nameof(hierarchiesBodyshowHeader), required: false);
-            var __workflow_hierarchiesBodymQLQueryString = WorkflowExpression.Compile(hierarchiesBodymQLQueryString, nameof(hierarchiesBodymQLQueryString), required: false);
-            var __workflow_hierarchiesBodyfileFormat = WorkflowExpression.Compile(hierarchiesBodyfileFormat, nameof(hierarchiesBodyfileFormat), required: false);
-            var __workflow_hierarchiesBodyfileEncoding = WorkflowExpression.Compile(hierarchiesBodyfileEncoding, nameof(hierarchiesBodyfileEncoding), required: false);
-            var __workflow_hierarchiesBodyexportMemberIDs = WorkflowExpression.Compile(hierarchiesBodyexportMemberIDs, nameof(hierarchiesBodyexportMemberIDs), required: false);
+            var __workflow_hierarchiesBody = WorkflowExpression.Compile(hierarchiesBody, nameof(hierarchiesBody), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/hierarchies", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var hierarchiesBody = new JObject();
-                var hierarchiesBodypropCount = 0;
-                if (__workflow_hierarchiesBodyshowHeader != null)
-                {
-                    if (__workflow_hierarchiesBodyshowHeader != null)
-                    {
-                        hierarchiesBody["showHeaders"] = ExpressionConverter.ConvertO(__workflow_hierarchiesBodyshowHeader);
-                        hierarchiesBodypropCount++;
-                    }
-
-                    hierarchiesBodypropCount++;
-                }
-                else
-                {
-                    hierarchiesBody["showHeaders"] = false;
-                    hierarchiesBodypropCount++;
-                }
-
-                if (__workflow_hierarchiesBodymQLQueryString != null)
-                {
-                    hierarchiesBody["queryString"] = ExpressionConverter.ConvertO(__workflow_hierarchiesBodymQLQueryString);
-                    hierarchiesBodypropCount++;
-                }
-
-                if (__workflow_hierarchiesBodyfileFormat != null)
-                {
-                    if (__workflow_hierarchiesBodyfileFormat != null)
-                    {
-                        hierarchiesBody["format"] = ExpressionConverter.ConvertO(__workflow_hierarchiesBodyfileFormat);
-                        hierarchiesBodypropCount++;
-                    }
-
-                    hierarchiesBodypropCount++;
-                }
-                else
-                {
-                    hierarchiesBody["format"] = "CSV";
-                    hierarchiesBodypropCount++;
-                }
-
-                if (__workflow_hierarchiesBodyfileEncoding != null)
-                {
-                    if (__workflow_hierarchiesBodyfileEncoding != null)
-                    {
-                        hierarchiesBody["encoding"] = ExpressionConverter.ConvertO(__workflow_hierarchiesBodyfileEncoding);
-                        hierarchiesBodypropCount++;
-                    }
-
-                    hierarchiesBodypropCount++;
-                }
-                else
-                {
-                    hierarchiesBody["encoding"] = "UTF-8";
-                    hierarchiesBodypropCount++;
-                }
-
-                hierarchiesBody["destination"] = "ToCSV";
-                hierarchiesBodypropCount++;
-                if (__workflow_hierarchiesBodyexportMemberIDs != null)
-                {
-                    if (__workflow_hierarchiesBodyexportMemberIDs != null)
-                    {
-                        hierarchiesBody["exportMemberIds"] = ExpressionConverter.ConvertO(__workflow_hierarchiesBodyexportMemberIDs);
-                        hierarchiesBodypropCount++;
-                    }
-
-                    hierarchiesBodypropCount++;
-                }
-                else
-                {
-                    hierarchiesBody["exportMemberIds"] = false;
-                    hierarchiesBodypropCount++;
-                }
-
-                if (hierarchiesBodypropCount > 0)
-                {
-                    callPayload.Body = hierarchiesBody;
-                }
-
+                if (__workflow_hierarchiesBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_hierarchiesBody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<bool>> valuesBodyshowHeader = null, Expression<Func<string>> valuesBodymQLQueryString = null, Expression<Func<valuesBodyfileFormatInput>> valuesBodyfileFormat = null, Expression<Func<valuesBodyfileEncodingInput>> valuesBodyfileEncoding = null, Expression<Func<bool>> valuesBodyincludeExternalIDs = null, Expression<Func<bool>> valuesBodynamedDimensions = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<ExportValuesInput>> valuesBody)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_valuesBodyshowHeader = WorkflowExpression.Compile(valuesBodyshowHeader, nameof(valuesBodyshowHeader), required: false);
-            var __workflow_valuesBodymQLQueryString = WorkflowExpression.Compile(valuesBodymQLQueryString, nameof(valuesBodymQLQueryString), required: false);
-            var __workflow_valuesBodyfileFormat = WorkflowExpression.Compile(valuesBodyfileFormat, nameof(valuesBodyfileFormat), required: false);
-            var __workflow_valuesBodyfileEncoding = WorkflowExpression.Compile(valuesBodyfileEncoding, nameof(valuesBodyfileEncoding), required: false);
-            var __workflow_valuesBodyincludeExternalIDs = WorkflowExpression.Compile(valuesBodyincludeExternalIDs, nameof(valuesBodyincludeExternalIDs), required: false);
-            var __workflow_valuesBodynamedDimensions = WorkflowExpression.Compile(valuesBodynamedDimensions, nameof(valuesBodynamedDimensions), required: false);
+            var __workflow_valuesBody = WorkflowExpression.Compile(valuesBody, nameof(valuesBody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/intersections2", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var valuesBody = new JObject();
-                var valuesBodypropCount = 0;
-                if (__workflow_valuesBodyshowHeader != null)
-                {
-                    if (__workflow_valuesBodyshowHeader != null)
-                    {
-                        valuesBody["showHeaders"] = ExpressionConverter.ConvertO(__workflow_valuesBodyshowHeader);
-                        valuesBodypropCount++;
-                    }
-
-                    valuesBodypropCount++;
-                }
-                else
-                {
-                    valuesBody["showHeaders"] = false;
-                    valuesBodypropCount++;
-                }
-
-                if (__workflow_valuesBodymQLQueryString != null)
-                {
-                    valuesBody["queryString"] = ExpressionConverter.ConvertO(__workflow_valuesBodymQLQueryString);
-                    valuesBodypropCount++;
-                }
-
-                if (__workflow_valuesBodyfileFormat != null)
-                {
-                    if (__workflow_valuesBodyfileFormat != null)
-                    {
-                        valuesBody["format"] = ExpressionConverter.ConvertO(__workflow_valuesBodyfileFormat);
-                        valuesBodypropCount++;
-                    }
-
-                    valuesBodypropCount++;
-                }
-                else
-                {
-                    valuesBody["format"] = "CSV";
-                    valuesBodypropCount++;
-                }
-
-                if (__workflow_valuesBodyfileEncoding != null)
-                {
-                    if (__workflow_valuesBodyfileEncoding != null)
-                    {
-                        valuesBody["encoding"] = ExpressionConverter.ConvertO(__workflow_valuesBodyfileEncoding);
-                        valuesBodypropCount++;
-                    }
-
-                    valuesBodypropCount++;
-                }
-                else
-                {
-                    valuesBody["encoding"] = "UTF-8";
-                    valuesBodypropCount++;
-                }
-
-                valuesBody["destination"] = "ToCSV";
-                valuesBodypropCount++;
-                if (__workflow_valuesBodyincludeExternalIDs != null)
-                {
-                    if (__workflow_valuesBodyincludeExternalIDs != null)
-                    {
-                        valuesBody["includeExternalId"] = ExpressionConverter.ConvertO(__workflow_valuesBodyincludeExternalIDs);
-                        valuesBodypropCount++;
-                    }
-
-                    valuesBodypropCount++;
-                }
-                else
-                {
-                    valuesBody["includeExternalId"] = false;
-                    valuesBodypropCount++;
-                }
-
-                if (__workflow_valuesBodynamedDimensions != null)
-                {
-                    if (__workflow_valuesBodynamedDimensions != null)
-                    {
-                        valuesBody["isNamedHeader"] = ExpressionConverter.ConvertO(__workflow_valuesBodynamedDimensions);
-                        valuesBodypropCount++;
-                    }
-
-                    valuesBodypropCount++;
-                }
-                else
-                {
-                    valuesBody["isNamedHeader"] = false;
-                    valuesBodypropCount++;
-                }
-
-                if (valuesBodypropCount > 0)
-                {
-                    callPayload.Body = valuesBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_valuesBody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<ExportLIDsInput>> lidsBody)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_lidsBodyshowHeader = WorkflowExpression.Compile(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
-            var __workflow_lidsBodymQLQueryString = WorkflowExpression.Compile(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
-            var __workflow_lidsBodyfileFormat = WorkflowExpression.Compile(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
-            var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
+            var __workflow_lidsBody = WorkflowExpression.Compile(lidsBody, nameof(lidsBody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/lids2", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var lidsBody = new JObject();
-                var lidsBodypropCount = 0;
-                if (__workflow_lidsBodyshowHeader != null)
-                {
-                    if (__workflow_lidsBodyshowHeader != null)
-                    {
-                        lidsBody["showHeaders"] = ExpressionConverter.ConvertO(__workflow_lidsBodyshowHeader);
-                        lidsBodypropCount++;
-                    }
-
-                    lidsBodypropCount++;
-                }
-                else
-                {
-                    lidsBody["showHeaders"] = false;
-                    lidsBodypropCount++;
-                }
-
-                if (__workflow_lidsBodymQLQueryString != null)
-                {
-                    lidsBody["queryString"] = ExpressionConverter.ConvertO(__workflow_lidsBodymQLQueryString);
-                    lidsBodypropCount++;
-                }
-
-                if (__workflow_lidsBodyfileFormat != null)
-                {
-                    if (__workflow_lidsBodyfileFormat != null)
-                    {
-                        lidsBody["format"] = ExpressionConverter.ConvertO(__workflow_lidsBodyfileFormat);
-                        lidsBodypropCount++;
-                    }
-
-                    lidsBodypropCount++;
-                }
-                else
-                {
-                    lidsBody["format"] = "CSV";
-                    lidsBodypropCount++;
-                }
-
-                if (__workflow_lidsBodyfileEncoding != null)
-                {
-                    if (__workflow_lidsBodyfileEncoding != null)
-                    {
-                        lidsBody["encoding"] = ExpressionConverter.ConvertO(__workflow_lidsBodyfileEncoding);
-                        lidsBodypropCount++;
-                    }
-
-                    lidsBodypropCount++;
-                }
-                else
-                {
-                    lidsBody["encoding"] = "UTF-8";
-                    lidsBodypropCount++;
-                }
-
-                lidsBody["destination"] = "ToCSV";
-                lidsBodypropCount++;
-                if (lidsBodypropCount > 0)
-                {
-                    callPayload.Body = lidsBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_lidsBody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -388,8 +78,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     {
     }
 
+    public class ExportAttributesInput
+    {
+        [JsonProperty("showHeaders")]
+        public bool? ShowHeaders { get; set; }
+
+        [JsonProperty("queryString")]
+        public string QueryString { get; set; }
+
+        [JsonProperty("format")]
+        public FileFormat? Format { get; set; }
+
+        [JsonProperty("encoding")]
+        public Encoding? Encoding { get; set; }
+
+        [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Destination { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum lidsBodyfileFormatInput
+    public enum FileFormat
     {
         CSV,
         PSV,
@@ -397,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum lidsBodyfileEncodingInput
+    public enum Encoding
     {
         [EnumMember(Value = "UTF-8")]
         UTF8,
@@ -406,40 +114,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         Cp1252
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hierarchiesBodyfileFormatInput
+    public class ExportHierarchiesInput
     {
-        CSV,
-        PSV,
-        TDF
+        [JsonProperty("showHeaders")]
+        public bool? ShowHeaders { get; set; }
+
+        [JsonProperty("queryString")]
+        public string QueryString { get; set; }
+
+        [JsonProperty("format")]
+        public FileFormat? Format { get; set; }
+
+        [JsonProperty("encoding")]
+        public Encoding? Encoding { get; set; }
+
+        [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Destination { get; set; }
+
+        [JsonProperty("exportMemberIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ExportMemberIDs { get; set; } = false;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hierarchiesBodyfileEncodingInput
+    public class ExportValuesInput
     {
-        [EnumMember(Value = "UTF-8")]
-        UTF8,
-        [EnumMember(Value = "UTF-16")]
-        UTF16,
-        Cp1252
+        [JsonProperty("showHeaders")]
+        public bool? ShowHeaders { get; set; }
+
+        [JsonProperty("queryString")]
+        public string QueryString { get; set; }
+
+        [JsonProperty("format")]
+        public FileFormat? Format { get; set; }
+
+        [JsonProperty("encoding")]
+        public Encoding? Encoding { get; set; }
+
+        [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Destination { get; set; }
+
+        [JsonProperty("includeExternalId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeExternalIDs { get; set; } = false;
+
+        [JsonProperty("isNamedHeader", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NamedDimensions { get; set; } = false;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum valuesBodyfileFormatInput
+    public class ExportLIDsInput
     {
-        CSV,
-        PSV,
-        TDF
-    }
+        [JsonProperty("showHeaders")]
+        public bool? ShowHeaders { get; set; }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum valuesBodyfileEncodingInput
-    {
-        [EnumMember(Value = "UTF-8")]
-        UTF8,
-        [EnumMember(Value = "UTF-16")]
-        UTF16,
-        Cp1252
+        [JsonProperty("queryString")]
+        public string QueryString { get; set; }
+
+        [JsonProperty("format")]
+        public FileFormat? Format { get; set; }
+
+        [JsonProperty("encoding")]
+        public Encoding? Encoding { get; set; }
+
+        [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Destination { get; set; }
     }
 }
 

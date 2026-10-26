@@ -81,13 +81,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddFieldToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> method = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddFieldToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<AddFieldToDocumentInput>> body, Expression<Func<string>> method = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/field", __workflow_documentId.WithUrlEncoding(1)));
@@ -96,71 +95,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 if (__workflow_method != null)
                     callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateFieldOnDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateFieldOnDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<UpdateFieldOnDocumentInput>> body = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/field", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddTemplateToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId, Expression<Func<string[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddTemplateToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId, Expression<Func<string[]>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/multidoc/template/{0}", __workflow_templateId.WithUrlEncoding(1)));
@@ -173,93 +136,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryDocumentsResponse, ApiConnectionActionConfiguration> QueryDocuments(Expression<Func<string>> exaAuthPlugin, Expression<Func<string[]>> bodyobligatoryTags = null, Expression<Func<string[]>> bodytagsInHierarchy = null, Expression<Func<string[]>> bodyexcludeTagsInHierarchy = null, Expression<Func<bool>> bodyincludeTotalCount = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bodyorderByInput>> bodyorderBy = null, Expression<Func<bool>> bodyorderAscending = null, Expression<Func<string>> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryDocumentsResponse, ApiConnectionActionConfiguration> QueryDocuments(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryDocumentsInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            var __workflow_bodyobligatoryTags = WorkflowExpression.Compile(bodyobligatoryTags, nameof(bodyobligatoryTags), required: false);
-            var __workflow_bodytagsInHierarchy = WorkflowExpression.Compile(bodytagsInHierarchy, nameof(bodytagsInHierarchy), required: false);
-            var __workflow_bodyexcludeTagsInHierarchy = WorkflowExpression.Compile(bodyexcludeTagsInHierarchy, nameof(bodyexcludeTagsInHierarchy), required: false);
-            var __workflow_bodyincludeTotalCount = WorkflowExpression.Compile(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycontainsName = WorkflowExpression.Compile(bodycontainsName, nameof(bodycontainsName), required: false);
-            var __workflow_bodyorderBy = WorkflowExpression.Compile(bodyorderBy, nameof(bodyorderBy), required: false);
-            var __workflow_bodyorderAscending = WorkflowExpression.Compile(bodyorderAscending, nameof(bodyorderAscending), required: false);
-            var __workflow_bodycontinuationToken = WorkflowExpression.Compile(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meta/document/QueryDocuments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyobligatoryTags != null)
-                {
-                    body["obligatoryTags"] = ExpressionConverter.ConvertO(__workflow_bodyobligatoryTags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytagsInHierarchy != null)
-                {
-                    body["tagsInHierarchy"] = ExpressionConverter.ConvertO(__workflow_bodytagsInHierarchy);
-                    bodypropCount++;
-                }
-
-                var fieldQueryExpressionObject = new JObject();
-                var fieldQueryExpressionObjectpropCount = 0;
-                if (fieldQueryExpressionObjectpropCount > 0)
-                {
-                    body["fieldQueryExpression"] = fieldQueryExpressionObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexcludeTagsInHierarchy != null)
-                {
-                    body["excludeTagsInHierarchy"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeTagsInHierarchy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincludeTotalCount != null)
-                {
-                    body["includeTotalCount"] = ExpressionConverter.ConvertO(__workflow_bodyincludeTotalCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontainsName != null)
-                {
-                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderBy != null)
-                {
-                    body["orderBy"] = ExpressionConverter.ConvertO(__workflow_bodyorderBy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderAscending != null)
-                {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontinuationToken != null)
-                {
-                    body["continuationToken"] = ExpressionConverter.ConvertO(__workflow_bodycontinuationToken);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryDocumentsResponse>(callPayload);
             });
         }
@@ -296,120 +183,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetMultipleTagsResponseItem[], ApiConnectionActionConfiguration> GetMultipleTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<string[]>> bodyids = null)
+        public IBodyWorkflowAction<GetMultipleTagsResponseItem[], ApiConnectionActionConfiguration> GetMultipleTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<GetMultipleTagsInput>> body = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            var __workflow_bodyids = WorkflowExpression.Compile(bodyids, nameof(bodyids), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetMultipleTagsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxonomy/tags/selection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyids != null)
-                {
-                    body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyids);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetMultipleTagsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryTagsResponse, ApiConnectionActionConfiguration> QueryTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodyparentTagId = null, Expression<Func<string>> bodydirectParentTagId = null, Expression<Func<bool>> bodyhasNoParentTag = null, Expression<Func<bool>> bodyincludeTotalCount = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null)
+        public IBodyWorkflowAction<QueryTagsResponse, ApiConnectionActionConfiguration> QueryTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryTagsInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            var __workflow_bodyparentTagId = WorkflowExpression.Compile(bodyparentTagId, nameof(bodyparentTagId), required: false);
-            var __workflow_bodydirectParentTagId = WorkflowExpression.Compile(bodydirectParentTagId, nameof(bodydirectParentTagId), required: false);
-            var __workflow_bodyhasNoParentTag = WorkflowExpression.Compile(bodyhasNoParentTag, nameof(bodyhasNoParentTag), required: false);
-            var __workflow_bodyincludeTotalCount = WorkflowExpression.Compile(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycontainsName = WorkflowExpression.Compile(bodycontainsName, nameof(bodycontainsName), required: false);
-            var __workflow_bodyorderAscending = WorkflowExpression.Compile(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryTagsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxonomy/tags/querytags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyparentTagId != null)
-                {
-                    body["parentTagId"] = ExpressionConverter.ConvertO(__workflow_bodyparentTagId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydirectParentTagId != null)
-                {
-                    body["directParentTagId"] = ExpressionConverter.ConvertO(__workflow_bodydirectParentTagId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhasNoParentTag != null)
-                {
-                    body["hasNoParentTag"] = ExpressionConverter.ConvertO(__workflow_bodyhasNoParentTag);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincludeTotalCount != null)
-                {
-                    body["includeTotalCount"] = ExpressionConverter.ConvertO(__workflow_bodyincludeTotalCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontainsName != null)
-                {
-                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderAscending != null)
-                {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryTagsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> method = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytenantId = null, Expression<Func<string>> bodycode = null, Expression<Func<int>> bodyfieldType = null, Expression<Func<bool>> bodyisRequired = null, Expression<Func<bool>> bodyisReadOnly = null, Expression<Func<string>> bodydefaultValue = null, Expression<Func<bodylabelsInputItem[]>> bodylabels = null, Expression<Func<string>> bodyvalidatingRegExp = null, Expression<Func<bodyvalidationMessageInputItem[]>> bodyvalidationMessage = null, Expression<Func<int>> bodyrowAmount = null, Expression<Func<string>> bodyparentTagId = null)
+        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> exaAuthPlugin, Expression<Func<CreateFieldInput>> body, Expression<Func<string>> method = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytenantId = WorkflowExpression.Compile(bodytenantId, nameof(bodytenantId), required: false);
-            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
-            var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: false);
-            var __workflow_bodyisRequired = WorkflowExpression.Compile(bodyisRequired, nameof(bodyisRequired), required: false);
-            var __workflow_bodyisReadOnly = WorkflowExpression.Compile(bodyisReadOnly, nameof(bodyisReadOnly), required: false);
-            var __workflow_bodydefaultValue = WorkflowExpression.Compile(bodydefaultValue, nameof(bodydefaultValue), required: false);
-            var __workflow_bodylabels = WorkflowExpression.Compile(bodylabels, nameof(bodylabels), required: false);
-            var __workflow_bodyvalidatingRegExp = WorkflowExpression.Compile(bodyvalidatingRegExp, nameof(bodyvalidatingRegExp), required: false);
-            var __workflow_bodyvalidationMessage = WorkflowExpression.Compile(bodyvalidationMessage, nameof(bodyvalidationMessage), required: false);
-            var __workflow_bodyrowAmount = WorkflowExpression.Compile(bodyrowAmount, nameof(bodyrowAmount), required: false);
-            var __workflow_bodyparentTagId = WorkflowExpression.Compile(bodyparentTagId, nameof(bodyparentTagId), required: false);
             return new DeferredBodyAction<CreateFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxonomy/fields";
@@ -418,85 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 if (__workflow_method != null)
                     callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytenantId != null)
-                {
-                    body["tenantId"] = ExpressionConverter.ConvertO(__workflow_bodytenantId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycode != null)
-                {
-                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfieldType != null)
-                {
-                    body["fieldType"] = ExpressionConverter.ConvertO(__workflow_bodyfieldType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisRequired != null)
-                {
-                    body["isRequired"] = ExpressionConverter.ConvertO(__workflow_bodyisRequired);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisReadOnly != null)
-                {
-                    body["isReadOnly"] = ExpressionConverter.ConvertO(__workflow_bodyisReadOnly);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydefaultValue != null)
-                {
-                    body["defaultValue"] = ExpressionConverter.ConvertO(__workflow_bodydefaultValue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylabels != null)
-                {
-                    body["labels"] = ExpressionConverter.ConvertO(__workflow_bodylabels);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidatingRegExp != null)
-                {
-                    body["validatingRegExp"] = ExpressionConverter.ConvertO(__workflow_bodyvalidatingRegExp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidationMessage != null)
-                {
-                    body["validationMessage"] = ExpressionConverter.ConvertO(__workflow_bodyvalidationMessage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrowAmount != null)
-                {
-                    body["rowAmount"] = ExpressionConverter.ConvertO(__workflow_bodyrowAmount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentTagId != null)
-                {
-                    body["parentTagId"] = ExpressionConverter.ConvertO(__workflow_bodyparentTagId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateFieldResponse>(callPayload);
             });
         }
@@ -594,85 +327,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryUsersResponse, ApiConnectionActionConfiguration> QueryUsers(Expression<Func<string>> exaAuthPlugin, Expression<Func<bool>> bodyexcludeActiveUsers = null, Expression<Func<bool>> bodyexcludeInactiveUsers = null, Expression<Func<bool>> bodyexcludeNormalUsers = null, Expression<Func<bool>> bodyexcludeSystemUsers = null, Expression<Func<string>> bodycontainsEmail = null, Expression<Func<string[]>> bodyroleIds = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null)
+        public IBodyWorkflowAction<QueryUsersResponse, ApiConnectionActionConfiguration> QueryUsers(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryUsersInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            var __workflow_bodyexcludeActiveUsers = WorkflowExpression.Compile(bodyexcludeActiveUsers, nameof(bodyexcludeActiveUsers), required: false);
-            var __workflow_bodyexcludeInactiveUsers = WorkflowExpression.Compile(bodyexcludeInactiveUsers, nameof(bodyexcludeInactiveUsers), required: false);
-            var __workflow_bodyexcludeNormalUsers = WorkflowExpression.Compile(bodyexcludeNormalUsers, nameof(bodyexcludeNormalUsers), required: false);
-            var __workflow_bodyexcludeSystemUsers = WorkflowExpression.Compile(bodyexcludeSystemUsers, nameof(bodyexcludeSystemUsers), required: false);
-            var __workflow_bodycontainsEmail = WorkflowExpression.Compile(bodycontainsEmail, nameof(bodycontainsEmail), required: false);
-            var __workflow_bodyroleIds = WorkflowExpression.Compile(bodyroleIds, nameof(bodyroleIds), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycontainsName = WorkflowExpression.Compile(bodycontainsName, nameof(bodycontainsName), required: false);
-            var __workflow_bodyorderAscending = WorkflowExpression.Compile(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/user/queryusers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyexcludeActiveUsers != null)
-                {
-                    body["excludeActiveUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeActiveUsers);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexcludeInactiveUsers != null)
-                {
-                    body["excludeInactiveUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeInactiveUsers);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexcludeNormalUsers != null)
-                {
-                    body["excludeNormalUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeNormalUsers);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexcludeSystemUsers != null)
-                {
-                    body["excludeSystemUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeSystemUsers);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontainsEmail != null)
-                {
-                    body["containsEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontainsEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyroleIds != null)
-                {
-                    body["roleIds"] = ExpressionConverter.ConvertO(__workflow_bodyroleIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontainsName != null)
-                {
-                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderAscending != null)
-                {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryUsersResponse>(callPayload);
             });
         }
@@ -693,82 +358,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<ResolveContextResponse, ApiConnectionActionConfiguration> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyentityName = null, Expression<Func<string>> bodylegalEntity = null)
+        public IBodyWorkflowAction<ResolveContextResponse, ApiConnectionActionConfiguration> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<ResolveContextInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
-            var __workflow_bodyentityName = WorkflowExpression.Compile(bodyentityName, nameof(bodyentityName), required: false);
-            var __workflow_bodylegalEntity = WorkflowExpression.Compile(bodylegalEntity, nameof(bodylegalEntity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResolveContextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/resolvecontext";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodysource != null)
-                {
-                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyentityName != null)
-                {
-                    body["entityName"] = ExpressionConverter.ConvertO(__workflow_bodyentityName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylegalEntity != null)
-                {
-                    body["legalEntity"] = ExpressionConverter.ConvertO(__workflow_bodylegalEntity);
-                    bodypropCount++;
-                }
-
-                var fieldsObject = new JObject();
-                var fieldsObjectpropCount = 0;
-                if (fieldsObjectpropCount > 0)
-                {
-                    body["fields"] = fieldsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResolveContextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse, ApiConnectionActionConfiguration> AdvancedSearchQueryDocuments(Expression<Func<string>> exaAuthPlugin)
+        public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse, ApiConnectionActionConfiguration> AdvancedSearchQueryDocuments(Expression<Func<string>> exaAuthPlugin, Expression<Func<object>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AdvancedSearchQueryDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meta/document/query/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AdvancedSearchQueryDocumentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<InsertExternalFileResponse, ApiConnectionActionConfiguration> InsertExternalFile(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> filename, Expression<Func<string>> bodybody = null)
+        public IBodyWorkflowAction<InsertExternalFileResponse, ApiConnectionActionConfiguration> InsertExternalFile(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> filename, Expression<Func<InsertExternalFileInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InsertExternalFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meta/document/insertexternalfile";
@@ -776,19 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodybody != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InsertExternalFileResponse>(callPayload);
             });
         }
@@ -824,11 +438,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddSiteToStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSiteToStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", __workflow_id.WithUrlEncoding(1)));
@@ -871,12 +485,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> name, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> name, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meta/document/content";
@@ -910,11 +524,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<SetExternalSourceResponse, ApiConnectionActionConfiguration> SetExternalSource(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<SetExternalSourceResponse, ApiConnectionActionConfiguration> SetExternalSource(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId, Expression<Func<string>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_fileReferenceId = WorkflowExpression.Compile(fileReferenceId, nameof(fileReferenceId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SetExternalSourceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/{0}/externalsource", __workflow_fileReferenceId.WithUrlEncoding(1)));
@@ -927,12 +541,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GenerateSiteSubscriptions(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> storageProviderId, Expression<Func<string>> contentType = null, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GenerateSiteSubscriptions(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> storageProviderId, Expression<Func<string>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_storageProviderId = WorkflowExpression.Compile(storageProviderId, nameof(storageProviderId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", __workflow_storageProviderId.WithUrlEncoding(1)));
@@ -947,71 +561,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryTemplatesResponse, ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> exaAuthPlugin, Expression<Func<int>> bodylanguageCode = null, Expression<Func<string[]>> bodycontextTags = null, Expression<Func<int>> bodyorderBy = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null, Expression<Func<string>> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryTemplatesResponse, ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryTemplatesInput>> body = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            var __workflow_bodylanguageCode = WorkflowExpression.Compile(bodylanguageCode, nameof(bodylanguageCode), required: false);
-            var __workflow_bodycontextTags = WorkflowExpression.Compile(bodycontextTags, nameof(bodycontextTags), required: false);
-            var __workflow_bodyorderBy = WorkflowExpression.Compile(bodyorderBy, nameof(bodyorderBy), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycontainsName = WorkflowExpression.Compile(bodycontainsName, nameof(bodycontainsName), required: false);
-            var __workflow_bodyorderAscending = WorkflowExpression.Compile(bodyorderAscending, nameof(bodyorderAscending), required: false);
-            var __workflow_bodycontinuationToken = WorkflowExpression.Compile(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QueryTemplatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxonomy/templates/querytemplates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylanguageCode != null)
-                {
-                    body["languageCode"] = ExpressionConverter.ConvertO(__workflow_bodylanguageCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontextTags != null)
-                {
-                    body["contextTags"] = ExpressionConverter.ConvertO(__workflow_bodycontextTags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderBy != null)
-                {
-                    body["orderBy"] = ExpressionConverter.ConvertO(__workflow_bodyorderBy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontainsName != null)
-                {
-                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderAscending != null)
-                {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontinuationToken != null)
-                {
-                    body["continuationToken"] = ExpressionConverter.ConvertO(__workflow_bodycontinuationToken);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryTemplatesResponse>(callPayload);
             });
         }
@@ -1037,55 +598,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodyazureDirectoryId = null, Expression<Func<string>> bodydriveId = null, Expression<Func<string>> bodydriveItemId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<DetachDocumentInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            var __workflow_bodyazureDirectoryId = WorkflowExpression.Compile(bodyazureDirectoryId, nameof(bodyazureDirectoryId), required: false);
-            var __workflow_bodydriveId = WorkflowExpression.Compile(bodydriveId, nameof(bodydriveId), required: false);
-            var __workflow_bodydriveItemId = WorkflowExpression.Compile(bodydriveItemId, nameof(bodydriveItemId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storageproviders/sharepoint/file/detach";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyazureDirectoryId != null)
-                {
-                    body["azureDirectoryId"] = ExpressionConverter.ConvertO(__workflow_bodyazureDirectoryId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydriveId != null)
-                {
-                    body["driveId"] = ExpressionConverter.ConvertO(__workflow_bodydriveId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydriveItemId != null)
-                {
-                    body["driveItemId"] = ExpressionConverter.ConvertO(__workflow_bodydriveItemId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetOrCreateTag(Expression<Func<string>> exaAuthPlugin, Expression<Func<methodInput>> method, Expression<Func<string>> bodycode = null, Expression<Func<bodylabelsInputItem2[]>> bodylabels = null, Expression<Func<string>> bodyparentTagId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetOrCreateTag(Expression<Func<string>> exaAuthPlugin, Expression<Func<methodInput>> method, Expression<Func<GetOrCreateTagInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
-            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
-            var __workflow_bodylabels = WorkflowExpression.Compile(bodylabels, nameof(bodylabels), required: false);
-            var __workflow_bodyparentTagId = WorkflowExpression.Compile(bodyparentTagId, nameof(bodyparentTagId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxonomy/tags";
@@ -1093,31 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycode != null)
-                {
-                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylabels != null)
-                {
-                    body["labels"] = ExpressionConverter.ConvertO(__workflow_bodylabels);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentTagId != null)
-                {
-                    body["parentTagId"] = ExpressionConverter.ConvertO(__workflow_bodyparentTagId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1141,6 +650,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 
     public class RaptordocmanagementTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class AddFieldToDocumentInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class UpdateFieldOnDocumentInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 
     public class QueryDocumentsResponse
@@ -1236,7 +763,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
-    public enum bodyorderByInput
+    public class QueryDocumentsInput
+    {
+        [JsonProperty("obligatoryTags")]
+        public string[] ObligatoryTags { get; set; }
+
+        [JsonProperty("tagsInHierarchy")]
+        public string[] TagsInHierarchy { get; set; }
+
+        [JsonProperty("fieldQueryExpression")]
+        public JToken FieldQueryExpression { get; set; }
+
+        [JsonProperty("excludeTagsInHierarchy")]
+        public string[] ExcludeTagsInHierarchy { get; set; }
+
+        [JsonProperty("includeTotalCount")]
+        public bool? IncludeTotalCount { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("containsName")]
+        public string ContainsName { get; set; }
+
+        [JsonProperty("orderBy")]
+        public QueryDocumentsInputOrderByType? OrderBy { get; set; }
+
+        [JsonProperty("orderAscending")]
+        public bool? OrderAscending { get; set; }
+
+        [JsonProperty("continuationToken")]
+        public string ContinuationToken { get; set; }
+    }
+
+    public enum QueryDocumentsInputOrderByType
     {
         _0 = 0,
         _1 = 1,
@@ -1433,6 +993,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string LastSyncedOn { get; set; }
     }
 
+    public class GetMultipleTagsInput
+    {
+        [JsonProperty("ids")]
+        public string[] Ids { get; set; }
+    }
+
     public class QueryTagsResponse
     {
         [JsonProperty("result")]
@@ -1505,6 +1071,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string LastSyncedOn { get; set; }
     }
 
+    public class QueryTagsInput
+    {
+        [JsonProperty("parentTagId")]
+        public string ParentTagId { get; set; }
+
+        [JsonProperty("directParentTagId")]
+        public string DirectParentTagId { get; set; }
+
+        [JsonProperty("hasNoParentTag")]
+        public bool? HasNoParentTag { get; set; }
+
+        [JsonProperty("includeTotalCount")]
+        public bool? IncludeTotalCount { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("containsName")]
+        public string ContainsName { get; set; }
+
+        [JsonProperty("orderAscending")]
+        public bool? OrderAscending { get; set; }
+    }
+
     public class CreateFieldResponse
     {
         [JsonProperty("id")]
@@ -1562,19 +1152,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Value { get; set; }
     }
 
-    public class bodylabelsInputItem
+    public class CreateFieldInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("fieldType")]
+        public int? FieldType { get; set; }
+
+        [JsonProperty("isRequired")]
+        public bool? IsRequired { get; set; }
+
+        [JsonProperty("isReadOnly")]
+        public bool? IsReadOnly { get; set; }
+
+        [JsonProperty("defaultValue")]
+        public string DefaultValue { get; set; }
+
+        [JsonProperty("labels")]
+        public CreateFieldInputLabelsTypeItem[] Labels { get; set; }
+
+        [JsonProperty("validatingRegExp")]
+        public string ValidatingRegExp { get; set; }
+
+        [JsonProperty("validationMessage")]
+        public CreateFieldInputValidationMessageTypeItem[] ValidationMessage { get; set; }
+
+        [JsonProperty("rowAmount")]
+        public int? RowAmount { get; set; }
+
+        [JsonProperty("parentTagId")]
+        public string ParentTagId { get; set; }
+    }
+
+    public class CreateFieldInputLabelsTypeItem
     {
         [JsonProperty("languageId")]
-        public int LanguageId { get; set; }
+        public int? LanguageId { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class bodyvalidationMessageInputItem
+    public class CreateFieldInputValidationMessageTypeItem
     {
         [JsonProperty("languageId")]
-        public int LanguageId { get; set; }
+        public int? LanguageId { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -2075,6 +1704,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Manager { get; set; }
     }
 
+    public class QueryUsersInput
+    {
+        [JsonProperty("excludeActiveUsers")]
+        public bool? ExcludeActiveUsers { get; set; }
+
+        [JsonProperty("excludeInactiveUsers")]
+        public bool? ExcludeInactiveUsers { get; set; }
+
+        [JsonProperty("excludeNormalUsers")]
+        public bool? ExcludeNormalUsers { get; set; }
+
+        [JsonProperty("excludeSystemUsers")]
+        public bool? ExcludeSystemUsers { get; set; }
+
+        [JsonProperty("containsEmail")]
+        public string ContainsEmail { get; set; }
+
+        [JsonProperty("roleIds")]
+        public string[] RoleIds { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("containsName")]
+        public string ContainsName { get; set; }
+
+        [JsonProperty("orderAscending")]
+        public bool? OrderAscending { get; set; }
+    }
+
     public class GetExternalSystemByIdResponse
     {
         [JsonProperty("id")]
@@ -2121,6 +1780,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class ResolveContextInput
+    {
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("entityName")]
+        public string EntityName { get; set; }
+
+        [JsonProperty("legalEntity")]
+        public string LegalEntity { get; set; }
+
+        [JsonProperty("fields")]
+        public JToken Fields { get; set; }
     }
 
     public class AdvancedSearchQueryDocumentsResponse
@@ -2262,6 +1936,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 
         [JsonProperty("uploadTimestamp")]
         public string UploadTimestamp { get; set; }
+    }
+
+    public class InsertExternalFileInput
+    {
+        [JsonProperty("body")]
+        public string Body { get; set; }
     }
 
     public class GetDocumentMetadataResponse
@@ -2646,6 +2326,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Template { get; set; }
     }
 
+    public class QueryTemplatesInput
+    {
+        [JsonProperty("languageCode")]
+        public int? LanguageCode { get; set; }
+
+        [JsonProperty("contextTags")]
+        public string[] ContextTags { get; set; }
+
+        [JsonProperty("orderBy")]
+        public int? OrderBy { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("containsName")]
+        public string ContainsName { get; set; }
+
+        [JsonProperty("orderAscending")]
+        public bool? OrderAscending { get; set; }
+
+        [JsonProperty("continuationToken")]
+        public string ContinuationToken { get; set; }
+    }
+
     public class FindDocumentResponse
     {
         [JsonProperty("tags")]
@@ -2748,6 +2452,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
+    public class DetachDocumentInput
+    {
+        [JsonProperty("azureDirectoryId")]
+        public string AzureDirectoryId { get; set; }
+
+        [JsonProperty("driveId")]
+        public string DriveId { get; set; }
+
+        [JsonProperty("driveItemId")]
+        public string DriveItemId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
@@ -2759,16 +2475,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         CreateNew
     }
 
-    public class bodylabelsInputItem2
+    public class GetOrCreateTagInput
     {
-        [JsonProperty("languageId")]
-        public bodylabelsInputItemLanguageIdType LanguageId { get; set; }
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("labels")]
+        public GetOrCreateTagInputLabelsTypeItem[] Labels { get; set; }
+
+        [JsonProperty("parentTagId")]
+        public string ParentTagId { get; set; }
+    }
+
+    public class GetOrCreateTagInputLabelsTypeItem
+    {
+        [JsonProperty("languageId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GetOrCreateTagInputLabelsTypeItemLanguageIdType? LanguageId { get; set; } = GetOrCreateTagInputLabelsTypeItemLanguageIdType._1033;
 
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public enum bodylabelsInputItemLanguageIdType
+    public enum GetOrCreateTagInputLabelsTypeItemLanguageIdType
     {
         _1031 = 1031,
         _1033 = 1033,

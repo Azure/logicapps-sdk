@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     public class BitlyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
-        public IBodyWorkflowAction<BitlinkV2, ApiConnectionActionConfiguration> CreateBitlink(Expression<Func<string>> bodyuRL)
+        public IBodyWorkflowAction<BitlinkV2, ApiConnectionActionConfiguration> CreateBitlink(Expression<Func<CreateBitlinkV2Input>> body)
         {
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BitlinkV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/shorten";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["long_url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BitlinkV2>(callPayload);
             });
         }
@@ -57,6 +49,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
         [JsonProperty("long_url")]
         public string LongURL { get; set; }
+    }
+
+    public class CreateBitlinkV2Input
+    {
+        [JsonProperty("long_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string URL { get; set; }
     }
 
     public class OnBitlinkCreatedResponse

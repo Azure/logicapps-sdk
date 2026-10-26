@@ -25,229 +25,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<SwitchResponseItem[], ApiConnectionActionConfiguration> Switch(Expression<Func<string>> bodydid = null, Expression<Func<bool>> bodyon = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<SwitchResponseItem[], ApiConnectionActionConfiguration> Switch(Expression<Func<SwitchInput>> body)
         {
-            var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
-            var __workflow_bodyon = WorkflowExpression.Compile(bodyon, nameof(bodyon), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SwitchResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/switch";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydid != null)
-                {
-                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyon != null)
-                {
-                    body["on"] = ExpressionConverter.ConvertO(__workflow_bodyon);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SwitchResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<ColorResponseItem[], ApiConnectionActionConfiguration> Color(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodyspectrumRGB = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<ColorResponseItem[], ApiConnectionActionConfiguration> Color(Expression<Func<ColorInput>> body = null)
         {
-            var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
-            var __workflow_bodyspectrumRGB = WorkflowExpression.Compile(bodyspectrumRGB, nameof(bodyspectrumRGB), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ColorResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/color";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydid != null)
-                {
-                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyspectrumRGB != null)
-                {
-                    body["spectrumRGB"] = ExpressionConverter.ConvertO(__workflow_bodyspectrumRGB);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ColorResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<BrightnessResponseItem[], ApiConnectionActionConfiguration> Brightness(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodybrightness = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<BrightnessResponseItem[], ApiConnectionActionConfiguration> Brightness(Expression<Func<BrightnessInput>> body = null)
         {
-            var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
-            var __workflow_bodybrightness = WorkflowExpression.Compile(bodybrightness, nameof(bodybrightness), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BrightnessResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/brightness";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydid != null)
-                {
-                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybrightness != null)
-                {
-                    body["brightness"] = ExpressionConverter.ConvertO(__workflow_bodybrightness);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BrightnessResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<TemperatureResponseItem[], ApiConnectionActionConfiguration> Temperature(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodytemperature = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<TemperatureResponseItem[], ApiConnectionActionConfiguration> Temperature(Expression<Func<TemperatureInput>> body = null)
         {
-            var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TemperatureResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/temperature";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydid != null)
-                {
-                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemperature != null)
-                {
-                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TemperatureResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> Query(Expression<Func<string>> bodydid = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> Query(Expression<Func<QueryInput>> body = null)
         {
-            var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydid != null)
-                {
-                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryResponse>(callPayload);
             });
         }
@@ -284,6 +130,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public string Status { get; set; }
     }
 
+    public class SwitchInput
+    {
+        [JsonProperty("did")]
+        public string Did { get; set; }
+
+        [JsonProperty("on")]
+        public bool? On { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
     public class ColorResponseItem
     {
         [JsonProperty("ids")]
@@ -291,6 +152,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class ColorInput
+    {
+        [JsonProperty("did")]
+        public string Did { get; set; }
+
+        [JsonProperty("spectrumRGB")]
+        public int? SpectrumRGB { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 
     public class BrightnessResponseItem
@@ -302,6 +178,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public string Status { get; set; }
     }
 
+    public class BrightnessInput
+    {
+        [JsonProperty("did")]
+        public string Did { get; set; }
+
+        [JsonProperty("brightness")]
+        public int? Brightness { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
     public class TemperatureResponseItem
     {
         [JsonProperty("ids")]
@@ -309,6 +200,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class TemperatureInput
+    {
+        [JsonProperty("did")]
+        public string Did { get; set; }
+
+        [JsonProperty("temperature")]
+        public int? Temperature { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 
     public class QueryResponse
@@ -329,6 +235,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
 
         [JsonProperty("color-temperature")]
         public int ColorTemperature { get; set; }
+    }
+
+    public class QueryInput
+    {
+        [JsonProperty("did")]
+        public string Did { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }
 

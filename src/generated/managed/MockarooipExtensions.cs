@@ -13,42 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
     public class MockarooipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GenerateDataFromExistingSchema(Expression<Func<string>> bodyschemaName = null, Expression<Func<string>> bodyschemaJSON = null, Expression<Func<int>> bodyrecordCount = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GenerateDataFromExistingSchema(Expression<Func<GenerateDataFromExistingSchemaInput>> body)
         {
-            var __workflow_bodyschemaName = WorkflowExpression.Compile(bodyschemaName, nameof(bodyschemaName), required: false);
-            var __workflow_bodyschemaJSON = WorkflowExpression.Compile(bodyschemaJSON, nameof(bodyschemaJSON), required: false);
-            var __workflow_bodyrecordCount = WorkflowExpression.Compile(bodyrecordCount, nameof(bodyrecordCount), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/generate.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["array"] = Convert.ToString(true);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyschemaName != null)
-                {
-                    body["schema"] = ExpressionConverter.ConvertO(__workflow_bodyschemaName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyschemaJSON != null)
-                {
-                    body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyschemaJSON);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecordCount != null)
-                {
-                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodyrecordCount);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
@@ -56,6 +30,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
 
     public class MockarooipTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class GenerateDataFromExistingSchemaInput
+    {
+        [JsonProperty("schema")]
+        public string SchemaName { get; set; }
+
+        [JsonProperty("fields")]
+        public string SchemaJSON { get; set; }
+
+        [JsonProperty("count")]
+        public int? RecordCount { get; set; }
     }
 }
 

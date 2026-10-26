@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
     public class DeskdirectorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindTicketTaskTemplates(Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindTicketTaskTemplates(Expression<Func<object>> req)
         {
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/ticket-task-templates/find";
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateTicketTasks(Expression<Func<int>> ticketId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateTicketTasks(Expression<Func<int>> ticketId, Expression<Func<object>> req)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/tickets/{0}/tasks", __workflow_ticketId.WithUrlEncoding(1)));
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindCompanies(Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindCompanies(Expression<Func<object>> req)
         {
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/companies/find";
@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindUserGroups(Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindUserGroups(Expression<Func<object>> req)
         {
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/user-groups/find";
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateContact(Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateContact(Expression<Func<object>> req)
         {
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/contacts";
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindContacts(Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindContacts(Expression<Func<object>> req)
         {
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/contacts/find";
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GenerateEmailFromTemplate(Expression<Func<string>> emailTemplateId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GenerateEmailFromTemplate(Expression<Func<string>> emailTemplateId, Expression<Func<object>> req)
         {
             var __workflow_emailTemplateId = WorkflowExpression.Compile(emailTemplateId, nameof(emailTemplateId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/email-templates/{0}/render", __workflow_emailTemplateId.WithUrlEncoding(1)));
@@ -152,9 +152,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindMembers(Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindMembers(Expression<Func<object>> req)
         {
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/members/find";
@@ -179,10 +179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateContactNotification(Expression<Func<int>> contactId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateContactNotification(Expression<Func<int>> contactId, Expression<Func<object>> req)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/contacts/{0}/notifications", __workflow_contactId.WithUrlEncoding(1)));
@@ -194,10 +194,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateMemberNotification(Expression<Func<int>> memberId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateMemberNotification(Expression<Func<int>> memberId, Expression<Func<object>> req)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/members/{0}/notifications", __workflow_memberId.WithUrlEncoding(1)));
@@ -209,10 +209,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<int>> requestTypeId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<int>> requestTypeId, Expression<Func<object>> req)
         {
             var __workflow_requestTypeId = WorkflowExpression.Compile(requestTypeId, nameof(requestTypeId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/tickets";
@@ -225,9 +225,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindTickets(Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindTickets(Expression<Func<object>> req)
         {
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/tickets/find";
@@ -252,10 +252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<object>> req, Expression<Func<int>> ticketId)
         {
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/tickets/{0}", __workflow_ticketId.WithUrlEncoding(1)));
@@ -280,10 +280,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddChatSystemMessage(Expression<Func<string>> sessionId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddChatSystemMessage(Expression<Func<string>> sessionId, Expression<Func<object>> req)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/chat-sessions/{0}/system-messages", __workflow_sessionId.WithUrlEncoding(1)));
@@ -295,10 +295,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InviteUsersToChat(Expression<Func<string>> sessionId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InviteUsersToChat(Expression<Func<string>> sessionId, Expression<Func<object>> req)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/chat-sessions/{0}/invite", __workflow_sessionId.WithUrlEncoding(1)));
@@ -310,11 +310,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallAdvancedAction(Expression<Func<string>> category, Expression<Func<string>> function, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallAdvancedAction(Expression<Func<string>> category, Expression<Func<string>> function, Expression<Func<object>> req)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_function = WorkflowExpression.Compile(function, nameof(function), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/functions/{0}", __workflow_function.WithUrlEncoding(1)));
@@ -327,12 +327,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deskdirector")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AdvancedEventResponseHandle(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<string>> eventId, Expression<Func<object>> req = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AdvancedEventResponseHandle(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<string>> eventId, Expression<Func<object>> req)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/events/{0}/{1}/response", __workflow_eventType.WithUrlEncoding(1), __workflow_eventId.WithUrlEncoding(1)));
@@ -361,124 +361,112 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
 
     public class DeskdirectorTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<object>> reqparameters, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<CreateChatWebhookInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            var __workflow_reqparameters = WorkflowExpression.Compile(reqparameters, nameof(reqparameters), required: true);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/chat-workflows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
-                var req = new JObject();
-                var reqpropCount = 0;
-                reqpropCount++;
-                req["parameters"] = ExpressionConverter.ConvertO(__workflow_reqparameters);
-                req["url"] = "#{listCallbackUrl()}";
-                reqpropCount++;
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateTicketWorkflow(Expression<Func<string>> type, Expression<Func<string>> reqdescription, Expression<Func<object>> reqadvancedFilters, Expression<Func<int>> reqboard = null, Expression<Func<int>> reqstatus = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateTicketWorkflow(Expression<Func<string>> type, Expression<Func<CreateTicketWorkflowInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            var __workflow_reqdescription = WorkflowExpression.Compile(reqdescription, nameof(reqdescription), required: true);
-            var __workflow_reqadvancedFilters = WorkflowExpression.Compile(reqadvancedFilters, nameof(reqadvancedFilters), required: true);
-            var __workflow_reqboard = WorkflowExpression.Compile(reqboard, nameof(reqboard), required: false);
-            var __workflow_reqstatus = WorkflowExpression.Compile(reqstatus, nameof(reqstatus), required: false);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/automate/connector/ticket-workflows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
-                var req = new JObject();
-                var reqpropCount = 0;
-                reqpropCount++;
-                req["description"] = ExpressionConverter.ConvertO(__workflow_reqdescription);
-                if (__workflow_reqboard != null)
-                {
-                    req["boardId"] = ExpressionConverter.ConvertO(__workflow_reqboard);
-                    reqpropCount++;
-                }
-
-                if (__workflow_reqstatus != null)
-                {
-                    req["statusId"] = ExpressionConverter.ConvertO(__workflow_reqstatus);
-                    reqpropCount++;
-                }
-
-                reqpropCount++;
-                req["advancedFilters"] = ExpressionConverter.ConvertO(__workflow_reqadvancedFilters);
-                req["url"] = "#{listCallbackUrl()}";
-                reqpropCount++;
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeToWorkflow(Expression<Func<string>> type, Expression<Func<string>> workflowId, Expression<Func<object>> reqparameters, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeToWorkflow(Expression<Func<string>> type, Expression<Func<string>> workflowId, Expression<Func<SubscribeToWorkflowInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            var __workflow_reqparameters = WorkflowExpression.Compile(reqparameters, nameof(reqparameters), required: true);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/workflows/{0}/actions", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
-                var req = new JObject();
-                var reqpropCount = 0;
-                req["url"] = "#{listCallbackUrl()}";
-                reqpropCount++;
-                reqpropCount++;
-                req["parameters"] = ExpressionConverter.ConvertO(__workflow_reqparameters);
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AdvancedEventSubscribe(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<object>> reqparameters, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AdvancedEventSubscribe(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<AdvancedEventSubscribeInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
-            var __workflow_reqparameters = WorkflowExpression.Compile(reqparameters, nameof(reqparameters), required: true);
+            var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/automate/connector/events/{0}/subscriptions", __workflow_eventType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
-                var req = new JObject();
-                var reqpropCount = 0;
-                req["url"] = "#{listCallbackUrl()}";
-                reqpropCount++;
-                reqpropCount++;
-                req["parameters"] = ExpressionConverter.ConvertO(__workflow_reqparameters);
-                if (reqpropCount > 0)
-                {
-                    callPayload.Body = req;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_req);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class CreateChatWebhookInput
+    {
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Parameters { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string URL { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateTicketWorkflowInput
+    {
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("boardId")]
+        public int? Board { get; set; }
+
+        [JsonProperty("statusId")]
+        public int? Status { get; set; }
+
+        [JsonProperty("advancedFilters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AdvancedFilters { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string URL { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class SubscribeToWorkflowInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Parameters { get; set; }
+    }
+
+    public class AdvancedEventSubscribeInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Parameters { get; set; }
     }
 }
 

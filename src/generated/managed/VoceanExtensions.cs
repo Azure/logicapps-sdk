@@ -91,35 +91,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<AddIdeaResponse, ApiConnectionActionConfiguration> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<AddIdeaResponse, ApiConnectionActionConfiguration> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<AddIdeaInput>> body)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddIdeaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddIdeaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<AddIdeasResponseItem[], ApiConnectionActionConfiguration> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<AddIdeasResponseItem[], ApiConnectionActionConfiguration> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyInputItem[]>> body)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddIdeasResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
@@ -133,39 +125,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 
     public class VoceanTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<IdeaTriggerInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
-            var __workflow_bodyeventTypes = WorkflowExpression.Compile(bodyeventTypes, nameof(bodyeventTypes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyeventTypes != null)
-                {
-                    body["eventTypes"] = ExpressionConverter.ConvertO(__workflow_bodyeventTypes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserActivityTrigger(Expression<Func<string>> networkId = null, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserActivityTrigger(Expression<Func<UserActivityTriggerInput>> body, Expression<Func<string>> networkId = null, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
-            var __workflow_bodyeventTypes = WorkflowExpression.Compile(bodyeventTypes, nameof(bodyeventTypes), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";
@@ -173,21 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_networkId != null)
                     callPayload.Queries["networkId"] = ExpressionConverter.Convert(__workflow_networkId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyeventTypes != null)
-                {
-                    body["eventTypes"] = ExpressionConverter.ConvertO(__workflow_bodyeventTypes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -368,6 +332,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public string IdeaId { get; set; }
     }
 
+    public class AddIdeaInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+    }
+
     public class AddIdeasResponseItem
     {
         [JsonProperty("ideaId")]
@@ -380,7 +350,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public string Text { get; set; }
     }
 
-    public class bodyeventTypesInputItem
+    public class IdeaTriggerInput
+    {
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("eventTypes")]
+        public IdeaTriggerInputEventTypesTypeItem[] EventTypes { get; set; }
+    }
+
+    public class IdeaTriggerInputEventTypesTypeItem
+    {
+        [JsonProperty("eventType")]
+        public string EventType { get; set; }
+    }
+
+    public class UserActivityTriggerInput
+    {
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("eventTypes")]
+        public UserActivityTriggerInputEventTypesTypeItem[] EventTypes { get; set; }
+    }
+
+    public class UserActivityTriggerInputEventTypesTypeItem
     {
         [JsonProperty("eventType")]
         public string EventType { get; set; }

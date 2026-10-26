@@ -41,165 +41,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeliverViaCustomDelivery(Expression<Func<string>> bodydeliveryOption = null, Expression<Func<string>> bodydeliveryOptionId = null, Expression<Func<SeismicDeliveryCustomDeliveryAdHocInput[]>> bodyadHocInput = null, Expression<Func<SeismicDeliveryCustomDeliveryContent[]>> bodycontent = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeliverViaCustomDelivery(Expression<Func<DeliverViaCustomDeliveryInput>> body = null)
         {
-            var __workflow_bodydeliveryOption = WorkflowExpression.Compile(bodydeliveryOption, nameof(bodydeliveryOption), required: false);
-            var __workflow_bodydeliveryOptionId = WorkflowExpression.Compile(bodydeliveryOptionId, nameof(bodydeliveryOptionId), required: false);
-            var __workflow_bodyadHocInput = WorkflowExpression.Compile(bodyadHocInput, nameof(bodyadHocInput), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/customDelivery";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydeliveryOption != null)
-                {
-                    body["deliveryOption"] = ExpressionConverter.ConvertO(__workflow_bodydeliveryOption);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeliveryOptionId != null)
-                {
-                    body["deliveryOptionId"] = ExpressionConverter.ConvertO(__workflow_bodydeliveryOptionId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyadHocInput != null)
-                {
-                    body["adHocInputs"] = ExpressionConverter.ConvertO(__workflow_bodyadHocInput);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> SaveToWorkspace(Expression<Func<string>> bodyworkspaceOptionsworkspaceFolderId = null, Expression<Func<SeismicDeliveryCustomDelContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> SaveToWorkspace(Expression<Func<SaveToWorkspaceInput>> body = null)
         {
-            var __workflow_bodyworkspaceOptionsworkspaceFolderId = WorkflowExpression.Compile(bodyworkspaceOptionsworkspaceFolderId, nameof(bodyworkspaceOptionsworkspaceFolderId), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/saveToWorkspace";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var workspaceOptionsObject = new JObject();
-                var workspaceOptionsObjectpropCount = 0;
-                if (__workflow_bodyworkspaceOptionsworkspaceFolderId != null)
-                {
-                    workspaceOptionsObject["workspaceFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceOptionsworkspaceFolderId);
-                    workspaceOptionsObjectpropCount++;
-                }
-
-                if (workspaceOptionsObjectpropCount > 0)
-                {
-                    body["workspaceOptions"] = workspaceOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration> CreateLiveSendLink(Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodysettingsexpiresAt = null, Expression<Func<string>> bodysettingspassword = null, Expression<Func<bool>> bodysettingsallowDownload = null, Expression<Func<string>> bodysettingsnotificationType = null, Expression<Func<bool>> bodysettingssingleView = null, Expression<Func<SeismicLiveSendLiveSendLinkContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration> CreateLiveSendLink(Expression<Func<CreateLiveSendLinkInput>> body = null)
         {
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodysettingsexpiresAt = WorkflowExpression.Compile(bodysettingsexpiresAt, nameof(bodysettingsexpiresAt), required: false);
-            var __workflow_bodysettingspassword = WorkflowExpression.Compile(bodysettingspassword, nameof(bodysettingspassword), required: false);
-            var __workflow_bodysettingsallowDownload = WorkflowExpression.Compile(bodysettingsallowDownload, nameof(bodysettingsallowDownload), required: false);
-            var __workflow_bodysettingsnotificationType = WorkflowExpression.Compile(bodysettingsnotificationType, nameof(bodysettingsnotificationType), required: false);
-            var __workflow_bodysettingssingleView = WorkflowExpression.Compile(bodysettingssingleView, nameof(bodysettingssingleView), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/liveSend/links";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                var settingsObject = new JObject();
-                var settingsObjectpropCount = 0;
-                if (__workflow_bodysettingsexpiresAt != null)
-                {
-                    settingsObject["expiresAt"] = ExpressionConverter.ConvertO(__workflow_bodysettingsexpiresAt);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingspassword != null)
-                {
-                    settingsObject["password"] = ExpressionConverter.ConvertO(__workflow_bodysettingspassword);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingsallowDownload != null)
-                {
-                    settingsObject["allowDownload"] = ExpressionConverter.ConvertO(__workflow_bodysettingsallowDownload);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingsnotificationType != null)
-                {
-                    settingsObject["notificationType"] = ExpressionConverter.ConvertO(__workflow_bodysettingsnotificationType);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_bodysettingssingleView != null)
-                {
-                    settingsObject["singleView"] = ExpressionConverter.ConvertO(__workflow_bodysettingssingleView);
-                    settingsObjectpropCount++;
-                }
-
-                if (settingsObjectpropCount > 0)
-                {
-                    body["settings"] = settingsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SeismicLiveSendLiveSendLinkResponse>(callPayload);
             });
         }
@@ -295,6 +176,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         Float,
         [EnumMember(Value = "table")]
         Table
+    }
+
+    public class DeliverViaCustomDeliveryInput
+    {
+        [JsonProperty("deliveryOption")]
+        public string DeliveryOption { get; set; }
+
+        [JsonProperty("deliveryOptionId")]
+        public string DeliveryOptionId { get; set; }
+
+        [JsonProperty("adHocInputs")]
+        public SeismicDeliveryCustomDeliveryAdHocInput[] AdHocInput { get; set; }
+
+        [JsonProperty("content")]
+        public SeismicDeliveryCustomDeliveryContent[] Content { get; set; }
     }
 
     public class SeismicDeliveryCustomDeliveryAdHocInput
@@ -464,6 +360,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string ModifiedByUserId { get; set; }
     }
 
+    public class SaveToWorkspaceInput
+    {
+        [JsonProperty("workspaceOptions")]
+        public SeismicDeliveryWorkspaceOptions WorkspaceOptions { get; set; }
+
+        [JsonProperty("content")]
+        public SeismicDeliveryCustomDelContent[] Content { get; set; }
+    }
+
+    public class SeismicDeliveryWorkspaceOptions
+    {
+        [JsonProperty("workspaceFolderId")]
+        public string WorkspaceFolderId { get; set; }
+    }
+
     public class SeismicDeliveryCustomDelContent
     {
         [JsonProperty("repository")]
@@ -588,6 +499,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
 
         [JsonProperty("teamsiteId")]
         public string TeamSiteId { get; set; }
+    }
+
+    public class CreateLiveSendLinkInput
+    {
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("settings")]
+        public SeismicLiveSendLiveSendLinkSettings Settings { get; set; }
+
+        [JsonProperty("content")]
+        public SeismicLiveSendLiveSendLinkContent[] Content { get; set; }
     }
 
     public class SeismicLiveSendLiveSendSettingsResponse

@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Si3270
     public class Si3270Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "si3270")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteMethod(Expression<Func<string>> hidxName, Expression<Func<string>> methodName, Expression<Func<object>> parameters = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteMethod(Expression<Func<string>> hidxName, Expression<Func<string>> methodName, Expression<Func<object>> parameters)
         {
             var __workflow_hidxName = WorkflowExpression.Compile(hidxName, nameof(hidxName), required: true);
             var __workflow_methodName = WorkflowExpression.Compile(methodName, nameof(methodName), required: true);
-            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hidx/{0}/methods/{1}/call", __workflow_hidxName.WithUrlEncoding(1), __workflow_methodName.WithUrlEncoding(1)));

@@ -13,10 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     public class BoldsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<SendDocumentFromTemplateResponse, ApiConnectionActionConfiguration> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
+        public IBodyWorkflowAction<SendDocumentFromTemplateResponse, ApiConnectionActionConfiguration> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<object>> signers, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_isSandbox = WorkflowExpression.Compile(isSandbox, nameof(isSandbox), required: true);
+            var __workflow_signers = WorkflowExpression.Compile(signers, nameof(signers), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
             var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: false);
@@ -27,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             var __workflow_enablePrintAndSign = WorkflowExpression.Compile(enablePrintAndSign, nameof(enablePrintAndSign), required: false);
             var __workflow_enableReassign = WorkflowExpression.Compile(enableReassign, nameof(enableReassign), required: false);
             var __workflow_enableAutoReminder = WorkflowExpression.Compile(enableAutoReminder, nameof(enableAutoReminder), required: false);
-            var __workflow_signers = WorkflowExpression.Compile(signers, nameof(signers), required: false);
             return new DeferredBodyAction<SendDocumentFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/template/send";
@@ -115,37 +115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 
     public class BoldsignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<WebHooksInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
-            var __workflow_bodyadminMode = WorkflowExpression.Compile(bodyadminMode, nameof(bodyadminMode), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["events"] = ExpressionConverter.Convert(__workflow_events);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["name"] = "Power Automate Webhook";
-                bodypropCount++;
-                body["events"] = "Sent";
-                bodypropCount++;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["environment"] = "Live";
-                bodypropCount++;
-                body["isActive"] = true;
-                bodypropCount++;
-                body["webhookType"] = "AccountCallback";
-                bodypropCount++;
-                bodypropCount++;
-                body["adminMode"] = ExpressionConverter.ConvertO(__workflow_bodyadminMode);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<AddWebHooksResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -185,6 +165,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         SendFailed,
         TemplateSendFailed,
         DraftCreated
+    }
+
+    public class WebHooksInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Webhook";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "Sent";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("environment", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Environment { get; set; } = "Live";
+
+        [JsonProperty("isActive", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool IsActive { get; set; } = true;
+
+        [JsonProperty("webhookType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookType { get; set; } = "AccountCallback";
+
+        [JsonProperty("adminMode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool AdminMode { get; set; } = false;
     }
 }
 

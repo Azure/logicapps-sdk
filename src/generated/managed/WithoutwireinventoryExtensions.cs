@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateWorkOrderResponse>(callPayload);
             });
         }
@@ -85,7 +86,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteOrderResponse>(callPayload);
             });
         }
@@ -105,7 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderCompleteResponse>(callPayload);
             });
         }
@@ -125,7 +128,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderStatusResponse>(callPayload);
             });
         }
@@ -145,7 +149,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -198,7 +203,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryRequestResponse>(callPayload);
             });
         }
@@ -218,7 +224,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryAdjustmentResponse>(callPayload);
             });
         }
@@ -240,7 +247,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteInboundRequestResponse>(callPayload);
             });
         }
@@ -260,7 +268,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInboundRequestResponse>(callPayload);
             });
         }
@@ -278,7 +287,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -298,7 +308,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateItemResponse>(callPayload);
             });
         }
@@ -357,7 +368,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InboundCompleteResponse>(callPayload);
             });
         }
@@ -377,7 +389,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateLocationResponse>(callPayload);
             });
         }
@@ -397,7 +410,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReceiptCompleteResponse>(callPayload);
             });
         }
@@ -453,7 +467,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateSalesOrderResponse>(callPayload);
             });
         }
@@ -471,7 +486,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -561,7 +577,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateTransferOrderResponse>(callPayload);
             });
         }
@@ -615,7 +632,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePurchaseOrderResponse>(callPayload);
             });
         }
@@ -671,7 +689,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateManufacturingOrderResponse>(callPayload);
             });
         }

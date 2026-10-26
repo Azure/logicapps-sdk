@@ -16,25 +16,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration> BttnWebhook(Expression<Func<string>> bodyactionConfigId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration> BttnWebhook(Expression<Func<BttnWebhookInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyactionConfigId = WorkflowExpression.Compile(bodyactionConfigId, nameof(bodyactionConfigId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["actionConfigId"] = ExpressionConverter.ConvertO(__workflow_bodyactionConfigId);
-                body["hookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -47,6 +37,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class BttnWebhookInput
+    {
+        [JsonProperty("actionConfigId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ActionConfigId { get; set; }
+
+        [JsonProperty("hookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string HookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

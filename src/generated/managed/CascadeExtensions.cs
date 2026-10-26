@@ -27,28 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<bodygoalisPrivateInput>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> instance, Expression<Func<CreateGoalInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodygoalroleId = WorkflowExpression.Compile(bodygoalroleId, nameof(bodygoalroleId), required: false);
-            var __workflow_bodygoalcreatorId = WorkflowExpression.Compile(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
-            var __workflow_bodygoalstatus = WorkflowExpression.Compile(bodygoalstatus, nameof(bodygoalstatus), required: false);
-            var __workflow_bodygoalcompletionCriteria = WorkflowExpression.Compile(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
-            var __workflow_bodygoaltargetFlow = WorkflowExpression.Compile(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
-            var __workflow_bodygoalaction = WorkflowExpression.Compile(bodygoalaction, nameof(bodygoalaction), required: false);
-            var __workflow_bodygoaldetails = WorkflowExpression.Compile(bodygoaldetails, nameof(bodygoaldetails), required: false);
-            var __workflow_bodygoalinitial = WorkflowExpression.Compile(bodygoalinitial, nameof(bodygoalinitial), required: false);
-            var __workflow_bodygoalprogress = WorkflowExpression.Compile(bodygoalprogress, nameof(bodygoalprogress), required: false);
-            var __workflow_bodygoaltarget = WorkflowExpression.Compile(bodygoaltarget, nameof(bodygoaltarget), required: false);
-            var __workflow_bodygoalstartTime = WorkflowExpression.Compile(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
-            var __workflow_bodygoalendTime = WorkflowExpression.Compile(bodygoalendTime, nameof(bodygoalendTime), required: false);
-            var __workflow_bodygoalweightId = WorkflowExpression.Compile(bodygoalweightId, nameof(bodygoalweightId), required: false);
-            var __workflow_bodygoalisPrivate = WorkflowExpression.Compile(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
-            var __workflow_bodygoaltrackingType = WorkflowExpression.Compile(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
-            var __workflow_bodygoalentityTemplateId = WorkflowExpression.Compile(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
-            var __workflow_bodygoaldirectFocusAreaIds = WorkflowExpression.Compile(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
-            var __workflow_bodygoalalignedFromIds = WorkflowExpression.Compile(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
-            var __workflow_bodygoalalignedToIds = WorkflowExpression.Compile(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGoalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goals";
@@ -56,135 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var goalObject = new JObject();
-                var goalObjectpropCount = 0;
-                if (__workflow_bodygoalroleId != null)
-                {
-                    goalObject["role_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalroleId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalcreatorId != null)
-                {
-                    goalObject["creator_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalcreatorId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalstatus != null)
-                {
-                    goalObject["status"] = ExpressionConverter.ConvertO(__workflow_bodygoalstatus);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalcompletionCriteria != null)
-                {
-                    goalObject["completion_criteria"] = ExpressionConverter.ConvertO(__workflow_bodygoalcompletionCriteria);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaltargetFlow != null)
-                {
-                    goalObject["target_flow"] = ExpressionConverter.ConvertO(__workflow_bodygoaltargetFlow);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalaction != null)
-                {
-                    goalObject["action"] = ExpressionConverter.ConvertO(__workflow_bodygoalaction);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaldetails != null)
-                {
-                    goalObject["details"] = ExpressionConverter.ConvertO(__workflow_bodygoaldetails);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalinitial != null)
-                {
-                    goalObject["initial"] = ExpressionConverter.ConvertO(__workflow_bodygoalinitial);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalprogress != null)
-                {
-                    goalObject["progress"] = ExpressionConverter.ConvertO(__workflow_bodygoalprogress);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaltarget != null)
-                {
-                    goalObject["target"] = ExpressionConverter.ConvertO(__workflow_bodygoaltarget);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalstartTime != null)
-                {
-                    goalObject["start_time"] = ExpressionConverter.ConvertO(__workflow_bodygoalstartTime);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalendTime != null)
-                {
-                    goalObject["end_time"] = ExpressionConverter.ConvertO(__workflow_bodygoalendTime);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalweightId != null)
-                {
-                    goalObject["weight_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalweightId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalisPrivate != null)
-                {
-                    goalObject["is_private"] = ExpressionConverter.ConvertO(__workflow_bodygoalisPrivate);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaltrackingType != null)
-                {
-                    goalObject["tracking_type"] = ExpressionConverter.ConvertO(__workflow_bodygoaltrackingType);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalentityTemplateId != null)
-                {
-                    goalObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalentityTemplateId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaldirectFocusAreaIds != null)
-                {
-                    goalObject["direct_focus_area_ids"] = ExpressionConverter.ConvertO(__workflow_bodygoaldirectFocusAreaIds);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalalignedFromIds != null)
-                {
-                    goalObject["aligned_from_ids"] = ExpressionConverter.ConvertO(__workflow_bodygoalalignedFromIds);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalalignedToIds != null)
-                {
-                    goalObject["aligned_to_ids"] = ExpressionConverter.ConvertO(__workflow_bodygoalalignedToIds);
-                    goalObjectpropCount++;
-                }
-
-                if (goalObjectpropCount > 0)
-                {
-                    body["goal"] = goalObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateGoalResponse>(callPayload);
             });
         }
@@ -220,30 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateGoalResponse, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<int>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalinheritedFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        public IBodyWorkflowAction<UpdateGoalResponse, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateGoalInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodygoalroleId = WorkflowExpression.Compile(bodygoalroleId, nameof(bodygoalroleId), required: false);
-            var __workflow_bodygoalcreatorId = WorkflowExpression.Compile(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
-            var __workflow_bodygoalstatus = WorkflowExpression.Compile(bodygoalstatus, nameof(bodygoalstatus), required: false);
-            var __workflow_bodygoalcompletionCriteria = WorkflowExpression.Compile(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
-            var __workflow_bodygoaltargetFlow = WorkflowExpression.Compile(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
-            var __workflow_bodygoalaction = WorkflowExpression.Compile(bodygoalaction, nameof(bodygoalaction), required: false);
-            var __workflow_bodygoaldetails = WorkflowExpression.Compile(bodygoaldetails, nameof(bodygoaldetails), required: false);
-            var __workflow_bodygoalinitial = WorkflowExpression.Compile(bodygoalinitial, nameof(bodygoalinitial), required: false);
-            var __workflow_bodygoalprogress = WorkflowExpression.Compile(bodygoalprogress, nameof(bodygoalprogress), required: false);
-            var __workflow_bodygoaltarget = WorkflowExpression.Compile(bodygoaltarget, nameof(bodygoaltarget), required: false);
-            var __workflow_bodygoalstartTime = WorkflowExpression.Compile(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
-            var __workflow_bodygoalendTime = WorkflowExpression.Compile(bodygoalendTime, nameof(bodygoalendTime), required: false);
-            var __workflow_bodygoalweightId = WorkflowExpression.Compile(bodygoalweightId, nameof(bodygoalweightId), required: false);
-            var __workflow_bodygoalisPrivate = WorkflowExpression.Compile(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
-            var __workflow_bodygoaltrackingType = WorkflowExpression.Compile(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
-            var __workflow_bodygoalentityTemplateId = WorkflowExpression.Compile(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
-            var __workflow_bodygoaldirectFocusAreaIds = WorkflowExpression.Compile(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
-            var __workflow_bodygoalinheritedFocusAreaIds = WorkflowExpression.Compile(bodygoalinheritedFocusAreaIds, nameof(bodygoalinheritedFocusAreaIds), required: false);
-            var __workflow_bodygoalalignedFromIds = WorkflowExpression.Compile(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
-            var __workflow_bodygoalalignedToIds = WorkflowExpression.Compile(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateGoalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/goals/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -251,141 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var goalObject = new JObject();
-                var goalObjectpropCount = 0;
-                if (__workflow_bodygoalroleId != null)
-                {
-                    goalObject["role_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalroleId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalcreatorId != null)
-                {
-                    goalObject["creator_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalcreatorId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalstatus != null)
-                {
-                    goalObject["status"] = ExpressionConverter.ConvertO(__workflow_bodygoalstatus);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalcompletionCriteria != null)
-                {
-                    goalObject["completion_criteria"] = ExpressionConverter.ConvertO(__workflow_bodygoalcompletionCriteria);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaltargetFlow != null)
-                {
-                    goalObject["target_flow"] = ExpressionConverter.ConvertO(__workflow_bodygoaltargetFlow);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalaction != null)
-                {
-                    goalObject["action"] = ExpressionConverter.ConvertO(__workflow_bodygoalaction);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaldetails != null)
-                {
-                    goalObject["details"] = ExpressionConverter.ConvertO(__workflow_bodygoaldetails);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalinitial != null)
-                {
-                    goalObject["initial"] = ExpressionConverter.ConvertO(__workflow_bodygoalinitial);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalprogress != null)
-                {
-                    goalObject["progress"] = ExpressionConverter.ConvertO(__workflow_bodygoalprogress);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaltarget != null)
-                {
-                    goalObject["target"] = ExpressionConverter.ConvertO(__workflow_bodygoaltarget);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalstartTime != null)
-                {
-                    goalObject["start_time"] = ExpressionConverter.ConvertO(__workflow_bodygoalstartTime);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalendTime != null)
-                {
-                    goalObject["end_time"] = ExpressionConverter.ConvertO(__workflow_bodygoalendTime);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalweightId != null)
-                {
-                    goalObject["weight_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalweightId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalisPrivate != null)
-                {
-                    goalObject["is_private"] = ExpressionConverter.ConvertO(__workflow_bodygoalisPrivate);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaltrackingType != null)
-                {
-                    goalObject["tracking_type"] = ExpressionConverter.ConvertO(__workflow_bodygoaltrackingType);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalentityTemplateId != null)
-                {
-                    goalObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodygoalentityTemplateId);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoaldirectFocusAreaIds != null)
-                {
-                    goalObject["direct_focus_area_ids"] = ExpressionConverter.ConvertO(__workflow_bodygoaldirectFocusAreaIds);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalinheritedFocusAreaIds != null)
-                {
-                    goalObject["inherited_focus_area_ids"] = ExpressionConverter.ConvertO(__workflow_bodygoalinheritedFocusAreaIds);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalalignedFromIds != null)
-                {
-                    goalObject["aligned_from_ids"] = ExpressionConverter.ConvertO(__workflow_bodygoalalignedFromIds);
-                    goalObjectpropCount++;
-                }
-
-                if (__workflow_bodygoalalignedToIds != null)
-                {
-                    goalObject["aligned_to_ids"] = ExpressionConverter.ConvertO(__workflow_bodygoalalignedToIds);
-                    goalObjectpropCount++;
-                }
-
-                if (goalObjectpropCount > 0)
-                {
-                    body["goal"] = goalObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateGoalResponse>(callPayload);
             });
         }
@@ -405,18 +106,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateRiskResponse, ApiConnectionActionConfiguration> CreateRisk(Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<int>> bodyissuegoalId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        public IBodyWorkflowAction<CreateRiskResponse, ApiConnectionActionConfiguration> CreateRisk(Expression<Func<string>> instance, Expression<Func<CreateRiskInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyissueissue = WorkflowExpression.Compile(bodyissueissue, nameof(bodyissueissue), required: false);
-            var __workflow_bodyissueisCritical = WorkflowExpression.Compile(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
-            var __workflow_bodyissueisResolved = WorkflowExpression.Compile(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
-            var __workflow_bodyissueroleId = WorkflowExpression.Compile(bodyissueroleId, nameof(bodyissueroleId), required: false);
-            var __workflow_bodyissuegoalId = WorkflowExpression.Compile(bodyissuegoalId, nameof(bodyissuegoalId), required: false);
-            var __workflow_bodyissuedueDate = WorkflowExpression.Compile(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
-            var __workflow_bodyissueentityTemplateId = WorkflowExpression.Compile(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011281053 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011296755 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateRiskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/issues";
@@ -424,83 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var issueObject = new JObject();
-                var issueObjectpropCount = 0;
-                if (__workflow_bodyissueissue != null)
-                {
-                    issueObject["issue"] = ExpressionConverter.ConvertO(__workflow_bodyissueissue);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueisCritical != null)
-                {
-                    issueObject["is_critical"] = ExpressionConverter.ConvertO(__workflow_bodyissueisCritical);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueisResolved != null)
-                {
-                    issueObject["is_resolved"] = ExpressionConverter.ConvertO(__workflow_bodyissueisResolved);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueroleId != null)
-                {
-                    issueObject["role_id"] = ExpressionConverter.ConvertO(__workflow_bodyissueroleId);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissuegoalId != null)
-                {
-                    issueObject["goal_id"] = ExpressionConverter.ConvertO(__workflow_bodyissuegoalId);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissuedueDate != null)
-                {
-                    issueObject["due_date"] = ExpressionConverter.ConvertO(__workflow_bodyissuedueDate);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueentityTemplateId != null)
-                {
-                    issueObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodyissueentityTemplateId);
-                    issueObjectpropCount++;
-                }
-
-                var customAttributesObject = new JObject();
-                var customAttributesObjectpropCount = 0;
-                if (__workflow_bodyissuecustomAttributescA1573011281053 != null)
-                {
-                    customAttributesObject["CA1573011281053"] = ExpressionConverter.ConvertO(__workflow_bodyissuecustomAttributescA1573011281053);
-                    customAttributesObjectpropCount++;
-                }
-
-                if (__workflow_bodyissuecustomAttributescA1573011296755 != null)
-                {
-                    customAttributesObject["CA1573011296755"] = ExpressionConverter.ConvertO(__workflow_bodyissuecustomAttributescA1573011296755);
-                    customAttributesObjectpropCount++;
-                }
-
-                if (customAttributesObjectpropCount > 0)
-                {
-                    issueObject["custom_attributes"] = customAttributesObject;
-                    issueObjectpropCount++;
-                }
-
-                if (issueObjectpropCount > 0)
-                {
-                    body["issue"] = issueObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateRiskResponse>(callPayload);
             });
         }
@@ -536,18 +153,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateRiskResponse, ApiConnectionActionConfiguration> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        public IBodyWorkflowAction<UpdateRiskResponse, ApiConnectionActionConfiguration> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateRiskInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyissueissue = WorkflowExpression.Compile(bodyissueissue, nameof(bodyissueissue), required: false);
-            var __workflow_bodyissueisCritical = WorkflowExpression.Compile(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
-            var __workflow_bodyissueisResolved = WorkflowExpression.Compile(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
-            var __workflow_bodyissueroleId = WorkflowExpression.Compile(bodyissueroleId, nameof(bodyissueroleId), required: false);
-            var __workflow_bodyissuedueDate = WorkflowExpression.Compile(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
-            var __workflow_bodyissueentityTemplateId = WorkflowExpression.Compile(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011281053 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011296755 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateRiskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issues/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -555,77 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var issueObject = new JObject();
-                var issueObjectpropCount = 0;
-                if (__workflow_bodyissueissue != null)
-                {
-                    issueObject["issue"] = ExpressionConverter.ConvertO(__workflow_bodyissueissue);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueisCritical != null)
-                {
-                    issueObject["is_critical"] = ExpressionConverter.ConvertO(__workflow_bodyissueisCritical);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueisResolved != null)
-                {
-                    issueObject["is_resolved"] = ExpressionConverter.ConvertO(__workflow_bodyissueisResolved);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueroleId != null)
-                {
-                    issueObject["role_id"] = ExpressionConverter.ConvertO(__workflow_bodyissueroleId);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissuedueDate != null)
-                {
-                    issueObject["due_date"] = ExpressionConverter.ConvertO(__workflow_bodyissuedueDate);
-                    issueObjectpropCount++;
-                }
-
-                if (__workflow_bodyissueentityTemplateId != null)
-                {
-                    issueObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodyissueentityTemplateId);
-                    issueObjectpropCount++;
-                }
-
-                var customAttributesObject = new JObject();
-                var customAttributesObjectpropCount = 0;
-                if (__workflow_bodyissuecustomAttributescA1573011281053 != null)
-                {
-                    customAttributesObject["CA1573011281053"] = ExpressionConverter.ConvertO(__workflow_bodyissuecustomAttributescA1573011281053);
-                    customAttributesObjectpropCount++;
-                }
-
-                if (__workflow_bodyissuecustomAttributescA1573011296755 != null)
-                {
-                    customAttributesObject["CA1573011296755"] = ExpressionConverter.ConvertO(__workflow_bodyissuecustomAttributescA1573011296755);
-                    customAttributesObjectpropCount++;
-                }
-
-                if (customAttributesObjectpropCount > 0)
-                {
-                    issueObject["custom_attributes"] = customAttributesObject;
-                    issueObjectpropCount++;
-                }
-
-                if (issueObjectpropCount > 0)
-                {
-                    body["issue"] = issueObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateRiskResponse>(callPayload);
             });
         }
@@ -645,18 +185,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> instance, Expression<Func<CreateTaskInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodytasktask = WorkflowExpression.Compile(bodytasktask, nameof(bodytasktask), required: false);
-            var __workflow_bodytaskcomment = WorkflowExpression.Compile(bodytaskcomment, nameof(bodytaskcomment), required: false);
-            var __workflow_bodytaskisComplete = WorkflowExpression.Compile(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
-            var __workflow_bodytaskroleId = WorkflowExpression.Compile(bodytaskroleId, nameof(bodytaskroleId), required: false);
-            var __workflow_bodytaskgoalId = WorkflowExpression.Compile(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
-            var __workflow_bodytaskstartDate = WorkflowExpression.Compile(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
-            var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            var __workflow_bodytaskweightId = WorkflowExpression.Compile(bodytaskweightId, nameof(bodytaskweightId), required: false);
-            var __workflow_bodytaskentityTemplateId = WorkflowExpression.Compile(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks";
@@ -664,75 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var taskObject = new JObject();
-                var taskObjectpropCount = 0;
-                if (__workflow_bodytasktask != null)
-                {
-                    taskObject["task"] = ExpressionConverter.ConvertO(__workflow_bodytasktask);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskcomment != null)
-                {
-                    taskObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodytaskcomment);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskisComplete != null)
-                {
-                    taskObject["is_complete"] = ExpressionConverter.ConvertO(__workflow_bodytaskisComplete);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskroleId != null)
-                {
-                    taskObject["role_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskroleId);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskgoalId != null)
-                {
-                    taskObject["goal_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskgoalId);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskstartDate != null)
-                {
-                    taskObject["start_date"] = ExpressionConverter.ConvertO(__workflow_bodytaskstartDate);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskdueDate != null)
-                {
-                    taskObject["due_date"] = ExpressionConverter.ConvertO(__workflow_bodytaskdueDate);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskweightId != null)
-                {
-                    taskObject["weight_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskweightId);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskentityTemplateId != null)
-                {
-                    taskObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskentityTemplateId);
-                    taskObjectpropCount++;
-                }
-
-                if (taskObjectpropCount > 0)
-                {
-                    body["task"] = taskObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
@@ -768,19 +232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateTaskInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodytasktask = WorkflowExpression.Compile(bodytasktask, nameof(bodytasktask), required: false);
-            var __workflow_bodytaskcomment = WorkflowExpression.Compile(bodytaskcomment, nameof(bodytaskcomment), required: false);
-            var __workflow_bodytaskisComplete = WorkflowExpression.Compile(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
-            var __workflow_bodytaskroleId = WorkflowExpression.Compile(bodytaskroleId, nameof(bodytaskroleId), required: false);
-            var __workflow_bodytaskgoalId = WorkflowExpression.Compile(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
-            var __workflow_bodytaskstartDate = WorkflowExpression.Compile(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
-            var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            var __workflow_bodytaskweightId = WorkflowExpression.Compile(bodytaskweightId, nameof(bodytaskweightId), required: false);
-            var __workflow_bodytaskentityTemplateId = WorkflowExpression.Compile(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -788,75 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var taskObject = new JObject();
-                var taskObjectpropCount = 0;
-                if (__workflow_bodytasktask != null)
-                {
-                    taskObject["task"] = ExpressionConverter.ConvertO(__workflow_bodytasktask);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskcomment != null)
-                {
-                    taskObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodytaskcomment);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskisComplete != null)
-                {
-                    taskObject["is_complete"] = ExpressionConverter.ConvertO(__workflow_bodytaskisComplete);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskroleId != null)
-                {
-                    taskObject["role_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskroleId);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskgoalId != null)
-                {
-                    taskObject["goal_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskgoalId);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskstartDate != null)
-                {
-                    taskObject["start_date"] = ExpressionConverter.ConvertO(__workflow_bodytaskstartDate);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskdueDate != null)
-                {
-                    taskObject["due_date"] = ExpressionConverter.ConvertO(__workflow_bodytaskdueDate);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskweightId != null)
-                {
-                    taskObject["weight_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskweightId);
-                    taskObjectpropCount++;
-                }
-
-                if (__workflow_bodytaskentityTemplateId != null)
-                {
-                    taskObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskentityTemplateId);
-                    taskObjectpropCount++;
-                }
-
-                if (taskObjectpropCount > 0)
-                {
-                    body["task"] = taskObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
             });
         }
@@ -876,12 +264,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> instance, Expression<Func<CreateUpdateInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyupdatecomment = WorkflowExpression.Compile(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
-            var __workflow_bodyupdategoalId = WorkflowExpression.Compile(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
-            var __workflow_bodyupdateentityTemplateId = WorkflowExpression.Compile(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updates";
@@ -889,39 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var updateObject = new JObject();
-                var updateObjectpropCount = 0;
-                if (__workflow_bodyupdatecomment != null)
-                {
-                    updateObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodyupdatecomment);
-                    updateObjectpropCount++;
-                }
-
-                if (__workflow_bodyupdategoalId != null)
-                {
-                    updateObject["goal_id"] = ExpressionConverter.ConvertO(__workflow_bodyupdategoalId);
-                    updateObjectpropCount++;
-                }
-
-                if (__workflow_bodyupdateentityTemplateId != null)
-                {
-                    updateObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodyupdateentityTemplateId);
-                    updateObjectpropCount++;
-                }
-
-                if (updateObjectpropCount > 0)
-                {
-                    body["update"] = updateObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
             });
         }
@@ -957,16 +311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateUpdateResponse, ApiConnectionActionConfiguration> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<string>> bodyupdatecreatedAt = null, Expression<Func<string>> bodyupdateupdatedAt = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdatedeleted = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        public IBodyWorkflowAction<UpdateUpdateResponse, ApiConnectionActionConfiguration> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateUpdateInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_bodyupdatecomment = WorkflowExpression.Compile(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
-            var __workflow_bodyupdatecreatedAt = WorkflowExpression.Compile(bodyupdatecreatedAt, nameof(bodyupdatecreatedAt), required: false);
-            var __workflow_bodyupdateupdatedAt = WorkflowExpression.Compile(bodyupdateupdatedAt, nameof(bodyupdateupdatedAt), required: false);
-            var __workflow_bodyupdategoalId = WorkflowExpression.Compile(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
-            var __workflow_bodyupdatedeleted = WorkflowExpression.Compile(bodyupdatedeleted, nameof(bodyupdatedeleted), required: false);
-            var __workflow_bodyupdateentityTemplateId = WorkflowExpression.Compile(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updates/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -974,57 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var updateObject = new JObject();
-                var updateObjectpropCount = 0;
-                if (__workflow_bodyupdatecomment != null)
-                {
-                    updateObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodyupdatecomment);
-                    updateObjectpropCount++;
-                }
-
-                if (__workflow_bodyupdatecreatedAt != null)
-                {
-                    updateObject["created_at"] = ExpressionConverter.ConvertO(__workflow_bodyupdatecreatedAt);
-                    updateObjectpropCount++;
-                }
-
-                if (__workflow_bodyupdateupdatedAt != null)
-                {
-                    updateObject["updated_at"] = ExpressionConverter.ConvertO(__workflow_bodyupdateupdatedAt);
-                    updateObjectpropCount++;
-                }
-
-                if (__workflow_bodyupdategoalId != null)
-                {
-                    updateObject["goal_id"] = ExpressionConverter.ConvertO(__workflow_bodyupdategoalId);
-                    updateObjectpropCount++;
-                }
-
-                if (__workflow_bodyupdatedeleted != null)
-                {
-                    updateObject["deleted"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedeleted);
-                    updateObjectpropCount++;
-                }
-
-                if (__workflow_bodyupdateentityTemplateId != null)
-                {
-                    updateObject["entity_template_id"] = ExpressionConverter.ConvertO(__workflow_bodyupdateentityTemplateId);
-                    updateObjectpropCount++;
-                }
-
-                if (updateObjectpropCount > 0)
-                {
-                    body["update"] = updateObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateUpdateResponse>(callPayload);
             });
         }
@@ -1217,8 +516,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int[] TaskIds { get; set; }
     }
 
+    public class CreateGoalInput
+    {
+        [JsonProperty("goal", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGoalInputGoalType Goal { get; set; }
+    }
+
+    public class CreateGoalInputGoalType
+    {
+        [JsonProperty("role_id")]
+        public int? RoleId { get; set; }
+
+        [JsonProperty("creator_id")]
+        public int? CreatorId { get; set; }
+
+        [JsonProperty("status")]
+        public CreateGoalInputGoalTypeStatusType? Status { get; set; }
+
+        [JsonProperty("completion_criteria")]
+        public CreateGoalInputGoalTypeCompletionCriteriaType? CompletionCriteria { get; set; }
+
+        [JsonProperty("target_flow")]
+        public CreateGoalInputGoalTypeTargetFlowType? TargetFlow { get; set; }
+
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Action { get; set; }
+
+        [JsonProperty("details", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Details { get; set; }
+
+        [JsonProperty("initial")]
+        public double? Initial { get; set; }
+
+        [JsonProperty("progress")]
+        public double? Progress { get; set; }
+
+        [JsonProperty("target")]
+        public double? Target { get; set; }
+
+        [JsonProperty("start_time", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end_time", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndTime { get; set; }
+
+        [JsonProperty("weight_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGoalInputGoalTypeWeightIdType WeightId { get; set; }
+
+        [JsonProperty("is_private")]
+        public CreateGoalInputGoalTypeIsPrivateType? IsPrivate { get; set; }
+
+        [JsonProperty("tracking_type")]
+        public CreateGoalInputGoalTypeTrackingTypeType? TrackingType { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
+
+        [JsonProperty("direct_focus_area_ids")]
+        public int[] DirectFocusAreaIds { get; set; }
+
+        [JsonProperty("aligned_from_ids")]
+        public int[] AlignedFromIds { get; set; }
+
+        [JsonProperty("aligned_to_ids")]
+        public int[] AlignedToIds { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygoalstatusInput
+    public enum CreateGoalInputGoalTypeStatusType
     {
         APPRO,
         DRAFT,
@@ -1226,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygoalcompletionCriteriaInput
+    public enum CreateGoalInputGoalTypeCompletionCriteriaType
     {
         [EnumMember(Value = "TARGET-REACHED")]
         TARGETREACHED,
@@ -1235,14 +600,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygoaltargetFlowInput
+    public enum CreateGoalInputGoalTypeTargetFlowType
     {
         OVER,
         UNDER,
         NONE
     }
 
-    public enum bodygoalweightIdInput
+    public enum CreateGoalInputGoalTypeWeightIdType
     {
         _1 = 1,
         _2 = 2,
@@ -1250,14 +615,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4 = 4
     }
 
-    public enum bodygoalisPrivateInput
+    public enum CreateGoalInputGoalTypeIsPrivateType
     {
         _0 = 0,
         _1 = 1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygoaltrackingTypeInput
+    public enum CreateGoalInputGoalTypeTrackingTypeType
     {
         MANUAL,
         [EnumMember(Value = "SUBGOAL-SUM")]
@@ -1467,6 +832,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int[] TaskIds { get; set; }
     }
 
+    public class UpdateGoalInput
+    {
+        [JsonProperty("goal")]
+        public UpdateGoalInputGoalType Goal { get; set; }
+    }
+
+    public class UpdateGoalInputGoalType
+    {
+        [JsonProperty("role_id")]
+        public int? RoleId { get; set; }
+
+        [JsonProperty("creator_id")]
+        public int? CreatorId { get; set; }
+
+        [JsonProperty("status")]
+        public UpdateGoalInputGoalTypeStatusType? Status { get; set; }
+
+        [JsonProperty("completion_criteria")]
+        public UpdateGoalInputGoalTypeCompletionCriteriaType? CompletionCriteria { get; set; }
+
+        [JsonProperty("target_flow")]
+        public UpdateGoalInputGoalTypeTargetFlowType? TargetFlow { get; set; }
+
+        [JsonProperty("action")]
+        public string Action { get; set; }
+
+        [JsonProperty("details")]
+        public string Details { get; set; }
+
+        [JsonProperty("initial")]
+        public double? Initial { get; set; }
+
+        [JsonProperty("progress")]
+        public double? Progress { get; set; }
+
+        [JsonProperty("target")]
+        public double? Target { get; set; }
+
+        [JsonProperty("start_time")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end_time")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("weight_id")]
+        public UpdateGoalInputGoalTypeWeightIdType? WeightId { get; set; }
+
+        [JsonProperty("is_private")]
+        public int? IsPrivate { get; set; }
+
+        [JsonProperty("tracking_type")]
+        public UpdateGoalInputGoalTypeTrackingTypeType? TrackingType { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
+
+        [JsonProperty("direct_focus_area_ids")]
+        public int[] DirectFocusAreaIds { get; set; }
+
+        [JsonProperty("inherited_focus_area_ids")]
+        public int[] InheritedFocusAreaIds { get; set; }
+
+        [JsonProperty("aligned_from_ids")]
+        public int[] AlignedFromIds { get; set; }
+
+        [JsonProperty("aligned_to_ids")]
+        public int[] AlignedToIds { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateGoalInputGoalTypeStatusType
+    {
+        APPRO,
+        DRAFT,
+        ARCHI
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateGoalInputGoalTypeCompletionCriteriaType
+    {
+        [EnumMember(Value = "TARGET-REACHED")]
+        TARGETREACHED,
+        [EnumMember(Value = "TARGET-DEADLINE-REACHED")]
+        TARGETDEADLINEREACHED
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateGoalInputGoalTypeTargetFlowType
+    {
+        OVER,
+        UNDER,
+        NONE
+    }
+
+    public enum UpdateGoalInputGoalTypeWeightIdType
+    {
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateGoalInputGoalTypeTrackingTypeType
+    {
+        MANUAL,
+        [EnumMember(Value = "SUBGOAL-SUM")]
+        SUBGOALSUM,
+        [EnumMember(Value = "SUBGOAL-MEAN")]
+        SUBGOALMEAN,
+        [EnumMember(Value = "WEIGHTED-MEAN")]
+        WEIGHTEDMEAN,
+        TASKS
+    }
+
     public class GetAllRisksResponse
     {
         [JsonProperty("issue")]
@@ -1557,16 +1037,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int CA1573011296755 { get; set; }
     }
 
-    public enum bodyissueisCriticalInput
+    public class CreateRiskInput
+    {
+        [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRiskInputIssueType Issue { get; set; }
+    }
+
+    public class CreateRiskInputIssueType
+    {
+        [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Issue { get; set; }
+
+        [JsonProperty("is_critical")]
+        public CreateRiskInputIssueTypeIsCriticalType? IsCritical { get; set; }
+
+        [JsonProperty("is_resolved")]
+        public CreateRiskInputIssueTypeIsResolvedType? IsResolved { get; set; }
+
+        [JsonProperty("role_id")]
+        public int? RoleId { get; set; }
+
+        [JsonProperty("goal_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int GoalId { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
+
+        [JsonProperty("custom_attributes")]
+        public CreateRiskInputIssueTypeCustomAttributesType CustomAttributes { get; set; }
+    }
+
+    public enum CreateRiskInputIssueTypeIsCriticalType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum bodyissueisResolvedInput
+    public enum CreateRiskInputIssueTypeIsResolvedType
     {
         _0 = 0,
         _1 = 1
+    }
+
+    public class CreateRiskInputIssueTypeCustomAttributesType
+    {
+        public int? CA1573011281053 { get; set; }
+        public int? CA1573011296755 { get; set; }
     }
 
     public class GetSingleRiskResponse
@@ -1671,6 +1190,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int CA1573011296755 { get; set; }
     }
 
+    public class UpdateRiskInput
+    {
+        [JsonProperty("issue")]
+        public UpdateRiskInputIssueType Issue { get; set; }
+    }
+
+    public class UpdateRiskInputIssueType
+    {
+        [JsonProperty("issue")]
+        public string Issue { get; set; }
+
+        [JsonProperty("is_critical")]
+        public UpdateRiskInputIssueTypeIsCriticalType? IsCritical { get; set; }
+
+        [JsonProperty("is_resolved")]
+        public UpdateRiskInputIssueTypeIsResolvedType? IsResolved { get; set; }
+
+        [JsonProperty("role_id")]
+        public int? RoleId { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
+
+        [JsonProperty("custom_attributes")]
+        public UpdateRiskInputIssueTypeCustomAttributesType CustomAttributes { get; set; }
+    }
+
+    public enum UpdateRiskInputIssueTypeIsCriticalType
+    {
+        _0 = 0,
+        _1 = 1
+    }
+
+    public enum UpdateRiskInputIssueTypeIsResolvedType
+    {
+        _0 = 0,
+        _1 = 1
+    }
+
+    public class UpdateRiskInputIssueTypeCustomAttributesType
+    {
+        public int? CA1573011281053 { get; set; }
+        public int? CA1573011296755 { get; set; }
+    }
+
     public class GetAllTasksResponse
     {
         [JsonProperty("tasks")]
@@ -1769,13 +1336,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4 = 4
     }
 
-    public enum bodytaskisCompleteInput
+    public class CreateTaskInput
+    {
+        [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateTaskInputTaskObjectType TaskObject { get; set; }
+    }
+
+    public class CreateTaskInputTaskObjectType
+    {
+        [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TaskObject { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("is_complete")]
+        public CreateTaskInputTaskObjectTypeIsCompleteType? IsComplete { get; set; }
+
+        [JsonProperty("role_id")]
+        public int? RoleId { get; set; }
+
+        [JsonProperty("goal_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int GoalId { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("weight_id")]
+        public CreateTaskInputTaskObjectTypeWeightIdType? WeightId { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
+    }
+
+    public enum CreateTaskInputTaskObjectTypeIsCompleteType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum bodytaskweightIdInput
+    public enum CreateTaskInputTaskObjectTypeWeightIdType
     {
         _1 = 1,
         _2 = 2,
@@ -1903,6 +1506,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int EntityTemplateId { get; set; }
     }
 
+    public class UpdateTaskInput
+    {
+        [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateTaskInputTaskObjectType TaskObject { get; set; }
+    }
+
+    public class UpdateTaskInputTaskObjectType
+    {
+        [JsonProperty("task")]
+        public string TaskObject { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("is_complete")]
+        public UpdateTaskInputTaskObjectTypeIsCompleteType? IsComplete { get; set; }
+
+        [JsonProperty("role_id")]
+        public int? RoleId { get; set; }
+
+        [JsonProperty("goal_id")]
+        public int? GoalId { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("weight_id")]
+        public UpdateTaskInputTaskObjectTypeWeightIdType? WeightId { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
+    }
+
+    public enum UpdateTaskInputTaskObjectTypeIsCompleteType
+    {
+        _0 = 0,
+        _1 = 1
+    }
+
+    public enum UpdateTaskInputTaskObjectTypeWeightIdType
+    {
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
+    }
+
     public class GetAllUpdatesResponse
     {
         [JsonProperty("update")]
@@ -1973,6 +1626,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
         [JsonProperty("entity_template_id")]
         public int EntityTemplateId { get; set; }
+    }
+
+    public class CreateUpdateInput
+    {
+        [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateUpdateInputUpdateType Update { get; set; }
+    }
+
+    public class CreateUpdateInputUpdateType
+    {
+        [JsonProperty("comment", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+
+        [JsonProperty("goal_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int GoalId { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
     }
 
     public class GetSingleUpdateResponse
@@ -2057,6 +1728,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
         [JsonProperty("entity_template_id")]
         public int EntityTemplateId { get; set; }
+    }
+
+    public class UpdateUpdateInput
+    {
+        [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateUpdateInputUpdateType Update { get; set; }
+    }
+
+    public class UpdateUpdateInputUpdateType
+    {
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("goal_id")]
+        public int? GoalId { get; set; }
+
+        [JsonProperty("deleted")]
+        public int? Deleted { get; set; }
+
+        [JsonProperty("entity_template_id")]
+        public int? EntityTemplateId { get; set; }
     }
 }
 

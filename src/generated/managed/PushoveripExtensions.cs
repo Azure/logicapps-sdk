@@ -13,82 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
     public class PushoveripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> bodyuser, Expression<Func<string>> bodymessage, Expression<Func<string>> bodydevice = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodyhtmlInput>> bodyhtml = null, Expression<Func<string>> bodysound = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyurlTitle = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> body = null)
         {
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodydevice = WorkflowExpression.Compile(bodydevice, nameof(bodydevice), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: false);
-            var __workflow_bodysound = WorkflowExpression.Compile(bodysound, nameof(bodysound), required: false);
-            var __workflow_bodytimestamp = WorkflowExpression.Compile(bodytimestamp, nameof(bodytimestamp), required: false);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodyurlTitle = WorkflowExpression.Compile(bodyurlTitle, nameof(bodyurlTitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/messages.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                if (__workflow_bodydevice != null)
-                {
-                    body["device"] = ExpressionConverter.ConvertO(__workflow_bodydevice);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhtml != null)
-                {
-                    body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                if (__workflow_bodysound != null)
-                {
-                    body["sound"] = ExpressionConverter.ConvertO(__workflow_bodysound);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimestamp != null)
-                {
-                    body["timestamp"] = ExpressionConverter.ConvertO(__workflow_bodytimestamp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurlTitle != null)
-                {
-                    body["url_title"] = ExpressionConverter.ConvertO(__workflow_bodyurlTitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
             });
         }
@@ -106,30 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<ValidateKeyResponse, ApiConnectionActionConfiguration> ValidateKey(Expression<Func<string>> bodyuser, Expression<Func<string>> bodydevice = null)
+        public IBodyWorkflowAction<ValidateKeyResponse, ApiConnectionActionConfiguration> ValidateKey(Expression<Func<ValidateKeyInput>> body = null)
         {
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
-            var __workflow_bodydevice = WorkflowExpression.Compile(bodydevice, nameof(bodydevice), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ValidateKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/users/validate.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                if (__workflow_bodydevice != null)
-                {
-                    body["device"] = ExpressionConverter.ConvertO(__workflow_bodydevice);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ValidateKeyResponse>(callPayload);
             });
         }
@@ -160,7 +80,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string Request { get; set; }
     }
 
-    public enum bodypriorityInput
+    public class SendMessageInput
+    {
+        [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string User { get; set; } = "";
+
+        [JsonProperty("device")]
+        public string Device { get; set; }
+
+        [JsonProperty("priority")]
+        public SendMessageInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("html")]
+        public SendMessageInputHtmlType? Html { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("sound")]
+        public string Sound { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("url_title")]
+        public string UrlTitle { get; set; }
+    }
+
+    public enum SendMessageInputPriorityType
     {
         Negative2 = -2,
         Negative1 = -1,
@@ -169,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         _2 = 2
     }
 
-    public enum bodyhtmlInput
+    public enum SendMessageInputHtmlType
     {
         _1 = 1
     }
@@ -211,6 +164,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
 
         [JsonProperty("request")]
         public string Request { get; set; }
+    }
+
+    public class ValidateKeyInput
+    {
+        [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string User { get; set; } = "";
+
+        [JsonProperty("device")]
+        public string Device { get; set; }
     }
 
     public class LimitsResponse

@@ -13,44 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class IntercomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycompanyId = null)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphone != null)
-                {
-                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompanyId != null)
-                {
-                    body["companies"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserResponse>(callPayload);
             });
         }
@@ -68,59 +39,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse, ApiConnectionActionConfiguration> CreateLead(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyavatarimageURL = null, Expression<Func<string>> bodycompanyId = null)
+        public IBodyWorkflowAction<LeadResponse, ApiConnectionActionConfiguration> CreateLead(Expression<Func<CreateLeadInput>> body)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodyavatarimageURL = WorkflowExpression.Compile(bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LeadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphone != null)
-                {
-                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
-                    bodypropCount++;
-                }
-
-                var avatarObject = new JObject();
-                var avatarObjectpropCount = 0;
-                if (__workflow_bodyavatarimageURL != null)
-                {
-                    avatarObject["image_url"] = ExpressionConverter.ConvertO(__workflow_bodyavatarimageURL);
-                    avatarObjectpropCount++;
-                }
-
-                if (avatarObjectpropCount > 0)
-                {
-                    body["avatar"] = avatarObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompanyId != null)
-                {
-                    body["companies"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LeadResponse>(callPayload);
             });
         }
@@ -265,6 +192,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         public string TimeZone { get; set; }
     }
 
+    public class CreateUserInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty("companies")]
+        public string CompanyId { get; set; }
+    }
+
     public class LeadResponse
     {
         [JsonProperty("id")]
@@ -323,6 +265,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 
         [JsonProperty("timezone")]
         public string TimeZone { get; set; }
+    }
+
+    public class CreateLeadInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty("avatar")]
+        public CreateLeadInputAvatarType Avatar { get; set; }
+
+        [JsonProperty("companies")]
+        public string CompanyId { get; set; }
+    }
+
+    public class CreateLeadInputAvatarType
+    {
+        [JsonProperty("image_url")]
+        public string ImageURL { get; set; }
     }
 
     public class TrigLeadResponse

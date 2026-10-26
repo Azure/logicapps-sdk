@@ -13,13 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
     public class Assistantstudiov2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateActionCard(Expression<Func<string>> organization, Expression<Func<string>> bodycardname, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<object>> bodydynamicproperties, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateActionCard(Expression<Func<string>> organization, Expression<Func<CreateActionCardInput>> body, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
         {
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
-            var __workflow_bodycardname = WorkflowExpression.Compile(bodycardname, nameof(bodycardname), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodydynamicproperties = WorkflowExpression.Compile(bodydynamicproperties, nameof(bodydynamicproperties), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_actiontype = WorkflowExpression.Compile(actiontype, nameof(actiontype), required: true);
             var __workflow_secondaryactiontype = WorkflowExpression.Compile(secondaryactiontype, nameof(secondaryactiontype), required: false);
             var __workflow_regardingobjecttype = WorkflowExpression.Compile(regardingobjecttype, nameof(regardingobjecttype), required: false);
@@ -46,32 +43,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
                     callPayload.Headers["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
                 if (__workflow_expirydate != null)
                     callPayload.Headers["expirydate"] = ExpressionConverter.Convert(__workflow_expirydate);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["cardname"] = ExpressionConverter.ConvertO(__workflow_bodycardname);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                bodypropCount++;
-                body["dynamicproperties"] = ExpressionConverter.ConvertO(__workflow_bodydynamicproperties);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateCustomActionDefinition(Expression<Func<string>> organization, Expression<Func<string>> entityname, Expression<Func<string>> customaction, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateCustomActionDefinition(Expression<Func<string>> organization, Expression<Func<string>> entityname, Expression<Func<string>> customaction, Expression<Func<object>> body)
         {
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
             var __workflow_entityname = WorkflowExpression.Compile(entityname, nameof(entityname), required: true);
             var __workflow_customaction = WorkflowExpression.Compile(customaction, nameof(customaction), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/data/v9.0/msdyn_CreateCustomActionDefinition";
@@ -88,6 +71,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
 
     public class Assistantstudiov2Triggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class CreateActionCardInput
+    {
+        [JsonProperty("cardname", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Cardname { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("dynamicproperties", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Dynamicproperties { get; set; }
     }
 }
 

@@ -28,69 +28,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignPostResponse, ApiConnectionActionConfiguration> Campaign(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendAt = null, Expression<Func<int>> bodygoal = null, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<CampaignPostResponse, ApiConnectionActionConfiguration> Campaign(Expression<Func<CampaignPostInput>> body)
         {
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyendAt = WorkflowExpression.Compile(bodyendAt, nameof(bodyendAt), required: false);
-            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodysubtitle = WorkflowExpression.Compile(bodysubtitle, nameof(bodysubtitle), required: false);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CampaignPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/campaigns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendAt != null)
-                {
-                    body["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyendAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoal != null)
-                {
-                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubtitle != null)
-                {
-                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyslug != null)
-                {
-                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CampaignPostResponse>(callPayload);
             });
         }
@@ -122,70 +68,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignPatchResponse, ApiConnectionActionConfiguration> CampaignPatch(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendAt = null, Expression<Func<string>> bodygoal = null, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<CampaignPatchResponse, ApiConnectionActionConfiguration> CampaignPatch(Expression<Func<string>> id, Expression<Func<CampaignPatchInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyendAt = WorkflowExpression.Compile(bodyendAt, nameof(bodyendAt), required: false);
-            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodysubtitle = WorkflowExpression.Compile(bodysubtitle, nameof(bodysubtitle), required: false);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CampaignPatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendAt != null)
-                {
-                    body["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyendAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoal != null)
-                {
-                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubtitle != null)
-                {
-                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyslug != null)
-                {
-                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CampaignPatchResponse>(callPayload);
             });
         }
@@ -274,111 +167,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactPostResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyaddressesInputItem[]>> bodyaddresses = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodydob = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytwitterUrl = null, Expression<Func<string>> bodylinkedinUrl = null, Expression<Func<string>> bodyfacebookUrl = null)
+        public IBodyWorkflowAction<ContactPostResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactPostInput>> body)
         {
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
-            var __workflow_bodyphones = WorkflowExpression.Compile(bodyphones, nameof(bodyphones), required: false);
-            var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodydob = WorkflowExpression.Compile(bodydob, nameof(bodydob), required: false);
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytwitterUrl = WorkflowExpression.Compile(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
-            var __workflow_bodylinkedinUrl = WorkflowExpression.Compile(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
-            var __workflow_bodyfacebookUrl = WorkflowExpression.Compile(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ContactPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymiddleName != null)
-                {
-                    body["middle_name"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemails != null)
-                {
-                    body["emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphones != null)
-                {
-                    body["phones"] = ExpressionConverter.ConvertO(__workflow_bodyphones);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddresses != null)
-                {
-                    body["addresses"] = ExpressionConverter.ConvertO(__workflow_bodyaddresses);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydob != null)
-                {
-                    body["dob"] = ExpressionConverter.ConvertO(__workflow_bodydob);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompany != null)
-                {
-                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytwitterUrl != null)
-                {
-                    body["twitter_url"] = ExpressionConverter.ConvertO(__workflow_bodytwitterUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylinkedinUrl != null)
-                {
-                    body["linkedin_url"] = ExpressionConverter.ConvertO(__workflow_bodylinkedinUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfacebookUrl != null)
-                {
-                    body["facebook_url"] = ExpressionConverter.ConvertO(__workflow_bodyfacebookUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ContactPostResponse>(callPayload);
             });
         }
@@ -397,84 +194,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactPatchResponse, ApiConnectionActionConfiguration> ContactPatch(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydob = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytwitterUrl = null, Expression<Func<string>> bodylinkedinUrl = null, Expression<Func<string>> bodyfacebookUrl = null)
+        public IBodyWorkflowAction<ContactPatchResponse, ApiConnectionActionConfiguration> ContactPatch(Expression<Func<string>> id, Expression<Func<ContactPatchInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydob = WorkflowExpression.Compile(bodydob, nameof(bodydob), required: false);
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytwitterUrl = WorkflowExpression.Compile(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
-            var __workflow_bodylinkedinUrl = WorkflowExpression.Compile(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
-            var __workflow_bodyfacebookUrl = WorkflowExpression.Compile(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ContactPatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymiddleName != null)
-                {
-                    body["middle_name"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydob != null)
-                {
-                    body["dob"] = ExpressionConverter.ConvertO(__workflow_bodydob);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompany != null)
-                {
-                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytwitterUrl != null)
-                {
-                    body["twitter_url"] = ExpressionConverter.ConvertO(__workflow_bodytwitterUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylinkedinUrl != null)
-                {
-                    body["linkedin_url"] = ExpressionConverter.ConvertO(__workflow_bodylinkedinUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfacebookUrl != null)
-                {
-                    body["facebook_url"] = ExpressionConverter.ConvertO(__workflow_bodyfacebookUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ContactPatchResponse>(callPayload);
             });
         }
@@ -618,34 +347,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<FundPostResponse, ApiConnectionActionConfiguration> Fund(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
+        public IBodyWorkflowAction<FundPostResponse, ApiConnectionActionConfiguration> Fund(Expression<Func<FundPostInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/funds";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycode != null)
-                {
-                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundPostResponse>(callPayload);
             });
         }
@@ -664,35 +374,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<FundPatchResponse, ApiConnectionActionConfiguration> FundPatch(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
+        public IBodyWorkflowAction<FundPatchResponse, ApiConnectionActionConfiguration> FundPatch(Expression<Func<string>> id, Expression<Func<FundPatchInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundPatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funds/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycode != null)
-                {
-                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundPatchResponse>(callPayload);
             });
         }
@@ -985,6 +676,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Source { get; set; }
     }
 
+    public class CampaignPostInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("end_at")]
+        public string EndAt { get; set; }
+
+        [JsonProperty("goal")]
+        public int? Goal { get; set; }
+
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
+
+        [JsonProperty("slug")]
+        public string Slug { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
     public class CampaignGetAResponse
     {
         [JsonProperty("id")]
@@ -1184,6 +899,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
 
         [JsonProperty("source")]
         public string Source { get; set; }
+    }
+
+    public class CampaignPatchInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("end_at")]
+        public string EndAt { get; set; }
+
+        [JsonProperty("goal")]
+        public string Goal { get; set; }
+
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
+
+        [JsonProperty("slug")]
+        public string Slug { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 
     public class MemberGetResponse
@@ -1846,7 +1585,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public int TotalContributions { get; set; }
     }
 
-    public class bodyemailsInputItem
+    public class ContactPostInput
+    {
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("middle_name")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("emails")]
+        public ContactPostInputEmailsTypeItem[] Emails { get; set; }
+
+        [JsonProperty("phones")]
+        public ContactPostInputPhonesTypeItem[] Phones { get; set; }
+
+        [JsonProperty("addresses")]
+        public ContactPostInputAddressesTypeItem[] Addresses { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("dob")]
+        public string Dob { get; set; }
+
+        [JsonProperty("company")]
+        public string Company { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("twitter_url")]
+        public string TwitterUrl { get; set; }
+
+        [JsonProperty("linkedin_url")]
+        public string LinkedinUrl { get; set; }
+
+        [JsonProperty("facebook_url")]
+        public string FacebookUrl { get; set; }
+    }
+
+    public class ContactPostInputEmailsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1855,7 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Type { get; set; }
     }
 
-    public class bodyphonesInputItem
+    public class ContactPostInputPhonesTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1864,7 +1645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Type { get; set; }
     }
 
-    public class bodyaddressesInputItem
+    public class ContactPostInputAddressesTypeItem
     {
         [JsonProperty("address_1")]
         public string Address1 { get; set; }
@@ -2213,6 +1994,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
 
         [JsonProperty("total_contributions")]
         public int TotalContributions { get; set; }
+    }
+
+    public class ContactPatchInput
+    {
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("middle_name")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("dob")]
+        public string Dob { get; set; }
+
+        [JsonProperty("company")]
+        public string Company { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("twitter_url")]
+        public string TwitterUrl { get; set; }
+
+        [JsonProperty("linkedin_url")]
+        public string LinkedinUrl { get; set; }
+
+        [JsonProperty("facebook_url")]
+        public string FacebookUrl { get; set; }
     }
 
     public class ContactRestoreResponse
@@ -3370,6 +3181,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string UpdatedAt { get; set; }
     }
 
+    public class FundPostInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+    }
+
     public class FundGetAResponse
     {
         [JsonProperty("id")]
@@ -3416,6 +3236,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class FundPatchInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
     }
 }
 

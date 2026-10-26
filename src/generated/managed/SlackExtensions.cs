@@ -73,89 +73,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<PostMessageResponse, ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> messagechannelName, Expression<Func<string>> messagemessageText, Expression<Func<string>> messagebotName = null, Expression<Func<bool>> messagepostAsUser = null, Expression<Func<messageparseModeInput>> messageparseMode = null, Expression<Func<bool>> messageslackMarkupParsing = null, Expression<Func<int>> messagelinkNames = null, Expression<Func<bool>> messageunfurlLinks = null, Expression<Func<bool>> messageunfurlMedia = null, Expression<Func<string>> messageiconUrl = null, Expression<Func<string>> messageiconEmoji = null)
+        public IBodyWorkflowAction<PostMessageResponse, ApiConnectionActionConfiguration> PostMessage(Expression<Func<PostMessageV2Input>> message)
         {
-            var __workflow_messagechannelName = WorkflowExpression.Compile(messagechannelName, nameof(messagechannelName), required: true);
-            var __workflow_messagemessageText = WorkflowExpression.Compile(messagemessageText, nameof(messagemessageText), required: true);
-            var __workflow_messagebotName = WorkflowExpression.Compile(messagebotName, nameof(messagebotName), required: false);
-            var __workflow_messagepostAsUser = WorkflowExpression.Compile(messagepostAsUser, nameof(messagepostAsUser), required: false);
-            var __workflow_messageparseMode = WorkflowExpression.Compile(messageparseMode, nameof(messageparseMode), required: false);
-            var __workflow_messageslackMarkupParsing = WorkflowExpression.Compile(messageslackMarkupParsing, nameof(messageslackMarkupParsing), required: false);
-            var __workflow_messagelinkNames = WorkflowExpression.Compile(messagelinkNames, nameof(messagelinkNames), required: false);
-            var __workflow_messageunfurlLinks = WorkflowExpression.Compile(messageunfurlLinks, nameof(messageunfurlLinks), required: false);
-            var __workflow_messageunfurlMedia = WorkflowExpression.Compile(messageunfurlMedia, nameof(messageunfurlMedia), required: false);
-            var __workflow_messageiconUrl = WorkflowExpression.Compile(messageiconUrl, nameof(messageiconUrl), required: false);
-            var __workflow_messageiconEmoji = WorkflowExpression.Compile(messageiconEmoji, nameof(messageiconEmoji), required: false);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             return new DeferredBodyAction<PostMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/chat.postMessage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var message = new JObject();
-                var messagepropCount = 0;
-                messagepropCount++;
-                message["channel"] = ExpressionConverter.ConvertO(__workflow_messagechannelName);
-                messagepropCount++;
-                message["text"] = ExpressionConverter.ConvertO(__workflow_messagemessageText);
-                if (__workflow_messagebotName != null)
-                {
-                    message["username"] = ExpressionConverter.ConvertO(__workflow_messagebotName);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagepostAsUser != null)
-                {
-                    message["as_user"] = ExpressionConverter.ConvertO(__workflow_messagepostAsUser);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messageparseMode != null)
-                {
-                    message["parse"] = ExpressionConverter.ConvertO(__workflow_messageparseMode);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messageslackMarkupParsing != null)
-                {
-                    message["mrkdwn"] = ExpressionConverter.ConvertO(__workflow_messageslackMarkupParsing);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagelinkNames != null)
-                {
-                    message["link_names"] = ExpressionConverter.ConvertO(__workflow_messagelinkNames);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messageunfurlLinks != null)
-                {
-                    message["unfurl_links"] = ExpressionConverter.ConvertO(__workflow_messageunfurlLinks);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messageunfurlMedia != null)
-                {
-                    message["unfurl_media"] = ExpressionConverter.ConvertO(__workflow_messageunfurlMedia);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messageiconUrl != null)
-                {
-                    message["icon_url"] = ExpressionConverter.ConvertO(__workflow_messageiconUrl);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messageiconEmoji != null)
-                {
-                    message["icon_emoji"] = ExpressionConverter.ConvertO(__workflow_messageiconEmoji);
-                    messagepropCount++;
-                }
-
-                if (messagepropCount > 0)
-                {
-                    callPayload.Body = message;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_message);
                 return new ApiConnectionAction<PostMessageResponse>(callPayload);
             });
         }
@@ -246,8 +172,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         public string Ts { get; set; }
     }
 
+    public class PostMessageV2Input
+    {
+        [JsonProperty("channel", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChannelName { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MessageText { get; set; }
+
+        [JsonProperty("username")]
+        public string BotName { get; set; }
+
+        [JsonProperty("as_user")]
+        public bool? PostAsUser { get; set; }
+
+        [JsonProperty("parse")]
+        public PostMessageV2InputParseModeType? ParseMode { get; set; }
+
+        [JsonProperty("mrkdwn")]
+        public bool? SlackMarkupParsing { get; set; }
+
+        [JsonProperty("link_names")]
+        public int? LinkNames { get; set; }
+
+        [JsonProperty("unfurl_links")]
+        public bool? UnfurlLinks { get; set; }
+
+        [JsonProperty("unfurl_media")]
+        public bool? UnfurlMedia { get; set; }
+
+        [JsonProperty("icon_url")]
+        public string IconUrl { get; set; }
+
+        [JsonProperty("icon_emoji")]
+        public string IconEmoji { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum messageparseModeInput
+    public enum PostMessageV2InputParseModeType
     {
         [EnumMember(Value = "full")]
         Full,

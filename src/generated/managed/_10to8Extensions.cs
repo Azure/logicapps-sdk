@@ -13,33 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
     public class _10to8Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "10to8")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BookAppointment(Expression<Func<string>> organisationId, Expression<Func<string>> bodystartDateTime, Expression<Func<string>> bodyendDateTime, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BookAppointment(Expression<Func<string>> organisationId, Expression<Func<BookAppointmentInput>> body)
         {
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
-            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: true);
-            var __workflow_bodyendDateTime = WorkflowExpression.Compile(bodyendDateTime, nameof(bodyendDateTime), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/microsoft-flow/v1/{0}/appointments/", __workflow_organisationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["start"] = ExpressionConverter.ConvertO(__workflow_bodystartDateTime);
-                bodypropCount++;
-                body["end"] = ExpressionConverter.ConvertO(__workflow_bodyendDateTime);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -142,6 +125,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
                 return new ApiConnectionTrigger<EventProposal[]>(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class BookAppointmentInput
+    {
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartDateTime { get; set; }
+
+        [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndDateTime { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
     }
 
     public class GetAppointmentsResponseItem

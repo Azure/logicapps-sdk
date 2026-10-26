@@ -37,96 +37,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUploadResponse, ApiConnectionActionConfiguration> FileUpload(Expression<Func<string>> bodyFile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUploadResponse, ApiConnectionActionConfiguration> FileUpload(Expression<Func<FileUploadInput>> body = null)
         {
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
-            var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
-            var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FileUploadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpires != null)
-                {
-                    body["expires"] = ExpressionConverter.ConvertO(__workflow_bodyexpires);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxDownloads != null)
-                {
-                    body["maxDownloads"] = ExpressionConverter.ConvertO(__workflow_bodymaxDownloads);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautoDelete != null)
-                {
-                    body["autoDelete"] = ExpressionConverter.ConvertO(__workflow_bodyautoDelete);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FileUploadResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUpdateResponse, ApiConnectionActionConfiguration> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyFile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUpdateResponse, ApiConnectionActionConfiguration> FileUpdate(Expression<Func<string>> key, Expression<Func<FileUpdateInput>> body = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
-            var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
-            var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
-            var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FileUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpires != null)
-                {
-                    body["expires"] = ExpressionConverter.ConvertO(__workflow_bodyexpires);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxDownloads != null)
-                {
-                    body["maxDownloads"] = ExpressionConverter.ConvertO(__workflow_bodymaxDownloads);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautoDelete != null)
-                {
-                    body["autoDelete"] = ExpressionConverter.ConvertO(__workflow_bodyautoDelete);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FileUpdateResponse>(callPayload);
             });
         }
@@ -302,6 +238,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         public string Modified { get; set; }
     }
 
+    public class FileUploadInput
+    {
+        [JsonProperty("file")]
+        public string File { get; set; }
+
+        [JsonProperty("expires")]
+        public string Expires { get; set; }
+
+        [JsonProperty("maxDownloads")]
+        public int? MaxDownloads { get; set; }
+
+        [JsonProperty("autoDelete")]
+        public bool? AutoDelete { get; set; }
+    }
+
     public class FileUpdateResponse
     {
         [JsonProperty("success")]
@@ -348,6 +299,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
 
         [JsonProperty("modified")]
         public string Modified { get; set; }
+    }
+
+    public class FileUpdateInput
+    {
+        [JsonProperty("file")]
+        public string File { get; set; }
+
+        [JsonProperty("expires")]
+        public string Expires { get; set; }
+
+        [JsonProperty("maxDownloads")]
+        public int? MaxDownloads { get; set; }
+
+        [JsonProperty("autoDelete")]
+        public bool? AutoDelete { get; set; }
     }
 
     public class FileDeleteResponse

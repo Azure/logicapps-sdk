@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
     public class ProwfmauthenticationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
-        public IBodyWorkflowAction<GetAccessTokenResponse, ApiConnectionActionConfiguration> GetAccessToken(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyclientId, Expression<Func<string>> bodyclientSecret)
+        public IBodyWorkflowAction<GetAccessTokenResponse, ApiConnectionActionConfiguration> GetAccessToken(Expression<Func<GetAccessTokenInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: true);
-            var __workflow_bodyclientSecret = WorkflowExpression.Compile(bodyclientSecret, nameof(bodyclientSecret), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAccessTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/authentication/access_token";
@@ -26,25 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/x-www-form-urlencoded");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["client_id"] = ExpressionConverter.ConvertO(__workflow_bodyclientId);
-                bodypropCount++;
-                body["client_secret"] = ExpressionConverter.ConvertO(__workflow_bodyclientSecret);
-                body["grant_type"] = "password";
-                bodypropCount++;
-                body["auth_chain"] = "OAuthLdapService";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetAccessTokenResponse>(callPayload);
             });
         }
@@ -73,6 +52,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
 
         [JsonProperty("expires_in")]
         public int ExpiresIn { get; set; }
+    }
+
+    public class GetAccessTokenInput
+    {
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty("client_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ClientId { get; set; }
+
+        [JsonProperty("client_secret", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ClientSecret { get; set; }
+
+        [JsonProperty("grant_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string GrantType { get; set; } = "password";
+
+        [JsonProperty("auth_chain", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string AuthChain { get; set; } = "OAuthLdapService";
     }
 }
 

@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     public class WorkdaysoapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody)
         {
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/SOAPOperation/{0}/{1}", __workflow_service.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> reportInstanceName, Expression<Func<string>> requestBody = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> requestBody, Expression<Func<string>> reportInstanceName)
         {
             var __workflow_accountName = WorkflowExpression.Compile(accountName, nameof(accountName), required: true);
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             var __workflow_reportInstanceName = WorkflowExpression.Compile(reportInstanceName, nameof(reportInstanceName), required: true);
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RaaSOperation/{0}/{1}/{2}", __workflow_reportInstanceName.WithUrlEncoding(1), __workflow_accountName.WithUrlEncoding(1), __workflow_reportName.WithUrlEncoding(1)));
@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
                 callPayload.Queries["contentType"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Queries["contentType"] = ExpressionConverter.Convert(__workflow_contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -89,120 +90,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<JobChangeResponse, ApiConnectionActionConfiguration> TransferEmployee(Expression<Func<string>> workerId, Expression<Func<string>> bodyeffectiveDate, Expression<Func<string>> bodysupervisoryOrganizationid = null, Expression<Func<string>> bodyjobChangeReasonid = null, Expression<Func<bool>> bodymoveManagerSTeam = null)
+        public IBodyWorkflowAction<JobChangeResponse, ApiConnectionActionConfiguration> TransferEmployee(Expression<Func<string>> workerId, Expression<Func<TransferEmployeeInput>> body)
         {
             var __workflow_workerId = WorkflowExpression.Compile(workerId, nameof(workerId), required: true);
-            var __workflow_bodyeffectiveDate = WorkflowExpression.Compile(bodyeffectiveDate, nameof(bodyeffectiveDate), required: true);
-            var __workflow_bodysupervisoryOrganizationid = WorkflowExpression.Compile(bodysupervisoryOrganizationid, nameof(bodysupervisoryOrganizationid), required: false);
-            var __workflow_bodyjobChangeReasonid = WorkflowExpression.Compile(bodyjobChangeReasonid, nameof(bodyjobChangeReasonid), required: false);
-            var __workflow_bodymoveManagerSTeam = WorkflowExpression.Compile(bodymoveManagerSTeam, nameof(bodymoveManagerSTeam), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JobChangeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RESTOperation/workers/{0}/jobChanges", __workflow_workerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var supervisoryOrganizationObject = new JObject();
-                var supervisoryOrganizationObjectpropCount = 0;
-                if (__workflow_bodysupervisoryOrganizationid != null)
-                {
-                    supervisoryOrganizationObject["id"] = ExpressionConverter.ConvertO(__workflow_bodysupervisoryOrganizationid);
-                    supervisoryOrganizationObjectpropCount++;
-                }
-
-                if (supervisoryOrganizationObjectpropCount > 0)
-                {
-                    body["supervisoryOrganization"] = supervisoryOrganizationObject;
-                    bodypropCount++;
-                }
-
-                var jobChangeReasonObject = new JObject();
-                var jobChangeReasonObjectpropCount = 0;
-                if (__workflow_bodysupervisoryOrganizationid != null)
-                {
-                    jobChangeReasonObject["id"] = ExpressionConverter.ConvertO(__workflow_bodysupervisoryOrganizationid);
-                    jobChangeReasonObjectpropCount++;
-                }
-
-                if (jobChangeReasonObjectpropCount > 0)
-                {
-                    body["jobChangeReason"] = jobChangeReasonObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["effective"] = ExpressionConverter.ConvertO(__workflow_bodyeffectiveDate);
-                if (__workflow_bodymoveManagerSTeam != null)
-                {
-                    body["moveManagersTeam"] = ExpressionConverter.ConvertO(__workflow_bodymoveManagerSTeam);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JobChangeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<RequestFeedbackResponse, ApiConnectionActionConfiguration> RequestFeedback(Expression<Func<string>> workerId, Expression<Func<WorkdayObjectReference[]>> bodyfeedbackResponders, Expression<Func<string>> bodyfeedbackTemplateid = null, Expression<Func<bool>> bodyconfidential = null, Expression<Func<bool>> bodyshowProviderName = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<RequestFeedbackResponse, ApiConnectionActionConfiguration> RequestFeedback(Expression<Func<string>> workerId, Expression<Func<RequestFeedbackInput>> body)
         {
             var __workflow_workerId = WorkflowExpression.Compile(workerId, nameof(workerId), required: true);
-            var __workflow_bodyfeedbackResponders = WorkflowExpression.Compile(bodyfeedbackResponders, nameof(bodyfeedbackResponders), required: true);
-            var __workflow_bodyfeedbackTemplateid = WorkflowExpression.Compile(bodyfeedbackTemplateid, nameof(bodyfeedbackTemplateid), required: false);
-            var __workflow_bodyconfidential = WorkflowExpression.Compile(bodyconfidential, nameof(bodyconfidential), required: false);
-            var __workflow_bodyshowProviderName = WorkflowExpression.Compile(bodyshowProviderName, nameof(bodyshowProviderName), required: false);
-            var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RequestFeedbackResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RESTOperation/workers/{0}/requestedFeedbackOnWorkerEvents", __workflow_workerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["feedbackResponders"] = ExpressionConverter.ConvertO(__workflow_bodyfeedbackResponders);
-                var feedbackTemplateObject = new JObject();
-                var feedbackTemplateObjectpropCount = 0;
-                if (__workflow_bodyfeedbackTemplateid != null)
-                {
-                    feedbackTemplateObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfeedbackTemplateid);
-                    feedbackTemplateObjectpropCount++;
-                }
-
-                if (feedbackTemplateObjectpropCount > 0)
-                {
-                    body["feedbackTemplate"] = feedbackTemplateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconfidential != null)
-                {
-                    body["feedbackConfidential"] = ExpressionConverter.ConvertO(__workflow_bodyconfidential);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshowProviderName != null)
-                {
-                    body["showFeedbackProviderName"] = ExpressionConverter.ConvertO(__workflow_bodyshowProviderName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpirationDate != null)
-                {
-                    body["expirationDate"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RequestFeedbackResponse>(callPayload);
             });
         }
@@ -507,6 +419,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public WorkdayObjectReference SupervisoryOrganization { get; set; }
     }
 
+    public class TransferEmployeeInput
+    {
+        [JsonProperty("supervisoryOrganization", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkdayObjectReference SupervisoryOrganization { get; set; }
+
+        [JsonProperty("jobChangeReason", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkdayObjectReference JobChangeReason { get; set; }
+
+        [JsonProperty("effective", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EffectiveDate { get; set; }
+
+        [JsonProperty("moveManagersTeam")]
+        public bool? MoveManagerSTeam { get; set; }
+    }
+
     public class RequestFeedbackResponse
     {
         [JsonProperty("id")]
@@ -523,6 +450,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
 
         [JsonProperty("feedbackAbout")]
         public WorkdayObjectReference FeedbackAbout { get; set; }
+    }
+
+    public class RequestFeedbackInput
+    {
+        [JsonProperty("feedbackResponders", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkdayObjectReference[] FeedbackResponders { get; set; }
+
+        [JsonProperty("feedbackTemplate")]
+        public WorkdayObjectReference FeedbackTemplate { get; set; }
+
+        [JsonProperty("feedbackConfidential")]
+        public bool? Confidential { get; set; }
+
+        [JsonProperty("showFeedbackProviderName")]
+        public bool? ShowProviderName { get; set; }
+
+        [JsonProperty("expirationDate")]
+        public string ExpirationDate { get; set; }
     }
 
     public class FeedbackTemplatesResponse

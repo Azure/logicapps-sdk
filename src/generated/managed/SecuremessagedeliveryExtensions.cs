@@ -13,19 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
     public class SecuremessagedeliveryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
-        public IBodyWorkflowAction<SendSecureMessageResponse, ApiConnectionActionConfiguration> SendSecureMessageAsync(Expression<Func<string>> requestfrom, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret, Expression<Func<string[]>> requestto = null, Expression<Func<string[]>> requestcc = null, Expression<Func<string[]>> requestbcc = null, Expression<Func<string>> requestsubject = null, Expression<Func<Attachment[]>> requestattachments = null, Expression<Func<string>> requesthtmlBody = null, Expression<Func<string>> requesttextBody = null)
+        public IBodyWorkflowAction<SendSecureMessageResponse, ApiConnectionActionConfiguration> SendSecureMessageAsync(Expression<Func<SendSecureMessageAsyncInput>> request, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
         {
-            var __workflow_requestfrom = WorkflowExpression.Compile(requestfrom, nameof(requestfrom), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
             var __workflow_xAPIKey = WorkflowExpression.Compile(xAPIKey, nameof(xAPIKey), required: true);
             var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
-            var __workflow_requestto = WorkflowExpression.Compile(requestto, nameof(requestto), required: false);
-            var __workflow_requestcc = WorkflowExpression.Compile(requestcc, nameof(requestcc), required: false);
-            var __workflow_requestbcc = WorkflowExpression.Compile(requestbcc, nameof(requestbcc), required: false);
-            var __workflow_requestsubject = WorkflowExpression.Compile(requestsubject, nameof(requestsubject), required: false);
-            var __workflow_requestattachments = WorkflowExpression.Compile(requestattachments, nameof(requestattachments), required: false);
-            var __workflow_requesthtmlBody = WorkflowExpression.Compile(requesthtmlBody, nameof(requesthtmlBody), required: false);
-            var __workflow_requesttextBody = WorkflowExpression.Compile(requesttextBody, nameof(requesttextBody), required: false);
             return new DeferredBodyAction<SendSecureMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/Email", __workflow_v.WithUrlEncoding(1)));
@@ -33,57 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
                 callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(__workflow_xAPISecret);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["From"] = ExpressionConverter.ConvertO(__workflow_requestfrom);
-                if (__workflow_requestto != null)
-                {
-                    request["To"] = ExpressionConverter.ConvertO(__workflow_requestto);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestcc != null)
-                {
-                    request["Cc"] = ExpressionConverter.ConvertO(__workflow_requestcc);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestbcc != null)
-                {
-                    request["Bcc"] = ExpressionConverter.ConvertO(__workflow_requestbcc);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestsubject != null)
-                {
-                    request["Subject"] = ExpressionConverter.ConvertO(__workflow_requestsubject);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestattachments != null)
-                {
-                    request["Attachments"] = ExpressionConverter.ConvertO(__workflow_requestattachments);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requesthtmlBody != null)
-                {
-                    request["HtmlBody"] = ExpressionConverter.ConvertO(__workflow_requesthtmlBody);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requesttextBody != null)
-                {
-                    request["TextBody"] = ExpressionConverter.ConvertO(__workflow_requesttextBody);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<SendSecureMessageResponse>(callPayload);
             });
         }
@@ -137,6 +80,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         public string Expiration { get; set; }
         public string ProjectId { get; set; }
         public string ApplicationId { get; set; }
+    }
+
+    public class SendSecureMessageAsyncInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+        public string[] To { get; set; }
+        public string[] Cc { get; set; }
+        public string[] Bcc { get; set; }
+        public string Subject { get; set; }
+        public Attachment[] Attachments { get; set; }
+        public string HtmlBody { get; set; }
+        public string TextBody { get; set; }
     }
 
     public class Attachment

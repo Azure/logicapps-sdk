@@ -25,113 +25,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IBodyWorkflowAction<AddSystemResponse, ApiConnectionActionConfiguration> AddSystem(Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<AddSystemResponse, ApiConnectionActionConfiguration> AddSystem(Expression<Func<AddSystemInput>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddSystemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/systems/topics/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddSystemResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddSystemAdvanced(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfieldssystemNickname = null, Expression<Func<string>> bodyfieldssystemOwner = null, Expression<Func<string>> bodyfieldssystemAdministrator = null, Expression<Func<string>> bodyfieldscostCenter = null, Expression<Func<string[]>> bodyfieldslinkedSystems = null, Expression<Func<string>> bodyfieldsdataSystemPurpose = null, Expression<Func<string[]>> bodyfieldslinkedSystemProviders = null, Expression<Func<string>> bodyfieldspartnerResponsibilityDetails = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSystemAdvanced(Expression<Func<AddSystemAdvancedInput>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyfieldssystemNickname = WorkflowExpression.Compile(bodyfieldssystemNickname, nameof(bodyfieldssystemNickname), required: false);
-            var __workflow_bodyfieldssystemOwner = WorkflowExpression.Compile(bodyfieldssystemOwner, nameof(bodyfieldssystemOwner), required: false);
-            var __workflow_bodyfieldssystemAdministrator = WorkflowExpression.Compile(bodyfieldssystemAdministrator, nameof(bodyfieldssystemAdministrator), required: false);
-            var __workflow_bodyfieldscostCenter = WorkflowExpression.Compile(bodyfieldscostCenter, nameof(bodyfieldscostCenter), required: false);
-            var __workflow_bodyfieldslinkedSystems = WorkflowExpression.Compile(bodyfieldslinkedSystems, nameof(bodyfieldslinkedSystems), required: false);
-            var __workflow_bodyfieldsdataSystemPurpose = WorkflowExpression.Compile(bodyfieldsdataSystemPurpose, nameof(bodyfieldsdataSystemPurpose), required: false);
-            var __workflow_bodyfieldslinkedSystemProviders = WorkflowExpression.Compile(bodyfieldslinkedSystemProviders, nameof(bodyfieldslinkedSystemProviders), required: false);
-            var __workflow_bodyfieldspartnerResponsibilityDetails = WorkflowExpression.Compile(bodyfieldspartnerResponsibilityDetails, nameof(bodyfieldspartnerResponsibilityDetails), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/systems/topics/advanced/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                var fieldsObject = new JObject();
-                var fieldsObjectpropCount = 0;
-                if (__workflow_bodyfieldssystemNickname != null)
-                {
-                    fieldsObject["additional-name"] = ExpressionConverter.ConvertO(__workflow_bodyfieldssystemNickname);
-                    fieldsObjectpropCount++;
-                }
-
-                if (__workflow_bodyfieldssystemOwner != null)
-                {
-                    fieldsObject["additional-owner"] = ExpressionConverter.ConvertO(__workflow_bodyfieldssystemOwner);
-                    fieldsObjectpropCount++;
-                }
-
-                if (__workflow_bodyfieldssystemAdministrator != null)
-                {
-                    fieldsObject["additional-admin"] = ExpressionConverter.ConvertO(__workflow_bodyfieldssystemAdministrator);
-                    fieldsObjectpropCount++;
-                }
-
-                if (__workflow_bodyfieldscostCenter != null)
-                {
-                    fieldsObject["additional-cost"] = ExpressionConverter.ConvertO(__workflow_bodyfieldscostCenter);
-                    fieldsObjectpropCount++;
-                }
-
-                if (__workflow_bodyfieldslinkedSystems != null)
-                {
-                    fieldsObject["additional-linksystems"] = ExpressionConverter.ConvertO(__workflow_bodyfieldslinkedSystems);
-                    fieldsObjectpropCount++;
-                }
-
-                if (__workflow_bodyfieldsdataSystemPurpose != null)
-                {
-                    fieldsObject["units-purpose"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsdataSystemPurpose);
-                    fieldsObjectpropCount++;
-                }
-
-                if (__workflow_bodyfieldslinkedSystemProviders != null)
-                {
-                    fieldsObject["processors-block"] = ExpressionConverter.ConvertO(__workflow_bodyfieldslinkedSystemProviders);
-                    fieldsObjectpropCount++;
-                }
-
-                if (__workflow_bodyfieldspartnerResponsibilityDetails != null)
-                {
-                    fieldsObject["processors-resptext"] = ExpressionConverter.ConvertO(__workflow_bodyfieldspartnerResponsibilityDetails);
-                    fieldsObjectpropCount++;
-                }
-
-                if (fieldsObjectpropCount > 0)
-                {
-                    body["fields"] = fieldsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -313,6 +229,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
 
         [JsonProperty("title")]
         public string Title { get; set; }
+    }
+
+    public class AddSystemInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
+    public class AddSystemAdvancedInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("fields")]
+        public AddSystemAdvancedInputFieldsType Fields { get; set; }
+    }
+
+    public class AddSystemAdvancedInputFieldsType
+    {
+        [JsonProperty("additional-name")]
+        public string SystemNickname { get; set; }
+
+        [JsonProperty("additional-owner")]
+        public string SystemOwner { get; set; }
+
+        [JsonProperty("additional-admin")]
+        public string SystemAdministrator { get; set; }
+
+        [JsonProperty("additional-cost")]
+        public string CostCenter { get; set; }
+
+        [JsonProperty("additional-linksystems")]
+        public string[] LinkedSystems { get; set; }
+
+        [JsonProperty("units-purpose")]
+        public string DataSystemPurpose { get; set; }
+
+        [JsonProperty("processors-block")]
+        public string[] LinkedSystemProviders { get; set; }
+
+        [JsonProperty("processors-resptext")]
+        public string PartnerResponsibilityDetails { get; set; }
     }
 }
 

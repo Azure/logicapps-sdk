@@ -26,27 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmRiskUser(Expression<Func<ConfirmRiskUserInput>> body = null)
         {
-            var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/riskyUsers/confirmCompromised";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyuserIds != null)
-                {
-                    body["userIds"] = ExpressionConverter.ConvertO(__workflow_bodyuserIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -65,27 +54,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DismissRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DismissRiskUser(Expression<Func<DismissRiskUserInput>> body = null)
         {
-            var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/riskyUsers/dismiss";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyuserIds != null)
-                {
-                    body["userIds"] = ExpressionConverter.ConvertO(__workflow_bodyuserIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -139,6 +117,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
 
         [JsonProperty("userPrincipalName")]
         public string UserPrincipalName { get; set; }
+    }
+
+    public class ConfirmRiskUserInput
+    {
+        [JsonProperty("userIds")]
+        public string[] UserIds { get; set; }
     }
 
     public class GetRiskDetection
@@ -211,6 +195,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     {
         [JsonProperty("@@odata.type")]
         public string OdataType { get; set; }
+    }
+
+    public class DismissRiskUserInput
+    {
+        [JsonProperty("userIds")]
+        public string[] UserIds { get; set; }
     }
 
     public class GetRiskHistory

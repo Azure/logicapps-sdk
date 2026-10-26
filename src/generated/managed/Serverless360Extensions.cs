@@ -13,8 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
     public class Serverless360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360StageActivityId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveActivity(Expression<Func<ArchiveActivityInput>> body, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360StageActivityId)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
             var __workflow_sL360BusinessTransaction = WorkflowExpression.Compile(sL360BusinessTransaction, nameof(sL360BusinessTransaction), required: true);
             var __workflow_sL360CurrentStage = WorkflowExpression.Compile(sL360CurrentStage, nameof(sL360CurrentStage), required: true);
@@ -28,29 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
                 callPayload.Headers["SL360-BusinessTransaction"] = ExpressionConverter.Convert(__workflow_sL360BusinessTransaction);
                 callPayload.Headers["SL360-CurrentStage"] = ExpressionConverter.Convert(__workflow_sL360CurrentStage);
                 callPayload.Headers["SL360-StageActivityId"] = ExpressionConverter.Convert(__workflow_sL360StageActivityId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var messageBodyObject = new JObject();
-                var messageBodyObjectpropCount = 0;
-                if (messageBodyObjectpropCount > 0)
-                {
-                    body["MessageBody"] = messageBodyObject;
-                    bodypropCount++;
-                }
-
-                var messageHeaderObject = new JObject();
-                var messageHeaderObjectpropCount = 0;
-                if (messageHeaderObjectpropCount > 0)
-                {
-                    body["MessageHeader"] = messageHeaderObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -76,8 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IBodyWorkflowAction<StartActivityResponse, ApiConnectionActionConfiguration> StartActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360MainActivityId = null, Expression<Func<string>> sL360PreviousStage = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null, Expression<Func<string>> sL360BatchId = null)
+        public IBodyWorkflowAction<StartActivityResponse, ApiConnectionActionConfiguration> StartActivity(Expression<Func<StartActivityInput>> body, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360MainActivityId = null, Expression<Func<string>> sL360PreviousStage = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null, Expression<Func<string>> sL360BatchId = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
             var __workflow_sL360BusinessTransaction = WorkflowExpression.Compile(sL360BusinessTransaction, nameof(sL360BusinessTransaction), required: true);
             var __workflow_sL360CurrentStage = WorkflowExpression.Compile(sL360CurrentStage, nameof(sL360CurrentStage), required: true);
@@ -101,36 +81,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
                     callPayload.Headers["SL360-ArchiveMessage"] = ExpressionConverter.Convert(__workflow_sL360ArchiveMessage);
                 if (__workflow_sL360BatchId != null)
                     callPayload.Headers["SL360-BatchId"] = ExpressionConverter.Convert(__workflow_sL360BatchId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var messageBodyObject = new JObject();
-                var messageBodyObjectpropCount = 0;
-                if (messageBodyObjectpropCount > 0)
-                {
-                    body["MessageBody"] = messageBodyObject;
-                    bodypropCount++;
-                }
-
-                var messageHeaderObject = new JObject();
-                var messageHeaderObjectpropCount = 0;
-                if (messageHeaderObjectpropCount > 0)
-                {
-                    body["MessageHeader"] = messageHeaderObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StartActivityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<string>> sL360MainActivityId, Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<sL360StatusInput>> sL360Status = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<UpdateActivityInput>> body, Expression<Func<string>> sL360MainActivityId, Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<sL360StatusInput>> sL360Status = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_sL360MainActivityId = WorkflowExpression.Compile(sL360MainActivityId, nameof(sL360MainActivityId), required: true);
             var __workflow_sL360StageActivityId = WorkflowExpression.Compile(sL360StageActivityId, nameof(sL360StageActivityId), required: true);
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
@@ -153,29 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
                 callPayload.Headers["SL360-CurrentStage"] = ExpressionConverter.Convert(__workflow_sL360CurrentStage);
                 if (__workflow_sL360ArchiveMessage != null)
                     callPayload.Headers["SL360-ArchiveMessage"] = ExpressionConverter.Convert(__workflow_sL360ArchiveMessage);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var messageBodyObject = new JObject();
-                var messageBodyObjectpropCount = 0;
-                if (messageBodyObjectpropCount > 0)
-                {
-                    body["MessageBody"] = messageBodyObject;
-                    bodypropCount++;
-                }
-
-                var messageHeaderObject = new JObject();
-                var messageHeaderObjectpropCount = 0;
-                if (messageHeaderObjectpropCount > 0)
-                {
-                    body["MessageHeader"] = messageHeaderObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -185,10 +122,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
     {
     }
 
+    public class ArchiveActivityInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken MessageBody { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken MessageHeader { get; set; }
+    }
+
     public class StartActivityResponse
     {
         public string MainActivityId { get; set; }
         public string StageActivityId { get; set; }
+    }
+
+    public class StartActivityInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken MessageBody { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken MessageHeader { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -196,6 +151,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
     {
         True,
         False
+    }
+
+    public class UpdateActivityInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken MessageBody { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken MessageHeader { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

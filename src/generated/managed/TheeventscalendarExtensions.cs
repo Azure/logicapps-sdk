@@ -13,174 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
     public class TheeventscalendarActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theeventscalendar")]
-        public IBodyWorkflowAction<CreateEventsResponse, ApiConnectionActionConfiguration> CreateEvents(Expression<Func<int>> bodyauthor = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyexcerpt = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyallDay = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodycost = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodyshowMap = null, Expression<Func<bool>> bodyshowMapLink = null, Expression<Func<bool>> bodyhideFromListings = null, Expression<Func<bool>> bodysticky = null, Expression<Func<bool>> bodyfeatured = null, Expression<Func<string>> bodycategories = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyvenue = null, Expression<Func<string>> bodyorganizer = null)
+        public IBodyWorkflowAction<CreateEventsResponse, ApiConnectionActionConfiguration> CreateEvents(Expression<Func<CreateEventsInput>> body = null)
         {
-            var __workflow_bodyauthor = WorkflowExpression.Compile(bodyauthor, nameof(bodyauthor), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodyexcerpt = WorkflowExpression.Compile(bodyexcerpt, nameof(bodyexcerpt), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyallDay = WorkflowExpression.Compile(bodyallDay, nameof(bodyallDay), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodycost = WorkflowExpression.Compile(bodycost, nameof(bodycost), required: false);
-            var __workflow_bodywebsite = WorkflowExpression.Compile(bodywebsite, nameof(bodywebsite), required: false);
-            var __workflow_bodyshowMap = WorkflowExpression.Compile(bodyshowMap, nameof(bodyshowMap), required: false);
-            var __workflow_bodyshowMapLink = WorkflowExpression.Compile(bodyshowMapLink, nameof(bodyshowMapLink), required: false);
-            var __workflow_bodyhideFromListings = WorkflowExpression.Compile(bodyhideFromListings, nameof(bodyhideFromListings), required: false);
-            var __workflow_bodysticky = WorkflowExpression.Compile(bodysticky, nameof(bodysticky), required: false);
-            var __workflow_bodyfeatured = WorkflowExpression.Compile(bodyfeatured, nameof(bodyfeatured), required: false);
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodyvenue = WorkflowExpression.Compile(bodyvenue, nameof(bodyvenue), required: false);
-            var __workflow_bodyorganizer = WorkflowExpression.Compile(bodyorganizer, nameof(bodyorganizer), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateEventsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wp-json/tribe/power-automate/v1/create-events/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyauthor != null)
-                {
-                    body["author"] = ExpressionConverter.ConvertO(__workflow_bodyauthor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyslug != null)
-                {
-                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexcerpt != null)
-                {
-                    body["excerpt"] = ExpressionConverter.ConvertO(__workflow_bodyexcerpt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyallDay != null)
-                {
-                    body["all_day"] = ExpressionConverter.ConvertO(__workflow_bodyallDay);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendDate != null)
-                {
-                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimage != null)
-                {
-                    body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycost != null)
-                {
-                    body["cost"] = ExpressionConverter.ConvertO(__workflow_bodycost);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebsite != null)
-                {
-                    body["website"] = ExpressionConverter.ConvertO(__workflow_bodywebsite);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshowMap != null)
-                {
-                    body["show_map"] = ExpressionConverter.ConvertO(__workflow_bodyshowMap);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshowMapLink != null)
-                {
-                    body["show_map_link"] = ExpressionConverter.ConvertO(__workflow_bodyshowMapLink);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhideFromListings != null)
-                {
-                    body["hide_from_listings"] = ExpressionConverter.ConvertO(__workflow_bodyhideFromListings);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysticky != null)
-                {
-                    body["sticky"] = ExpressionConverter.ConvertO(__workflow_bodysticky);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfeatured != null)
-                {
-                    body["featured"] = ExpressionConverter.ConvertO(__workflow_bodyfeatured);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategories != null)
-                {
-                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvenue != null)
-                {
-                    body["venue"] = ExpressionConverter.ConvertO(__workflow_bodyvenue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorganizer != null)
-                {
-                    body["organizer"] = ExpressionConverter.ConvertO(__workflow_bodyorganizer);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateEventsResponse>(callPayload);
             });
         }
@@ -457,6 +299,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
 
         [JsonProperty("not_checked_in")]
         public int NotCheckedIn { get; set; }
+    }
+
+    public class CreateEventsInput
+    {
+        [JsonProperty("author")]
+        public int? Author { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("slug")]
+        public string Slug { get; set; }
+
+        [JsonProperty("excerpt")]
+        public string Excerpt { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("all_day")]
+        public bool? AllDay { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("cost")]
+        public string Cost { get; set; }
+
+        [JsonProperty("website")]
+        public string Website { get; set; }
+
+        [JsonProperty("show_map")]
+        public bool? ShowMap { get; set; }
+
+        [JsonProperty("show_map_link")]
+        public bool? ShowMapLink { get; set; }
+
+        [JsonProperty("hide_from_listings")]
+        public bool? HideFromListings { get; set; }
+
+        [JsonProperty("sticky")]
+        public bool? Sticky { get; set; }
+
+        [JsonProperty("featured")]
+        public bool? Featured { get; set; }
+
+        [JsonProperty("categories")]
+        public string Categories { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("venue")]
+        public string Venue { get; set; }
+
+        [JsonProperty("organizer")]
+        public string Organizer { get; set; }
     }
 
     public class NewEventTriggerResponse

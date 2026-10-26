@@ -113,57 +113,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Conversion, ApiConnectionActionConfiguration> ConvertTime(Expression<Func<string>> bodyfromTimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytoTimeZone, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
+        public IBodyWorkflowAction<Conversion, ApiConnectionActionConfiguration> ConvertTime(Expression<Func<ConvertTimeInput>> body = null)
         {
-            var __workflow_bodyfromTimeZone = WorkflowExpression.Compile(bodyfromTimeZone, nameof(bodyfromTimeZone), required: true);
-            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
-            var __workflow_bodytoTimeZone = WorkflowExpression.Compile(bodytoTimeZone, nameof(bodytoTimeZone), required: true);
-            var __workflow_bodydstAmbiguity = WorkflowExpression.Compile(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Conversion, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Conversion/ConvertTimeZone";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["fromTimeZone"] = ExpressionConverter.ConvertO(__workflow_bodyfromTimeZone);
-                bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
-                bodypropCount++;
-                body["toTimeZone"] = ExpressionConverter.ConvertO(__workflow_bodytoTimeZone);
-                bodypropCount++;
-                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Conversion>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Translation, ApiConnectionActionConfiguration> LocalizeTime(Expression<Func<string>> bodydateTime, Expression<Func<string>> bodylanguageCode)
+        public IBodyWorkflowAction<Translation, ApiConnectionActionConfiguration> LocalizeTime(Expression<Func<LocalizeTimeInput>> body = null)
         {
-            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
-            var __workflow_bodylanguageCode = WorkflowExpression.Compile(bodylanguageCode, nameof(bodylanguageCode), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Translation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Conversion/Translate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
-                bodypropCount++;
-                body["languageCode"] = ExpressionConverter.ConvertO(__workflow_bodylanguageCode);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Translation>(callPayload);
             });
         }
@@ -182,63 +156,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> IncrementByTimespan(Expression<Func<string>> bodytimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytimeSpan, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
+        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> IncrementByTimespan(Expression<Func<IncrementByTimespanInput>> body = null)
         {
-            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: true);
-            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
-            var __workflow_bodytimeSpan = WorkflowExpression.Compile(bodytimeSpan, nameof(bodytimeSpan), required: true);
-            var __workflow_bodydstAmbiguity = WorkflowExpression.Compile(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Calculation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Calculation/custom/increment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
-                bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
-                bodypropCount++;
-                body["timeSpan"] = ExpressionConverter.ConvertO(__workflow_bodytimeSpan);
-                bodypropCount++;
-                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Calculation>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> DecrementByTimespan(Expression<Func<string>> bodytimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytimeSpan, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
+        public IBodyWorkflowAction<Calculation, ApiConnectionActionConfiguration> DecrementByTimespan(Expression<Func<DecrementByTimespanInput>> body = null)
         {
-            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: true);
-            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
-            var __workflow_bodytimeSpan = WorkflowExpression.Compile(bodytimeSpan, nameof(bodytimeSpan), required: true);
-            var __workflow_bodydstAmbiguity = WorkflowExpression.Compile(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Calculation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Calculation/custom/decrement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
-                bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
-                bodypropCount++;
-                body["timeSpan"] = ExpressionConverter.ConvertO(__workflow_bodytimeSpan);
-                bodypropCount++;
-                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Calculation>(callPayload);
             });
         }
@@ -467,8 +409,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         public bool DstActive { get; set; }
     }
 
+    public class ConvertTimeInput
+    {
+        [JsonProperty("fromTimeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FromTimeZone { get; set; }
+
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateTime { get; set; }
+
+        [JsonProperty("toTimeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ToTimeZone { get; set; }
+
+        [JsonProperty("dstAmbiguity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConvertTimeInputDstAmbiguityType DstAmbiguity { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodydstAmbiguityInput
+    public enum ConvertTimeInputDstAmbiguityType
     {
         [EnumMember(Value = "earlier")]
         Earlier,
@@ -492,6 +449,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 
         [JsonProperty("friendlyTime")]
         public string FriendlyTime { get; set; }
+    }
+
+    public class LocalizeTimeInput
+    {
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateTime { get; set; }
+
+        [JsonProperty("languageCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LanguageCode { get; set; }
     }
 
     public class DayOfTheWeekResult
@@ -549,6 +515,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 
         [JsonProperty("dstActive")]
         public bool DstActive { get; set; }
+    }
+
+    public class IncrementByTimespanInput
+    {
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TimeZone { get; set; }
+
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateTime { get; set; }
+
+        [JsonProperty("timeSpan", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TimeSpan { get; set; }
+
+        [JsonProperty("dstAmbiguity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public IncrementByTimespanInputDstAmbiguityType DstAmbiguity { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum IncrementByTimespanInputDstAmbiguityType
+    {
+        [EnumMember(Value = "earlier")]
+        Earlier,
+        [EnumMember(Value = "later")]
+        Later
+    }
+
+    public class DecrementByTimespanInput
+    {
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TimeZone { get; set; }
+
+        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateTime { get; set; }
+
+        [JsonProperty("timeSpan", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TimeSpan { get; set; }
+
+        [JsonProperty("dstAmbiguity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DecrementByTimespanInputDstAmbiguityType DstAmbiguity { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DecrementByTimespanInputDstAmbiguityType
+    {
+        [EnumMember(Value = "earlier")]
+        Earlier,
+        [EnumMember(Value = "later")]
+        Later
     }
 }
 

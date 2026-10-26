@@ -26,80 +26,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem[]>> inviteinvites = null, Expression<Func<inviteadvancedInputItem[]>> inviteadvanced = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<CreateDocGroupEmbeddedInvitesInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_inviteinvites = WorkflowExpression.Compile(inviteinvites, nameof(inviteinvites), required: false);
-            var __workflow_inviteadvanced = WorkflowExpression.Compile(inviteadvanced, nameof(inviteadvanced), required: false);
-            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
             return new DeferredBodyAction<CreateDocGroupEmbeddedInvitesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var invite = new JObject();
-                var invitepropCount = 0;
-                if (__workflow_inviteinvites != null)
-                {
-                    invite["invites"] = ExpressionConverter.ConvertO(__workflow_inviteinvites);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteadvanced != null)
-                {
-                    invite["advanced"] = ExpressionConverter.ConvertO(__workflow_inviteadvanced);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteqESSignature != null)
-                {
-                    invite["signature"] = ExpressionConverter.ConvertO(__workflow_inviteqESSignature);
-                    invitepropCount++;
-                }
-
-                if (invitepropCount > 0)
-                {
-                    callPayload.Body = invite;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invite);
                 return new ApiConnectionAction<CreateDocGroupEmbeddedInvitesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> inviteemail, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
+        public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<GenerateDocGroupEmbeddedInviteLinkInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
-            var __workflow_inviteemail = WorkflowExpression.Compile(inviteemail, nameof(inviteemail), required: true);
-            var __workflow_invitelinkExpiration = WorkflowExpression.Compile(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
-            var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
+            var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
             return new DeferredBodyAction<GenerateDocGroupEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites/{1}/link", __workflow_id.WithUrlEncoding(1), __workflow_inviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var invite = new JObject();
-                var invitepropCount = 0;
-                invitepropCount++;
-                invite["email"] = ExpressionConverter.ConvertO(__workflow_inviteemail);
-                if (__workflow_invitelinkExpiration != null)
-                {
-                    invite["link_expiration"] = ExpressionConverter.ConvertO(__workflow_invitelinkExpiration);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitesessionExpiration != null)
-                {
-                    invite["session_expiration"] = ExpressionConverter.ConvertO(__workflow_invitesessionExpiration);
-                    invitepropCount++;
-                }
-
-                if (invitepropCount > 0)
-                {
-                    callPayload.Body = invite;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invite);
                 return new ApiConnectionAction<GenerateDocGroupEmbeddedInviteLinkResponse>(callPayload);
             });
         }
@@ -118,84 +70,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem2[]>> inviteinvites = null, Expression<Func<string>> invitenameFormula = null, Expression<Func<inviteinviteAdvancedParametersInputItem[]>> inviteinviteAdvancedParameters = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<CreateEmbeddedInvitesInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_inviteinvites = WorkflowExpression.Compile(inviteinvites, nameof(inviteinvites), required: false);
-            var __workflow_invitenameFormula = WorkflowExpression.Compile(invitenameFormula, nameof(invitenameFormula), required: false);
-            var __workflow_inviteinviteAdvancedParameters = WorkflowExpression.Compile(inviteinviteAdvancedParameters, nameof(inviteinviteAdvancedParameters), required: false);
-            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
             return new DeferredBodyAction<CreateEmbeddedInvitesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var invite = new JObject();
-                var invitepropCount = 0;
-                if (__workflow_inviteinvites != null)
-                {
-                    invite["invites"] = ExpressionConverter.ConvertO(__workflow_inviteinvites);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitenameFormula != null)
-                {
-                    invite["name_formula"] = ExpressionConverter.ConvertO(__workflow_invitenameFormula);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteinviteAdvancedParameters != null)
-                {
-                    invite["advanced_params"] = ExpressionConverter.ConvertO(__workflow_inviteinviteAdvancedParameters);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteqESSignature != null)
-                {
-                    invite["signature"] = ExpressionConverter.ConvertO(__workflow_inviteqESSignature);
-                    invitepropCount++;
-                }
-
-                if (invitepropCount > 0)
-                {
-                    callPayload.Body = invite;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invite);
                 return new ApiConnectionAction<CreateEmbeddedInvitesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
+        public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<GenerateEmbeddedInviteLinkInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fieldInviteId = WorkflowExpression.Compile(fieldInviteId, nameof(fieldInviteId), required: true);
-            var __workflow_invitelinkExpiration = WorkflowExpression.Compile(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
-            var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
+            var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
             return new DeferredBodyAction<GenerateEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites/{1}/link", __workflow_id.WithUrlEncoding(1), __workflow_fieldInviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var invite = new JObject();
-                var invitepropCount = 0;
-                if (__workflow_invitelinkExpiration != null)
-                {
-                    invite["link_expiration"] = ExpressionConverter.ConvertO(__workflow_invitelinkExpiration);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitesessionExpiration != null)
-                {
-                    invite["session_expiration"] = ExpressionConverter.ConvertO(__workflow_invitesessionExpiration);
-                    invitepropCount++;
-                }
-
-                if (invitepropCount > 0)
-                {
-                    callPayload.Body = invite;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invite);
                 return new ApiConnectionAction<GenerateEmbeddedInviteLinkResponse>(callPayload);
             });
         }
@@ -221,30 +121,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration> CreateDocGroupFromFiles(Expression<Func<string>> bodydocumentGroupName, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
+        public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration> CreateDocGroupFromFiles(Expression<Func<CreateDocGroupFromFilesInput>> body)
         {
-            var __workflow_bodydocumentGroupName = WorkflowExpression.Compile(bodydocumentGroupName, nameof(bodydocumentGroupName), required: true);
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documentgroups";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["group_name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentGroupName);
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateDocumentGroupFromFilesResponse>(callPayload);
             });
         }
@@ -265,28 +150,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<CreateFromTemplateGroupResponse, ApiConnectionActionConfiguration> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<string>> bodydocumentGroupName = null)
+        public IBodyWorkflowAction<CreateFromTemplateGroupResponse, ApiConnectionActionConfiguration> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<CreateFromTemplateGroupInput>> body = null)
         {
             var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
-            var __workflow_bodydocumentGroupName = WorkflowExpression.Compile(bodydocumentGroupName, nameof(bodydocumentGroupName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateFromTemplateGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroups/{0}", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocumentGroupName != null)
-                {
-                    body["group_name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentGroupName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateFromTemplateGroupResponse>(callPayload);
             });
         }
@@ -303,7 +177,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_group_id"] = ExpressionConverter.Convert(__workflow_templateGroupId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                if (__workflow_fields != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<UpdateGroupFieldValuesResponse>(callPayload);
             });
         }
@@ -320,7 +195,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_group_id"] = ExpressionConverter.Convert(__workflow_templateGroupId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                if (__workflow_fields != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<UpdateGroupSmartFieldValuesResponse>(callPayload);
             });
         }
@@ -373,28 +249,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<CreateFromTemplateResponse, ApiConnectionActionConfiguration> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<string>> bodydocumentName = null)
+        public IBodyWorkflowAction<CreateFromTemplateResponse, ApiConnectionActionConfiguration> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<CreateFromTemplateInput>> body = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
-            var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocumentName != null)
-                {
-                    body["document_name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateFromTemplateResponse>(callPayload);
             });
         }
@@ -409,17 +274,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/link", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                if (__workflow_fields != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<CreateSigningLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendInvite(Expression<Func<bool>> template, Expression<Func<string>> templateId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendInvite(Expression<Func<bool>> template, Expression<Func<string>> templateId, Expression<Func<object>> body)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite", __workflow_templateId.WithUrlEncoding(1)));
@@ -432,11 +298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendGroupInvite(Expression<Func<bool>> template, Expression<Func<string>> templateGroupId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendGroupInvite(Expression<Func<bool>> template, Expression<Func<string>> templateGroupId, Expression<Func<object>> body)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             var __workflow_templateGroupId = WorkflowExpression.Compile(templateGroupId, nameof(templateGroupId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite", __workflow_templateGroupId.WithUrlEncoding(1)));
@@ -449,56 +315,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<bodyroleInputItem[]>> bodyrole = null, Expression<Func<string>> bodycC = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyemailAllPartiesOnCompletion = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<SendUserDefinedInviteInput>> body = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
-            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
-            var __workflow_bodycC = WorkflowExpression.Compile(bodycC, nameof(bodycC), required: false);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodyemailAllPartiesOnCompletion = WorkflowExpression.Compile(bodyemailAllPartiesOnCompletion, nameof(bodyemailAllPartiesOnCompletion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-user-defined-schema", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyrole != null)
-                {
-                    body["Role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycC != null)
-                {
-                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycC);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubject != null)
-                {
-                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemailAllPartiesOnCompletion != null)
-                {
-                    body["on_complete"] = ExpressionConverter.ConvertO(__workflow_bodyemailAllPartiesOnCompletion);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -545,7 +372,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                if (__workflow_fields != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -577,435 +405,92 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<replaceToreplaceToInputItem[]>> replaceToreplaceTo = null, Expression<Func<replaceToadvancedParametersInputItem[]>> replaceToadvancedParameters = null)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<ReplaceRecipientsInDocumentInviteInput>> replaceTo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_replaceToreplaceTo = WorkflowExpression.Compile(replaceToreplaceTo, nameof(replaceToreplaceTo), required: false);
-            var __workflow_replaceToadvancedParameters = WorkflowExpression.Compile(replaceToadvancedParameters, nameof(replaceToadvancedParameters), required: false);
+            var __workflow_replaceTo = WorkflowExpression.Compile(replaceTo, nameof(replaceTo), required: true);
             return new DeferredBodyAction<ReplaceRecipientsInDocumentInviteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/replace-recipients", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var replaceTo = new JObject();
-                var replaceTopropCount = 0;
-                if (__workflow_replaceToreplaceTo != null)
-                {
-                    replaceTo["replace_to"] = ExpressionConverter.ConvertO(__workflow_replaceToreplaceTo);
-                    replaceTopropCount++;
-                }
-
-                if (__workflow_replaceToadvancedParameters != null)
-                {
-                    replaceTo["advanced"] = ExpressionConverter.ConvertO(__workflow_replaceToadvancedParameters);
-                    replaceTopropCount++;
-                }
-
-                if (replaceTopropCount > 0)
-                {
-                    callPayload.Body = replaceTo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_replaceTo);
                 return new ApiConnectionAction<ReplaceRecipientsInDocumentInviteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> replaceTostepId = null, Expression<Func<string>> replaceTorecipientToReplace = null, Expression<Func<string>> replaceTonewRecipient = null, Expression<Func<int>> replaceToexpirationDays = null, Expression<Func<int>> replaceToreminder = null, Expression<Func<replaceToinviteActionAttributesInputItem[]>> replaceToinviteActionAttributes = null)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<ReplaceRecipientsInDocumentGroupInviteInput>> replaceTo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
-            var __workflow_replaceTostepId = WorkflowExpression.Compile(replaceTostepId, nameof(replaceTostepId), required: false);
-            var __workflow_replaceTorecipientToReplace = WorkflowExpression.Compile(replaceTorecipientToReplace, nameof(replaceTorecipientToReplace), required: false);
-            var __workflow_replaceTonewRecipient = WorkflowExpression.Compile(replaceTonewRecipient, nameof(replaceTonewRecipient), required: false);
-            var __workflow_replaceToexpirationDays = WorkflowExpression.Compile(replaceToexpirationDays, nameof(replaceToexpirationDays), required: false);
-            var __workflow_replaceToreminder = WorkflowExpression.Compile(replaceToreminder, nameof(replaceToreminder), required: false);
-            var __workflow_replaceToinviteActionAttributes = WorkflowExpression.Compile(replaceToinviteActionAttributes, nameof(replaceToinviteActionAttributes), required: false);
+            var __workflow_replaceTo = WorkflowExpression.Compile(replaceTo, nameof(replaceTo), required: true);
             return new DeferredBodyAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite/{1}/replace-recipients", __workflow_id.WithUrlEncoding(1), __workflow_inviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var replaceTo = new JObject();
-                var replaceTopropCount = 0;
-                if (__workflow_replaceTostepId != null)
-                {
-                    replaceTo["step_id"] = ExpressionConverter.ConvertO(__workflow_replaceTostepId);
-                    replaceTopropCount++;
-                }
-
-                if (__workflow_replaceTorecipientToReplace != null)
-                {
-                    replaceTo["recipient_to_update"] = ExpressionConverter.ConvertO(__workflow_replaceTorecipientToReplace);
-                    replaceTopropCount++;
-                }
-
-                if (__workflow_replaceTonewRecipient != null)
-                {
-                    replaceTo["new_recipient"] = ExpressionConverter.ConvertO(__workflow_replaceTonewRecipient);
-                    replaceTopropCount++;
-                }
-
-                if (__workflow_replaceToexpirationDays != null)
-                {
-                    if (__workflow_replaceToexpirationDays != null)
-                    {
-                        replaceTo["expiration_days"] = ExpressionConverter.ConvertO(__workflow_replaceToexpirationDays);
-                        replaceTopropCount++;
-                    }
-
-                    replaceTopropCount++;
-                }
-                else
-                {
-                    replaceTo["expiration_days"] = 30;
-                    replaceTopropCount++;
-                }
-
-                if (__workflow_replaceToreminder != null)
-                {
-                    replaceTo["reminder"] = ExpressionConverter.ConvertO(__workflow_replaceToreminder);
-                    replaceTopropCount++;
-                }
-
-                if (__workflow_replaceToinviteActionAttributes != null)
-                {
-                    replaceTo["invite_action_attributes"] = ExpressionConverter.ConvertO(__workflow_replaceToinviteActionAttributes);
-                    replaceTopropCount++;
-                }
-
-                if (replaceTopropCount > 0)
-                {
-                    callPayload.Body = replaceTo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_replaceTo);
                 return new ApiConnectionAction<ReplaceRecipientsInDocumentGroupInviteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
+        public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<CreateEmbeddedInviteSettingsLinkInput>> inviteSettings)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_inviteSettingstype = WorkflowExpression.Compile(inviteSettingstype, nameof(inviteSettingstype), required: false);
-            var __workflow_inviteSettingsredirectUri = WorkflowExpression.Compile(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
-            var __workflow_inviteSettingslinkExpiration = WorkflowExpression.Compile(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
-            var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
+            var __workflow_inviteSettings = WorkflowExpression.Compile(inviteSettings, nameof(inviteSettings), required: true);
             return new DeferredBodyAction<CreateEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-sending", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var inviteSettings = new JObject();
-                var inviteSettingspropCount = 0;
-                if (__workflow_inviteSettingstype != null)
-                {
-                    inviteSettings["type"] = ExpressionConverter.ConvertO(__workflow_inviteSettingstype);
-                    inviteSettingspropCount++;
-                }
-
-                if (__workflow_inviteSettingsredirectUri != null)
-                {
-                    inviteSettings["redirect_uri"] = ExpressionConverter.ConvertO(__workflow_inviteSettingsredirectUri);
-                    inviteSettingspropCount++;
-                }
-
-                if (__workflow_inviteSettingslinkExpiration != null)
-                {
-                    if (__workflow_inviteSettingslinkExpiration != null)
-                    {
-                        inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(__workflow_inviteSettingslinkExpiration);
-                        inviteSettingspropCount++;
-                    }
-
-                    inviteSettingspropCount++;
-                }
-                else
-                {
-                    inviteSettings["link_expiration"] = 15;
-                    inviteSettingspropCount++;
-                }
-
-                if (__workflow_inviteSettingsredirectTarget != null)
-                {
-                    inviteSettings["redirect_target"] = ExpressionConverter.ConvertO(__workflow_inviteSettingsredirectTarget);
-                    inviteSettingspropCount++;
-                }
-
-                if (inviteSettingspropCount > 0)
-                {
-                    callPayload.Body = inviteSettings;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_inviteSettings);
                 return new ApiConnectionAction<CreateEmbeddedInviteSettingsLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
+        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<CreateDocGroupEmbeddedInviteSettingsLinkInput>> inviteSettings)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_inviteSettingstype = WorkflowExpression.Compile(inviteSettingstype, nameof(inviteSettingstype), required: false);
-            var __workflow_inviteSettingsredirectUri = WorkflowExpression.Compile(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
-            var __workflow_inviteSettingslinkExpiration = WorkflowExpression.Compile(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
-            var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
+            var __workflow_inviteSettings = WorkflowExpression.Compile(inviteSettings, nameof(inviteSettings), required: true);
             return new DeferredBodyAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-sending", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var inviteSettings = new JObject();
-                var inviteSettingspropCount = 0;
-                if (__workflow_inviteSettingstype != null)
-                {
-                    if (__workflow_inviteSettingstype != null)
-                    {
-                        inviteSettings["type"] = ExpressionConverter.ConvertO(__workflow_inviteSettingstype);
-                        inviteSettingspropCount++;
-                    }
-
-                    inviteSettingspropCount++;
-                }
-                else
-                {
-                    inviteSettings["type"] = "Manage";
-                    inviteSettingspropCount++;
-                }
-
-                if (__workflow_inviteSettingsredirectUri != null)
-                {
-                    inviteSettings["redirect_uri"] = ExpressionConverter.ConvertO(__workflow_inviteSettingsredirectUri);
-                    inviteSettingspropCount++;
-                }
-
-                if (__workflow_inviteSettingslinkExpiration != null)
-                {
-                    if (__workflow_inviteSettingslinkExpiration != null)
-                    {
-                        inviteSettings["link_expiration"] = ExpressionConverter.ConvertO(__workflow_inviteSettingslinkExpiration);
-                        inviteSettingspropCount++;
-                    }
-
-                    inviteSettingspropCount++;
-                }
-                else
-                {
-                    inviteSettings["link_expiration"] = 15;
-                    inviteSettingspropCount++;
-                }
-
-                if (__workflow_inviteSettingsredirectTarget != null)
-                {
-                    inviteSettings["redirect_target"] = ExpressionConverter.ConvertO(__workflow_inviteSettingsredirectTarget);
-                    inviteSettingspropCount++;
-                }
-
-                if (inviteSettingspropCount > 0)
-                {
-                    callPayload.Body = inviteSettings;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_inviteSettings);
                 return new ApiConnectionAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<InviteToSignAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<invitesignersInputItem[]>> invitesigners = null, Expression<Func<invitesignerAdvancedPropertiesInputItem[]>> invitesignerAdvancedProperties = null, Expression<Func<inviteviewersInputItem[]>> inviteviewers = null, Expression<Func<inviteviewerAdvancedPropertiesInputItem[]>> inviteviewerAdvancedProperties = null, Expression<Func<inviteapproversInputItem[]>> inviteapprovers = null, Expression<Func<inviteapproverAdvancedPropertiesInputItem[]>> inviteapproverAdvancedProperties = null, Expression<Func<string>> invitefrom = null, Expression<Func<inviteemailGroupsInputItem[]>> inviteemailGroups = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<invitecCStepsInputItem[]>> invitecCSteps = null, Expression<Func<string>> invitesubject = null, Expression<Func<string>> invitemessage = null, Expression<Func<string>> invitecCSubject = null, Expression<Func<string>> invitecCMessage = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<InviteToSignAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<InviteToSignAllOptionsInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_invitesigners = WorkflowExpression.Compile(invitesigners, nameof(invitesigners), required: false);
-            var __workflow_invitesignerAdvancedProperties = WorkflowExpression.Compile(invitesignerAdvancedProperties, nameof(invitesignerAdvancedProperties), required: false);
-            var __workflow_inviteviewers = WorkflowExpression.Compile(inviteviewers, nameof(inviteviewers), required: false);
-            var __workflow_inviteviewerAdvancedProperties = WorkflowExpression.Compile(inviteviewerAdvancedProperties, nameof(inviteviewerAdvancedProperties), required: false);
-            var __workflow_inviteapprovers = WorkflowExpression.Compile(inviteapprovers, nameof(inviteapprovers), required: false);
-            var __workflow_inviteapproverAdvancedProperties = WorkflowExpression.Compile(inviteapproverAdvancedProperties, nameof(inviteapproverAdvancedProperties), required: false);
-            var __workflow_invitefrom = WorkflowExpression.Compile(invitefrom, nameof(invitefrom), required: false);
-            var __workflow_inviteemailGroups = WorkflowExpression.Compile(inviteemailGroups, nameof(inviteemailGroups), required: false);
-            var __workflow_invitecC = WorkflowExpression.Compile(invitecC, nameof(invitecC), required: false);
-            var __workflow_invitecCSteps = WorkflowExpression.Compile(invitecCSteps, nameof(invitecCSteps), required: false);
-            var __workflow_invitesubject = WorkflowExpression.Compile(invitesubject, nameof(invitesubject), required: false);
-            var __workflow_invitemessage = WorkflowExpression.Compile(invitemessage, nameof(invitemessage), required: false);
-            var __workflow_invitecCSubject = WorkflowExpression.Compile(invitecCSubject, nameof(invitecCSubject), required: false);
-            var __workflow_invitecCMessage = WorkflowExpression.Compile(invitecCMessage, nameof(invitecCMessage), required: false);
-            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
             return new DeferredBodyAction<InviteToSignAllOptionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-all-options", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var invite = new JObject();
-                var invitepropCount = 0;
-                if (__workflow_invitesigners != null)
-                {
-                    invite["signers"] = ExpressionConverter.ConvertO(__workflow_invitesigners);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitesignerAdvancedProperties != null)
-                {
-                    invite["signers_advanced"] = ExpressionConverter.ConvertO(__workflow_invitesignerAdvancedProperties);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteviewers != null)
-                {
-                    invite["viewers"] = ExpressionConverter.ConvertO(__workflow_inviteviewers);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteviewerAdvancedProperties != null)
-                {
-                    invite["viewers_advanced"] = ExpressionConverter.ConvertO(__workflow_inviteviewerAdvancedProperties);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteapprovers != null)
-                {
-                    invite["approvers"] = ExpressionConverter.ConvertO(__workflow_inviteapprovers);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteapproverAdvancedProperties != null)
-                {
-                    invite["approver_advanced"] = ExpressionConverter.ConvertO(__workflow_inviteapproverAdvancedProperties);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitefrom != null)
-                {
-                    invite["from"] = ExpressionConverter.ConvertO(__workflow_invitefrom);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteemailGroups != null)
-                {
-                    invite["email_groups"] = ExpressionConverter.ConvertO(__workflow_inviteemailGroups);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitecC != null)
-                {
-                    invite["cc"] = ExpressionConverter.ConvertO(__workflow_invitecC);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitecCSteps != null)
-                {
-                    invite["cc_step"] = ExpressionConverter.ConvertO(__workflow_invitecCSteps);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitesubject != null)
-                {
-                    invite["subject"] = ExpressionConverter.ConvertO(__workflow_invitesubject);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitemessage != null)
-                {
-                    invite["message"] = ExpressionConverter.ConvertO(__workflow_invitemessage);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitecCSubject != null)
-                {
-                    invite["cc_subject"] = ExpressionConverter.ConvertO(__workflow_invitecCSubject);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitecCMessage != null)
-                {
-                    invite["cc_message"] = ExpressionConverter.ConvertO(__workflow_invitecCMessage);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteqESSignature != null)
-                {
-                    invite["signature"] = ExpressionConverter.ConvertO(__workflow_inviteqESSignature);
-                    invitepropCount++;
-                }
-
-                if (invitepropCount > 0)
-                {
-                    callPayload.Body = invite;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invite);
                 return new ApiConnectionAction<InviteToSignAllOptionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<inviteinviteStepsInputItem[]>> inviteinviteSteps = null, Expression<Func<inviteinviteEmailsInputItem[]>> inviteinviteEmails = null, Expression<Func<inviteemailGroupsInputItem[]>> inviteemailGroups = null, Expression<Func<invitecompletionEmailsInputItem[]>> invitecompletionEmails = null, Expression<Func<bool>> invitesignAsMerged = null, Expression<Func<int>> inviteclientTimestamp = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<InviteToSignDocGroupAllOptionsInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_inviteinviteSteps = WorkflowExpression.Compile(inviteinviteSteps, nameof(inviteinviteSteps), required: false);
-            var __workflow_inviteinviteEmails = WorkflowExpression.Compile(inviteinviteEmails, nameof(inviteinviteEmails), required: false);
-            var __workflow_inviteemailGroups = WorkflowExpression.Compile(inviteemailGroups, nameof(inviteemailGroups), required: false);
-            var __workflow_invitecompletionEmails = WorkflowExpression.Compile(invitecompletionEmails, nameof(invitecompletionEmails), required: false);
-            var __workflow_invitesignAsMerged = WorkflowExpression.Compile(invitesignAsMerged, nameof(invitesignAsMerged), required: false);
-            var __workflow_inviteclientTimestamp = WorkflowExpression.Compile(inviteclientTimestamp, nameof(inviteclientTimestamp), required: false);
-            var __workflow_invitecC = WorkflowExpression.Compile(invitecC, nameof(invitecC), required: false);
-            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
             return new DeferredBodyAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite-all-options", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var invite = new JObject();
-                var invitepropCount = 0;
-                if (__workflow_inviteinviteSteps != null)
-                {
-                    invite["invite_steps"] = ExpressionConverter.ConvertO(__workflow_inviteinviteSteps);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteinviteEmails != null)
-                {
-                    invite["Email"] = ExpressionConverter.ConvertO(__workflow_inviteinviteEmails);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteemailGroups != null)
-                {
-                    invite["email_groups"] = ExpressionConverter.ConvertO(__workflow_inviteemailGroups);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitecompletionEmails != null)
-                {
-                    invite["completion_emails"] = ExpressionConverter.ConvertO(__workflow_invitecompletionEmails);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitesignAsMerged != null)
-                {
-                    invite["sign_as_merged"] = ExpressionConverter.ConvertO(__workflow_invitesignAsMerged);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteclientTimestamp != null)
-                {
-                    invite["client_timestamp"] = ExpressionConverter.ConvertO(__workflow_inviteclientTimestamp);
-                    invitepropCount++;
-                }
-
-                if (__workflow_invitecC != null)
-                {
-                    invite["cc"] = ExpressionConverter.ConvertO(__workflow_invitecC);
-                    invitepropCount++;
-                }
-
-                if (__workflow_inviteqESSignature != null)
-                {
-                    invite["signature"] = ExpressionConverter.ConvertO(__workflow_inviteqESSignature);
-                    invitepropCount++;
-                }
-
-                if (invitepropCount > 0)
-                {
-                    callPayload.Body = invite;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_invite);
                 return new ApiConnectionAction<InviteToSignDocGroupAllOptionsResponse>(callPayload);
             });
         }
@@ -1037,7 +522,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                if (__workflow_fields != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<UpdateFieldValuesV2Response>(callPayload);
             });
         }
@@ -1045,37 +531,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class SignnowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<string>> bodyEvent, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<TriggersV2Input>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/multievent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
-                body["entity_id"] = "00000000-0000-0000-0000-000000000000";
-                bodypropCount++;
-                body["action"] = "callback";
-                bodypropCount++;
-                var attributesObject = new JObject();
-                var attributesObjectpropCount = 0;
-                attributesObject["callback"] = "#{listCallbackUrl()}";
-                attributesObjectpropCount++;
-                if (attributesObjectpropCount > 0)
-                {
-                    body["attributes"] = attributesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<TriggersV2Response>(callPayload, recurrence: recurrence);
             });
         }
@@ -1087,53 +551,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string InviteId { get; set; }
     }
 
-    public class inviteinvitesInputItem
+    public class CreateDocGroupEmbeddedInvitesInput
     {
-        [JsonProperty("order")]
+        [JsonProperty("invites")]
+        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItem[] Invites { get; set; }
+
+        [JsonProperty("advanced")]
+        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItem[] Advanced { get; set; }
+
+        [JsonProperty("signature")]
+        public CreateDocGroupEmbeddedInvitesInputQESSignatureType? QESSignature { get; set; }
+    }
+
+    public class CreateDocGroupEmbeddedInvitesInputInvitesTypeItem
+    {
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
 
-        [JsonProperty("signers")]
-        public inviteinvitesInputItemSignersTypeItem[] Signers { get; set; }
+        [JsonProperty("signers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItem[] Signers { get; set; }
     }
 
-    public class inviteinvitesInputItemSignersTypeItem
+    public class CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItem
     {
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("documents")]
-        public inviteinvitesInputItemSignersTypeItemDocumentsTypeItem[] Documents { get; set; }
+        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItem[] Documents { get; set; }
     }
 
-    public class inviteinvitesInputItemSignersTypeItemDocumentsTypeItem
+    public class CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItem
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
         [JsonProperty("role")]
         public string Role { get; set; }
 
-        [JsonProperty("action")]
-        public inviteinvitesInputItemSignersTypeItemDocumentsTypeItemActionType Action { get; set; }
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItemActionType Action { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinvitesInputItemSignersTypeItemDocumentsTypeItemActionType
+    public enum CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItemActionType
     {
         Sign,
         View
     }
 
-    public class inviteadvancedInputItem
+    public class CreateDocGroupEmbeddedInvitesInputAdvancedTypeItem
     {
-        [JsonProperty("order")]
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Order { get; set; }
 
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("language")]
-        public inviteadvancedInputItemLanguageType Language { get; set; }
+        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemLanguageType? Language { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1154,19 +630,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string CloseRedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public inviteadvancedInputItemRedirectTargetType RedirectTarget { get; set; }
+        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("delivery_type")]
-        public inviteadvancedInputItemDeliveryTypeType DeliveryType { get; set; }
+        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemDeliveryTypeType? DeliveryType { get; set; }
 
         [JsonProperty("link_expiration")]
-        public int LinkExpiration { get; set; }
+        public int? LinkExpiration { get; set; }
 
         [JsonProperty("session_expiration")]
-        public int SessionExpiration { get; set; }
+        public int? SessionExpiration { get; set; }
 
         [JsonProperty("authentication_type")]
-        public inviteadvancedInputItemAuthenticationTypeType AuthenticationType { get; set; }
+        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("authentication_password")]
         public string AuthenticationPassword { get; set; }
@@ -1179,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteadvancedInputItemLanguageType
+    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemLanguageType
     {
         En,
         Es,
@@ -1187,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteadvancedInputItemRedirectTargetType
+    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1196,14 +672,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteadvancedInputItemDeliveryTypeType
+    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemDeliveryTypeType
     {
         Email,
         Link
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteadvancedInputItemAuthenticationTypeType
+    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1212,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteqESSignatureInput
+    public enum CreateDocGroupEmbeddedInvitesInputQESSignatureType
     {
         Eideasy,
         Nom151
@@ -1222,6 +698,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     {
         [JsonProperty("link")]
         public string EmbeddedInviteLink { get; set; }
+    }
+
+    public class GenerateDocGroupEmbeddedInviteLinkInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("link_expiration")]
+        public int? LinkExpiration { get; set; }
+
+        [JsonProperty("session_expiration")]
+        public int? SessionExpiration { get; set; }
     }
 
     public class CreateEmbeddedInvitesResponse
@@ -1248,25 +736,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Status { get; set; }
     }
 
-    public class inviteinvitesInputItem2
+    public class CreateEmbeddedInvitesInput
     {
-        [JsonProperty("email")]
-        public string SignerEmail { get; set; }
+        [JsonProperty("invites")]
+        public CreateEmbeddedInvitesInputInvitesTypeItem[] Invites { get; set; }
 
-        [JsonProperty("role")]
-        public string Role { get; set; }
+        [JsonProperty("name_formula")]
+        public string NameFormula { get; set; }
 
-        [JsonProperty("order")]
-        public int Order { get; set; }
+        [JsonProperty("advanced_params")]
+        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItem[] InviteAdvancedParameters { get; set; }
+
+        [JsonProperty("signature")]
+        public CreateEmbeddedInvitesInputQESSignatureType? QESSignature { get; set; }
     }
 
-    public class inviteinviteAdvancedParametersInputItem
+    public class CreateEmbeddedInvitesInputInvitesTypeItem
     {
-        [JsonProperty("role")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SignerEmail { get; set; }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Role { get; set; }
+
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Order { get; set; } = 1;
+    }
+
+    public class CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItem
+    {
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
         [JsonProperty("language")]
-        public inviteinviteAdvancedParametersInputItemLanguageType Language { get; set; }
+        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemLanguageType? Language { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1281,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string PrefillSignatureName { get; set; }
 
         [JsonProperty("force_new_signature")]
-        public bool RequireNewSignature { get; set; }
+        public bool? RequireNewSignature { get; set; }
 
         [JsonProperty("redirect_uri")]
         public string RedirectUri { get; set; }
@@ -1293,10 +796,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string CloseRedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public inviteinviteAdvancedParametersInputItemRedirectTargetType RedirectTarget { get; set; }
+        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("authentication_type")]
-        public inviteinviteAdvancedParametersInputItemAuthenticationTypeType AuthenticationType { get; set; }
+        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("authentication_password")]
         public string AuthenticationPassword { get; set; }
@@ -1308,17 +811,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string AuthenticationSmsMessage { get; set; }
 
         [JsonProperty("delivery_type")]
-        public inviteinviteAdvancedParametersInputItemDeliveryTypeType DeliveryType { get; set; }
+        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemDeliveryTypeType? DeliveryType { get; set; }
 
         [JsonProperty("link_expiration")]
-        public int LinkExpiration { get; set; }
+        public int? LinkExpiration { get; set; }
 
         [JsonProperty("session_expiration")]
-        public int SessionExpiration { get; set; }
+        public int? SessionExpiration { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteAdvancedParametersInputItemLanguageType
+    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemLanguageType
     {
         En,
         Es,
@@ -1326,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteAdvancedParametersInputItemRedirectTargetType
+    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1335,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteAdvancedParametersInputItemAuthenticationTypeType
+    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1344,10 +847,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteAdvancedParametersInputItemDeliveryTypeType
+    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemDeliveryTypeType
     {
         Email,
         Link
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateEmbeddedInvitesInputQESSignatureType
+    {
+        Eideasy,
+        Nom151
     }
 
     public class GenerateEmbeddedInviteLinkResponse
@@ -1360,6 +870,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     {
         [JsonProperty("link")]
         public string Link { get; set; }
+    }
+
+    public class GenerateEmbeddedInviteLinkInput
+    {
+        [JsonProperty("link_expiration")]
+        public int? LinkExpiration { get; set; }
+
+        [JsonProperty("session_expiration")]
+        public int? SessionExpiration { get; set; }
     }
 
     public class DocumentGroupsResponse
@@ -1416,12 +935,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string DocumentName { get; set; }
     }
 
-    public class bodydocumentsInputItem
+    public class CreateDocGroupFromFilesInput
     {
-        [JsonProperty("name")]
+        [JsonProperty("group_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentGroupName { get; set; }
+
+        [JsonProperty("documents")]
+        public CreateDocGroupFromFilesInputDocumentsTypeItem[] Documents { get; set; }
+    }
+
+    public class CreateDocGroupFromFilesInputDocumentsTypeItem
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentName { get; set; }
 
-        [JsonProperty("content")]
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
     }
 
@@ -1429,6 +957,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateFromTemplateGroupInput
+    {
+        [JsonProperty("group_name")]
+        public string DocumentGroupName { get; set; }
     }
 
     public class UpdateGroupFieldValuesResponse
@@ -1500,13 +1034,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Id { get; set; }
     }
 
+    public class CreateFromTemplateInput
+    {
+        [JsonProperty("document_name")]
+        public string DocumentName { get; set; }
+    }
+
     public class CreateSigningLinkResponse
     {
         [JsonProperty("url_no_signup")]
         public string URL { get; set; }
     }
 
-    public class bodyroleInputItem
+    public class SendUserDefinedInviteInput
+    {
+        public SendUserDefinedInviteInputRoleTypeItem[] Role { get; set; }
+
+        [JsonProperty("cc")]
+        public string CC { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("on_complete")]
+        public string EmailAllPartiesOnCompletion { get; set; }
+    }
+
+    public class SendUserDefinedInviteInputRoleTypeItem
     {
         [JsonProperty("role")]
         public string Name { get; set; }
@@ -1517,8 +1074,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [JsonProperty("phone_invite")]
         public string PhoneNumberInviteViaSMS { get; set; }
 
-        [JsonProperty("order")]
-        public int Order { get; set; }
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Order { get; set; } = 1;
 
         [JsonProperty("subject")]
         public string PersonalizedSubject { get; set; }
@@ -1527,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string PersonalizedMessage { get; set; }
 
         [JsonProperty("authentication_type")]
-        public bodyroleInputItemAuthenticationTypeType AuthenticationType { get; set; }
+        public SendUserDefinedInviteInputRoleTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1536,23 +1093,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Phone { get; set; }
 
         [JsonProperty("expiration_days")]
-        public int DaysUntilExpiration { get; set; }
+        public int? DaysUntilExpiration { get; set; }
 
         [JsonProperty("reminder")]
-        public int SendReminderIn { get; set; }
+        public int? SendReminderIn { get; set; }
 
         [JsonProperty("remind_repeat")]
-        public int SendReminderEveryXDays { get; set; }
+        public int? SendReminderEveryXDays { get; set; }
 
         [JsonProperty("reassign")]
-        public bool AllowForwarding { get; set; }
+        public bool? AllowForwarding { get; set; }
 
         [JsonProperty("decline_by_signature")]
-        public bool ShowDeclineOnSignature { get; set; }
+        public bool? ShowDeclineOnSignature { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyroleInputItemAuthenticationTypeType
+    public enum SendUserDefinedInviteInputRoleTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone Call")]
@@ -1680,31 +1237,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string NewEmail { get; set; }
     }
 
-    public class replaceToreplaceToInputItem
+    public class ReplaceRecipientsInDocumentInviteInput
     {
-        [JsonProperty("role")]
+        [JsonProperty("replace_to")]
+        public ReplaceRecipientsInDocumentInviteInputReplaceToTypeItem[] ReplaceTo { get; set; }
+
+        [JsonProperty("advanced")]
+        public ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItem[] AdvancedParameters { get; set; }
+    }
+
+    public class ReplaceRecipientsInDocumentInviteInputReplaceToTypeItem
+    {
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewEmail { get; set; }
     }
 
-    public class replaceToadvancedParametersInputItem
+    public class ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItem
     {
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
-        [JsonProperty("expiration_days")]
-        public int ExpirationDays { get; set; }
+        [JsonProperty("expiration_days", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? ExpirationDays { get; set; } = 30;
 
         [JsonProperty("decline_by_signature")]
-        public bool AllowDeclineBySignature { get; set; }
+        public bool? AllowDeclineBySignature { get; set; }
 
         [JsonProperty("reminder")]
-        public int Reminder { get; set; }
+        public int? Reminder { get; set; }
 
         [JsonProperty("authentication_type")]
-        public replaceToadvancedParametersInputItemAuthenticationTypeType AuthenticationType { get; set; }
+        public ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("authentication_password")]
         public string AuthenticationPassword { get; set; }
@@ -1717,7 +1283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum replaceToadvancedParametersInputItemAuthenticationTypeType
+    public enum ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1731,16 +1297,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Status { get; set; }
     }
 
-    public class replaceToinviteActionAttributesInputItem
+    public class ReplaceRecipientsInDocumentGroupInviteInput
     {
-        [JsonProperty("document_id")]
+        [JsonProperty("step_id")]
+        public string StepId { get; set; }
+
+        [JsonProperty("recipient_to_update")]
+        public string RecipientToReplace { get; set; }
+
+        [JsonProperty("new_recipient")]
+        public string NewRecipient { get; set; }
+
+        [JsonProperty("expiration_days", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? ExpirationDays { get; set; } = 30;
+
+        [JsonProperty("reminder")]
+        public int? Reminder { get; set; }
+
+        [JsonProperty("invite_action_attributes")]
+        public ReplaceRecipientsInDocumentGroupInviteInputInviteActionAttributesTypeItem[] InviteActionAttributes { get; set; }
+    }
+
+    public class ReplaceRecipientsInDocumentGroupInviteInputInviteActionAttributesTypeItem
+    {
+        [JsonProperty("document_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
         [JsonProperty("allow_forwarding")]
-        public bool AllowForwarding { get; set; }
+        public bool? AllowForwarding { get; set; }
 
         [JsonProperty("decline_by_signature")]
-        public bool AllowDeclineBySignature { get; set; }
+        public bool? AllowDeclineBySignature { get; set; }
     }
 
     public class CreateEmbeddedInviteSettingsLinkResponse
@@ -1749,17 +1336,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Url { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteSettingstypeInput
+    public class CreateEmbeddedInviteSettingsLinkInput
     {
-        Manage,
-        Edit,
-        [EnumMember(Value = "Send-invite")]
-        SendInvite
+        [JsonProperty("type")]
+        public CreateEmbeddedInviteSettingsLinkInputTypeType? Type { get; set; }
+
+        [JsonProperty("redirect_uri")]
+        public string RedirectUri { get; set; }
+
+        [JsonProperty("link_expiration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? LinkExpiration { get; set; } = 15;
+
+        [JsonProperty("redirect_target")]
+        public CreateEmbeddedInviteSettingsLinkInputRedirectTargetType? RedirectTarget { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteSettingsredirectTargetInput
+    public enum CreateEmbeddedInviteSettingsLinkInputTypeType
+    {
+        Invite,
+        Document
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateEmbeddedInviteSettingsLinkInputRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1773,13 +1373,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Url { get; set; }
     }
 
+    public class CreateDocGroupEmbeddedInviteSettingsLinkInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateDocGroupEmbeddedInviteSettingsLinkInputTypeType? Type { get; set; } = CreateDocGroupEmbeddedInviteSettingsLinkInputTypeType.Manage;
+
+        [JsonProperty("redirect_uri")]
+        public string RedirectUri { get; set; }
+
+        [JsonProperty("link_expiration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? LinkExpiration { get; set; } = 15;
+
+        [JsonProperty("redirect_target")]
+        public CreateDocGroupEmbeddedInviteSettingsLinkInputRedirectTargetType? RedirectTarget { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateDocGroupEmbeddedInviteSettingsLinkInputTypeType
+    {
+        Manage,
+        Edit,
+        [EnumMember(Value = "Send-invite")]
+        SendInvite
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateDocGroupEmbeddedInviteSettingsLinkInputRedirectTargetType
+    {
+        [EnumMember(Value = "In the new tab")]
+        InTheNewTab,
+        [EnumMember(Value = "In the same tab")]
+        InTheSameTab
+    }
+
     public class InviteToSignAllOptionsResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class invitesignersInputItem
+    public class InviteToSignAllOptionsInput
+    {
+        [JsonProperty("signers")]
+        public InviteToSignAllOptionsInputSignersTypeItem[] Signers { get; set; }
+
+        [JsonProperty("signers_advanced")]
+        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItem[] SignerAdvancedProperties { get; set; }
+
+        [JsonProperty("viewers")]
+        public InviteToSignAllOptionsInputViewersTypeItem[] Viewers { get; set; }
+
+        [JsonProperty("viewers_advanced")]
+        public InviteToSignAllOptionsInputViewerAdvancedPropertiesTypeItem[] ViewerAdvancedProperties { get; set; }
+
+        [JsonProperty("approvers")]
+        public InviteToSignAllOptionsInputApproversTypeItem[] Approvers { get; set; }
+
+        [JsonProperty("approver_advanced")]
+        public InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItem[] ApproverAdvancedProperties { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("email_groups")]
+        public InviteToSignAllOptionsInputEmailGroupsTypeItem[] EmailGroups { get; set; }
+
+        [JsonProperty("cc")]
+        public InviteToSignAllOptionsInputCCTypeItem[] CC { get; set; }
+
+        [JsonProperty("cc_step")]
+        public InviteToSignAllOptionsInputCCStepsTypeItem[] CCSteps { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("cc_subject")]
+        public string CCSubject { get; set; }
+
+        [JsonProperty("cc_message")]
+        public string CCMessage { get; set; }
+
+        [JsonProperty("signature")]
+        public InviteToSignAllOptionsInputQESSignatureType? QESSignature { get; set; }
+    }
+
+    public class InviteToSignAllOptionsInputSignersTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1790,16 +1471,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [JsonProperty("phone_invite")]
         public string PhoneInvite { get; set; }
 
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
-        [JsonProperty("order")]
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
     }
 
-    public class invitesignerAdvancedPropertiesInputItem
+    public class InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItem
     {
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
         [JsonProperty("prefill_signature_name")]
@@ -1809,28 +1490,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string RequiredPresetSignatureName { get; set; }
 
         [JsonProperty("force_new_signature")]
-        public bool RequireNewSignature { get; set; }
+        public bool? RequireNewSignature { get; set; }
 
         [JsonProperty("reassign")]
-        public bool AllowForwarding { get; set; }
+        public bool? AllowForwarding { get; set; }
 
         [JsonProperty("decline_by_signature")]
-        public bool AllowDeclineBySignature { get; set; }
+        public bool? AllowDeclineBySignature { get; set; }
 
         [JsonProperty("remind_after")]
-        public int SendReminderInXDays { get; set; }
+        public int? SendReminderInXDays { get; set; }
 
         [JsonProperty("remind_before")]
-        public int SendReminderInXDaysBeforeExpiration { get; set; }
+        public int? SendReminderInXDaysBeforeExpiration { get; set; }
 
         [JsonProperty("remind_repeat")]
-        public int SendReminderEveryXDays { get; set; }
+        public int? SendReminderEveryXDays { get; set; }
 
         [JsonProperty("expiration_days")]
-        public int DaysUntilExpiration { get; set; }
+        public int? DaysUntilExpiration { get; set; }
 
         [JsonProperty("authentication_type")]
-        public invitesignerAdvancedPropertiesInputItemAuthenticationTypeType AuthenticationType { get; set; }
+        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("password")]
         public string AuthenticationPassword { get; set; }
@@ -1851,7 +1532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string RedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public invitesignerAdvancedPropertiesInputItemRedirectTargetType RedirectTarget { get; set; }
+        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("decline_redirect_uri")]
         public string DeclineRedirectUri { get; set; }
@@ -1860,20 +1541,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string CloseRedirectUri { get; set; }
 
         [JsonProperty("is_finish_redirect_canceled")]
-        public bool IsFinishRedirectCanceled { get; set; }
+        public bool? IsFinishRedirectCanceled { get; set; }
 
         [JsonProperty("is_close_redirect_canceled")]
-        public bool IsCloseRedirectCanceled { get; set; }
+        public bool? IsCloseRedirectCanceled { get; set; }
 
         [JsonProperty("is_decline_redirect_canceled")]
-        public bool IsDeclineRedirectCanceled { get; set; }
+        public bool? IsDeclineRedirectCanceled { get; set; }
 
         [JsonProperty("language")]
-        public invitesignerAdvancedPropertiesInputItemLanguageType Language { get; set; }
+        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemLanguageType? Language { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum invitesignerAdvancedPropertiesInputItemAuthenticationTypeType
+    public enum InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1882,7 +1563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum invitesignerAdvancedPropertiesInputItemRedirectTargetType
+    public enum InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1891,28 +1572,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum invitesignerAdvancedPropertiesInputItemLanguageType
+    public enum InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemLanguageType
     {
         En,
         Es,
         Fr
     }
 
-    public class inviteviewersInputItem
+    public class InviteToSignAllOptionsInputViewersTypeItem
     {
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
-        [JsonProperty("order")]
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
     }
 
-    public class inviteviewerAdvancedPropertiesInputItem
+    public class InviteToSignAllOptionsInputViewerAdvancedPropertiesTypeItem
     {
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
         [JsonProperty("subject")]
@@ -1922,25 +1603,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Message { get; set; }
     }
 
-    public class inviteapproversInputItem
+    public class InviteToSignAllOptionsInputApproversTypeItem
     {
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
-        [JsonProperty("order")]
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
     }
 
-    public class inviteapproverAdvancedPropertiesInputItem
+    public class InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItem
     {
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
         [JsonProperty("expiration_days")]
-        public int ExpirationDays { get; set; }
+        public int? ExpirationDays { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -1949,7 +1630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Subject { get; set; }
 
         [JsonProperty("authentication_type")]
-        public inviteapproverAdvancedPropertiesInputItemAuthenticationTypeType AuthenticationType { get; set; }
+        public InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1964,11 +1645,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string RedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public inviteapproverAdvancedPropertiesInputItemRedirectTargetType RedirectTarget { get; set; }
+        public InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemRedirectTargetType? RedirectTarget { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteapproverAdvancedPropertiesInputItemAuthenticationTypeType
+    public enum InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1977,7 +1658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteapproverAdvancedPropertiesInputItemRedirectTargetType
+    public enum InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1985,7 +1666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         InTheSameTab
     }
 
-    public class inviteemailGroupsInputItem
+    public class InviteToSignAllOptionsInputEmailGroupsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1994,22 +1675,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Name { get; set; }
 
         [JsonProperty("emails")]
-        public inviteemailGroupsInputItemEmailsTypeItem[] Emails { get; set; }
+        public InviteToSignAllOptionsInputEmailGroupsTypeItemEmailsTypeItem[] Emails { get; set; }
     }
 
-    public class inviteemailGroupsInputItemEmailsTypeItem
+    public class InviteToSignAllOptionsInputEmailGroupsTypeItemEmailsTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
     }
 
-    public class invitecCInputItem
+    public class InviteToSignAllOptionsInputCCTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
     }
 
-    public class invitecCStepsInputItem
+    public class InviteToSignAllOptionsInputCCStepsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2018,7 +1699,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Email { get; set; }
 
         [JsonProperty("step")]
-        public int Step { get; set; }
+        public int? Step { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum InviteToSignAllOptionsInputQESSignatureType
+    {
+        Eideasy,
+        Nom151
     }
 
     public class InviteToSignDocGroupAllOptionsResponse
@@ -2030,9 +1718,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string PendingInviteLink { get; set; }
     }
 
-    public class inviteinviteStepsInputItem
+    public class InviteToSignDocGroupAllOptionsInput
     {
-        [JsonProperty("order")]
+        [JsonProperty("invite_steps")]
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItem[] InviteSteps { get; set; }
+
+        [JsonProperty("Email")]
+        public InviteToSignDocGroupAllOptionsInputInviteEmailsTypeItem[] InviteEmails { get; set; }
+
+        [JsonProperty("email_groups")]
+        public InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItem[] EmailGroups { get; set; }
+
+        [JsonProperty("completion_emails")]
+        public InviteToSignDocGroupAllOptionsInputCompletionEmailsTypeItem[] CompletionEmails { get; set; }
+
+        [JsonProperty("sign_as_merged")]
+        public bool? SignAsMerged { get; set; }
+
+        [JsonProperty("client_timestamp")]
+        public int? ClientTimestamp { get; set; }
+
+        [JsonProperty("cc")]
+        public InviteToSignDocGroupAllOptionsInputCCTypeItem[] CC { get; set; }
+
+        [JsonProperty("signature")]
+        public InviteToSignDocGroupAllOptionsInputQESSignatureType? QESSignature { get; set; }
+    }
+
+    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItem
+    {
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
 
         [JsonProperty("email")]
@@ -2041,53 +1756,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [JsonProperty("email_group")]
         public string EmailGroup { get; set; }
 
-        [JsonProperty("role_name")]
+        [JsonProperty("role_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleName { get; set; }
 
-        [JsonProperty("action")]
-        public inviteinviteStepsInputItemActionType Action { get; set; }
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemActionType Action { get; set; }
 
-        [JsonProperty("document_id")]
+        [JsonProperty("document_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
-        public inviteinviteStepsInputItemAdvancedTypeItem[] Advanced { get; set; }
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItem[] Advanced { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteStepsInputItemActionType
+    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemActionType
     {
         View,
         Sign,
         Approve
     }
 
-    public class inviteinviteStepsInputItemAdvancedTypeItem
+    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItem
     {
         [JsonProperty("required_preset_signature_name")]
         public string RequiredPresetSignatureName { get; set; }
 
         [JsonProperty("allow_reassign")]
-        public bool AllowForwarding { get; set; }
+        public bool? AllowForwarding { get; set; }
 
         [JsonProperty("decline_by_signature")]
-        public bool AllowDeclineBySignature { get; set; }
+        public bool? AllowDeclineBySignature { get; set; }
 
         [JsonProperty("authentication")]
-        public inviteinviteStepsInputItemAdvancedTypeItemAuthenticationType Authentication { get; set; }
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationType Authentication { get; set; }
 
         [JsonProperty("payment_request")]
-        public inviteinviteStepsInputItemAdvancedTypeItemPaymentRequestType PaymentRequest { get; set; }
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemPaymentRequestType PaymentRequest { get; set; }
 
         [JsonProperty("redirect")]
-        public inviteinviteStepsInputItemAdvancedTypeItemRedirectType Redirect { get; set; }
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectType Redirect { get; set; }
 
         [JsonProperty("language")]
-        public inviteinviteStepsInputItemAdvancedTypeItemLanguageType Language { get; set; }
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemLanguageType? Language { get; set; }
     }
 
-    public class inviteinviteStepsInputItemAdvancedTypeItemAuthenticationType
+    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationType
     {
         [JsonProperty("type")]
-        public inviteinviteStepsInputItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType AuthenticationType { get; set; }
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("value")]
         public string Password { get; set; }
@@ -2100,7 +1815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteStepsInputItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType
+    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -2108,7 +1823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Sms
     }
 
-    public class inviteinviteStepsInputItemAdvancedTypeItemPaymentRequestType
+    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemPaymentRequestType
     {
         [JsonProperty("merchant_id")]
         public string MerchantId { get; set; }
@@ -2120,13 +1835,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Amount { get; set; }
     }
 
-    public class inviteinviteStepsInputItemAdvancedTypeItemRedirectType
+    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectType
     {
         [JsonProperty("redirect_uri")]
         public string Uri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public inviteinviteStepsInputItemAdvancedTypeItemRedirectTypeRedirectTargetType RedirectTarget { get; set; }
+        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectTypeRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("decline_redirect_uri")]
         public string DeclineRedirectUri { get; set; }
@@ -2135,17 +1850,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string CloseRedirectUri { get; set; }
 
         [JsonProperty("is_finish_redirect_canceled")]
-        public bool IsFinishRedirectCanceled { get; set; }
+        public bool? IsFinishRedirectCanceled { get; set; }
 
         [JsonProperty("is_close_redirect_canceled")]
-        public bool IsCloseRedirectCanceled { get; set; }
+        public bool? IsCloseRedirectCanceled { get; set; }
 
         [JsonProperty("is_decline_redirect_canceled")]
-        public bool IsDeclineRedirectCanceled { get; set; }
+        public bool? IsDeclineRedirectCanceled { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteStepsInputItemAdvancedTypeItemRedirectTypeRedirectTargetType
+    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectTypeRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -2154,19 +1869,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inviteinviteStepsInputItemAdvancedTypeItemLanguageType
+    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemLanguageType
     {
         En,
         Es,
         Fr
     }
 
-    public class inviteinviteEmailsInputItem
+    public class InviteToSignDocGroupAllOptionsInputInviteEmailsTypeItem
     {
-        [JsonProperty("order")]
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
 
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("email_group")]
@@ -2179,31 +1894,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Message { get; set; }
 
         [JsonProperty("expiration_days")]
-        public int DaysUntilExpiration { get; set; }
+        public int? DaysUntilExpiration { get; set; }
 
         [JsonProperty("remind_after")]
-        public int SendReminderInXDays { get; set; }
+        public int? SendReminderInXDays { get; set; }
 
         [JsonProperty("remind_before")]
-        public int SendReminderInXDaysBeforeExpiration { get; set; }
+        public int? SendReminderInXDaysBeforeExpiration { get; set; }
 
         [JsonProperty("remind_repeat")]
-        public int SendReminderEveryXDays { get; set; }
+        public int? SendReminderEveryXDays { get; set; }
     }
 
-    public class invitecompletionEmailsInputItem
+    public class InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("emails")]
+        public InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItemEmailsTypeItem[] Emails { get; set; }
+    }
+
+    public class InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItemEmailsTypeItem
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class InviteToSignDocGroupAllOptionsInputCompletionEmailsTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
 
         [JsonProperty("disable_document_attachment")]
-        public bool DisableDocumentAttachment { get; set; }
+        public bool? DisableDocumentAttachment { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class InviteToSignDocGroupAllOptionsInputCCTypeItem
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum InviteToSignDocGroupAllOptionsInputQESSignatureType
+    {
+        Eideasy,
+        Nom151
     }
 
     public class UpdateFieldValuesV2Response
@@ -2222,6 +1968,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
         [JsonProperty("updated")]
         public string Updated { get; set; }
+    }
+
+    public class TriggersV2Input
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Event { get; set; } = "user.document.complete";
+
+        [JsonProperty("entity_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string EntityId { get; set; } = "00000000-0000-0000-0000-000000000000";
+
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Action { get; set; } = "callback";
+
+        [JsonProperty("attributes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TriggersV2InputAttributesType Attributes { get; set; }
+    }
+
+    public class TriggersV2InputAttributesType
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

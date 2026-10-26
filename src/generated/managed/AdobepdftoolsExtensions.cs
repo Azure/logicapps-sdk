@@ -13,10 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
     public class AdobepdftoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
-        public IBodyWorkflowAction<CombinePDFResponse, ApiConnectionActionConfiguration> CombinePDF(Expression<Func<string>> filesArraymergedPDFFileName, Expression<Func<string[]>> filesArrayfiles, Expression<Func<xRegionValueInput>> xRegionValue = null)
+        public IBodyWorkflowAction<CombinePDFResponse, ApiConnectionActionConfiguration> CombinePDF(Expression<Func<CombinePDFInput>> filesArray, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var __workflow_filesArraymergedPDFFileName = WorkflowExpression.Compile(filesArraymergedPDFFileName, nameof(filesArraymergedPDFFileName), required: true);
-            var __workflow_filesArrayfiles = WorkflowExpression.Compile(filesArrayfiles, nameof(filesArrayfiles), required: true);
+            var __workflow_filesArray = WorkflowExpression.Compile(filesArray, nameof(filesArray), required: true);
             var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
             return new DeferredBodyAction<CombinePDFResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -27,17 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
-                var filesArray = new JObject();
-                var filesArraypropCount = 0;
-                filesArraypropCount++;
-                filesArray["outputFileName"] = ExpressionConverter.ConvertO(__workflow_filesArraymergedPDFFileName);
-                filesArraypropCount++;
-                filesArray["files"] = ExpressionConverter.ConvertO(__workflow_filesArrayfiles);
-                if (filesArraypropCount > 0)
-                {
-                    callPayload.Body = filesArray;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_filesArray);
                 return new ApiConnectionAction<CombinePDFResponse>(callPayload);
             });
         }
@@ -57,6 +46,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
 
         [JsonProperty("fileContentType")]
         public string PDFFileContentType { get; set; }
+    }
+
+    public class CombinePDFInput
+    {
+        [JsonProperty("outputFileName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MergedPDFFileName { get; set; }
+
+        [JsonProperty("files", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Files { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

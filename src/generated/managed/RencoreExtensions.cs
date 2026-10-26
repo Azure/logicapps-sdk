@@ -13,33 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
     public class RencoreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ApiAnalyze(Expression<Func<string>> analysisRequestFile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApiAnalyze(Expression<Func<ApiAnalyzePostInput>> analysisRequest)
         {
-            var __workflow_analysisRequestFile = WorkflowExpression.Compile(analysisRequestFile, nameof(analysisRequestFile), required: true);
-            var __workflow_analysisRequestfileName = WorkflowExpression.Compile(analysisRequestfileName, nameof(analysisRequestfileName), required: true);
-            var __workflow_analysisRequestlicense = WorkflowExpression.Compile(analysisRequestlicense, nameof(analysisRequestlicense), required: false);
+            var __workflow_analysisRequest = WorkflowExpression.Compile(analysisRequest, nameof(analysisRequest), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/analyze";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var analysisRequest = new JObject();
-                var analysisRequestpropCount = 0;
-                analysisRequestpropCount++;
-                analysisRequest["file"] = ExpressionConverter.ConvertO(__workflow_analysisRequestFile);
-                analysisRequestpropCount++;
-                analysisRequest["fileName"] = ExpressionConverter.ConvertO(__workflow_analysisRequestfileName);
-                if (__workflow_analysisRequestlicense != null)
-                {
-                    analysisRequest["license"] = ExpressionConverter.ConvertO(__workflow_analysisRequestlicense);
-                    analysisRequestpropCount++;
-                }
-
-                if (analysisRequestpropCount > 0)
-                {
-                    callPayload.Body = analysisRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_analysisRequest);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -47,6 +29,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
 
     public class RencoreTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ApiAnalyzePostInput
+    {
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string File { get; set; }
+
+        [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("license")]
+        public string License { get; set; }
     }
 }
 

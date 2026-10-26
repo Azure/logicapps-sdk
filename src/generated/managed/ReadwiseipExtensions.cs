@@ -46,23 +46,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightSavePostResponseItem[], ApiConnectionActionConfiguration> HighlightSave(Expression<Func<bodyhighlightsInputItem[]>> bodyhighlights)
+        public IBodyWorkflowAction<HighlightSavePostResponseItem[], ApiConnectionActionConfiguration> HighlightSave(Expression<Func<HighlightSavePostInput>> body)
         {
-            var __workflow_bodyhighlights = WorkflowExpression.Compile(bodyhighlights, nameof(bodyhighlights), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HighlightSavePostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/highlights/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["highlights"] = ExpressionConverter.ConvertO(__workflow_bodyhighlights);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HighlightSavePostResponseItem[]>(callPayload);
             });
         }
@@ -115,56 +107,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightUpdatePatchResponse, ApiConnectionActionConfiguration> HighlightUpdatePatch(Expression<Func<string>> highlightId, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodylocation = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycolor = null)
+        public IBodyWorkflowAction<HighlightUpdatePatchResponse, ApiConnectionActionConfiguration> HighlightUpdatePatch(Expression<Func<string>> highlightId, Expression<Func<HighlightUpdatePatchInput>> body)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HighlightUpdatePatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocation != null)
-                {
-                    body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycolor != null)
-                {
-                    body["color"] = ExpressionConverter.ConvertO(__workflow_bodycolor);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HighlightUpdatePatchResponse>(callPayload);
             });
         }
@@ -189,24 +141,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsPostResponse, ApiConnectionActionConfiguration> HighlightTags(Expression<Func<string>> highlightId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<HighlightTagsPostResponse, ApiConnectionActionConfiguration> HighlightTags(Expression<Func<string>> highlightId, Expression<Func<HighlightTagsPostInput>> body)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HighlightTagsPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HighlightTagsPostResponse>(callPayload);
             });
         }
@@ -226,25 +170,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsUpdateResponse, ApiConnectionActionConfiguration> HighlightTagsUpdate(Expression<Func<string>> highlightId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<HighlightTagsUpdateResponse, ApiConnectionActionConfiguration> HighlightTagsUpdate(Expression<Func<string>> highlightId, Expression<Func<string>> tagId, Expression<Func<HighlightTagsUpdateInput>> body)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HighlightTagsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags/{1}", __workflow_highlightId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HighlightTagsUpdateResponse>(callPayload);
             });
         }
@@ -327,24 +263,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsCreateResponse, ApiConnectionActionConfiguration> BookTagsCreate(Expression<Func<string>> bookId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<BookTagsCreateResponse, ApiConnectionActionConfiguration> BookTagsCreate(Expression<Func<string>> bookId, Expression<Func<BookTagsCreateInput>> body)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BookTagsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BookTagsCreateResponse>(callPayload);
             });
         }
@@ -364,25 +292,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsUpdateResponse, ApiConnectionActionConfiguration> BookTagsUpdate(Expression<Func<string>> bookId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<BookTagsUpdateResponse, ApiConnectionActionConfiguration> BookTagsUpdate(Expression<Func<string>> bookId, Expression<Func<string>> tagId, Expression<Func<BookTagsUpdateInput>> body)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BookTagsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags/{1}", __workflow_bookId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BookTagsUpdateResponse>(callPayload);
             });
         }
@@ -506,9 +426,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         public string Name { get; set; }
     }
 
-    public class bodyhighlightsInputItem
+    public class HighlightSavePostInput
     {
-        [JsonProperty("text")]
+        [JsonProperty("highlights", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HighlightSavePostInputHighlightsTypeItem[] Highlights { get; set; }
+    }
+
+    public class HighlightSavePostInputHighlightsTypeItem
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
         [JsonProperty("title")]
@@ -523,17 +449,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         [JsonProperty("source_type")]
         public string SourceType { get; set; }
 
-        [JsonProperty("category")]
-        public bodyhighlightsInputItemCategoryType Category { get; set; }
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HighlightSavePostInputHighlightsTypeItemCategoryType? Category { get; set; } = HighlightSavePostInputHighlightsTypeItemCategoryType.Books;
 
         [JsonProperty("note")]
         public string Note { get; set; }
 
         [JsonProperty("location")]
-        public int Location { get; set; }
+        public int? Location { get; set; }
 
-        [JsonProperty("location_type")]
-        public bodyhighlightsInputItemLocationTypeType LocationType { get; set; }
+        [JsonProperty("location_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HighlightSavePostInputHighlightsTypeItemLocationTypeType? LocationType { get; set; } = HighlightSavePostInputHighlightsTypeItemLocationTypeType.Page;
 
         [JsonProperty("highlighted_at")]
         public string HighlightedAt { get; set; }
@@ -543,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyhighlightsInputItemCategoryType
+    public enum HighlightSavePostInputHighlightsTypeItemCategoryType
     {
         [EnumMember(Value = "books")]
         Books,
@@ -556,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyhighlightsInputItemLocationTypeType
+    public enum HighlightSavePostInputHighlightsTypeItemLocationTypeType
     {
         [EnumMember(Value = "page")]
         Page,
@@ -800,6 +726,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         public string Name { get; set; }
     }
 
+    public class HighlightUpdatePatchInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("location")]
+        public int? Location { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("color")]
+        public string Color { get; set; }
+    }
+
     public class HighlightTagsGetResponse
     {
         [JsonProperty("count")]
@@ -833,12 +777,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         public string Name { get; set; }
     }
 
+    public class HighlightTagsPostInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
     public class HighlightTagsUpdateResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class HighlightTagsUpdateInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
@@ -992,12 +948,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         public string Name { get; set; }
     }
 
+    public class BookTagsCreateInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
     public class BookTagsUpdateResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class BookTagsUpdateInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 }

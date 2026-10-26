@@ -13,201 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     public class ConnectiveesignaturesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration> CreateInstantPackage(Expression<Func<string>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
+        public IBodyWorkflowAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration> CreateInstantPackage(Expression<Func<CreateInstantPackageInput>> body = null)
         {
-            var __workflow_bodydocument = WorkflowExpression.Compile(bodydocument, nameof(bodydocument), required: false);
-            var __workflow_bodydocumentLanguage = WorkflowExpression.Compile(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
-            var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
-            var __workflow_bodyexternalPackageData = WorkflowExpression.Compile(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
-            var __workflow_bodyinitiator = WorkflowExpression.Compile(bodyinitiator, nameof(bodyinitiator), required: false);
-            var __workflow_bodystakeholders = WorkflowExpression.Compile(bodystakeholders, nameof(bodystakeholders), required: false);
-            var __workflow_bodycallBackUrl = WorkflowExpression.Compile(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
-            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: false);
-            var __workflow_bodydocumentGroupCode = WorkflowExpression.Compile(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
-            var __workflow_bodythemeCode = WorkflowExpression.Compile(bodythemeCode, nameof(bodythemeCode), required: false);
-            var __workflow_bodydownloadUnsignedFiles = WorkflowExpression.Compile(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
-            var __workflow_bodyreassignEnabled = WorkflowExpression.Compile(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
-            var __workflow_bodyactionUrlExpirationPeriodInDays = WorkflowExpression.Compile(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
-            var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
-            var __workflow_bodyexternalDocumentReference = WorkflowExpression.Compile(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
-            var __workflow_bodyexternalPackageReference = WorkflowExpression.Compile(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
-            var __workflow_bodyf2FRedirectUrl = WorkflowExpression.Compile(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
-            var __workflow_bodynotificationCallBackUrl = WorkflowExpression.Compile(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
-            var __workflow_bodypdfErrorHandling = WorkflowExpression.Compile(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
-            var __workflow_bodyrepresentation = WorkflowExpression.Compile(bodyrepresentation, nameof(bodyrepresentation), required: false);
-            var __workflow_bodyrepresentationType = WorkflowExpression.Compile(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
-            var __workflow_bodysigningTemplateCode = WorkflowExpression.Compile(bodysigningTemplateCode, nameof(bodysigningTemplateCode), required: false);
-            var __workflow_bodytargetType = WorkflowExpression.Compile(bodytargetType, nameof(bodytargetType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/packages/instant";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocument != null)
-                {
-                    if (__workflow_bodydocument != null)
-                    {
-                        body["Document"] = ExpressionConverter.ConvertO(__workflow_bodydocument);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["Document"] = "";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentLanguage != null)
-                {
-                    body["DocumentLanguage"] = ExpressionConverter.ConvertO(__workflow_bodydocumentLanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentName != null)
-                {
-                    body["DocumentName"] = ExpressionConverter.ConvertO(__workflow_bodydocumentName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalPackageData != null)
-                {
-                    body["ExternalPackageData"] = ExpressionConverter.ConvertO(__workflow_bodyexternalPackageData);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinitiator != null)
-                {
-                    body["Initiator"] = ExpressionConverter.ConvertO(__workflow_bodyinitiator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystakeholders != null)
-                {
-                    body["Stakeholders"] = ExpressionConverter.ConvertO(__workflow_bodystakeholders);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallBackUrl != null)
-                {
-                    body["CallBackUrl"] = ExpressionConverter.ConvertO(__workflow_bodycallBackUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycorrelationId != null)
-                {
-                    body["CorrelationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentGroupCode != null)
-                {
-                    if (__workflow_bodydocumentGroupCode != null)
-                    {
-                        body["DocumentGroupCode"] = ExpressionConverter.ConvertO(__workflow_bodydocumentGroupCode);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["DocumentGroupCode"] = "\"00001\"";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythemeCode != null)
-                {
-                    body["ThemeCode"] = ExpressionConverter.ConvertO(__workflow_bodythemeCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydownloadUnsignedFiles != null)
-                {
-                    body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(__workflow_bodydownloadUnsignedFiles);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreassignEnabled != null)
-                {
-                    body["ReassignEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyreassignEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactionUrlExpirationPeriodInDays != null)
-                {
-                    body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(__workflow_bodyactionUrlExpirationPeriodInDays);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiryTimestamp != null)
-                {
-                    body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(__workflow_bodyexpiryTimestamp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalDocumentReference != null)
-                {
-                    body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalPackageReference != null)
-                {
-                    body["ExternalPackageReference"] = ExpressionConverter.ConvertO(__workflow_bodyexternalPackageReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyf2FRedirectUrl != null)
-                {
-                    body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodyf2FRedirectUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotificationCallBackUrl != null)
-                {
-                    body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(__workflow_bodynotificationCallBackUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypdfErrorHandling != null)
-                {
-                    body["PdfErrorHandling"] = ExpressionConverter.ConvertO(__workflow_bodypdfErrorHandling);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrepresentation != null)
-                {
-                    body["Representation"] = ExpressionConverter.ConvertO(__workflow_bodyrepresentation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrepresentationType != null)
-                {
-                    body["RepresentationType"] = ExpressionConverter.ConvertO(__workflow_bodyrepresentationType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysigningTemplateCode != null)
-                {
-                    body["SigningTemplateCode"] = ExpressionConverter.ConvertO(__workflow_bodysigningTemplateCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytargetType != null)
-                {
-                    body["TargetType"] = ExpressionConverter.ConvertO(__workflow_bodytargetType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInstantPackageResponse>(callPayload);
             });
         }
@@ -249,217 +64,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreatePackageResponse, ApiConnectionActionConfiguration> CreatePackage(Expression<Func<string>> contentType, Expression<Func<string>> bodyinitiator = null, Expression<Func<string>> bodypackageName = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null)
+        public IBodyWorkflowAction<CreatePackageResponse, ApiConnectionActionConfiguration> CreatePackage(Expression<Func<string>> contentType, Expression<Func<CreatePackageInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_bodyinitiator = WorkflowExpression.Compile(bodyinitiator, nameof(bodyinitiator), required: false);
-            var __workflow_bodypackageName = WorkflowExpression.Compile(bodypackageName, nameof(bodypackageName), required: false);
-            var __workflow_bodycallBackUrl = WorkflowExpression.Compile(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
-            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: false);
-            var __workflow_bodydocumentGroupCode = WorkflowExpression.Compile(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
-            var __workflow_bodythemeCode = WorkflowExpression.Compile(bodythemeCode, nameof(bodythemeCode), required: false);
-            var __workflow_bodydownloadUnsignedFiles = WorkflowExpression.Compile(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
-            var __workflow_bodyreassignEnabled = WorkflowExpression.Compile(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
-            var __workflow_bodyactionUrlExpirationPeriodInDays = WorkflowExpression.Compile(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
-            var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
-            var __workflow_bodyexternalPackageReference = WorkflowExpression.Compile(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
-            var __workflow_bodyexternalPackageData = WorkflowExpression.Compile(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
-            var __workflow_bodyf2FRedirectUrl = WorkflowExpression.Compile(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
-            var __workflow_bodynotificationCallBackUrl = WorkflowExpression.Compile(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreatePackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/packages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyinitiator != null)
-                {
-                    body["Initiator"] = ExpressionConverter.ConvertO(__workflow_bodyinitiator);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypackageName != null)
-                {
-                    body["PackageName"] = ExpressionConverter.ConvertO(__workflow_bodypackageName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallBackUrl != null)
-                {
-                    body["CallBackUrl"] = ExpressionConverter.ConvertO(__workflow_bodycallBackUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycorrelationId != null)
-                {
-                    body["CorrelationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentGroupCode != null)
-                {
-                    body["DocumentGroupCode"] = ExpressionConverter.ConvertO(__workflow_bodydocumentGroupCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythemeCode != null)
-                {
-                    body["ThemeCode"] = ExpressionConverter.ConvertO(__workflow_bodythemeCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydownloadUnsignedFiles != null)
-                {
-                    body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(__workflow_bodydownloadUnsignedFiles);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreassignEnabled != null)
-                {
-                    body["ReassignEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyreassignEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactionUrlExpirationPeriodInDays != null)
-                {
-                    body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(__workflow_bodyactionUrlExpirationPeriodInDays);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiryTimestamp != null)
-                {
-                    body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(__workflow_bodyexpiryTimestamp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalPackageReference != null)
-                {
-                    body["ExternalPackageReference"] = ExpressionConverter.ConvertO(__workflow_bodyexternalPackageReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalPackageData != null)
-                {
-                    body["ExternalPackageData"] = ExpressionConverter.ConvertO(__workflow_bodyexternalPackageData);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyf2FRedirectUrl != null)
-                {
-                    body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodyf2FRedirectUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotificationCallBackUrl != null)
-                {
-                    body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(__workflow_bodynotificationCallBackUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePackageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<AddDocumentToPackageResponse, ApiConnectionActionConfiguration> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<string>> bodydocument = null, Expression<Func<string>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<SigningField[]>> bodysigningFields = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<ErrorHandlingResponse[]>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodytargetType = null)
+        public IBodyWorkflowAction<AddDocumentToPackageResponse, ApiConnectionActionConfiguration> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<AddDocumentToPackageInput>> body = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
-            var __workflow_bodydocument = WorkflowExpression.Compile(bodydocument, nameof(bodydocument), required: false);
-            var __workflow_bodydocumentLanguage = WorkflowExpression.Compile(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
-            var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
-            var __workflow_bodysigningFields = WorkflowExpression.Compile(bodysigningFields, nameof(bodysigningFields), required: false);
-            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: false);
-            var __workflow_bodydocumentType = WorkflowExpression.Compile(bodydocumentType, nameof(bodydocumentType), required: false);
-            var __workflow_bodyexternalDocumentReference = WorkflowExpression.Compile(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
-            var __workflow_bodypdfErrorHandling = WorkflowExpression.Compile(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
-            var __workflow_bodyrepresentation = WorkflowExpression.Compile(bodyrepresentation, nameof(bodyrepresentation), required: false);
-            var __workflow_bodyrepresentationType = WorkflowExpression.Compile(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
-            var __workflow_bodytargetType = WorkflowExpression.Compile(bodytargetType, nameof(bodytargetType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddDocumentToPackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/documents", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocument != null)
-                {
-                    body["Document"] = ExpressionConverter.ConvertO(__workflow_bodydocument);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentLanguage != null)
-                {
-                    body["DocumentLanguage"] = ExpressionConverter.ConvertO(__workflow_bodydocumentLanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentName != null)
-                {
-                    body["DocumentName"] = ExpressionConverter.ConvertO(__workflow_bodydocumentName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysigningFields != null)
-                {
-                    body["SigningFields"] = ExpressionConverter.ConvertO(__workflow_bodysigningFields);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycorrelationId != null)
-                {
-                    body["CorrelationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentType != null)
-                {
-                    body["DocumentType"] = ExpressionConverter.ConvertO(__workflow_bodydocumentType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalDocumentReference != null)
-                {
-                    body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentReference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypdfErrorHandling != null)
-                {
-                    body["PdfErrorHandling"] = ExpressionConverter.ConvertO(__workflow_bodypdfErrorHandling);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrepresentation != null)
-                {
-                    body["Representation"] = ExpressionConverter.ConvertO(__workflow_bodyrepresentation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrepresentationType != null)
-                {
-                    body["RepresentationType"] = ExpressionConverter.ConvertO(__workflow_bodyrepresentationType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytargetType != null)
-                {
-                    body["TargetType"] = ExpressionConverter.ConvertO(__workflow_bodytargetType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddDocumentToPackageResponse>(callPayload);
             });
         }
@@ -491,28 +123,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageStatusInfo, ApiConnectionActionConfiguration> SetPackageStatus(Expression<Func<string>> id, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<PackageStatusInfo, ApiConnectionActionConfiguration> SetPackageStatus(Expression<Func<string>> id, Expression<Func<SetPackageStatusInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PackageStatusInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystatus != null)
-                {
-                    body["Status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PackageStatusInfo>(callPayload);
             });
         }
@@ -558,28 +178,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<string>> bodyexpiryTimestamp = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<ExpiryTimeStampInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/expirytimestamp", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyexpiryTimestamp != null)
-                {
-                    body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(__workflow_bodyexpiryTimestamp);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -611,28 +219,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetProcessInformation(Expression<Func<string>> id, Expression<Func<bodystakeholdersInputItem[]>> bodystakeholders = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetProcessInformation(Expression<Func<string>> id, Expression<Func<SetProcessInformationInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodystakeholders = WorkflowExpression.Compile(bodystakeholders, nameof(bodystakeholders), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/process", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystakeholders != null)
-                {
-                    body["Stakeholders"] = ExpressionConverter.ConvertO(__workflow_bodystakeholders);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -691,63 +288,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyipAddress = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<ProofExternalSourceInput>> body = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyipAddress = WorkflowExpression.Compile(bodyipAddress, nameof(bodyipAddress), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/auditproof/proofs", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontent != null)
-                {
-                    body["Content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationId != null)
-                {
-                    body["LocationId"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["Type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["Description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyipAddress != null)
-                {
-                    body["IpAddress"] = ExpressionConverter.ConvertO(__workflow_bodyipAddress);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -763,8 +314,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string CreationTimestamp { get; set; }
     }
 
+    public class CreateInstantPackageInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Document { get; set; } = "";
+        public CreateInstantPackageInputDocumentLanguageType? DocumentLanguage { get; set; }
+        public string DocumentName { get; set; }
+        public string ExternalPackageData { get; set; }
+        public string Initiator { get; set; }
+        public Stakeholder[] Stakeholders { get; set; }
+        public string CallBackUrl { get; set; }
+        public string CorrelationId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentGroupCode { get; set; } = "\"00001\"";
+        public string ThemeCode { get; set; }
+        public bool? DownloadUnsignedFiles { get; set; }
+        public bool? ReassignEnabled { get; set; }
+        public int? ActionUrlExpirationPeriodInDays { get; set; }
+        public string ExpiryTimestamp { get; set; }
+        public string ExternalDocumentReference { get; set; }
+        public string ExternalPackageReference { get; set; }
+        public string F2FRedirectUrl { get; set; }
+        public string NotificationCallBackUrl { get; set; }
+        public string PdfErrorHandling { get; set; }
+        public string Representation { get; set; }
+        public string RepresentationType { get; set; }
+        public string SigningTemplateCode { get; set; }
+        public string TargetType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodydocumentLanguageInput
+    public enum CreateInstantPackageInputDocumentLanguageType
     {
         [EnumMember(Value = "en")]
         En,
@@ -843,6 +424,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string CreationTimestamp { get; set; }
     }
 
+    public class CreatePackageInput
+    {
+        public string Initiator { get; set; }
+        public string PackageName { get; set; }
+        public string CallBackUrl { get; set; }
+        public string CorrelationId { get; set; }
+        public string DocumentGroupCode { get; set; }
+        public string ThemeCode { get; set; }
+        public bool? DownloadUnsignedFiles { get; set; }
+        public bool? ReassignEnabled { get; set; }
+        public int? ActionUrlExpirationPeriodInDays { get; set; }
+        public string ExpiryTimestamp { get; set; }
+        public string ExternalPackageReference { get; set; }
+        public string ExternalPackageData { get; set; }
+        public string F2FRedirectUrl { get; set; }
+        public string NotificationCallBackUrl { get; set; }
+    }
+
     public class AddDocumentToPackageResponse
     {
         public string DocumentId { get; set; }
@@ -855,6 +454,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string Id { get; set; }
         public string Label { get; set; }
         public int PageNumber { get; set; }
+    }
+
+    public class AddDocumentToPackageInput
+    {
+        public string Document { get; set; }
+        public string DocumentLanguage { get; set; }
+        public string DocumentName { get; set; }
+        public SigningField[] SigningFields { get; set; }
+        public string CorrelationId { get; set; }
+        public string DocumentType { get; set; }
+        public string ExternalDocumentReference { get; set; }
+        public ErrorHandlingResponse[] PdfErrorHandling { get; set; }
+        public string Representation { get; set; }
+        public string RepresentationType { get; set; }
+        public string TargetType { get; set; }
     }
 
     public class ErrorHandlingResponse
@@ -939,9 +553,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string UsedSigningType { get; set; }
     }
 
-    public class bodystakeholdersInputItem
+    public class SetPackageStatusInput
     {
-        public bodystakeholdersInputItemActorsTypeItem[] Actors { get; set; }
+        public string Status { get; set; }
+    }
+
+    public class ExpiryTimeStampInput
+    {
+        public string ExpiryTimestamp { get; set; }
+    }
+
+    public class SetProcessInformationInput
+    {
+        public SetProcessInformationInputStakeholdersTypeItem[] Stakeholders { get; set; }
+    }
+
+    public class SetProcessInformationInputStakeholdersTypeItem
+    {
+        public SetProcessInformationInputStakeholdersTypeItemActorsTypeItem[] Actors { get; set; }
         public string EmailAddress { get; set; }
         public string FirstName { get; set; }
         public string Language { get; set; }
@@ -950,29 +579,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string ExternalStakeholderReference { get; set; }
     }
 
-    public class bodystakeholdersInputItemActorsTypeItem
+    public class SetProcessInformationInputStakeholdersTypeItemActorsTypeItem
     {
-        public bodystakeholdersInputItemActorsTypeItemTypeType Type { get; set; }
+        public SetProcessInformationInputStakeholdersTypeItemActorsTypeItemTypeType? Type { get; set; }
         public string OrderIndex { get; set; }
         public string[] LocationIds { get; set; }
         public SigningTypeInfo[] SigningTypes { get; set; }
         public string Phonenumber { get; set; }
         public string RedirectURL { get; set; }
-        public bool SendNotifications { get; set; }
-        public bodystakeholdersInputItemActorsTypeItemUserRolesTypeItem[] UserRoles { get; set; }
+        public bool? SendNotifications { get; set; }
+        public SetProcessInformationInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem[] UserRoles { get; set; }
         public string LegalNoticeCode { get; set; }
         public string LegalNoticetext { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystakeholdersInputItemActorsTypeItemTypeType
+    public enum SetProcessInformationInputStakeholdersTypeItemActorsTypeItemTypeType
     {
         Signer,
         Receiver
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystakeholdersInputItemActorsTypeItemUserRolesTypeItem
+    public enum SetProcessInformationInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem
     {
         LEGALNOTICE1,
         LEGALNOTICE2,
@@ -1055,6 +684,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
 
         [JsonProperty("content")]
         public string Content { get; set; }
+    }
+
+    public class ProofExternalSourceInput
+    {
+        public string Content { get; set; }
+        public string LocationId { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Description { get; set; }
+        public string IpAddress { get; set; }
     }
 }
 

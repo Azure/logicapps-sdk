@@ -41,49 +41,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel, ApiConnectionActionConfiguration> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
+        public IBodyWorkflowAction<PostModel, ApiConnectionActionConfiguration> Create(Expression<Func<string>> siteId, Expression<Func<CreatePostInput>> post)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
-            var __workflow_posttitle = WorkflowExpression.Compile(posttitle, nameof(posttitle), required: false);
-            var __workflow_postcontent = WorkflowExpression.Compile(postcontent, nameof(postcontent), required: false);
-            var __workflow_poststatus = WorkflowExpression.Compile(poststatus, nameof(poststatus), required: false);
-            var __workflow_posttags = WorkflowExpression.Compile(posttags, nameof(posttags), required: false);
+            var __workflow_post = WorkflowExpression.Compile(post, nameof(post), required: true);
             return new DeferredBodyAction<PostModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/posts/new", __workflow_siteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var post = new JObject();
-                var postpropCount = 0;
-                if (__workflow_posttitle != null)
-                {
-                    post["title"] = ExpressionConverter.ConvertO(__workflow_posttitle);
-                    postpropCount++;
-                }
-
-                if (__workflow_postcontent != null)
-                {
-                    post["content"] = ExpressionConverter.ConvertO(__workflow_postcontent);
-                    postpropCount++;
-                }
-
-                if (__workflow_poststatus != null)
-                {
-                    post["status"] = ExpressionConverter.ConvertO(__workflow_poststatus);
-                    postpropCount++;
-                }
-
-                if (__workflow_posttags != null)
-                {
-                    post["tags"] = ExpressionConverter.ConvertO(__workflow_posttags);
-                    postpropCount++;
-                }
-
-                if (postpropCount > 0)
-                {
-                    callPayload.Body = post;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_post);
                 return new ApiConnectionAction<PostModel>(callPayload);
             });
         }
@@ -251,8 +218,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         public bool Geo { get; set; }
     }
 
+    public class CreatePostInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("status")]
+        public CreatePostInputStatusType? Status { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum poststatusInput
+    public enum CreatePostInputStatusType
     {
         [EnumMember(Value = "draft")]
         Draft,

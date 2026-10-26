@@ -402,223 +402,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<string>> projectRestrictionRebillingscostTypeRebill, Expression<Func<string>> projectRestrictionRebillingsproject, Expression<Func<string>> projectRestrictionRebillingsid = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillCode = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillDescription = null, Expression<Func<string>> projectRestrictionRebillingscreated = null, Expression<Func<string>> projectRestrictionRebillingscreator = null, Expression<Func<string>> projectRestrictionRebillingscreatorFullName = null, Expression<Func<int>> projectRestrictionRebillingsdivision = null, Expression<Func<string>> projectRestrictionRebillingsmodified = null, Expression<Func<string>> projectRestrictionRebillingsmodifier = null, Expression<Func<string>> projectRestrictionRebillingsmodifierFullName = null, Expression<Func<string>> projectRestrictionRebillingsprojectCode = null, Expression<Func<string>> projectRestrictionRebillingsprojectDescription = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<PutProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_projectRestrictionRebillingscostTypeRebill = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
-            var __workflow_projectRestrictionRebillingsproject = WorkflowExpression.Compile(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
-            var __workflow_projectRestrictionRebillingsid = WorkflowExpression.Compile(projectRestrictionRebillingsid, nameof(projectRestrictionRebillingsid), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillCode = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillDescription = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
-            var __workflow_projectRestrictionRebillingscreated = WorkflowExpression.Compile(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
-            var __workflow_projectRestrictionRebillingscreator = WorkflowExpression.Compile(projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
-            var __workflow_projectRestrictionRebillingscreatorFullName = WorkflowExpression.Compile(projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
-            var __workflow_projectRestrictionRebillingsdivision = WorkflowExpression.Compile(projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
-            var __workflow_projectRestrictionRebillingsmodified = WorkflowExpression.Compile(projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
-            var __workflow_projectRestrictionRebillingsmodifier = WorkflowExpression.Compile(projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
-            var __workflow_projectRestrictionRebillingsmodifierFullName = WorkflowExpression.Compile(projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
-            var __workflow_projectRestrictionRebillingsprojectCode = WorkflowExpression.Compile(projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
-            var __workflow_projectRestrictionRebillingsprojectDescription = WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
+            var __workflow_projectRestrictionRebillings = WorkflowExpression.Compile(projectRestrictionRebillings, nameof(projectRestrictionRebillings), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_id);
-                var projectRestrictionRebillings = new JObject();
-                var projectRestrictionRebillingspropCount = 0;
-                if (__workflow_projectRestrictionRebillingsid != null)
-                {
-                    projectRestrictionRebillings["ID"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsid);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                projectRestrictionRebillingspropCount++;
-                projectRestrictionRebillings["CostTypeRebill"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscostTypeRebill);
-                if (__workflow_projectRestrictionRebillingscostTypeRebillCode != null)
-                {
-                    projectRestrictionRebillings["CostTypeRebillCode"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscostTypeRebillCode);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscostTypeRebillDescription != null)
-                {
-                    projectRestrictionRebillings["CostTypeRebillDescription"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscostTypeRebillDescription);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscreated != null)
-                {
-                    projectRestrictionRebillings["Created"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscreated);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscreator != null)
-                {
-                    projectRestrictionRebillings["Creator"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscreator);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscreatorFullName != null)
-                {
-                    projectRestrictionRebillings["CreatorFullName"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscreatorFullName);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsdivision != null)
-                {
-                    projectRestrictionRebillings["Division"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsdivision);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsmodified != null)
-                {
-                    projectRestrictionRebillings["Modified"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsmodified);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsmodifier != null)
-                {
-                    projectRestrictionRebillings["Modifier"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsmodifier);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsmodifierFullName != null)
-                {
-                    projectRestrictionRebillings["ModifierFullName"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsmodifierFullName);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                projectRestrictionRebillingspropCount++;
-                projectRestrictionRebillings["Project"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsproject);
-                if (__workflow_projectRestrictionRebillingsprojectCode != null)
-                {
-                    projectRestrictionRebillings["ProjectCode"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsprojectCode);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsprojectDescription != null)
-                {
-                    projectRestrictionRebillings["ProjectDescription"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsprojectDescription);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (projectRestrictionRebillingspropCount > 0)
-                {
-                    callPayload.Body = projectRestrictionRebillings;
-                }
-
+                if (__workflow_projectRestrictionRebillings != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillings);
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> projectRestrictionRebillingscostTypeRebill, Expression<Func<string>> projectRestrictionRebillingsproject, Expression<Func<string>> projectRestrictionRebillingsid = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillCode = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillDescription = null, Expression<Func<string>> projectRestrictionRebillingscreated = null, Expression<Func<string>> projectRestrictionRebillingscreator = null, Expression<Func<string>> projectRestrictionRebillingscreatorFullName = null, Expression<Func<int>> projectRestrictionRebillingsdivision = null, Expression<Func<string>> projectRestrictionRebillingsmodified = null, Expression<Func<string>> projectRestrictionRebillingsmodifier = null, Expression<Func<string>> projectRestrictionRebillingsmodifierFullName = null, Expression<Func<string>> projectRestrictionRebillingsprojectCode = null, Expression<Func<string>> projectRestrictionRebillingsprojectDescription = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<PostProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
-            var __workflow_projectRestrictionRebillingscostTypeRebill = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
-            var __workflow_projectRestrictionRebillingsproject = WorkflowExpression.Compile(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
-            var __workflow_projectRestrictionRebillingsid = WorkflowExpression.Compile(projectRestrictionRebillingsid, nameof(projectRestrictionRebillingsid), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillCode = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillDescription = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
-            var __workflow_projectRestrictionRebillingscreated = WorkflowExpression.Compile(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
-            var __workflow_projectRestrictionRebillingscreator = WorkflowExpression.Compile(projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
-            var __workflow_projectRestrictionRebillingscreatorFullName = WorkflowExpression.Compile(projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
-            var __workflow_projectRestrictionRebillingsdivision = WorkflowExpression.Compile(projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
-            var __workflow_projectRestrictionRebillingsmodified = WorkflowExpression.Compile(projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
-            var __workflow_projectRestrictionRebillingsmodifier = WorkflowExpression.Compile(projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
-            var __workflow_projectRestrictionRebillingsmodifierFullName = WorkflowExpression.Compile(projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
-            var __workflow_projectRestrictionRebillingsprojectCode = WorkflowExpression.Compile(projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
-            var __workflow_projectRestrictionRebillingsprojectDescription = WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
+            var __workflow_projectRestrictionRebillings = WorkflowExpression.Compile(projectRestrictionRebillings, nameof(projectRestrictionRebillings), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var projectRestrictionRebillings = new JObject();
-                var projectRestrictionRebillingspropCount = 0;
-                if (__workflow_projectRestrictionRebillingsid != null)
-                {
-                    projectRestrictionRebillings["ID"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsid);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                projectRestrictionRebillingspropCount++;
-                projectRestrictionRebillings["CostTypeRebill"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscostTypeRebill);
-                if (__workflow_projectRestrictionRebillingscostTypeRebillCode != null)
-                {
-                    projectRestrictionRebillings["CostTypeRebillCode"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscostTypeRebillCode);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscostTypeRebillDescription != null)
-                {
-                    projectRestrictionRebillings["CostTypeRebillDescription"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscostTypeRebillDescription);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscreated != null)
-                {
-                    projectRestrictionRebillings["Created"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscreated);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscreator != null)
-                {
-                    projectRestrictionRebillings["Creator"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscreator);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingscreatorFullName != null)
-                {
-                    projectRestrictionRebillings["CreatorFullName"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingscreatorFullName);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsdivision != null)
-                {
-                    projectRestrictionRebillings["Division"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsdivision);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsmodified != null)
-                {
-                    projectRestrictionRebillings["Modified"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsmodified);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsmodifier != null)
-                {
-                    projectRestrictionRebillings["Modifier"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsmodifier);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsmodifierFullName != null)
-                {
-                    projectRestrictionRebillings["ModifierFullName"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsmodifierFullName);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                projectRestrictionRebillingspropCount++;
-                projectRestrictionRebillings["Project"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsproject);
-                if (__workflow_projectRestrictionRebillingsprojectCode != null)
-                {
-                    projectRestrictionRebillings["ProjectCode"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsprojectCode);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (__workflow_projectRestrictionRebillingsprojectDescription != null)
-                {
-                    projectRestrictionRebillings["ProjectDescription"] = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillingsprojectDescription);
-                    projectRestrictionRebillingspropCount++;
-                }
-
-                if (projectRestrictionRebillingspropCount > 0)
-                {
-                    callPayload.Body = projectRestrictionRebillings;
-                }
-
+                if (__workflow_projectRestrictionRebillings != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_projectRestrictionRebillings);
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
             });
         }
@@ -1207,197 +1019,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PutTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<string>> timeCorrectionsid = null, Expression<Func<string>> timeCorrectionscreated = null, Expression<Func<string>> timeCorrectionscreator = null, Expression<Func<string>> timeCorrectionscreatorFullName = null, Expression<Func<int>> timeCorrectionsdivision = null, Expression<Func<string>> timeCorrectionsmodified = null, Expression<Func<string>> timeCorrectionsmodifier = null, Expression<Func<string>> timeCorrectionsmodifierFullName = null, Expression<Func<string>> timeCorrectionsnotes = null, Expression<Func<string>> timeCorrectionsoriginalEntryId = null, Expression<Func<double>> timeCorrectionsquantity = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PutTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<PutTimeCorrectionsInput>> timeCorrections = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_timeCorrectionsid = WorkflowExpression.Compile(timeCorrectionsid, nameof(timeCorrectionsid), required: false);
-            var __workflow_timeCorrectionscreated = WorkflowExpression.Compile(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
-            var __workflow_timeCorrectionscreator = WorkflowExpression.Compile(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
-            var __workflow_timeCorrectionscreatorFullName = WorkflowExpression.Compile(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
-            var __workflow_timeCorrectionsdivision = WorkflowExpression.Compile(timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
-            var __workflow_timeCorrectionsmodified = WorkflowExpression.Compile(timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
-            var __workflow_timeCorrectionsmodifier = WorkflowExpression.Compile(timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
-            var __workflow_timeCorrectionsmodifierFullName = WorkflowExpression.Compile(timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
-            var __workflow_timeCorrectionsnotes = WorkflowExpression.Compile(timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
-            var __workflow_timeCorrectionsoriginalEntryId = WorkflowExpression.Compile(timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
-            var __workflow_timeCorrectionsquantity = WorkflowExpression.Compile(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
+            var __workflow_timeCorrections = WorkflowExpression.Compile(timeCorrections, nameof(timeCorrections), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeCorrections", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_id);
-                var timeCorrections = new JObject();
-                var timeCorrectionspropCount = 0;
-                if (__workflow_timeCorrectionsid != null)
-                {
-                    timeCorrections["ID"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsid);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionscreated != null)
-                {
-                    timeCorrections["Created"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionscreated);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionscreator != null)
-                {
-                    timeCorrections["Creator"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionscreator);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionscreatorFullName != null)
-                {
-                    timeCorrections["CreatorFullName"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionscreatorFullName);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsdivision != null)
-                {
-                    timeCorrections["Division"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsdivision);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsmodified != null)
-                {
-                    timeCorrections["Modified"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsmodified);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsmodifier != null)
-                {
-                    timeCorrections["Modifier"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsmodifier);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsmodifierFullName != null)
-                {
-                    timeCorrections["ModifierFullName"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsmodifierFullName);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsnotes != null)
-                {
-                    timeCorrections["Notes"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsnotes);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsoriginalEntryId != null)
-                {
-                    timeCorrections["OriginalEntryId"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsoriginalEntryId);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsquantity != null)
-                {
-                    timeCorrections["Quantity"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsquantity);
-                    timeCorrectionspropCount++;
-                }
-
-                if (timeCorrectionspropCount > 0)
-                {
-                    callPayload.Body = timeCorrections;
-                }
-
+                if (__workflow_timeCorrections != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeCorrections);
                 return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PostTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> timeCorrectionsid = null, Expression<Func<string>> timeCorrectionscreated = null, Expression<Func<string>> timeCorrectionscreator = null, Expression<Func<string>> timeCorrectionscreatorFullName = null, Expression<Func<int>> timeCorrectionsdivision = null, Expression<Func<string>> timeCorrectionsmodified = null, Expression<Func<string>> timeCorrectionsmodifier = null, Expression<Func<string>> timeCorrectionsmodifierFullName = null, Expression<Func<string>> timeCorrectionsnotes = null, Expression<Func<string>> timeCorrectionsoriginalEntryId = null, Expression<Func<double>> timeCorrectionsquantity = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PostTimeCorrections(Expression<Func<string>> division, Expression<Func<PostTimeCorrectionsInput>> timeCorrections = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
-            var __workflow_timeCorrectionsid = WorkflowExpression.Compile(timeCorrectionsid, nameof(timeCorrectionsid), required: false);
-            var __workflow_timeCorrectionscreated = WorkflowExpression.Compile(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
-            var __workflow_timeCorrectionscreator = WorkflowExpression.Compile(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
-            var __workflow_timeCorrectionscreatorFullName = WorkflowExpression.Compile(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
-            var __workflow_timeCorrectionsdivision = WorkflowExpression.Compile(timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
-            var __workflow_timeCorrectionsmodified = WorkflowExpression.Compile(timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
-            var __workflow_timeCorrectionsmodifier = WorkflowExpression.Compile(timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
-            var __workflow_timeCorrectionsmodifierFullName = WorkflowExpression.Compile(timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
-            var __workflow_timeCorrectionsnotes = WorkflowExpression.Compile(timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
-            var __workflow_timeCorrectionsoriginalEntryId = WorkflowExpression.Compile(timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
-            var __workflow_timeCorrectionsquantity = WorkflowExpression.Compile(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
+            var __workflow_timeCorrections = WorkflowExpression.Compile(timeCorrections, nameof(timeCorrections), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeCorrections", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var timeCorrections = new JObject();
-                var timeCorrectionspropCount = 0;
-                if (__workflow_timeCorrectionsid != null)
-                {
-                    timeCorrections["ID"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsid);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionscreated != null)
-                {
-                    timeCorrections["Created"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionscreated);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionscreator != null)
-                {
-                    timeCorrections["Creator"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionscreator);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionscreatorFullName != null)
-                {
-                    timeCorrections["CreatorFullName"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionscreatorFullName);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsdivision != null)
-                {
-                    timeCorrections["Division"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsdivision);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsmodified != null)
-                {
-                    timeCorrections["Modified"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsmodified);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsmodifier != null)
-                {
-                    timeCorrections["Modifier"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsmodifier);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsmodifierFullName != null)
-                {
-                    timeCorrections["ModifierFullName"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsmodifierFullName);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsnotes != null)
-                {
-                    timeCorrections["Notes"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsnotes);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsoriginalEntryId != null)
-                {
-                    timeCorrections["OriginalEntryId"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsoriginalEntryId);
-                    timeCorrectionspropCount++;
-                }
-
-                if (__workflow_timeCorrectionsquantity != null)
-                {
-                    timeCorrections["Quantity"] = ExpressionConverter.ConvertO(__workflow_timeCorrectionsquantity);
-                    timeCorrectionspropCount++;
-                }
-
-                if (timeCorrectionspropCount > 0)
-                {
-                    callPayload.Body = timeCorrections;
-                }
-
+                if (__workflow_timeCorrections != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeCorrections);
                 return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
             });
         }
@@ -1443,649 +1093,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<string>> timeTransactionsitem, Expression<Func<string>> timeTransactionsproject, Expression<Func<double>> timeTransactionsquantity, Expression<Func<string>> timeTransactionsid = null, Expression<Func<string>> timeTransactionsaccount = null, Expression<Func<string>> timeTransactionsaccountName = null, Expression<Func<string>> timeTransactionsactivity = null, Expression<Func<string>> timeTransactionsactivityDescription = null, Expression<Func<double>> timeTransactionsamount = null, Expression<Func<double>> timeTransactionsamountFC = null, Expression<Func<string>> timeTransactionsattachment = null, Expression<Func<string>> timeTransactionscreated = null, Expression<Func<string>> timeTransactionscreator = null, Expression<Func<string>> timeTransactionscreatorFullName = null, Expression<Func<string>> timeTransactionscurrency = null, Expression<Func<string>> timeTransactionsdate = null, Expression<Func<int>> timeTransactionsdivision = null, Expression<Func<string>> timeTransactionsdivisionDescription = null, Expression<Func<string>> timeTransactionsemployee = null, Expression<Func<string>> timeTransactionsendTime = null, Expression<Func<int>> timeTransactionsentryNumber = null, Expression<Func<string>> timeTransactionserrorText = null, Expression<Func<double>> timeTransactionshourStatus = null, Expression<Func<string>> timeTransactionsitemDescription = null, Expression<Func<bool>> timeTransactionsitemDivisable = null, Expression<Func<string>> timeTransactionsmodified = null, Expression<Func<string>> timeTransactionsmodifier = null, Expression<Func<string>> timeTransactionsmodifierFullName = null, Expression<Func<string>> timeTransactionsnotes = null, Expression<Func<double>> timeTransactionsprice = null, Expression<Func<double>> timeTransactionspriceFC = null, Expression<Func<string>> timeTransactionsprojectAccount = null, Expression<Func<string>> timeTransactionsprojectAccountCode = null, Expression<Func<string>> timeTransactionsprojectAccountName = null, Expression<Func<string>> timeTransactionsprojectCode = null, Expression<Func<string>> timeTransactionsprojectDescription = null, Expression<Func<bool>> timeTransactionsskipValidation = null, Expression<Func<string>> timeTransactionsstartTime = null, Expression<Func<string>> timeTransactionssubscription = null, Expression<Func<string>> timeTransactionssubscriptionAccount = null, Expression<Func<string>> timeTransactionssubscriptionAccountCode = null, Expression<Func<string>> timeTransactionssubscriptionAccountName = null, Expression<Func<string>> timeTransactionssubscriptionDescription = null, Expression<Func<int>> timeTransactionssubscriptionNumber = null, Expression<Func<double>> timeTransactionstype = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<PutTimeTransactionsInput>> timeTransactions = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_timeTransactionsitem = WorkflowExpression.Compile(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
-            var __workflow_timeTransactionsproject = WorkflowExpression.Compile(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
-            var __workflow_timeTransactionsquantity = WorkflowExpression.Compile(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
-            var __workflow_timeTransactionsid = WorkflowExpression.Compile(timeTransactionsid, nameof(timeTransactionsid), required: false);
-            var __workflow_timeTransactionsaccount = WorkflowExpression.Compile(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
-            var __workflow_timeTransactionsaccountName = WorkflowExpression.Compile(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
-            var __workflow_timeTransactionsactivity = WorkflowExpression.Compile(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
-            var __workflow_timeTransactionsactivityDescription = WorkflowExpression.Compile(timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
-            var __workflow_timeTransactionsamount = WorkflowExpression.Compile(timeTransactionsamount, nameof(timeTransactionsamount), required: false);
-            var __workflow_timeTransactionsamountFC = WorkflowExpression.Compile(timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
-            var __workflow_timeTransactionsattachment = WorkflowExpression.Compile(timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
-            var __workflow_timeTransactionscreated = WorkflowExpression.Compile(timeTransactionscreated, nameof(timeTransactionscreated), required: false);
-            var __workflow_timeTransactionscreator = WorkflowExpression.Compile(timeTransactionscreator, nameof(timeTransactionscreator), required: false);
-            var __workflow_timeTransactionscreatorFullName = WorkflowExpression.Compile(timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
-            var __workflow_timeTransactionscurrency = WorkflowExpression.Compile(timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
-            var __workflow_timeTransactionsdate = WorkflowExpression.Compile(timeTransactionsdate, nameof(timeTransactionsdate), required: false);
-            var __workflow_timeTransactionsdivision = WorkflowExpression.Compile(timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
-            var __workflow_timeTransactionsdivisionDescription = WorkflowExpression.Compile(timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
-            var __workflow_timeTransactionsemployee = WorkflowExpression.Compile(timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
-            var __workflow_timeTransactionsendTime = WorkflowExpression.Compile(timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
-            var __workflow_timeTransactionsentryNumber = WorkflowExpression.Compile(timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
-            var __workflow_timeTransactionserrorText = WorkflowExpression.Compile(timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
-            var __workflow_timeTransactionshourStatus = WorkflowExpression.Compile(timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
-            var __workflow_timeTransactionsitemDescription = WorkflowExpression.Compile(timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
-            var __workflow_timeTransactionsitemDivisable = WorkflowExpression.Compile(timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
-            var __workflow_timeTransactionsmodified = WorkflowExpression.Compile(timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
-            var __workflow_timeTransactionsmodifier = WorkflowExpression.Compile(timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
-            var __workflow_timeTransactionsmodifierFullName = WorkflowExpression.Compile(timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
-            var __workflow_timeTransactionsnotes = WorkflowExpression.Compile(timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
-            var __workflow_timeTransactionsprice = WorkflowExpression.Compile(timeTransactionsprice, nameof(timeTransactionsprice), required: false);
-            var __workflow_timeTransactionspriceFC = WorkflowExpression.Compile(timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
-            var __workflow_timeTransactionsprojectAccount = WorkflowExpression.Compile(timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
-            var __workflow_timeTransactionsprojectAccountCode = WorkflowExpression.Compile(timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
-            var __workflow_timeTransactionsprojectAccountName = WorkflowExpression.Compile(timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
-            var __workflow_timeTransactionsprojectCode = WorkflowExpression.Compile(timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
-            var __workflow_timeTransactionsprojectDescription = WorkflowExpression.Compile(timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
-            var __workflow_timeTransactionsskipValidation = WorkflowExpression.Compile(timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
-            var __workflow_timeTransactionsstartTime = WorkflowExpression.Compile(timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
-            var __workflow_timeTransactionssubscription = WorkflowExpression.Compile(timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
-            var __workflow_timeTransactionssubscriptionAccount = WorkflowExpression.Compile(timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
-            var __workflow_timeTransactionssubscriptionAccountCode = WorkflowExpression.Compile(timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
-            var __workflow_timeTransactionssubscriptionAccountName = WorkflowExpression.Compile(timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
-            var __workflow_timeTransactionssubscriptionDescription = WorkflowExpression.Compile(timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
-            var __workflow_timeTransactionssubscriptionNumber = WorkflowExpression.Compile(timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
-            var __workflow_timeTransactionstype = WorkflowExpression.Compile(timeTransactionstype, nameof(timeTransactionstype), required: false);
+            var __workflow_timeTransactions = WorkflowExpression.Compile(timeTransactions, nameof(timeTransactions), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_id);
-                var timeTransactions = new JObject();
-                var timeTransactionspropCount = 0;
-                if (__workflow_timeTransactionsid != null)
-                {
-                    timeTransactions["ID"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsid);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsaccount != null)
-                {
-                    timeTransactions["Account"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsaccount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsaccountName != null)
-                {
-                    timeTransactions["AccountName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsaccountName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsactivity != null)
-                {
-                    timeTransactions["Activity"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsactivity);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsactivityDescription != null)
-                {
-                    timeTransactions["ActivityDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsactivityDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsamount != null)
-                {
-                    timeTransactions["Amount"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsamount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsamountFC != null)
-                {
-                    timeTransactions["AmountFC"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsamountFC);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsattachment != null)
-                {
-                    timeTransactions["Attachment"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsattachment);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscreated != null)
-                {
-                    timeTransactions["Created"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscreated);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscreator != null)
-                {
-                    timeTransactions["Creator"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscreator);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscreatorFullName != null)
-                {
-                    timeTransactions["CreatorFullName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscreatorFullName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscurrency != null)
-                {
-                    timeTransactions["Currency"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscurrency);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsdate != null)
-                {
-                    timeTransactions["Date"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsdate);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsdivision != null)
-                {
-                    timeTransactions["Division"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsdivision);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsdivisionDescription != null)
-                {
-                    timeTransactions["DivisionDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsdivisionDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsemployee != null)
-                {
-                    timeTransactions["Employee"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsemployee);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsendTime != null)
-                {
-                    timeTransactions["EndTime"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsendTime);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsentryNumber != null)
-                {
-                    timeTransactions["EntryNumber"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsentryNumber);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionserrorText != null)
-                {
-                    timeTransactions["ErrorText"] = ExpressionConverter.ConvertO(__workflow_timeTransactionserrorText);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionshourStatus != null)
-                {
-                    timeTransactions["HourStatus"] = ExpressionConverter.ConvertO(__workflow_timeTransactionshourStatus);
-                    timeTransactionspropCount++;
-                }
-
-                timeTransactionspropCount++;
-                timeTransactions["Item"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsitem);
-                if (__workflow_timeTransactionsitemDescription != null)
-                {
-                    timeTransactions["ItemDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsitemDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsitemDivisable != null)
-                {
-                    timeTransactions["ItemDivisable"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsitemDivisable);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsmodified != null)
-                {
-                    timeTransactions["Modified"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsmodified);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsmodifier != null)
-                {
-                    timeTransactions["Modifier"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsmodifier);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsmodifierFullName != null)
-                {
-                    timeTransactions["ModifierFullName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsmodifierFullName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsnotes != null)
-                {
-                    timeTransactions["Notes"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsnotes);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprice != null)
-                {
-                    timeTransactions["Price"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprice);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionspriceFC != null)
-                {
-                    timeTransactions["PriceFC"] = ExpressionConverter.ConvertO(__workflow_timeTransactionspriceFC);
-                    timeTransactionspropCount++;
-                }
-
-                timeTransactionspropCount++;
-                timeTransactions["Project"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsproject);
-                if (__workflow_timeTransactionsprojectAccount != null)
-                {
-                    timeTransactions["ProjectAccount"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectAccount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectAccountCode != null)
-                {
-                    timeTransactions["ProjectAccountCode"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectAccountCode);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectAccountName != null)
-                {
-                    timeTransactions["ProjectAccountName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectAccountName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectCode != null)
-                {
-                    timeTransactions["ProjectCode"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectCode);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectDescription != null)
-                {
-                    timeTransactions["ProjectDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectDescription);
-                    timeTransactionspropCount++;
-                }
-
-                timeTransactionspropCount++;
-                timeTransactions["Quantity"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsquantity);
-                if (__workflow_timeTransactionsskipValidation != null)
-                {
-                    timeTransactions["SkipValidation"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsskipValidation);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsstartTime != null)
-                {
-                    timeTransactions["StartTime"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsstartTime);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscription != null)
-                {
-                    timeTransactions["Subscription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionAccount != null)
-                {
-                    timeTransactions["SubscriptionAccount"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionAccount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionAccountCode != null)
-                {
-                    timeTransactions["SubscriptionAccountCode"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionAccountCode);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionAccountName != null)
-                {
-                    timeTransactions["SubscriptionAccountName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionAccountName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionDescription != null)
-                {
-                    timeTransactions["SubscriptionDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionNumber != null)
-                {
-                    timeTransactions["SubscriptionNumber"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionNumber);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionstype != null)
-                {
-                    timeTransactions["Type"] = ExpressionConverter.ConvertO(__workflow_timeTransactionstype);
-                    timeTransactionspropCount++;
-                }
-
-                if (timeTransactionspropCount > 0)
-                {
-                    callPayload.Body = timeTransactions;
-                }
-
+                if (__workflow_timeTransactions != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeTransactions);
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> timeTransactionsitem, Expression<Func<string>> timeTransactionsproject, Expression<Func<double>> timeTransactionsquantity, Expression<Func<string>> timeTransactionsid = null, Expression<Func<string>> timeTransactionsaccount = null, Expression<Func<string>> timeTransactionsaccountName = null, Expression<Func<string>> timeTransactionsactivity = null, Expression<Func<string>> timeTransactionsactivityDescription = null, Expression<Func<double>> timeTransactionsamount = null, Expression<Func<double>> timeTransactionsamountFC = null, Expression<Func<string>> timeTransactionsattachment = null, Expression<Func<string>> timeTransactionscreated = null, Expression<Func<string>> timeTransactionscreator = null, Expression<Func<string>> timeTransactionscreatorFullName = null, Expression<Func<string>> timeTransactionscurrency = null, Expression<Func<string>> timeTransactionsdate = null, Expression<Func<int>> timeTransactionsdivision = null, Expression<Func<string>> timeTransactionsdivisionDescription = null, Expression<Func<string>> timeTransactionsemployee = null, Expression<Func<string>> timeTransactionsendTime = null, Expression<Func<int>> timeTransactionsentryNumber = null, Expression<Func<string>> timeTransactionserrorText = null, Expression<Func<double>> timeTransactionshourStatus = null, Expression<Func<string>> timeTransactionsitemDescription = null, Expression<Func<bool>> timeTransactionsitemDivisable = null, Expression<Func<string>> timeTransactionsmodified = null, Expression<Func<string>> timeTransactionsmodifier = null, Expression<Func<string>> timeTransactionsmodifierFullName = null, Expression<Func<string>> timeTransactionsnotes = null, Expression<Func<double>> timeTransactionsprice = null, Expression<Func<double>> timeTransactionspriceFC = null, Expression<Func<string>> timeTransactionsprojectAccount = null, Expression<Func<string>> timeTransactionsprojectAccountCode = null, Expression<Func<string>> timeTransactionsprojectAccountName = null, Expression<Func<string>> timeTransactionsprojectCode = null, Expression<Func<string>> timeTransactionsprojectDescription = null, Expression<Func<bool>> timeTransactionsskipValidation = null, Expression<Func<string>> timeTransactionsstartTime = null, Expression<Func<string>> timeTransactionssubscription = null, Expression<Func<string>> timeTransactionssubscriptionAccount = null, Expression<Func<string>> timeTransactionssubscriptionAccountCode = null, Expression<Func<string>> timeTransactionssubscriptionAccountName = null, Expression<Func<string>> timeTransactionssubscriptionDescription = null, Expression<Func<int>> timeTransactionssubscriptionNumber = null, Expression<Func<double>> timeTransactionstype = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<PostTimeTransactionsInput>> timeTransactions = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
-            var __workflow_timeTransactionsitem = WorkflowExpression.Compile(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
-            var __workflow_timeTransactionsproject = WorkflowExpression.Compile(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
-            var __workflow_timeTransactionsquantity = WorkflowExpression.Compile(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
-            var __workflow_timeTransactionsid = WorkflowExpression.Compile(timeTransactionsid, nameof(timeTransactionsid), required: false);
-            var __workflow_timeTransactionsaccount = WorkflowExpression.Compile(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
-            var __workflow_timeTransactionsaccountName = WorkflowExpression.Compile(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
-            var __workflow_timeTransactionsactivity = WorkflowExpression.Compile(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
-            var __workflow_timeTransactionsactivityDescription = WorkflowExpression.Compile(timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
-            var __workflow_timeTransactionsamount = WorkflowExpression.Compile(timeTransactionsamount, nameof(timeTransactionsamount), required: false);
-            var __workflow_timeTransactionsamountFC = WorkflowExpression.Compile(timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
-            var __workflow_timeTransactionsattachment = WorkflowExpression.Compile(timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
-            var __workflow_timeTransactionscreated = WorkflowExpression.Compile(timeTransactionscreated, nameof(timeTransactionscreated), required: false);
-            var __workflow_timeTransactionscreator = WorkflowExpression.Compile(timeTransactionscreator, nameof(timeTransactionscreator), required: false);
-            var __workflow_timeTransactionscreatorFullName = WorkflowExpression.Compile(timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
-            var __workflow_timeTransactionscurrency = WorkflowExpression.Compile(timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
-            var __workflow_timeTransactionsdate = WorkflowExpression.Compile(timeTransactionsdate, nameof(timeTransactionsdate), required: false);
-            var __workflow_timeTransactionsdivision = WorkflowExpression.Compile(timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
-            var __workflow_timeTransactionsdivisionDescription = WorkflowExpression.Compile(timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
-            var __workflow_timeTransactionsemployee = WorkflowExpression.Compile(timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
-            var __workflow_timeTransactionsendTime = WorkflowExpression.Compile(timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
-            var __workflow_timeTransactionsentryNumber = WorkflowExpression.Compile(timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
-            var __workflow_timeTransactionserrorText = WorkflowExpression.Compile(timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
-            var __workflow_timeTransactionshourStatus = WorkflowExpression.Compile(timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
-            var __workflow_timeTransactionsitemDescription = WorkflowExpression.Compile(timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
-            var __workflow_timeTransactionsitemDivisable = WorkflowExpression.Compile(timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
-            var __workflow_timeTransactionsmodified = WorkflowExpression.Compile(timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
-            var __workflow_timeTransactionsmodifier = WorkflowExpression.Compile(timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
-            var __workflow_timeTransactionsmodifierFullName = WorkflowExpression.Compile(timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
-            var __workflow_timeTransactionsnotes = WorkflowExpression.Compile(timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
-            var __workflow_timeTransactionsprice = WorkflowExpression.Compile(timeTransactionsprice, nameof(timeTransactionsprice), required: false);
-            var __workflow_timeTransactionspriceFC = WorkflowExpression.Compile(timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
-            var __workflow_timeTransactionsprojectAccount = WorkflowExpression.Compile(timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
-            var __workflow_timeTransactionsprojectAccountCode = WorkflowExpression.Compile(timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
-            var __workflow_timeTransactionsprojectAccountName = WorkflowExpression.Compile(timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
-            var __workflow_timeTransactionsprojectCode = WorkflowExpression.Compile(timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
-            var __workflow_timeTransactionsprojectDescription = WorkflowExpression.Compile(timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
-            var __workflow_timeTransactionsskipValidation = WorkflowExpression.Compile(timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
-            var __workflow_timeTransactionsstartTime = WorkflowExpression.Compile(timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
-            var __workflow_timeTransactionssubscription = WorkflowExpression.Compile(timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
-            var __workflow_timeTransactionssubscriptionAccount = WorkflowExpression.Compile(timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
-            var __workflow_timeTransactionssubscriptionAccountCode = WorkflowExpression.Compile(timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
-            var __workflow_timeTransactionssubscriptionAccountName = WorkflowExpression.Compile(timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
-            var __workflow_timeTransactionssubscriptionDescription = WorkflowExpression.Compile(timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
-            var __workflow_timeTransactionssubscriptionNumber = WorkflowExpression.Compile(timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
-            var __workflow_timeTransactionstype = WorkflowExpression.Compile(timeTransactionstype, nameof(timeTransactionstype), required: false);
+            var __workflow_timeTransactions = WorkflowExpression.Compile(timeTransactions, nameof(timeTransactions), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var timeTransactions = new JObject();
-                var timeTransactionspropCount = 0;
-                if (__workflow_timeTransactionsid != null)
-                {
-                    timeTransactions["ID"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsid);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsaccount != null)
-                {
-                    timeTransactions["Account"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsaccount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsaccountName != null)
-                {
-                    timeTransactions["AccountName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsaccountName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsactivity != null)
-                {
-                    timeTransactions["Activity"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsactivity);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsactivityDescription != null)
-                {
-                    timeTransactions["ActivityDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsactivityDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsamount != null)
-                {
-                    timeTransactions["Amount"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsamount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsamountFC != null)
-                {
-                    timeTransactions["AmountFC"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsamountFC);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsattachment != null)
-                {
-                    timeTransactions["Attachment"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsattachment);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscreated != null)
-                {
-                    timeTransactions["Created"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscreated);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscreator != null)
-                {
-                    timeTransactions["Creator"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscreator);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscreatorFullName != null)
-                {
-                    timeTransactions["CreatorFullName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscreatorFullName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionscurrency != null)
-                {
-                    timeTransactions["Currency"] = ExpressionConverter.ConvertO(__workflow_timeTransactionscurrency);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsdate != null)
-                {
-                    timeTransactions["Date"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsdate);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsdivision != null)
-                {
-                    timeTransactions["Division"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsdivision);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsdivisionDescription != null)
-                {
-                    timeTransactions["DivisionDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsdivisionDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsemployee != null)
-                {
-                    timeTransactions["Employee"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsemployee);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsendTime != null)
-                {
-                    timeTransactions["EndTime"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsendTime);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsentryNumber != null)
-                {
-                    timeTransactions["EntryNumber"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsentryNumber);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionserrorText != null)
-                {
-                    timeTransactions["ErrorText"] = ExpressionConverter.ConvertO(__workflow_timeTransactionserrorText);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionshourStatus != null)
-                {
-                    timeTransactions["HourStatus"] = ExpressionConverter.ConvertO(__workflow_timeTransactionshourStatus);
-                    timeTransactionspropCount++;
-                }
-
-                timeTransactionspropCount++;
-                timeTransactions["Item"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsitem);
-                if (__workflow_timeTransactionsitemDescription != null)
-                {
-                    timeTransactions["ItemDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsitemDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsitemDivisable != null)
-                {
-                    timeTransactions["ItemDivisable"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsitemDivisable);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsmodified != null)
-                {
-                    timeTransactions["Modified"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsmodified);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsmodifier != null)
-                {
-                    timeTransactions["Modifier"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsmodifier);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsmodifierFullName != null)
-                {
-                    timeTransactions["ModifierFullName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsmodifierFullName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsnotes != null)
-                {
-                    timeTransactions["Notes"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsnotes);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprice != null)
-                {
-                    timeTransactions["Price"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprice);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionspriceFC != null)
-                {
-                    timeTransactions["PriceFC"] = ExpressionConverter.ConvertO(__workflow_timeTransactionspriceFC);
-                    timeTransactionspropCount++;
-                }
-
-                timeTransactionspropCount++;
-                timeTransactions["Project"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsproject);
-                if (__workflow_timeTransactionsprojectAccount != null)
-                {
-                    timeTransactions["ProjectAccount"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectAccount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectAccountCode != null)
-                {
-                    timeTransactions["ProjectAccountCode"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectAccountCode);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectAccountName != null)
-                {
-                    timeTransactions["ProjectAccountName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectAccountName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectCode != null)
-                {
-                    timeTransactions["ProjectCode"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectCode);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsprojectDescription != null)
-                {
-                    timeTransactions["ProjectDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsprojectDescription);
-                    timeTransactionspropCount++;
-                }
-
-                timeTransactionspropCount++;
-                timeTransactions["Quantity"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsquantity);
-                if (__workflow_timeTransactionsskipValidation != null)
-                {
-                    timeTransactions["SkipValidation"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsskipValidation);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionsstartTime != null)
-                {
-                    timeTransactions["StartTime"] = ExpressionConverter.ConvertO(__workflow_timeTransactionsstartTime);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscription != null)
-                {
-                    timeTransactions["Subscription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionAccount != null)
-                {
-                    timeTransactions["SubscriptionAccount"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionAccount);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionAccountCode != null)
-                {
-                    timeTransactions["SubscriptionAccountCode"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionAccountCode);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionAccountName != null)
-                {
-                    timeTransactions["SubscriptionAccountName"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionAccountName);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionDescription != null)
-                {
-                    timeTransactions["SubscriptionDescription"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionDescription);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionssubscriptionNumber != null)
-                {
-                    timeTransactions["SubscriptionNumber"] = ExpressionConverter.ConvertO(__workflow_timeTransactionssubscriptionNumber);
-                    timeTransactionspropCount++;
-                }
-
-                if (__workflow_timeTransactionstype != null)
-                {
-                    timeTransactions["Type"] = ExpressionConverter.ConvertO(__workflow_timeTransactionstype);
-                    timeTransactionspropCount++;
-                }
-
-                if (timeTransactionspropCount > 0)
-                {
-                    callPayload.Body = timeTransactions;
-                }
-
+                if (__workflow_timeTransactions != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_timeTransactions);
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
             });
         }
@@ -2537,6 +1573,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string Modified { get; set; }
         public string Modifier { get; set; }
         public string ModifierFullName { get; set; }
+        public string Project { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectDescription { get; set; }
+    }
+
+    public class PutProjectRestrictionRebillingsInput
+    {
+        [JsonProperty("ID")]
+        public string Id { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CostTypeRebill { get; set; }
+        public string CostTypeRebillCode { get; set; }
+        public string CostTypeRebillDescription { get; set; }
+        public string Created { get; set; }
+        public string Creator { get; set; }
+        public string CreatorFullName { get; set; }
+        public int? Division { get; set; }
+        public string Modified { get; set; }
+        public string Modifier { get; set; }
+        public string ModifierFullName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Project { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectDescription { get; set; }
+    }
+
+    public class PostProjectRestrictionRebillingsInput
+    {
+        [JsonProperty("ID")]
+        public string Id { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CostTypeRebill { get; set; }
+        public string CostTypeRebillCode { get; set; }
+        public string CostTypeRebillDescription { get; set; }
+        public string Created { get; set; }
+        public string Creator { get; set; }
+        public string CreatorFullName { get; set; }
+        public int? Division { get; set; }
+        public string Modified { get; set; }
+        public string Modifier { get; set; }
+        public string ModifierFullName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
         public string ProjectCode { get; set; }
         public string ProjectDescription { get; set; }
@@ -3053,6 +2135,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public double Quantity { get; set; }
     }
 
+    public class PutTimeCorrectionsInput
+    {
+        [JsonProperty("ID")]
+        public string Id { get; set; }
+        public string Created { get; set; }
+        public string Creator { get; set; }
+        public string CreatorFullName { get; set; }
+        public int? Division { get; set; }
+        public string Modified { get; set; }
+        public string Modifier { get; set; }
+        public string ModifierFullName { get; set; }
+        public string Notes { get; set; }
+        public string OriginalEntryId { get; set; }
+        public double? Quantity { get; set; }
+    }
+
+    public class PostTimeCorrectionsInput
+    {
+        [JsonProperty("ID")]
+        public string Id { get; set; }
+        public string Created { get; set; }
+        public string Creator { get; set; }
+        public string CreatorFullName { get; set; }
+        public int? Division { get; set; }
+        public string Modified { get; set; }
+        public string Modifier { get; set; }
+        public string ModifierFullName { get; set; }
+        public string Notes { get; set; }
+        public string OriginalEntryId { get; set; }
+        public double? Quantity { get; set; }
+    }
+
     public class TimeTransactionsResponse
     {
         [JsonProperty("d")]
@@ -3113,6 +2227,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string SubscriptionDescription { get; set; }
         public int SubscriptionNumber { get; set; }
         public double Type { get; set; }
+    }
+
+    public class PutTimeTransactionsInput
+    {
+        [JsonProperty("ID")]
+        public string Id { get; set; }
+        public string Account { get; set; }
+        public string AccountName { get; set; }
+        public string Activity { get; set; }
+        public string ActivityDescription { get; set; }
+        public double? Amount { get; set; }
+        public double? AmountFC { get; set; }
+        public string Attachment { get; set; }
+        public string Created { get; set; }
+        public string Creator { get; set; }
+        public string CreatorFullName { get; set; }
+        public string Currency { get; set; }
+        public string Date { get; set; }
+        public int? Division { get; set; }
+        public string DivisionDescription { get; set; }
+        public string Employee { get; set; }
+        public string EndTime { get; set; }
+        public int? EntryNumber { get; set; }
+        public string ErrorText { get; set; }
+        public double? HourStatus { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Item { get; set; }
+        public string ItemDescription { get; set; }
+        public bool? ItemDivisable { get; set; }
+        public string Modified { get; set; }
+        public string Modifier { get; set; }
+        public string ModifierFullName { get; set; }
+        public string Notes { get; set; }
+        public double? Price { get; set; }
+        public double? PriceFC { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Project { get; set; }
+        public string ProjectAccount { get; set; }
+        public string ProjectAccountCode { get; set; }
+        public string ProjectAccountName { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectDescription { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Quantity { get; set; }
+        public bool? SkipValidation { get; set; }
+        public string StartTime { get; set; }
+        public string Subscription { get; set; }
+        public string SubscriptionAccount { get; set; }
+        public string SubscriptionAccountCode { get; set; }
+        public string SubscriptionAccountName { get; set; }
+        public string SubscriptionDescription { get; set; }
+        public int? SubscriptionNumber { get; set; }
+        public double? Type { get; set; }
+    }
+
+    public class PostTimeTransactionsInput
+    {
+        [JsonProperty("ID")]
+        public string Id { get; set; }
+        public string Account { get; set; }
+        public string AccountName { get; set; }
+        public string Activity { get; set; }
+        public string ActivityDescription { get; set; }
+        public double? Amount { get; set; }
+        public double? AmountFC { get; set; }
+        public string Attachment { get; set; }
+        public string Created { get; set; }
+        public string Creator { get; set; }
+        public string CreatorFullName { get; set; }
+        public string Currency { get; set; }
+        public string Date { get; set; }
+        public int? Division { get; set; }
+        public string DivisionDescription { get; set; }
+        public string Employee { get; set; }
+        public string EndTime { get; set; }
+        public int? EntryNumber { get; set; }
+        public string ErrorText { get; set; }
+        public double? HourStatus { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Item { get; set; }
+        public string ItemDescription { get; set; }
+        public bool? ItemDivisable { get; set; }
+        public string Modified { get; set; }
+        public string Modifier { get; set; }
+        public string ModifierFullName { get; set; }
+        public string Notes { get; set; }
+        public double? Price { get; set; }
+        public double? PriceFC { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Project { get; set; }
+        public string ProjectAccount { get; set; }
+        public string ProjectAccountCode { get; set; }
+        public string ProjectAccountName { get; set; }
+        public string ProjectCode { get; set; }
+        public string ProjectDescription { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Quantity { get; set; }
+        public bool? SkipValidation { get; set; }
+        public string StartTime { get; set; }
+        public string Subscription { get; set; }
+        public string SubscriptionAccount { get; set; }
+        public string SubscriptionAccountCode { get; set; }
+        public string SubscriptionAccountName { get; set; }
+        public string SubscriptionDescription { get; set; }
+        public int? SubscriptionNumber { get; set; }
+        public double? Type { get; set; }
     }
 
     public class ProjectTimeCostTransactionsResponse

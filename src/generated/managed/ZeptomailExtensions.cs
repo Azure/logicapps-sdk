@@ -65,207 +65,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendMail(Expression<Func<string>> bodymailAgent, Expression<Func<string>> bodyfromname, Expression<Func<EmailAddressItems[]>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyfromaddressprefix = null, Expression<Func<string>> bodyfromaddressdomain = null, Expression<Func<EmailAddressItems[]>> bodycC = null, Expression<Func<EmailAddressItems[]>> bodybCC = null, Expression<Func<bodymailTypeInput>> bodymailType = null, Expression<Func<string>> bodybody = null, Expression<Func<ReplyToAddresss[]>> bodyreplyTo = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendMail(Expression<Func<SendMailInput>> body)
         {
-            var __workflow_bodymailAgent = WorkflowExpression.Compile(bodymailAgent, nameof(bodymailAgent), required: true);
-            var __workflow_bodyfromname = WorkflowExpression.Compile(bodyfromname, nameof(bodyfromname), required: true);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodyfromaddressprefix = WorkflowExpression.Compile(bodyfromaddressprefix, nameof(bodyfromaddressprefix), required: false);
-            var __workflow_bodyfromaddressdomain = WorkflowExpression.Compile(bodyfromaddressdomain, nameof(bodyfromaddressdomain), required: false);
-            var __workflow_bodycC = WorkflowExpression.Compile(bodycC, nameof(bodycC), required: false);
-            var __workflow_bodybCC = WorkflowExpression.Compile(bodybCC, nameof(bodybCC), required: false);
-            var __workflow_bodymailType = WorkflowExpression.Compile(bodymailType, nameof(bodymailType), required: false);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
-            var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SuccessMessage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/email";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["mailagent_key"] = ExpressionConverter.ConvertO(__workflow_bodymailAgent);
-                var fromObject = new JObject();
-                var fromObjectpropCount = 0;
-                var fromDetailObject = new JObject();
-                var fromDetailObjectpropCount = 0;
-                if (__workflow_bodyfromaddressprefix != null)
-                {
-                    fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressprefix);
-                    fromDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodyfromaddressdomain != null)
-                {
-                    fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressdomain);
-                    fromDetailObjectpropCount++;
-                }
-
-                if (fromDetailObjectpropCount > 0)
-                {
-                    fromObject["from-detail"] = fromDetailObject;
-                    fromObjectpropCount++;
-                }
-
-                fromObjectpropCount++;
-                fromObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfromname);
-                if (fromObjectpropCount > 0)
-                {
-                    body["from"] = fromObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                if (__workflow_bodycC != null)
-                {
-                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycC);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybCC != null)
-                {
-                    body["bcc"] = ExpressionConverter.ConvertO(__workflow_bodybCC);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymailType != null)
-                {
-                    if (__workflow_bodymailType != null)
-                    {
-                        body["mailtype"] = ExpressionConverter.ConvertO(__workflow_bodymailType);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["mailtype"] = "html";
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                if (__workflow_bodybody != null)
-                {
-                    body["htmlbody"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreplyTo != null)
-                {
-                    body["reply_to"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyattachments != null)
-                {
-                    body["attachments"] = ExpressionConverter.ConvertO(__workflow_bodyattachments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SuccessMessage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendTemplateMail(Expression<Func<string>> bodymailAgent, Expression<Func<string>> bodymailTemplate, Expression<Func<string>> bodyfromname, Expression<Func<string>> bodyfromaddressprefix = null, Expression<Func<string>> bodyfromaddressdomain = null, Expression<Func<EmailAddressItems[]>> bodyto = null, Expression<Func<EmailAddressItems[]>> bodycC = null, Expression<Func<EmailAddressItems[]>> bodybCC = null, Expression<Func<bodymergeInfoInputItem[]>> bodymergeInfo = null, Expression<Func<ReplyToAddresss[]>> bodyreplyTo = null)
+        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendTemplateMail(Expression<Func<SendTemplateMailInput>> body)
         {
-            var __workflow_bodymailAgent = WorkflowExpression.Compile(bodymailAgent, nameof(bodymailAgent), required: true);
-            var __workflow_bodymailTemplate = WorkflowExpression.Compile(bodymailTemplate, nameof(bodymailTemplate), required: true);
-            var __workflow_bodyfromname = WorkflowExpression.Compile(bodyfromname, nameof(bodyfromname), required: true);
-            var __workflow_bodyfromaddressprefix = WorkflowExpression.Compile(bodyfromaddressprefix, nameof(bodyfromaddressprefix), required: false);
-            var __workflow_bodyfromaddressdomain = WorkflowExpression.Compile(bodyfromaddressdomain, nameof(bodyfromaddressdomain), required: false);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
-            var __workflow_bodycC = WorkflowExpression.Compile(bodycC, nameof(bodycC), required: false);
-            var __workflow_bodybCC = WorkflowExpression.Compile(bodybCC, nameof(bodybCC), required: false);
-            var __workflow_bodymergeInfo = WorkflowExpression.Compile(bodymergeInfo, nameof(bodymergeInfo), required: false);
-            var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SuccessMessage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/email/template";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["mailagent_key"] = ExpressionConverter.ConvertO(__workflow_bodymailAgent);
-                bodypropCount++;
-                body["mail_template_key"] = ExpressionConverter.ConvertO(__workflow_bodymailTemplate);
-                var fromObject = new JObject();
-                var fromObjectpropCount = 0;
-                var fromDetailObject = new JObject();
-                var fromDetailObjectpropCount = 0;
-                if (__workflow_bodyfromaddressprefix != null)
-                {
-                    fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressprefix);
-                    fromDetailObjectpropCount++;
-                }
-
-                if (__workflow_bodyfromaddressdomain != null)
-                {
-                    fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressdomain);
-                    fromDetailObjectpropCount++;
-                }
-
-                if (fromDetailObjectpropCount > 0)
-                {
-                    fromObject["from-detail"] = fromDetailObject;
-                    fromObjectpropCount++;
-                }
-
-                fromObjectpropCount++;
-                fromObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfromname);
-                if (fromObjectpropCount > 0)
-                {
-                    body["from"] = fromObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyto != null)
-                {
-                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycC != null)
-                {
-                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycC);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybCC != null)
-                {
-                    body["bcc"] = ExpressionConverter.ConvertO(__workflow_bodybCC);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymergeInfo != null)
-                {
-                    body["merge_key_detail"] = ExpressionConverter.ConvertO(__workflow_bodymergeInfo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreplyTo != null)
-                {
-                    body["reply_to"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SuccessMessage>(callPayload);
             });
         }
@@ -430,6 +252,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string DetailedMessage { get; set; }
     }
 
+    public class SendMailInput
+    {
+        [JsonProperty("mailagent_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MailAgent { get; set; }
+
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public FromAddress From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public EmailAddressItems[] To { get; set; }
+
+        [JsonProperty("cc")]
+        public EmailAddressItems[] CC { get; set; }
+
+        [JsonProperty("bcc")]
+        public EmailAddressItems[] BCC { get; set; }
+
+        [JsonProperty("mailtype", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendMailInputMailTypeType? MailType { get; set; } = SendMailInputMailTypeType.Html;
+
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("htmlbody")]
+        public string Body { get; set; }
+
+        [JsonProperty("reply_to")]
+        public ReplyToAddresss[] ReplyTo { get; set; }
+
+        [JsonProperty("attachments")]
+        public SendMailInputAttachmentsTypeItem[] Attachments { get; set; }
+    }
+
+    public class FromAddress
+    {
+        [JsonProperty("from-detail")]
+        public FromAddressAddressType Address { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class FromAddressAddressType
+    {
+        [JsonProperty("from-prefix")]
+        public string Prefix { get; set; }
+
+        [JsonProperty("from-domain")]
+        public string Domain { get; set; }
+    }
+
     public class EmailAddressItems
     {
         [JsonProperty("email_address")]
@@ -446,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymailTypeInput
+    public enum SendMailInputMailTypeType
     {
         [EnumMember(Value = "html")]
         Html,
@@ -463,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string Name { get; set; }
     }
 
-    public class bodyattachmentsInputItem
+    public class SendMailInputAttachmentsTypeItem
     {
         [JsonProperty("content")]
         public string Base64Content { get; set; }
@@ -475,7 +348,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string FileName { get; set; }
     }
 
-    public class bodymergeInfoInputItem
+    public class SendTemplateMailInput
+    {
+        [JsonProperty("mailagent_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MailAgent { get; set; }
+
+        [JsonProperty("mail_template_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MailTemplate { get; set; }
+
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public FromAddress From { get; set; }
+
+        [JsonProperty("to")]
+        public EmailAddressItems[] To { get; set; }
+
+        [JsonProperty("cc")]
+        public EmailAddressItems[] CC { get; set; }
+
+        [JsonProperty("bcc")]
+        public EmailAddressItems[] BCC { get; set; }
+
+        [JsonProperty("merge_key_detail")]
+        public SendTemplateMailInputMergeInfoTypeItem[] MergeInfo { get; set; }
+
+        [JsonProperty("reply_to")]
+        public ReplyToAddresss[] ReplyTo { get; set; }
+    }
+
+    public class SendTemplateMailInputMergeInfoTypeItem
     {
         [JsonProperty("key")]
         public string Tag { get; set; }

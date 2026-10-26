@@ -68,166 +68,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<string>> postLiveCshRequestusername = null, Expression<Func<string>> postLiveCshRequestuserId = null, Expression<Func<string>> postLiveCshRequestquery = null, Expression<Func<bool>> postLiveCshRequestshowFirstResult = null, Expression<Func<bool>> postLiveCshRequestmaximizeClient = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<OperationsLiveCshInput>> postLiveCshRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_postLiveCshRequestusername = WorkflowExpression.Compile(postLiveCshRequestusername, nameof(postLiveCshRequestusername), required: false);
-            var __workflow_postLiveCshRequestuserId = WorkflowExpression.Compile(postLiveCshRequestuserId, nameof(postLiveCshRequestuserId), required: false);
-            var __workflow_postLiveCshRequestquery = WorkflowExpression.Compile(postLiveCshRequestquery, nameof(postLiveCshRequestquery), required: false);
-            var __workflow_postLiveCshRequestshowFirstResult = WorkflowExpression.Compile(postLiveCshRequestshowFirstResult, nameof(postLiveCshRequestshowFirstResult), required: false);
-            var __workflow_postLiveCshRequestmaximizeClient = WorkflowExpression.Compile(postLiveCshRequestmaximizeClient, nameof(postLiveCshRequestmaximizeClient), required: false);
+            var __workflow_postLiveCshRequest = WorkflowExpression.Compile(postLiveCshRequest, nameof(postLiveCshRequest), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/operations/live/csh", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var postLiveCshRequest = new JObject();
-                var postLiveCshRequestpropCount = 0;
-                if (__workflow_postLiveCshRequestusername != null)
-                {
-                    postLiveCshRequest["username"] = ExpressionConverter.ConvertO(__workflow_postLiveCshRequestusername);
-                    postLiveCshRequestpropCount++;
-                }
-
-                if (__workflow_postLiveCshRequestuserId != null)
-                {
-                    postLiveCshRequest["userId"] = ExpressionConverter.ConvertO(__workflow_postLiveCshRequestuserId);
-                    postLiveCshRequestpropCount++;
-                }
-
-                if (__workflow_postLiveCshRequestquery != null)
-                {
-                    postLiveCshRequest["query"] = ExpressionConverter.ConvertO(__workflow_postLiveCshRequestquery);
-                    postLiveCshRequestpropCount++;
-                }
-
-                if (__workflow_postLiveCshRequestshowFirstResult != null)
-                {
-                    postLiveCshRequest["showFirstResult"] = ExpressionConverter.ConvertO(__workflow_postLiveCshRequestshowFirstResult);
-                    postLiveCshRequestpropCount++;
-                }
-
-                if (__workflow_postLiveCshRequestmaximizeClient != null)
-                {
-                    postLiveCshRequest["maximizeClient"] = ExpressionConverter.ConvertO(__workflow_postLiveCshRequestmaximizeClient);
-                    postLiveCshRequestpropCount++;
-                }
-
-                if (postLiveCshRequestpropCount > 0)
-                {
-                    callPayload.Body = postLiveCshRequest;
-                }
-
+                if (__workflow_postLiveCshRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_postLiveCshRequest);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<string>> postLiveDocumentRequestusername = null, Expression<Func<string>> postLiveDocumentRequestuserId = null, Expression<Func<string>> postLiveDocumentRequestid = null, Expression<Func<string>> postLiveDocumentRequestlocation = null, Expression<Func<bool>> postLiveDocumentRequestmaximizeClient = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<OperationsLiveDocumentInput>> postLiveDocumentRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_postLiveDocumentRequestusername = WorkflowExpression.Compile(postLiveDocumentRequestusername, nameof(postLiveDocumentRequestusername), required: false);
-            var __workflow_postLiveDocumentRequestuserId = WorkflowExpression.Compile(postLiveDocumentRequestuserId, nameof(postLiveDocumentRequestuserId), required: false);
-            var __workflow_postLiveDocumentRequestid = WorkflowExpression.Compile(postLiveDocumentRequestid, nameof(postLiveDocumentRequestid), required: false);
-            var __workflow_postLiveDocumentRequestlocation = WorkflowExpression.Compile(postLiveDocumentRequestlocation, nameof(postLiveDocumentRequestlocation), required: false);
-            var __workflow_postLiveDocumentRequestmaximizeClient = WorkflowExpression.Compile(postLiveDocumentRequestmaximizeClient, nameof(postLiveDocumentRequestmaximizeClient), required: false);
+            var __workflow_postLiveDocumentRequest = WorkflowExpression.Compile(postLiveDocumentRequest, nameof(postLiveDocumentRequest), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/operations/live/document", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var postLiveDocumentRequest = new JObject();
-                var postLiveDocumentRequestpropCount = 0;
-                if (__workflow_postLiveDocumentRequestusername != null)
-                {
-                    postLiveDocumentRequest["username"] = ExpressionConverter.ConvertO(__workflow_postLiveDocumentRequestusername);
-                    postLiveDocumentRequestpropCount++;
-                }
-
-                if (__workflow_postLiveDocumentRequestuserId != null)
-                {
-                    postLiveDocumentRequest["userId"] = ExpressionConverter.ConvertO(__workflow_postLiveDocumentRequestuserId);
-                    postLiveDocumentRequestpropCount++;
-                }
-
-                if (__workflow_postLiveDocumentRequestid != null)
-                {
-                    postLiveDocumentRequest["id"] = ExpressionConverter.ConvertO(__workflow_postLiveDocumentRequestid);
-                    postLiveDocumentRequestpropCount++;
-                }
-
-                if (__workflow_postLiveDocumentRequestlocation != null)
-                {
-                    postLiveDocumentRequest["location"] = ExpressionConverter.ConvertO(__workflow_postLiveDocumentRequestlocation);
-                    postLiveDocumentRequestpropCount++;
-                }
-
-                if (__workflow_postLiveDocumentRequestmaximizeClient != null)
-                {
-                    postLiveDocumentRequest["maximizeClient"] = ExpressionConverter.ConvertO(__workflow_postLiveDocumentRequestmaximizeClient);
-                    postLiveDocumentRequestpropCount++;
-                }
-
-                if (postLiveDocumentRequestpropCount > 0)
-                {
-                    callPayload.Body = postLiveDocumentRequest;
-                }
-
+                if (__workflow_postLiveDocumentRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_postLiveDocumentRequest);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<string>> postLiveSearchRequestusername = null, Expression<Func<string>> postLiveSearchRequestuserId = null, Expression<Func<string>> postLiveSearchRequestquery = null, Expression<Func<bool>> postLiveSearchRequestmaximizeClient = null, Expression<Func<bool>> postLiveSearchRequestshowFirstResult = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<OperationsLiveSearchInput>> postLiveSearchRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_postLiveSearchRequestusername = WorkflowExpression.Compile(postLiveSearchRequestusername, nameof(postLiveSearchRequestusername), required: false);
-            var __workflow_postLiveSearchRequestuserId = WorkflowExpression.Compile(postLiveSearchRequestuserId, nameof(postLiveSearchRequestuserId), required: false);
-            var __workflow_postLiveSearchRequestquery = WorkflowExpression.Compile(postLiveSearchRequestquery, nameof(postLiveSearchRequestquery), required: false);
-            var __workflow_postLiveSearchRequestmaximizeClient = WorkflowExpression.Compile(postLiveSearchRequestmaximizeClient, nameof(postLiveSearchRequestmaximizeClient), required: false);
-            var __workflow_postLiveSearchRequestshowFirstResult = WorkflowExpression.Compile(postLiveSearchRequestshowFirstResult, nameof(postLiveSearchRequestshowFirstResult), required: false);
+            var __workflow_postLiveSearchRequest = WorkflowExpression.Compile(postLiveSearchRequest, nameof(postLiveSearchRequest), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/operations/live/search", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var postLiveSearchRequest = new JObject();
-                var postLiveSearchRequestpropCount = 0;
-                if (__workflow_postLiveSearchRequestusername != null)
-                {
-                    postLiveSearchRequest["username"] = ExpressionConverter.ConvertO(__workflow_postLiveSearchRequestusername);
-                    postLiveSearchRequestpropCount++;
-                }
-
-                if (__workflow_postLiveSearchRequestuserId != null)
-                {
-                    postLiveSearchRequest["userId"] = ExpressionConverter.ConvertO(__workflow_postLiveSearchRequestuserId);
-                    postLiveSearchRequestpropCount++;
-                }
-
-                if (__workflow_postLiveSearchRequestquery != null)
-                {
-                    postLiveSearchRequest["query"] = ExpressionConverter.ConvertO(__workflow_postLiveSearchRequestquery);
-                    postLiveSearchRequestpropCount++;
-                }
-
-                if (__workflow_postLiveSearchRequestmaximizeClient != null)
-                {
-                    postLiveSearchRequest["maximizeClient"] = ExpressionConverter.ConvertO(__workflow_postLiveSearchRequestmaximizeClient);
-                    postLiveSearchRequestpropCount++;
-                }
-
-                if (__workflow_postLiveSearchRequestshowFirstResult != null)
-                {
-                    postLiveSearchRequest["showFirstResult"] = ExpressionConverter.ConvertO(__workflow_postLiveSearchRequestshowFirstResult);
-                    postLiveSearchRequestpropCount++;
-                }
-
-                if (postLiveSearchRequestpropCount > 0)
-                {
-                    callPayload.Body = postLiveSearchRequest;
-                }
-
+                if (__workflow_postLiveSearchRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_postLiveSearchRequest);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -416,28 +299,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<string>> postArtefactCategoryRequestname = null)
+        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<ResourcesArtefactCategoryPostInput>> postArtefactCategoryRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            var __workflow_postArtefactCategoryRequestname = WorkflowExpression.Compile(postArtefactCategoryRequestname, nameof(postArtefactCategoryRequestname), required: false);
+            var __workflow_postArtefactCategoryRequest = WorkflowExpression.Compile(postArtefactCategoryRequest, nameof(postArtefactCategoryRequest), required: false);
             return new DeferredBodyAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/resources/artefactcategory", __workflow_instance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var postArtefactCategoryRequest = new JObject();
-                var postArtefactCategoryRequestpropCount = 0;
-                if (__workflow_postArtefactCategoryRequestname != null)
-                {
-                    postArtefactCategoryRequest["name"] = ExpressionConverter.ConvertO(__workflow_postArtefactCategoryRequestname);
-                    postArtefactCategoryRequestpropCount++;
-                }
-
-                if (postArtefactCategoryRequestpropCount > 0)
-                {
-                    callPayload.Body = postArtefactCategoryRequest;
-                }
-
+                if (__workflow_postArtefactCategoryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_postArtefactCategoryRequest);
                 return new ApiConnectionAction<PostArtefactCategoryResponse>(callPayload);
             });
         }
@@ -601,6 +473,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
 
         [JsonProperty("query")]
         public string Query { get; set; }
+    }
+
+    public class OperationsLiveCshInput
+    {
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("query")]
+        public string Query { get; set; }
+
+        [JsonProperty("showFirstResult")]
+        public bool? ShowFirstResult { get; set; }
+
+        [JsonProperty("maximizeClient")]
+        public bool? MaximizeClient { get; set; }
+    }
+
+    public class OperationsLiveDocumentInput
+    {
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("maximizeClient")]
+        public bool? MaximizeClient { get; set; }
+    }
+
+    public class OperationsLiveSearchInput
+    {
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("query")]
+        public string Query { get; set; }
+
+        [JsonProperty("maximizeClient")]
+        public bool? MaximizeClient { get; set; }
+
+        [JsonProperty("showFirstResult")]
+        public bool? ShowFirstResult { get; set; }
     }
 
     public class GetContainerResponse
@@ -1171,6 +1097,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
 
         [JsonProperty("categoryName")]
         public string CategoryName { get; set; }
+    }
+
+    public class ResourcesArtefactCategoryPostInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }
 

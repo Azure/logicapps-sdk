@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
 
     public class UbiqodbyskiplyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DataIn(Expression<Func<int>> bodygroupId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DataIn(Expression<Func<DataInInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/key/subscribe";
@@ -26,20 +26,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["provider"] = Convert.ToString("pa");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["group_id"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
-                body["hookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class DataInInput
+    {
+        [JsonProperty("group_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int GroupId { get; set; }
+
+        [JsonProperty("hookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string HookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

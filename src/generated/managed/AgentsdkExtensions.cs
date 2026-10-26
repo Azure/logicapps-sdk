@@ -13,22 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agentsdk
     public class AgentsdkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agentsdk")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendActivity(Expression<Func<string>> agentEndpoint)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendActivity(Expression<Func<string>> agentEndpoint, Expression<Func<object>> activity)
         {
             var __workflow_agentEndpoint = WorkflowExpression.Compile(agentEndpoint, nameof(agentEndpoint), required: true);
+            var __workflow_activity = WorkflowExpression.Compile(activity, nameof(activity), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["agentEndpoint"] = ExpressionConverter.Convert(__workflow_agentEndpoint);
-                var activity = new JObject();
-                var activitypropCount = 0;
-                if (activitypropCount > 0)
-                {
-                    callPayload.Body = activity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_activity);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

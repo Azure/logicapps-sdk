@@ -13,43 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
     public class CmiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cmi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> xCMITENANTNAME, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parameterspath, Expression<Func<string>> parametersbody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> xCMITENANTNAME, Expression<Func<HttpRequestInput>> parameters)
         {
             var __workflow_xCMITENANTNAME = WorkflowExpression.Compile(xCMITENANTNAME, nameof(xCMITENANTNAME), required: true);
-            var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
-            var __workflow_parameterspath = WorkflowExpression.Compile(parameterspath, nameof(parameterspath), required: true);
-            var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/virtual/httprequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-CMI-TENANT-NAME"] = ExpressionConverter.Convert(__workflow_xCMITENANTNAME);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["method"] = ExpressionConverter.ConvertO(__workflow_parametersmethod);
-                parameterspropCount++;
-                parameters["path"] = ExpressionConverter.ConvertO(__workflow_parameterspath);
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    parameters["headers"] = headersObject;
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parametersbody != null)
-                {
-                    parameters["body"] = ExpressionConverter.ConvertO(__workflow_parametersbody);
-                    parameterspropCount++;
-                }
-
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -59,8 +33,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
     {
     }
 
+    public class HttpRequestInput
+    {
+        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HttpRequestInputMethodType Method { get; set; } = HttpRequestInputMethodType.GET;
+
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Path { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("body")]
+        public string Body { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum parametersmethodInput
+    public enum HttpRequestInputMethodType
     {
         GET,
         PUT,

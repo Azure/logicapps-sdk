@@ -28,34 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration> Unix2DateTimeTimezone(Expression<Func<string>> bodyunixTimeStamp = null, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration> Unix2DateTimeTimezone(Expression<Func<Unix2DateTimeTimezoneInput>> body = null)
         {
-            var __workflow_bodyunixTimeStamp = WorkflowExpression.Compile(bodyunixTimeStamp, nameof(bodyunixTimeStamp), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyunixTimeStamp != null)
-                {
-                    body["UnixTimeStamp"] = ExpressionConverter.ConvertO(__workflow_bodyunixTimeStamp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["Timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Unix2DateTimeTimezoneResponse>(callPayload);
             });
         }
@@ -89,6 +71,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
     public class Unix2DateTimeTimezoneResponse
     {
         public string Datetime { get; set; }
+    }
+
+    public class Unix2DateTimeTimezoneInput
+    {
+        public string UnixTimeStamp { get; set; }
+        public string Timezone { get; set; }
     }
 
     public class DateTime2UnixTimestampResponse

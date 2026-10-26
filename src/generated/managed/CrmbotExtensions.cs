@@ -13,298 +13,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
     public class CrmbotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration> BuildCustomMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration> BuildCustomMessage(Expression<Func<BuildCustomMessageInput>> body = null)
         {
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/custom";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BuildCustomMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildTextMessageResponse, ApiConnectionActionConfiguration> BuildTextMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<BuildTextMessageResponse, ApiConnectionActionConfiguration> BuildTextMessage(Expression<Func<BuildTextMessageInput>> body = null)
         {
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BuildTextMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BuildTextMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildCardMessageResponse, ApiConnectionActionConfiguration> BuildCardMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<bool>> bodyisCarousel, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodybuttontitle1 = null, Expression<Func<string>> bodybuttonpostback1 = null, Expression<Func<string>> bodybuttontitle2 = null, Expression<Func<string>> bodybuttonpostback2 = null, Expression<Func<string>> bodybuttontitle3 = null, Expression<Func<string>> bodybuttonpostback3 = null)
+        public IBodyWorkflowAction<BuildCardMessageResponse, ApiConnectionActionConfiguration> BuildCardMessage(Expression<Func<BuildCardMessageInput>> body)
         {
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyisCarousel = WorkflowExpression.Compile(bodyisCarousel, nameof(bodyisCarousel), required: true);
-            var __workflow_bodysubtitle = WorkflowExpression.Compile(bodysubtitle, nameof(bodysubtitle), required: false);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodybuttontitle1 = WorkflowExpression.Compile(bodybuttontitle1, nameof(bodybuttontitle1), required: false);
-            var __workflow_bodybuttonpostback1 = WorkflowExpression.Compile(bodybuttonpostback1, nameof(bodybuttonpostback1), required: false);
-            var __workflow_bodybuttontitle2 = WorkflowExpression.Compile(bodybuttontitle2, nameof(bodybuttontitle2), required: false);
-            var __workflow_bodybuttonpostback2 = WorkflowExpression.Compile(bodybuttonpostback2, nameof(bodybuttonpostback2), required: false);
-            var __workflow_bodybuttontitle3 = WorkflowExpression.Compile(bodybuttontitle3, nameof(bodybuttontitle3), required: false);
-            var __workflow_bodybuttonpostback3 = WorkflowExpression.Compile(bodybuttonpostback3, nameof(bodybuttonpostback3), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BuildCardMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/card";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodysubtitle != null)
-                {
-                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["isCarousel"] = ExpressionConverter.ConvertO(__workflow_bodyisCarousel);
-                if (__workflow_bodybuttontitle1 != null)
-                {
-                    body["buttontitle1"] = ExpressionConverter.ConvertO(__workflow_bodybuttontitle1);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybuttonpostback1 != null)
-                {
-                    body["buttonpostback1"] = ExpressionConverter.ConvertO(__workflow_bodybuttonpostback1);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybuttontitle2 != null)
-                {
-                    body["buttontitle2"] = ExpressionConverter.ConvertO(__workflow_bodybuttontitle2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybuttonpostback2 != null)
-                {
-                    body["buttonpostback2"] = ExpressionConverter.ConvertO(__workflow_bodybuttonpostback2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybuttontitle3 != null)
-                {
-                    body["buttontitle3"] = ExpressionConverter.ConvertO(__workflow_bodybuttontitle3);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybuttonpostback3 != null)
-                {
-                    body["buttonpostback3"] = ExpressionConverter.ConvertO(__workflow_bodybuttonpostback3);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BuildCardMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration> BuildQuickrepliesMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration> BuildQuickrepliesMessage(Expression<Func<BuildQuickrepliesMessageInput>> body)
         {
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/quickreplies";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BuildQuickrepliesMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration> BuildMediaMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodyurl, Expression<Func<bodymediaTypeInput>> bodymediaType)
+        public IBodyWorkflowAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration> BuildMediaMessage(Expression<Func<BuildMediaMessageInput>> body = null)
         {
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodymediaType = WorkflowExpression.Compile(bodymediaType, nameof(bodymediaType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/message/media";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["mediaType"] = ExpressionConverter.ConvertO(__workflow_bodymediaType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BuildMediaMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendResponse(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null, Expression<Func<string>> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, Expression<Func<string>> bodywebhookResponseapplySpecificContextToResponse = null, Expression<Func<int>> bodywebhookResponsedurationOfContext = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendResponse(Expression<Func<SendResponseInput>> body)
         {
-            var __workflow_bodysessionId = WorkflowExpression.Compile(bodysessionId, nameof(bodysessionId), required: true);
-            var __workflow_bodyuseGlossary = WorkflowExpression.Compile(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
-            var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: true);
-            var __workflow_bodywebhookResponsefulfillmentMessages = WorkflowExpression.Compile(bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
-            var __workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke = WorkflowExpression.Compile(bodywebhookResponseselectTheEventYouWouldLikeToInvoke, nameof(bodywebhookResponseselectTheEventYouWouldLikeToInvoke), required: false);
-            var __workflow_bodywebhookResponseapplySpecificContextToResponse = WorkflowExpression.Compile(bodywebhookResponseapplySpecificContextToResponse, nameof(bodywebhookResponseapplySpecificContextToResponse), required: false);
-            var __workflow_bodywebhookResponsedurationOfContext = WorkflowExpression.Compile(bodywebhookResponsedurationOfContext, nameof(bodywebhookResponsedurationOfContext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector/response";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["sessionId"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
-                bodypropCount++;
-                body["useGlossary"] = ExpressionConverter.ConvertO(__workflow_bodyuseGlossary);
-                bodypropCount++;
-                body["targetLanguage"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
-                var webhookResponseObject = new JObject();
-                var webhookResponseObjectpropCount = 0;
-                if (__workflow_bodywebhookResponsefulfillmentMessages != null)
-                {
-                    webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponsefulfillmentMessages);
-                    webhookResponseObjectpropCount++;
-                }
-
-                if (__workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke != null)
-                {
-                    webhookResponseObject["EventName"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke);
-                    webhookResponseObjectpropCount++;
-                }
-
-                if (__workflow_bodywebhookResponseapplySpecificContextToResponse != null)
-                {
-                    webhookResponseObject["OutputContextName"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponseapplySpecificContextToResponse);
-                    webhookResponseObjectpropCount++;
-                }
-
-                if (__workflow_bodywebhookResponsedurationOfContext != null)
-                {
-                    webhookResponseObject["OutputContextLifespan"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponsedurationOfContext);
-                    webhookResponseObjectpropCount++;
-                }
-
-                if (webhookResponseObjectpropCount > 0)
-                {
-                    body["webhookResponse"] = webhookResponseObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendProactiveMessage(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendProactiveMessage(Expression<Func<SendProactiveMessageInput>> body)
         {
-            var __workflow_bodysessionId = WorkflowExpression.Compile(bodysessionId, nameof(bodysessionId), required: true);
-            var __workflow_bodyuseGlossary = WorkflowExpression.Compile(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
-            var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: true);
-            var __workflow_bodywebhookResponsefulfillmentMessages = WorkflowExpression.Compile(bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector/proactive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["sessionId"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
-                bodypropCount++;
-                body["useGlossary"] = ExpressionConverter.ConvertO(__workflow_bodyuseGlossary);
-                bodypropCount++;
-                body["targetLanguage"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
-                var webhookResponseObject = new JObject();
-                var webhookResponseObjectpropCount = 0;
-                if (__workflow_bodywebhookResponsefulfillmentMessages != null)
-                {
-                    webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponsefulfillmentMessages);
-                    webhookResponseObjectpropCount++;
-                }
-
-                if (webhookResponseObjectpropCount > 0)
-                {
-                    body["webhookResponse"] = webhookResponseObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -312,28 +116,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
 
     public class CrmbotTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> IntentDetected(Expression<Func<string>> bodyselectIntentYouWouldLikeToTriggerOn, Expression<Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput>> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> IntentDetected(Expression<Func<IntentDetectedInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyselectIntentYouWouldLikeToTriggerOn = WorkflowExpression.Compile(bodyselectIntentYouWouldLikeToTriggerOn, nameof(bodyselectIntentYouWouldLikeToTriggerOn), required: true);
-            var __workflow_bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic = WorkflowExpression.Compile(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, nameof(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyselectIntentYouWouldLikeToTriggerOn);
-                bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
@@ -345,10 +137,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
+    public class BuildCustomMessageInput
+    {
+        [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Platform { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+    }
+
     public class BuildTextMessageResponse
     {
         [JsonProperty("message")]
         public JToken Message { get; set; }
+    }
+
+    public class BuildTextMessageInput
+    {
+        [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Platform { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
     }
 
     public class BuildCardMessageResponse
@@ -357,10 +167,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
+    public class BuildCardMessageInput
+    {
+        [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Platform { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("isCarousel", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsCarousel { get; set; } = false;
+
+        [JsonProperty("buttontitle1")]
+        public string Buttontitle1 { get; set; }
+
+        [JsonProperty("buttonpostback1")]
+        public string Buttonpostback1 { get; set; }
+
+        [JsonProperty("buttontitle2")]
+        public string Buttontitle2 { get; set; }
+
+        [JsonProperty("buttonpostback2")]
+        public string Buttonpostback2 { get; set; }
+
+        [JsonProperty("buttontitle3")]
+        public string Buttontitle3 { get; set; }
+
+        [JsonProperty("buttonpostback3")]
+        public string Buttonpostback3 { get; set; }
+    }
+
     public class BuildQuickrepliesMessageResponse
     {
         [JsonProperty("message")]
         public JToken Message { get; set; }
+    }
+
+    public class BuildQuickrepliesMessageInput
+    {
+        [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Platform { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
     }
 
     public class BuildMediaMessageResponse
@@ -369,8 +227,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
+    public class BuildMediaMessageInput
+    {
+        [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Platform { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("mediaType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BuildMediaMessageInputMediaTypeType MediaType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymediaTypeInput
+    public enum BuildMediaMessageInputMediaTypeType
     {
         [EnumMember(Value = "1")]
         Image,
@@ -378,8 +248,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         Video
     }
 
+    public class SendResponseInput
+    {
+        [JsonProperty("sessionId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SessionId { get; set; }
+
+        [JsonProperty("useGlossary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool UseGlossary { get; set; }
+
+        [JsonProperty("targetLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetLanguage { get; set; }
+
+        [JsonProperty("webhookResponse")]
+        public SendResponseInputWebhookResponseType WebhookResponse { get; set; }
+    }
+
+    public class SendResponseInputWebhookResponseType
+    {
+        public JToken[] FulfillmentMessages { get; set; }
+
+        [JsonProperty("EventName")]
+        public string SelectTheEventYouWouldLikeToInvoke { get; set; }
+
+        [JsonProperty("OutputContextName")]
+        public string ApplySpecificContextToResponse { get; set; }
+
+        [JsonProperty("OutputContextLifespan")]
+        public int? DurationOfContext { get; set; }
+    }
+
+    public class SendProactiveMessageInput
+    {
+        [JsonProperty("sessionId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SessionId { get; set; }
+
+        [JsonProperty("useGlossary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool UseGlossary { get; set; }
+
+        [JsonProperty("targetLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetLanguage { get; set; }
+
+        [JsonProperty("webhookResponse")]
+        public SendProactiveMessageInputWebhookResponseType WebhookResponse { get; set; }
+    }
+
+    public class SendProactiveMessageInputWebhookResponseType
+    {
+        public JToken[] FulfillmentMessages { get; set; }
+    }
+
+    public class IntentDetectedInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("intent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SelectIntentYouWouldLikeToTriggerOn { get; set; }
+
+        [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
+        public IntentDetectedInputUseUnspecifiedIfYourFlowIsPlatformAgnosticType UseUnspecifiedIfYourFlowIsPlatformAgnostic { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput
+    public enum IntentDetectedInputUseUnspecifiedIfYourFlowIsPlatformAgnosticType
     {
         Unspecified,
         Messenger,

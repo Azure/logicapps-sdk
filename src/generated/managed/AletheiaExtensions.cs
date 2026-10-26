@@ -312,70 +312,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
     public class AletheiaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewFilings(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewFilings(Expression<Func<NewFilingsInput>> body = null, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/SubscribeToNewFilingsWebhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["endpoint"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InsiderTrading(Expression<Func<InsiderTradingInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyissuer = WorkflowExpression.Compile(bodyissuer, nameof(bodyissuer), required: false);
-            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodytransactionType = WorkflowExpression.Compile(bodytransactionType, nameof(bodytransactionType), required: false);
-            var __workflow_bodysecurityType = WorkflowExpression.Compile(bodysecurityType, nameof(bodysecurityType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/SubscribeToInsiderTradingWebhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["endpoint"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyissuer != null)
-                {
-                    body["issuer"] = ExpressionConverter.ConvertO(__workflow_bodyissuer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowner != null)
-                {
-                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytransactionType != null)
-                {
-                    body["transactionType"] = ExpressionConverter.ConvertO(__workflow_bodytransactionType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysecurityType != null)
-                {
-                    body["securityType"] = ExpressionConverter.ConvertO(__workflow_bodysecurityType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -764,7 +724,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public string LastSplitDate { get; set; }
     }
 
-    public enum bodytransactionTypeInput
+    public class NewFilingsInput
+    {
+        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class InsiderTradingInput
+    {
+        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("issuer")]
+        public string Issuer { get; set; }
+
+        [JsonProperty("owner")]
+        public int? Owner { get; set; }
+
+        [JsonProperty("transactionType")]
+        public InsiderTradingInputTransactionTypeType? TransactionType { get; set; }
+
+        [JsonProperty("securityType")]
+        public InsiderTradingInputSecurityTypeType? SecurityType { get; set; }
+    }
+
+    public enum InsiderTradingInputTransactionTypeType
     {
         _0 = 0,
         _1 = 1,
@@ -788,7 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         _19 = 19
     }
 
-    public enum bodysecurityTypeInput
+    public enum InsiderTradingInputSecurityTypeType
     {
         _0 = 0,
         _1 = 1

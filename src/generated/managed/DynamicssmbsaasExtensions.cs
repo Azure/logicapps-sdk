@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
     public class DynamicssmbsaasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> bcenvironment, Expression<Func<string>> configurationName, Expression<Func<string>> company, Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> bcenvironment, Expression<Func<string>> configurationName, Expression<Func<string>> company, Expression<Func<string>> mcpSessionId = null, Expression<Func<InvokeMCPInput>> queryRequest = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_configurationName = WorkflowExpression.Compile(configurationName, nameof(configurationName), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/configuration/{2}/mcp", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_configurationName.WithUrlEncoding(2)));
@@ -29,55 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mcpSessionId != null)
                     callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(__workflow_mcpSessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -100,13 +51,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteProcedure(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteProcedure(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> procedure, Expression<Func<object>> parameters)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_procedure = WorkflowExpression.Compile(procedure, nameof(procedure), required: true);
-            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/procedures/{3}", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_procedure.WithUrlEncoding(2)));
@@ -132,13 +83,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetBlobFromNavigation(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> blobnavigationpath, Expression<Func<object>> pathParameters = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetBlobFromNavigation(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> blobnavigationpath, Expression<Func<object>> pathParameters)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_blobnavigationpath = WorkflowExpression.Compile(blobnavigationpath, nameof(blobnavigationpath), required: true);
-            var __workflow_pathParameters = WorkflowExpression.Compile(pathParameters, nameof(pathParameters), required: false);
+            var __workflow_pathParameters = WorkflowExpression.Compile(pathParameters, nameof(pathParameters), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokeget", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_blobnavigationpath.WithUrlEncoding(2)));
@@ -163,16 +114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFirstItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<bodytypeOfOrderInput>> bodytypeOfOrder = null, Expression<Func<string>> bodyorderResultsBy = null, Expression<Func<bool>> bodycontinueWithEmptyResultWhenNoRecordWasFound = null, Expression<Func<FilterGroup[]>> bodyfilter = null, Expression<Func<bool>> readOnlyConnection = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFirstItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<GetFirstItemV3Input>> body, Expression<Func<bool>> readOnlyConnection = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_bodytypeOfOrder = WorkflowExpression.Compile(bodytypeOfOrder, nameof(bodytypeOfOrder), required: false);
-            var __workflow_bodyorderResultsBy = WorkflowExpression.Compile(bodyorderResultsBy, nameof(bodyorderResultsBy), required: false);
-            var __workflow_bodycontinueWithEmptyResultWhenNoRecordWasFound = WorkflowExpression.Compile(bodycontinueWithEmptyResultWhenNoRecordWasFound, nameof(bodycontinueWithEmptyResultWhenNoRecordWasFound), required: false);
-            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_readOnlyConnection = WorkflowExpression.Compile(readOnlyConnection, nameof(readOnlyConnection), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -181,47 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_readOnlyConnection != null)
                     callPayload.Queries["readOnlyConnection"] = ExpressionConverter.Convert(__workflow_readOnlyConnection);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytypeOfOrder != null)
-                {
-                    body["Order"] = ExpressionConverter.ConvertO(__workflow_bodytypeOfOrder);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderResultsBy != null)
-                {
-                    body["OrderField"] = ExpressionConverter.ConvertO(__workflow_bodyorderResultsBy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontinueWithEmptyResultWhenNoRecordWasFound != null)
-                {
-                    if (__workflow_bodycontinueWithEmptyResultWhenNoRecordWasFound != null)
-                    {
-                        body["NoThrowError"] = ExpressionConverter.ConvertO(__workflow_bodycontinueWithEmptyResultWhenNoRecordWasFound);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["NoThrowError"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilter != null)
-                {
-                    body["Filter"] = ExpressionConverter.ConvertO(__workflow_bodyfilter);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -294,13 +202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchBlobFromNavigation(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> blobnavigationpath, Expression<Func<object>> pathParameters = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchBlobFromNavigation(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> blobnavigationpath, Expression<Func<object>> pathParameters)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_blobnavigationpath = WorkflowExpression.Compile(blobnavigationpath, nameof(blobnavigationpath), required: true);
-            var __workflow_pathParameters = WorkflowExpression.Compile(pathParameters, nameof(pathParameters), required: false);
+            var __workflow_pathParameters = WorkflowExpression.Compile(pathParameters, nameof(pathParameters), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokepatch", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_blobnavigationpath.WithUrlEncoding(2)));
@@ -312,14 +220,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
@@ -331,13 +239,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
@@ -351,9 +259,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
     public class DynamicssmbsaasTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateBusinessEventSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> businessevent, Expression<Func<string>> company = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateBusinessEventSubscription(Expression<Func<string>> bcenvironment, Expression<Func<CreateBusinessEventSubscriptionV3Input>> subscription, Expression<Func<string>> businessevent, Expression<Func<string>> company = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             var __workflow_businessevent = WorkflowExpression.Compile(businessevent, nameof(businessevent), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
             return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -364,335 +273,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 callPayload.Queries["company"] = Convert.ToString("");
                 if (__workflow_company != null)
                     callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateCustomerApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateCustomerApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateCustomerApprovalWebHookV3Input>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            var __workflow_subscriptionfirstCondition = WorkflowExpression.Compile(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            var __workflow_subscriptionfirstConditionIs = WorkflowExpression.Compile(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            var __workflow_subscriptionsecondCondition = WorkflowExpression.Compile(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            var __workflow_subscriptionsecondConditionIs = WorkflowExpression.Compile(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            var __workflow_subscriptionthirdCondition = WorkflowExpression.Compile(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            var __workflow_subscriptionthirdConditionIs = WorkflowExpression.Compile(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            var __workflow_subscriptionfourthCondition = WorkflowExpression.Compile(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                if (__workflow_subscriptionfirstCondition != null)
-                {
-                    subscription["FirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfirstConditionIs != null)
-                {
-                    subscription["FirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondCondition != null)
-                {
-                    subscription["SecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondConditionIs != null)
-                {
-                    subscription["SecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdCondition != null)
-                {
-                    subscription["ThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdConditionIs != null)
-                {
-                    subscription["ThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthCondition != null)
-                {
-                    subscription["FourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthConditionIs != null)
-                {
-                    subscription["FourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateGeneralJournalBatchApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateGeneralJournalBatchApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateGeneralJournalBatchApprovalWebHookV3Input>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            var __workflow_subscriptionfirstCondition = WorkflowExpression.Compile(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            var __workflow_subscriptionfirstConditionIs = WorkflowExpression.Compile(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            var __workflow_subscriptionsecondCondition = WorkflowExpression.Compile(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            var __workflow_subscriptionsecondConditionIs = WorkflowExpression.Compile(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            var __workflow_subscriptionthirdCondition = WorkflowExpression.Compile(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            var __workflow_subscriptionthirdConditionIs = WorkflowExpression.Compile(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            var __workflow_subscriptionfourthCondition = WorkflowExpression.Compile(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                if (__workflow_subscriptionfirstCondition != null)
-                {
-                    subscription["FirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfirstConditionIs != null)
-                {
-                    subscription["FirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondCondition != null)
-                {
-                    subscription["SecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondConditionIs != null)
-                {
-                    subscription["SecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdCondition != null)
-                {
-                    subscription["ThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdConditionIs != null)
-                {
-                    subscription["ThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthCondition != null)
-                {
-                    subscription["FourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthConditionIs != null)
-                {
-                    subscription["FourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateGeneralJournalLineApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateGeneralJournalLineApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateGeneralJournalLineApprovalWebHookV3Input>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            var __workflow_subscriptionfirstCondition = WorkflowExpression.Compile(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            var __workflow_subscriptionfirstConditionIs = WorkflowExpression.Compile(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            var __workflow_subscriptionsecondCondition = WorkflowExpression.Compile(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            var __workflow_subscriptionsecondConditionIs = WorkflowExpression.Compile(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            var __workflow_subscriptionthirdCondition = WorkflowExpression.Compile(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            var __workflow_subscriptionthirdConditionIs = WorkflowExpression.Compile(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            var __workflow_subscriptionfourthCondition = WorkflowExpression.Compile(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                if (__workflow_subscriptionfirstCondition != null)
-                {
-                    subscription["FirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfirstConditionIs != null)
-                {
-                    subscription["FirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondCondition != null)
-                {
-                    subscription["SecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondConditionIs != null)
-                {
-                    subscription["SecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdCondition != null)
-                {
-                    subscription["ThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdConditionIs != null)
-                {
-                    subscription["ThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthCondition != null)
-                {
-                    subscription["FourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthConditionIs != null)
-                {
-                    subscription["FourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateItemApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateItemApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateItemApprovalWebHookV3Input>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            var __workflow_subscriptionfirstCondition = WorkflowExpression.Compile(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            var __workflow_subscriptionfirstConditionIs = WorkflowExpression.Compile(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            var __workflow_subscriptionsecondCondition = WorkflowExpression.Compile(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            var __workflow_subscriptionsecondConditionIs = WorkflowExpression.Compile(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            var __workflow_subscriptionthirdCondition = WorkflowExpression.Compile(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            var __workflow_subscriptionthirdConditionIs = WorkflowExpression.Compile(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            var __workflow_subscriptionfourthCondition = WorkflowExpression.Compile(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                if (__workflow_subscriptionfirstCondition != null)
-                {
-                    subscription["FirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfirstConditionIs != null)
-                {
-                    subscription["FirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondCondition != null)
-                {
-                    subscription["SecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondConditionIs != null)
-                {
-                    subscription["SecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdCondition != null)
-                {
-                    subscription["ThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdConditionIs != null)
-                {
-                    subscription["ThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthCondition != null)
-                {
-                    subscription["FourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthConditionIs != null)
-                {
-                    subscription["FourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnChangedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnChangedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateOnChangedItemsSubscriptionV3Input>> subscription, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -700,23 +350,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnDeletedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnDeletedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateOnDeletedItemsSubscriptionV3Input>> subscription, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -724,23 +367,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnNewItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnNewItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateOnNewItemsSubscriptionV3Input>> subscription, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -748,23 +384,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnUpdatedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateOnUpdatedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateOnUpdatedItemsSubscriptionV3Input>> subscription, Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -772,364 +401,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreatePurchaseDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreatePurchaseDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreatePurchaseDocumentApprovalWebHookV3Input>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            var __workflow_subscriptionheaderFirstCondition = WorkflowExpression.Compile(subscriptionheaderFirstCondition, nameof(subscriptionheaderFirstCondition), required: false);
-            var __workflow_subscriptionheaderFirstConditionIs = WorkflowExpression.Compile(subscriptionheaderFirstConditionIs, nameof(subscriptionheaderFirstConditionIs), required: false);
-            var __workflow_subscriptionheaderSecondCondition = WorkflowExpression.Compile(subscriptionheaderSecondCondition, nameof(subscriptionheaderSecondCondition), required: false);
-            var __workflow_subscriptionheaderSecondConditionIs = WorkflowExpression.Compile(subscriptionheaderSecondConditionIs, nameof(subscriptionheaderSecondConditionIs), required: false);
-            var __workflow_subscriptionheaderThirdCondition = WorkflowExpression.Compile(subscriptionheaderThirdCondition, nameof(subscriptionheaderThirdCondition), required: false);
-            var __workflow_subscriptionheaderThirdConditionIs = WorkflowExpression.Compile(subscriptionheaderThirdConditionIs, nameof(subscriptionheaderThirdConditionIs), required: false);
-            var __workflow_subscriptionheaderFourthCondition = WorkflowExpression.Compile(subscriptionheaderFourthCondition, nameof(subscriptionheaderFourthCondition), required: false);
-            var __workflow_subscriptionheaderFourthConditionIs = WorkflowExpression.Compile(subscriptionheaderFourthConditionIs, nameof(subscriptionheaderFourthConditionIs), required: false);
-            var __workflow_subscriptionlineFirstCondition = WorkflowExpression.Compile(subscriptionlineFirstCondition, nameof(subscriptionlineFirstCondition), required: false);
-            var __workflow_subscriptionlineFirstConditionIs = WorkflowExpression.Compile(subscriptionlineFirstConditionIs, nameof(subscriptionlineFirstConditionIs), required: false);
-            var __workflow_subscriptionlineSecondCondition = WorkflowExpression.Compile(subscriptionlineSecondCondition, nameof(subscriptionlineSecondCondition), required: false);
-            var __workflow_subscriptionlineSecondConditionIs = WorkflowExpression.Compile(subscriptionlineSecondConditionIs, nameof(subscriptionlineSecondConditionIs), required: false);
-            var __workflow_subscriptionlineThirdCondition = WorkflowExpression.Compile(subscriptionlineThirdCondition, nameof(subscriptionlineThirdCondition), required: false);
-            var __workflow_subscriptionlineThirdConditionIs = WorkflowExpression.Compile(subscriptionlineThirdConditionIs, nameof(subscriptionlineThirdConditionIs), required: false);
-            var __workflow_subscriptionlineFourthCondition = WorkflowExpression.Compile(subscriptionlineFourthCondition, nameof(subscriptionlineFourthCondition), required: false);
-            var __workflow_subscriptionlineFourthConditionIs = WorkflowExpression.Compile(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                if (__workflow_subscriptionheaderFirstCondition != null)
-                {
-                    subscription["HeaderFirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderFirstConditionIs != null)
-                {
-                    subscription["HeaderFirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderSecondCondition != null)
-                {
-                    subscription["HeaderSecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderSecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderSecondConditionIs != null)
-                {
-                    subscription["HeaderSecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderSecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderThirdCondition != null)
-                {
-                    subscription["HeaderThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderThirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderThirdConditionIs != null)
-                {
-                    subscription["HeaderThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderThirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderFourthCondition != null)
-                {
-                    subscription["HeaderFourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderFourthConditionIs != null)
-                {
-                    subscription["HeaderFourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFirstCondition != null)
-                {
-                    subscription["LineFirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFirstConditionIs != null)
-                {
-                    subscription["LineFirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineSecondCondition != null)
-                {
-                    subscription["LineSecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineSecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineSecondConditionIs != null)
-                {
-                    subscription["LineSecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineSecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineThirdCondition != null)
-                {
-                    subscription["LineThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineThirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineThirdConditionIs != null)
-                {
-                    subscription["LineThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineThirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFourthCondition != null)
-                {
-                    subscription["LineFourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFourthConditionIs != null)
-                {
-                    subscription["LineFourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateSalesDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateSalesDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateSalesDocumentApprovalWebHookV3Input>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            var __workflow_subscriptionheaderFirstCondition = WorkflowExpression.Compile(subscriptionheaderFirstCondition, nameof(subscriptionheaderFirstCondition), required: false);
-            var __workflow_subscriptionheaderFirstConditionIs = WorkflowExpression.Compile(subscriptionheaderFirstConditionIs, nameof(subscriptionheaderFirstConditionIs), required: false);
-            var __workflow_subscriptionheaderSecondCondition = WorkflowExpression.Compile(subscriptionheaderSecondCondition, nameof(subscriptionheaderSecondCondition), required: false);
-            var __workflow_subscriptionheaderSecondConditionIs = WorkflowExpression.Compile(subscriptionheaderSecondConditionIs, nameof(subscriptionheaderSecondConditionIs), required: false);
-            var __workflow_subscriptionheaderThirdCondition = WorkflowExpression.Compile(subscriptionheaderThirdCondition, nameof(subscriptionheaderThirdCondition), required: false);
-            var __workflow_subscriptionheaderThirdConditionIs = WorkflowExpression.Compile(subscriptionheaderThirdConditionIs, nameof(subscriptionheaderThirdConditionIs), required: false);
-            var __workflow_subscriptionheaderFourthCondition = WorkflowExpression.Compile(subscriptionheaderFourthCondition, nameof(subscriptionheaderFourthCondition), required: false);
-            var __workflow_subscriptionheaderFourthConditionIs = WorkflowExpression.Compile(subscriptionheaderFourthConditionIs, nameof(subscriptionheaderFourthConditionIs), required: false);
-            var __workflow_subscriptionlineFirstCondition = WorkflowExpression.Compile(subscriptionlineFirstCondition, nameof(subscriptionlineFirstCondition), required: false);
-            var __workflow_subscriptionlineFirstConditionIs = WorkflowExpression.Compile(subscriptionlineFirstConditionIs, nameof(subscriptionlineFirstConditionIs), required: false);
-            var __workflow_subscriptionlineSecondCondition = WorkflowExpression.Compile(subscriptionlineSecondCondition, nameof(subscriptionlineSecondCondition), required: false);
-            var __workflow_subscriptionlineSecondConditionIs = WorkflowExpression.Compile(subscriptionlineSecondConditionIs, nameof(subscriptionlineSecondConditionIs), required: false);
-            var __workflow_subscriptionlineThirdCondition = WorkflowExpression.Compile(subscriptionlineThirdCondition, nameof(subscriptionlineThirdCondition), required: false);
-            var __workflow_subscriptionlineThirdConditionIs = WorkflowExpression.Compile(subscriptionlineThirdConditionIs, nameof(subscriptionlineThirdConditionIs), required: false);
-            var __workflow_subscriptionlineFourthCondition = WorkflowExpression.Compile(subscriptionlineFourthCondition, nameof(subscriptionlineFourthCondition), required: false);
-            var __workflow_subscriptionlineFourthConditionIs = WorkflowExpression.Compile(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                if (__workflow_subscriptionheaderFirstCondition != null)
-                {
-                    subscription["HeaderFirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderFirstConditionIs != null)
-                {
-                    subscription["HeaderFirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderSecondCondition != null)
-                {
-                    subscription["HeaderSecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderSecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderSecondConditionIs != null)
-                {
-                    subscription["HeaderSecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderSecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderThirdCondition != null)
-                {
-                    subscription["HeaderThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderThirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderThirdConditionIs != null)
-                {
-                    subscription["HeaderThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderThirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderFourthCondition != null)
-                {
-                    subscription["HeaderFourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionheaderFourthConditionIs != null)
-                {
-                    subscription["HeaderFourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionheaderFourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFirstCondition != null)
-                {
-                    subscription["LineFirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFirstConditionIs != null)
-                {
-                    subscription["LineFirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineSecondCondition != null)
-                {
-                    subscription["LineSecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineSecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineSecondConditionIs != null)
-                {
-                    subscription["LineSecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineSecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineThirdCondition != null)
-                {
-                    subscription["LineThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineThirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineThirdConditionIs != null)
-                {
-                    subscription["LineThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineThirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFourthCondition != null)
-                {
-                    subscription["LineFourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionlineFourthConditionIs != null)
-                {
-                    subscription["LineFourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionlineFourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateVendorApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateVendorApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<CreateVendorApprovalWebHookV3Input>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            var __workflow_subscriptionfirstCondition = WorkflowExpression.Compile(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
-            var __workflow_subscriptionfirstConditionIs = WorkflowExpression.Compile(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
-            var __workflow_subscriptionsecondCondition = WorkflowExpression.Compile(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
-            var __workflow_subscriptionsecondConditionIs = WorkflowExpression.Compile(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
-            var __workflow_subscriptionthirdCondition = WorkflowExpression.Compile(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
-            var __workflow_subscriptionthirdConditionIs = WorkflowExpression.Compile(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
-            var __workflow_subscriptionfourthCondition = WorkflowExpression.Compile(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
-            var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                if (__workflow_subscriptionfirstCondition != null)
-                {
-                    subscription["FirstConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfirstConditionIs != null)
-                {
-                    subscription["FirstConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfirstConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondCondition != null)
-                {
-                    subscription["SecondConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionsecondConditionIs != null)
-                {
-                    subscription["SecondConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionsecondConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdCondition != null)
-                {
-                    subscription["ThirdConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionthirdConditionIs != null)
-                {
-                    subscription["ThirdConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionthirdConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthCondition != null)
-                {
-                    subscription["FourthConditionField"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthCondition);
-                    subscriptionpropCount++;
-                }
-
-                if (__workflow_subscriptionfourthConditionIs != null)
-                {
-                    subscription["FourthConditionFieldValue"] = ExpressionConverter.ConvertO(__workflow_subscriptionfourthConditionIs);
-                    subscriptionpropCount++;
-                }
-
-                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
                 return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class InvokeMCPInput
+    {
+        [JsonProperty("jsonrpc")]
+        public string Jsonrpc { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("method")]
+        public string Method { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
+
+        [JsonProperty("result")]
+        public JToken Result { get; set; }
+
+        [JsonProperty("error")]
+        public JToken Error { get; set; }
     }
 
     public class GetAdaptiveCardV3Response
@@ -1175,8 +516,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         public string Language { get; set; }
     }
 
+    public class GetFirstItemV3Input
+    {
+        [JsonProperty("Order")]
+        public GetFirstItemV3InputTypeOfOrderType? TypeOfOrder { get; set; }
+
+        [JsonProperty("OrderField")]
+        public string OrderResultsBy { get; set; }
+
+        [JsonProperty("NoThrowError", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ContinueWithEmptyResultWhenNoRecordWasFound { get; set; } = false;
+        public FilterGroup[] Filter { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeOfOrderInput
+    public enum GetFirstItemV3InputTypeOfOrderType
     {
         [EnumMember(Value = "ascending")]
         Ascending,
@@ -1251,6 +605,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         public string RenewInterval { get; set; }
     }
 
+    public class CreateBusinessEventSubscriptionV3Input
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
     public class WebHookSubscriptionResponse
     {
         [JsonProperty("id")]
@@ -1264,6 +624,288 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
 
         [JsonProperty("notificationUrl")]
         public string NotificationUrl { get; set; }
+    }
+
+    public class CreateCustomerApprovalWebHookV3Input
+    {
+        [JsonProperty("FirstConditionField")]
+        public string FirstCondition { get; set; }
+
+        [JsonProperty("FirstConditionFieldValue")]
+        public string FirstConditionIs { get; set; }
+
+        [JsonProperty("SecondConditionField")]
+        public string SecondCondition { get; set; }
+
+        [JsonProperty("SecondConditionFieldValue")]
+        public string SecondConditionIs { get; set; }
+
+        [JsonProperty("ThirdConditionField")]
+        public string ThirdCondition { get; set; }
+
+        [JsonProperty("ThirdConditionFieldValue")]
+        public string ThirdConditionIs { get; set; }
+
+        [JsonProperty("FourthConditionField")]
+        public string FourthCondition { get; set; }
+
+        [JsonProperty("FourthConditionFieldValue")]
+        public string FourthConditionIs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateGeneralJournalBatchApprovalWebHookV3Input
+    {
+        [JsonProperty("FirstConditionField")]
+        public string FirstCondition { get; set; }
+
+        [JsonProperty("FirstConditionFieldValue")]
+        public string FirstConditionIs { get; set; }
+
+        [JsonProperty("SecondConditionField")]
+        public string SecondCondition { get; set; }
+
+        [JsonProperty("SecondConditionFieldValue")]
+        public string SecondConditionIs { get; set; }
+
+        [JsonProperty("ThirdConditionField")]
+        public string ThirdCondition { get; set; }
+
+        [JsonProperty("ThirdConditionFieldValue")]
+        public string ThirdConditionIs { get; set; }
+
+        [JsonProperty("FourthConditionField")]
+        public string FourthCondition { get; set; }
+
+        [JsonProperty("FourthConditionFieldValue")]
+        public string FourthConditionIs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateGeneralJournalLineApprovalWebHookV3Input
+    {
+        [JsonProperty("FirstConditionField")]
+        public string FirstCondition { get; set; }
+
+        [JsonProperty("FirstConditionFieldValue")]
+        public string FirstConditionIs { get; set; }
+
+        [JsonProperty("SecondConditionField")]
+        public string SecondCondition { get; set; }
+
+        [JsonProperty("SecondConditionFieldValue")]
+        public string SecondConditionIs { get; set; }
+
+        [JsonProperty("ThirdConditionField")]
+        public string ThirdCondition { get; set; }
+
+        [JsonProperty("ThirdConditionFieldValue")]
+        public string ThirdConditionIs { get; set; }
+
+        [JsonProperty("FourthConditionField")]
+        public string FourthCondition { get; set; }
+
+        [JsonProperty("FourthConditionFieldValue")]
+        public string FourthConditionIs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateItemApprovalWebHookV3Input
+    {
+        [JsonProperty("FirstConditionField")]
+        public string FirstCondition { get; set; }
+
+        [JsonProperty("FirstConditionFieldValue")]
+        public string FirstConditionIs { get; set; }
+
+        [JsonProperty("SecondConditionField")]
+        public string SecondCondition { get; set; }
+
+        [JsonProperty("SecondConditionFieldValue")]
+        public string SecondConditionIs { get; set; }
+
+        [JsonProperty("ThirdConditionField")]
+        public string ThirdCondition { get; set; }
+
+        [JsonProperty("ThirdConditionFieldValue")]
+        public string ThirdConditionIs { get; set; }
+
+        [JsonProperty("FourthConditionField")]
+        public string FourthCondition { get; set; }
+
+        [JsonProperty("FourthConditionFieldValue")]
+        public string FourthConditionIs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateOnChangedItemsSubscriptionV3Input
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateOnDeletedItemsSubscriptionV3Input
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateOnNewItemsSubscriptionV3Input
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateOnUpdatedItemsSubscriptionV3Input
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreatePurchaseDocumentApprovalWebHookV3Input
+    {
+        [JsonProperty("HeaderFirstConditionField")]
+        public string HeaderFirstCondition { get; set; }
+
+        [JsonProperty("HeaderFirstConditionFieldValue")]
+        public string HeaderFirstConditionIs { get; set; }
+
+        [JsonProperty("HeaderSecondConditionField")]
+        public string HeaderSecondCondition { get; set; }
+
+        [JsonProperty("HeaderSecondConditionFieldValue")]
+        public string HeaderSecondConditionIs { get; set; }
+
+        [JsonProperty("HeaderThirdConditionField")]
+        public string HeaderThirdCondition { get; set; }
+
+        [JsonProperty("HeaderThirdConditionFieldValue")]
+        public string HeaderThirdConditionIs { get; set; }
+
+        [JsonProperty("HeaderFourthConditionField")]
+        public string HeaderFourthCondition { get; set; }
+
+        [JsonProperty("HeaderFourthConditionFieldValue")]
+        public string HeaderFourthConditionIs { get; set; }
+
+        [JsonProperty("LineFirstConditionField")]
+        public string LineFirstCondition { get; set; }
+
+        [JsonProperty("LineFirstConditionFieldValue")]
+        public string LineFirstConditionIs { get; set; }
+
+        [JsonProperty("LineSecondConditionField")]
+        public string LineSecondCondition { get; set; }
+
+        [JsonProperty("LineSecondConditionFieldValue")]
+        public string LineSecondConditionIs { get; set; }
+
+        [JsonProperty("LineThirdConditionField")]
+        public string LineThirdCondition { get; set; }
+
+        [JsonProperty("LineThirdConditionFieldValue")]
+        public string LineThirdConditionIs { get; set; }
+
+        [JsonProperty("LineFourthConditionField")]
+        public string LineFourthCondition { get; set; }
+
+        [JsonProperty("LineFourthConditionFieldValue")]
+        public string LineFourthConditionIs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateSalesDocumentApprovalWebHookV3Input
+    {
+        [JsonProperty("HeaderFirstConditionField")]
+        public string HeaderFirstCondition { get; set; }
+
+        [JsonProperty("HeaderFirstConditionFieldValue")]
+        public string HeaderFirstConditionIs { get; set; }
+
+        [JsonProperty("HeaderSecondConditionField")]
+        public string HeaderSecondCondition { get; set; }
+
+        [JsonProperty("HeaderSecondConditionFieldValue")]
+        public string HeaderSecondConditionIs { get; set; }
+
+        [JsonProperty("HeaderThirdConditionField")]
+        public string HeaderThirdCondition { get; set; }
+
+        [JsonProperty("HeaderThirdConditionFieldValue")]
+        public string HeaderThirdConditionIs { get; set; }
+
+        [JsonProperty("HeaderFourthConditionField")]
+        public string HeaderFourthCondition { get; set; }
+
+        [JsonProperty("HeaderFourthConditionFieldValue")]
+        public string HeaderFourthConditionIs { get; set; }
+
+        [JsonProperty("LineFirstConditionField")]
+        public string LineFirstCondition { get; set; }
+
+        [JsonProperty("LineFirstConditionFieldValue")]
+        public string LineFirstConditionIs { get; set; }
+
+        [JsonProperty("LineSecondConditionField")]
+        public string LineSecondCondition { get; set; }
+
+        [JsonProperty("LineSecondConditionFieldValue")]
+        public string LineSecondConditionIs { get; set; }
+
+        [JsonProperty("LineThirdConditionField")]
+        public string LineThirdCondition { get; set; }
+
+        [JsonProperty("LineThirdConditionFieldValue")]
+        public string LineThirdConditionIs { get; set; }
+
+        [JsonProperty("LineFourthConditionField")]
+        public string LineFourthCondition { get; set; }
+
+        [JsonProperty("LineFourthConditionFieldValue")]
+        public string LineFourthConditionIs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreateVendorApprovalWebHookV3Input
+    {
+        [JsonProperty("FirstConditionField")]
+        public string FirstCondition { get; set; }
+
+        [JsonProperty("FirstConditionFieldValue")]
+        public string FirstConditionIs { get; set; }
+
+        [JsonProperty("SecondConditionField")]
+        public string SecondCondition { get; set; }
+
+        [JsonProperty("SecondConditionFieldValue")]
+        public string SecondConditionIs { get; set; }
+
+        [JsonProperty("ThirdConditionField")]
+        public string ThirdCondition { get; set; }
+
+        [JsonProperty("ThirdConditionFieldValue")]
+        public string ThirdConditionIs { get; set; }
+
+        [JsonProperty("FourthConditionField")]
+        public string FourthCondition { get; set; }
+
+        [JsonProperty("FourthConditionFieldValue")]
+        public string FourthConditionIs { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -13,646 +13,407 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
     public class MarkdownconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration> MarkdownToHtml(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration> MarkdownToHtml(Expression<Func<MarkdownToHtmlInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toHtml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToHtmlResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration> MarkdownToJson(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration> MarkdownToJson(Expression<Func<MarkdownToJsonInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toJson";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration> MarkdownToXml(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration> MarkdownToXml(Expression<Func<MarkdownToXmlInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toXml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToXmlResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration> MarkdownToPlainText(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration> MarkdownToPlainText(Expression<Func<MarkdownToPlainTextInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toPlainText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToPlainTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration> MarkdownToCsv(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration> MarkdownToCsv(Expression<Func<MarkdownToCsvInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toCsv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToCsvResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration> MarkdownToLaTeX(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration> MarkdownToLaTeX(Expression<Func<MarkdownToLaTeXInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toLaTeX";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToLaTeXResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration> MarkdownToAdaptiveCard(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration> MarkdownToAdaptiveCard(Expression<Func<MarkdownToAdaptiveCardInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toAdaptiveCard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToAdaptiveCardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration> MarkdownToYaml(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration> MarkdownToYaml(Expression<Func<MarkdownToYamlInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toYaml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToYamlResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration> MarkdownToEmail(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration> MarkdownToEmail(Expression<Func<MarkdownToEmailInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toEmail";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToEmailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration> MarkdownToSvg(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration> MarkdownToSvg(Expression<Func<MarkdownToSvgInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toSvg";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToSvgResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToRssResponse, ApiConnectionActionConfiguration> MarkdownToRss(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToRssResponse, ApiConnectionActionConfiguration> MarkdownToRss(Expression<Func<MarkdownToRssInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToRssResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toRss";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToRssResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration> MarkdownToWiki(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration> MarkdownToWiki(Expression<Func<MarkdownToWikiInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toWiki";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToWikiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToPngResponse, ApiConnectionActionConfiguration> MarkdownToPng(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToPngResponse, ApiConnectionActionConfiguration> MarkdownToPng(Expression<Func<MarkdownToPngInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToPngResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toPng";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToPngResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToChartResponse, ApiConnectionActionConfiguration> MarkdownToChart(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToChartResponse, ApiConnectionActionConfiguration> MarkdownToChart(Expression<Func<MarkdownToChartInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToChartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toChart";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToChartResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration> MarkdownToDiagram(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration> MarkdownToDiagram(Expression<Func<MarkdownToDiagramInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toDiagram";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToDiagramResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownStatsResponse, ApiConnectionActionConfiguration> MarkdownStats(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownStatsResponse, ApiConnectionActionConfiguration> MarkdownStats(Expression<Func<MarkdownStatsInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/statistics";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownStatsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToQrResponse, ApiConnectionActionConfiguration> MarkdownToQr(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToQrResponse, ApiConnectionActionConfiguration> MarkdownToQr(Expression<Func<MarkdownToQrInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToQrResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toQr";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToQrResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration> MarkdownToJpeg(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration> MarkdownToJpeg(Expression<Func<MarkdownToJpegInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toJpeg";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToJpegResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration> MarkdownToBadge(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration> MarkdownToBadge(Expression<Func<MarkdownToBadgeInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toBadge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToBadgeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration> MarkdownToInfographic(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration> MarkdownToInfographic(Expression<Func<MarkdownToInfographicInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toInfographic";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToInfographicResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToLogResponse, ApiConnectionActionConfiguration> MarkdownToLog(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToLogResponse, ApiConnectionActionConfiguration> MarkdownToLog(Expression<Func<MarkdownToLogInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toLog";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToLogResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration> MarkdownToMetrics(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration> MarkdownToMetrics(Expression<Func<MarkdownToMetricsInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toMetrics";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToMetricsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration> MarkdownToSyslog(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration> MarkdownToSyslog(Expression<Func<MarkdownToSyslogInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toSyslog";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToSyslogResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration> MarkdownToJsDoc(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration> MarkdownToJsDoc(Expression<Func<MarkdownToJsDocInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toJsDoc";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToJsDocResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration> MarkdownToXmlDoc(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration> MarkdownToXmlDoc(Expression<Func<MarkdownToXmlDocInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toXmlDoc";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToXmlDocResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration> MarkdownToReadme(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration> MarkdownToReadme(Expression<Func<MarkdownToReadmeInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toReadme";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToReadmeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration> MarkdownToChangelog(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration> MarkdownToChangelog(Expression<Func<MarkdownToChangelogInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toChangelog";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToChangelogResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration> MarkdownToTableOfContents(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration> MarkdownToTableOfContents(Expression<Func<MarkdownToTableOfContentsInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toTableOfContents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToTableOfContentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration> MarkdownToStyledHtml(Expression<Func<string>> bodymarkdownContent, Expression<Func<string>> bodytheme = null)
+        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration> MarkdownToStyledHtml(Expression<Func<MarkdownToStyledHtmlInput>> body)
         {
-            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            var __workflow_bodytheme = WorkflowExpression.Compile(bodytheme, nameof(bodytheme), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toStyledHtml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
-                if (__workflow_bodytheme != null)
-                {
-                    body["theme"] = ExpressionConverter.ConvertO(__workflow_bodytheme);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MarkdownToStyledHtmlResponse>(callPayload);
             });
         }
@@ -689,6 +450,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToHtmlInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToJsonResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -702,6 +469,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToJsonInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToXmlResponse
@@ -719,6 +492,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToXmlInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToPlainTextResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -732,6 +511,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToPlainTextInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToCsvResponse
@@ -749,6 +534,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToCsvInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToLaTeXResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -762,6 +553,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToLaTeXInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToAdaptiveCardResponse
@@ -779,6 +576,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToAdaptiveCardInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToYamlResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -792,6 +595,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToYamlInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToEmailResponse
@@ -809,6 +618,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToEmailInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToSvgResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -822,6 +637,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToSvgInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToRssResponse
@@ -839,6 +660,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToRssInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToWikiResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -852,6 +679,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToWikiInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToPngResponse
@@ -872,6 +705,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToPngInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToChartResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -890,6 +729,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToChartInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToDiagramResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -906,6 +751,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToDiagramInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownStatsResponse
@@ -953,6 +804,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public int CodeBlockCount { get; set; }
     }
 
+    public class MarkdownStatsInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToQrResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -969,6 +826,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToQrInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToJpegResponse
@@ -989,6 +852,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToJpegInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToBadgeResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1005,6 +874,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToBadgeInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToInfographicResponse
@@ -1025,6 +900,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToInfographicInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToLogResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1038,6 +919,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToLogInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToMetricsResponse
@@ -1055,6 +942,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToMetricsInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToSyslogResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1068,6 +961,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToSyslogInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToJsDocResponse
@@ -1085,6 +984,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToJsDocInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToXmlDocResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1098,6 +1003,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToXmlDocInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToReadmeResponse
@@ -1115,6 +1026,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
+    public class MarkdownToReadmeInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToChangelogResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1128,6 +1045,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToChangelogInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToTableOfContentsResponse
@@ -1145,6 +1068,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string GenerationTime { get; set; }
     }
 
+    public class MarkdownToTableOfContentsInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+    }
+
     public class MarkdownToStyledHtmlResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1158,6 +1087,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
+    }
+
+    public class MarkdownToStyledHtmlInput
+    {
+        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarkdownContent { get; set; }
+
+        [JsonProperty("theme")]
+        public string Theme { get; set; }
     }
 
     public class MarkdownInfoResponse

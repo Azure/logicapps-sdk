@@ -16,38 +16,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 
     public class Ubiqodbyskiplyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration> ReceiveDataFromTrackers(Expression<Func<ReceiveDataFromTrackersInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyhookName = WorkflowExpression.Compile(bodyhookName, nameof(bodyhookName), required: false);
-            var __workflow_bodydispatchId = WorkflowExpression.Compile(bodydispatchId, nameof(bodydispatchId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/zapier/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["hookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["dispatchType"] = "POWERAUTOMATE";
-                bodypropCount++;
-                if (__workflow_bodyhookName != null)
-                {
-                    body["hookName"] = ExpressionConverter.ConvertO(__workflow_bodyhookName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydispatchId != null)
-                {
-                    body["dispatchId"] = ExpressionConverter.ConvertO(__workflow_bodydispatchId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }
@@ -57,6 +34,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class ReceiveDataFromTrackersInput
+    {
+        [JsonProperty("hookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string HookUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("dispatchType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string DispatchType { get; set; } = "POWERAUTOMATE";
+
+        [JsonProperty("hookName")]
+        public string HookName { get; set; }
+
+        [JsonProperty("dispatchId")]
+        public string DispatchId { get; set; }
     }
 }
 

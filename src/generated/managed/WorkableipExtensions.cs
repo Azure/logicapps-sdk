@@ -149,66 +149,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<PostSubscriptionResponse, ApiConnectionActionConfiguration> PostSubscription(Expression<Func<string>> bodytarget = null, Expression<Func<string>> bodyEvent = null, Expression<Func<string>> bodyargsaccountId = null, Expression<Func<string>> bodyargsstageSlug = null)
+        public IBodyWorkflowAction<PostSubscriptionResponse, ApiConnectionActionConfiguration> PostSubscription(Expression<Func<PostSubscriptionInput>> body = null)
         {
-            var __workflow_bodytarget = WorkflowExpression.Compile(bodytarget, nameof(bodytarget), required: false);
-            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: false);
-            var __workflow_bodyargsaccountId = WorkflowExpression.Compile(bodyargsaccountId, nameof(bodyargsaccountId), required: false);
-            var __workflow_bodyargsstageSlug = WorkflowExpression.Compile(bodyargsstageSlug, nameof(bodyargsstageSlug), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostSubscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/spi/v3/subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytarget != null)
-                {
-                    body["target"] = ExpressionConverter.ConvertO(__workflow_bodytarget);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyEvent != null)
-                {
-                    body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
-                    bodypropCount++;
-                }
-
-                var argsObject = new JObject();
-                var argsObjectpropCount = 0;
-                if (__workflow_bodyargsaccountId != null)
-                {
-                    if (__workflow_bodyargsaccountId != null)
-                    {
-                        argsObject["account_id"] = ExpressionConverter.ConvertO(__workflow_bodyargsaccountId);
-                        argsObjectpropCount++;
-                    }
-
-                    argsObjectpropCount++;
-                }
-                else
-                {
-                    argsObject["account_id"] = "aker-carbon-capture";
-                    argsObjectpropCount++;
-                }
-
-                if (__workflow_bodyargsstageSlug != null)
-                {
-                    argsObject["stage_slug"] = ExpressionConverter.ConvertO(__workflow_bodyargsstageSlug);
-                    argsObjectpropCount++;
-                }
-
-                if (argsObjectpropCount > 0)
-                {
-                    body["args"] = argsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostSubscriptionResponse>(callPayload);
             });
         }
@@ -1000,6 +950,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
     {
         [JsonProperty("id")]
         public int Id { get; set; }
+    }
+
+    public class PostSubscriptionInput
+    {
+        [JsonProperty("target")]
+        public string Target { get; set; }
+
+        [JsonProperty("event")]
+        public string Event { get; set; }
+
+        [JsonProperty("args")]
+        public PostSubscriptionInputArgsType Args { get; set; }
+    }
+
+    public class PostSubscriptionInputArgsType
+    {
+        [JsonProperty("account_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AccountId { get; set; } = "aker-carbon-capture";
+
+        [JsonProperty("stage_slug")]
+        public string StageSlug { get; set; }
     }
 
     public class CustomAttributesResponse

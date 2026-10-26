@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FindCases(Expression<Func<object>> findCasesModel = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FindCases(Expression<Func<object>> findCasesModel)
         {
-            var __workflow_findCasesModel = WorkflowExpression.Compile(findCasesModel, nameof(findCasesModel), required: false);
+            var __workflow_findCasesModel = WorkflowExpression.Compile(findCasesModel, nameof(findCasesModel), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/findCases";
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FindTemplates(Expression<Func<object>> findTemplatesModel = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FindTemplates(Expression<Func<object>> findTemplatesModel)
         {
-            var __workflow_findTemplatesModel = WorkflowExpression.Compile(findTemplatesModel, nameof(findTemplatesModel), required: false);
+            var __workflow_findTemplatesModel = WorkflowExpression.Compile(findTemplatesModel, nameof(findTemplatesModel), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/findTemplates";
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCase(Expression<Func<object>> caseModel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCase(Expression<Func<object>> caseModel)
         {
-            var __workflow_caseModel = WorkflowExpression.Compile(caseModel, nameof(caseModel), required: false);
+            var __workflow_caseModel = WorkflowExpression.Compile(caseModel, nameof(caseModel), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/createCase";
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel)
         {
-            var __workflow_createCaseFromTemplateModel = WorkflowExpression.Compile(createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
+            var __workflow_createCaseFromTemplateModel = WorkflowExpression.Compile(createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/createCaseFromTemplate";
@@ -87,28 +87,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCase()
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCase(Expression<Func<object>> caseModel)
         {
+            var __workflow_caseModel = WorkflowExpression.Compile(caseModel, nameof(caseModel), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/updateCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var caseModel = new JObject();
-                var caseModelpropCount = 0;
-                if (caseModelpropCount > 0)
-                {
-                    callPayload.Body = caseModel;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_caseModel);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel)
         {
-            var __workflow_updateCaseMetadataModel = WorkflowExpression.Compile(updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
+            var __workflow_updateCaseMetadataModel = WorkflowExpression.Compile(updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/updateCaseMetadata";
@@ -222,27 +217,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseEventTrigger(Expression<Func<string>> eventPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseEventTrigger(Expression<Func<string>> eventPath, Expression<Func<CaseEventTriggerInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_eventPath = WorkflowExpression.Compile(eventPath, nameof(eventPath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hook/v1/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["EventPath"] = ExpressionConverter.Convert(__workflow_eventPath);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class CaseEventTriggerInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

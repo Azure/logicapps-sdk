@@ -137,48 +137,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courtlistener")]
-        public IBodyWorkflowAction<CitationResult[], ApiConnectionActionConfiguration> GetCitation(Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyvolume = null, Expression<Func<string>> bodyreporter = null, Expression<Func<string>> bodypage = null)
+        public IBodyWorkflowAction<CitationResult[], ApiConnectionActionConfiguration> GetCitation(Expression<Func<GetCitationInput>> body)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyvolume = WorkflowExpression.Compile(bodyvolume, nameof(bodyvolume), required: false);
-            var __workflow_bodyreporter = WorkflowExpression.Compile(bodyreporter, nameof(bodyreporter), required: false);
-            var __workflow_bodypage = WorkflowExpression.Compile(bodypage, nameof(bodypage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CitationResult[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/citation-lookup/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvolume != null)
-                {
-                    body["volume"] = ExpressionConverter.ConvertO(__workflow_bodyvolume);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreporter != null)
-                {
-                    body["reporter"] = ExpressionConverter.ConvertO(__workflow_bodyreporter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypage != null)
-                {
-                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CitationResult[]>(callPayload);
             });
         }
@@ -396,6 +363,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
 
         [JsonProperty("absolute_url")]
         public string URLPath { get; set; }
+    }
+
+    public class GetCitationInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("volume")]
+        public string Volume { get; set; }
+
+        [JsonProperty("reporter")]
+        public string Reporter { get; set; }
+
+        [JsonProperty("page")]
+        public string Page { get; set; }
     }
 }
 

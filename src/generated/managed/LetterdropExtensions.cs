@@ -13,115 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
     public class LetterdropActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<SubscriberPostResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<string>> bodyemail, Expression<Func<bool>> bodywelcomeEmail = null, Expression<Func<string>> bodyadditionalDataname = null, Expression<Func<string>> bodyadditionalDatalocation = null, Expression<Func<string>> bodyadditionalDatatitle = null, Expression<Func<string>> bodyadditionalDatacompany = null, Expression<Func<int>> bodyadditionalDatacompanySize = null, Expression<Func<string>> bodyadditionalDataindustry = null, Expression<Func<string>> bodyadditionalDatatwitter = null, Expression<Func<int>> bodyadditionalDatatwitterFollowers = null, Expression<Func<string>> bodyadditionalDatalinkedin = null, Expression<Func<string>> bodyadditionalDatagithub = null, Expression<Func<string>> bodyadditionalDatafacebook = null)
+        public IBodyWorkflowAction<SubscriberPostResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<SubscriberPostInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodywelcomeEmail = WorkflowExpression.Compile(bodywelcomeEmail, nameof(bodywelcomeEmail), required: false);
-            var __workflow_bodyadditionalDataname = WorkflowExpression.Compile(bodyadditionalDataname, nameof(bodyadditionalDataname), required: false);
-            var __workflow_bodyadditionalDatalocation = WorkflowExpression.Compile(bodyadditionalDatalocation, nameof(bodyadditionalDatalocation), required: false);
-            var __workflow_bodyadditionalDatatitle = WorkflowExpression.Compile(bodyadditionalDatatitle, nameof(bodyadditionalDatatitle), required: false);
-            var __workflow_bodyadditionalDatacompany = WorkflowExpression.Compile(bodyadditionalDatacompany, nameof(bodyadditionalDatacompany), required: false);
-            var __workflow_bodyadditionalDatacompanySize = WorkflowExpression.Compile(bodyadditionalDatacompanySize, nameof(bodyadditionalDatacompanySize), required: false);
-            var __workflow_bodyadditionalDataindustry = WorkflowExpression.Compile(bodyadditionalDataindustry, nameof(bodyadditionalDataindustry), required: false);
-            var __workflow_bodyadditionalDatatwitter = WorkflowExpression.Compile(bodyadditionalDatatwitter, nameof(bodyadditionalDatatwitter), required: false);
-            var __workflow_bodyadditionalDatatwitterFollowers = WorkflowExpression.Compile(bodyadditionalDatatwitterFollowers, nameof(bodyadditionalDatatwitterFollowers), required: false);
-            var __workflow_bodyadditionalDatalinkedin = WorkflowExpression.Compile(bodyadditionalDatalinkedin, nameof(bodyadditionalDatalinkedin), required: false);
-            var __workflow_bodyadditionalDatagithub = WorkflowExpression.Compile(bodyadditionalDatagithub, nameof(bodyadditionalDatagithub), required: false);
-            var __workflow_bodyadditionalDatafacebook = WorkflowExpression.Compile(bodyadditionalDatafacebook, nameof(bodyadditionalDatafacebook), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SubscriberPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscriber/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodywelcomeEmail != null)
-                {
-                    body["welcomeEmail"] = ExpressionConverter.ConvertO(__workflow_bodywelcomeEmail);
-                    bodypropCount++;
-                }
-
-                var additionalDataObject = new JObject();
-                var additionalDataObjectpropCount = 0;
-                if (__workflow_bodyadditionalDataname != null)
-                {
-                    additionalDataObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDataname);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatalocation != null)
-                {
-                    additionalDataObject["location"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatalocation);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatatitle != null)
-                {
-                    additionalDataObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatatitle);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatacompany != null)
-                {
-                    additionalDataObject["company"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatacompany);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatacompanySize != null)
-                {
-                    additionalDataObject["companySize"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatacompanySize);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDataindustry != null)
-                {
-                    additionalDataObject["industry"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDataindustry);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatatwitter != null)
-                {
-                    additionalDataObject["twitter"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatatwitter);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatatwitterFollowers != null)
-                {
-                    additionalDataObject["twitterFollowers"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatatwitterFollowers);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatalinkedin != null)
-                {
-                    additionalDataObject["linkedin"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatalinkedin);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatagithub != null)
-                {
-                    additionalDataObject["github"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatagithub);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyadditionalDatafacebook != null)
-                {
-                    additionalDataObject["facebook"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatafacebook);
-                    additionalDataObjectpropCount++;
-                }
-
-                if (additionalDataObjectpropCount > 0)
-                {
-                    body["additionalData"] = additionalDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriberPostResponse>(callPayload);
             });
         }
@@ -141,47 +42,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostsGetPostResponse, ApiConnectionActionConfiguration> PostsGet(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<PostsGetPostResponse, ApiConnectionActionConfiguration> PostsGet(Expression<Func<PostsGetPostInput>> body = null)
         {
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostsGetPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/posts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                if (__workflow_bodyoffset != null)
-                {
-                    if (__workflow_bodyoffset != null)
-                    {
-                        body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["offset"] = 0;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostsGetPostResponse>(callPayload);
             });
         }
@@ -200,33 +70,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostDraftPostResponse, ApiConnectionActionConfiguration> PostDraft(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyhtml, Expression<Func<string>> bodysubtitle = null)
+        public IBodyWorkflowAction<PostDraftPostResponse, ApiConnectionActionConfiguration> PostDraft(Expression<Func<PostDraftPostInput>> body = null)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: true);
-            var __workflow_bodysubtitle = WorkflowExpression.Compile(bodysubtitle, nameof(bodysubtitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostDraftPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/post/draft";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodysubtitle != null)
-                {
-                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostDraftPostResponse>(callPayload);
             });
         }
@@ -245,82 +98,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaCreatePostResponse, ApiConnectionActionConfiguration> IdeaCreate(Expression<Func<string>> bodytitle, Expression<Func<string>> bodysuggestedBy, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodykeyword = null, Expression<Func<string[]>> bodylabels = null)
+        public IBodyWorkflowAction<IdeaCreatePostResponse, ApiConnectionActionConfiguration> IdeaCreate(Expression<Func<IdeaCreatePostInput>> body = null)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodysuggestedBy = WorkflowExpression.Compile(bodysuggestedBy, nameof(bodysuggestedBy), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodykeyword = WorkflowExpression.Compile(bodykeyword, nameof(bodykeyword), required: false);
-            var __workflow_bodylabels = WorkflowExpression.Compile(bodylabels, nameof(bodylabels), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IdeaCreatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/idea/new";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["suggestedBy"] = ExpressionConverter.ConvertO(__workflow_bodysuggestedBy);
-                if (__workflow_bodykeyword != null)
-                {
-                    body["keyword"] = ExpressionConverter.ConvertO(__workflow_bodykeyword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylabels != null)
-                {
-                    body["labels"] = ExpressionConverter.ConvertO(__workflow_bodylabels);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IdeaCreatePostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaAssignPostResponse, ApiConnectionActionConfiguration> IdeaAssign(Expression<Func<string>> bodyid, Expression<Func<string>> bodyassignTo, Expression<Func<string>> bodypublishOn, Expression<Func<string[]>> bodyapprovers = null)
+        public IBodyWorkflowAction<IdeaAssignPostResponse, ApiConnectionActionConfiguration> IdeaAssign(Expression<Func<IdeaAssignPostInput>> body = null)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyassignTo = WorkflowExpression.Compile(bodyassignTo, nameof(bodyassignTo), required: true);
-            var __workflow_bodypublishOn = WorkflowExpression.Compile(bodypublishOn, nameof(bodypublishOn), required: true);
-            var __workflow_bodyapprovers = WorkflowExpression.Compile(bodyapprovers, nameof(bodyapprovers), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IdeaAssignPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/idea/assign";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["assignTo"] = ExpressionConverter.ConvertO(__workflow_bodyassignTo);
-                bodypropCount++;
-                body["publishOn"] = ExpressionConverter.ConvertO(__workflow_bodypublishOn);
-                if (__workflow_bodyapprovers != null)
-                {
-                    body["approvers"] = ExpressionConverter.ConvertO(__workflow_bodyapprovers);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IdeaAssignPostResponse>(callPayload);
             });
         }
@@ -346,6 +148,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class SubscriberPostInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("welcomeEmail")]
+        public bool? WelcomeEmail { get; set; }
+
+        [JsonProperty("additionalData")]
+        public SubscriberPostInputAdditionalDataType AdditionalData { get; set; }
+    }
+
+    public class SubscriberPostInputAdditionalDataType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("company")]
+        public string Company { get; set; }
+
+        [JsonProperty("companySize")]
+        public int? CompanySize { get; set; }
+
+        [JsonProperty("industry")]
+        public string Industry { get; set; }
+
+        [JsonProperty("twitter")]
+        public string Twitter { get; set; }
+
+        [JsonProperty("twitterFollowers")]
+        public int? TwitterFollowers { get; set; }
+
+        [JsonProperty("linkedin")]
+        public string Linkedin { get; set; }
+
+        [JsonProperty("github")]
+        public string Github { get; set; }
+
+        [JsonProperty("facebook")]
+        public string Facebook { get; set; }
     }
 
     public class SubscriberRemovePostResponse
@@ -453,6 +303,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         public string Markdown { get; set; }
     }
 
+    public class PostsGetPostInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
+
+        [JsonProperty("offset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Offset { get; set; } = 0;
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
     public class PostGetPostResponse
     {
         [JsonProperty("id")]
@@ -528,6 +390,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         public string DraftLink { get; set; }
     }
 
+    public class PostDraftPostInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
+
+        [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Html { get; set; }
+    }
+
     public class ProjectGetPostResponse
     {
         [JsonProperty("title")]
@@ -600,6 +474,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         public string Message { get; set; }
     }
 
+    public class IdeaCreatePostInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("suggestedBy", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SuggestedBy { get; set; }
+
+        [JsonProperty("keyword")]
+        public string Keyword { get; set; }
+
+        [JsonProperty("labels")]
+        public string[] Labels { get; set; }
+    }
+
     public class IdeaAssignPostResponse
     {
         [JsonProperty("success")]
@@ -607,6 +499,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class IdeaAssignPostInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("assignTo", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AssignTo { get; set; }
+
+        [JsonProperty("publishOn", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublishOn { get; set; }
+
+        [JsonProperty("approvers")]
+        public string[] Approvers { get; set; }
     }
 }
 

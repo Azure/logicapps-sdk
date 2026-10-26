@@ -13,57 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
     public class MintlifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        public IBodyWorkflowAction<DocGenResponse, ApiConnectionActionConfiguration> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
+        public IBodyWorkflowAction<DocGenResponse, ApiConnectionActionConfiguration> DocGen(Expression<Func<DocGenInput>> body)
         {
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
-            var __workflow_bodycommented = WorkflowExpression.Compile(bodycommented, nameof(bodycommented), required: false);
-            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DocGenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/document";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycommented != null)
-                {
-                    if (__workflow_bodycommented != null)
-                    {
-                        body["commented"] = ExpressionConverter.ConvertO(__workflow_bodycommented);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["commented"] = true;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
-                if (__workflow_bodyformat != null)
-                {
-                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontext != null)
-                {
-                    body["context"] = ExpressionConverter.ConvertO(__workflow_bodycontext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DocGenResponse>(callPayload);
             });
         }
@@ -103,8 +61,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         public string Documentation { get; set; }
     }
 
+    public class DocGenInput
+    {
+        [JsonProperty("commented", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Commented { get; set; } = true;
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DocGenInputLanguageType Language { get; set; } = DocGenInputLanguageType.Javascript;
+
+        [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Code { get; set; }
+
+        [JsonProperty("format")]
+        public DocGenInputFormatType? Format { get; set; }
+
+        [JsonProperty("context")]
+        public string Context { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylanguageInput
+    public enum DocGenInputLanguageType
     {
         [EnumMember(Value = "javascript")]
         Javascript,
@@ -121,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyformatInput
+    public enum DocGenInputFormatType
     {
         [EnumMember(Value = "")]
         None,

@@ -244,31 +244,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteSoqlQuery(Expression<Func<string>> queryParameterssOQLQuery)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteSoqlQuery(Expression<Func<ExecuteSoqlQueryInput>> queryParameters)
         {
-            var __workflow_queryParameterssOQLQuery = WorkflowExpression.Compile(queryParameterssOQLQuery, nameof(queryParameterssOQLQuery), required: true);
+            var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/soql/executesoqlquery";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var queryParameters = new JObject();
-                var queryParameterspropCount = 0;
-                queryParameterspropCount++;
-                queryParameters["query"] = ExpressionConverter.ConvertO(__workflow_queryParameterssOQLQuery);
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (parametersObjectpropCount > 0)
-                {
-                    queryParameters["parameters"] = parametersObject;
-                    queryParameterspropCount++;
-                }
-
-                if (queryParameterspropCount > 0)
-                {
-                    callPayload.Body = queryParameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryParameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -299,10 +283,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadJobData(Expression<Func<string>> jobId, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadJobData(Expression<Func<string>> jobId, Expression<Func<string>> body)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/jobs/ingest/{0}/batches", __workflow_jobId.WithUrlEncoding(1)));
@@ -327,24 +311,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JobInfo, ApiConnectionActionConfiguration> CloseJob(Expression<Func<string>> jobId, Expression<Func<bodystateInput>> bodystate)
+        public IBodyWorkflowAction<JobInfo, ApiConnectionActionConfiguration> CloseJob(Expression<Func<string>> jobId, Expression<Func<CloseJobInput>> body)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JobInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/jobs/ingest/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JobInfo>(callPayload);
             });
         }
@@ -423,17 +399,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
                 if (__workflow_customHeader5 != null)
                     callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpSalesforceManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpSalesforceManagement(Expression<Func<McpSalesforceManagementInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -442,108 +417,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction<MCPQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> parametersObject, Expression<Func<parametersoperationInput>> parametersoperation, Expression<Func<string>> parameterscolumnDelimiter = null, Expression<Func<string>> parametersexternalIdFieldName = null, Expression<Func<string>> parameterslineEnding = null, Expression<Func<string>> parameterscontentType = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<CreateJobV2Input>> parameters)
         {
-            var __workflow_parametersObject = WorkflowExpression.Compile(parametersObject, nameof(parametersObject), required: true);
-            var __workflow_parametersoperation = WorkflowExpression.Compile(parametersoperation, nameof(parametersoperation), required: true);
-            var __workflow_parameterscolumnDelimiter = WorkflowExpression.Compile(parameterscolumnDelimiter, nameof(parameterscolumnDelimiter), required: false);
-            var __workflow_parametersexternalIdFieldName = WorkflowExpression.Compile(parametersexternalIdFieldName, nameof(parametersexternalIdFieldName), required: false);
-            var __workflow_parameterslineEnding = WorkflowExpression.Compile(parameterslineEnding, nameof(parameterslineEnding), required: false);
-            var __workflow_parameterscontentType = WorkflowExpression.Compile(parameterscontentType, nameof(parameterscontentType), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bulk/createjob";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["object"] = ExpressionConverter.ConvertO(__workflow_parametersObject);
-                parameterspropCount++;
-                parameters["operation"] = ExpressionConverter.ConvertO(__workflow_parametersoperation);
-                if (__workflow_parameterscolumnDelimiter != null)
-                {
-                    parameters["columnDelimiter"] = ExpressionConverter.ConvertO(__workflow_parameterscolumnDelimiter);
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parametersexternalIdFieldName != null)
-                {
-                    parameters["externalIdFieldName"] = ExpressionConverter.ConvertO(__workflow_parametersexternalIdFieldName);
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parameterslineEnding != null)
-                {
-                    parameters["lineEnding"] = ExpressionConverter.ConvertO(__workflow_parameterslineEnding);
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parameterscontentType != null)
-                {
-                    parameters["contentType"] = ExpressionConverter.ConvertO(__workflow_parameterscontentType);
-                    parameterspropCount++;
-                }
-
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<CreateJobResponse>(callPayload);
             });
         }
@@ -566,11 +455,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item, Expression<Func<string>> select = null)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -585,12 +474,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId, Expression<Func<object>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_externalIdField = WorkflowExpression.Compile(externalIdField, nameof(externalIdField), required: true);
             var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/default/tables/{0}/externalIdFields/{1}/{2}", __workflow_table.WithUrlEncoding(2), __workflow_externalIdField.WithUrlEncoding(2), __workflow_externalId.WithUrlEncoding(2)));
@@ -602,10 +491,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> table, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> table, Expression<Func<object>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/default/tables/{0}/items", __workflow_table.WithUrlEncoding(2)));
@@ -685,6 +574,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     {
         [JsonProperty("dynamicProperties")]
         public JToken DynamicProperties { get; set; }
+    }
+
+    public class ExecuteSoqlQueryInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SOQLQuery { get; set; }
+
+        [JsonProperty("parameters")]
+        public JToken QueryParameters { get; set; }
     }
 
     public class GetAllJobsResponse
@@ -938,8 +836,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         Failed
     }
 
+    public class CloseJobInput
+    {
+        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CloseJobInputStateType State { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystateInput
+    public enum CloseJobInputStateType
     {
         UploadComplete,
         Aborted
@@ -1009,6 +913,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public JToken Error { get; set; }
     }
 
+    public class McpSalesforceManagementInput
+    {
+        [JsonProperty("jsonrpc")]
+        public string Jsonrpc { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("method")]
+        public string Method { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
+
+        [JsonProperty("result")]
+        public JToken Result { get; set; }
+
+        [JsonProperty("error")]
+        public JToken Error { get; set; }
+    }
+
     public class CreateJobResponse
     {
         [JsonProperty("object")]
@@ -1057,8 +982,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string SystemModstamp { get; set; }
     }
 
+    public class CreateJobV2Input
+    {
+        [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ObjectEntity { get; set; }
+
+        [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateJobV2InputOperationType Operation { get; set; }
+
+        [JsonProperty("columnDelimiter")]
+        public string ColumnDelimiter { get; set; }
+
+        [JsonProperty("externalIdFieldName")]
+        public string ExternalIdFieldName { get; set; }
+
+        [JsonProperty("lineEnding")]
+        public string LineEnding { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum parametersoperationInput
+    public enum CreateJobV2InputOperationType
     {
         [EnumMember(Value = "insert")]
         Insert,

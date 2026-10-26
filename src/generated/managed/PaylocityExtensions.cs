@@ -16,32 +16,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 
     public class PaylocityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<WebhookTriggerInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookCompanyId = WorkflowExpression.Compile(requestBodyOfWebhookCompanyId, nameof(requestBodyOfWebhookCompanyId), required: false);
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                if (__workflow_requestBodyOfWebhookCompanyId != null)
-                {
-                    requestBodyOfWebhook["companyId"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookCompanyId);
-                    requestBodyOfWebhookpropCount++;
-                }
-
-                requestBodyOfWebhook["callbackURL"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class WebhookTriggerInput
+    {
+        [JsonProperty("companyId")]
+        public string CompanyId { get; set; }
+
+        [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

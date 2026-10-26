@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration> SubmitUrlSample(Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null, Expression<Func<string>> bodyurl = null)
+        public IBodyWorkflowAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration> SubmitUrlSample(Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null, Expression<Func<SubmitUrlSampleInput>> body = null)
         {
             var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: false);
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/samples/url";
@@ -68,19 +68,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
                 callPayload.Headers["Region"] = Convert.ToString("eu");
                 if (__workflow_region != null)
                     callPayload.Headers["Region"] = ExpressionConverter.Convert(__workflow_region);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubmitUrlSampleResponse>(callPayload);
             });
         }
@@ -247,6 +236,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [JsonProperty("submitted")]
         public string Submitted { get; set; }
 
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class SubmitUrlSampleInput
+    {
         [JsonProperty("url")]
         public string Url { get; set; }
     }

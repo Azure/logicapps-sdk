@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
-            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: true);
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
@@ -99,10 +99,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput, Expression<Func<string>> relativePath = null)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
-            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: true);
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -119,10 +119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput, Expression<Func<string>> relativePath = null)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
-            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: true);
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -139,10 +139,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        public IBodyWorkflowAction<AdHocRequestResponse, ApiConnectionActionConfiguration> AdHocRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<bool>> bypassMetadata = null)
+        public IBodyWorkflowAction<AdHocRequestResponse, ApiConnectionActionConfiguration> AdHocRequest(Expression<Func<string>> relativePath, Expression<Func<AdHocRequestInput>> entryInput, Expression<Func<bool>> bypassMetadata = null)
         {
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
-            var __workflow_entryInputhttpMethod = WorkflowExpression.Compile(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: true);
             var __workflow_bypassMetadata = WorkflowExpression.Compile(bypassMetadata, nameof(bypassMetadata), required: false);
             return new DeferredBodyAction<AdHocRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -153,41 +153,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                 callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
                 if (__workflow_bypassMetadata != null)
                     callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(__workflow_bypassMetadata);
-                var entryInput = new JObject();
-                var entryInputpropCount = 0;
-                entryInputpropCount++;
-                entryInput["httpMethod"] = ExpressionConverter.ConvertO(__workflow_entryInputhttpMethod);
-                var queryStringObject = new JObject();
-                var queryStringObjectpropCount = 0;
-                if (queryStringObjectpropCount > 0)
-                {
-                    entryInput["queryString"] = queryStringObject;
-                    entryInputpropCount++;
-                }
-
-                var payloadObject = new JObject();
-                var payloadObjectpropCount = 0;
-                if (payloadObjectpropCount > 0)
-                {
-                    entryInput["payload"] = payloadObject;
-                    entryInputpropCount++;
-                }
-
-                if (entryInputpropCount > 0)
-                {
-                    callPayload.Body = entryInput;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<AdHocRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        public IBodyWorkflowAction<AdHocBulkRequestResponse, ApiConnectionActionConfiguration> AdHocBulkRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<JToken[]>> entryInputpayload = null, Expression<Func<bool>> bypassMetadata = null)
+        public IBodyWorkflowAction<AdHocBulkRequestResponse, ApiConnectionActionConfiguration> AdHocBulkRequest(Expression<Func<string>> relativePath, Expression<Func<AdHocBulkRequestInput>> entryInput, Expression<Func<bool>> bypassMetadata = null)
         {
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
-            var __workflow_entryInputhttpMethod = WorkflowExpression.Compile(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
-            var __workflow_entryInputpayload = WorkflowExpression.Compile(entryInputpayload, nameof(entryInputpayload), required: false);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: true);
             var __workflow_bypassMetadata = WorkflowExpression.Compile(bypassMetadata, nameof(bypassMetadata), required: false);
             return new DeferredBodyAction<AdHocBulkRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -198,38 +173,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                 callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
                 if (__workflow_bypassMetadata != null)
                     callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(__workflow_bypassMetadata);
-                var entryInput = new JObject();
-                var entryInputpropCount = 0;
-                entryInputpropCount++;
-                entryInput["httpMethod"] = ExpressionConverter.ConvertO(__workflow_entryInputhttpMethod);
-                var queryStringObject = new JObject();
-                var queryStringObjectpropCount = 0;
-                if (queryStringObjectpropCount > 0)
-                {
-                    entryInput["queryString"] = queryStringObject;
-                    entryInputpropCount++;
-                }
-
-                if (__workflow_entryInputpayload != null)
-                {
-                    entryInput["payload"] = ExpressionConverter.ConvertO(__workflow_entryInputpayload);
-                    entryInputpropCount++;
-                }
-
-                if (entryInputpropCount > 0)
-                {
-                    callPayload.Body = entryInput;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<AdHocBulkRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput, Expression<Func<string>> relativePath = null)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
-            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: true);
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -286,13 +239,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         public string Unstructured { get; set; }
     }
 
+    public class AdHocRequestInput
+    {
+        [JsonProperty("httpMethod", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AdHocRequestInputHttpMethodType HttpMethod { get; set; }
+
+        [JsonProperty("queryString")]
+        public JToken QueryString { get; set; }
+
+        [JsonProperty("payload")]
+        public JToken Payload { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum entryInputhttpMethodInput
+    public enum AdHocRequestInputHttpMethodType
     {
         GET,
         POST,
         DELETE,
-        PUT
+        PUT,
+        PATCH
     }
 
     public class AdHocBulkRequestResponse
@@ -311,6 +277,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 
         [JsonProperty("unstructured")]
         public string Unstructured { get; set; }
+    }
+
+    public class AdHocBulkRequestInput
+    {
+        [JsonProperty("httpMethod", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AdHocBulkRequestInputHttpMethodType HttpMethod { get; set; }
+
+        [JsonProperty("queryString")]
+        public JToken QueryString { get; set; }
+
+        [JsonProperty("payload")]
+        public JToken[] Payload { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AdHocBulkRequestInputHttpMethodType
+    {
+        GET,
+        POST,
+        DELETE,
+        PUT
     }
 }
 

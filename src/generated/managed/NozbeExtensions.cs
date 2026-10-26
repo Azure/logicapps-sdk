@@ -27,102 +27,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodydueAt = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisFollowed = null, Expression<Func<string>> bodyresponsibleId = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodydueAt = WorkflowExpression.Compile(bodydueAt, nameof(bodydueAt), required: false);
-            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
-            var __workflow_bodyisFollowed = WorkflowExpression.Compile(bodyisFollowed, nameof(bodyisFollowed), required: false);
-            var __workflow_bodyresponsibleId = WorkflowExpression.Compile(bodyresponsibleId, nameof(bodyresponsibleId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                body["review_reason"] = "newly_added";
-                bodypropCount++;
-                if (__workflow_bodydueAt != null)
-                {
-                    body["due_at"] = ExpressionConverter.ConvertO(__workflow_bodydueAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAllDay != null)
-                {
-                    body["is_all_day"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisFollowed != null)
-                {
-                    body["is_followed"] = ExpressionConverter.ConvertO(__workflow_bodyisFollowed);
-                    bodypropCount++;
-                }
-
-                body["review_triggered_at"] = 1;
-                bodypropCount++;
-                if (__workflow_bodyresponsibleId != null)
-                {
-                    body["responsible_id"] = ExpressionConverter.ConvertO(__workflow_bodyresponsibleId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateCommentResponse, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> bodytaskId, Expression<Func<string>> bodybody = null, Expression<Func<bool>> bodyisPinned = null)
+        public IBodyWorkflowAction<CreateCommentResponse, ApiConnectionActionConfiguration> CreateComment(Expression<Func<CreateCommentInput>> body)
         {
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
-            var __workflow_bodyisPinned = WorkflowExpression.Compile(bodyisPinned, nameof(bodyisPinned), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCommentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/comments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodybody != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPinned != null)
-                {
-                    body["is_pinned"] = ExpressionConverter.ConvertO(__workflow_bodyisPinned);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCommentResponse>(callPayload);
             });
         }
@@ -158,32 +86,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateReminderResponse, ApiConnectionActionConfiguration> CreateReminder(Expression<Func<string>> bodytaskId, Expression<Func<int>> bodyremindAt, Expression<Func<bool>> bodyisRelative, Expression<Func<bool>> bodyisAllDay)
+        public IBodyWorkflowAction<CreateReminderResponse, ApiConnectionActionConfiguration> CreateReminder(Expression<Func<CreateReminderInput>> body = null)
         {
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodyremindAt = WorkflowExpression.Compile(bodyremindAt, nameof(bodyremindAt), required: true);
-            var __workflow_bodyisRelative = WorkflowExpression.Compile(bodyisRelative, nameof(bodyisRelative), required: true);
-            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateReminderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reminders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                bodypropCount++;
-                body["remind_at"] = ExpressionConverter.ConvertO(__workflow_bodyremindAt);
-                bodypropCount++;
-                body["is_relative"] = ExpressionConverter.ConvertO(__workflow_bodyisRelative);
-                bodypropCount++;
-                body["is_all_day"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateReminderResponse>(callPayload);
             });
         }
@@ -252,6 +164,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         public string Name { get; set; }
     }
 
+    public class CreateTaskInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("project_id")]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("review_reason", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReviewReason { get; set; } = "newly_added";
+
+        [JsonProperty("due_at")]
+        public int? DueAt { get; set; }
+
+        [JsonProperty("is_all_day")]
+        public bool? IsAllDay { get; set; }
+
+        [JsonProperty("is_followed")]
+        public bool? IsFollowed { get; set; }
+
+        [JsonProperty("review_triggered_at", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int ReviewTriggeredAt { get; set; } = 1;
+
+        [JsonProperty("responsible_id")]
+        public string ResponsibleId { get; set; }
+    }
+
     public class CreateCommentResponse
     {
         [JsonProperty("id")]
@@ -259,6 +198,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
         [JsonProperty("body")]
         public string Body { get; set; }
+    }
+
+    public class CreateCommentInput
+    {
+        [JsonProperty("body")]
+        public string Body { get; set; }
+
+        [JsonProperty("is_pinned")]
+        public bool? IsPinned { get; set; }
+
+        [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TaskId { get; set; }
     }
 
     public class GetTeamMembersResponseItem
@@ -355,6 +306,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
         [JsonProperty("is_all_day")]
         public bool IsAllDay { get; set; }
+    }
+
+    public class CreateReminderInput
+    {
+        [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TaskId { get; set; }
+
+        [JsonProperty("remind_at", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RemindAt { get; set; }
+
+        [JsonProperty("is_relative", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsRelative { get; set; } = false;
+
+        [JsonProperty("is_all_day", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsAllDay { get; set; } = false;
     }
 
     public class PollNewTasksResponseItem

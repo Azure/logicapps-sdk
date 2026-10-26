@@ -36,52 +36,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsCreate(Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyPublic = null)
+        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsCreate(Expression<Func<GistsCreateInput>> body)
         {
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyPublic = WorkflowExpression.Compile(bodyPublic, nameof(bodyPublic), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GistSimple, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                var filesObject = new JObject();
-                var filesObjectpropCount = 0;
-                if (filesObjectpropCount > 0)
-                {
-                    body["files"] = filesObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyPublic != null)
-                {
-                    if (__workflow_bodyPublic != null)
-                    {
-                        body["public"] = ExpressionConverter.ConvertO(__workflow_bodyPublic);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["public"] = false;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GistSimple>(callPayload);
             });
         }
@@ -159,32 +122,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsUpdate(Expression<Func<string>> gistId, Expression<Func<string>> bodydescription)
+        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsUpdate(Expression<Func<string>> gistId, Expression<Func<GistsUpdateInput>> body)
         {
             var __workflow_gistId = WorkflowExpression.Compile(gistId, nameof(gistId), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GistSimple, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gists/{0}", __workflow_gistId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                var filesObject = new JObject();
-                var filesObjectpropCount = 0;
-                if (filesObjectpropCount > 0)
-                {
-                    body["files"] = filesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GistSimple>(callPayload);
             });
         }
@@ -211,24 +158,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsCreateComment(Expression<Func<string>> gistId, Expression<Func<string>> bodybody)
+        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsCreateComment(Expression<Func<string>> gistId, Expression<Func<GistsCreateCommentInput>> body)
         {
             var __workflow_gistId = WorkflowExpression.Compile(gistId, nameof(gistId), required: true);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GistComment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gists/{0}/comments", __workflow_gistId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GistComment>(callPayload);
             });
         }
@@ -262,25 +201,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsUpdateComment(Expression<Func<string>> gistId, Expression<Func<int>> commentId, Expression<Func<string>> bodybody)
+        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsUpdateComment(Expression<Func<string>> gistId, Expression<Func<int>> commentId, Expression<Func<GistsUpdateCommentInput>> body)
         {
             var __workflow_gistId = WorkflowExpression.Compile(gistId, nameof(gistId), required: true);
             var __workflow_commentId = WorkflowExpression.Compile(commentId, nameof(commentId), required: true);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GistComment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gists/{0}/comments/{1}", __workflow_gistId.WithUrlEncoding(1), __workflow_commentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GistComment>(callPayload);
             });
         }
@@ -896,6 +827,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         public string StarredAt { get; set; }
     }
 
+    public class GistsCreateInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("files", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Files { get; set; }
+
+        [JsonProperty("public", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Public { get; set; } = false;
+    }
+
+    public class GistsUpdateInput
+    {
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("files")]
+        public JToken Files { get; set; }
+    }
+
     public class GistComment
     {
         [JsonProperty("id")]
@@ -933,6 +885,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         MEMBER,
         NONE,
         OWNER
+    }
+
+    public class GistsCreateCommentInput
+    {
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+    }
+
+    public class GistsUpdateCommentInput
+    {
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
     }
 
     public class GistCommit

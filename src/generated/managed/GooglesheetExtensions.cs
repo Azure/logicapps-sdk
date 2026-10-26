@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<itemInput>> item = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<itemInput>> item)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
@@ -92,12 +92,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlesheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlesheet")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<itemInput>> item = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<itemInput>> item)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));

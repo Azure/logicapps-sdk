@@ -13,62 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aweber
     public class AweberActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aweber")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSubscriber(Expression<Func<int>> listid, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSubscriber(Expression<Func<int>> listid, Expression<Func<CreateSubscriberInput>> body)
         {
             var __workflow_listid = WorkflowExpression.Compile(listid, nameof(listid), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1.0/accounts/accountid/lists/{0}/subscribers", __workflow_listid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["misc_notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aweber")]
-        public IBodyWorkflowAction<UnsubscribeEmailResponse, ApiConnectionActionConfiguration> UnsubscribeEmail(Expression<Func<int>> listid, Expression<Func<string>> email)
+        public IBodyWorkflowAction<UnsubscribeEmailResponse, ApiConnectionActionConfiguration> UnsubscribeEmail(Expression<Func<int>> listid, Expression<Func<string>> email, Expression<Func<UnsubscribeEmailInput>> body)
         {
             var __workflow_listid = WorkflowExpression.Compile(listid, nameof(listid), required: true);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UnsubscribeEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1.0/accounts/accountid/lists/{0}/subscribers", __workflow_listid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["status"] = "unsubscribed";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UnsubscribeEmailResponse>(callPayload);
             });
         }
@@ -90,6 +61,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aweber
     {
     }
 
+    public class CreateSubscriberInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("misc_notes")]
+        public string Notes { get; set; }
+    }
+
     public class UnsubscribeEmailResponse
     {
         [JsonProperty("email")]
@@ -103,6 +86,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aweber
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class UnsubscribeEmailInput
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Status { get; set; } = "unsubscribed";
     }
 
     public class ListListsResponse

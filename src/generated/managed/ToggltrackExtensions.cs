@@ -29,76 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<UserBasicResponse, ApiConnectionActionConfiguration> UpdateMe(Expression<Func<int>> bodybeginningOfWeek = null, Expression<Func<int>> bodycountryId = null, Expression<Func<string>> bodycurrentPassword = null, Expression<Func<int>> bodydefaultWorkspaceId = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string>> bodynewPassword = null, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<UserBasicResponse, ApiConnectionActionConfiguration> UpdateMe(Expression<Func<UpdateMeInput>> body)
         {
-            var __workflow_bodybeginningOfWeek = WorkflowExpression.Compile(bodybeginningOfWeek, nameof(bodybeginningOfWeek), required: false);
-            var __workflow_bodycountryId = WorkflowExpression.Compile(bodycountryId, nameof(bodycountryId), required: false);
-            var __workflow_bodycurrentPassword = WorkflowExpression.Compile(bodycurrentPassword, nameof(bodycurrentPassword), required: false);
-            var __workflow_bodydefaultWorkspaceId = WorkflowExpression.Compile(bodydefaultWorkspaceId, nameof(bodydefaultWorkspaceId), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: false);
-            var __workflow_bodynewPassword = WorkflowExpression.Compile(bodynewPassword, nameof(bodynewPassword), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserBasicResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/me";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodybeginningOfWeek != null)
-                {
-                    body["beginning_of_week"] = ExpressionConverter.ConvertO(__workflow_bodybeginningOfWeek);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycountryId != null)
-                {
-                    body["country_id"] = ExpressionConverter.ConvertO(__workflow_bodycountryId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycurrentPassword != null)
-                {
-                    body["current_password"] = ExpressionConverter.ConvertO(__workflow_bodycurrentPassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydefaultWorkspaceId != null)
-                {
-                    body["default_workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodydefaultWorkspaceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfullName != null)
-                {
-                    body["fullname"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynewPassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodynewPassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserBasicResponse>(callPayload);
             });
         }
@@ -355,33 +294,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> CreateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<bool>> meta = null, Expression<Func<bool>> bodybillable = null, Expression<Func<string>> bodycreatedWith = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodydurationOnly = null, Expression<Func<string>> bodyeventMetadataoriginFeature = null, Expression<Func<int>> bodyeventMetadatavisibleGoalsCount = null, Expression<Func<int[]>> bodyexpenseIDs = null, Expression<Func<int>> bodyprojectIdLegacy = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int[]>> bodysharedWithUserIDs = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystopTime = null, Expression<Func<bodytagActionInput>> bodytagAction = null, Expression<Func<int[]>> bodytagIDs = null, Expression<Func<string[]>> bodytags = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytaskIdLegacy = null, Expression<Func<int>> bodyuserIdLegacy = null, Expression<Func<int>> bodyuserId = null, Expression<Func<int>> bodyworkspaceIdLegacy = null, Expression<Func<int>> bodyworkspaceId = null)
+        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> CreateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<CreateTimeEntryInput>> body, Expression<Func<bool>> meta = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
-            var __workflow_bodybillable = WorkflowExpression.Compile(bodybillable, nameof(bodybillable), required: false);
-            var __workflow_bodycreatedWith = WorkflowExpression.Compile(bodycreatedWith, nameof(bodycreatedWith), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodydurationOnly = WorkflowExpression.Compile(bodydurationOnly, nameof(bodydurationOnly), required: false);
-            var __workflow_bodyeventMetadataoriginFeature = WorkflowExpression.Compile(bodyeventMetadataoriginFeature, nameof(bodyeventMetadataoriginFeature), required: false);
-            var __workflow_bodyeventMetadatavisibleGoalsCount = WorkflowExpression.Compile(bodyeventMetadatavisibleGoalsCount, nameof(bodyeventMetadatavisibleGoalsCount), required: false);
-            var __workflow_bodyexpenseIDs = WorkflowExpression.Compile(bodyexpenseIDs, nameof(bodyexpenseIDs), required: false);
-            var __workflow_bodyprojectIdLegacy = WorkflowExpression.Compile(bodyprojectIdLegacy, nameof(bodyprojectIdLegacy), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodysharedWithUserIDs = WorkflowExpression.Compile(bodysharedWithUserIDs, nameof(bodysharedWithUserIDs), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodystopTime = WorkflowExpression.Compile(bodystopTime, nameof(bodystopTime), required: false);
-            var __workflow_bodytagAction = WorkflowExpression.Compile(bodytagAction, nameof(bodytagAction), required: false);
-            var __workflow_bodytagIDs = WorkflowExpression.Compile(bodytagIDs, nameof(bodytagIDs), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
-            var __workflow_bodytaskIdLegacy = WorkflowExpression.Compile(bodytaskIdLegacy, nameof(bodytaskIdLegacy), required: false);
-            var __workflow_bodyuserIdLegacy = WorkflowExpression.Compile(bodyuserIdLegacy, nameof(bodyuserIdLegacy), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyworkspaceIdLegacy = WorkflowExpression.Compile(bodyworkspaceIdLegacy, nameof(bodyworkspaceIdLegacy), required: false);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             return new DeferredBodyAction<TimeEntry, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workspaces/{0}/time_entries", __workflow_workspaceId.WithUrlEncoding(1)));
@@ -390,159 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
                 callPayload.Queries["meta"] = Convert.ToString(false);
                 if (__workflow_meta != null)
                     callPayload.Queries["meta"] = ExpressionConverter.Convert(__workflow_meta);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodybillable != null)
-                {
-                    body["billable"] = ExpressionConverter.ConvertO(__workflow_bodybillable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedWith != null)
-                {
-                    body["created_with"] = ExpressionConverter.ConvertO(__workflow_bodycreatedWith);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyduration != null)
-                {
-                    body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydurationOnly != null)
-                {
-                    body["duronly"] = ExpressionConverter.ConvertO(__workflow_bodydurationOnly);
-                    bodypropCount++;
-                }
-
-                var eventMetadataObject = new JObject();
-                var eventMetadataObjectpropCount = 0;
-                if (__workflow_bodyeventMetadataoriginFeature != null)
-                {
-                    eventMetadataObject["origin_feature"] = ExpressionConverter.ConvertO(__workflow_bodyeventMetadataoriginFeature);
-                    eventMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyeventMetadatavisibleGoalsCount != null)
-                {
-                    eventMetadataObject["visible_goals_count"] = ExpressionConverter.ConvertO(__workflow_bodyeventMetadatavisibleGoalsCount);
-                    eventMetadataObjectpropCount++;
-                }
-
-                if (eventMetadataObjectpropCount > 0)
-                {
-                    body["event_metadata"] = eventMetadataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpenseIDs != null)
-                {
-                    body["expense_ids"] = ExpressionConverter.ConvertO(__workflow_bodyexpenseIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectIdLegacy != null)
-                {
-                    body["pid"] = ExpressionConverter.ConvertO(__workflow_bodyprojectIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysharedWithUserIDs != null)
-                {
-                    body["shared_with_user_ids"] = ExpressionConverter.ConvertO(__workflow_bodysharedWithUserIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystopTime != null)
-                {
-                    body["stop"] = ExpressionConverter.ConvertO(__workflow_bodystopTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytagAction != null)
-                {
-                    body["tag_action"] = ExpressionConverter.ConvertO(__workflow_bodytagAction);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytagIDs != null)
-                {
-                    body["tag_ids"] = ExpressionConverter.ConvertO(__workflow_bodytagIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskId != null)
-                {
-                    body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskIdLegacy != null)
-                {
-                    body["tid"] = ExpressionConverter.ConvertO(__workflow_bodytaskIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserIdLegacy != null)
-                {
-                    body["uid"] = ExpressionConverter.ConvertO(__workflow_bodyuserIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworkspaceIdLegacy != null)
-                {
-                    body["wid"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TimeEntry>(callPayload);
             });
         }
@@ -562,35 +327,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> UpdateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<int>> timeEntryId, Expression<Func<bool>> meta = null, Expression<Func<bool>> includeSharing = null, Expression<Func<bool>> bodybillable = null, Expression<Func<string>> bodycreatedWith = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodydurationOnly = null, Expression<Func<string>> bodyeventMetadataoriginFeature = null, Expression<Func<int>> bodyeventMetadatavisibleGoalsCount = null, Expression<Func<int[]>> bodyexpenseIDs = null, Expression<Func<int>> bodyprojectIdLegacy = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int[]>> bodysharedWithUserIDs = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystopTime = null, Expression<Func<bodytagActionInput>> bodytagAction = null, Expression<Func<int[]>> bodytagIDs = null, Expression<Func<string[]>> bodytags = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytaskIdLegacy = null, Expression<Func<int>> bodyuserIdLegacy = null, Expression<Func<int>> bodyuserId = null, Expression<Func<int>> bodyworkspaceIdLegacy = null, Expression<Func<int>> bodyworkspaceId = null)
+        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> UpdateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<int>> timeEntryId, Expression<Func<UpdateTimeEntryInput>> body, Expression<Func<bool>> meta = null, Expression<Func<bool>> includeSharing = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_timeEntryId = WorkflowExpression.Compile(timeEntryId, nameof(timeEntryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
             var __workflow_includeSharing = WorkflowExpression.Compile(includeSharing, nameof(includeSharing), required: false);
-            var __workflow_bodybillable = WorkflowExpression.Compile(bodybillable, nameof(bodybillable), required: false);
-            var __workflow_bodycreatedWith = WorkflowExpression.Compile(bodycreatedWith, nameof(bodycreatedWith), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodydurationOnly = WorkflowExpression.Compile(bodydurationOnly, nameof(bodydurationOnly), required: false);
-            var __workflow_bodyeventMetadataoriginFeature = WorkflowExpression.Compile(bodyeventMetadataoriginFeature, nameof(bodyeventMetadataoriginFeature), required: false);
-            var __workflow_bodyeventMetadatavisibleGoalsCount = WorkflowExpression.Compile(bodyeventMetadatavisibleGoalsCount, nameof(bodyeventMetadatavisibleGoalsCount), required: false);
-            var __workflow_bodyexpenseIDs = WorkflowExpression.Compile(bodyexpenseIDs, nameof(bodyexpenseIDs), required: false);
-            var __workflow_bodyprojectIdLegacy = WorkflowExpression.Compile(bodyprojectIdLegacy, nameof(bodyprojectIdLegacy), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodysharedWithUserIDs = WorkflowExpression.Compile(bodysharedWithUserIDs, nameof(bodysharedWithUserIDs), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodystopTime = WorkflowExpression.Compile(bodystopTime, nameof(bodystopTime), required: false);
-            var __workflow_bodytagAction = WorkflowExpression.Compile(bodytagAction, nameof(bodytagAction), required: false);
-            var __workflow_bodytagIDs = WorkflowExpression.Compile(bodytagIDs, nameof(bodytagIDs), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
-            var __workflow_bodytaskIdLegacy = WorkflowExpression.Compile(bodytaskIdLegacy, nameof(bodytaskIdLegacy), required: false);
-            var __workflow_bodyuserIdLegacy = WorkflowExpression.Compile(bodyuserIdLegacy, nameof(bodyuserIdLegacy), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyworkspaceIdLegacy = WorkflowExpression.Compile(bodyworkspaceIdLegacy, nameof(bodyworkspaceIdLegacy), required: false);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             return new DeferredBodyAction<TimeEntry, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workspaces/{0}/time_entries/{1}", __workflow_workspaceId.WithUrlEncoding(1), __workflow_timeEntryId.WithUrlEncoding(1)));
@@ -602,170 +345,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
                 callPayload.Queries["include_sharing"] = Convert.ToString(false);
                 if (__workflow_includeSharing != null)
                     callPayload.Queries["include_sharing"] = ExpressionConverter.Convert(__workflow_includeSharing);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodybillable != null)
-                {
-                    body["billable"] = ExpressionConverter.ConvertO(__workflow_bodybillable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedWith != null)
-                {
-                    body["created_with"] = ExpressionConverter.ConvertO(__workflow_bodycreatedWith);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyduration != null)
-                {
-                    body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydurationOnly != null)
-                {
-                    body["duronly"] = ExpressionConverter.ConvertO(__workflow_bodydurationOnly);
-                    bodypropCount++;
-                }
-
-                var eventMetadataObject = new JObject();
-                var eventMetadataObjectpropCount = 0;
-                if (__workflow_bodyeventMetadataoriginFeature != null)
-                {
-                    eventMetadataObject["origin_feature"] = ExpressionConverter.ConvertO(__workflow_bodyeventMetadataoriginFeature);
-                    eventMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyeventMetadatavisibleGoalsCount != null)
-                {
-                    eventMetadataObject["visible_goals_count"] = ExpressionConverter.ConvertO(__workflow_bodyeventMetadatavisibleGoalsCount);
-                    eventMetadataObjectpropCount++;
-                }
-
-                if (eventMetadataObjectpropCount > 0)
-                {
-                    body["event_metadata"] = eventMetadataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpenseIDs != null)
-                {
-                    body["expense_ids"] = ExpressionConverter.ConvertO(__workflow_bodyexpenseIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectIdLegacy != null)
-                {
-                    body["pid"] = ExpressionConverter.ConvertO(__workflow_bodyprojectIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysharedWithUserIDs != null)
-                {
-                    body["shared_with_user_ids"] = ExpressionConverter.ConvertO(__workflow_bodysharedWithUserIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystopTime != null)
-                {
-                    body["stop"] = ExpressionConverter.ConvertO(__workflow_bodystopTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytagAction != null)
-                {
-                    body["tag_action"] = ExpressionConverter.ConvertO(__workflow_bodytagAction);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytagIDs != null)
-                {
-                    body["tag_ids"] = ExpressionConverter.ConvertO(__workflow_bodytagIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskId != null)
-                {
-                    body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskIdLegacy != null)
-                {
-                    body["tid"] = ExpressionConverter.ConvertO(__workflow_bodytaskIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserIdLegacy != null)
-                {
-                    body["uid"] = ExpressionConverter.ConvertO(__workflow_bodyuserIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworkspaceIdLegacy != null)
-                {
-                    body["wid"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceIdLegacy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TimeEntry>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<BulkEditResponse, ApiConnectionActionConfiguration> BulkEditTimeEntries(Expression<Func<int>> workspaceId, Expression<Func<string>> timeEntryIds, Expression<Func<bool>> meta = null, Expression<Func<PatchOperation[]>> body = null)
+        public IBodyWorkflowAction<BulkEditResponse, ApiConnectionActionConfiguration> BulkEditTimeEntries(Expression<Func<int>> workspaceId, Expression<Func<string>> timeEntryIds, Expression<Func<PatchOperation[]>> body, Expression<Func<bool>> meta = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_timeEntryIds = WorkflowExpression.Compile(timeEntryIds, nameof(timeEntryIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BulkEditResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workspaces/{0}/time_entries/bulk/{1}", __workflow_workspaceId.WithUrlEncoding(1), __workflow_timeEntryIds.WithUrlEncoding(1)));
@@ -1013,127 +604,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
     public class ToggltrackTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryCreated(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryCreated(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryCreatedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_created", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url_callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["description"] = "Power Automate Time Tracking Trigger";
-                bodypropCount++;
-                body["enabled"] = true;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryUpdated(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryUpdated(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryUpdatedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_updated", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url_callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["description"] = "Power Automate Time Tracking Trigger";
-                bodypropCount++;
-                body["enabled"] = true;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryDeleted(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryDeleted(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryDeletedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_deleted", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url_callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["description"] = "Power Automate Time Tracking Trigger";
-                bodypropCount++;
-                body["enabled"] = true;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStarted(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStarted(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryStartedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_started", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url_callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["description"] = "Power Automate Time Tracking Trigger";
-                bodypropCount++;
-                body["enabled"] = true;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStopped(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStopped(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryStoppedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_stopped", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url_callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["description"] = "Power Automate Time Tracking Trigger";
-                bodypropCount++;
-                body["enabled"] = true;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
@@ -1778,6 +1314,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string UpdatedAt { get; set; }
     }
 
+    public class UpdateMeInput
+    {
+        [JsonProperty("beginning_of_week")]
+        public int? BeginningOfWeek { get; set; }
+
+        [JsonProperty("country_id")]
+        public int? CountryId { get; set; }
+
+        [JsonProperty("current_password")]
+        public string CurrentPassword { get; set; }
+
+        [JsonProperty("default_workspace_id")]
+        public int? DefaultWorkspaceId { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("fullname")]
+        public string FullName { get; set; }
+
+        [JsonProperty("password")]
+        public string NewPassword { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+    }
+
     public class WorkspaceFeatures
     {
         [JsonProperty("features")]
@@ -1919,8 +1482,164 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int WorkspaceId { get; set; }
     }
 
+    public class CreateTimeEntryInput
+    {
+        [JsonProperty("billable")]
+        public bool? Billable { get; set; }
+
+        [JsonProperty("created_with")]
+        public string CreatedWith { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("duration")]
+        public int? Duration { get; set; }
+
+        [JsonProperty("duronly")]
+        public bool? DurationOnly { get; set; }
+
+        [JsonProperty("event_metadata")]
+        public EventMetadata EventMetadata { get; set; }
+
+        [JsonProperty("expense_ids")]
+        public int[] ExpenseIDs { get; set; }
+
+        [JsonProperty("pid")]
+        public int? ProjectIdLegacy { get; set; }
+
+        [JsonProperty("project_id")]
+        public int? ProjectId { get; set; }
+
+        [JsonProperty("shared_with_user_ids")]
+        public int[] SharedWithUserIDs { get; set; }
+
+        [JsonProperty("start")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("stop")]
+        public string StopTime { get; set; }
+
+        [JsonProperty("tag_action")]
+        public CreateTimeEntryInputTagActionType? TagAction { get; set; }
+
+        [JsonProperty("tag_ids")]
+        public int[] TagIDs { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("task_id")]
+        public int? TaskId { get; set; }
+
+        [JsonProperty("tid")]
+        public int? TaskIdLegacy { get; set; }
+
+        [JsonProperty("uid")]
+        public int? UserIdLegacy { get; set; }
+
+        [JsonProperty("user_id")]
+        public int? UserId { get; set; }
+
+        [JsonProperty("wid")]
+        public int? WorkspaceIdLegacy { get; set; }
+
+        [JsonProperty("workspace_id")]
+        public int? WorkspaceId { get; set; }
+    }
+
+    public class EventMetadata
+    {
+        [JsonProperty("origin_feature")]
+        public string OriginFeature { get; set; }
+
+        [JsonProperty("visible_goals_count")]
+        public int VisibleGoalsCount { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytagActionInput
+    public enum CreateTimeEntryInputTagActionType
+    {
+        [EnumMember(Value = "add")]
+        Add,
+        [EnumMember(Value = "delete")]
+        Delete
+    }
+
+    public class UpdateTimeEntryInput
+    {
+        [JsonProperty("billable")]
+        public bool? Billable { get; set; }
+
+        [JsonProperty("created_with")]
+        public string CreatedWith { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("duration")]
+        public int? Duration { get; set; }
+
+        [JsonProperty("duronly")]
+        public bool? DurationOnly { get; set; }
+
+        [JsonProperty("event_metadata")]
+        public EventMetadata EventMetadata { get; set; }
+
+        [JsonProperty("expense_ids")]
+        public int[] ExpenseIDs { get; set; }
+
+        [JsonProperty("pid")]
+        public int? ProjectIdLegacy { get; set; }
+
+        [JsonProperty("project_id")]
+        public int? ProjectId { get; set; }
+
+        [JsonProperty("shared_with_user_ids")]
+        public int[] SharedWithUserIDs { get; set; }
+
+        [JsonProperty("start")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("stop")]
+        public string StopTime { get; set; }
+
+        [JsonProperty("tag_action")]
+        public UpdateTimeEntryInputTagActionType? TagAction { get; set; }
+
+        [JsonProperty("tag_ids")]
+        public int[] TagIDs { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("task_id")]
+        public int? TaskId { get; set; }
+
+        [JsonProperty("tid")]
+        public int? TaskIdLegacy { get; set; }
+
+        [JsonProperty("uid")]
+        public int? UserIdLegacy { get; set; }
+
+        [JsonProperty("user_id")]
+        public int? UserId { get; set; }
+
+        [JsonProperty("wid")]
+        public int? WorkspaceIdLegacy { get; set; }
+
+        [JsonProperty("workspace_id")]
+        public int? WorkspaceId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateTimeEntryInputTagActionType
     {
         [EnumMember(Value = "add")]
         Add,
@@ -2277,6 +1996,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
         [JsonProperty("action")]
         public string Action { get; set; }
+    }
+
+    public class OnTimeEntryCreatedInput
+    {
+        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
+
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Enabled { get; set; } = true;
+    }
+
+    public class OnTimeEntryUpdatedInput
+    {
+        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
+
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Enabled { get; set; } = true;
+    }
+
+    public class OnTimeEntryDeletedInput
+    {
+        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
+
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Enabled { get; set; } = true;
+    }
+
+    public class OnTimeEntryStartedInput
+    {
+        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
+
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Enabled { get; set; } = true;
+    }
+
+    public class OnTimeEntryStoppedInput
+    {
+        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
+
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Enabled { get; set; } = true;
     }
 }
 

@@ -38,172 +38,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryCapsulesResponse, ApiConnectionActionConfiguration> QueryCapsules(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryCapsulesResponse, ApiConnectionActionConfiguration> QueryCapsules(Expression<Func<QueryCapsulesInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryCapsulesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/capsules/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryCapsulesResponse>(callPayload);
             });
         }
@@ -246,172 +89,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryCoresResponse, ApiConnectionActionConfiguration> QueryCores(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryCoresResponse, ApiConnectionActionConfiguration> QueryCores(Expression<Func<QueryCoresInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryCoresResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/cores/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryCoresResponse>(callPayload);
             });
         }
@@ -442,172 +128,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryCrewMembersResponse, ApiConnectionActionConfiguration> QueryCrewMembers(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryCrewMembersResponse, ApiConnectionActionConfiguration> QueryCrewMembers(Expression<Func<QueryCrewMembersInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryCrewMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/crew/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryCrewMembersResponse>(callPayload);
             });
         }
@@ -638,172 +167,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryDragonsResponse, ApiConnectionActionConfiguration> QueryDragons(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryDragonsResponse, ApiConnectionActionConfiguration> QueryDragons(Expression<Func<QueryDragonsInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryDragonsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/dragons/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryDragonsResponse>(callPayload);
             });
         }
@@ -834,172 +206,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryHistoryResponse, ApiConnectionActionConfiguration> QueryHistory(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryHistoryResponse, ApiConnectionActionConfiguration> QueryHistory(Expression<Func<QueryHistoryInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/history/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryHistoryResponse>(callPayload);
             });
         }
@@ -1030,172 +245,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryLandpadsResponse, ApiConnectionActionConfiguration> QueryLandpads(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryLandpadsResponse, ApiConnectionActionConfiguration> QueryLandpads(Expression<Func<QueryLandpadsInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryLandpadsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/landpads/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryLandpadsResponse>(callPayload);
             });
         }
@@ -1226,172 +284,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryLaunchesResponse, ApiConnectionActionConfiguration> QueryLaunches(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryLaunchesResponse, ApiConnectionActionConfiguration> QueryLaunches(Expression<Func<QueryLaunchesInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryLaunchesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/launches/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryLaunchesResponse>(callPayload);
             });
         }
@@ -1470,172 +371,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryLaunchpadsResponse, ApiConnectionActionConfiguration> QueryLaunchpads(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryLaunchpadsResponse, ApiConnectionActionConfiguration> QueryLaunchpads(Expression<Func<QueryLaunchpadsInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryLaunchpadsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/launchpads/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryLaunchpadsResponse>(callPayload);
             });
         }
@@ -1666,172 +410,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryPayloadsResponse, ApiConnectionActionConfiguration> QueryPayloads(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryPayloadsResponse, ApiConnectionActionConfiguration> QueryPayloads(Expression<Func<QueryPayloadsInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryPayloadsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/payloads/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryPayloadsResponse>(callPayload);
             });
         }
@@ -1874,172 +461,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryRocketsResponse, ApiConnectionActionConfiguration> QueryRockets(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryRocketsResponse, ApiConnectionActionConfiguration> QueryRockets(Expression<Func<QueryRocketsInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryRocketsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/rockets/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryRocketsResponse>(callPayload);
             });
         }
@@ -2070,172 +500,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryShipsResponse, ApiConnectionActionConfiguration> QueryShips(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryShipsResponse, ApiConnectionActionConfiguration> QueryShips(Expression<Func<QueryShipsInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryShipsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/ships/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryShipsResponse>(callPayload);
             });
         }
@@ -2266,172 +539,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryStarlinkSatsResponse, ApiConnectionActionConfiguration> QueryStarlinkSats(Expression<Func<string>> bodyoptionsselect = null, Expression<Func<string>> bodyoptionssort = null, Expression<Func<JToken[]>> bodyoptionspopulate = null, Expression<Func<string>> bodyoptionsprojection = null, Expression<Func<bool>> bodyoptionslean = null, Expression<Func<bool>> bodyoptionsleanWithId = null, Expression<Func<int>> bodyoptionsoffset = null, Expression<Func<int>> bodyoptionspage = null, Expression<Func<int>> bodyoptionslimit = null, Expression<Func<bool>> bodyoptionspagination = null, Expression<Func<bool>> bodyoptionsuseEstimatedCount = null, Expression<Func<bool>> bodyoptionsuseCustomCountFn = null, Expression<Func<bool>> bodyoptionsforceCountFn = null, Expression<Func<bool>> bodyoptionsallowDiskUse = null, Expression<Func<string>> bodyoptionsoptionspref = null, Expression<Func<string>> bodyoptionsoptionstags = null)
+        public IBodyWorkflowAction<QueryStarlinkSatsResponse, ApiConnectionActionConfiguration> QueryStarlinkSats(Expression<Func<QueryStarlinkSatsInput>> body)
         {
-            var __workflow_bodyoptionsselect = WorkflowExpression.Compile(bodyoptionsselect, nameof(bodyoptionsselect), required: false);
-            var __workflow_bodyoptionssort = WorkflowExpression.Compile(bodyoptionssort, nameof(bodyoptionssort), required: false);
-            var __workflow_bodyoptionspopulate = WorkflowExpression.Compile(bodyoptionspopulate, nameof(bodyoptionspopulate), required: false);
-            var __workflow_bodyoptionsprojection = WorkflowExpression.Compile(bodyoptionsprojection, nameof(bodyoptionsprojection), required: false);
-            var __workflow_bodyoptionslean = WorkflowExpression.Compile(bodyoptionslean, nameof(bodyoptionslean), required: false);
-            var __workflow_bodyoptionsleanWithId = WorkflowExpression.Compile(bodyoptionsleanWithId, nameof(bodyoptionsleanWithId), required: false);
-            var __workflow_bodyoptionsoffset = WorkflowExpression.Compile(bodyoptionsoffset, nameof(bodyoptionsoffset), required: false);
-            var __workflow_bodyoptionspage = WorkflowExpression.Compile(bodyoptionspage, nameof(bodyoptionspage), required: false);
-            var __workflow_bodyoptionslimit = WorkflowExpression.Compile(bodyoptionslimit, nameof(bodyoptionslimit), required: false);
-            var __workflow_bodyoptionspagination = WorkflowExpression.Compile(bodyoptionspagination, nameof(bodyoptionspagination), required: false);
-            var __workflow_bodyoptionsuseEstimatedCount = WorkflowExpression.Compile(bodyoptionsuseEstimatedCount, nameof(bodyoptionsuseEstimatedCount), required: false);
-            var __workflow_bodyoptionsuseCustomCountFn = WorkflowExpression.Compile(bodyoptionsuseCustomCountFn, nameof(bodyoptionsuseCustomCountFn), required: false);
-            var __workflow_bodyoptionsforceCountFn = WorkflowExpression.Compile(bodyoptionsforceCountFn, nameof(bodyoptionsforceCountFn), required: false);
-            var __workflow_bodyoptionsallowDiskUse = WorkflowExpression.Compile(bodyoptionsallowDiskUse, nameof(bodyoptionsallowDiskUse), required: false);
-            var __workflow_bodyoptionsoptionspref = WorkflowExpression.Compile(bodyoptionsoptionspref, nameof(bodyoptionsoptionspref), required: false);
-            var __workflow_bodyoptionsoptionstags = WorkflowExpression.Compile(bodyoptionsoptionstags, nameof(bodyoptionsoptionstags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryStarlinkSatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/starlink/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsselect != null)
-                {
-                    optionsObject["select"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsselect);
-                    optionsObjectpropCount++;
-                }
-
-                var collationObject = new JObject();
-                var collationObjectpropCount = 0;
-                if (collationObjectpropCount > 0)
-                {
-                    optionsObject["collation"] = collationObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionssort != null)
-                {
-                    optionsObject["sort"] = ExpressionConverter.ConvertO(__workflow_bodyoptionssort);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspopulate != null)
-                {
-                    optionsObject["populate"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspopulate);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsprojection != null)
-                {
-                    optionsObject["projection"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsprojection);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslean != null)
-                {
-                    optionsObject["lean"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslean);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsleanWithId != null)
-                {
-                    optionsObject["leanWithId"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsleanWithId);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsoffset != null)
-                {
-                    optionsObject["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoffset);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspage != null)
-                {
-                    optionsObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspage);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionslimit != null)
-                {
-                    optionsObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslimit);
-                    optionsObjectpropCount++;
-                }
-
-                var customLabelsObject = new JObject();
-                var customLabelsObjectpropCount = 0;
-                if (customLabelsObjectpropCount > 0)
-                {
-                    optionsObject["customLabels"] = customLabelsObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionspagination != null)
-                {
-                    optionsObject["pagination"] = ExpressionConverter.ConvertO(__workflow_bodyoptionspagination);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseEstimatedCount != null)
-                {
-                    optionsObject["useEstimatedCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseEstimatedCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseCustomCountFn != null)
-                {
-                    optionsObject["useCustomCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCustomCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsforceCountFn != null)
-                {
-                    optionsObject["forceCountFn"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsforceCountFn);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsallowDiskUse != null)
-                {
-                    optionsObject["allowDiskUse"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsallowDiskUse);
-                    optionsObjectpropCount++;
-                }
-
-                var optionsObject2 = new JObject();
-                var optionsObject2propCount = 0;
-                if (__workflow_bodyoptionsoptionspref != null)
-                {
-                    optionsObject2["pref"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionspref);
-                    optionsObject2propCount++;
-                }
-
-                if (__workflow_bodyoptionsoptionstags != null)
-                {
-                    optionsObject2["tags"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoptionstags);
-                    optionsObject2propCount++;
-                }
-
-                if (optionsObject2propCount > 0)
-                {
-                    optionsObject["options"] = optionsObject2;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryStarlinkSatsResponse>(callPayload);
             });
         }
@@ -2565,6 +681,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class QueryCapsulesInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryCapsulesInputOptionsType Options { get; set; }
+    }
+
+    public class QueryCapsulesInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryCapsulesInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryCapsulesInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 
     public class GetCompanyInfoResponse
@@ -2831,6 +1019,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public string Id { get; set; }
     }
 
+    public class QueryCoresInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryCoresInputOptionsType Options { get; set; }
+    }
+
+    public class QueryCoresInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryCoresInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryCoresInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+    }
+
     public class GetAllCrewResponseItem
     {
         [JsonProperty("name")]
@@ -2937,6 +1197,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class QueryCrewMembersInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryCrewMembersInputOptionsType Options { get; set; }
+    }
+
+    public class QueryCrewMembersInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryCrewMembersInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryCrewMembersInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 
     public class GetAllDragonsResponseItem
@@ -3623,6 +1955,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public int Lbf { get; set; }
     }
 
+    public class QueryDragonsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryDragonsInputOptionsType Options { get; set; }
+    }
+
+    public class QueryDragonsInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryDragonsInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryDragonsInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+    }
+
     public class GetAllHistoryResponseItem
     {
         [JsonProperty("links")]
@@ -3738,6 +2142,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
     {
         [JsonProperty("article")]
         public string Article { get; set; }
+    }
+
+    public class QueryHistoryInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryHistoryInputOptionsType Options { get; set; }
+    }
+
+    public class QueryHistoryInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryHistoryInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryHistoryInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 
     public class GetAllLandpadsResponseItem
@@ -3936,6 +2412,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
     {
         [JsonProperty("large")]
         public string[] Large { get; set; }
+    }
+
+    public class QueryLandpadsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryLandpadsInputOptionsType Options { get; set; }
+    }
+
+    public class QueryLandpadsInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryLandpadsInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryLandpadsInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 
     public class GetAllLaunchesResponseItem
@@ -4548,6 +3096,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("landpad")]
         public string Landpad { get; set; }
+    }
+
+    public class QueryLaunchesInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryLaunchesInputOptionsType Options { get; set; }
+    }
+
+    public class QueryLaunchesInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryLaunchesInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryLaunchesInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 
     public class GetPastLaunchesResponseItem
@@ -5486,6 +4106,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public string[] Large { get; set; }
     }
 
+    public class QueryLaunchpadsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryLaunchpadsInputOptionsType Options { get; set; }
+    }
+
+    public class QueryLaunchpadsInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryLaunchpadsInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryLaunchpadsInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+    }
+
     public class GetAllPayloadsResponseItem
     {
         [JsonProperty("dragon")]
@@ -5853,6 +4545,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("land_landing")]
         public bool LandLanding { get; set; }
+    }
+
+    public class QueryPayloadsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryPayloadsInputOptionsType Options { get; set; }
+    }
+
+    public class QueryPayloadsInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryPayloadsInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryPayloadsInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 
     public class GetRoadsterInfoResponse
@@ -6839,6 +5603,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public int Lb { get; set; }
     }
 
+    public class QueryRocketsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryRocketsInputOptionsType Options { get; set; }
+    }
+
+    public class QueryRocketsInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryRocketsInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryRocketsInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+    }
+
     public class GetAllShipsResponseItem
     {
         [JsonProperty("last_ais_update")]
@@ -7098,6 +5934,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class QueryShipsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryShipsInputOptionsType Options { get; set; }
+    }
+
+    public class QueryShipsInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryShipsInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryShipsInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 
     public class GetAllStarlinkSatsResponseItem
@@ -7521,6 +6429,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("TLE_LINE2")]
         public string TLELINE2 { get; set; }
+    }
+
+    public class QueryStarlinkSatsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("options")]
+        public QueryStarlinkSatsInputOptionsType Options { get; set; }
+    }
+
+    public class QueryStarlinkSatsInputOptionsType
+    {
+        [JsonProperty("select")]
+        public string Select { get; set; }
+
+        [JsonProperty("collation")]
+        public JToken Collation { get; set; }
+
+        [JsonProperty("sort")]
+        public string Sort { get; set; }
+
+        [JsonProperty("populate")]
+        public JToken[] Populate { get; set; }
+
+        [JsonProperty("projection")]
+        public string Projection { get; set; }
+
+        [JsonProperty("lean")]
+        public bool? Lean { get; set; }
+
+        [JsonProperty("leanWithId")]
+        public bool? LeanWithId { get; set; }
+
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("page")]
+        public int? Page { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("customLabels")]
+        public JToken CustomLabels { get; set; }
+
+        [JsonProperty("pagination")]
+        public bool? Pagination { get; set; }
+
+        [JsonProperty("useEstimatedCount")]
+        public bool? UseEstimatedCount { get; set; }
+
+        [JsonProperty("useCustomCountFn")]
+        public bool? UseCustomCountFn { get; set; }
+
+        [JsonProperty("forceCountFn")]
+        public bool? ForceCountFn { get; set; }
+
+        [JsonProperty("allowDiskUse")]
+        public bool? AllowDiskUse { get; set; }
+
+        [JsonProperty("options")]
+        public QueryStarlinkSatsInputOptionsTypeOptionsType Options { get; set; }
+    }
+
+    public class QueryStarlinkSatsInputOptionsTypeOptionsType
+    {
+        [JsonProperty("pref")]
+        public string Pref { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
     }
 }
 

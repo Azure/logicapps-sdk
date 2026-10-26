@@ -13,131 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
     public class KrokiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kroki")]
-        public IBodyWorkflowAction<DiagramPostResponse, ApiConnectionActionConfiguration> Diagram(Expression<Func<libraryInput>> library, Expression<Func<string>> output, Expression<Func<string>> bodydiagramSource, Expression<Func<string>> bodydiagramOptionskey = null, Expression<Func<string>> bodydiagramOptionsantialias = null, Expression<Func<string>> bodydiagramOptionsnoTransparency = null, Expression<Func<string>> bodydiagramOptionssize = null, Expression<Func<string>> bodydiagramOptionsnoDoctype = null, Expression<Func<string>> bodydiagramOptionstheme = null, Expression<Func<string>> bodydiagramOptionssketch = null, Expression<Func<string>> bodydiagramOptionslayout = null, Expression<Func<int>> bodydiagramOptionsscale = null, Expression<Func<string>> bodydiagramOptionsviewKey = null, Expression<Func<string>> bodydiagramOptionsbackground = null, Expression<Func<string>> bodydiagramOptionsfontFamily = null, Expression<Func<int>> bodydiagramOptionsfontSize = null, Expression<Func<int>> bodydiagramOptionsstrokeWidth = null)
+        public IBodyWorkflowAction<DiagramPostResponse, ApiConnectionActionConfiguration> Diagram(Expression<Func<libraryInput>> library, Expression<Func<string>> output, Expression<Func<DiagramPostInput>> body = null)
         {
             var __workflow_library = WorkflowExpression.Compile(library, nameof(library), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: true);
-            var __workflow_bodydiagramSource = WorkflowExpression.Compile(bodydiagramSource, nameof(bodydiagramSource), required: true);
-            var __workflow_bodydiagramOptionskey = WorkflowExpression.Compile(bodydiagramOptionskey, nameof(bodydiagramOptionskey), required: false);
-            var __workflow_bodydiagramOptionsantialias = WorkflowExpression.Compile(bodydiagramOptionsantialias, nameof(bodydiagramOptionsantialias), required: false);
-            var __workflow_bodydiagramOptionsnoTransparency = WorkflowExpression.Compile(bodydiagramOptionsnoTransparency, nameof(bodydiagramOptionsnoTransparency), required: false);
-            var __workflow_bodydiagramOptionssize = WorkflowExpression.Compile(bodydiagramOptionssize, nameof(bodydiagramOptionssize), required: false);
-            var __workflow_bodydiagramOptionsnoDoctype = WorkflowExpression.Compile(bodydiagramOptionsnoDoctype, nameof(bodydiagramOptionsnoDoctype), required: false);
-            var __workflow_bodydiagramOptionstheme = WorkflowExpression.Compile(bodydiagramOptionstheme, nameof(bodydiagramOptionstheme), required: false);
-            var __workflow_bodydiagramOptionssketch = WorkflowExpression.Compile(bodydiagramOptionssketch, nameof(bodydiagramOptionssketch), required: false);
-            var __workflow_bodydiagramOptionslayout = WorkflowExpression.Compile(bodydiagramOptionslayout, nameof(bodydiagramOptionslayout), required: false);
-            var __workflow_bodydiagramOptionsscale = WorkflowExpression.Compile(bodydiagramOptionsscale, nameof(bodydiagramOptionsscale), required: false);
-            var __workflow_bodydiagramOptionsviewKey = WorkflowExpression.Compile(bodydiagramOptionsviewKey, nameof(bodydiagramOptionsviewKey), required: false);
-            var __workflow_bodydiagramOptionsbackground = WorkflowExpression.Compile(bodydiagramOptionsbackground, nameof(bodydiagramOptionsbackground), required: false);
-            var __workflow_bodydiagramOptionsfontFamily = WorkflowExpression.Compile(bodydiagramOptionsfontFamily, nameof(bodydiagramOptionsfontFamily), required: false);
-            var __workflow_bodydiagramOptionsfontSize = WorkflowExpression.Compile(bodydiagramOptionsfontSize, nameof(bodydiagramOptionsfontSize), required: false);
-            var __workflow_bodydiagramOptionsstrokeWidth = WorkflowExpression.Compile(bodydiagramOptionsstrokeWidth, nameof(bodydiagramOptionsstrokeWidth), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DiagramPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_library.WithUrlEncoding(1), __workflow_output.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["diagram_source"] = ExpressionConverter.ConvertO(__workflow_bodydiagramSource);
-                var diagramOptionsObject = new JObject();
-                var diagramOptionsObjectpropCount = 0;
-                if (__workflow_bodydiagramOptionskey != null)
-                {
-                    diagramOptionsObject["key"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionskey);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsantialias != null)
-                {
-                    diagramOptionsObject["antialias"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsantialias);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsnoTransparency != null)
-                {
-                    diagramOptionsObject["no-transparency"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsnoTransparency);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionssize != null)
-                {
-                    diagramOptionsObject["size"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionssize);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsnoDoctype != null)
-                {
-                    diagramOptionsObject["no-doctype"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsnoDoctype);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionstheme != null)
-                {
-                    diagramOptionsObject["theme"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionstheme);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionssketch != null)
-                {
-                    diagramOptionsObject["sketch"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionssketch);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionslayout != null)
-                {
-                    diagramOptionsObject["layout"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionslayout);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsscale != null)
-                {
-                    diagramOptionsObject["scale"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsscale);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsviewKey != null)
-                {
-                    diagramOptionsObject["view-key"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsviewKey);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsbackground != null)
-                {
-                    diagramOptionsObject["background"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsbackground);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsfontFamily != null)
-                {
-                    diagramOptionsObject["font-family"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsfontFamily);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsfontSize != null)
-                {
-                    diagramOptionsObject["font-size"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsfontSize);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodydiagramOptionsstrokeWidth != null)
-                {
-                    diagramOptionsObject["stroke-width"] = ExpressionConverter.ConvertO(__workflow_bodydiagramOptionsstrokeWidth);
-                    diagramOptionsObjectpropCount++;
-                }
-
-                if (diagramOptionsObjectpropCount > 0)
-                {
-                    body["diagram_options"] = diagramOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DiagramPostResponse>(callPayload);
             });
         }
@@ -203,6 +90,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
         Structurizr,
         [EnumMember(Value = "umlet")]
         Umlet
+    }
+
+    public class DiagramPostInput
+    {
+        [JsonProperty("diagram_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DiagramSource { get; set; }
+
+        [JsonProperty("diagram_options")]
+        public DiagramPostInputDiagramOptionsType DiagramOptions { get; set; }
+    }
+
+    public class DiagramPostInputDiagramOptionsType
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("antialias")]
+        public string Antialias { get; set; }
+
+        [JsonProperty("no-transparency")]
+        public string NoTransparency { get; set; }
+
+        [JsonProperty("size")]
+        public string Size { get; set; }
+
+        [JsonProperty("no-doctype")]
+        public string NoDoctype { get; set; }
+
+        [JsonProperty("theme")]
+        public string Theme { get; set; }
+
+        [JsonProperty("sketch")]
+        public string Sketch { get; set; }
+
+        [JsonProperty("layout")]
+        public string Layout { get; set; }
+
+        [JsonProperty("scale")]
+        public int? Scale { get; set; }
+
+        [JsonProperty("view-key")]
+        public string ViewKey { get; set; }
+
+        [JsonProperty("background")]
+        public string Background { get; set; }
+
+        [JsonProperty("font-family")]
+        public string FontFamily { get; set; }
+
+        [JsonProperty("font-size")]
+        public int? FontSize { get; set; }
+
+        [JsonProperty("stroke-width")]
+        public int? StrokeWidth { get; set; }
     }
 }
 

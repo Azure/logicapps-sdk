@@ -48,120 +48,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certyneo")]
-        public IBodyWorkflowAction<Envelope, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<string>> bodysubject, Expression<Func<Recipient[]>> bodyrecipients, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<EnvelopeField[]>> bodyfields = null, Expression<Func<bodysignatureLevelInput>> bodysignatureLevel = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<bodycategoryInput>> bodycategory = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodyredirectURL = null, Expression<Func<bool>> bodyinitialsOnEveryPage = null, Expression<Func<string>> bodyworkspace = null)
+        public IBodyWorkflowAction<Envelope, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeInput>> body)
         {
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: false);
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
-            var __workflow_bodysignatureLevel = WorkflowExpression.Compile(bodysignatureLevel, nameof(bodysignatureLevel), required: false);
-            var __workflow_bodyexpiresAt = WorkflowExpression.Compile(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyredirectURL = WorkflowExpression.Compile(bodyredirectURL, nameof(bodyredirectURL), required: false);
-            var __workflow_bodyinitialsOnEveryPage = WorkflowExpression.Compile(bodyinitialsOnEveryPage, nameof(bodyinitialsOnEveryPage), required: false);
-            var __workflow_bodyworkspace = WorkflowExpression.Compile(bodyworkspace, nameof(bodyworkspace), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Envelope, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/envelopes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemplate != null)
-                {
-                    body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documentIds"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfields != null)
-                {
-                    body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                if (__workflow_bodysignatureLevel != null)
-                {
-                    if (__workflow_bodysignatureLevel != null)
-                    {
-                        body["signatureLevel"] = ExpressionConverter.ConvertO(__workflow_bodysignatureLevel);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["signatureLevel"] = "SIMPLE";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiresAt != null)
-                {
-                    body["expiresAt"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    body["locale"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirectURL != null)
-                {
-                    body["redirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodyredirectURL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinitialsOnEveryPage != null)
-                {
-                    body["initialsOnEveryPage"] = ExpressionConverter.ConvertO(__workflow_bodyinitialsOnEveryPage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworkspace != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspace);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Envelope>(callPayload);
             });
         }
@@ -195,25 +90,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class CertyneoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> SubscribeEnvelopeEvents(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> SubscribeEnvelopeEvents(Expression<Func<SubscribeEnvelopeEventsInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodyevents);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
@@ -375,6 +260,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         RETURNEDTOSENDER
     }
 
+    public class CreateEnvelopeInput
+    {
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("templateId")]
+        public string Template { get; set; }
+
+        [JsonProperty("documentIds")]
+        public string[] Documents { get; set; }
+
+        [JsonProperty("fields")]
+        public EnvelopeField[] Fields { get; set; }
+
+        [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Recipient[] Recipients { get; set; }
+
+        [JsonProperty("signatureLevel", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateEnvelopeInputSignatureLevelType? SignatureLevel { get; set; } = CreateEnvelopeInputSignatureLevelType.SIMPLE;
+
+        [JsonProperty("expiresAt")]
+        public string ExpiresAt { get; set; }
+
+        [JsonProperty("category")]
+        public CreateEnvelopeInputCategoryType? Category { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("locale")]
+        public string Language { get; set; }
+
+        [JsonProperty("redirectUrl")]
+        public string RedirectURL { get; set; }
+
+        [JsonProperty("initialsOnEveryPage")]
+        public bool? InitialsOnEveryPage { get; set; }
+
+        [JsonProperty("workspaceId")]
+        public string Workspace { get; set; }
+    }
+
     public class EnvelopeField
     {
         [JsonProperty("recipientEmail")]
@@ -442,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysignatureLevelInput
+    public enum CreateEnvelopeInputSignatureLevelType
     {
         SIMPLE,
         ADVANCED,
@@ -450,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycategoryInput
+    public enum CreateEnvelopeInputCategoryType
     {
         CONTRACT,
         AGREEMENT,
@@ -480,8 +410,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public bool IsActive { get; set; }
     }
 
+    public class SubscribeEnvelopeEventsInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubscribeEnvelopeEventsInputEventsTypeItem[] Events { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventsInputItem
+    public enum SubscribeEnvelopeEventsInputEventsTypeItem
     {
         [EnumMember(Value = "envelope.created")]
         EnvelopeCreated,

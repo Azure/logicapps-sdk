@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocgenFormFields(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentGuid, Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocgenFormFields(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentGuid, Expression<Func<bodyInputItem[]>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_documentGuid = WorkflowExpression.Compile(documentGuid, nameof(documentGuid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/{1}/docGenFormFields", __workflow_accountId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1)));
@@ -126,12 +126,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnvelopePrefillTabs(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<bodyInputItem2[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnvelopePrefillTabs(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<bodyInputItem2[]>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/{1}/documents/{2}/tabs", __workflow_accountId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
@@ -193,7 +193,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                 callPayload.Queries["merge_roles_on_draft"] = Convert.ToString("True");
                 if (__workflow_mergeRolesOnDraft != null)
                     callPayload.Queries["merge_roles_on_draft"] = ExpressionConverter.Convert(__workflow_mergeRolesOnDraft);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CompositeTemplatesResponse>(callPayload);
             });
         }
@@ -290,7 +291,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                     callPayload.Queries["emailSubject"] = ExpressionConverter.Convert(__workflow_emailSubject);
                 if (__workflow_emailBody != null)
                     callPayload.Queries["emailBody"] = ExpressionConverter.Convert(__workflow_emailBody);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_signers);
+                if (__workflow_signers != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_signers);
                 return new ApiConnectionAction<CreateEnvelopeResponse>(callPayload);
             });
         }
@@ -314,7 +316,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                     callPayload.Queries["merge_roles_on_draft"] = ExpressionConverter.Convert(__workflow_mergeRolesOnDraft);
                 if (__workflow_emailSubject != null)
                     callPayload.Queries["emailSubject"] = ExpressionConverter.Convert(__workflow_emailSubject);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_recipients);
+                if (__workflow_recipients != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_recipients);
                 return new ApiConnectionAction<CreateEnvelopeResponse>(callPayload);
             });
         }
@@ -386,7 +389,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["openIn"] = ExpressionConverter.Convert(__workflow_openIn);
                 callPayload.Queries["returnUrl"] = ExpressionConverter.Convert(__workflow_returnUrl);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalURL);
+                if (__workflow_additionalURL != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalURL);
                 return new ApiConnectionAction<EmbeddedSenderResponse>(callPayload);
             });
         }
@@ -480,7 +484,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                 callPayload.Queries["recipientId"] = ExpressionConverter.Convert(__workflow_recipientId);
                 callPayload.Queries["recipientType"] = ExpressionConverter.Convert(__workflow_recipientType);
                 callPayload.Queries["verificationType"] = ExpressionConverter.Convert(__workflow_verificationType);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalRecipientData);
+                if (__workflow_additionalRecipientData != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalRecipientData);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -536,19 +541,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                     callPayload.Queries["phoneNumber"] = ExpressionConverter.Convert(__workflow_phoneNumber);
                 if (__workflow_signingGroupId != null)
                     callPayload.Queries["signingGroupId"] = ExpressionConverter.Convert(__workflow_signingGroupId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalRecipientParams);
+                if (__workflow_additionalRecipientParams != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalRecipientParams);
                 return new ApiConnectionAction<Signer>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ApplyTemplatesToDocuments(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> templateId, Expression<Func<preserveTemplateRecipientInput>> preserveTemplateRecipient = null, Expression<Func<bodydocumentTemplatesInputItem[]>> bodydocumentTemplates = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApplyTemplatesToDocuments(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> templateId, Expression<Func<ApplyTemplatesToDocumentsInput>> body, Expression<Func<preserveTemplateRecipientInput>> preserveTemplateRecipient = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_preserveTemplateRecipient = WorkflowExpression.Compile(preserveTemplateRecipient, nameof(preserveTemplateRecipient), required: false);
-            var __workflow_bodydocumentTemplates = WorkflowExpression.Compile(bodydocumentTemplates, nameof(bodydocumentTemplates), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/{1}/templates", __workflow_accountId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1)));
@@ -558,56 +564,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                 callPayload.Queries["preserve_template_recipient"] = Convert.ToString("False");
                 if (__workflow_preserveTemplateRecipient != null)
                     callPayload.Queries["preserve_template_recipient"] = ExpressionConverter.Convert(__workflow_preserveTemplateRecipient);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocumentTemplates != null)
-                {
-                    body["documentTemplates"] = ExpressionConverter.ConvertO(__workflow_bodydocumentTemplates);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<BulkSendListGuidInfo, ApiConnectionActionConfiguration> CreateBulkSendList(Expression<Func<string>> accountId, Expression<Func<string>> name, Expression<Func<string>> csvcSVFile = null)
+        public IBodyWorkflowAction<BulkSendListGuidInfo, ApiConnectionActionConfiguration> CreateBulkSendList(Expression<Func<string>> accountId, Expression<Func<string>> name, Expression<Func<CreateBulkSendListInput>> csv)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_csvcSVFile = WorkflowExpression.Compile(csvcSVFile, nameof(csvcSVFile), required: false);
+            var __workflow_csv = WorkflowExpression.Compile(csv, nameof(csv), required: true);
             return new DeferredBodyAction<BulkSendListGuidInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/bulk_send_lists", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
-                var csv = new JObject();
-                var csvpropCount = 0;
-                if (__workflow_csvcSVFile != null)
-                {
-                    csv["csv"] = ExpressionConverter.ConvertO(__workflow_csvcSVFile);
-                    csvpropCount++;
-                }
-
-                var rawOutputObject = new JObject();
-                var rawOutputObjectpropCount = 0;
-                if (rawOutputObjectpropCount > 0)
-                {
-                    csv["rawOutput"] = rawOutputObject;
-                    csvpropCount++;
-                }
-
-                if (csvpropCount > 0)
-                {
-                    callPayload.Body = csv;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_csv);
                 return new ApiConnectionAction<BulkSendListGuidInfo>(callPayload);
             });
         }
@@ -654,29 +628,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<AddDocumentsResponse, ApiConnectionActionConfiguration> AddDocumentsToEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<bodyunnamedInputItem[]>> bodyunnamed = null)
+        public IBodyWorkflowAction<AddDocumentsResponse, ApiConnectionActionConfiguration> AddDocumentsToEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<AddDocumentsToEnvelopeInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodyunnamed = WorkflowExpression.Compile(bodyunnamed, nameof(bodyunnamed), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/{1}/documents", __workflow_accountId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyunnamed != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodyunnamed);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddDocumentsResponse>(callPayload);
             });
         }
@@ -743,13 +706,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<AddRecipientTabsResponse, ApiConnectionActionConfiguration> AddRecipientTabs(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> tabType, Expression<Func<object>> tabDetails = null)
+        public IBodyWorkflowAction<AddRecipientTabsResponse, ApiConnectionActionConfiguration> AddRecipientTabs(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> tabType, Expression<Func<object>> tabDetails)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_tabType = WorkflowExpression.Compile(tabType, nameof(tabType), required: true);
-            var __workflow_tabDetails = WorkflowExpression.Compile(tabDetails, nameof(tabDetails), required: false);
+            var __workflow_tabDetails = WorkflowExpression.Compile(tabDetails, nameof(tabDetails), required: true);
             return new DeferredBodyAction<AddRecipientTabsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/{1}/recipients/{2}/tabs", __workflow_accountId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1), __workflow_recipientId.WithUrlEncoding(1)));
@@ -762,12 +725,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecipientTabsValues(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<bodyInputItem22[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecipientTabsValues(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<bodyInputItem22[]>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/{1}/recipients/{2}/tabs", __workflow_accountId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1), __workflow_recipientId.WithUrlEncoding(1)));
@@ -806,7 +769,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["instanceName"] = ExpressionConverter.Convert(__workflow_instanceName);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_variable);
+                if (__workflow_variable != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_variable);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -820,7 +784,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                 var apiCallPath = "/build_number";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_buildNumber);
+                if (__workflow_buildNumber != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_buildNumber);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -880,56 +845,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
                     callPayload.Queries["signatureType"] = ExpressionConverter.Convert(__workflow_signatureType);
                 if (__workflow_workflowId != null)
                     callPayload.Queries["workflowId"] = ExpressionConverter.Convert(__workflow_workflowId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalRecipientParams);
+                if (__workflow_additionalRecipientParams != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_additionalRecipientParams);
                 return new ApiConnectionAction<Signer>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateBlankEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> emailSubject, Expression<Func<string>> bodyemailBody = null, Expression<Func<object>> bodyaccountCustomFields = null)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateBlankEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> emailSubject, Expression<Func<CreateBlankEnvelopeV2Input>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_emailSubject = WorkflowExpression.Compile(emailSubject, nameof(emailSubject), required: true);
-            var __workflow_bodyemailBody = WorkflowExpression.Compile(bodyemailBody, nameof(bodyemailBody), required: false);
-            var __workflow_bodyaccountCustomFields = WorkflowExpression.Compile(bodyaccountCustomFields, nameof(bodyaccountCustomFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/createBlankEnvelopeV2", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["emailSubject"] = ExpressionConverter.Convert(__workflow_emailSubject);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyemailBody != null)
-                {
-                    body["emailBlurb"] = ExpressionConverter.ConvertO(__workflow_bodyemailBody);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaccountCustomFields != null)
-                {
-                    body["AccountCustomFields"] = ExpressionConverter.ConvertO(__workflow_bodyaccountCustomFields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateEnvelopeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<EmbeddedSigningResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSigningURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<isInPersonSignerInput>> isInPersonSigner, Expression<Func<authenticationMethodInput>> authenticationMethod, Expression<Func<returnUrlInput>> returnUrl, Expression<Func<object>> additionalURL = null)
+        public IBodyWorkflowAction<EmbeddedSigningResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSigningURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<isInPersonSignerInput>> isInPersonSigner, Expression<Func<authenticationMethodInput>> authenticationMethod, Expression<Func<returnUrlInput>> returnUrl, Expression<Func<object>> additionalURL)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_isInPersonSigner = WorkflowExpression.Compile(isInPersonSigner, nameof(isInPersonSigner), required: true);
             var __workflow_authenticationMethod = WorkflowExpression.Compile(authenticationMethod, nameof(authenticationMethod), required: true);
             var __workflow_returnUrl = WorkflowExpression.Compile(returnUrl, nameof(returnUrl), required: true);
-            var __workflow_additionalURL = WorkflowExpression.Compile(additionalURL, nameof(additionalURL), required: false);
+            var __workflow_additionalURL = WorkflowExpression.Compile(additionalURL, nameof(additionalURL), required: true);
             return new DeferredBodyAction<EmbeddedSigningResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/envelopes/{1}/views/recipientV2", __workflow_accountId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1)));
@@ -965,72 +913,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
 
     public class DocusignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateOrgHookEnvelope(Expression<Func<string>> organizationId, Expression<Func<string>> bodyconnectConfigurationName, Expression<Func<bodytriggerEventsInputItem[]>> bodytriggerEvents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateOrgHookEnvelope(Expression<Func<string>> organizationId, Expression<Func<CreateOrgHookEnvelopeInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
-            var __workflow_bodyconnectConfigurationName = WorkflowExpression.Compile(bodyconnectConfigurationName, nameof(bodyconnectConfigurationName), required: true);
-            var __workflow_bodytriggerEvents = WorkflowExpression.Compile(bodytriggerEvents, nameof(bodytriggerEvents), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Management/v2/organizations/{0}/connect", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["allUsers"] = "true";
-                bodypropCount++;
-                body["allowEnvelopePublish"] = "true";
-                bodypropCount++;
-                body["includeDocumentFields"] = "true";
-                bodypropCount++;
-                body["requiresAcknowledgement"] = "true";
-                bodypropCount++;
-                body["urlToPublishTo"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyconnectConfigurationName);
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodytriggerEvents);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateHookEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> bodyconnectConfigurationName, Expression<Func<bodytriggerEventsInputItem[]>> bodytriggerEvents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateHookEnvelope(Expression<Func<string>> accountId, Expression<Func<CreateHookEnvelopeV4Input>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyconnectConfigurationName = WorkflowExpression.Compile(bodyconnectConfigurationName, nameof(bodyconnectConfigurationName), required: true);
-            var __workflow_bodytriggerEvents = WorkflowExpression.Compile(bodytriggerEvents, nameof(bodytriggerEvents), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts/{0}/connectV4", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["allUsers"] = "true";
-                bodypropCount++;
-                body["allowEnvelopePublish"] = "true";
-                bodypropCount++;
-                body["includeDocumentFields"] = "true";
-                bodypropCount++;
-                body["requiresAcknowledgement"] = "true";
-                bodypropCount++;
-                body["urlToPublishTo"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyconnectConfigurationName);
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodytriggerEvents);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
@@ -1500,6 +1406,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         ArmenianHy
     }
 
+    public class ApplyTemplatesToDocumentsInput
+    {
+        [JsonProperty("documentTemplates")]
+        public ApplyTemplatesToDocumentsInputDocumentTemplatesTypeItem[] DocumentTemplates { get; set; }
+    }
+
+    public class ApplyTemplatesToDocumentsInputDocumentTemplatesTypeItem
+    {
+        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("documentStartPage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentStartPage { get; set; }
+
+        [JsonProperty("documentEndPage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentEndPage { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum preserveTemplateRecipientInput
     {
@@ -1507,22 +1431,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         True
     }
 
-    public class bodydocumentTemplatesInputItem
-    {
-        [JsonProperty("documentId")]
-        public string DocumentId { get; set; }
-
-        [JsonProperty("documentStartPage")]
-        public string DocumentStartPage { get; set; }
-
-        [JsonProperty("documentEndPage")]
-        public string DocumentEndPage { get; set; }
-    }
-
     public class BulkSendListGuidInfo
     {
         [JsonProperty("listId")]
         public string BulkSendListGuid { get; set; }
+    }
+
+    public class CreateBulkSendListInput
+    {
+        [JsonProperty("csv")]
+        public string CSVFile { get; set; }
+
+        [JsonProperty("rawOutput")]
+        public JToken DocumentGenerationFields { get; set; }
     }
 
     public class GetLoginAccountsResponse
@@ -1588,26 +1509,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string Message { get; set; }
     }
 
-    public class bodyunnamedInputItem
+    public class AddDocumentsToEnvelopeInput
     {
-        [JsonProperty("documentBase64")]
+        [JsonProperty("documents")]
+        public AddDocumentsToEnvelopeInputUnnamedTypeItem[] Unnamed { get; set; }
+    }
+
+    public class AddDocumentsToEnvelopeInputUnnamedTypeItem
+    {
+        [JsonProperty("documentBase64", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentBase64 { get; set; }
 
-        [JsonProperty("fileExtension")]
+        [JsonProperty("fileExtension", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentType { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentName { get; set; }
 
         [JsonProperty("transformPdfFields")]
-        public bodyunnamedInputItemTransformPdfFieldsType TransformPdfFields { get; set; }
+        public AddDocumentsToEnvelopeInputUnnamedTypeItemTransformPdfFieldsType? TransformPdfFields { get; set; }
 
         [JsonProperty("assignTabsToRecipientId")]
         public string AssignTabsToRecipient { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyunnamedInputItemTransformPdfFieldsType
+    public enum AddDocumentsToEnvelopeInputUnnamedTypeItemTransformPdfFieldsType
     {
         False,
         True
@@ -1656,6 +1583,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     {
         [JsonProperty("recipientTabs")]
         public Tab[] RecipientTab { get; set; }
+    }
+
+    public class CreateBlankEnvelopeV2Input
+    {
+        [JsonProperty("emailBlurb")]
+        public string EmailBody { get; set; }
+        public JToken AccountCustomFields { get; set; }
     }
 
     public class EmbeddedSigningResponse
@@ -1738,8 +1672,157 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         Spanish
     }
 
+    public class CreateOrgHookEnvelopeInput
+    {
+        [JsonProperty("allUsers", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string AllUsers { get; set; } = "true";
+
+        [JsonProperty("allowEnvelopePublish", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string AllowEnvelopePublish { get; set; } = "true";
+
+        [JsonProperty("includeDocumentFields", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string IncludeDocumentFields { get; set; } = "true";
+
+        [JsonProperty("requiresAcknowledgement", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string RequiresAcknowledgement { get; set; } = "true";
+
+        [JsonProperty("urlToPublishTo", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string UrlToPublishTo { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConnectConfigurationName { get; set; }
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateOrgHookEnvelopeInputTriggerEventsTypeItem[] TriggerEvents { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytriggerEventsInputItem
+    public enum CreateOrgHookEnvelopeInputTriggerEventsTypeItem
+    {
+        [EnumMember(Value = "envelope-completed")]
+        EnvelopeCompleted,
+        [EnumMember(Value = "envelope-corrected")]
+        EnvelopeCorrected,
+        [EnumMember(Value = "envelope-created")]
+        EnvelopeCreated,
+        [EnumMember(Value = "envelope-declined")]
+        EnvelopeDeclined,
+        [EnumMember(Value = "envelope-deleted")]
+        EnvelopeDeleted,
+        [EnumMember(Value = "envelope-delivered")]
+        EnvelopeDelivered,
+        [EnumMember(Value = "envelope-discard")]
+        EnvelopeDiscard,
+        [EnumMember(Value = "envelope-purge")]
+        EnvelopePurge,
+        [EnumMember(Value = "envelope-removed")]
+        EnvelopeRemoved,
+        [EnumMember(Value = "envelope-reminder-sent")]
+        EnvelopeReminderSent,
+        [EnumMember(Value = "envelope-resent")]
+        EnvelopeResent,
+        [EnumMember(Value = "envelope-voided")]
+        EnvelopeVoided,
+        [EnumMember(Value = "envelope-sent")]
+        EnvelopeSent,
+        [EnumMember(Value = "recipient-authenticationfailed")]
+        RecipientAuthenticationfailed,
+        [EnumMember(Value = "recipient-autoresponded")]
+        RecipientAutoresponded,
+        [EnumMember(Value = "recipient-completed")]
+        RecipientCompleted,
+        [EnumMember(Value = "recipient-declined")]
+        RecipientDeclined,
+        [EnumMember(Value = "recipient-delegate")]
+        RecipientDelegate,
+        [EnumMember(Value = "recipient-delivered")]
+        RecipientDelivered,
+        [EnumMember(Value = "recipient-finish-later")]
+        RecipientFinishLater,
+        [EnumMember(Value = "recipient-reassign")]
+        RecipientReassign,
+        [EnumMember(Value = "recipient-resent")]
+        RecipientResent,
+        [EnumMember(Value = "recipient-sent")]
+        RecipientSent,
+        [EnumMember(Value = "template-created")]
+        TemplateCreated,
+        [EnumMember(Value = "template-deleted")]
+        TemplateDeleted,
+        [EnumMember(Value = "template-modified")]
+        TemplateModified,
+        [EnumMember(Value = "click-agreed")]
+        ClickAgreed,
+        [EnumMember(Value = "click-declined")]
+        ClickDeclined,
+        [EnumMember(Value = "sms-opt-in")]
+        SmsOptIn,
+        [EnumMember(Value = "sms-opt-out")]
+        SmsOptOut,
+        [EnumMember(Value = "workflow-started")]
+        WorkflowStarted,
+        [EnumMember(Value = "workflow-failed")]
+        WorkflowFailed,
+        [EnumMember(Value = "workflow-completed")]
+        WorkflowCompleted,
+        [EnumMember(Value = "identity-verification-completed")]
+        IdentityVerificationCompleted,
+        [EnumMember(Value = "identity-verification-pending")]
+        IdentityVerificationPending,
+        [EnumMember(Value = "extension-executed")]
+        ExtensionExecuted,
+        [EnumMember(Value = "notary-session-signer-locked")]
+        NotarySessionSignerLocked,
+        [EnumMember(Value = "notary-session-signer-unlocked")]
+        NotarySessionSignerUnlocked,
+        [EnumMember(Value = "notary-session-terminated")]
+        NotarySessionTerminated,
+        [EnumMember(Value = "notary-session-paused")]
+        NotarySessionPaused,
+        [EnumMember(Value = "notary-session-status-updated")]
+        NotarySessionStatusUpdated,
+        [EnumMember(Value = "notary-session-notary-assigned")]
+        NotarySessionNotaryAssigned,
+        [EnumMember(Value = "notary-session-notary-removed")]
+        NotarySessionNotaryRemoved,
+        [EnumMember(Value = "agreement-created")]
+        AgreementCreated,
+        [EnumMember(Value = "agreement-updated")]
+        AgreementUpdated,
+        [EnumMember(Value = "agreement-deleted")]
+        AgreementDeleted,
+        [EnumMember(Value = "agreement-reviews-completed")]
+        AgreementReviewsCompleted,
+        [EnumMember(Value = "agreement-extractions-reviewed")]
+        AgreementExtractionsReviewed
+    }
+
+    public class CreateHookEnvelopeV4Input
+    {
+        [JsonProperty("allUsers", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string AllUsers { get; set; } = "true";
+
+        [JsonProperty("allowEnvelopePublish", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string AllowEnvelopePublish { get; set; } = "true";
+
+        [JsonProperty("includeDocumentFields", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string IncludeDocumentFields { get; set; } = "true";
+
+        [JsonProperty("requiresAcknowledgement", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string RequiresAcknowledgement { get; set; } = "true";
+
+        [JsonProperty("urlToPublishTo", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string UrlToPublishTo { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConnectConfigurationName { get; set; }
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateHookEnvelopeV4InputTriggerEventsTypeItem[] TriggerEvents { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateHookEnvelopeV4InputTriggerEventsTypeItem
     {
         [EnumMember(Value = "envelope-completed")]
         EnvelopeCompleted,

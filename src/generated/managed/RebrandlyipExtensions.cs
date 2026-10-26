@@ -67,56 +67,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<string>> bodydestination = null, Expression<Func<string>> bodyslashtag = null, Expression<Func<string>> bodydomainid = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<CreateLinkInput>> body = null)
         {
-            var __workflow_bodydestination = WorkflowExpression.Compile(bodydestination, nameof(bodydestination), required: false);
-            var __workflow_bodyslashtag = WorkflowExpression.Compile(bodyslashtag, nameof(bodyslashtag), required: false);
-            var __workflow_bodydomainid = WorkflowExpression.Compile(bodydomainid, nameof(bodydomainid), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/links";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydestination != null)
-                {
-                    body["destination"] = ExpressionConverter.ConvertO(__workflow_bodydestination);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyslashtag != null)
-                {
-                    body["slashtag"] = ExpressionConverter.ConvertO(__workflow_bodyslashtag);
-                    bodypropCount++;
-                }
-
-                var domainObject = new JObject();
-                var domainObjectpropCount = 0;
-                if (__workflow_bodydomainid != null)
-                {
-                    domainObject["id"] = ExpressionConverter.ConvertO(__workflow_bodydomainid);
-                    domainObjectpropCount++;
-                }
-
-                if (domainObjectpropCount > 0)
-                {
-                    body["domain"] = domainObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateLinkResponse>(callPayload);
             });
         }
@@ -175,12 +135,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null, Expression<Func<string>> bodydestinationURL = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null, Expression<Func<UpdateLinkInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
-            var __workflow_bodydestinationURL = WorkflowExpression.Compile(bodydestinationURL, nameof(bodydestinationURL), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -188,25 +147,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_workspace != null)
                     callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydestinationURL != null)
-                {
-                    body["destination"] = ExpressionConverter.ConvertO(__workflow_bodydestinationURL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateLinkResponse>(callPayload);
             });
         }
@@ -423,6 +365,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         public string FullName { get; set; }
     }
 
+    public class CreateLinkInput
+    {
+        [JsonProperty("destination")]
+        public string Destination { get; set; }
+
+        [JsonProperty("slashtag")]
+        public string Slashtag { get; set; }
+
+        [JsonProperty("domain")]
+        public CreateLinkInputDomainType Domain { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
+    public class CreateLinkInputDomainType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
     public class ListWorkspacesResponseItem
     {
         [JsonProperty("id")]
@@ -544,6 +507,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
 
         [JsonProperty("fullName")]
         public string FullName { get; set; }
+    }
+
+    public class UpdateLinkInput
+    {
+        [JsonProperty("destination")]
+        public string DestinationURL { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
     }
 }
 

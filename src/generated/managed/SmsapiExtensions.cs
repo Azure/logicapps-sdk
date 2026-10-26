@@ -13,65 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
     public class SmsapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsapi")]
-        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodygroup = null, Expression<Func<int>> bodyfast = null)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsInput>> body)
         {
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
-            var __workflow_bodyfast = WorkflowExpression.Compile(bodyfast, nameof(bodyfast), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms.do";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                body["format"] = "json";
-                bodypropCount++;
-                if (__workflow_bodyto != null)
-                {
-                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfrom != null)
-                {
-                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                    bodypropCount++;
-                }
-
-                body["encoding"] = "utf-8";
-                bodypropCount++;
-                if (__workflow_bodygroup != null)
-                {
-                    body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfast != null)
-                {
-                    if (__workflow_bodyfast != null)
-                    {
-                        body["fast"] = ExpressionConverter.ConvertO(__workflow_bodyfast);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["fast"] = 0;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
@@ -121,6 +71,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
 
         [JsonProperty("submitted_number")]
         public string SubmittedNumber { get; set; }
+    }
+
+    public class SendSmsInput
+    {
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Format { get; set; } = "json";
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Encoding { get; set; } = "utf-8";
+
+        [JsonProperty("group")]
+        public string Group { get; set; }
+
+        [JsonProperty("fast", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Fast { get; set; } = 0;
     }
 }
 

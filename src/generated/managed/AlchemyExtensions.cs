@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
     public class AlchemyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration> GetSelfHelpInsights(Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration> GetSelfHelpInsights(Expression<Func<GetSelfHelpInsightsInput>> body)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetSelfHelpInsightsResponse>(callPayload);
             });
         }
@@ -58,6 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
     public class GetSelfHelpInsightsResponseAIInsightsType
     {
         public string GPTInsight { get; set; }
+    }
+
+    public class GetSelfHelpInsightsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
     }
 }
 

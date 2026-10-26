@@ -16,52 +16,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
 
     public class WorkfronteventsubscrTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration> OnWorkfrontEvent(Expression<Func<bodyobjectTypeInput>> bodyobjectType, Expression<Func<bodyeventTypeInput>> bodyeventType, Expression<Func<bodyeventFiltersInputItem[]>> bodyeventFilters = null, Expression<Func<bodyfilterConnectorInput>> bodyfilterConnector = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration> OnWorkfrontEvent(Expression<Func<OnWorkfrontEventInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: true);
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
-            var __workflow_bodyeventFilters = WorkflowExpression.Compile(bodyeventFilters, nameof(bodyeventFilters), required: false);
-            var __workflow_bodyfilterConnector = WorkflowExpression.Compile(bodyfilterConnector, nameof(bodyfilterConnector), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/attask/eventsubscription/api/v1/subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["objCode"] = ExpressionConverter.ConvertO(__workflow_bodyobjectType);
-                bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyeventFilters != null)
-                {
-                    body["filters"] = ExpressionConverter.ConvertO(__workflow_bodyeventFilters);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilterConnector != null)
-                {
-                    if (__workflow_bodyfilterConnector != null)
-                    {
-                        body["filterConnector"] = ExpressionConverter.ConvertO(__workflow_bodyfilterConnector);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["filterConnector"] = "AND";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<OnWorkfrontEventResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -76,8 +39,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
         public string Version { get; set; }
     }
 
+    public class OnWorkfrontEventInput
+    {
+        [JsonProperty("objCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OnWorkfrontEventInputObjectTypeType ObjectType { get; set; }
+
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OnWorkfrontEventInputEventTypeType EventType { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("filters")]
+        public OnWorkfrontEventInputEventFiltersTypeItem[] EventFilters { get; set; }
+
+        [JsonProperty("filterConnector", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OnWorkfrontEventInputFilterConnectorType? FilterConnector { get; set; } = OnWorkfrontEventInputFilterConnectorType.AND;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyobjectTypeInput
+    public enum OnWorkfrontEventInputObjectTypeType
     {
         PROJ,
         [EnumMember(Value = "TASK")]
@@ -98,30 +79,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventTypeInput
+    public enum OnWorkfrontEventInputEventTypeType
     {
         CREATE,
         UPDATE,
         DELETE
     }
 
-    public class bodyeventFiltersInputItem
+    public class OnWorkfrontEventInputEventFiltersTypeItem
     {
-        [JsonProperty("fieldName")]
+        [JsonProperty("fieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
 
-        [JsonProperty("fieldValue")]
+        [JsonProperty("fieldValue", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldValue { get; set; }
 
-        [JsonProperty("state")]
-        public bodyeventFiltersInputItemStateType State { get; set; }
+        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OnWorkfrontEventInputEventFiltersTypeItemStateType? State { get; set; } = OnWorkfrontEventInputEventFiltersTypeItemStateType.NewState;
 
-        [JsonProperty("comparison")]
-        public bodyeventFiltersInputItemComparisonOperatorType ComparisonOperator { get; set; }
+        [JsonProperty("comparison", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OnWorkfrontEventInputEventFiltersTypeItemComparisonOperatorType? ComparisonOperator { get; set; } = OnWorkfrontEventInputEventFiltersTypeItemComparisonOperatorType.Eq;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventFiltersInputItemStateType
+    public enum OnWorkfrontEventInputEventFiltersTypeItemStateType
     {
         [EnumMember(Value = "newState")]
         NewState,
@@ -130,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventFiltersInputItemComparisonOperatorType
+    public enum OnWorkfrontEventInputEventFiltersTypeItemComparisonOperatorType
     {
         [EnumMember(Value = "eq")]
         Eq,
@@ -149,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyfilterConnectorInput
+    public enum OnWorkfrontEventInputFilterConnectorType
     {
         AND,
         OR

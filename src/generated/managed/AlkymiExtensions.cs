@@ -187,36 +187,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
 
     public class AlkymiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration> EventListener(Expression<Func<string>> bodydisplayName = null, Expression<Func<bodyeventsInputItem[]>> bodyevents = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration> EventListener(Expression<Func<EventListenerInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/webhooks/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodydisplayName != null)
-                {
-                    body["display_name"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyevents != null)
-                {
-                    body["events"] = ExpressionConverter.ConvertO(__workflow_bodyevents);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebHookCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -502,8 +482,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         public string Uuid { get; set; }
     }
 
+    public class EventListenerInput
+    {
+        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Target { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("events")]
+        public EventListenerInputEventsTypeItem[] Events { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventsInputItem
+    public enum EventListenerInputEventsTypeItem
     {
         [EnumMember(Value = "on_execution_upload_start")]
         OnExecutionUploadStart,

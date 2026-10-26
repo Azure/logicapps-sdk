@@ -13,27 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
     public class WhatismybrowseripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        public IBodyWorkflowAction<DetectPostResponse, ApiConnectionActionConfiguration> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
+        public IBodyWorkflowAction<DetectPostResponse, ApiConnectionActionConfiguration> Detect(Expression<Func<DetectPostInput>> body = null)
         {
-            var __workflow_bodyheaders = WorkflowExpression.Compile(bodyheaders, nameof(bodyheaders), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DetectPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyheaders != null)
-                {
-                    body["headers"] = ExpressionConverter.ConvertO(__workflow_bodyheaders);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DetectPostResponse>(callPayload);
             });
         }
@@ -205,7 +194,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         public string Message { get; set; }
     }
 
-    public class bodyheadersInputItem
+    public class DetectPostInput
+    {
+        [JsonProperty("headers")]
+        public DetectPostInputHeadersTypeItem[] Headers { get; set; }
+    }
+
+    public class DetectPostInputHeadersTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

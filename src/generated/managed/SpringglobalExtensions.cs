@@ -49,44 +49,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class SpringglobalTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnSurveyExecution(Expression<Func<string>> bodyparameterssurveyId = null, Expression<Func<string>> bodyparameterspublicationId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnSurveyExecution(Expression<Func<OnSurveyExecutionInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyparameterssurveyId = WorkflowExpression.Compile(bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
-            var __workflow_bodyparameterspublicationId = WorkflowExpression.Compile(bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook-service/subscribe/surveyexecution";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparameterssurveyId != null)
-                {
-                    parametersObject["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodyparameterssurveyId);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterspublicationId != null)
-                {
-                    parametersObject["publicationId"] = ExpressionConverter.ConvertO(__workflow_bodyparameterspublicationId);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -114,6 +86,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
         [JsonProperty("email")]
         public string Email { get; set; }
+    }
+
+    public class OnSurveyExecutionInput
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OnSurveyExecutionInputParametersType Parameters { get; set; }
+    }
+
+    public class OnSurveyExecutionInputParametersType
+    {
+        [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SurveyId { get; set; }
+
+        [JsonProperty("publicationId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublicationId { get; set; }
     }
 }
 

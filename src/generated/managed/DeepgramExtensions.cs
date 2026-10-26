@@ -13,9 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     public class DeepgramActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<TranscribePostResponse, ApiConnectionActionConfiguration> Transcribe(Expression<Func<string>> bodyurl, Expression<Func<modelInput>> model = null, Expression<Func<tierInput>> tier = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<redactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null)
+        public IBodyWorkflowAction<TranscribePostResponse, ApiConnectionActionConfiguration> Transcribe(Expression<Func<modelInput>> model = null, Expression<Func<tierInput>> tier = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<redactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null, Expression<Func<TranscribePostInput>> body = null)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
             var __workflow_tier = WorkflowExpression.Compile(tier, nameof(tier), required: false);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
@@ -44,6 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             var __workflow_ner = WorkflowExpression.Compile(ner, nameof(ner), required: false);
             var __workflow_measurements = WorkflowExpression.Compile(measurements, nameof(measurements), required: false);
             var __workflow_dictation = WorkflowExpression.Compile(dictation, nameof(dictation), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TranscribePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/listen";
@@ -105,15 +105,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                     callPayload.Queries["measurements"] = ExpressionConverter.Convert(__workflow_measurements);
                 if (__workflow_dictation != null)
                     callPayload.Queries["dictation"] = ExpressionConverter.Convert(__workflow_dictation);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TranscribePostResponse>(callPayload);
             });
         }
@@ -157,24 +150,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<ProjectPatchResponse, ApiConnectionActionConfiguration> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<ProjectPatchResponse, ApiConnectionActionConfiguration> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<ProjectPatchInput>> body = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ProjectPatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProjectPatchResponse>(callPayload);
             });
         }
@@ -445,6 +431,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         Ssn
     }
 
+    public class TranscribePostInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+    }
+
     public class ProjectsGetResponse
     {
         [JsonProperty("projects")]
@@ -476,6 +468,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     {
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class ProjectPatchInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
     }
 
     public class RequestsGetResponse

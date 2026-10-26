@@ -13,40 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
     public class HashgeneratoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
-        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<string>> bodyString, Expression<Func<bodytypeInput>> bodytype = null)
+        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<HashInput>> body = null)
         {
-            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<HashResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
-                if (__workflow_bodytype != null)
-                {
-                    if (__workflow_bodytype != null)
-                    {
-                        body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["type"] = "sha1";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<HashResponse>(callPayload);
             });
         }
@@ -65,8 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
         public string ValueToHash { get; set; }
     }
 
+    public class HashInput
+    {
+        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string String { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HashInputTypeType? Type { get; set; } = HashInputTypeType.SHA1;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum HashInputTypeType
     {
         [EnumMember(Value = "sha1")]
         SHA1,

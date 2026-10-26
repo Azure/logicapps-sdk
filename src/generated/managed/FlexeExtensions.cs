@@ -13,50 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
     public class FlexeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProducts(Expression<Func<bodydatadropoffListInputItem[]>> bodydatadropoffList = null, Expression<Func<string>> bodymetacorrelationId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProducts(Expression<Func<NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInput>> body)
         {
-            var __workflow_bodydatadropoffList = WorkflowExpression.Compile(bodydatadropoffList, nameof(bodydatadropoffList), required: false);
-            var __workflow_bodymetacorrelationId = WorkflowExpression.Compile(bodymetacorrelationId, nameof(bodymetacorrelationId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/shipper/dropoff/container";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (__workflow_bodydatadropoffList != null)
-                {
-                    dataObject["dropoffList"] = ExpressionConverter.ConvertO(__workflow_bodydatadropoffList);
-                    dataObjectpropCount++;
-                }
-
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetacorrelationId != null)
-                {
-                    metaObject["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodymetacorrelationId);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -127,375 +92,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateRetailFulfillmentOrder(Expression<Func<string>> bodydatareservationid, Expression<Func<string>> bodydatareservationtype, Expression<Func<string>> bodydatashipmentcustomerUUID, Expression<Func<bodydatashipmentinventoryInputItem[]>> bodydatashipmentinventory, Expression<Func<string>> bodydatashipmenttype, Expression<Func<string>> bodydatashipmentshipToaddressLine1 = null, Expression<Func<string>> bodydatashipmentshipTocountry = null, Expression<Func<string>> bodydatashipmentshipTolocality = null, Expression<Func<string>> bodydatashipmentshipToname = null, Expression<Func<string>> bodydatashipmentshipTopostcode = null, Expression<Func<string>> bodydatashipmentshipToregion = null, Expression<Func<string>> bodydatashipmentshipToaddressLine2 = null, Expression<Func<string>> bodydatashipmentshipToaddressLine3 = null, Expression<Func<string>> bodydatashipmentshipTophone = null, Expression<Func<string>> bodydatashipmentshipToemail = null, Expression<Func<string>> bodydatashipmentshipWithinend = null, Expression<Func<string>> bodydatashipmentshipWithinstart = null, Expression<Func<string>> bodydatashipmentshipmentType = null, Expression<Func<string>> bodydatashipmentshipmentMethod = null, Expression<Func<string>> bodydatashipmentpurchaseOrder = null, Expression<Func<string>> bodydatashipmentrouteBy = null, Expression<Func<string>> bodydatashipmentinstructions = null, Expression<Func<string>> bodydatashipmentlabelGenerationDatacarrier = null, Expression<Func<string>> bodydatashipmentlabelGenerationDatacarrierServiceType = null, Expression<Func<string>> bodydatashipmentlabelGenerationDatacarrierBillingAccountId = null, Expression<Func<string>> bodydatashipmentbolGenerationDatags1usnumber = null, Expression<Func<string>> bodydatashipmentbolGenerationDatags1usshipTovalue = null, Expression<Func<string>> bodydatashipmentbolGenerationDatags1usbillTovalue = null, Expression<Func<string>> bodydatashipmentbolGenerationDatatype = null, Expression<Func<string>> bodydatashipmentroutingDetailsId = null, Expression<Func<string>> bodydatashipmentdestinationType = null, Expression<Func<string>> bodydatashipmentdestinationRetailer = null, Expression<Func<string>> bodymetacorrelationId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateRetailFulfillmentOrder(Expression<Func<CreateRetailFulfillmentOrderInput>> body)
         {
-            var __workflow_bodydatareservationid = WorkflowExpression.Compile(bodydatareservationid, nameof(bodydatareservationid), required: true);
-            var __workflow_bodydatareservationtype = WorkflowExpression.Compile(bodydatareservationtype, nameof(bodydatareservationtype), required: true);
-            var __workflow_bodydatashipmentcustomerUUID = WorkflowExpression.Compile(bodydatashipmentcustomerUUID, nameof(bodydatashipmentcustomerUUID), required: true);
-            var __workflow_bodydatashipmentinventory = WorkflowExpression.Compile(bodydatashipmentinventory, nameof(bodydatashipmentinventory), required: true);
-            var __workflow_bodydatashipmenttype = WorkflowExpression.Compile(bodydatashipmenttype, nameof(bodydatashipmenttype), required: true);
-            var __workflow_bodydatashipmentshipToaddressLine1 = WorkflowExpression.Compile(bodydatashipmentshipToaddressLine1, nameof(bodydatashipmentshipToaddressLine1), required: false);
-            var __workflow_bodydatashipmentshipTocountry = WorkflowExpression.Compile(bodydatashipmentshipTocountry, nameof(bodydatashipmentshipTocountry), required: false);
-            var __workflow_bodydatashipmentshipTolocality = WorkflowExpression.Compile(bodydatashipmentshipTolocality, nameof(bodydatashipmentshipTolocality), required: false);
-            var __workflow_bodydatashipmentshipToname = WorkflowExpression.Compile(bodydatashipmentshipToname, nameof(bodydatashipmentshipToname), required: false);
-            var __workflow_bodydatashipmentshipTopostcode = WorkflowExpression.Compile(bodydatashipmentshipTopostcode, nameof(bodydatashipmentshipTopostcode), required: false);
-            var __workflow_bodydatashipmentshipToregion = WorkflowExpression.Compile(bodydatashipmentshipToregion, nameof(bodydatashipmentshipToregion), required: false);
-            var __workflow_bodydatashipmentshipToaddressLine2 = WorkflowExpression.Compile(bodydatashipmentshipToaddressLine2, nameof(bodydatashipmentshipToaddressLine2), required: false);
-            var __workflow_bodydatashipmentshipToaddressLine3 = WorkflowExpression.Compile(bodydatashipmentshipToaddressLine3, nameof(bodydatashipmentshipToaddressLine3), required: false);
-            var __workflow_bodydatashipmentshipTophone = WorkflowExpression.Compile(bodydatashipmentshipTophone, nameof(bodydatashipmentshipTophone), required: false);
-            var __workflow_bodydatashipmentshipToemail = WorkflowExpression.Compile(bodydatashipmentshipToemail, nameof(bodydatashipmentshipToemail), required: false);
-            var __workflow_bodydatashipmentshipWithinend = WorkflowExpression.Compile(bodydatashipmentshipWithinend, nameof(bodydatashipmentshipWithinend), required: false);
-            var __workflow_bodydatashipmentshipWithinstart = WorkflowExpression.Compile(bodydatashipmentshipWithinstart, nameof(bodydatashipmentshipWithinstart), required: false);
-            var __workflow_bodydatashipmentshipmentType = WorkflowExpression.Compile(bodydatashipmentshipmentType, nameof(bodydatashipmentshipmentType), required: false);
-            var __workflow_bodydatashipmentshipmentMethod = WorkflowExpression.Compile(bodydatashipmentshipmentMethod, nameof(bodydatashipmentshipmentMethod), required: false);
-            var __workflow_bodydatashipmentpurchaseOrder = WorkflowExpression.Compile(bodydatashipmentpurchaseOrder, nameof(bodydatashipmentpurchaseOrder), required: false);
-            var __workflow_bodydatashipmentrouteBy = WorkflowExpression.Compile(bodydatashipmentrouteBy, nameof(bodydatashipmentrouteBy), required: false);
-            var __workflow_bodydatashipmentinstructions = WorkflowExpression.Compile(bodydatashipmentinstructions, nameof(bodydatashipmentinstructions), required: false);
-            var __workflow_bodydatashipmentlabelGenerationDatacarrier = WorkflowExpression.Compile(bodydatashipmentlabelGenerationDatacarrier, nameof(bodydatashipmentlabelGenerationDatacarrier), required: false);
-            var __workflow_bodydatashipmentlabelGenerationDatacarrierServiceType = WorkflowExpression.Compile(bodydatashipmentlabelGenerationDatacarrierServiceType, nameof(bodydatashipmentlabelGenerationDatacarrierServiceType), required: false);
-            var __workflow_bodydatashipmentlabelGenerationDatacarrierBillingAccountId = WorkflowExpression.Compile(bodydatashipmentlabelGenerationDatacarrierBillingAccountId, nameof(bodydatashipmentlabelGenerationDatacarrierBillingAccountId), required: false);
-            var __workflow_bodydatashipmentbolGenerationDatags1usnumber = WorkflowExpression.Compile(bodydatashipmentbolGenerationDatags1usnumber, nameof(bodydatashipmentbolGenerationDatags1usnumber), required: false);
-            var __workflow_bodydatashipmentbolGenerationDatags1usshipTovalue = WorkflowExpression.Compile(bodydatashipmentbolGenerationDatags1usshipTovalue, nameof(bodydatashipmentbolGenerationDatags1usshipTovalue), required: false);
-            var __workflow_bodydatashipmentbolGenerationDatags1usbillTovalue = WorkflowExpression.Compile(bodydatashipmentbolGenerationDatags1usbillTovalue, nameof(bodydatashipmentbolGenerationDatags1usbillTovalue), required: false);
-            var __workflow_bodydatashipmentbolGenerationDatatype = WorkflowExpression.Compile(bodydatashipmentbolGenerationDatatype, nameof(bodydatashipmentbolGenerationDatatype), required: false);
-            var __workflow_bodydatashipmentroutingDetailsId = WorkflowExpression.Compile(bodydatashipmentroutingDetailsId, nameof(bodydatashipmentroutingDetailsId), required: false);
-            var __workflow_bodydatashipmentdestinationType = WorkflowExpression.Compile(bodydatashipmentdestinationType, nameof(bodydatashipmentdestinationType), required: false);
-            var __workflow_bodydatashipmentdestinationRetailer = WorkflowExpression.Compile(bodydatashipmentdestinationRetailer, nameof(bodydatashipmentdestinationRetailer), required: false);
-            var __workflow_bodymetacorrelationId = WorkflowExpression.Compile(bodymetacorrelationId, nameof(bodymetacorrelationId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/shipper/fulfillment/retail";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                var reservationObject = new JObject();
-                var reservationObjectpropCount = 0;
-                reservationObjectpropCount++;
-                reservationObject["id"] = ExpressionConverter.ConvertO(__workflow_bodydatareservationid);
-                reservationObjectpropCount++;
-                reservationObject["type"] = ExpressionConverter.ConvertO(__workflow_bodydatareservationtype);
-                if (reservationObjectpropCount > 0)
-                {
-                    dataObject["reservation"] = reservationObject;
-                    dataObjectpropCount++;
-                }
-
-                var shipmentObject = new JObject();
-                var shipmentObjectpropCount = 0;
-                shipmentObjectpropCount++;
-                shipmentObject["customerUUID"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentcustomerUUID);
-                shipmentObjectpropCount++;
-                shipmentObject["inventory"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentinventory);
-                var shipToObject = new JObject();
-                var shipToObjectpropCount = 0;
-                if (__workflow_bodydatashipmentshipToaddressLine1 != null)
-                {
-                    shipToObject["addressLine1"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipToaddressLine1);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipTocountry != null)
-                {
-                    shipToObject["country"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipTocountry);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipTolocality != null)
-                {
-                    shipToObject["locality"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipTolocality);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipToname != null)
-                {
-                    shipToObject["name"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipToname);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipTopostcode != null)
-                {
-                    shipToObject["postcode"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipTopostcode);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipToregion != null)
-                {
-                    shipToObject["region"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipToregion);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipToaddressLine2 != null)
-                {
-                    shipToObject["addressLine2"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipToaddressLine2);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipToaddressLine3 != null)
-                {
-                    shipToObject["addressLine3"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipToaddressLine3);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipTophone != null)
-                {
-                    shipToObject["phone"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipTophone);
-                    shipToObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipToemail != null)
-                {
-                    shipToObject["email"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipToemail);
-                    shipToObjectpropCount++;
-                }
-
-                if (shipToObjectpropCount > 0)
-                {
-                    shipmentObject["shipTo"] = shipToObject;
-                    shipmentObjectpropCount++;
-                }
-
-                var shipWithinObject = new JObject();
-                var shipWithinObjectpropCount = 0;
-                if (__workflow_bodydatashipmentshipWithinend != null)
-                {
-                    shipWithinObject["end"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipWithinend);
-                    shipWithinObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipWithinstart != null)
-                {
-                    shipWithinObject["start"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipWithinstart);
-                    shipWithinObjectpropCount++;
-                }
-
-                if (shipWithinObjectpropCount > 0)
-                {
-                    shipmentObject["shipWithin"] = shipWithinObject;
-                    shipmentObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentshipmentType != null)
-                {
-                    shipmentObject["shipmentType"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipmentType);
-                    shipmentObjectpropCount++;
-                }
-
-                shipmentObjectpropCount++;
-                shipmentObject["type"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmenttype);
-                if (__workflow_bodydatashipmentshipmentMethod != null)
-                {
-                    shipmentObject["shipmentMethod"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentshipmentMethod);
-                    shipmentObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentpurchaseOrder != null)
-                {
-                    shipmentObject["purchaseOrder"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentpurchaseOrder);
-                    shipmentObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentrouteBy != null)
-                {
-                    shipmentObject["routeBy"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentrouteBy);
-                    shipmentObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentinstructions != null)
-                {
-                    shipmentObject["instructions"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentinstructions);
-                    shipmentObjectpropCount++;
-                }
-
-                var labelGenerationDataObject = new JObject();
-                var labelGenerationDataObjectpropCount = 0;
-                if (__workflow_bodydatashipmentlabelGenerationDatacarrier != null)
-                {
-                    labelGenerationDataObject["carrier"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentlabelGenerationDatacarrier);
-                    labelGenerationDataObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentlabelGenerationDatacarrierServiceType != null)
-                {
-                    labelGenerationDataObject["carrierServiceType"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentlabelGenerationDatacarrierServiceType);
-                    labelGenerationDataObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentlabelGenerationDatacarrierBillingAccountId != null)
-                {
-                    labelGenerationDataObject["carrierBillingAccountId"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentlabelGenerationDatacarrierBillingAccountId);
-                    labelGenerationDataObjectpropCount++;
-                }
-
-                if (labelGenerationDataObjectpropCount > 0)
-                {
-                    shipmentObject["labelGenerationData"] = labelGenerationDataObject;
-                    shipmentObjectpropCount++;
-                }
-
-                var bolGenerationDataObject = new JObject();
-                var bolGenerationDataObjectpropCount = 0;
-                var gs1usObject = new JObject();
-                var gs1usObjectpropCount = 0;
-                if (__workflow_bodydatashipmentbolGenerationDatags1usnumber != null)
-                {
-                    gs1usObject["number"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentbolGenerationDatags1usnumber);
-                    gs1usObjectpropCount++;
-                }
-
-                var shipToObject2 = new JObject();
-                var shipToObject2propCount = 0;
-                if (__workflow_bodydatashipmentbolGenerationDatags1usshipTovalue != null)
-                {
-                    shipToObject2["value"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentbolGenerationDatags1usshipTovalue);
-                    shipToObject2propCount++;
-                }
-
-                if (shipToObject2propCount > 0)
-                {
-                    gs1usObject["shipTo"] = shipToObject2;
-                    gs1usObjectpropCount++;
-                }
-
-                var billToObject = new JObject();
-                var billToObjectpropCount = 0;
-                if (__workflow_bodydatashipmentbolGenerationDatags1usbillTovalue != null)
-                {
-                    billToObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentbolGenerationDatags1usbillTovalue);
-                    billToObjectpropCount++;
-                }
-
-                if (billToObjectpropCount > 0)
-                {
-                    gs1usObject["billTo"] = billToObject;
-                    gs1usObjectpropCount++;
-                }
-
-                if (gs1usObjectpropCount > 0)
-                {
-                    bolGenerationDataObject["gs1us"] = gs1usObject;
-                    bolGenerationDataObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentbolGenerationDatatype != null)
-                {
-                    bolGenerationDataObject["type"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentbolGenerationDatatype);
-                    bolGenerationDataObjectpropCount++;
-                }
-
-                if (bolGenerationDataObjectpropCount > 0)
-                {
-                    shipmentObject["bolGenerationData"] = bolGenerationDataObject;
-                    shipmentObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentroutingDetailsId != null)
-                {
-                    shipmentObject["routingDetailsId"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentroutingDetailsId);
-                    shipmentObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentdestinationType != null)
-                {
-                    shipmentObject["destinationType"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentdestinationType);
-                    shipmentObjectpropCount++;
-                }
-
-                if (__workflow_bodydatashipmentdestinationRetailer != null)
-                {
-                    shipmentObject["destinationRetailer"] = ExpressionConverter.ConvertO(__workflow_bodydatashipmentdestinationRetailer);
-                    shipmentObjectpropCount++;
-                }
-
-                if (shipmentObjectpropCount > 0)
-                {
-                    dataObject["shipment"] = shipmentObject;
-                    dataObjectpropCount++;
-                }
-
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                var metaObject = new JObject();
-                var metaObjectpropCount = 0;
-                if (__workflow_bodymetacorrelationId != null)
-                {
-                    metaObject["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodymetacorrelationId);
-                    metaObjectpropCount++;
-                }
-
-                if (metaObjectpropCount > 0)
-                {
-                    body["meta"] = metaObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExistingRetailFulfillmentOrder(Expression<Func<string>> shipmentId, Expression<Func<string>> bodydatastate = null, Expression<Func<string>> bodydatascac = null, Expression<Func<string>> bodydatabolNumber = null, Expression<Func<string>> bodymeta = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExistingRetailFulfillmentOrder(Expression<Func<string>> shipmentId, Expression<Func<UpdateExistingRetailFulfillmentOrderInput>> body)
         {
             var __workflow_shipmentId = WorkflowExpression.Compile(shipmentId, nameof(shipmentId), required: true);
-            var __workflow_bodydatastate = WorkflowExpression.Compile(bodydatastate, nameof(bodydatastate), required: false);
-            var __workflow_bodydatascac = WorkflowExpression.Compile(bodydatascac, nameof(bodydatascac), required: false);
-            var __workflow_bodydatabolNumber = WorkflowExpression.Compile(bodydatabolNumber, nameof(bodydatabolNumber), required: false);
-            var __workflow_bodymeta = WorkflowExpression.Compile(bodymeta, nameof(bodymeta), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/shipper/fulfillment/retail/{0}", __workflow_shipmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (__workflow_bodydatastate != null)
-                {
-                    dataObject["state"] = ExpressionConverter.ConvertO(__workflow_bodydatastate);
-                    dataObjectpropCount++;
-                }
-
-                if (__workflow_bodydatascac != null)
-                {
-                    dataObject["scac"] = ExpressionConverter.ConvertO(__workflow_bodydatascac);
-                    dataObjectpropCount++;
-                }
-
-                if (__workflow_bodydatabolNumber != null)
-                {
-                    dataObject["bolNumber"] = ExpressionConverter.ConvertO(__workflow_bodydatabolNumber);
-                    dataObjectpropCount++;
-                }
-
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymeta != null)
-                {
-                    body["meta"] = ExpressionConverter.ConvertO(__workflow_bodymeta);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -503,61 +123,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
 
     public class FlexeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> Webhook(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> Webhook(Expression<Func<WebhookInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class bodydatadropoffListInputItem
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInput
+    {
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataType Data { get; set; }
+
+        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputMetaType Meta { get; set; }
+    }
+
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataType
+    {
+        [JsonProperty("dropoffList", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItem[] DropoffList { get; set; }
+    }
+
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItem
     {
         [JsonProperty("billOfLading")]
         public string BillOfLading { get; set; }
 
         [JsonProperty("inventory")]
-        public bodydatadropoffListInputItemInventoryTypeItem[] Inventory { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItem[] Inventory { get; set; }
 
         [JsonProperty("expectedInboundShipmentType")]
         public string ExpectedInboundShipmentType { get; set; }
 
-        [JsonProperty("customerUUID")]
+        [JsonProperty("customerUUID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerUUID { get; set; }
 
         [JsonProperty("containerNumber")]
         public string ContainerNumber { get; set; }
 
         [JsonProperty("valueOfGoods")]
-        public bodydatadropoffListInputItemValueOfGoodsType ValueOfGoods { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemValueOfGoodsType ValueOfGoods { get; set; }
 
-        [JsonProperty("purchaseOrderId")]
+        [JsonProperty("purchaseOrderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PurchaseOrderId { get; set; }
 
-        [JsonProperty("dropoffDate")]
+        [JsonProperty("dropoffDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DropoffDate { get; set; }
 
         [JsonProperty("containerSealNumber")]
         public string ContainerSealNumber { get; set; }
 
-        [JsonProperty("reservation")]
-        public bodydatadropoffListInputItemReservationType Reservation { get; set; }
+        [JsonProperty("reservation", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemReservationType Reservation { get; set; }
 
         [JsonProperty("suplierOrVendor")]
         public string SuplierOrVendor { get; set; }
@@ -566,58 +192,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Id { get; set; }
 
         [JsonProperty("lpns")]
-        public bodydatadropoffListInputItemLpnsTypeItem[] Lpns { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItem[] Lpns { get; set; }
     }
 
-    public class bodydatadropoffListInputItemInventoryTypeItem
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItem
     {
         [JsonProperty("count")]
-        public bodydatadropoffListInputItemInventoryTypeItemCountType Count { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItemCountType Count { get; set; }
 
         [JsonProperty("sku")]
         public string Sku { get; set; }
     }
 
-    public class bodydatadropoffListInputItemInventoryTypeItemCountType
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItemCountType
     {
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Amount { get; set; }
 
-        [JsonProperty("unit")]
+        [JsonProperty("unit", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Unit { get; set; }
     }
 
-    public class bodydatadropoffListInputItemValueOfGoodsType
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemValueOfGoodsType
     {
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Amount { get; set; }
 
-        [JsonProperty("unit")]
+        [JsonProperty("unit", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Unit { get; set; }
     }
 
-    public class bodydatadropoffListInputItemReservationType
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemReservationType
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
     }
 
-    public class bodydatadropoffListInputItemLpnsTypeItem
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItem
     {
         [JsonProperty("metadata")]
-        public bodydatadropoffListInputItemLpnsTypeItemMetadataType Metadata { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataType Metadata { get; set; }
 
         [JsonProperty("label")]
         public string Label { get; set; }
 
         [JsonProperty("inventory")]
-        public bodydatadropoffListInputItemLpnsTypeItemInventoryTypeItem[] Inventory { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemInventoryTypeItem[] Inventory { get; set; }
     }
 
-    public class bodydatadropoffListInputItemLpnsTypeItemMetadataType
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataType
     {
         [JsonProperty("customReference1")]
         public string CustomReference1 { get; set; }
@@ -632,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string ManufactureDate { get; set; }
 
         [JsonProperty("extraProperties")]
-        public bodydatadropoffListInputItemLpnsTypeItemMetadataTypeExtraPropertiesType ExtraProperties { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataTypeExtraPropertiesType ExtraProperties { get; set; }
 
         [JsonProperty("countryOfOrigin")]
         public string CountryOfOrigin { get; set; }
@@ -650,61 +276,256 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string ExpirationDate { get; set; }
     }
 
-    public class bodydatadropoffListInputItemLpnsTypeItemMetadataTypeExtraPropertiesType
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataTypeExtraPropertiesType
     {
         [JsonProperty("key")]
         public string Key { get; set; }
     }
 
-    public class bodydatadropoffListInputItemLpnsTypeItemInventoryTypeItem
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemInventoryTypeItem
     {
         [JsonProperty("unit")]
         public string Unit { get; set; }
 
         [JsonProperty("quantity")]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [JsonProperty("sku")]
         public string Sku { get; set; }
     }
 
-    public class bodydatashipmentinventoryInputItem
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputMetaType
     {
-        [JsonProperty("count")]
-        public bodydatashipmentinventoryInputItemCountType Count { get; set; }
+        [JsonProperty("correlationId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CorrelationId { get; set; }
+    }
 
-        [JsonProperty("sku")]
+    public class CreateRetailFulfillmentOrderInput
+    {
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataType Data { get; set; }
+
+        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputMetaType Meta { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataType
+    {
+        [JsonProperty("reservation", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeReservationType Reservation { get; set; }
+
+        [JsonProperty("shipment", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentType Shipment { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeReservationType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentType
+    {
+        [JsonProperty("customerUUID", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CustomerUUID { get; set; }
+
+        [JsonProperty("inventory", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItem[] Inventory { get; set; }
+
+        [JsonProperty("shipTo", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipToType ShipTo { get; set; }
+
+        [JsonProperty("shipWithin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipWithinType ShipWithin { get; set; }
+
+        [JsonProperty("shipmentType")]
+        public string ShipmentType { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("shipmentMethod")]
+        public string ShipmentMethod { get; set; }
+
+        [JsonProperty("purchaseOrder")]
+        public string PurchaseOrder { get; set; }
+
+        [JsonProperty("routeBy")]
+        public string RouteBy { get; set; }
+
+        [JsonProperty("instructions")]
+        public string Instructions { get; set; }
+
+        [JsonProperty("labelGenerationData")]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeLabelGenerationDataType LabelGenerationData { get; set; }
+
+        [JsonProperty("bolGenerationData")]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataType BolGenerationData { get; set; }
+
+        [JsonProperty("routingDetailsId")]
+        public string RoutingDetailsId { get; set; }
+
+        [JsonProperty("destinationType")]
+        public string DestinationType { get; set; }
+
+        [JsonProperty("destinationRetailer")]
+        public string DestinationRetailer { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItem
+    {
+        [JsonProperty("count", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountType Count { get; set; }
+
+        [JsonProperty("sku", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sku { get; set; }
 
         [JsonProperty("attachments")]
-        public bodydatashipmentinventoryInputItemAttachmentsTypeItem[] Attachments { get; set; }
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemAttachmentsTypeItem[] Attachments { get; set; }
     }
 
-    public class bodydatashipmentinventoryInputItemCountType
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountType
     {
-        [JsonProperty("amount")]
-        public bodydatashipmentinventoryInputItemCountTypeAmountType Amount { get; set; }
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeAmountType Amount { get; set; }
 
-        [JsonProperty("unit")]
-        public bodydatashipmentinventoryInputItemCountTypeUnitType Unit { get; set; }
+        [JsonProperty("unit", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeUnitType Unit { get; set; }
     }
 
-    public class bodydatashipmentinventoryInputItemCountTypeAmountType
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeAmountType
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Value { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeUnitType
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Value { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemAttachmentsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class bodydatashipmentinventoryInputItemCountTypeUnitType
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipToType
+    {
+        [JsonProperty("addressLine1", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Country { get; set; }
+
+        [JsonProperty("locality", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locality { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("postcode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Postcode { get; set; }
+
+        [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Region { get; set; }
+
+        [JsonProperty("addressLine2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("addressLine3")]
+        public string AddressLine3 { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipWithinType
+    {
+        [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string End { get; set; }
+
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Start { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeLabelGenerationDataType
+    {
+        [JsonProperty("carrier")]
+        public string Carrier { get; set; }
+
+        [JsonProperty("carrierServiceType")]
+        public string CarrierServiceType { get; set; }
+
+        [JsonProperty("carrierBillingAccountId")]
+        public string CarrierBillingAccountId { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataType
+    {
+        [JsonProperty("gs1us")]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usType Gs1us { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usType
+    {
+        [JsonProperty("number")]
+        public string Number { get; set; }
+
+        [JsonProperty("shipTo")]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeShipToType ShipTo { get; set; }
+
+        [JsonProperty("billTo")]
+        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeBillToType BillTo { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeShipToType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class bodydatashipmentinventoryInputItemAttachmentsTypeItem
+    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeBillToType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class CreateRetailFulfillmentOrderInputMetaType
+    {
+        [JsonProperty("correlationId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CorrelationId { get; set; }
+    }
+
+    public class UpdateExistingRetailFulfillmentOrderInput
+    {
+        [JsonProperty("data")]
+        public UpdateExistingRetailFulfillmentOrderInputDataType Data { get; set; }
+
+        [JsonProperty("meta")]
+        public string Meta { get; set; }
+    }
+
+    public class UpdateExistingRetailFulfillmentOrderInputDataType
+    {
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("scac")]
+        public string Scac { get; set; }
+
+        [JsonProperty("bolNumber")]
+        public string BolNumber { get; set; }
     }
 
     public class WebhookResponse
@@ -720,6 +541,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
 
         [JsonProperty("signingKey")]
         public string SigningKey { get; set; }
+    }
+
+    public class WebhookInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

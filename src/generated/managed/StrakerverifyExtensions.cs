@@ -38,40 +38,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetKeyResponse, ApiConnectionActionConfiguration> CreateKey(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<GetKeyResponse, ApiConnectionActionConfiguration> CreateKey(Expression<Func<CreateKeyInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/key";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    if (__workflow_bodydescription != null)
-                    {
-                        body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["description"] = "";
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetKeyResponse>(callPayload);
             });
         }
@@ -182,6 +157,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         public JToken Description { get; set; }
 
         [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateKeyInput
+    {
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; } = "";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 

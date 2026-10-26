@@ -37,35 +37,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<RefreshStoreResponse, ApiConnectionActionConfiguration> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
+        public IBodyWorkflowAction<RefreshStoreResponse, ApiConnectionActionConfiguration> StoresRefreshStore(Expression<Func<StoresRefreshStorePostInput>> body)
         {
-            var __workflow_bodystoreId = WorkflowExpression.Compile(bodystoreId, nameof(bodystoreId), required: false);
-            var __workflow_bodyrefreshDate = WorkflowExpression.Compile(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RefreshStoreResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stores/refreshstore";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystoreId != null)
-                {
-                    body["storeId"] = ExpressionConverter.ConvertO(__workflow_bodystoreId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrefreshDate != null)
-                {
-                    body["refreshDate"] = ExpressionConverter.ConvertO(__workflow_bodyrefreshDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RefreshStoreResponse>(callPayload);
             });
         }
@@ -157,6 +138,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class StoresRefreshStorePostInput
+    {
+        [JsonProperty("storeId")]
+        public int? StoreId { get; set; }
+
+        [JsonProperty("refreshDate")]
+        public string RefreshDate { get; set; }
     }
 }
 

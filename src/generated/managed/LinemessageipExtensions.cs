@@ -13,35 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     public class LinemessageipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linemessageip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> bodyto = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> body = null)
         {
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/bot/message/push";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyto != null)
-                {
-                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymessages != null)
-                {
-                    body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -51,10 +33,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     {
     }
 
-    public class bodymessagesInputItem
+    public class SendMessageInput
     {
-        [JsonProperty("type")]
-        public bodymessagesInputItemTypeType Type { get; set; }
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("messages")]
+        public SendMessageInputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class SendMessageInputMessagesTypeItem
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendMessageInputMessagesTypeItemTypeType? Type { get; set; } = SendMessageInputMessagesTypeItemTypeType.Text;
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -85,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymessagesInputItemTypeType
+    public enum SendMessageInputMessagesTypeItemTypeType
     {
         [EnumMember(Value = "text")]
         Text,

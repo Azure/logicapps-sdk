@@ -49,82 +49,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<ListCreateResponse, ApiConnectionActionConfiguration> ListCreate(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyconfirmationPage = null, Expression<Func<string>> bodyredirectAfterUnsubscribePage = null)
+        public IBodyWorkflowAction<ListCreateResponse, ApiConnectionActionConfiguration> ListCreate(Expression<Func<ListCreateInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyconfirmationPage = WorkflowExpression.Compile(bodyconfirmationPage, nameof(bodyconfirmationPage), required: false);
-            var __workflow_bodyredirectAfterUnsubscribePage = WorkflowExpression.Compile(bodyredirectAfterUnsubscribePage, nameof(bodyredirectAfterUnsubscribePage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lists/create.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconfirmationPage != null)
-                {
-                    body["ConfirmationPage"] = ExpressionConverter.ConvertO(__workflow_bodyconfirmationPage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirectAfterUnsubscribePage != null)
-                {
-                    body["RedirectAfterUnsubscribePage"] = ExpressionConverter.ConvertO(__workflow_bodyredirectAfterUnsubscribePage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ListCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<ListUpdateResponse, ApiConnectionActionConfiguration> ListUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyconfirmationPage = null, Expression<Func<string>> bodyredirectAfterUnsubscribePage = null)
+        public IBodyWorkflowAction<ListUpdateResponse, ApiConnectionActionConfiguration> ListUpdate(Expression<Func<string>> mailingListId, Expression<Func<ListUpdateInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyconfirmationPage = WorkflowExpression.Compile(bodyconfirmationPage, nameof(bodyconfirmationPage), required: false);
-            var __workflow_bodyredirectAfterUnsubscribePage = WorkflowExpression.Compile(bodyredirectAfterUnsubscribePage, nameof(bodyredirectAfterUnsubscribePage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/update.json", __workflow_mailingListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconfirmationPage != null)
-                {
-                    body["ConfirmationPage"] = ExpressionConverter.ConvertO(__workflow_bodyconfirmationPage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirectAfterUnsubscribePage != null)
-                {
-                    body["RedirectAfterUnsubscribePage"] = ExpressionConverter.ConvertO(__workflow_bodyredirectAfterUnsubscribePage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ListUpdateResponse>(callPayload);
             });
         }
@@ -143,84 +91,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<FieldCreateResponse, ApiConnectionActionConfiguration> FieldCreate(Expression<Func<string>> mailingListId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycustomFieldType = null, Expression<Func<string>> bodyoptions = null)
+        public IBodyWorkflowAction<FieldCreateResponse, ApiConnectionActionConfiguration> FieldCreate(Expression<Func<string>> mailingListId, Expression<Func<FieldCreateInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycustomFieldType = WorkflowExpression.Compile(bodycustomFieldType, nameof(bodycustomFieldType), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FieldCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/customfields/create.json", __workflow_mailingListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomFieldType != null)
-                {
-                    body["CustomFieldType"] = ExpressionConverter.ConvertO(__workflow_bodycustomFieldType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["Options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FieldCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<FieldUpdateResponse, ApiConnectionActionConfiguration> FieldUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> customFieldId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycustomFieldType = null, Expression<Func<string>> bodyoptions = null)
+        public IBodyWorkflowAction<FieldUpdateResponse, ApiConnectionActionConfiguration> FieldUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> customFieldId, Expression<Func<FieldUpdateInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycustomFieldType = WorkflowExpression.Compile(bodycustomFieldType, nameof(bodycustomFieldType), required: false);
-            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FieldUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/customfields/{1}/update.json", __workflow_mailingListId.WithUrlEncoding(1), __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomFieldType != null)
-                {
-                    body["CustomFieldType"] = ExpressionConverter.ConvertO(__workflow_bodycustomFieldType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoptions != null)
-                {
-                    body["Options"] = ExpressionConverter.ConvertO(__workflow_bodyoptions);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FieldUpdateResponse>(callPayload);
             });
         }
@@ -288,223 +184,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<SubscriberAddResponse, ApiConnectionActionConfiguration> SubscriberAdd(Expression<Func<string>> mailingListId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyhasExternalDoubleOptIn = null, Expression<Func<string[]>> bodycustomFields = null)
+        public IBodyWorkflowAction<SubscriberAddResponse, ApiConnectionActionConfiguration> SubscriberAdd(Expression<Func<string>> mailingListId, Expression<Func<SubscriberAddInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyhasExternalDoubleOptIn = WorkflowExpression.Compile(bodyhasExternalDoubleOptIn, nameof(bodyhasExternalDoubleOptIn), required: false);
-            var __workflow_bodycustomFields = WorkflowExpression.Compile(bodycustomFields, nameof(bodycustomFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriberAddResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscribers/{0}/subscribe.json", __workflow_mailingListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhasExternalDoubleOptIn != null)
-                {
-                    body["HasExternalDoubleOptIn"] = ExpressionConverter.ConvertO(__workflow_bodyhasExternalDoubleOptIn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomFields != null)
-                {
-                    body["CustomFields"] = ExpressionConverter.ConvertO(__workflow_bodycustomFields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriberAddResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<SubscriberAddBulkResponse, ApiConnectionActionConfiguration> SubscriberAddBulk(Expression<Func<string>> mailingListId, Expression<Func<bool>> bodyhasExternalDoubleOptIn = null, Expression<Func<bodysubscribersInputItem[]>> bodysubscribers = null)
+        public IBodyWorkflowAction<SubscriberAddBulkResponse, ApiConnectionActionConfiguration> SubscriberAddBulk(Expression<Func<string>> mailingListId, Expression<Func<SubscriberAddBulkInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
-            var __workflow_bodyhasExternalDoubleOptIn = WorkflowExpression.Compile(bodyhasExternalDoubleOptIn, nameof(bodyhasExternalDoubleOptIn), required: false);
-            var __workflow_bodysubscribers = WorkflowExpression.Compile(bodysubscribers, nameof(bodysubscribers), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriberAddBulkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscribers/{0}/subscribe_many.json", __workflow_mailingListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyhasExternalDoubleOptIn != null)
-                {
-                    body["HasExternalDoubleOptIn"] = ExpressionConverter.ConvertO(__workflow_bodyhasExternalDoubleOptIn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubscribers != null)
-                {
-                    body["Subscribers"] = ExpressionConverter.ConvertO(__workflow_bodysubscribers);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriberAddBulkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<SubscriberUpdateResponse, ApiConnectionActionConfiguration> SubscriberUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> subscriberId, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyhasExternalDoubleOptIn = null, Expression<Func<string>> bodyemail = null, Expression<Func<string[]>> bodycustomFields = null)
+        public IBodyWorkflowAction<SubscriberUpdateResponse, ApiConnectionActionConfiguration> SubscriberUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> subscriberId, Expression<Func<SubscriberUpdateInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyhasExternalDoubleOptIn = WorkflowExpression.Compile(bodyhasExternalDoubleOptIn, nameof(bodyhasExternalDoubleOptIn), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodycustomFields = WorkflowExpression.Compile(bodycustomFields, nameof(bodycustomFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriberUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscribers/{0}/update/{1}.json", __workflow_mailingListId.WithUrlEncoding(1), __workflow_subscriberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhasExternalDoubleOptIn != null)
-                {
-                    body["HasExternalDoubleOptIn"] = ExpressionConverter.ConvertO(__workflow_bodyhasExternalDoubleOptIn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomFields != null)
-                {
-                    body["CustomFields"] = ExpressionConverter.ConvertO(__workflow_bodycustomFields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriberUpdateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeAccountResponse, ApiConnectionActionConfiguration> UnsubscribeAccount(Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<UnsubscribeAccountResponse, ApiConnectionActionConfiguration> UnsubscribeAccount(Expression<Func<UnsubscribeAccountInput>> body)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UnsubscribeAccountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers/unsubscribe.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UnsubscribeAccountResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeListResponse, ApiConnectionActionConfiguration> UnsubscribeList(Expression<Func<string>> mailingListId, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<UnsubscribeListResponse, ApiConnectionActionConfiguration> UnsubscribeList(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeListInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UnsubscribeListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscribers/{0}/unsubscribe.json", __workflow_mailingListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UnsubscribeListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeRemoveResponse, ApiConnectionActionConfiguration> UnsubscribeRemove(Expression<Func<string>> mailingListId, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<UnsubscribeRemoveResponse, ApiConnectionActionConfiguration> UnsubscribeRemove(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeRemoveInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UnsubscribeRemoveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscribers/{0}/remove.json", __workflow_mailingListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UnsubscribeRemoveResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeRemoveBulkResponse, ApiConnectionActionConfiguration> UnsubscribeRemoveBulk(Expression<Func<string>> mailingListId, Expression<Func<string>> bodyemails)
+        public IBodyWorkflowAction<UnsubscribeRemoveBulkResponse, ApiConnectionActionConfiguration> UnsubscribeRemoveBulk(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeRemoveBulkInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
-            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UnsubscribeRemoveBulkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscribers/{0}/remove_many.json", __workflow_mailingListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UnsubscribeRemoveBulkResponse>(callPayload);
             });
         }
@@ -582,222 +361,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignCreateResponse, ApiConnectionActionConfiguration> CampaignCreate(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodysenderEmail = null, Expression<Func<string>> bodyreplyToEmail = null, Expression<Func<string>> bodyconfirmationToEmail = null, Expression<Func<string>> bodywebLocation = null, Expression<Func<bodymailingListsInputItem[]>> bodymailingLists = null, Expression<Func<string>> bodyisAB = null, Expression<Func<string>> bodyaBCampaignType = null, Expression<Func<string>> bodywebLocationB = null, Expression<Func<string>> bodyhoursToTest = null, Expression<Func<string>> bodylistPercentage = null, Expression<Func<string>> bodyaBWinnerSelectionType = null)
+        public IBodyWorkflowAction<CampaignCreateResponse, ApiConnectionActionConfiguration> CampaignCreate(Expression<Func<CampaignCreateInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodysenderEmail = WorkflowExpression.Compile(bodysenderEmail, nameof(bodysenderEmail), required: false);
-            var __workflow_bodyreplyToEmail = WorkflowExpression.Compile(bodyreplyToEmail, nameof(bodyreplyToEmail), required: false);
-            var __workflow_bodyconfirmationToEmail = WorkflowExpression.Compile(bodyconfirmationToEmail, nameof(bodyconfirmationToEmail), required: false);
-            var __workflow_bodywebLocation = WorkflowExpression.Compile(bodywebLocation, nameof(bodywebLocation), required: false);
-            var __workflow_bodymailingLists = WorkflowExpression.Compile(bodymailingLists, nameof(bodymailingLists), required: false);
-            var __workflow_bodyisAB = WorkflowExpression.Compile(bodyisAB, nameof(bodyisAB), required: false);
-            var __workflow_bodyaBCampaignType = WorkflowExpression.Compile(bodyaBCampaignType, nameof(bodyaBCampaignType), required: false);
-            var __workflow_bodywebLocationB = WorkflowExpression.Compile(bodywebLocationB, nameof(bodywebLocationB), required: false);
-            var __workflow_bodyhoursToTest = WorkflowExpression.Compile(bodyhoursToTest, nameof(bodyhoursToTest), required: false);
-            var __workflow_bodylistPercentage = WorkflowExpression.Compile(bodylistPercentage, nameof(bodylistPercentage), required: false);
-            var __workflow_bodyaBWinnerSelectionType = WorkflowExpression.Compile(bodyaBWinnerSelectionType, nameof(bodyaBWinnerSelectionType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CampaignCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/campaigns/create.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubject != null)
-                {
-                    body["Subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysenderEmail != null)
-                {
-                    body["SenderEmail"] = ExpressionConverter.ConvertO(__workflow_bodysenderEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreplyToEmail != null)
-                {
-                    body["ReplyToEmail"] = ExpressionConverter.ConvertO(__workflow_bodyreplyToEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconfirmationToEmail != null)
-                {
-                    body["ConfirmationToEmail"] = ExpressionConverter.ConvertO(__workflow_bodyconfirmationToEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebLocation != null)
-                {
-                    body["WebLocation"] = ExpressionConverter.ConvertO(__workflow_bodywebLocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymailingLists != null)
-                {
-                    body["MailingLists"] = ExpressionConverter.ConvertO(__workflow_bodymailingLists);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAB != null)
-                {
-                    body["IsAB"] = ExpressionConverter.ConvertO(__workflow_bodyisAB);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaBCampaignType != null)
-                {
-                    body["ABCampaignType"] = ExpressionConverter.ConvertO(__workflow_bodyaBCampaignType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebLocationB != null)
-                {
-                    body["WebLocationB"] = ExpressionConverter.ConvertO(__workflow_bodywebLocationB);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhoursToTest != null)
-                {
-                    body["HoursToTest"] = ExpressionConverter.ConvertO(__workflow_bodyhoursToTest);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylistPercentage != null)
-                {
-                    body["ListPercentage"] = ExpressionConverter.ConvertO(__workflow_bodylistPercentage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaBWinnerSelectionType != null)
-                {
-                    body["ABWinnerSelectionType"] = ExpressionConverter.ConvertO(__workflow_bodyaBWinnerSelectionType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CampaignCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignUpdateResponse, ApiConnectionActionConfiguration> CampaignUpdate(Expression<Func<string>> campaignId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodysenderEmail = null, Expression<Func<string>> bodyreplyToEmail = null, Expression<Func<string>> bodyconfirmationToEmail = null, Expression<Func<string>> bodywebLocation = null, Expression<Func<bodymailingListsInputItem[]>> bodymailingLists = null, Expression<Func<string>> bodyisAB = null, Expression<Func<string>> bodyaBCampaignType = null, Expression<Func<string>> bodywebLocationB = null, Expression<Func<string>> bodyhoursToTest = null, Expression<Func<string>> bodylistPercentage = null, Expression<Func<string>> bodyaBWinnerSelectionType = null)
+        public IBodyWorkflowAction<CampaignUpdateResponse, ApiConnectionActionConfiguration> CampaignUpdate(Expression<Func<string>> campaignId, Expression<Func<CampaignUpdateInput>> body)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodysenderEmail = WorkflowExpression.Compile(bodysenderEmail, nameof(bodysenderEmail), required: false);
-            var __workflow_bodyreplyToEmail = WorkflowExpression.Compile(bodyreplyToEmail, nameof(bodyreplyToEmail), required: false);
-            var __workflow_bodyconfirmationToEmail = WorkflowExpression.Compile(bodyconfirmationToEmail, nameof(bodyconfirmationToEmail), required: false);
-            var __workflow_bodywebLocation = WorkflowExpression.Compile(bodywebLocation, nameof(bodywebLocation), required: false);
-            var __workflow_bodymailingLists = WorkflowExpression.Compile(bodymailingLists, nameof(bodymailingLists), required: false);
-            var __workflow_bodyisAB = WorkflowExpression.Compile(bodyisAB, nameof(bodyisAB), required: false);
-            var __workflow_bodyaBCampaignType = WorkflowExpression.Compile(bodyaBCampaignType, nameof(bodyaBCampaignType), required: false);
-            var __workflow_bodywebLocationB = WorkflowExpression.Compile(bodywebLocationB, nameof(bodywebLocationB), required: false);
-            var __workflow_bodyhoursToTest = WorkflowExpression.Compile(bodyhoursToTest, nameof(bodyhoursToTest), required: false);
-            var __workflow_bodylistPercentage = WorkflowExpression.Compile(bodylistPercentage, nameof(bodylistPercentage), required: false);
-            var __workflow_bodyaBWinnerSelectionType = WorkflowExpression.Compile(bodyaBWinnerSelectionType, nameof(bodyaBWinnerSelectionType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CampaignUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/update.json", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubject != null)
-                {
-                    body["Subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysenderEmail != null)
-                {
-                    body["SenderEmail"] = ExpressionConverter.ConvertO(__workflow_bodysenderEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreplyToEmail != null)
-                {
-                    body["ReplyToEmail"] = ExpressionConverter.ConvertO(__workflow_bodyreplyToEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconfirmationToEmail != null)
-                {
-                    body["ConfirmationToEmail"] = ExpressionConverter.ConvertO(__workflow_bodyconfirmationToEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebLocation != null)
-                {
-                    body["WebLocation"] = ExpressionConverter.ConvertO(__workflow_bodywebLocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymailingLists != null)
-                {
-                    body["MailingLists"] = ExpressionConverter.ConvertO(__workflow_bodymailingLists);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAB != null)
-                {
-                    body["IsAB"] = ExpressionConverter.ConvertO(__workflow_bodyisAB);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaBCampaignType != null)
-                {
-                    body["ABCampaignType"] = ExpressionConverter.ConvertO(__workflow_bodyaBCampaignType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebLocationB != null)
-                {
-                    body["WebLocationB"] = ExpressionConverter.ConvertO(__workflow_bodywebLocationB);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhoursToTest != null)
-                {
-                    body["HoursToTest"] = ExpressionConverter.ConvertO(__workflow_bodyhoursToTest);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylistPercentage != null)
-                {
-                    body["ListPercentage"] = ExpressionConverter.ConvertO(__workflow_bodylistPercentage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaBWinnerSelectionType != null)
-                {
-                    body["ABWinnerSelectionType"] = ExpressionConverter.ConvertO(__workflow_bodyaBWinnerSelectionType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CampaignUpdateResponse>(callPayload);
             });
         }
@@ -816,24 +403,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignTestResponse, ApiConnectionActionConfiguration> CampaignTest(Expression<Func<string>> campaignId, Expression<Func<string[]>> bodytestEmails)
+        public IBodyWorkflowAction<CampaignTestResponse, ApiConnectionActionConfiguration> CampaignTest(Expression<Func<string>> campaignId, Expression<Func<CampaignTestInput>> body)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
-            var __workflow_bodytestEmails = WorkflowExpression.Compile(bodytestEmails, nameof(bodytestEmails), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CampaignTestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/send_test.json", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["TestEmails"] = ExpressionConverter.ConvertO(__workflow_bodytestEmails);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CampaignTestResponse>(callPayload);
             });
         }
@@ -917,31 +496,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignScheduleResponse, ApiConnectionActionConfiguration> CampaignSchedule(Expression<Func<string>> campaignId, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<CampaignScheduleResponse, ApiConnectionActionConfiguration> CampaignSchedule(Expression<Func<string>> campaignId, Expression<Func<CampaignScheduleInput>> body)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
-            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CampaignScheduleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/schedule.json", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["DateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
-                if (__workflow_bodytimezone != null)
-                {
-                    body["Timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CampaignScheduleResponse>(callPayload);
             });
         }
@@ -1112,11 +676,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
+    public class ListCreateInput
+    {
+        public string Name { get; set; }
+        public string ConfirmationPage { get; set; }
+        public string RedirectAfterUnsubscribePage { get; set; }
+    }
+
     public class ListUpdateResponse
     {
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
+    }
+
+    public class ListUpdateInput
+    {
+        public string Name { get; set; }
+        public string ConfirmationPage { get; set; }
+        public string RedirectAfterUnsubscribePage { get; set; }
     }
 
     public class ListDeleteResponse
@@ -1133,11 +711,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
+    public class FieldCreateInput
+    {
+        public string Name { get; set; }
+        public string CustomFieldType { get; set; }
+        public string Options { get; set; }
+    }
+
     public class FieldUpdateResponse
     {
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
+    }
+
+    public class FieldUpdateInput
+    {
+        public string Name { get; set; }
+        public string CustomFieldType { get; set; }
+        public string Options { get; set; }
     }
 
     public class FieldDeleteResponse
@@ -1287,6 +879,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Value { get; set; }
     }
 
+    public class SubscriberAddInput
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public bool? HasExternalDoubleOptIn { get; set; }
+        public string[] CustomFields { get; set; }
+    }
+
     public class SubscriberAddBulkResponse
     {
         public int Code { get; set; }
@@ -1320,7 +920,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Value { get; set; }
     }
 
-    public class bodysubscribersInputItem
+    public class SubscriberAddBulkInput
+    {
+        public bool? HasExternalDoubleOptIn { get; set; }
+        public SubscriberAddBulkInputSubscribersTypeItem[] Subscribers { get; set; }
+    }
+
+    public class SubscriberAddBulkInputSubscribersTypeItem
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -1360,11 +966,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Value { get; set; }
     }
 
+    public class SubscriberUpdateInput
+    {
+        public string Name { get; set; }
+        public bool? HasExternalDoubleOptIn { get; set; }
+        public string Email { get; set; }
+        public string[] CustomFields { get; set; }
+    }
+
     public class UnsubscribeAccountResponse
     {
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
+    }
+
+    public class UnsubscribeAccountInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
     }
 
     public class UnsubscribeListResponse
@@ -1374,11 +994,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
+    public class UnsubscribeListInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+    }
+
     public class UnsubscribeRemoveResponse
     {
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
+    }
+
+    public class UnsubscribeRemoveInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
     }
 
     public class UnsubscribeRemoveBulkResponse
@@ -1392,6 +1024,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
     {
         public int EmailsIgnored { get; set; }
         public int EmailsProcessed { get; set; }
+    }
+
+    public class UnsubscribeRemoveBulkInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Emails { get; set; }
     }
 
     public class CampaignGetResponse
@@ -1670,7 +1308,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class bodymailingListsInputItem
+    public class CampaignCreateInput
+    {
+        public string Name { get; set; }
+        public string Subject { get; set; }
+        public string SenderEmail { get; set; }
+        public string ReplyToEmail { get; set; }
+        public string ConfirmationToEmail { get; set; }
+        public string WebLocation { get; set; }
+        public CampaignCreateInputMailingListsTypeItem[] MailingLists { get; set; }
+        public string IsAB { get; set; }
+        public string ABCampaignType { get; set; }
+        public string WebLocationB { get; set; }
+        public string HoursToTest { get; set; }
+        public string ListPercentage { get; set; }
+        public string ABWinnerSelectionType { get; set; }
+    }
+
+    public class CampaignCreateInputMailingListsTypeItem
     {
         [JsonProperty("MailingListID")]
         public string MailingListId { get; set; }
@@ -1686,6 +1341,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
+    public class CampaignUpdateInput
+    {
+        public string Name { get; set; }
+        public string Subject { get; set; }
+        public string SenderEmail { get; set; }
+        public string ReplyToEmail { get; set; }
+        public string ConfirmationToEmail { get; set; }
+        public string WebLocation { get; set; }
+        public CampaignUpdateInputMailingListsTypeItem[] MailingLists { get; set; }
+        public string IsAB { get; set; }
+        public string ABCampaignType { get; set; }
+        public string WebLocationB { get; set; }
+        public string HoursToTest { get; set; }
+        public string ListPercentage { get; set; }
+        public string ABWinnerSelectionType { get; set; }
+    }
+
+    public class CampaignUpdateInputMailingListsTypeItem
+    {
+        [JsonProperty("MailingListID")]
+        public string MailingListId { get; set; }
+
+        [JsonProperty("SegmentID")]
+        public string SegmentId { get; set; }
+    }
+
     public class CampaignDeleteResponse
     {
         public int Code { get; set; }
@@ -1698,6 +1379,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
+    }
+
+    public class CampaignTestInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] TestEmails { get; set; }
     }
 
     public class CampaignSendResponse
@@ -1860,6 +1547,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
+    }
+
+    public class CampaignScheduleInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DateTime { get; set; }
+        public string Timezone { get; set; }
     }
 
     public class CampaignUnscheduleResponse

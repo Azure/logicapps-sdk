@@ -57,36 +57,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostProblemComment(Expression<Func<string>> problemId, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycontext = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostProblemComment(Expression<Func<string>> problemId, Expression<Func<PostProblemCommentInput>> body = null)
         {
             var __workflow_problemId = WorkflowExpression.Compile(problemId, nameof(problemId), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/problems/{0}/comments", __workflow_problemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontext != null)
-                {
-                    body["context"] = ExpressionConverter.ConvertO(__workflow_bodycontext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -154,63 +136,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEventIngest(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodytimeout = null, Expression<Func<string>> bodyentitySelector = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEventIngest(Expression<Func<PostEventIngestInput>> body = null)
         {
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodytimeout = WorkflowExpression.Compile(bodytimeout, nameof(bodytimeout), required: false);
-            var __workflow_bodyentitySelector = WorkflowExpression.Compile(bodyentitySelector, nameof(bodyentitySelector), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/events/ingest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodystartTime != null)
-                {
-                    body["startTime"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["endTime"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimeout != null)
-                {
-                    body["timeout"] = ExpressionConverter.ConvertO(__workflow_bodytimeout);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyentitySelector != null)
-                {
-                    body["entitySelector"] = ExpressionConverter.ConvertO(__workflow_bodyentitySelector);
-                    bodypropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    body["properties"] = propertiesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -850,6 +786,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         public string Context { get; set; }
     }
 
+    public class PostProblemCommentInput
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("context")]
+        public string Context { get; set; }
+    }
+
     public class GetProblemCommentByProblemIdAndCommentIdResponse
     {
         [JsonProperty("id")]
@@ -1244,6 +1189,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
 
         [JsonProperty("type")]
         public string Type { get; set; }
+    }
+
+    public class PostEventIngestInput
+    {
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventType { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("startTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endTime")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("timeout")]
+        public int? Timeout { get; set; }
+
+        [JsonProperty("entitySelector")]
+        public string EntitySelector { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
     }
 
     public class GetSecurityProblemsResponse

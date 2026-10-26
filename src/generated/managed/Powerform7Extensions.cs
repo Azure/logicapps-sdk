@@ -29,25 +29,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
 
     public class Powerform7Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, Expression<Func<CreateWebhookInput>> callbackUrl, FlowRecurrence recurrence = null)
         {
             var __workflow_wPSITEURL = WorkflowExpression.Compile(wPSITEURL, nameof(wPSITEURL), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_callbackUrl = WorkflowExpression.Compile(callbackUrl, nameof(callbackUrl), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wPSITEURL);
-                var callbackUrl = new JObject();
-                var callbackUrlpropCount = 0;
-                callbackUrl["callback_url"] = "#{listCallbackUrl()}";
-                callbackUrlpropCount++;
-                if (callbackUrlpropCount > 0)
-                {
-                    callPayload.Body = callbackUrl;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_callbackUrl);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -66,6 +59,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
 
         [JsonProperty("title")]
         public string FormName { get; set; }
+    }
+
+    public class CreateWebhookInput
+    {
+        [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

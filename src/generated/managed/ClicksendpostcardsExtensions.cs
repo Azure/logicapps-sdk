@@ -13,51 +13,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
     public class ClicksendpostcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<UploadMediaInput>> body)
         {
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uploads";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["convert"] = Convert.ToString("postcard");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
+        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<SendPostcardInput>> body)
         {
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
-            var __workflow_bodyfileUrls = WorkflowExpression.Compile(bodyfileUrls, nameof(bodyfileUrls), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendPostcardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/post/postcards/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                body["source"] = "MSPowerAutomate-pc";
-                bodypropCount++;
-                bodypropCount++;
-                body["file_urls"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrls);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendPostcardResponse>(callPayload);
             });
         }
@@ -101,6 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
 
         [JsonProperty("_url")]
         public string Url { get; set; }
+    }
+
+    public class UploadMediaInput
+    {
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
     }
 
     public class SendPostcardResponse
@@ -238,27 +223,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         public string CurrencyNameLong { get; set; }
     }
 
-    public class bodyrecipientsInputItem
+    public class SendPostcardInput
     {
-        [JsonProperty("address_name")]
+        [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendPostcardInputRecipientsTypeItem[] Recipients { get; set; }
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Source { get; set; } = "MSPowerAutomate-pc";
+
+        [JsonProperty("file_urls", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] FileUrls { get; set; }
+    }
+
+    public class SendPostcardInputRecipientsTypeItem
+    {
+        [JsonProperty("address_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressName { get; set; }
 
-        [JsonProperty("address_city")]
+        [JsonProperty("address_city", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressCity { get; set; }
 
-        [JsonProperty("address_state")]
+        [JsonProperty("address_state", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressState { get; set; }
 
-        [JsonProperty("address_postal_code")]
+        [JsonProperty("address_postal_code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressPostalCode { get; set; }
 
-        [JsonProperty("address_country")]
+        [JsonProperty("address_country", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressCountry { get; set; }
 
-        [JsonProperty("return_address_id")]
+        [JsonProperty("return_address_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ReturnAddressId { get; set; }
 
-        [JsonProperty("address_line_1")]
+        [JsonProperty("address_line_1", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressLine1 { get; set; }
 
         [JsonProperty("address_line_2")]

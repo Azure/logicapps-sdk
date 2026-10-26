@@ -13,67 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
     public class WordcloudbytextvisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordcloudbytextvisip")]
-        public IBodyWorkflowAction<CloudCreateResponse, ApiConnectionActionConfiguration> CloudCreate(Expression<Func<string>> bodytext, Expression<Func<double>> bodyscale, Expression<Func<int>> bodywidth, Expression<Func<int>> bodyheight, Expression<Func<string[]>> bodycolors = null, Expression<Func<string>> bodyfont = null, Expression<Func<bool>> bodyuseStopwords = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuppercase = null)
+        public IBodyWorkflowAction<CloudCreateResponse, ApiConnectionActionConfiguration> CloudCreate(Expression<Func<CloudCreateInput>> body)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyscale = WorkflowExpression.Compile(bodyscale, nameof(bodyscale), required: true);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: true);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: true);
-            var __workflow_bodycolors = WorkflowExpression.Compile(bodycolors, nameof(bodycolors), required: false);
-            var __workflow_bodyfont = WorkflowExpression.Compile(bodyfont, nameof(bodyfont), required: false);
-            var __workflow_bodyuseStopwords = WorkflowExpression.Compile(bodyuseStopwords, nameof(bodyuseStopwords), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyuppercase = WorkflowExpression.Compile(bodyuppercase, nameof(bodyuppercase), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CloudCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                bodypropCount++;
-                body["scale"] = ExpressionConverter.ConvertO(__workflow_bodyscale);
-                bodypropCount++;
-                body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                bodypropCount++;
-                body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                if (__workflow_bodycolors != null)
-                {
-                    body["colors"] = ExpressionConverter.ConvertO(__workflow_bodycolors);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfont != null)
-                {
-                    body["font"] = ExpressionConverter.ConvertO(__workflow_bodyfont);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuseStopwords != null)
-                {
-                    body["use_stopwords"] = ExpressionConverter.ConvertO(__workflow_bodyuseStopwords);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuppercase != null)
-                {
-                    body["uppercase"] = ExpressionConverter.ConvertO(__workflow_bodyuppercase);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CloudCreateResponse>(callPayload);
             });
         }
@@ -87,6 +35,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
     {
         [JsonProperty("data")]
         public string Data { get; set; }
+    }
+
+    public class CloudCreateInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("scale", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Scale { get; set; }
+
+        [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Width { get; set; }
+
+        [JsonProperty("height", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Height { get; set; }
+
+        [JsonProperty("colors")]
+        public string[] Colors { get; set; }
+
+        [JsonProperty("font")]
+        public string Font { get; set; }
+
+        [JsonProperty("use_stopwords")]
+        public bool? UseStopwords { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("uppercase")]
+        public bool? Uppercase { get; set; }
     }
 }
 

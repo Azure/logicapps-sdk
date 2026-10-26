@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/vnd.databox.v2+json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DataPostResponse>(callPayload);
             });
         }

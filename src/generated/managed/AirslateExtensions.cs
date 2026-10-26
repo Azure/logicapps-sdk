@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(__workflow_organizationDomain);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                if (__workflow_fields != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<CreateSmartLinkResponse>(callPayload);
             });
         }
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Organization-Domain"] = ExpressionConverter.Convert(__workflow_organizationDomain);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
+                if (__workflow_fields != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<StartFlowResponse>(callPayload);
             });
         }
@@ -51,25 +53,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
 
     public class AirslateTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration> CreateSlateTrigger(Expression<Func<CreateSlateTriggerInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodybotAuthorizationToken = WorkflowExpression.Compile(bodybotAuthorizationToken, nameof(bodybotAuthorizationToken), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["botToken"] = ExpressionConverter.ConvertO(__workflow_bodybotAuthorizationToken);
-                body["callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<CreateSlateTriggerResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -97,6 +89,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateSlateTriggerInput
+    {
+        [JsonProperty("botToken", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BotAuthorizationToken { get; set; }
+
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

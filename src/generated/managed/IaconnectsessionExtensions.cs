@@ -13,9231 +13,2311 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class IaconnectsessionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetMachineNameResponse, ApiConnectionActionConfiguration> GetMachineName(Expression<Func<string>> getMachineNameworkflow)
+        public IBodyWorkflowAction<GetMachineNameResponse, ApiConnectionActionConfiguration> GetMachineName(Expression<Func<GetMachineNameInput>> getMachineName)
         {
-            var __workflow_getMachineNameworkflow = WorkflowExpression.Compile(getMachineNameworkflow, nameof(getMachineNameworkflow), required: true);
+            var __workflow_getMachineName = WorkflowExpression.Compile(getMachineName, nameof(getMachineName), required: true);
             return new DeferredBodyAction<GetMachineNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetMachineName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getMachineName = new JObject();
-                var getMachineNamepropCount = 0;
-                getMachineNamepropCount++;
-                getMachineName["Workflow"] = ExpressionConverter.ConvertO(__workflow_getMachineNameworkflow);
-                if (getMachineNamepropCount > 0)
-                {
-                    callPayload.Body = getMachineName;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getMachineName);
                 return new ApiConnectionAction<GetMachineNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetMachineDomainResponse, ApiConnectionActionConfiguration> GetMachineDomain(Expression<Func<string>> getMachineDomainworkflow)
+        public IBodyWorkflowAction<GetMachineDomainResponse, ApiConnectionActionConfiguration> GetMachineDomain(Expression<Func<GetMachineDomainInput>> getMachineDomain)
         {
-            var __workflow_getMachineDomainworkflow = WorkflowExpression.Compile(getMachineDomainworkflow, nameof(getMachineDomainworkflow), required: true);
+            var __workflow_getMachineDomain = WorkflowExpression.Compile(getMachineDomain, nameof(getMachineDomain), required: true);
             return new DeferredBodyAction<GetMachineDomainResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetMachineDomain";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getMachineDomain = new JObject();
-                var getMachineDomainpropCount = 0;
-                getMachineDomainpropCount++;
-                getMachineDomain["Workflow"] = ExpressionConverter.ConvertO(__workflow_getMachineDomainworkflow);
-                if (getMachineDomainpropCount > 0)
-                {
-                    callPayload.Body = getMachineDomain;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getMachineDomain);
                 return new ApiConnectionAction<GetMachineDomainResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetRemoteSessionClientHostnameResponse, ApiConnectionActionConfiguration> GetRemoteSessionClientHostname(Expression<Func<string>> getRemoteSessionClientHostnameworkflow)
+        public IBodyWorkflowAction<GetRemoteSessionClientHostnameResponse, ApiConnectionActionConfiguration> GetRemoteSessionClientHostname(Expression<Func<GetRemoteSessionClientHostnameInput>> getRemoteSessionClientHostname)
         {
-            var __workflow_getRemoteSessionClientHostnameworkflow = WorkflowExpression.Compile(getRemoteSessionClientHostnameworkflow, nameof(getRemoteSessionClientHostnameworkflow), required: true);
+            var __workflow_getRemoteSessionClientHostname = WorkflowExpression.Compile(getRemoteSessionClientHostname, nameof(getRemoteSessionClientHostname), required: true);
             return new DeferredBodyAction<GetRemoteSessionClientHostnameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetRemoteSessionClientHostname";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getRemoteSessionClientHostname = new JObject();
-                var getRemoteSessionClientHostnamepropCount = 0;
-                getRemoteSessionClientHostnamepropCount++;
-                getRemoteSessionClientHostname["Workflow"] = ExpressionConverter.ConvertO(__workflow_getRemoteSessionClientHostnameworkflow);
-                if (getRemoteSessionClientHostnamepropCount > 0)
-                {
-                    callPayload.Body = getRemoteSessionClientHostname;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getRemoteSessionClientHostname);
                 return new ApiConnectionAction<GetRemoteSessionClientHostnameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<ExpandEnvironmentVariableResponse, ApiConnectionActionConfiguration> ExpandEnvironmentVariable(Expression<Func<string>> expandEnvironmentVariableinputString, Expression<Func<string>> expandEnvironmentVariableworkflow)
+        public IBodyWorkflowAction<ExpandEnvironmentVariableResponse, ApiConnectionActionConfiguration> ExpandEnvironmentVariable(Expression<Func<ExpandEnvironmentVariableInput>> expandEnvironmentVariable)
         {
-            var __workflow_expandEnvironmentVariableinputString = WorkflowExpression.Compile(expandEnvironmentVariableinputString, nameof(expandEnvironmentVariableinputString), required: true);
-            var __workflow_expandEnvironmentVariableworkflow = WorkflowExpression.Compile(expandEnvironmentVariableworkflow, nameof(expandEnvironmentVariableworkflow), required: true);
+            var __workflow_expandEnvironmentVariable = WorkflowExpression.Compile(expandEnvironmentVariable, nameof(expandEnvironmentVariable), required: true);
             return new DeferredBodyAction<ExpandEnvironmentVariableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/ExpandEnvironmentVariable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var expandEnvironmentVariable = new JObject();
-                var expandEnvironmentVariablepropCount = 0;
-                expandEnvironmentVariablepropCount++;
-                expandEnvironmentVariable["InputString"] = ExpressionConverter.ConvertO(__workflow_expandEnvironmentVariableinputString);
-                expandEnvironmentVariablepropCount++;
-                expandEnvironmentVariable["Workflow"] = ExpressionConverter.ConvertO(__workflow_expandEnvironmentVariableworkflow);
-                if (expandEnvironmentVariablepropCount > 0)
-                {
-                    callPayload.Body = expandEnvironmentVariable;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_expandEnvironmentVariable);
                 return new ApiConnectionAction<ExpandEnvironmentVariableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KillProcessResponse, ApiConnectionActionConfiguration> KillProcess(Expression<Func<string>> killProcessprocessName, Expression<Func<string>> killProcessworkflow)
+        public IBodyWorkflowAction<KillProcessResponse, ApiConnectionActionConfiguration> KillProcess(Expression<Func<KillProcessInput>> killProcess)
         {
-            var __workflow_killProcessprocessName = WorkflowExpression.Compile(killProcessprocessName, nameof(killProcessprocessName), required: true);
-            var __workflow_killProcessworkflow = WorkflowExpression.Compile(killProcessworkflow, nameof(killProcessworkflow), required: true);
+            var __workflow_killProcess = WorkflowExpression.Compile(killProcess, nameof(killProcess), required: true);
             return new DeferredBodyAction<KillProcessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/KillProcess";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var killProcess = new JObject();
-                var killProcesspropCount = 0;
-                killProcesspropCount++;
-                killProcess["ProcessName"] = ExpressionConverter.ConvertO(__workflow_killProcessprocessName);
-                killProcesspropCount++;
-                killProcess["Workflow"] = ExpressionConverter.ConvertO(__workflow_killProcessworkflow);
-                if (killProcesspropCount > 0)
-                {
-                    callPayload.Body = killProcess;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_killProcess);
                 return new ApiConnectionAction<KillProcessResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KillProcessIdResponse, ApiConnectionActionConfiguration> KillProcessId(Expression<Func<int>> killProcessIDprocessId, Expression<Func<string>> killProcessIDworkflow)
+        public IBodyWorkflowAction<KillProcessIdResponse, ApiConnectionActionConfiguration> KillProcessId(Expression<Func<KillProcessIdInput>> killProcessId)
         {
-            var __workflow_killProcessIDprocessId = WorkflowExpression.Compile(killProcessIDprocessId, nameof(killProcessIDprocessId), required: true);
-            var __workflow_killProcessIDworkflow = WorkflowExpression.Compile(killProcessIDworkflow, nameof(killProcessIDworkflow), required: true);
+            var __workflow_killProcessId = WorkflowExpression.Compile(killProcessId, nameof(killProcessId), required: true);
             return new DeferredBodyAction<KillProcessIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/KillProcessID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var killProcessId = new JObject();
-                var killProcessIdpropCount = 0;
-                killProcessIdpropCount++;
-                killProcessId["ProcessID"] = ExpressionConverter.ConvertO(__workflow_killProcessIDprocessId);
-                killProcessIdpropCount++;
-                killProcessId["Workflow"] = ExpressionConverter.ConvertO(__workflow_killProcessIDworkflow);
-                if (killProcessIdpropCount > 0)
-                {
-                    callPayload.Body = killProcessId;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_killProcessId);
                 return new ApiConnectionAction<KillProcessIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetProcessCountByNameResponse, ApiConnectionActionConfiguration> GetProcessCountByName(Expression<Func<string>> getProcessCountByNameprocessName, Expression<Func<string>> getProcessCountByNameworkflow)
+        public IBodyWorkflowAction<GetProcessCountByNameResponse, ApiConnectionActionConfiguration> GetProcessCountByName(Expression<Func<GetProcessCountByNameInput>> getProcessCountByName)
         {
-            var __workflow_getProcessCountByNameprocessName = WorkflowExpression.Compile(getProcessCountByNameprocessName, nameof(getProcessCountByNameprocessName), required: true);
-            var __workflow_getProcessCountByNameworkflow = WorkflowExpression.Compile(getProcessCountByNameworkflow, nameof(getProcessCountByNameworkflow), required: true);
+            var __workflow_getProcessCountByName = WorkflowExpression.Compile(getProcessCountByName, nameof(getProcessCountByName), required: true);
             return new DeferredBodyAction<GetProcessCountByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessCountByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getProcessCountByName = new JObject();
-                var getProcessCountByNamepropCount = 0;
-                getProcessCountByNamepropCount++;
-                getProcessCountByName["ProcessName"] = ExpressionConverter.ConvertO(__workflow_getProcessCountByNameprocessName);
-                getProcessCountByNamepropCount++;
-                getProcessCountByName["Workflow"] = ExpressionConverter.ConvertO(__workflow_getProcessCountByNameworkflow);
-                if (getProcessCountByNamepropCount > 0)
-                {
-                    callPayload.Body = getProcessCountByName;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getProcessCountByName);
                 return new ApiConnectionAction<GetProcessCountByNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetAgentProcessCountResponse, ApiConnectionActionConfiguration> GetAgentProcessCount(Expression<Func<string>> getAgentProcessCountworkflow)
+        public IBodyWorkflowAction<GetAgentProcessCountResponse, ApiConnectionActionConfiguration> GetAgentProcessCount(Expression<Func<GetAgentProcessCountInput>> getAgentProcessCount)
         {
-            var __workflow_getAgentProcessCountworkflow = WorkflowExpression.Compile(getAgentProcessCountworkflow, nameof(getAgentProcessCountworkflow), required: true);
+            var __workflow_getAgentProcessCount = WorkflowExpression.Compile(getAgentProcessCount, nameof(getAgentProcessCount), required: true);
             return new DeferredBodyAction<GetAgentProcessCountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetAgentProcessCount";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getAgentProcessCount = new JObject();
-                var getAgentProcessCountpropCount = 0;
-                getAgentProcessCountpropCount++;
-                getAgentProcessCount["Workflow"] = ExpressionConverter.ConvertO(__workflow_getAgentProcessCountworkflow);
-                if (getAgentProcessCountpropCount > 0)
-                {
-                    callPayload.Body = getAgentProcessCount;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getAgentProcessCount);
                 return new ApiConnectionAction<GetAgentProcessCountResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KillAllOtherAgentsResponse, ApiConnectionActionConfiguration> KillAllOtherAgents(Expression<Func<string>> killAllOtherAgentsworkflow)
+        public IBodyWorkflowAction<KillAllOtherAgentsResponse, ApiConnectionActionConfiguration> KillAllOtherAgents(Expression<Func<KillAllOtherAgentsInput>> killAllOtherAgents)
         {
-            var __workflow_killAllOtherAgentsworkflow = WorkflowExpression.Compile(killAllOtherAgentsworkflow, nameof(killAllOtherAgentsworkflow), required: true);
+            var __workflow_killAllOtherAgents = WorkflowExpression.Compile(killAllOtherAgents, nameof(killAllOtherAgents), required: true);
             return new DeferredBodyAction<KillAllOtherAgentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/KillAllOtherAgents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var killAllOtherAgents = new JObject();
-                var killAllOtherAgentspropCount = 0;
-                killAllOtherAgentspropCount++;
-                killAllOtherAgents["Workflow"] = ExpressionConverter.ConvertO(__workflow_killAllOtherAgentsworkflow);
-                if (killAllOtherAgentspropCount > 0)
-                {
-                    callPayload.Body = killAllOtherAgents;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_killAllOtherAgents);
                 return new ApiConnectionAction<KillAllOtherAgentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetProcessByPIdResponse, ApiConnectionActionConfiguration> GetProcessByPId(Expression<Func<int>> getProcessByPIDprocessId, Expression<Func<string>> getProcessByPIDworkflow)
+        public IBodyWorkflowAction<GetProcessByPIdResponse, ApiConnectionActionConfiguration> GetProcessByPId(Expression<Func<GetProcessByPIdInput>> getProcessByPId)
         {
-            var __workflow_getProcessByPIDprocessId = WorkflowExpression.Compile(getProcessByPIDprocessId, nameof(getProcessByPIDprocessId), required: true);
-            var __workflow_getProcessByPIDworkflow = WorkflowExpression.Compile(getProcessByPIDworkflow, nameof(getProcessByPIDworkflow), required: true);
+            var __workflow_getProcessByPId = WorkflowExpression.Compile(getProcessByPId, nameof(getProcessByPId), required: true);
             return new DeferredBodyAction<GetProcessByPIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessByPID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getProcessByPId = new JObject();
-                var getProcessByPIdpropCount = 0;
-                getProcessByPIdpropCount++;
-                getProcessByPId["ProcessId"] = ExpressionConverter.ConvertO(__workflow_getProcessByPIDprocessId);
-                getProcessByPIdpropCount++;
-                getProcessByPId["Workflow"] = ExpressionConverter.ConvertO(__workflow_getProcessByPIDworkflow);
-                if (getProcessByPIdpropCount > 0)
-                {
-                    callPayload.Body = getProcessByPId;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getProcessByPId);
                 return new ApiConnectionAction<GetProcessByPIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetProcessesResponse, ApiConnectionActionConfiguration> GetProcesses(Expression<Func<string>> getProcessesworkflow, Expression<Func<string>> getProcessesprocessName = null, Expression<Func<bool>> getProcessesgetProcessCommandLine = null)
+        public IBodyWorkflowAction<GetProcessesResponse, ApiConnectionActionConfiguration> GetProcesses(Expression<Func<GetProcessesInput>> getProcesses)
         {
-            var __workflow_getProcessesworkflow = WorkflowExpression.Compile(getProcessesworkflow, nameof(getProcessesworkflow), required: true);
-            var __workflow_getProcessesprocessName = WorkflowExpression.Compile(getProcessesprocessName, nameof(getProcessesprocessName), required: false);
-            var __workflow_getProcessesgetProcessCommandLine = WorkflowExpression.Compile(getProcessesgetProcessCommandLine, nameof(getProcessesgetProcessCommandLine), required: false);
+            var __workflow_getProcesses = WorkflowExpression.Compile(getProcesses, nameof(getProcesses), required: true);
             return new DeferredBodyAction<GetProcessesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetProcesses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getProcesses = new JObject();
-                var getProcessespropCount = 0;
-                if (__workflow_getProcessesprocessName != null)
-                {
-                    getProcesses["ProcessName"] = ExpressionConverter.ConvertO(__workflow_getProcessesprocessName);
-                    getProcessespropCount++;
-                }
-
-                if (__workflow_getProcessesgetProcessCommandLine != null)
-                {
-                    if (__workflow_getProcessesgetProcessCommandLine != null)
-                    {
-                        getProcesses["GetProcessCommandLine"] = ExpressionConverter.ConvertO(__workflow_getProcessesgetProcessCommandLine);
-                        getProcessespropCount++;
-                    }
-
-                    getProcessespropCount++;
-                }
-                else
-                {
-                    getProcesses["GetProcessCommandLine"] = false;
-                    getProcessespropCount++;
-                }
-
-                getProcessespropCount++;
-                getProcesses["Workflow"] = ExpressionConverter.ConvertO(__workflow_getProcessesworkflow);
-                if (getProcessespropCount > 0)
-                {
-                    callPayload.Body = getProcesses;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getProcesses);
                 return new ApiConnectionAction<GetProcessesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<RunProcessResponse, ApiConnectionActionConfiguration> RunProcess(Expression<Func<string>> runProcessprocessName, Expression<Func<string>> runProcessworkflow, Expression<Func<string>> runProcessarguments = null, Expression<Func<string>> runProcessworkingDirectory = null, Expression<Func<bool>> runProcessuseShellExecute = null, Expression<Func<bool>> runProcesscreateNoWindow = null, Expression<Func<runProcesswindowStyleInput>> runProcesswindowStyle = null, Expression<Func<bool>> runProcesswaitForProcess = null, Expression<Func<bool>> runProcessredirectStandardOutput = null, Expression<Func<bool>> runProcessredirectStandardError = null, Expression<Func<bool>> runProcessredirectStandardErrorToOutput = null, Expression<Func<runProcessstandardOutputEncodingInput>> runProcessstandardOutputEncoding = null, Expression<Func<runProcessstandardErrorEncodingInput>> runProcessstandardErrorEncoding = null, Expression<Func<string>> runProcessrunAsDomain = null, Expression<Func<string>> runProcessrunAsUsername = null, Expression<Func<string>> runProcessrunAsPassword = null, Expression<Func<bool>> runProcessrunAsLoadUserProfile = null, Expression<Func<bool>> runProcessrunAsElevate = null, Expression<Func<int>> runProcesstimeoutInSeconds = null)
+        public IBodyWorkflowAction<RunProcessResponse, ApiConnectionActionConfiguration> RunProcess(Expression<Func<RunProcessInput>> runProcess)
         {
-            var __workflow_runProcessprocessName = WorkflowExpression.Compile(runProcessprocessName, nameof(runProcessprocessName), required: true);
-            var __workflow_runProcessworkflow = WorkflowExpression.Compile(runProcessworkflow, nameof(runProcessworkflow), required: true);
-            var __workflow_runProcessarguments = WorkflowExpression.Compile(runProcessarguments, nameof(runProcessarguments), required: false);
-            var __workflow_runProcessworkingDirectory = WorkflowExpression.Compile(runProcessworkingDirectory, nameof(runProcessworkingDirectory), required: false);
-            var __workflow_runProcessuseShellExecute = WorkflowExpression.Compile(runProcessuseShellExecute, nameof(runProcessuseShellExecute), required: false);
-            var __workflow_runProcesscreateNoWindow = WorkflowExpression.Compile(runProcesscreateNoWindow, nameof(runProcesscreateNoWindow), required: false);
-            var __workflow_runProcesswindowStyle = WorkflowExpression.Compile(runProcesswindowStyle, nameof(runProcesswindowStyle), required: false);
-            var __workflow_runProcesswaitForProcess = WorkflowExpression.Compile(runProcesswaitForProcess, nameof(runProcesswaitForProcess), required: false);
-            var __workflow_runProcessredirectStandardOutput = WorkflowExpression.Compile(runProcessredirectStandardOutput, nameof(runProcessredirectStandardOutput), required: false);
-            var __workflow_runProcessredirectStandardError = WorkflowExpression.Compile(runProcessredirectStandardError, nameof(runProcessredirectStandardError), required: false);
-            var __workflow_runProcessredirectStandardErrorToOutput = WorkflowExpression.Compile(runProcessredirectStandardErrorToOutput, nameof(runProcessredirectStandardErrorToOutput), required: false);
-            var __workflow_runProcessstandardOutputEncoding = WorkflowExpression.Compile(runProcessstandardOutputEncoding, nameof(runProcessstandardOutputEncoding), required: false);
-            var __workflow_runProcessstandardErrorEncoding = WorkflowExpression.Compile(runProcessstandardErrorEncoding, nameof(runProcessstandardErrorEncoding), required: false);
-            var __workflow_runProcessrunAsDomain = WorkflowExpression.Compile(runProcessrunAsDomain, nameof(runProcessrunAsDomain), required: false);
-            var __workflow_runProcessrunAsUsername = WorkflowExpression.Compile(runProcessrunAsUsername, nameof(runProcessrunAsUsername), required: false);
-            var __workflow_runProcessrunAsPassword = WorkflowExpression.Compile(runProcessrunAsPassword, nameof(runProcessrunAsPassword), required: false);
-            var __workflow_runProcessrunAsLoadUserProfile = WorkflowExpression.Compile(runProcessrunAsLoadUserProfile, nameof(runProcessrunAsLoadUserProfile), required: false);
-            var __workflow_runProcessrunAsElevate = WorkflowExpression.Compile(runProcessrunAsElevate, nameof(runProcessrunAsElevate), required: false);
-            var __workflow_runProcesstimeoutInSeconds = WorkflowExpression.Compile(runProcesstimeoutInSeconds, nameof(runProcesstimeoutInSeconds), required: false);
+            var __workflow_runProcess = WorkflowExpression.Compile(runProcess, nameof(runProcess), required: true);
             return new DeferredBodyAction<RunProcessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RunProcess";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var runProcess = new JObject();
-                var runProcesspropCount = 0;
-                runProcesspropCount++;
-                runProcess["ProcessName"] = ExpressionConverter.ConvertO(__workflow_runProcessprocessName);
-                if (__workflow_runProcessarguments != null)
-                {
-                    runProcess["Arguments"] = ExpressionConverter.ConvertO(__workflow_runProcessarguments);
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessworkingDirectory != null)
-                {
-                    runProcess["WorkingDirectory"] = ExpressionConverter.ConvertO(__workflow_runProcessworkingDirectory);
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessuseShellExecute != null)
-                {
-                    if (__workflow_runProcessuseShellExecute != null)
-                    {
-                        runProcess["UseShellExecute"] = ExpressionConverter.ConvertO(__workflow_runProcessuseShellExecute);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["UseShellExecute"] = true;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcesscreateNoWindow != null)
-                {
-                    if (__workflow_runProcesscreateNoWindow != null)
-                    {
-                        runProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(__workflow_runProcesscreateNoWindow);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["CreateNoWindow"] = false;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcesswindowStyle != null)
-                {
-                    if (__workflow_runProcesswindowStyle != null)
-                    {
-                        runProcess["WindowStyle"] = ExpressionConverter.ConvertO(__workflow_runProcesswindowStyle);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["WindowStyle"] = "normal";
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcesswaitForProcess != null)
-                {
-                    if (__workflow_runProcesswaitForProcess != null)
-                    {
-                        runProcess["WaitForProcess"] = ExpressionConverter.ConvertO(__workflow_runProcesswaitForProcess);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["WaitForProcess"] = false;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessredirectStandardOutput != null)
-                {
-                    if (__workflow_runProcessredirectStandardOutput != null)
-                    {
-                        runProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(__workflow_runProcessredirectStandardOutput);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["RedirectStandardOutput"] = false;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessredirectStandardError != null)
-                {
-                    if (__workflow_runProcessredirectStandardError != null)
-                    {
-                        runProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(__workflow_runProcessredirectStandardError);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["RedirectStandardError"] = false;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessredirectStandardErrorToOutput != null)
-                {
-                    if (__workflow_runProcessredirectStandardErrorToOutput != null)
-                    {
-                        runProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(__workflow_runProcessredirectStandardErrorToOutput);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["RedirectStandardErrorToOutput"] = false;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessstandardOutputEncoding != null)
-                {
-                    runProcess["StandardOutputEncoding"] = ExpressionConverter.ConvertO(__workflow_runProcessstandardOutputEncoding);
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessstandardErrorEncoding != null)
-                {
-                    runProcess["StandardErrorEncoding"] = ExpressionConverter.ConvertO(__workflow_runProcessstandardErrorEncoding);
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessrunAsDomain != null)
-                {
-                    runProcess["RunAsDomain"] = ExpressionConverter.ConvertO(__workflow_runProcessrunAsDomain);
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessrunAsUsername != null)
-                {
-                    runProcess["RunAsUsername"] = ExpressionConverter.ConvertO(__workflow_runProcessrunAsUsername);
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessrunAsPassword != null)
-                {
-                    runProcess["RunAsPassword"] = ExpressionConverter.ConvertO(__workflow_runProcessrunAsPassword);
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessrunAsLoadUserProfile != null)
-                {
-                    if (__workflow_runProcessrunAsLoadUserProfile != null)
-                    {
-                        runProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(__workflow_runProcessrunAsLoadUserProfile);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["RunAsLoadUserProfile"] = false;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcessrunAsElevate != null)
-                {
-                    if (__workflow_runProcessrunAsElevate != null)
-                    {
-                        runProcess["RunAsElevate"] = ExpressionConverter.ConvertO(__workflow_runProcessrunAsElevate);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["RunAsElevate"] = false;
-                    runProcesspropCount++;
-                }
-
-                if (__workflow_runProcesstimeoutInSeconds != null)
-                {
-                    if (__workflow_runProcesstimeoutInSeconds != null)
-                    {
-                        runProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(__workflow_runProcesstimeoutInSeconds);
-                        runProcesspropCount++;
-                    }
-
-                    runProcesspropCount++;
-                }
-                else
-                {
-                    runProcess["TimeoutInSeconds"] = 10;
-                    runProcesspropCount++;
-                }
-
-                runProcesspropCount++;
-                runProcess["Workflow"] = ExpressionConverter.ConvertO(__workflow_runProcessworkflow);
-                if (runProcesspropCount > 0)
-                {
-                    callPayload.Body = runProcess;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_runProcess);
                 return new ApiConnectionAction<RunProcessResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<RunPowerShellProcessResponse, ApiConnectionActionConfiguration> RunPowerShellProcess(Expression<Func<string>> runPowerShellProcessworkflow, Expression<Func<string>> runPowerShellProcesspowerShellExecutable = null, Expression<Func<string>> runPowerShellProcesspowerShellScriptFilePath = null, Expression<Func<string>> runPowerShellProcesspowerShellScriptContents = null, Expression<Func<string>> runPowerShellProcessworkingDirectory = null, Expression<Func<bool>> runPowerShellProcesscreateNoWindow = null, Expression<Func<runPowerShellProcesswindowStyleInput>> runPowerShellProcesswindowStyle = null, Expression<Func<bool>> runPowerShellProcesswaitForProcess = null, Expression<Func<bool>> runPowerShellProcessredirectStandardOutput = null, Expression<Func<bool>> runPowerShellProcessredirectStandardError = null, Expression<Func<bool>> runPowerShellProcessredirectStandardErrorToOutput = null, Expression<Func<runPowerShellProcessstandardOutputEncodingInput>> runPowerShellProcessstandardOutputEncoding = null, Expression<Func<runPowerShellProcessstandardErrorEncodingInput>> runPowerShellProcessstandardErrorEncoding = null, Expression<Func<string>> runPowerShellProcessrunAsDomain = null, Expression<Func<string>> runPowerShellProcessrunAsUsername = null, Expression<Func<string>> runPowerShellProcessrunAsPassword = null, Expression<Func<bool>> runPowerShellProcessrunAsLoadUserProfile = null, Expression<Func<bool>> runPowerShellProcessrunAsElevate = null, Expression<Func<int>> runPowerShellProcesstimeoutInSeconds = null, Expression<Func<string>> runPowerShellProcesspowerShellScriptTempFolder = null)
+        public IBodyWorkflowAction<RunPowerShellProcessResponse, ApiConnectionActionConfiguration> RunPowerShellProcess(Expression<Func<RunPowerShellProcessInput>> runPowerShellProcess)
         {
-            var __workflow_runPowerShellProcessworkflow = WorkflowExpression.Compile(runPowerShellProcessworkflow, nameof(runPowerShellProcessworkflow), required: true);
-            var __workflow_runPowerShellProcesspowerShellExecutable = WorkflowExpression.Compile(runPowerShellProcesspowerShellExecutable, nameof(runPowerShellProcesspowerShellExecutable), required: false);
-            var __workflow_runPowerShellProcesspowerShellScriptFilePath = WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptFilePath, nameof(runPowerShellProcesspowerShellScriptFilePath), required: false);
-            var __workflow_runPowerShellProcesspowerShellScriptContents = WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptContents, nameof(runPowerShellProcesspowerShellScriptContents), required: false);
-            var __workflow_runPowerShellProcessworkingDirectory = WorkflowExpression.Compile(runPowerShellProcessworkingDirectory, nameof(runPowerShellProcessworkingDirectory), required: false);
-            var __workflow_runPowerShellProcesscreateNoWindow = WorkflowExpression.Compile(runPowerShellProcesscreateNoWindow, nameof(runPowerShellProcesscreateNoWindow), required: false);
-            var __workflow_runPowerShellProcesswindowStyle = WorkflowExpression.Compile(runPowerShellProcesswindowStyle, nameof(runPowerShellProcesswindowStyle), required: false);
-            var __workflow_runPowerShellProcesswaitForProcess = WorkflowExpression.Compile(runPowerShellProcesswaitForProcess, nameof(runPowerShellProcesswaitForProcess), required: false);
-            var __workflow_runPowerShellProcessredirectStandardOutput = WorkflowExpression.Compile(runPowerShellProcessredirectStandardOutput, nameof(runPowerShellProcessredirectStandardOutput), required: false);
-            var __workflow_runPowerShellProcessredirectStandardError = WorkflowExpression.Compile(runPowerShellProcessredirectStandardError, nameof(runPowerShellProcessredirectStandardError), required: false);
-            var __workflow_runPowerShellProcessredirectStandardErrorToOutput = WorkflowExpression.Compile(runPowerShellProcessredirectStandardErrorToOutput, nameof(runPowerShellProcessredirectStandardErrorToOutput), required: false);
-            var __workflow_runPowerShellProcessstandardOutputEncoding = WorkflowExpression.Compile(runPowerShellProcessstandardOutputEncoding, nameof(runPowerShellProcessstandardOutputEncoding), required: false);
-            var __workflow_runPowerShellProcessstandardErrorEncoding = WorkflowExpression.Compile(runPowerShellProcessstandardErrorEncoding, nameof(runPowerShellProcessstandardErrorEncoding), required: false);
-            var __workflow_runPowerShellProcessrunAsDomain = WorkflowExpression.Compile(runPowerShellProcessrunAsDomain, nameof(runPowerShellProcessrunAsDomain), required: false);
-            var __workflow_runPowerShellProcessrunAsUsername = WorkflowExpression.Compile(runPowerShellProcessrunAsUsername, nameof(runPowerShellProcessrunAsUsername), required: false);
-            var __workflow_runPowerShellProcessrunAsPassword = WorkflowExpression.Compile(runPowerShellProcessrunAsPassword, nameof(runPowerShellProcessrunAsPassword), required: false);
-            var __workflow_runPowerShellProcessrunAsLoadUserProfile = WorkflowExpression.Compile(runPowerShellProcessrunAsLoadUserProfile, nameof(runPowerShellProcessrunAsLoadUserProfile), required: false);
-            var __workflow_runPowerShellProcessrunAsElevate = WorkflowExpression.Compile(runPowerShellProcessrunAsElevate, nameof(runPowerShellProcessrunAsElevate), required: false);
-            var __workflow_runPowerShellProcesstimeoutInSeconds = WorkflowExpression.Compile(runPowerShellProcesstimeoutInSeconds, nameof(runPowerShellProcesstimeoutInSeconds), required: false);
-            var __workflow_runPowerShellProcesspowerShellScriptTempFolder = WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptTempFolder, nameof(runPowerShellProcesspowerShellScriptTempFolder), required: false);
+            var __workflow_runPowerShellProcess = WorkflowExpression.Compile(runPowerShellProcess, nameof(runPowerShellProcess), required: true);
             return new DeferredBodyAction<RunPowerShellProcessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RunPowerShellProcess";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var runPowerShellProcess = new JObject();
-                var runPowerShellProcesspropCount = 0;
-                if (__workflow_runPowerShellProcesspowerShellExecutable != null)
-                {
-                    if (__workflow_runPowerShellProcesspowerShellExecutable != null)
-                    {
-                        runPowerShellProcess["PowerShellExecutable"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesspowerShellExecutable);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["PowerShellExecutable"] = "PowerShell.exe";
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcesspowerShellScriptFilePath != null)
-                {
-                    runPowerShellProcess["PowerShellScriptFilePath"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesspowerShellScriptFilePath);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcesspowerShellScriptContents != null)
-                {
-                    runPowerShellProcess["PowerShellScriptContents"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesspowerShellScriptContents);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessworkingDirectory != null)
-                {
-                    runPowerShellProcess["WorkingDirectory"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessworkingDirectory);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcesscreateNoWindow != null)
-                {
-                    if (__workflow_runPowerShellProcesscreateNoWindow != null)
-                    {
-                        runPowerShellProcess["CreateNoWindow"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesscreateNoWindow);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["CreateNoWindow"] = true;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcesswindowStyle != null)
-                {
-                    if (__workflow_runPowerShellProcesswindowStyle != null)
-                    {
-                        runPowerShellProcess["WindowStyle"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesswindowStyle);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["WindowStyle"] = "normal";
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcesswaitForProcess != null)
-                {
-                    if (__workflow_runPowerShellProcesswaitForProcess != null)
-                    {
-                        runPowerShellProcess["WaitForProcess"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesswaitForProcess);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["WaitForProcess"] = true;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessredirectStandardOutput != null)
-                {
-                    if (__workflow_runPowerShellProcessredirectStandardOutput != null)
-                    {
-                        runPowerShellProcess["RedirectStandardOutput"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessredirectStandardOutput);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["RedirectStandardOutput"] = true;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessredirectStandardError != null)
-                {
-                    if (__workflow_runPowerShellProcessredirectStandardError != null)
-                    {
-                        runPowerShellProcess["RedirectStandardError"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessredirectStandardError);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["RedirectStandardError"] = false;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessredirectStandardErrorToOutput != null)
-                {
-                    if (__workflow_runPowerShellProcessredirectStandardErrorToOutput != null)
-                    {
-                        runPowerShellProcess["RedirectStandardErrorToOutput"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessredirectStandardErrorToOutput);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["RedirectStandardErrorToOutput"] = false;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessstandardOutputEncoding != null)
-                {
-                    runPowerShellProcess["StandardOutputEncoding"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessstandardOutputEncoding);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessstandardErrorEncoding != null)
-                {
-                    runPowerShellProcess["StandardErrorEncoding"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessstandardErrorEncoding);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessrunAsDomain != null)
-                {
-                    runPowerShellProcess["RunAsDomain"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessrunAsDomain);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessrunAsUsername != null)
-                {
-                    runPowerShellProcess["RunAsUsername"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessrunAsUsername);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessrunAsPassword != null)
-                {
-                    runPowerShellProcess["RunAsPassword"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessrunAsPassword);
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessrunAsLoadUserProfile != null)
-                {
-                    if (__workflow_runPowerShellProcessrunAsLoadUserProfile != null)
-                    {
-                        runPowerShellProcess["RunAsLoadUserProfile"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessrunAsLoadUserProfile);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["RunAsLoadUserProfile"] = false;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcessrunAsElevate != null)
-                {
-                    if (__workflow_runPowerShellProcessrunAsElevate != null)
-                    {
-                        runPowerShellProcess["RunAsElevate"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessrunAsElevate);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["RunAsElevate"] = false;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcesstimeoutInSeconds != null)
-                {
-                    if (__workflow_runPowerShellProcesstimeoutInSeconds != null)
-                    {
-                        runPowerShellProcess["TimeoutInSeconds"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesstimeoutInSeconds);
-                        runPowerShellProcesspropCount++;
-                    }
-
-                    runPowerShellProcesspropCount++;
-                }
-                else
-                {
-                    runPowerShellProcess["TimeoutInSeconds"] = 10;
-                    runPowerShellProcesspropCount++;
-                }
-
-                if (__workflow_runPowerShellProcesspowerShellScriptTempFolder != null)
-                {
-                    runPowerShellProcess["PowerShellScriptTempFolder"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcesspowerShellScriptTempFolder);
-                    runPowerShellProcesspropCount++;
-                }
-
-                runPowerShellProcesspropCount++;
-                runPowerShellProcess["Workflow"] = ExpressionConverter.ConvertO(__workflow_runPowerShellProcessworkflow);
-                if (runPowerShellProcesspropCount > 0)
-                {
-                    callPayload.Body = runPowerShellProcess;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_runPowerShellProcess);
                 return new ApiConnectionAction<RunPowerShellProcessResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetScreenResolutionResponse, ApiConnectionActionConfiguration> GetScreenResolution(Expression<Func<string>> getScreenResolutionworkflow)
+        public IBodyWorkflowAction<GetScreenResolutionResponse, ApiConnectionActionConfiguration> GetScreenResolution(Expression<Func<GetScreenResolutionInput>> getScreenResolution)
         {
-            var __workflow_getScreenResolutionworkflow = WorkflowExpression.Compile(getScreenResolutionworkflow, nameof(getScreenResolutionworkflow), required: true);
+            var __workflow_getScreenResolution = WorkflowExpression.Compile(getScreenResolution, nameof(getScreenResolution), required: true);
             return new DeferredBodyAction<GetScreenResolutionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetScreenResolution";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getScreenResolution = new JObject();
-                var getScreenResolutionpropCount = 0;
-                getScreenResolutionpropCount++;
-                getScreenResolution["Workflow"] = ExpressionConverter.ConvertO(__workflow_getScreenResolutionworkflow);
-                if (getScreenResolutionpropCount > 0)
-                {
-                    callPayload.Body = getScreenResolution;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getScreenResolution);
                 return new ApiConnectionAction<GetScreenResolutionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetDefaultPrinter(Expression<Func<string>> setDefaultPrinterdefaultPrinterName, Expression<Func<string>> setDefaultPrinterworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetDefaultPrinter(Expression<Func<SetDefaultPrinterInput>> setDefaultPrinter)
         {
-            var __workflow_setDefaultPrinterdefaultPrinterName = WorkflowExpression.Compile(setDefaultPrinterdefaultPrinterName, nameof(setDefaultPrinterdefaultPrinterName), required: true);
-            var __workflow_setDefaultPrinterworkflow = WorkflowExpression.Compile(setDefaultPrinterworkflow, nameof(setDefaultPrinterworkflow), required: true);
+            var __workflow_setDefaultPrinter = WorkflowExpression.Compile(setDefaultPrinter, nameof(setDefaultPrinter), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SetDefaultPrinter";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setDefaultPrinter = new JObject();
-                var setDefaultPrinterpropCount = 0;
-                setDefaultPrinterpropCount++;
-                setDefaultPrinter["DefaultPrinterName"] = ExpressionConverter.ConvertO(__workflow_setDefaultPrinterdefaultPrinterName);
-                setDefaultPrinterpropCount++;
-                setDefaultPrinter["Workflow"] = ExpressionConverter.ConvertO(__workflow_setDefaultPrinterworkflow);
-                if (setDefaultPrinterpropCount > 0)
-                {
-                    callPayload.Body = setDefaultPrinter;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setDefaultPrinter);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetDefaultPrinterResponse, ApiConnectionActionConfiguration> GetDefaultPrinter(Expression<Func<string>> getDefaultPrinterworkflow)
+        public IBodyWorkflowAction<GetDefaultPrinterResponse, ApiConnectionActionConfiguration> GetDefaultPrinter(Expression<Func<GetDefaultPrinterInput>> getDefaultPrinter)
         {
-            var __workflow_getDefaultPrinterworkflow = WorkflowExpression.Compile(getDefaultPrinterworkflow, nameof(getDefaultPrinterworkflow), required: true);
+            var __workflow_getDefaultPrinter = WorkflowExpression.Compile(getDefaultPrinter, nameof(getDefaultPrinter), required: true);
             return new DeferredBodyAction<GetDefaultPrinterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetDefaultPrinter";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getDefaultPrinter = new JObject();
-                var getDefaultPrinterpropCount = 0;
-                getDefaultPrinterpropCount++;
-                getDefaultPrinter["Workflow"] = ExpressionConverter.ConvertO(__workflow_getDefaultPrinterworkflow);
-                if (getDefaultPrinterpropCount > 0)
-                {
-                    callPayload.Body = getDefaultPrinter;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getDefaultPrinter);
                 return new ApiConnectionAction<GetDefaultPrinterResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetListOfPrintersResponse, ApiConnectionActionConfiguration> GetListOfPrinters(Expression<Func<string>> getListOfPrintersworkflow, Expression<Func<bool>> getListOfPrinterslistLocalPrinters = null, Expression<Func<bool>> getListOfPrinterslistNetworkPrinters = null, Expression<Func<bool>> getListOfPrintersreturnDetailedInformation = null)
+        public IBodyWorkflowAction<GetListOfPrintersResponse, ApiConnectionActionConfiguration> GetListOfPrinters(Expression<Func<GetListOfPrintersInput>> getListOfPrinters)
         {
-            var __workflow_getListOfPrintersworkflow = WorkflowExpression.Compile(getListOfPrintersworkflow, nameof(getListOfPrintersworkflow), required: true);
-            var __workflow_getListOfPrinterslistLocalPrinters = WorkflowExpression.Compile(getListOfPrinterslistLocalPrinters, nameof(getListOfPrinterslistLocalPrinters), required: false);
-            var __workflow_getListOfPrinterslistNetworkPrinters = WorkflowExpression.Compile(getListOfPrinterslistNetworkPrinters, nameof(getListOfPrinterslistNetworkPrinters), required: false);
-            var __workflow_getListOfPrintersreturnDetailedInformation = WorkflowExpression.Compile(getListOfPrintersreturnDetailedInformation, nameof(getListOfPrintersreturnDetailedInformation), required: false);
+            var __workflow_getListOfPrinters = WorkflowExpression.Compile(getListOfPrinters, nameof(getListOfPrinters), required: true);
             return new DeferredBodyAction<GetListOfPrintersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetListOfPrinters";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getListOfPrinters = new JObject();
-                var getListOfPrinterspropCount = 0;
-                if (__workflow_getListOfPrinterslistLocalPrinters != null)
-                {
-                    if (__workflow_getListOfPrinterslistLocalPrinters != null)
-                    {
-                        getListOfPrinters["ListLocalPrinters"] = ExpressionConverter.ConvertO(__workflow_getListOfPrinterslistLocalPrinters);
-                        getListOfPrinterspropCount++;
-                    }
-
-                    getListOfPrinterspropCount++;
-                }
-                else
-                {
-                    getListOfPrinters["ListLocalPrinters"] = true;
-                    getListOfPrinterspropCount++;
-                }
-
-                if (__workflow_getListOfPrinterslistNetworkPrinters != null)
-                {
-                    if (__workflow_getListOfPrinterslistNetworkPrinters != null)
-                    {
-                        getListOfPrinters["ListNetworkPrinters"] = ExpressionConverter.ConvertO(__workflow_getListOfPrinterslistNetworkPrinters);
-                        getListOfPrinterspropCount++;
-                    }
-
-                    getListOfPrinterspropCount++;
-                }
-                else
-                {
-                    getListOfPrinters["ListNetworkPrinters"] = false;
-                    getListOfPrinterspropCount++;
-                }
-
-                if (__workflow_getListOfPrintersreturnDetailedInformation != null)
-                {
-                    if (__workflow_getListOfPrintersreturnDetailedInformation != null)
-                    {
-                        getListOfPrinters["ReturnDetailedInformation"] = ExpressionConverter.ConvertO(__workflow_getListOfPrintersreturnDetailedInformation);
-                        getListOfPrinterspropCount++;
-                    }
-
-                    getListOfPrinterspropCount++;
-                }
-                else
-                {
-                    getListOfPrinters["ReturnDetailedInformation"] = false;
-                    getListOfPrinterspropCount++;
-                }
-
-                getListOfPrinterspropCount++;
-                getListOfPrinters["Workflow"] = ExpressionConverter.ConvertO(__workflow_getListOfPrintersworkflow);
-                if (getListOfPrinterspropCount > 0)
-                {
-                    callPayload.Body = getListOfPrinters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getListOfPrinters);
                 return new ApiConnectionAction<GetListOfPrintersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetMouseMultiplier(Expression<Func<string>> setMouseMultiplierworkflow, Expression<Func<double>> setMouseMultipliermouseXMultiplier = null, Expression<Func<double>> setMouseMultipliermouseYMultiplier = null, Expression<Func<bool>> setMouseMultiplierapplyToMouseEvent = null, Expression<Func<bool>> setMouseMultiplierapplyToSetCursorPos = null, Expression<Func<bool>> setMouseMultiplierapplyToCurrentMouseMoveMethod = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetMouseMultiplier(Expression<Func<SetMouseMultiplierInput>> setMouseMultiplier)
         {
-            var __workflow_setMouseMultiplierworkflow = WorkflowExpression.Compile(setMouseMultiplierworkflow, nameof(setMouseMultiplierworkflow), required: true);
-            var __workflow_setMouseMultipliermouseXMultiplier = WorkflowExpression.Compile(setMouseMultipliermouseXMultiplier, nameof(setMouseMultipliermouseXMultiplier), required: false);
-            var __workflow_setMouseMultipliermouseYMultiplier = WorkflowExpression.Compile(setMouseMultipliermouseYMultiplier, nameof(setMouseMultipliermouseYMultiplier), required: false);
-            var __workflow_setMouseMultiplierapplyToMouseEvent = WorkflowExpression.Compile(setMouseMultiplierapplyToMouseEvent, nameof(setMouseMultiplierapplyToMouseEvent), required: false);
-            var __workflow_setMouseMultiplierapplyToSetCursorPos = WorkflowExpression.Compile(setMouseMultiplierapplyToSetCursorPos, nameof(setMouseMultiplierapplyToSetCursorPos), required: false);
-            var __workflow_setMouseMultiplierapplyToCurrentMouseMoveMethod = WorkflowExpression.Compile(setMouseMultiplierapplyToCurrentMouseMoveMethod, nameof(setMouseMultiplierapplyToCurrentMouseMoveMethod), required: false);
+            var __workflow_setMouseMultiplier = WorkflowExpression.Compile(setMouseMultiplier, nameof(setMouseMultiplier), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SetMouseMultiplier";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setMouseMultiplier = new JObject();
-                var setMouseMultiplierpropCount = 0;
-                if (__workflow_setMouseMultipliermouseXMultiplier != null)
-                {
-                    if (__workflow_setMouseMultipliermouseXMultiplier != null)
-                    {
-                        setMouseMultiplier["MouseXMultiplier"] = ExpressionConverter.ConvertO(__workflow_setMouseMultipliermouseXMultiplier);
-                        setMouseMultiplierpropCount++;
-                    }
-
-                    setMouseMultiplierpropCount++;
-                }
-                else
-                {
-                    setMouseMultiplier["MouseXMultiplier"] = 1;
-                    setMouseMultiplierpropCount++;
-                }
-
-                if (__workflow_setMouseMultipliermouseYMultiplier != null)
-                {
-                    if (__workflow_setMouseMultipliermouseYMultiplier != null)
-                    {
-                        setMouseMultiplier["MouseYMultiplier"] = ExpressionConverter.ConvertO(__workflow_setMouseMultipliermouseYMultiplier);
-                        setMouseMultiplierpropCount++;
-                    }
-
-                    setMouseMultiplierpropCount++;
-                }
-                else
-                {
-                    setMouseMultiplier["MouseYMultiplier"] = 1;
-                    setMouseMultiplierpropCount++;
-                }
-
-                if (__workflow_setMouseMultiplierapplyToMouseEvent != null)
-                {
-                    if (__workflow_setMouseMultiplierapplyToMouseEvent != null)
-                    {
-                        setMouseMultiplier["ApplyToMouseEvent"] = ExpressionConverter.ConvertO(__workflow_setMouseMultiplierapplyToMouseEvent);
-                        setMouseMultiplierpropCount++;
-                    }
-
-                    setMouseMultiplierpropCount++;
-                }
-                else
-                {
-                    setMouseMultiplier["ApplyToMouseEvent"] = true;
-                    setMouseMultiplierpropCount++;
-                }
-
-                if (__workflow_setMouseMultiplierapplyToSetCursorPos != null)
-                {
-                    if (__workflow_setMouseMultiplierapplyToSetCursorPos != null)
-                    {
-                        setMouseMultiplier["ApplyToSetCursorPos"] = ExpressionConverter.ConvertO(__workflow_setMouseMultiplierapplyToSetCursorPos);
-                        setMouseMultiplierpropCount++;
-                    }
-
-                    setMouseMultiplierpropCount++;
-                }
-                else
-                {
-                    setMouseMultiplier["ApplyToSetCursorPos"] = false;
-                    setMouseMultiplierpropCount++;
-                }
-
-                if (__workflow_setMouseMultiplierapplyToCurrentMouseMoveMethod != null)
-                {
-                    if (__workflow_setMouseMultiplierapplyToCurrentMouseMoveMethod != null)
-                    {
-                        setMouseMultiplier["ApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(__workflow_setMouseMultiplierapplyToCurrentMouseMoveMethod);
-                        setMouseMultiplierpropCount++;
-                    }
-
-                    setMouseMultiplierpropCount++;
-                }
-                else
-                {
-                    setMouseMultiplier["ApplyToCurrentMouseMoveMethod"] = false;
-                    setMouseMultiplierpropCount++;
-                }
-
-                setMouseMultiplierpropCount++;
-                setMouseMultiplier["Workflow"] = ExpressionConverter.ConvertO(__workflow_setMouseMultiplierworkflow);
-                if (setMouseMultiplierpropCount > 0)
-                {
-                    callPayload.Body = setMouseMultiplier;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setMouseMultiplier);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetMouseMultiplierResponse, ApiConnectionActionConfiguration> GetMouseMultiplier(Expression<Func<string>> getMouseMultiplierworkflow)
+        public IBodyWorkflowAction<GetMouseMultiplierResponse, ApiConnectionActionConfiguration> GetMouseMultiplier(Expression<Func<GetMouseMultiplierInput>> getMouseMultiplier)
         {
-            var __workflow_getMouseMultiplierworkflow = WorkflowExpression.Compile(getMouseMultiplierworkflow, nameof(getMouseMultiplierworkflow), required: true);
+            var __workflow_getMouseMultiplier = WorkflowExpression.Compile(getMouseMultiplier, nameof(getMouseMultiplier), required: true);
             return new DeferredBodyAction<GetMouseMultiplierResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetMouseMultiplier";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getMouseMultiplier = new JObject();
-                var getMouseMultiplierpropCount = 0;
-                getMouseMultiplierpropCount++;
-                getMouseMultiplier["Workflow"] = ExpressionConverter.ConvertO(__workflow_getMouseMultiplierworkflow);
-                if (getMouseMultiplierpropCount > 0)
-                {
-                    callPayload.Body = getMouseMultiplier;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getMouseMultiplier);
                 return new ApiConnectionAction<GetMouseMultiplierResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveMouseToCoordinate(Expression<Func<int>> moveMouseToCoordinatexCoord, Expression<Func<int>> moveMouseToCoordinateyCoord, Expression<Func<string>> moveMouseToCoordinateworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveMouseToCoordinate(Expression<Func<MoveMouseToCoordinateInput>> moveMouseToCoordinate)
         {
-            var __workflow_moveMouseToCoordinatexCoord = WorkflowExpression.Compile(moveMouseToCoordinatexCoord, nameof(moveMouseToCoordinatexCoord), required: true);
-            var __workflow_moveMouseToCoordinateyCoord = WorkflowExpression.Compile(moveMouseToCoordinateyCoord, nameof(moveMouseToCoordinateyCoord), required: true);
-            var __workflow_moveMouseToCoordinateworkflow = WorkflowExpression.Compile(moveMouseToCoordinateworkflow, nameof(moveMouseToCoordinateworkflow), required: true);
+            var __workflow_moveMouseToCoordinate = WorkflowExpression.Compile(moveMouseToCoordinate, nameof(moveMouseToCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MoveMouseToCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var moveMouseToCoordinate = new JObject();
-                var moveMouseToCoordinatepropCount = 0;
-                moveMouseToCoordinatepropCount++;
-                moveMouseToCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseToCoordinatexCoord);
-                moveMouseToCoordinatepropCount++;
-                moveMouseToCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseToCoordinateyCoord);
-                moveMouseToCoordinatepropCount++;
-                moveMouseToCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_moveMouseToCoordinateworkflow);
-                if (moveMouseToCoordinatepropCount > 0)
-                {
-                    callPayload.Body = moveMouseToCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_moveMouseToCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveMouseRelative(Expression<Func<int>> moveMouseRelativexCoord, Expression<Func<int>> moveMouseRelativeyCoord, Expression<Func<string>> moveMouseRelativeworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveMouseRelative(Expression<Func<MoveMouseRelativeInput>> moveMouseRelative)
         {
-            var __workflow_moveMouseRelativexCoord = WorkflowExpression.Compile(moveMouseRelativexCoord, nameof(moveMouseRelativexCoord), required: true);
-            var __workflow_moveMouseRelativeyCoord = WorkflowExpression.Compile(moveMouseRelativeyCoord, nameof(moveMouseRelativeyCoord), required: true);
-            var __workflow_moveMouseRelativeworkflow = WorkflowExpression.Compile(moveMouseRelativeworkflow, nameof(moveMouseRelativeworkflow), required: true);
+            var __workflow_moveMouseRelative = WorkflowExpression.Compile(moveMouseRelative, nameof(moveMouseRelative), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MoveMouseRelative";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var moveMouseRelative = new JObject();
-                var moveMouseRelativepropCount = 0;
-                moveMouseRelativepropCount++;
-                moveMouseRelative["XCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseRelativexCoord);
-                moveMouseRelativepropCount++;
-                moveMouseRelative["YCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseRelativeyCoord);
-                moveMouseRelativepropCount++;
-                moveMouseRelative["Workflow"] = ExpressionConverter.ConvertO(__workflow_moveMouseRelativeworkflow);
-                if (moveMouseRelativepropCount > 0)
-                {
-                    callPayload.Body = moveMouseRelative;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_moveMouseRelative);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LeftMouseButtonDown(Expression<Func<string>> leftMouseButtonDownworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LeftMouseButtonDown(Expression<Func<LeftMouseButtonDownInput>> leftMouseButtonDown)
         {
-            var __workflow_leftMouseButtonDownworkflow = WorkflowExpression.Compile(leftMouseButtonDownworkflow, nameof(leftMouseButtonDownworkflow), required: true);
+            var __workflow_leftMouseButtonDown = WorkflowExpression.Compile(leftMouseButtonDown, nameof(leftMouseButtonDown), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LeftMouseButtonDown";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var leftMouseButtonDown = new JObject();
-                var leftMouseButtonDownpropCount = 0;
-                leftMouseButtonDownpropCount++;
-                leftMouseButtonDown["Workflow"] = ExpressionConverter.ConvertO(__workflow_leftMouseButtonDownworkflow);
-                if (leftMouseButtonDownpropCount > 0)
-                {
-                    callPayload.Body = leftMouseButtonDown;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_leftMouseButtonDown);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LeftMouseButtonUp(Expression<Func<string>> leftMouseButtonUpworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LeftMouseButtonUp(Expression<Func<LeftMouseButtonUpInput>> leftMouseButtonUp)
         {
-            var __workflow_leftMouseButtonUpworkflow = WorkflowExpression.Compile(leftMouseButtonUpworkflow, nameof(leftMouseButtonUpworkflow), required: true);
+            var __workflow_leftMouseButtonUp = WorkflowExpression.Compile(leftMouseButtonUp, nameof(leftMouseButtonUp), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LeftMouseButtonUp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var leftMouseButtonUp = new JObject();
-                var leftMouseButtonUppropCount = 0;
-                leftMouseButtonUppropCount++;
-                leftMouseButtonUp["Workflow"] = ExpressionConverter.ConvertO(__workflow_leftMouseButtonUpworkflow);
-                if (leftMouseButtonUppropCount > 0)
-                {
-                    callPayload.Body = leftMouseButtonUp;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_leftMouseButtonUp);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LeftClickMouse(Expression<Func<string>> leftClickMouseworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LeftClickMouse(Expression<Func<LeftClickMouseInput>> leftClickMouse)
         {
-            var __workflow_leftClickMouseworkflow = WorkflowExpression.Compile(leftClickMouseworkflow, nameof(leftClickMouseworkflow), required: true);
+            var __workflow_leftClickMouse = WorkflowExpression.Compile(leftClickMouse, nameof(leftClickMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LeftClickMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var leftClickMouse = new JObject();
-                var leftClickMousepropCount = 0;
-                leftClickMousepropCount++;
-                leftClickMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_leftClickMouseworkflow);
-                if (leftClickMousepropCount > 0)
-                {
-                    callPayload.Body = leftClickMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_leftClickMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LeftClickMouseAtCoordinate(Expression<Func<int>> leftClickMouseAtCoordinatexCoord, Expression<Func<int>> leftClickMouseAtCoordinateyCoord, Expression<Func<string>> leftClickMouseAtCoordinateworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LeftClickMouseAtCoordinate(Expression<Func<LeftClickMouseAtCoordinateInput>> leftClickMouseAtCoordinate)
         {
-            var __workflow_leftClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(leftClickMouseAtCoordinatexCoord, nameof(leftClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_leftClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(leftClickMouseAtCoordinateyCoord, nameof(leftClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_leftClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(leftClickMouseAtCoordinateworkflow, nameof(leftClickMouseAtCoordinateworkflow), required: true);
+            var __workflow_leftClickMouseAtCoordinate = WorkflowExpression.Compile(leftClickMouseAtCoordinate, nameof(leftClickMouseAtCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LeftClickMouseAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var leftClickMouseAtCoordinate = new JObject();
-                var leftClickMouseAtCoordinatepropCount = 0;
-                leftClickMouseAtCoordinatepropCount++;
-                leftClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_leftClickMouseAtCoordinatexCoord);
-                leftClickMouseAtCoordinatepropCount++;
-                leftClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_leftClickMouseAtCoordinateyCoord);
-                leftClickMouseAtCoordinatepropCount++;
-                leftClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_leftClickMouseAtCoordinateworkflow);
-                if (leftClickMouseAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = leftClickMouseAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_leftClickMouseAtCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LeftHoldMouse(Expression<Func<double>> leftHoldMousesecondsToHold, Expression<Func<string>> leftHoldMouseworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LeftHoldMouse(Expression<Func<LeftHoldMouseInput>> leftHoldMouse)
         {
-            var __workflow_leftHoldMousesecondsToHold = WorkflowExpression.Compile(leftHoldMousesecondsToHold, nameof(leftHoldMousesecondsToHold), required: true);
-            var __workflow_leftHoldMouseworkflow = WorkflowExpression.Compile(leftHoldMouseworkflow, nameof(leftHoldMouseworkflow), required: true);
+            var __workflow_leftHoldMouse = WorkflowExpression.Compile(leftHoldMouse, nameof(leftHoldMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LeftHoldMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var leftHoldMouse = new JObject();
-                var leftHoldMousepropCount = 0;
-                leftHoldMousepropCount++;
-                leftHoldMouse["SecondsToHold"] = ExpressionConverter.ConvertO(__workflow_leftHoldMousesecondsToHold);
-                leftHoldMousepropCount++;
-                leftHoldMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_leftHoldMouseworkflow);
-                if (leftHoldMousepropCount > 0)
-                {
-                    callPayload.Body = leftHoldMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_leftHoldMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LeftHoldMouseAtCoordinate(Expression<Func<int>> leftHoldMouseAtCoordinatexCoord, Expression<Func<int>> leftHoldMouseAtCoordinateyCoord, Expression<Func<double>> leftHoldMouseAtCoordinatesecondsToHold, Expression<Func<string>> leftHoldMouseAtCoordinateworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LeftHoldMouseAtCoordinate(Expression<Func<LeftHoldMouseAtCoordinateInput>> leftHoldMouseAtCoordinate)
         {
-            var __workflow_leftHoldMouseAtCoordinatexCoord = WorkflowExpression.Compile(leftHoldMouseAtCoordinatexCoord, nameof(leftHoldMouseAtCoordinatexCoord), required: true);
-            var __workflow_leftHoldMouseAtCoordinateyCoord = WorkflowExpression.Compile(leftHoldMouseAtCoordinateyCoord, nameof(leftHoldMouseAtCoordinateyCoord), required: true);
-            var __workflow_leftHoldMouseAtCoordinatesecondsToHold = WorkflowExpression.Compile(leftHoldMouseAtCoordinatesecondsToHold, nameof(leftHoldMouseAtCoordinatesecondsToHold), required: true);
-            var __workflow_leftHoldMouseAtCoordinateworkflow = WorkflowExpression.Compile(leftHoldMouseAtCoordinateworkflow, nameof(leftHoldMouseAtCoordinateworkflow), required: true);
+            var __workflow_leftHoldMouseAtCoordinate = WorkflowExpression.Compile(leftHoldMouseAtCoordinate, nameof(leftHoldMouseAtCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LeftHoldMouseAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var leftHoldMouseAtCoordinate = new JObject();
-                var leftHoldMouseAtCoordinatepropCount = 0;
-                leftHoldMouseAtCoordinatepropCount++;
-                leftHoldMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_leftHoldMouseAtCoordinatexCoord);
-                leftHoldMouseAtCoordinatepropCount++;
-                leftHoldMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_leftHoldMouseAtCoordinateyCoord);
-                leftHoldMouseAtCoordinatepropCount++;
-                leftHoldMouseAtCoordinate["SecondsToHold"] = ExpressionConverter.ConvertO(__workflow_leftHoldMouseAtCoordinatesecondsToHold);
-                leftHoldMouseAtCoordinatepropCount++;
-                leftHoldMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_leftHoldMouseAtCoordinateworkflow);
-                if (leftHoldMouseAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = leftHoldMouseAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_leftHoldMouseAtCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RightMouseButtonDown(Expression<Func<string>> rightMouseButtonDownworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RightMouseButtonDown(Expression<Func<RightMouseButtonDownInput>> rightMouseButtonDown)
         {
-            var __workflow_rightMouseButtonDownworkflow = WorkflowExpression.Compile(rightMouseButtonDownworkflow, nameof(rightMouseButtonDownworkflow), required: true);
+            var __workflow_rightMouseButtonDown = WorkflowExpression.Compile(rightMouseButtonDown, nameof(rightMouseButtonDown), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RightMouseButtonDown";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rightMouseButtonDown = new JObject();
-                var rightMouseButtonDownpropCount = 0;
-                rightMouseButtonDownpropCount++;
-                rightMouseButtonDown["Workflow"] = ExpressionConverter.ConvertO(__workflow_rightMouseButtonDownworkflow);
-                if (rightMouseButtonDownpropCount > 0)
-                {
-                    callPayload.Body = rightMouseButtonDown;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_rightMouseButtonDown);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RightMouseButtonUp(Expression<Func<string>> rightMouseButtonUpworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RightMouseButtonUp(Expression<Func<RightMouseButtonUpInput>> rightMouseButtonUp)
         {
-            var __workflow_rightMouseButtonUpworkflow = WorkflowExpression.Compile(rightMouseButtonUpworkflow, nameof(rightMouseButtonUpworkflow), required: true);
+            var __workflow_rightMouseButtonUp = WorkflowExpression.Compile(rightMouseButtonUp, nameof(rightMouseButtonUp), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RightMouseButtonUp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rightMouseButtonUp = new JObject();
-                var rightMouseButtonUppropCount = 0;
-                rightMouseButtonUppropCount++;
-                rightMouseButtonUp["Workflow"] = ExpressionConverter.ConvertO(__workflow_rightMouseButtonUpworkflow);
-                if (rightMouseButtonUppropCount > 0)
-                {
-                    callPayload.Body = rightMouseButtonUp;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_rightMouseButtonUp);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RightClickMouse(Expression<Func<string>> rightClickMouseworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RightClickMouse(Expression<Func<RightClickMouseInput>> rightClickMouse)
         {
-            var __workflow_rightClickMouseworkflow = WorkflowExpression.Compile(rightClickMouseworkflow, nameof(rightClickMouseworkflow), required: true);
+            var __workflow_rightClickMouse = WorkflowExpression.Compile(rightClickMouse, nameof(rightClickMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RightClickMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rightClickMouse = new JObject();
-                var rightClickMousepropCount = 0;
-                rightClickMousepropCount++;
-                rightClickMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_rightClickMouseworkflow);
-                if (rightClickMousepropCount > 0)
-                {
-                    callPayload.Body = rightClickMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_rightClickMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RightClickMouseAtCoordinate(Expression<Func<int>> rightClickMouseAtCoordinatexCoord, Expression<Func<int>> rightClickMouseAtCoordinateyCoord, Expression<Func<string>> rightClickMouseAtCoordinateworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RightClickMouseAtCoordinate(Expression<Func<RightClickMouseAtCoordinateInput>> rightClickMouseAtCoordinate)
         {
-            var __workflow_rightClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(rightClickMouseAtCoordinatexCoord, nameof(rightClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_rightClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(rightClickMouseAtCoordinateyCoord, nameof(rightClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_rightClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(rightClickMouseAtCoordinateworkflow, nameof(rightClickMouseAtCoordinateworkflow), required: true);
+            var __workflow_rightClickMouseAtCoordinate = WorkflowExpression.Compile(rightClickMouseAtCoordinate, nameof(rightClickMouseAtCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RightClickMouseAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rightClickMouseAtCoordinate = new JObject();
-                var rightClickMouseAtCoordinatepropCount = 0;
-                rightClickMouseAtCoordinatepropCount++;
-                rightClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_rightClickMouseAtCoordinatexCoord);
-                rightClickMouseAtCoordinatepropCount++;
-                rightClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_rightClickMouseAtCoordinateyCoord);
-                rightClickMouseAtCoordinatepropCount++;
-                rightClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_rightClickMouseAtCoordinateworkflow);
-                if (rightClickMouseAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = rightClickMouseAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_rightClickMouseAtCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RightHoldMouse(Expression<Func<double>> rightHoldMousesecondsToHold, Expression<Func<string>> rightHoldMouseworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RightHoldMouse(Expression<Func<RightHoldMouseInput>> rightHoldMouse)
         {
-            var __workflow_rightHoldMousesecondsToHold = WorkflowExpression.Compile(rightHoldMousesecondsToHold, nameof(rightHoldMousesecondsToHold), required: true);
-            var __workflow_rightHoldMouseworkflow = WorkflowExpression.Compile(rightHoldMouseworkflow, nameof(rightHoldMouseworkflow), required: true);
+            var __workflow_rightHoldMouse = WorkflowExpression.Compile(rightHoldMouse, nameof(rightHoldMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RightHoldMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rightHoldMouse = new JObject();
-                var rightHoldMousepropCount = 0;
-                rightHoldMousepropCount++;
-                rightHoldMouse["SecondsToHold"] = ExpressionConverter.ConvertO(__workflow_rightHoldMousesecondsToHold);
-                rightHoldMousepropCount++;
-                rightHoldMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_rightHoldMouseworkflow);
-                if (rightHoldMousepropCount > 0)
-                {
-                    callPayload.Body = rightHoldMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_rightHoldMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RightHoldMouseAtCoordinate(Expression<Func<int>> rightHoldMouseAtCoordinatexCoord, Expression<Func<int>> rightHoldMouseAtCoordinateyCoord, Expression<Func<double>> rightHoldMouseAtCoordinatesecondsToHold, Expression<Func<string>> rightHoldMouseAtCoordinateworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RightHoldMouseAtCoordinate(Expression<Func<RightHoldMouseAtCoordinateInput>> rightHoldMouseAtCoordinate)
         {
-            var __workflow_rightHoldMouseAtCoordinatexCoord = WorkflowExpression.Compile(rightHoldMouseAtCoordinatexCoord, nameof(rightHoldMouseAtCoordinatexCoord), required: true);
-            var __workflow_rightHoldMouseAtCoordinateyCoord = WorkflowExpression.Compile(rightHoldMouseAtCoordinateyCoord, nameof(rightHoldMouseAtCoordinateyCoord), required: true);
-            var __workflow_rightHoldMouseAtCoordinatesecondsToHold = WorkflowExpression.Compile(rightHoldMouseAtCoordinatesecondsToHold, nameof(rightHoldMouseAtCoordinatesecondsToHold), required: true);
-            var __workflow_rightHoldMouseAtCoordinateworkflow = WorkflowExpression.Compile(rightHoldMouseAtCoordinateworkflow, nameof(rightHoldMouseAtCoordinateworkflow), required: true);
+            var __workflow_rightHoldMouseAtCoordinate = WorkflowExpression.Compile(rightHoldMouseAtCoordinate, nameof(rightHoldMouseAtCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RightHoldMouseAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rightHoldMouseAtCoordinate = new JObject();
-                var rightHoldMouseAtCoordinatepropCount = 0;
-                rightHoldMouseAtCoordinatepropCount++;
-                rightHoldMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_rightHoldMouseAtCoordinatexCoord);
-                rightHoldMouseAtCoordinatepropCount++;
-                rightHoldMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_rightHoldMouseAtCoordinateyCoord);
-                rightHoldMouseAtCoordinatepropCount++;
-                rightHoldMouseAtCoordinate["SecondsToHold"] = ExpressionConverter.ConvertO(__workflow_rightHoldMouseAtCoordinatesecondsToHold);
-                rightHoldMouseAtCoordinatepropCount++;
-                rightHoldMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_rightHoldMouseAtCoordinateworkflow);
-                if (rightHoldMouseAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = rightHoldMouseAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_rightHoldMouseAtCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleMouseButtonDown(Expression<Func<string>> middleMouseButtonDownworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleMouseButtonDown(Expression<Func<MiddleMouseButtonDownInput>> middleMouseButtonDown)
         {
-            var __workflow_middleMouseButtonDownworkflow = WorkflowExpression.Compile(middleMouseButtonDownworkflow, nameof(middleMouseButtonDownworkflow), required: true);
+            var __workflow_middleMouseButtonDown = WorkflowExpression.Compile(middleMouseButtonDown, nameof(middleMouseButtonDown), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MiddleMouseButtonDown";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var middleMouseButtonDown = new JObject();
-                var middleMouseButtonDownpropCount = 0;
-                middleMouseButtonDownpropCount++;
-                middleMouseButtonDown["Workflow"] = ExpressionConverter.ConvertO(__workflow_middleMouseButtonDownworkflow);
-                if (middleMouseButtonDownpropCount > 0)
-                {
-                    callPayload.Body = middleMouseButtonDown;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_middleMouseButtonDown);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleMouseButtonUp(Expression<Func<string>> middleMouseButtonUpworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleMouseButtonUp(Expression<Func<MiddleMouseButtonUpInput>> middleMouseButtonUp)
         {
-            var __workflow_middleMouseButtonUpworkflow = WorkflowExpression.Compile(middleMouseButtonUpworkflow, nameof(middleMouseButtonUpworkflow), required: true);
+            var __workflow_middleMouseButtonUp = WorkflowExpression.Compile(middleMouseButtonUp, nameof(middleMouseButtonUp), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MiddleMouseButtonUp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var middleMouseButtonUp = new JObject();
-                var middleMouseButtonUppropCount = 0;
-                middleMouseButtonUppropCount++;
-                middleMouseButtonUp["Workflow"] = ExpressionConverter.ConvertO(__workflow_middleMouseButtonUpworkflow);
-                if (middleMouseButtonUppropCount > 0)
-                {
-                    callPayload.Body = middleMouseButtonUp;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_middleMouseButtonUp);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleClickMouse(Expression<Func<string>> middleClickMouseworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleClickMouse(Expression<Func<MiddleClickMouseInput>> middleClickMouse)
         {
-            var __workflow_middleClickMouseworkflow = WorkflowExpression.Compile(middleClickMouseworkflow, nameof(middleClickMouseworkflow), required: true);
+            var __workflow_middleClickMouse = WorkflowExpression.Compile(middleClickMouse, nameof(middleClickMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MiddleClickMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var middleClickMouse = new JObject();
-                var middleClickMousepropCount = 0;
-                middleClickMousepropCount++;
-                middleClickMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_middleClickMouseworkflow);
-                if (middleClickMousepropCount > 0)
-                {
-                    callPayload.Body = middleClickMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_middleClickMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleClickMouseAtCoordinate(Expression<Func<int>> middleClickMouseAtCoordinatexCoord, Expression<Func<int>> middleClickMouseAtCoordinateyCoord, Expression<Func<string>> middleClickMouseAtCoordinateworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleClickMouseAtCoordinate(Expression<Func<MiddleClickMouseAtCoordinateInput>> middleClickMouseAtCoordinate)
         {
-            var __workflow_middleClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(middleClickMouseAtCoordinatexCoord, nameof(middleClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_middleClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(middleClickMouseAtCoordinateyCoord, nameof(middleClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_middleClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(middleClickMouseAtCoordinateworkflow, nameof(middleClickMouseAtCoordinateworkflow), required: true);
+            var __workflow_middleClickMouseAtCoordinate = WorkflowExpression.Compile(middleClickMouseAtCoordinate, nameof(middleClickMouseAtCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MiddleClickMouseAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var middleClickMouseAtCoordinate = new JObject();
-                var middleClickMouseAtCoordinatepropCount = 0;
-                middleClickMouseAtCoordinatepropCount++;
-                middleClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_middleClickMouseAtCoordinatexCoord);
-                middleClickMouseAtCoordinatepropCount++;
-                middleClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_middleClickMouseAtCoordinateyCoord);
-                middleClickMouseAtCoordinatepropCount++;
-                middleClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_middleClickMouseAtCoordinateworkflow);
-                if (middleClickMouseAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = middleClickMouseAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_middleClickMouseAtCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleHoldMouse(Expression<Func<double>> middleHoldMousesecondsToHold, Expression<Func<string>> middleHoldMouseworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleHoldMouse(Expression<Func<MiddleHoldMouseInput>> middleHoldMouse)
         {
-            var __workflow_middleHoldMousesecondsToHold = WorkflowExpression.Compile(middleHoldMousesecondsToHold, nameof(middleHoldMousesecondsToHold), required: true);
-            var __workflow_middleHoldMouseworkflow = WorkflowExpression.Compile(middleHoldMouseworkflow, nameof(middleHoldMouseworkflow), required: true);
+            var __workflow_middleHoldMouse = WorkflowExpression.Compile(middleHoldMouse, nameof(middleHoldMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MiddleHoldMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var middleHoldMouse = new JObject();
-                var middleHoldMousepropCount = 0;
-                middleHoldMousepropCount++;
-                middleHoldMouse["SecondsToHold"] = ExpressionConverter.ConvertO(__workflow_middleHoldMousesecondsToHold);
-                middleHoldMousepropCount++;
-                middleHoldMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_middleHoldMouseworkflow);
-                if (middleHoldMousepropCount > 0)
-                {
-                    callPayload.Body = middleHoldMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_middleHoldMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleHoldMouseAtCoordinate(Expression<Func<int>> middleHoldMouseAtCoordinatexCoord, Expression<Func<int>> middleHoldMouseAtCoordinateyCoord, Expression<Func<double>> middleHoldMouseAtCoordinatesecondsToHold, Expression<Func<string>> middleHoldMouseAtCoordinateworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleHoldMouseAtCoordinate(Expression<Func<MiddleHoldMouseAtCoordinateInput>> middleHoldMouseAtCoordinate)
         {
-            var __workflow_middleHoldMouseAtCoordinatexCoord = WorkflowExpression.Compile(middleHoldMouseAtCoordinatexCoord, nameof(middleHoldMouseAtCoordinatexCoord), required: true);
-            var __workflow_middleHoldMouseAtCoordinateyCoord = WorkflowExpression.Compile(middleHoldMouseAtCoordinateyCoord, nameof(middleHoldMouseAtCoordinateyCoord), required: true);
-            var __workflow_middleHoldMouseAtCoordinatesecondsToHold = WorkflowExpression.Compile(middleHoldMouseAtCoordinatesecondsToHold, nameof(middleHoldMouseAtCoordinatesecondsToHold), required: true);
-            var __workflow_middleHoldMouseAtCoordinateworkflow = WorkflowExpression.Compile(middleHoldMouseAtCoordinateworkflow, nameof(middleHoldMouseAtCoordinateworkflow), required: true);
+            var __workflow_middleHoldMouseAtCoordinate = WorkflowExpression.Compile(middleHoldMouseAtCoordinate, nameof(middleHoldMouseAtCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MiddleHoldMouseAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var middleHoldMouseAtCoordinate = new JObject();
-                var middleHoldMouseAtCoordinatepropCount = 0;
-                middleHoldMouseAtCoordinatepropCount++;
-                middleHoldMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_middleHoldMouseAtCoordinatexCoord);
-                middleHoldMouseAtCoordinatepropCount++;
-                middleHoldMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_middleHoldMouseAtCoordinateyCoord);
-                middleHoldMouseAtCoordinatepropCount++;
-                middleHoldMouseAtCoordinate["SecondsToHold"] = ExpressionConverter.ConvertO(__workflow_middleHoldMouseAtCoordinatesecondsToHold);
-                middleHoldMouseAtCoordinatepropCount++;
-                middleHoldMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_middleHoldMouseAtCoordinateworkflow);
-                if (middleHoldMouseAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = middleHoldMouseAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_middleHoldMouseAtCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DoubleLeftClickMouse(Expression<Func<string>> doubleLeftClickMouseworkflow, Expression<Func<int>> doubleLeftClickMousedelayInMilliseconds = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DoubleLeftClickMouse(Expression<Func<DoubleLeftClickMouseInput>> doubleLeftClickMouse)
         {
-            var __workflow_doubleLeftClickMouseworkflow = WorkflowExpression.Compile(doubleLeftClickMouseworkflow, nameof(doubleLeftClickMouseworkflow), required: true);
-            var __workflow_doubleLeftClickMousedelayInMilliseconds = WorkflowExpression.Compile(doubleLeftClickMousedelayInMilliseconds, nameof(doubleLeftClickMousedelayInMilliseconds), required: false);
+            var __workflow_doubleLeftClickMouse = WorkflowExpression.Compile(doubleLeftClickMouse, nameof(doubleLeftClickMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/DoubleLeftClickMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var doubleLeftClickMouse = new JObject();
-                var doubleLeftClickMousepropCount = 0;
-                if (__workflow_doubleLeftClickMousedelayInMilliseconds != null)
-                {
-                    if (__workflow_doubleLeftClickMousedelayInMilliseconds != null)
-                    {
-                        doubleLeftClickMouse["DelayInMilliseconds"] = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMousedelayInMilliseconds);
-                        doubleLeftClickMousepropCount++;
-                    }
-
-                    doubleLeftClickMousepropCount++;
-                }
-                else
-                {
-                    doubleLeftClickMouse["DelayInMilliseconds"] = 10;
-                    doubleLeftClickMousepropCount++;
-                }
-
-                doubleLeftClickMousepropCount++;
-                doubleLeftClickMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMouseworkflow);
-                if (doubleLeftClickMousepropCount > 0)
-                {
-                    callPayload.Body = doubleLeftClickMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DoubleLeftClickMouseAtCoordinate(Expression<Func<int>> doubleLeftClickMouseAtCoordinatexCoord, Expression<Func<int>> doubleLeftClickMouseAtCoordinateyCoord, Expression<Func<string>> doubleLeftClickMouseAtCoordinateworkflow, Expression<Func<int>> doubleLeftClickMouseAtCoordinatedelayInMilliseconds = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DoubleLeftClickMouseAtCoordinate(Expression<Func<DoubleLeftClickMouseAtCoordinateInput>> doubleLeftClickMouseAtCoordinate)
         {
-            var __workflow_doubleLeftClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinatexCoord, nameof(doubleLeftClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_doubleLeftClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinateyCoord, nameof(doubleLeftClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_doubleLeftClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinateworkflow, nameof(doubleLeftClickMouseAtCoordinateworkflow), required: true);
-            var __workflow_doubleLeftClickMouseAtCoordinatedelayInMilliseconds = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinatedelayInMilliseconds, nameof(doubleLeftClickMouseAtCoordinatedelayInMilliseconds), required: false);
+            var __workflow_doubleLeftClickMouseAtCoordinate = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinate, nameof(doubleLeftClickMouseAtCoordinate), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/DoubleLeftClickMouseAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var doubleLeftClickMouseAtCoordinate = new JObject();
-                var doubleLeftClickMouseAtCoordinatepropCount = 0;
-                doubleLeftClickMouseAtCoordinatepropCount++;
-                doubleLeftClickMouseAtCoordinate["XCoord"] = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMouseAtCoordinatexCoord);
-                doubleLeftClickMouseAtCoordinatepropCount++;
-                doubleLeftClickMouseAtCoordinate["YCoord"] = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMouseAtCoordinateyCoord);
-                if (__workflow_doubleLeftClickMouseAtCoordinatedelayInMilliseconds != null)
-                {
-                    if (__workflow_doubleLeftClickMouseAtCoordinatedelayInMilliseconds != null)
-                    {
-                        doubleLeftClickMouseAtCoordinate["DelayInMilliseconds"] = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMouseAtCoordinatedelayInMilliseconds);
-                        doubleLeftClickMouseAtCoordinatepropCount++;
-                    }
-
-                    doubleLeftClickMouseAtCoordinatepropCount++;
-                }
-                else
-                {
-                    doubleLeftClickMouseAtCoordinate["DelayInMilliseconds"] = 10;
-                    doubleLeftClickMouseAtCoordinatepropCount++;
-                }
-
-                doubleLeftClickMouseAtCoordinatepropCount++;
-                doubleLeftClickMouseAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMouseAtCoordinateworkflow);
-                if (doubleLeftClickMouseAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = doubleLeftClickMouseAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_doubleLeftClickMouseAtCoordinate);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LeftMouseDragBetweenCoordinates(Expression<Func<int>> leftMouseDragBetweenCoordinatesstartXCoord, Expression<Func<int>> leftMouseDragBetweenCoordinatesstartYCoord, Expression<Func<int>> leftMouseDragBetweenCoordinatesendXCoord, Expression<Func<int>> leftMouseDragBetweenCoordinatesendYCoord, Expression<Func<string>> leftMouseDragBetweenCoordinatesworkflow, Expression<Func<int>> leftMouseDragBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> leftMouseDragBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> leftMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LeftMouseDragBetweenCoordinates(Expression<Func<LeftMouseDragBetweenCoordinatesInput>> leftMouseDragBetweenCoordinates)
         {
-            var __workflow_leftMouseDragBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesstartXCoord, nameof(leftMouseDragBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesstartYCoord, nameof(leftMouseDragBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesendXCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesendXCoord, nameof(leftMouseDragBetweenCoordinatesendXCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesendYCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesendYCoord, nameof(leftMouseDragBetweenCoordinatesendYCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesworkflow = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesworkflow, nameof(leftMouseDragBetweenCoordinatesworkflow), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesnumberOfSteps, nameof(leftMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(leftMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_leftMouseDragBetweenCoordinates = WorkflowExpression.Compile(leftMouseDragBetweenCoordinates, nameof(leftMouseDragBetweenCoordinates), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LeftMouseDragBetweenCoordinates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var leftMouseDragBetweenCoordinates = new JObject();
-                var leftMouseDragBetweenCoordinatespropCount = 0;
-                leftMouseDragBetweenCoordinatespropCount++;
-                leftMouseDragBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesstartXCoord);
-                leftMouseDragBetweenCoordinatespropCount++;
-                leftMouseDragBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesstartYCoord);
-                leftMouseDragBetweenCoordinatespropCount++;
-                leftMouseDragBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesendXCoord);
-                leftMouseDragBetweenCoordinatespropCount++;
-                leftMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesendYCoord);
-                if (__workflow_leftMouseDragBetweenCoordinatesnumberOfSteps != null)
-                {
-                    if (__workflow_leftMouseDragBetweenCoordinatesnumberOfSteps != null)
-                    {
-                        leftMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesnumberOfSteps);
-                        leftMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    leftMouseDragBetweenCoordinates["NumberOfSteps"] = 20;
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_leftMouseDragBetweenCoordinatestotalTimeInSeconds != null)
-                {
-                    if (__workflow_leftMouseDragBetweenCoordinatestotalTimeInSeconds != null)
-                    {
-                        leftMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatestotalTimeInSeconds);
-                        leftMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    leftMouseDragBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter != null)
-                {
-                    leftMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_leftMouseDragBetweenCoordinatesmaximumEndPixelJitter != null)
-                {
-                    leftMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesmaximumEndPixelJitter);
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                {
-                    if (__workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                    {
-                        leftMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
-                        leftMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    leftMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
-                    leftMouseDragBetweenCoordinatespropCount++;
-                }
-
-                leftMouseDragBetweenCoordinatespropCount++;
-                leftMouseDragBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinatesworkflow);
-                if (leftMouseDragBetweenCoordinatespropCount > 0)
-                {
-                    callPayload.Body = leftMouseDragBetweenCoordinates;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_leftMouseDragBetweenCoordinates);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RightMouseDragBetweenCoordinates(Expression<Func<int>> rightMouseDragBetweenCoordinatesstartXCoord, Expression<Func<int>> rightMouseDragBetweenCoordinatesstartYCoord, Expression<Func<int>> rightMouseDragBetweenCoordinatesendXCoord, Expression<Func<int>> rightMouseDragBetweenCoordinatesendYCoord, Expression<Func<string>> rightMouseDragBetweenCoordinatesworkflow, Expression<Func<int>> rightMouseDragBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> rightMouseDragBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> rightMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RightMouseDragBetweenCoordinates(Expression<Func<RightMouseDragBetweenCoordinatesInput>> rightMouseDragBetweenCoordinates)
         {
-            var __workflow_rightMouseDragBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesstartXCoord, nameof(rightMouseDragBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesstartYCoord, nameof(rightMouseDragBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesendXCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesendXCoord, nameof(rightMouseDragBetweenCoordinatesendXCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesendYCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesendYCoord, nameof(rightMouseDragBetweenCoordinatesendYCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesworkflow = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesworkflow, nameof(rightMouseDragBetweenCoordinatesworkflow), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesnumberOfSteps, nameof(rightMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(rightMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_rightMouseDragBetweenCoordinates = WorkflowExpression.Compile(rightMouseDragBetweenCoordinates, nameof(rightMouseDragBetweenCoordinates), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/RightMouseDragBetweenCoordinates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var rightMouseDragBetweenCoordinates = new JObject();
-                var rightMouseDragBetweenCoordinatespropCount = 0;
-                rightMouseDragBetweenCoordinatespropCount++;
-                rightMouseDragBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesstartXCoord);
-                rightMouseDragBetweenCoordinatespropCount++;
-                rightMouseDragBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesstartYCoord);
-                rightMouseDragBetweenCoordinatespropCount++;
-                rightMouseDragBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesendXCoord);
-                rightMouseDragBetweenCoordinatespropCount++;
-                rightMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesendYCoord);
-                if (__workflow_rightMouseDragBetweenCoordinatesnumberOfSteps != null)
-                {
-                    if (__workflow_rightMouseDragBetweenCoordinatesnumberOfSteps != null)
-                    {
-                        rightMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesnumberOfSteps);
-                        rightMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    rightMouseDragBetweenCoordinates["NumberOfSteps"] = 20;
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_rightMouseDragBetweenCoordinatestotalTimeInSeconds != null)
-                {
-                    if (__workflow_rightMouseDragBetweenCoordinatestotalTimeInSeconds != null)
-                    {
-                        rightMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatestotalTimeInSeconds);
-                        rightMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    rightMouseDragBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter != null)
-                {
-                    rightMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_rightMouseDragBetweenCoordinatesmaximumEndPixelJitter != null)
-                {
-                    rightMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesmaximumEndPixelJitter);
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                {
-                    if (__workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                    {
-                        rightMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
-                        rightMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    rightMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
-                    rightMouseDragBetweenCoordinatespropCount++;
-                }
-
-                rightMouseDragBetweenCoordinatespropCount++;
-                rightMouseDragBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinatesworkflow);
-                if (rightMouseDragBetweenCoordinatespropCount > 0)
-                {
-                    callPayload.Body = rightMouseDragBetweenCoordinates;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_rightMouseDragBetweenCoordinates);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleMouseDragBetweenCoordinates(Expression<Func<int>> middleMouseDragBetweenCoordinatesstartXCoord, Expression<Func<int>> middleMouseDragBetweenCoordinatesstartYCoord, Expression<Func<int>> middleMouseDragBetweenCoordinatesendXCoord, Expression<Func<int>> middleMouseDragBetweenCoordinatesendYCoord, Expression<Func<string>> middleMouseDragBetweenCoordinatesworkflow, Expression<Func<int>> middleMouseDragBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> middleMouseDragBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> middleMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MiddleMouseDragBetweenCoordinates(Expression<Func<MiddleMouseDragBetweenCoordinatesInput>> middleMouseDragBetweenCoordinates)
         {
-            var __workflow_middleMouseDragBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesstartXCoord, nameof(middleMouseDragBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesstartYCoord, nameof(middleMouseDragBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesendXCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesendXCoord, nameof(middleMouseDragBetweenCoordinatesendXCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesendYCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesendYCoord, nameof(middleMouseDragBetweenCoordinatesendYCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesworkflow = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesworkflow, nameof(middleMouseDragBetweenCoordinatesworkflow), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesnumberOfSteps, nameof(middleMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(middleMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_middleMouseDragBetweenCoordinates = WorkflowExpression.Compile(middleMouseDragBetweenCoordinates, nameof(middleMouseDragBetweenCoordinates), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MiddleMouseDragBetweenCoordinates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var middleMouseDragBetweenCoordinates = new JObject();
-                var middleMouseDragBetweenCoordinatespropCount = 0;
-                middleMouseDragBetweenCoordinatespropCount++;
-                middleMouseDragBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesstartXCoord);
-                middleMouseDragBetweenCoordinatespropCount++;
-                middleMouseDragBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesstartYCoord);
-                middleMouseDragBetweenCoordinatespropCount++;
-                middleMouseDragBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesendXCoord);
-                middleMouseDragBetweenCoordinatespropCount++;
-                middleMouseDragBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesendYCoord);
-                if (__workflow_middleMouseDragBetweenCoordinatesnumberOfSteps != null)
-                {
-                    if (__workflow_middleMouseDragBetweenCoordinatesnumberOfSteps != null)
-                    {
-                        middleMouseDragBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesnumberOfSteps);
-                        middleMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    middleMouseDragBetweenCoordinates["NumberOfSteps"] = 20;
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_middleMouseDragBetweenCoordinatestotalTimeInSeconds != null)
-                {
-                    if (__workflow_middleMouseDragBetweenCoordinatestotalTimeInSeconds != null)
-                    {
-                        middleMouseDragBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatestotalTimeInSeconds);
-                        middleMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    middleMouseDragBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter != null)
-                {
-                    middleMouseDragBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_middleMouseDragBetweenCoordinatesmaximumEndPixelJitter != null)
-                {
-                    middleMouseDragBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesmaximumEndPixelJitter);
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                {
-                    if (__workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                    {
-                        middleMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
-                        middleMouseDragBetweenCoordinatespropCount++;
-                    }
-
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    middleMouseDragBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
-                    middleMouseDragBetweenCoordinatespropCount++;
-                }
-
-                middleMouseDragBetweenCoordinatespropCount++;
-                middleMouseDragBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinatesworkflow);
-                if (middleMouseDragBetweenCoordinatespropCount > 0)
-                {
-                    callPayload.Body = middleMouseDragBetweenCoordinates;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_middleMouseDragBetweenCoordinates);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveMouseBetweenCoordinates(Expression<Func<int>> moveMouseBetweenCoordinatesstartXCoord, Expression<Func<int>> moveMouseBetweenCoordinatesstartYCoord, Expression<Func<int>> moveMouseBetweenCoordinatesendXCoord, Expression<Func<int>> moveMouseBetweenCoordinatesendYCoord, Expression<Func<string>> moveMouseBetweenCoordinatesworkflow, Expression<Func<int>> moveMouseBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> moveMouseBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> moveMouseBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> moveMouseBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveMouseBetweenCoordinates(Expression<Func<MoveMouseBetweenCoordinatesInput>> moveMouseBetweenCoordinates)
         {
-            var __workflow_moveMouseBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesstartXCoord, nameof(moveMouseBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesstartYCoord, nameof(moveMouseBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesendXCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesendXCoord, nameof(moveMouseBetweenCoordinatesendXCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesendYCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesendYCoord, nameof(moveMouseBetweenCoordinatesendYCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesworkflow = WorkflowExpression.Compile(moveMouseBetweenCoordinatesworkflow, nameof(moveMouseBetweenCoordinatesworkflow), required: true);
-            var __workflow_moveMouseBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(moveMouseBetweenCoordinatesnumberOfSteps, nameof(moveMouseBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_moveMouseBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(moveMouseBetweenCoordinatestotalTimeInSeconds, nameof(moveMouseBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumMovementPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_moveMouseBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumEndPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_moveMouseBetweenCoordinates = WorkflowExpression.Compile(moveMouseBetweenCoordinates, nameof(moveMouseBetweenCoordinates), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/MoveMouseBetweenCoordinates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var moveMouseBetweenCoordinates = new JObject();
-                var moveMouseBetweenCoordinatespropCount = 0;
-                moveMouseBetweenCoordinatespropCount++;
-                moveMouseBetweenCoordinates["StartXCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesstartXCoord);
-                moveMouseBetweenCoordinatespropCount++;
-                moveMouseBetweenCoordinates["StartYCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesstartYCoord);
-                moveMouseBetweenCoordinatespropCount++;
-                moveMouseBetweenCoordinates["EndXCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesendXCoord);
-                moveMouseBetweenCoordinatespropCount++;
-                moveMouseBetweenCoordinates["EndYCoord"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesendYCoord);
-                if (__workflow_moveMouseBetweenCoordinatesnumberOfSteps != null)
-                {
-                    if (__workflow_moveMouseBetweenCoordinatesnumberOfSteps != null)
-                    {
-                        moveMouseBetweenCoordinates["NumberOfSteps"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesnumberOfSteps);
-                        moveMouseBetweenCoordinatespropCount++;
-                    }
-
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    moveMouseBetweenCoordinates["NumberOfSteps"] = 20;
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_moveMouseBetweenCoordinatestotalTimeInSeconds != null)
-                {
-                    if (__workflow_moveMouseBetweenCoordinatestotalTimeInSeconds != null)
-                    {
-                        moveMouseBetweenCoordinates["TotalTimeInSeconds"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatestotalTimeInSeconds);
-                        moveMouseBetweenCoordinatespropCount++;
-                    }
-
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    moveMouseBetweenCoordinates["TotalTimeInSeconds"] = 0.5;
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitter != null)
-                {
-                    moveMouseBetweenCoordinates["MaximumMovementPixelJitter"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitter);
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_moveMouseBetweenCoordinatesmaximumEndPixelJitter != null)
-                {
-                    moveMouseBetweenCoordinates["MaximumEndPixelJitter"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesmaximumEndPixelJitter);
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-
-                if (__workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                {
-                    if (__workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta != null)
-                    {
-                        moveMouseBetweenCoordinates["MaximumMovementPixelJitterDelta"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta);
-                        moveMouseBetweenCoordinatespropCount++;
-                    }
-
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-                else
-                {
-                    moveMouseBetweenCoordinates["MaximumMovementPixelJitterDelta"] = 2;
-                    moveMouseBetweenCoordinatespropCount++;
-                }
-
-                moveMouseBetweenCoordinatespropCount++;
-                moveMouseBetweenCoordinates["Workflow"] = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinatesworkflow);
-                if (moveMouseBetweenCoordinatespropCount > 0)
-                {
-                    callPayload.Body = moveMouseBetweenCoordinates;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_moveMouseBetweenCoordinates);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TurnMouseWheel(Expression<Func<int>> turnMouseWheelwheelTurns, Expression<Func<string>> turnMouseWheelworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TurnMouseWheel(Expression<Func<TurnMouseWheelInput>> turnMouseWheel)
         {
-            var __workflow_turnMouseWheelwheelTurns = WorkflowExpression.Compile(turnMouseWheelwheelTurns, nameof(turnMouseWheelwheelTurns), required: true);
-            var __workflow_turnMouseWheelworkflow = WorkflowExpression.Compile(turnMouseWheelworkflow, nameof(turnMouseWheelworkflow), required: true);
+            var __workflow_turnMouseWheel = WorkflowExpression.Compile(turnMouseWheel, nameof(turnMouseWheel), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TurnMouseWheel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var turnMouseWheel = new JObject();
-                var turnMouseWheelpropCount = 0;
-                turnMouseWheelpropCount++;
-                turnMouseWheel["WheelTurns"] = ExpressionConverter.ConvertO(__workflow_turnMouseWheelwheelTurns);
-                turnMouseWheelpropCount++;
-                turnMouseWheel["Workflow"] = ExpressionConverter.ConvertO(__workflow_turnMouseWheelworkflow);
-                if (turnMouseWheelpropCount > 0)
-                {
-                    callPayload.Body = turnMouseWheel;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_turnMouseWheel);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetCursorPos(Expression<Func<int>> setCursorPosx, Expression<Func<int>> setCursorPosy, Expression<Func<string>> setCursorPosworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetCursorPos(Expression<Func<SetCursorPosInput>> setCursorPos)
         {
-            var __workflow_setCursorPosx = WorkflowExpression.Compile(setCursorPosx, nameof(setCursorPosx), required: true);
-            var __workflow_setCursorPosy = WorkflowExpression.Compile(setCursorPosy, nameof(setCursorPosy), required: true);
-            var __workflow_setCursorPosworkflow = WorkflowExpression.Compile(setCursorPosworkflow, nameof(setCursorPosworkflow), required: true);
+            var __workflow_setCursorPos = WorkflowExpression.Compile(setCursorPos, nameof(setCursorPos), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SetCursorPos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setCursorPos = new JObject();
-                var setCursorPospropCount = 0;
-                setCursorPospropCount++;
-                setCursorPos["X"] = ExpressionConverter.ConvertO(__workflow_setCursorPosx);
-                setCursorPospropCount++;
-                setCursorPos["Y"] = ExpressionConverter.ConvertO(__workflow_setCursorPosy);
-                setCursorPospropCount++;
-                setCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_setCursorPosworkflow);
-                if (setCursorPospropCount > 0)
-                {
-                    callPayload.Body = setCursorPos;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setCursorPos);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetCursorPosResponse, ApiConnectionActionConfiguration> GetCursorPos(Expression<Func<string>> getCursorPosworkflow)
+        public IBodyWorkflowAction<GetCursorPosResponse, ApiConnectionActionConfiguration> GetCursorPos(Expression<Func<GetCursorPosInput>> getCursorPos)
         {
-            var __workflow_getCursorPosworkflow = WorkflowExpression.Compile(getCursorPosworkflow, nameof(getCursorPosworkflow), required: true);
+            var __workflow_getCursorPos = WorkflowExpression.Compile(getCursorPos, nameof(getCursorPos), required: true);
             return new DeferredBodyAction<GetCursorPosResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetCursorPos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getCursorPos = new JObject();
-                var getCursorPospropCount = 0;
-                getCursorPospropCount++;
-                getCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_getCursorPosworkflow);
-                if (getCursorPospropCount > 0)
-                {
-                    callPayload.Body = getCursorPos;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getCursorPos);
                 return new ApiConnectionAction<GetCursorPosResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<CalibrateMouseEventResponse, ApiConnectionActionConfiguration> CalibrateMouseEvent(Expression<Func<string>> calibrateMouseEventworkflow, Expression<Func<int>> calibrateMouseEventcalibrationSizeInPixels = null)
+        public IBodyWorkflowAction<CalibrateMouseEventResponse, ApiConnectionActionConfiguration> CalibrateMouseEvent(Expression<Func<CalibrateMouseEventInput>> calibrateMouseEvent)
         {
-            var __workflow_calibrateMouseEventworkflow = WorkflowExpression.Compile(calibrateMouseEventworkflow, nameof(calibrateMouseEventworkflow), required: true);
-            var __workflow_calibrateMouseEventcalibrationSizeInPixels = WorkflowExpression.Compile(calibrateMouseEventcalibrationSizeInPixels, nameof(calibrateMouseEventcalibrationSizeInPixels), required: false);
+            var __workflow_calibrateMouseEvent = WorkflowExpression.Compile(calibrateMouseEvent, nameof(calibrateMouseEvent), required: true);
             return new DeferredBodyAction<CalibrateMouseEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/CalibrateMouseEvent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var calibrateMouseEvent = new JObject();
-                var calibrateMouseEventpropCount = 0;
-                if (__workflow_calibrateMouseEventcalibrationSizeInPixels != null)
-                {
-                    if (__workflow_calibrateMouseEventcalibrationSizeInPixels != null)
-                    {
-                        calibrateMouseEvent["CalibrationSizeInPixels"] = ExpressionConverter.ConvertO(__workflow_calibrateMouseEventcalibrationSizeInPixels);
-                        calibrateMouseEventpropCount++;
-                    }
-
-                    calibrateMouseEventpropCount++;
-                }
-                else
-                {
-                    calibrateMouseEvent["CalibrationSizeInPixels"] = 200;
-                    calibrateMouseEventpropCount++;
-                }
-
-                calibrateMouseEventpropCount++;
-                calibrateMouseEvent["Workflow"] = ExpressionConverter.ConvertO(__workflow_calibrateMouseEventworkflow);
-                if (calibrateMouseEventpropCount > 0)
-                {
-                    callPayload.Body = calibrateMouseEvent;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_calibrateMouseEvent);
                 return new ApiConnectionAction<CalibrateMouseEventResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetMouseMoveMethodResponse, ApiConnectionActionConfiguration> GetMouseMoveMethod(Expression<Func<string>> getMouseMoveMethodworkflow)
+        public IBodyWorkflowAction<GetMouseMoveMethodResponse, ApiConnectionActionConfiguration> GetMouseMoveMethod(Expression<Func<GetMouseMoveMethodInput>> getMouseMoveMethod)
         {
-            var __workflow_getMouseMoveMethodworkflow = WorkflowExpression.Compile(getMouseMoveMethodworkflow, nameof(getMouseMoveMethodworkflow), required: true);
+            var __workflow_getMouseMoveMethod = WorkflowExpression.Compile(getMouseMoveMethod, nameof(getMouseMoveMethod), required: true);
             return new DeferredBodyAction<GetMouseMoveMethodResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetMouseMoveMethod";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getMouseMoveMethod = new JObject();
-                var getMouseMoveMethodpropCount = 0;
-                getMouseMoveMethodpropCount++;
-                getMouseMoveMethod["Workflow"] = ExpressionConverter.ConvertO(__workflow_getMouseMoveMethodworkflow);
-                if (getMouseMoveMethodpropCount > 0)
-                {
-                    callPayload.Body = getMouseMoveMethod;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getMouseMoveMethod);
                 return new ApiConnectionAction<GetMouseMoveMethodResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetMouseMoveMethod(Expression<Func<setMouseMoveMethodmouseMoveMethodInput>> setMouseMoveMethodmouseMoveMethod, Expression<Func<string>> setMouseMoveMethodworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetMouseMoveMethod(Expression<Func<SetMouseMoveMethodInput>> setMouseMoveMethod)
         {
-            var __workflow_setMouseMoveMethodmouseMoveMethod = WorkflowExpression.Compile(setMouseMoveMethodmouseMoveMethod, nameof(setMouseMoveMethodmouseMoveMethod), required: true);
-            var __workflow_setMouseMoveMethodworkflow = WorkflowExpression.Compile(setMouseMoveMethodworkflow, nameof(setMouseMoveMethodworkflow), required: true);
+            var __workflow_setMouseMoveMethod = WorkflowExpression.Compile(setMouseMoveMethod, nameof(setMouseMoveMethod), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SetMouseMoveMethod";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setMouseMoveMethod = new JObject();
-                var setMouseMoveMethodpropCount = 0;
-                setMouseMoveMethodpropCount++;
-                setMouseMoveMethod["MouseMoveMethod"] = ExpressionConverter.ConvertO(__workflow_setMouseMoveMethodmouseMoveMethod);
-                setMouseMoveMethodpropCount++;
-                setMouseMoveMethod["Workflow"] = ExpressionConverter.ConvertO(__workflow_setMouseMoveMethodworkflow);
-                if (setMouseMoveMethodpropCount > 0)
-                {
-                    callPayload.Body = setMouseMoveMethod;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setMouseMoveMethod);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> WiggleMouse(Expression<Func<string>> wiggleMouseworkflow, Expression<Func<int>> wiggleMousexWiggle = null, Expression<Func<int>> wiggleMouseyWiggle = null, Expression<Func<double>> wiggleMousewiggleDelayInSeconds = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> WiggleMouse(Expression<Func<WiggleMouseInput>> wiggleMouse)
         {
-            var __workflow_wiggleMouseworkflow = WorkflowExpression.Compile(wiggleMouseworkflow, nameof(wiggleMouseworkflow), required: true);
-            var __workflow_wiggleMousexWiggle = WorkflowExpression.Compile(wiggleMousexWiggle, nameof(wiggleMousexWiggle), required: false);
-            var __workflow_wiggleMouseyWiggle = WorkflowExpression.Compile(wiggleMouseyWiggle, nameof(wiggleMouseyWiggle), required: false);
-            var __workflow_wiggleMousewiggleDelayInSeconds = WorkflowExpression.Compile(wiggleMousewiggleDelayInSeconds, nameof(wiggleMousewiggleDelayInSeconds), required: false);
+            var __workflow_wiggleMouse = WorkflowExpression.Compile(wiggleMouse, nameof(wiggleMouse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/WiggleMouse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var wiggleMouse = new JObject();
-                var wiggleMousepropCount = 0;
-                if (__workflow_wiggleMousexWiggle != null)
-                {
-                    if (__workflow_wiggleMousexWiggle != null)
-                    {
-                        wiggleMouse["XWiggle"] = ExpressionConverter.ConvertO(__workflow_wiggleMousexWiggle);
-                        wiggleMousepropCount++;
-                    }
-
-                    wiggleMousepropCount++;
-                }
-                else
-                {
-                    wiggleMouse["XWiggle"] = 2;
-                    wiggleMousepropCount++;
-                }
-
-                if (__workflow_wiggleMouseyWiggle != null)
-                {
-                    wiggleMouse["YWiggle"] = ExpressionConverter.ConvertO(__workflow_wiggleMouseyWiggle);
-                    wiggleMousepropCount++;
-                }
-
-                if (__workflow_wiggleMousewiggleDelayInSeconds != null)
-                {
-                    if (__workflow_wiggleMousewiggleDelayInSeconds != null)
-                    {
-                        wiggleMouse["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(__workflow_wiggleMousewiggleDelayInSeconds);
-                        wiggleMousepropCount++;
-                    }
-
-                    wiggleMousepropCount++;
-                }
-                else
-                {
-                    wiggleMouse["WiggleDelayInSeconds"] = 0.1;
-                    wiggleMousepropCount++;
-                }
-
-                wiggleMousepropCount++;
-                wiggleMouse["Workflow"] = ExpressionConverter.ConvertO(__workflow_wiggleMouseworkflow);
-                if (wiggleMousepropCount > 0)
-                {
-                    callPayload.Body = wiggleMouse;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_wiggleMouse);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendKeyEvents(Expression<Func<string>> sendKeyEventstext, Expression<Func<string>> sendKeyEventsworkflow, Expression<Func<int>> sendKeyEventsinterval = null, Expression<Func<bool>> sendKeyEventsisPassword = null, Expression<Func<bool>> sendKeyEventsdontInterpretSymbols = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendKeyEvents(Expression<Func<SendKeyEventsInput>> sendKeyEvents)
         {
-            var __workflow_sendKeyEventstext = WorkflowExpression.Compile(sendKeyEventstext, nameof(sendKeyEventstext), required: true);
-            var __workflow_sendKeyEventsworkflow = WorkflowExpression.Compile(sendKeyEventsworkflow, nameof(sendKeyEventsworkflow), required: true);
-            var __workflow_sendKeyEventsinterval = WorkflowExpression.Compile(sendKeyEventsinterval, nameof(sendKeyEventsinterval), required: false);
-            var __workflow_sendKeyEventsisPassword = WorkflowExpression.Compile(sendKeyEventsisPassword, nameof(sendKeyEventsisPassword), required: false);
-            var __workflow_sendKeyEventsdontInterpretSymbols = WorkflowExpression.Compile(sendKeyEventsdontInterpretSymbols, nameof(sendKeyEventsdontInterpretSymbols), required: false);
+            var __workflow_sendKeyEvents = WorkflowExpression.Compile(sendKeyEvents, nameof(sendKeyEvents), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SendKeyEvents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendKeyEvents = new JObject();
-                var sendKeyEventspropCount = 0;
-                sendKeyEventspropCount++;
-                sendKeyEvents["Text"] = ExpressionConverter.ConvertO(__workflow_sendKeyEventstext);
-                if (__workflow_sendKeyEventsinterval != null)
-                {
-                    if (__workflow_sendKeyEventsinterval != null)
-                    {
-                        sendKeyEvents["Interval"] = ExpressionConverter.ConvertO(__workflow_sendKeyEventsinterval);
-                        sendKeyEventspropCount++;
-                    }
-
-                    sendKeyEventspropCount++;
-                }
-                else
-                {
-                    sendKeyEvents["Interval"] = 10;
-                    sendKeyEventspropCount++;
-                }
-
-                if (__workflow_sendKeyEventsisPassword != null)
-                {
-                    if (__workflow_sendKeyEventsisPassword != null)
-                    {
-                        sendKeyEvents["IsPassword"] = ExpressionConverter.ConvertO(__workflow_sendKeyEventsisPassword);
-                        sendKeyEventspropCount++;
-                    }
-
-                    sendKeyEventspropCount++;
-                }
-                else
-                {
-                    sendKeyEvents["IsPassword"] = false;
-                    sendKeyEventspropCount++;
-                }
-
-                if (__workflow_sendKeyEventsdontInterpretSymbols != null)
-                {
-                    if (__workflow_sendKeyEventsdontInterpretSymbols != null)
-                    {
-                        sendKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(__workflow_sendKeyEventsdontInterpretSymbols);
-                        sendKeyEventspropCount++;
-                    }
-
-                    sendKeyEventspropCount++;
-                }
-                else
-                {
-                    sendKeyEvents["DontInterpretSymbols"] = false;
-                    sendKeyEventspropCount++;
-                }
-
-                sendKeyEventspropCount++;
-                sendKeyEvents["Workflow"] = ExpressionConverter.ConvertO(__workflow_sendKeyEventsworkflow);
-                if (sendKeyEventspropCount > 0)
-                {
-                    callPayload.Body = sendKeyEvents;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendKeyEvents);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendPasswordKeyEvents(Expression<Func<string>> sendPasswordKeyEventspassword, Expression<Func<string>> sendPasswordKeyEventsworkflow, Expression<Func<int>> sendPasswordKeyEventsinterval = null, Expression<Func<bool>> sendPasswordKeyEventsdontInterpretSymbols = null, Expression<Func<bool>> sendPasswordKeyEventspasswordContainsStoredPassword = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendPasswordKeyEvents(Expression<Func<SendPasswordKeyEventsInput>> sendPasswordKeyEvents)
         {
-            var __workflow_sendPasswordKeyEventspassword = WorkflowExpression.Compile(sendPasswordKeyEventspassword, nameof(sendPasswordKeyEventspassword), required: true);
-            var __workflow_sendPasswordKeyEventsworkflow = WorkflowExpression.Compile(sendPasswordKeyEventsworkflow, nameof(sendPasswordKeyEventsworkflow), required: true);
-            var __workflow_sendPasswordKeyEventsinterval = WorkflowExpression.Compile(sendPasswordKeyEventsinterval, nameof(sendPasswordKeyEventsinterval), required: false);
-            var __workflow_sendPasswordKeyEventsdontInterpretSymbols = WorkflowExpression.Compile(sendPasswordKeyEventsdontInterpretSymbols, nameof(sendPasswordKeyEventsdontInterpretSymbols), required: false);
-            var __workflow_sendPasswordKeyEventspasswordContainsStoredPassword = WorkflowExpression.Compile(sendPasswordKeyEventspasswordContainsStoredPassword, nameof(sendPasswordKeyEventspasswordContainsStoredPassword), required: false);
+            var __workflow_sendPasswordKeyEvents = WorkflowExpression.Compile(sendPasswordKeyEvents, nameof(sendPasswordKeyEvents), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SendPasswordKeyEvents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendPasswordKeyEvents = new JObject();
-                var sendPasswordKeyEventspropCount = 0;
-                sendPasswordKeyEventspropCount++;
-                sendPasswordKeyEvents["Password"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyEventspassword);
-                if (__workflow_sendPasswordKeyEventsinterval != null)
-                {
-                    if (__workflow_sendPasswordKeyEventsinterval != null)
-                    {
-                        sendPasswordKeyEvents["Interval"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyEventsinterval);
-                        sendPasswordKeyEventspropCount++;
-                    }
-
-                    sendPasswordKeyEventspropCount++;
-                }
-                else
-                {
-                    sendPasswordKeyEvents["Interval"] = 10;
-                    sendPasswordKeyEventspropCount++;
-                }
-
-                if (__workflow_sendPasswordKeyEventsdontInterpretSymbols != null)
-                {
-                    if (__workflow_sendPasswordKeyEventsdontInterpretSymbols != null)
-                    {
-                        sendPasswordKeyEvents["DontInterpretSymbols"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyEventsdontInterpretSymbols);
-                        sendPasswordKeyEventspropCount++;
-                    }
-
-                    sendPasswordKeyEventspropCount++;
-                }
-                else
-                {
-                    sendPasswordKeyEvents["DontInterpretSymbols"] = false;
-                    sendPasswordKeyEventspropCount++;
-                }
-
-                if (__workflow_sendPasswordKeyEventspasswordContainsStoredPassword != null)
-                {
-                    if (__workflow_sendPasswordKeyEventspasswordContainsStoredPassword != null)
-                    {
-                        sendPasswordKeyEvents["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyEventspasswordContainsStoredPassword);
-                        sendPasswordKeyEventspropCount++;
-                    }
-
-                    sendPasswordKeyEventspropCount++;
-                }
-                else
-                {
-                    sendPasswordKeyEvents["PasswordContainsStoredPassword"] = false;
-                    sendPasswordKeyEventspropCount++;
-                }
-
-                sendPasswordKeyEventspropCount++;
-                sendPasswordKeyEvents["Workflow"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyEventsworkflow);
-                if (sendPasswordKeyEventspropCount > 0)
-                {
-                    callPayload.Body = sendPasswordKeyEvents;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyEvents);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendKeys(Expression<Func<string>> sendKeystext, Expression<Func<string>> sendKeysworkflow, Expression<Func<int>> sendKeysinterval = null, Expression<Func<bool>> sendKeysisPassword = null, Expression<Func<bool>> sendKeysdontInterpretSymbols = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendKeys(Expression<Func<SendKeysInput>> sendKeys)
         {
-            var __workflow_sendKeystext = WorkflowExpression.Compile(sendKeystext, nameof(sendKeystext), required: true);
-            var __workflow_sendKeysworkflow = WorkflowExpression.Compile(sendKeysworkflow, nameof(sendKeysworkflow), required: true);
-            var __workflow_sendKeysinterval = WorkflowExpression.Compile(sendKeysinterval, nameof(sendKeysinterval), required: false);
-            var __workflow_sendKeysisPassword = WorkflowExpression.Compile(sendKeysisPassword, nameof(sendKeysisPassword), required: false);
-            var __workflow_sendKeysdontInterpretSymbols = WorkflowExpression.Compile(sendKeysdontInterpretSymbols, nameof(sendKeysdontInterpretSymbols), required: false);
+            var __workflow_sendKeys = WorkflowExpression.Compile(sendKeys, nameof(sendKeys), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SendKeys";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendKeys = new JObject();
-                var sendKeyspropCount = 0;
-                sendKeyspropCount++;
-                sendKeys["Text"] = ExpressionConverter.ConvertO(__workflow_sendKeystext);
-                if (__workflow_sendKeysinterval != null)
-                {
-                    if (__workflow_sendKeysinterval != null)
-                    {
-                        sendKeys["Interval"] = ExpressionConverter.ConvertO(__workflow_sendKeysinterval);
-                        sendKeyspropCount++;
-                    }
-
-                    sendKeyspropCount++;
-                }
-                else
-                {
-                    sendKeys["Interval"] = 10;
-                    sendKeyspropCount++;
-                }
-
-                if (__workflow_sendKeysisPassword != null)
-                {
-                    if (__workflow_sendKeysisPassword != null)
-                    {
-                        sendKeys["IsPassword"] = ExpressionConverter.ConvertO(__workflow_sendKeysisPassword);
-                        sendKeyspropCount++;
-                    }
-
-                    sendKeyspropCount++;
-                }
-                else
-                {
-                    sendKeys["IsPassword"] = false;
-                    sendKeyspropCount++;
-                }
-
-                if (__workflow_sendKeysdontInterpretSymbols != null)
-                {
-                    if (__workflow_sendKeysdontInterpretSymbols != null)
-                    {
-                        sendKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(__workflow_sendKeysdontInterpretSymbols);
-                        sendKeyspropCount++;
-                    }
-
-                    sendKeyspropCount++;
-                }
-                else
-                {
-                    sendKeys["DontInterpretSymbols"] = false;
-                    sendKeyspropCount++;
-                }
-
-                sendKeyspropCount++;
-                sendKeys["Workflow"] = ExpressionConverter.ConvertO(__workflow_sendKeysworkflow);
-                if (sendKeyspropCount > 0)
-                {
-                    callPayload.Body = sendKeys;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendKeys);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendPasswordKeys(Expression<Func<string>> sendPasswordKeyspassword, Expression<Func<string>> sendPasswordKeysworkflow, Expression<Func<int>> sendPasswordKeysinterval = null, Expression<Func<bool>> sendPasswordKeysdontInterpretSymbols = null, Expression<Func<bool>> sendPasswordKeyspasswordContainsStoredPassword = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendPasswordKeys(Expression<Func<SendPasswordKeysInput>> sendPasswordKeys)
         {
-            var __workflow_sendPasswordKeyspassword = WorkflowExpression.Compile(sendPasswordKeyspassword, nameof(sendPasswordKeyspassword), required: true);
-            var __workflow_sendPasswordKeysworkflow = WorkflowExpression.Compile(sendPasswordKeysworkflow, nameof(sendPasswordKeysworkflow), required: true);
-            var __workflow_sendPasswordKeysinterval = WorkflowExpression.Compile(sendPasswordKeysinterval, nameof(sendPasswordKeysinterval), required: false);
-            var __workflow_sendPasswordKeysdontInterpretSymbols = WorkflowExpression.Compile(sendPasswordKeysdontInterpretSymbols, nameof(sendPasswordKeysdontInterpretSymbols), required: false);
-            var __workflow_sendPasswordKeyspasswordContainsStoredPassword = WorkflowExpression.Compile(sendPasswordKeyspasswordContainsStoredPassword, nameof(sendPasswordKeyspasswordContainsStoredPassword), required: false);
+            var __workflow_sendPasswordKeys = WorkflowExpression.Compile(sendPasswordKeys, nameof(sendPasswordKeys), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SendPasswordKeys";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendPasswordKeys = new JObject();
-                var sendPasswordKeyspropCount = 0;
-                sendPasswordKeyspropCount++;
-                sendPasswordKeys["Password"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyspassword);
-                if (__workflow_sendPasswordKeysinterval != null)
-                {
-                    if (__workflow_sendPasswordKeysinterval != null)
-                    {
-                        sendPasswordKeys["Interval"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeysinterval);
-                        sendPasswordKeyspropCount++;
-                    }
-
-                    sendPasswordKeyspropCount++;
-                }
-                else
-                {
-                    sendPasswordKeys["Interval"] = 10;
-                    sendPasswordKeyspropCount++;
-                }
-
-                if (__workflow_sendPasswordKeysdontInterpretSymbols != null)
-                {
-                    if (__workflow_sendPasswordKeysdontInterpretSymbols != null)
-                    {
-                        sendPasswordKeys["DontInterpretSymbols"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeysdontInterpretSymbols);
-                        sendPasswordKeyspropCount++;
-                    }
-
-                    sendPasswordKeyspropCount++;
-                }
-                else
-                {
-                    sendPasswordKeys["DontInterpretSymbols"] = false;
-                    sendPasswordKeyspropCount++;
-                }
-
-                if (__workflow_sendPasswordKeyspasswordContainsStoredPassword != null)
-                {
-                    if (__workflow_sendPasswordKeyspasswordContainsStoredPassword != null)
-                    {
-                        sendPasswordKeys["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeyspasswordContainsStoredPassword);
-                        sendPasswordKeyspropCount++;
-                    }
-
-                    sendPasswordKeyspropCount++;
-                }
-                else
-                {
-                    sendPasswordKeys["PasswordContainsStoredPassword"] = false;
-                    sendPasswordKeyspropCount++;
-                }
-
-                sendPasswordKeyspropCount++;
-                sendPasswordKeys["Workflow"] = ExpressionConverter.ConvertO(__workflow_sendPasswordKeysworkflow);
-                if (sendPasswordKeyspropCount > 0)
-                {
-                    callPayload.Body = sendPasswordKeys;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendPasswordKeys);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ClearClipboard(Expression<Func<string>> clearClipboardworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ClearClipboard(Expression<Func<ClearClipboardInput>> clearClipboard)
         {
-            var __workflow_clearClipboardworkflow = WorkflowExpression.Compile(clearClipboardworkflow, nameof(clearClipboardworkflow), required: true);
+            var __workflow_clearClipboard = WorkflowExpression.Compile(clearClipboard, nameof(clearClipboard), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/ClearClipboard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var clearClipboard = new JObject();
-                var clearClipboardpropCount = 0;
-                clearClipboardpropCount++;
-                clearClipboard["Workflow"] = ExpressionConverter.ConvertO(__workflow_clearClipboardworkflow);
-                if (clearClipboardpropCount > 0)
-                {
-                    callPayload.Body = clearClipboard;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_clearClipboard);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetClipboardData(Expression<Func<string>> setClipboardDataworkflow, Expression<Func<string>> setClipboardDatanewClipboardData = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetClipboardData(Expression<Func<SetClipboardDataInput>> setClipboardData)
         {
-            var __workflow_setClipboardDataworkflow = WorkflowExpression.Compile(setClipboardDataworkflow, nameof(setClipboardDataworkflow), required: true);
-            var __workflow_setClipboardDatanewClipboardData = WorkflowExpression.Compile(setClipboardDatanewClipboardData, nameof(setClipboardDatanewClipboardData), required: false);
+            var __workflow_setClipboardData = WorkflowExpression.Compile(setClipboardData, nameof(setClipboardData), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SetClipboardData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setClipboardData = new JObject();
-                var setClipboardDatapropCount = 0;
-                if (__workflow_setClipboardDatanewClipboardData != null)
-                {
-                    setClipboardData["NewClipboardData"] = ExpressionConverter.ConvertO(__workflow_setClipboardDatanewClipboardData);
-                    setClipboardDatapropCount++;
-                }
-
-                setClipboardDatapropCount++;
-                setClipboardData["Workflow"] = ExpressionConverter.ConvertO(__workflow_setClipboardDataworkflow);
-                if (setClipboardDatapropCount > 0)
-                {
-                    callPayload.Body = setClipboardData;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setClipboardData);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetClipboardDataResponse, ApiConnectionActionConfiguration> GetClipboardData(Expression<Func<string>> getClipboardDataworkflow)
+        public IBodyWorkflowAction<GetClipboardDataResponse, ApiConnectionActionConfiguration> GetClipboardData(Expression<Func<GetClipboardDataInput>> getClipboardData)
         {
-            var __workflow_getClipboardDataworkflow = WorkflowExpression.Compile(getClipboardDataworkflow, nameof(getClipboardDataworkflow), required: true);
+            var __workflow_getClipboardData = WorkflowExpression.Compile(getClipboardData, nameof(getClipboardData), required: true);
             return new DeferredBodyAction<GetClipboardDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetClipboardData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getClipboardData = new JObject();
-                var getClipboardDatapropCount = 0;
-                getClipboardDatapropCount++;
-                getClipboardData["Workflow"] = ExpressionConverter.ConvertO(__workflow_getClipboardDataworkflow);
-                if (getClipboardDatapropCount > 0)
-                {
-                    callPayload.Body = getClipboardData;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getClipboardData);
                 return new ApiConnectionAction<GetClipboardDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TakeScreenshotResponse, ApiConnectionActionConfiguration> TakeScreenshot(Expression<Func<string>> takeScreenshotworkflow, Expression<Func<bool>> takeScreenshotfullscreen = null, Expression<Func<int>> takeScreenshotleftXPixels = null, Expression<Func<int>> takeScreenshottopYPixels = null, Expression<Func<int>> takeScreenshotwidthPixels = null, Expression<Func<int>> takeScreenshotheightPixels = null, Expression<Func<takeScreenshotimageFormatInput>> takeScreenshotimageFormat = null, Expression<Func<bool>> takeScreenshotuseDisplayDevice = null, Expression<Func<bool>> takeScreenshotraiseExceptionOnError = null, Expression<Func<bool>> takeScreenshothideAgent = null, Expression<Func<bool>> takeScreenshotusePhysicalCoordinates = null, Expression<Func<int>> takeScreenshotdisplayDeviceId = null)
+        public IBodyWorkflowAction<TakeScreenshotResponse, ApiConnectionActionConfiguration> TakeScreenshot(Expression<Func<TakeScreenshotInput>> takeScreenshot)
         {
-            var __workflow_takeScreenshotworkflow = WorkflowExpression.Compile(takeScreenshotworkflow, nameof(takeScreenshotworkflow), required: true);
-            var __workflow_takeScreenshotfullscreen = WorkflowExpression.Compile(takeScreenshotfullscreen, nameof(takeScreenshotfullscreen), required: false);
-            var __workflow_takeScreenshotleftXPixels = WorkflowExpression.Compile(takeScreenshotleftXPixels, nameof(takeScreenshotleftXPixels), required: false);
-            var __workflow_takeScreenshottopYPixels = WorkflowExpression.Compile(takeScreenshottopYPixels, nameof(takeScreenshottopYPixels), required: false);
-            var __workflow_takeScreenshotwidthPixels = WorkflowExpression.Compile(takeScreenshotwidthPixels, nameof(takeScreenshotwidthPixels), required: false);
-            var __workflow_takeScreenshotheightPixels = WorkflowExpression.Compile(takeScreenshotheightPixels, nameof(takeScreenshotheightPixels), required: false);
-            var __workflow_takeScreenshotimageFormat = WorkflowExpression.Compile(takeScreenshotimageFormat, nameof(takeScreenshotimageFormat), required: false);
-            var __workflow_takeScreenshotuseDisplayDevice = WorkflowExpression.Compile(takeScreenshotuseDisplayDevice, nameof(takeScreenshotuseDisplayDevice), required: false);
-            var __workflow_takeScreenshotraiseExceptionOnError = WorkflowExpression.Compile(takeScreenshotraiseExceptionOnError, nameof(takeScreenshotraiseExceptionOnError), required: false);
-            var __workflow_takeScreenshothideAgent = WorkflowExpression.Compile(takeScreenshothideAgent, nameof(takeScreenshothideAgent), required: false);
-            var __workflow_takeScreenshotusePhysicalCoordinates = WorkflowExpression.Compile(takeScreenshotusePhysicalCoordinates, nameof(takeScreenshotusePhysicalCoordinates), required: false);
-            var __workflow_takeScreenshotdisplayDeviceId = WorkflowExpression.Compile(takeScreenshotdisplayDeviceId, nameof(takeScreenshotdisplayDeviceId), required: false);
+            var __workflow_takeScreenshot = WorkflowExpression.Compile(takeScreenshot, nameof(takeScreenshot), required: true);
             return new DeferredBodyAction<TakeScreenshotResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TakeScreenshot";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var takeScreenshot = new JObject();
-                var takeScreenshotpropCount = 0;
-                if (__workflow_takeScreenshotfullscreen != null)
-                {
-                    if (__workflow_takeScreenshotfullscreen != null)
-                    {
-                        takeScreenshot["Fullscreen"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotfullscreen);
-                        takeScreenshotpropCount++;
-                    }
-
-                    takeScreenshotpropCount++;
-                }
-                else
-                {
-                    takeScreenshot["Fullscreen"] = true;
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotleftXPixels != null)
-                {
-                    takeScreenshot["LeftXPixels"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotleftXPixels);
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshottopYPixels != null)
-                {
-                    takeScreenshot["TopYPixels"] = ExpressionConverter.ConvertO(__workflow_takeScreenshottopYPixels);
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotwidthPixels != null)
-                {
-                    takeScreenshot["WidthPixels"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotwidthPixels);
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotheightPixels != null)
-                {
-                    takeScreenshot["HeightPixels"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotheightPixels);
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotimageFormat != null)
-                {
-                    takeScreenshot["ImageFormat"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotimageFormat);
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotuseDisplayDevice != null)
-                {
-                    if (__workflow_takeScreenshotuseDisplayDevice != null)
-                    {
-                        takeScreenshot["UseDisplayDevice"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotuseDisplayDevice);
-                        takeScreenshotpropCount++;
-                    }
-
-                    takeScreenshotpropCount++;
-                }
-                else
-                {
-                    takeScreenshot["UseDisplayDevice"] = false;
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotraiseExceptionOnError != null)
-                {
-                    if (__workflow_takeScreenshotraiseExceptionOnError != null)
-                    {
-                        takeScreenshot["RaiseExceptionOnError"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotraiseExceptionOnError);
-                        takeScreenshotpropCount++;
-                    }
-
-                    takeScreenshotpropCount++;
-                }
-                else
-                {
-                    takeScreenshot["RaiseExceptionOnError"] = true;
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshothideAgent != null)
-                {
-                    if (__workflow_takeScreenshothideAgent != null)
-                    {
-                        takeScreenshot["HideAgent"] = ExpressionConverter.ConvertO(__workflow_takeScreenshothideAgent);
-                        takeScreenshotpropCount++;
-                    }
-
-                    takeScreenshotpropCount++;
-                }
-                else
-                {
-                    takeScreenshot["HideAgent"] = false;
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotusePhysicalCoordinates != null)
-                {
-                    if (__workflow_takeScreenshotusePhysicalCoordinates != null)
-                    {
-                        takeScreenshot["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotusePhysicalCoordinates);
-                        takeScreenshotpropCount++;
-                    }
-
-                    takeScreenshotpropCount++;
-                }
-                else
-                {
-                    takeScreenshot["UsePhysicalCoordinates"] = false;
-                    takeScreenshotpropCount++;
-                }
-
-                if (__workflow_takeScreenshotdisplayDeviceId != null)
-                {
-                    takeScreenshot["DisplayDeviceId"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotdisplayDeviceId);
-                    takeScreenshotpropCount++;
-                }
-
-                takeScreenshotpropCount++;
-                takeScreenshot["Workflow"] = ExpressionConverter.ConvertO(__workflow_takeScreenshotworkflow);
-                if (takeScreenshotpropCount > 0)
-                {
-                    callPayload.Body = takeScreenshot;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_takeScreenshot);
                 return new ApiConnectionAction<TakeScreenshotResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetEnvironmentInfoResponse, ApiConnectionActionConfiguration> GetEnvironmentInfo(Expression<Func<string>> getEnvironmentInfoworkflow)
+        public IBodyWorkflowAction<GetEnvironmentInfoResponse, ApiConnectionActionConfiguration> GetEnvironmentInfo(Expression<Func<GetEnvironmentInfoInput>> getEnvironmentInfo)
         {
-            var __workflow_getEnvironmentInfoworkflow = WorkflowExpression.Compile(getEnvironmentInfoworkflow, nameof(getEnvironmentInfoworkflow), required: true);
+            var __workflow_getEnvironmentInfo = WorkflowExpression.Compile(getEnvironmentInfo, nameof(getEnvironmentInfo), required: true);
             return new DeferredBodyAction<GetEnvironmentInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetEnvironmentInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getEnvironmentInfo = new JObject();
-                var getEnvironmentInfopropCount = 0;
-                getEnvironmentInfopropCount++;
-                getEnvironmentInfo["Workflow"] = ExpressionConverter.ConvertO(__workflow_getEnvironmentInfoworkflow);
-                if (getEnvironmentInfopropCount > 0)
-                {
-                    callPayload.Body = getEnvironmentInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getEnvironmentInfo);
                 return new ApiConnectionAction<GetEnvironmentInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<IsScreenReaderEnabledResponse, ApiConnectionActionConfiguration> IsScreenReaderEnabled(Expression<Func<string>> isScreenReaderEnabledworkflow)
+        public IBodyWorkflowAction<IsScreenReaderEnabledResponse, ApiConnectionActionConfiguration> IsScreenReaderEnabled(Expression<Func<IsScreenReaderEnabledInput>> isScreenReaderEnabled)
         {
-            var __workflow_isScreenReaderEnabledworkflow = WorkflowExpression.Compile(isScreenReaderEnabledworkflow, nameof(isScreenReaderEnabledworkflow), required: true);
+            var __workflow_isScreenReaderEnabled = WorkflowExpression.Compile(isScreenReaderEnabled, nameof(isScreenReaderEnabled), required: true);
             return new DeferredBodyAction<IsScreenReaderEnabledResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/IsScreenReaderEnabled";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var isScreenReaderEnabled = new JObject();
-                var isScreenReaderEnabledpropCount = 0;
-                isScreenReaderEnabledpropCount++;
-                isScreenReaderEnabled["Workflow"] = ExpressionConverter.ConvertO(__workflow_isScreenReaderEnabledworkflow);
-                if (isScreenReaderEnabledpropCount > 0)
-                {
-                    callPayload.Body = isScreenReaderEnabled;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_isScreenReaderEnabled);
                 return new ApiConnectionAction<IsScreenReaderEnabledResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetScreenReader(Expression<Func<string>> setScreenReaderworkflow, Expression<Func<bool>> setScreenReaderenableScreenReader = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetScreenReader(Expression<Func<SetScreenReaderInput>> setScreenReader)
         {
-            var __workflow_setScreenReaderworkflow = WorkflowExpression.Compile(setScreenReaderworkflow, nameof(setScreenReaderworkflow), required: true);
-            var __workflow_setScreenReaderenableScreenReader = WorkflowExpression.Compile(setScreenReaderenableScreenReader, nameof(setScreenReaderenableScreenReader), required: false);
+            var __workflow_setScreenReader = WorkflowExpression.Compile(setScreenReader, nameof(setScreenReader), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SetScreenReader";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setScreenReader = new JObject();
-                var setScreenReaderpropCount = 0;
-                if (__workflow_setScreenReaderenableScreenReader != null)
-                {
-                    if (__workflow_setScreenReaderenableScreenReader != null)
-                    {
-                        setScreenReader["EnableScreenReader"] = ExpressionConverter.ConvertO(__workflow_setScreenReaderenableScreenReader);
-                        setScreenReaderpropCount++;
-                    }
-
-                    setScreenReaderpropCount++;
-                }
-                else
-                {
-                    setScreenReader["EnableScreenReader"] = true;
-                    setScreenReaderpropCount++;
-                }
-
-                setScreenReaderpropCount++;
-                setScreenReader["Workflow"] = ExpressionConverter.ConvertO(__workflow_setScreenReaderworkflow);
-                if (setScreenReaderpropCount > 0)
-                {
-                    callPayload.Body = setScreenReader;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setScreenReader);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetParentProcessIdResponse, ApiConnectionActionConfiguration> GetParentProcessId(Expression<Func<int>> getParentProcessIdprocessId, Expression<Func<string>> getParentProcessIdworkflow)
+        public IBodyWorkflowAction<GetParentProcessIdResponse, ApiConnectionActionConfiguration> GetParentProcessId(Expression<Func<GetParentProcessIdInput>> getParentProcessId)
         {
-            var __workflow_getParentProcessIdprocessId = WorkflowExpression.Compile(getParentProcessIdprocessId, nameof(getParentProcessIdprocessId), required: true);
-            var __workflow_getParentProcessIdworkflow = WorkflowExpression.Compile(getParentProcessIdworkflow, nameof(getParentProcessIdworkflow), required: true);
+            var __workflow_getParentProcessId = WorkflowExpression.Compile(getParentProcessId, nameof(getParentProcessId), required: true);
             return new DeferredBodyAction<GetParentProcessIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetParentProcessId";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getParentProcessId = new JObject();
-                var getParentProcessIdpropCount = 0;
-                getParentProcessIdpropCount++;
-                getParentProcessId["ProcessId"] = ExpressionConverter.ConvertO(__workflow_getParentProcessIdprocessId);
-                getParentProcessIdpropCount++;
-                getParentProcessId["Workflow"] = ExpressionConverter.ConvertO(__workflow_getParentProcessIdworkflow);
-                if (getParentProcessIdpropCount > 0)
-                {
-                    callPayload.Body = getParentProcessId;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getParentProcessId);
                 return new ApiConnectionAction<GetParentProcessIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetProcessIdCommandLineResponse, ApiConnectionActionConfiguration> GetProcessIdCommandLine(Expression<Func<int>> getProcessIdCommandLineprocessId, Expression<Func<string>> getProcessIdCommandLineworkflow)
+        public IBodyWorkflowAction<GetProcessIdCommandLineResponse, ApiConnectionActionConfiguration> GetProcessIdCommandLine(Expression<Func<GetProcessIdCommandLineInput>> getProcessIdCommandLine)
         {
-            var __workflow_getProcessIdCommandLineprocessId = WorkflowExpression.Compile(getProcessIdCommandLineprocessId, nameof(getProcessIdCommandLineprocessId), required: true);
-            var __workflow_getProcessIdCommandLineworkflow = WorkflowExpression.Compile(getProcessIdCommandLineworkflow, nameof(getProcessIdCommandLineworkflow), required: true);
+            var __workflow_getProcessIdCommandLine = WorkflowExpression.Compile(getProcessIdCommandLine, nameof(getProcessIdCommandLine), required: true);
             return new DeferredBodyAction<GetProcessIdCommandLineResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessIdCommandLine";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getProcessIdCommandLine = new JObject();
-                var getProcessIdCommandLinepropCount = 0;
-                getProcessIdCommandLinepropCount++;
-                getProcessIdCommandLine["ProcessId"] = ExpressionConverter.ConvertO(__workflow_getProcessIdCommandLineprocessId);
-                getProcessIdCommandLinepropCount++;
-                getProcessIdCommandLine["Workflow"] = ExpressionConverter.ConvertO(__workflow_getProcessIdCommandLineworkflow);
-                if (getProcessIdCommandLinepropCount > 0)
-                {
-                    callPayload.Body = getProcessIdCommandLine;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getProcessIdCommandLine);
                 return new ApiConnectionAction<GetProcessIdCommandLineResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetLastInputInfoResponse, ApiConnectionActionConfiguration> GetLastInputInfo(Expression<Func<string>> getLastInputInfoworkflow)
+        public IBodyWorkflowAction<GetLastInputInfoResponse, ApiConnectionActionConfiguration> GetLastInputInfo(Expression<Func<GetLastInputInfoInput>> getLastInputInfo)
         {
-            var __workflow_getLastInputInfoworkflow = WorkflowExpression.Compile(getLastInputInfoworkflow, nameof(getLastInputInfoworkflow), required: true);
+            var __workflow_getLastInputInfo = WorkflowExpression.Compile(getLastInputInfo, nameof(getLastInputInfo), required: true);
             return new DeferredBodyAction<GetLastInputInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetLastInputInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getLastInputInfo = new JObject();
-                var getLastInputInfopropCount = 0;
-                getLastInputInfopropCount++;
-                getLastInputInfo["Workflow"] = ExpressionConverter.ConvertO(__workflow_getLastInputInfoworkflow);
-                if (getLastInputInfopropCount > 0)
-                {
-                    callPayload.Body = getLastInputInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getLastInputInfo);
                 return new ApiConnectionAction<GetLastInputInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KeepSessionAliveResponse, ApiConnectionActionConfiguration> KeepSessionAlive(Expression<Func<string>> keepSessionAliveworkflow, Expression<Func<int>> keepSessionAlivexWiggle = null, Expression<Func<int>> keepSessionAliveyWiggle = null, Expression<Func<double>> keepSessionAlivewiggleDelayInSeconds = null, Expression<Func<int>> keepSessionAliveidleThresholdInSeconds = null, Expression<Func<int>> keepSessionAliveidleCheckPeriodInSeconds = null, Expression<Func<int>> keepSessionAlivetotalKeepaliveRuntimeInSeconds = null)
+        public IBodyWorkflowAction<KeepSessionAliveResponse, ApiConnectionActionConfiguration> KeepSessionAlive(Expression<Func<KeepSessionAliveInput>> keepSessionAlive)
         {
-            var __workflow_keepSessionAliveworkflow = WorkflowExpression.Compile(keepSessionAliveworkflow, nameof(keepSessionAliveworkflow), required: true);
-            var __workflow_keepSessionAlivexWiggle = WorkflowExpression.Compile(keepSessionAlivexWiggle, nameof(keepSessionAlivexWiggle), required: false);
-            var __workflow_keepSessionAliveyWiggle = WorkflowExpression.Compile(keepSessionAliveyWiggle, nameof(keepSessionAliveyWiggle), required: false);
-            var __workflow_keepSessionAlivewiggleDelayInSeconds = WorkflowExpression.Compile(keepSessionAlivewiggleDelayInSeconds, nameof(keepSessionAlivewiggleDelayInSeconds), required: false);
-            var __workflow_keepSessionAliveidleThresholdInSeconds = WorkflowExpression.Compile(keepSessionAliveidleThresholdInSeconds, nameof(keepSessionAliveidleThresholdInSeconds), required: false);
-            var __workflow_keepSessionAliveidleCheckPeriodInSeconds = WorkflowExpression.Compile(keepSessionAliveidleCheckPeriodInSeconds, nameof(keepSessionAliveidleCheckPeriodInSeconds), required: false);
-            var __workflow_keepSessionAlivetotalKeepaliveRuntimeInSeconds = WorkflowExpression.Compile(keepSessionAlivetotalKeepaliveRuntimeInSeconds, nameof(keepSessionAlivetotalKeepaliveRuntimeInSeconds), required: false);
+            var __workflow_keepSessionAlive = WorkflowExpression.Compile(keepSessionAlive, nameof(keepSessionAlive), required: true);
             return new DeferredBodyAction<KeepSessionAliveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/KeepSessionAlive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var keepSessionAlive = new JObject();
-                var keepSessionAlivepropCount = 0;
-                if (__workflow_keepSessionAlivexWiggle != null)
-                {
-                    if (__workflow_keepSessionAlivexWiggle != null)
-                    {
-                        keepSessionAlive["XWiggle"] = ExpressionConverter.ConvertO(__workflow_keepSessionAlivexWiggle);
-                        keepSessionAlivepropCount++;
-                    }
-
-                    keepSessionAlivepropCount++;
-                }
-                else
-                {
-                    keepSessionAlive["XWiggle"] = 2;
-                    keepSessionAlivepropCount++;
-                }
-
-                if (__workflow_keepSessionAliveyWiggle != null)
-                {
-                    keepSessionAlive["YWiggle"] = ExpressionConverter.ConvertO(__workflow_keepSessionAliveyWiggle);
-                    keepSessionAlivepropCount++;
-                }
-
-                if (__workflow_keepSessionAlivewiggleDelayInSeconds != null)
-                {
-                    if (__workflow_keepSessionAlivewiggleDelayInSeconds != null)
-                    {
-                        keepSessionAlive["WiggleDelayInSeconds"] = ExpressionConverter.ConvertO(__workflow_keepSessionAlivewiggleDelayInSeconds);
-                        keepSessionAlivepropCount++;
-                    }
-
-                    keepSessionAlivepropCount++;
-                }
-                else
-                {
-                    keepSessionAlive["WiggleDelayInSeconds"] = 0.1;
-                    keepSessionAlivepropCount++;
-                }
-
-                if (__workflow_keepSessionAliveidleThresholdInSeconds != null)
-                {
-                    if (__workflow_keepSessionAliveidleThresholdInSeconds != null)
-                    {
-                        keepSessionAlive["IdleThresholdInSeconds"] = ExpressionConverter.ConvertO(__workflow_keepSessionAliveidleThresholdInSeconds);
-                        keepSessionAlivepropCount++;
-                    }
-
-                    keepSessionAlivepropCount++;
-                }
-                else
-                {
-                    keepSessionAlive["IdleThresholdInSeconds"] = 120;
-                    keepSessionAlivepropCount++;
-                }
-
-                if (__workflow_keepSessionAliveidleCheckPeriodInSeconds != null)
-                {
-                    if (__workflow_keepSessionAliveidleCheckPeriodInSeconds != null)
-                    {
-                        keepSessionAlive["IdleCheckPeriodInSeconds"] = ExpressionConverter.ConvertO(__workflow_keepSessionAliveidleCheckPeriodInSeconds);
-                        keepSessionAlivepropCount++;
-                    }
-
-                    keepSessionAlivepropCount++;
-                }
-                else
-                {
-                    keepSessionAlive["IdleCheckPeriodInSeconds"] = 30;
-                    keepSessionAlivepropCount++;
-                }
-
-                if (__workflow_keepSessionAlivetotalKeepaliveRuntimeInSeconds != null)
-                {
-                    if (__workflow_keepSessionAlivetotalKeepaliveRuntimeInSeconds != null)
-                    {
-                        keepSessionAlive["TotalKeepaliveRuntimeInSeconds"] = ExpressionConverter.ConvertO(__workflow_keepSessionAlivetotalKeepaliveRuntimeInSeconds);
-                        keepSessionAlivepropCount++;
-                    }
-
-                    keepSessionAlivepropCount++;
-                }
-                else
-                {
-                    keepSessionAlive["TotalKeepaliveRuntimeInSeconds"] = -1;
-                    keepSessionAlivepropCount++;
-                }
-
-                keepSessionAlivepropCount++;
-                keepSessionAlive["Workflow"] = ExpressionConverter.ConvertO(__workflow_keepSessionAliveworkflow);
-                if (keepSessionAlivepropCount > 0)
-                {
-                    callPayload.Body = keepSessionAlive;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_keepSessionAlive);
                 return new ApiConnectionAction<KeepSessionAliveResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<StopKeepSessionAliveResponse, ApiConnectionActionConfiguration> StopKeepSessionAlive(Expression<Func<string>> stopKeepSessionAliveworkflow)
+        public IBodyWorkflowAction<StopKeepSessionAliveResponse, ApiConnectionActionConfiguration> StopKeepSessionAlive(Expression<Func<StopKeepSessionAliveInput>> stopKeepSessionAlive)
         {
-            var __workflow_stopKeepSessionAliveworkflow = WorkflowExpression.Compile(stopKeepSessionAliveworkflow, nameof(stopKeepSessionAliveworkflow), required: true);
+            var __workflow_stopKeepSessionAlive = WorkflowExpression.Compile(stopKeepSessionAlive, nameof(stopKeepSessionAlive), required: true);
             return new DeferredBodyAction<StopKeepSessionAliveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/StopKeepSessionAlive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var stopKeepSessionAlive = new JObject();
-                var stopKeepSessionAlivepropCount = 0;
-                stopKeepSessionAlivepropCount++;
-                stopKeepSessionAlive["Workflow"] = ExpressionConverter.ConvertO(__workflow_stopKeepSessionAliveworkflow);
-                if (stopKeepSessionAlivepropCount > 0)
-                {
-                    callPayload.Body = stopKeepSessionAlive;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_stopKeepSessionAlive);
                 return new ApiConnectionAction<StopKeepSessionAliveResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<CopyFileToClipboardResponse, ApiConnectionActionConfiguration> CopyFileToClipboard(Expression<Func<string>> copyFileToClipboardfilepath, Expression<Func<string>> copyFileToClipboardworkflow, Expression<Func<bool>> copyFileToClipboardcut = null)
+        public IBodyWorkflowAction<CopyFileToClipboardResponse, ApiConnectionActionConfiguration> CopyFileToClipboard(Expression<Func<CopyFileToClipboardInput>> copyFileToClipboard)
         {
-            var __workflow_copyFileToClipboardfilepath = WorkflowExpression.Compile(copyFileToClipboardfilepath, nameof(copyFileToClipboardfilepath), required: true);
-            var __workflow_copyFileToClipboardworkflow = WorkflowExpression.Compile(copyFileToClipboardworkflow, nameof(copyFileToClipboardworkflow), required: true);
-            var __workflow_copyFileToClipboardcut = WorkflowExpression.Compile(copyFileToClipboardcut, nameof(copyFileToClipboardcut), required: false);
+            var __workflow_copyFileToClipboard = WorkflowExpression.Compile(copyFileToClipboard, nameof(copyFileToClipboard), required: true);
             return new DeferredBodyAction<CopyFileToClipboardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/CopyFileToClipboard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var copyFileToClipboard = new JObject();
-                var copyFileToClipboardpropCount = 0;
-                copyFileToClipboardpropCount++;
-                copyFileToClipboard["Filepath"] = ExpressionConverter.ConvertO(__workflow_copyFileToClipboardfilepath);
-                if (__workflow_copyFileToClipboardcut != null)
-                {
-                    if (__workflow_copyFileToClipboardcut != null)
-                    {
-                        copyFileToClipboard["Cut"] = ExpressionConverter.ConvertO(__workflow_copyFileToClipboardcut);
-                        copyFileToClipboardpropCount++;
-                    }
-
-                    copyFileToClipboardpropCount++;
-                }
-                else
-                {
-                    copyFileToClipboard["Cut"] = false;
-                    copyFileToClipboardpropCount++;
-                }
-
-                copyFileToClipboardpropCount++;
-                copyFileToClipboard["Workflow"] = ExpressionConverter.ConvertO(__workflow_copyFileToClipboardworkflow);
-                if (copyFileToClipboardpropCount > 0)
-                {
-                    callPayload.Body = copyFileToClipboard;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_copyFileToClipboard);
                 return new ApiConnectionAction<CopyFileToClipboardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetRemoteSessionInfoResponse, ApiConnectionActionConfiguration> GetRemoteSessionInfo(Expression<Func<string>> getRemoteSessionInfoworkflow)
+        public IBodyWorkflowAction<GetRemoteSessionInfoResponse, ApiConnectionActionConfiguration> GetRemoteSessionInfo(Expression<Func<GetRemoteSessionInfoInput>> getRemoteSessionInfo)
         {
-            var __workflow_getRemoteSessionInfoworkflow = WorkflowExpression.Compile(getRemoteSessionInfoworkflow, nameof(getRemoteSessionInfoworkflow), required: true);
+            var __workflow_getRemoteSessionInfo = WorkflowExpression.Compile(getRemoteSessionInfo, nameof(getRemoteSessionInfo), required: true);
             return new DeferredBodyAction<GetRemoteSessionInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetRemoteSessionInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getRemoteSessionInfo = new JObject();
-                var getRemoteSessionInfopropCount = 0;
-                getRemoteSessionInfopropCount++;
-                getRemoteSessionInfo["Workflow"] = ExpressionConverter.ConvertO(__workflow_getRemoteSessionInfoworkflow);
-                if (getRemoteSessionInfopropCount > 0)
-                {
-                    callPayload.Body = getRemoteSessionInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getRemoteSessionInfo);
                 return new ApiConnectionAction<GetRemoteSessionInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GeneratePasswordResponse, ApiConnectionActionConfiguration> GeneratePassword(Expression<Func<string>> generatePasswordpasswordFormat, Expression<Func<string>> generatePasswordworkflow, Expression<Func<int>> generatePasswordminimumLength = null, Expression<Func<bool>> generatePasswordreturnAsPlainText = null, Expression<Func<string>> generatePasswordstorePasswordAsIdentifier = null, Expression<Func<string>> generatePasswordsupportedSymbols = null, Expression<Func<bool>> generatePasswordattemptUniquePasswords = null, Expression<Func<generatePasswordgenerateAtInput>> generatePasswordgenerateAt = null, Expression<Func<int>> generatePasswordminimumLowercase = null, Expression<Func<int>> generatePasswordminimumUppercase = null, Expression<Func<int>> generatePasswordminimumNumbers = null, Expression<Func<int>> generatePasswordminimumSymbols = null)
+        public IBodyWorkflowAction<GeneratePasswordResponse, ApiConnectionActionConfiguration> GeneratePassword(Expression<Func<GeneratePasswordInput>> generatePassword)
         {
-            var __workflow_generatePasswordpasswordFormat = WorkflowExpression.Compile(generatePasswordpasswordFormat, nameof(generatePasswordpasswordFormat), required: true);
-            var __workflow_generatePasswordworkflow = WorkflowExpression.Compile(generatePasswordworkflow, nameof(generatePasswordworkflow), required: true);
-            var __workflow_generatePasswordminimumLength = WorkflowExpression.Compile(generatePasswordminimumLength, nameof(generatePasswordminimumLength), required: false);
-            var __workflow_generatePasswordreturnAsPlainText = WorkflowExpression.Compile(generatePasswordreturnAsPlainText, nameof(generatePasswordreturnAsPlainText), required: false);
-            var __workflow_generatePasswordstorePasswordAsIdentifier = WorkflowExpression.Compile(generatePasswordstorePasswordAsIdentifier, nameof(generatePasswordstorePasswordAsIdentifier), required: false);
-            var __workflow_generatePasswordsupportedSymbols = WorkflowExpression.Compile(generatePasswordsupportedSymbols, nameof(generatePasswordsupportedSymbols), required: false);
-            var __workflow_generatePasswordattemptUniquePasswords = WorkflowExpression.Compile(generatePasswordattemptUniquePasswords, nameof(generatePasswordattemptUniquePasswords), required: false);
-            var __workflow_generatePasswordgenerateAt = WorkflowExpression.Compile(generatePasswordgenerateAt, nameof(generatePasswordgenerateAt), required: false);
-            var __workflow_generatePasswordminimumLowercase = WorkflowExpression.Compile(generatePasswordminimumLowercase, nameof(generatePasswordminimumLowercase), required: false);
-            var __workflow_generatePasswordminimumUppercase = WorkflowExpression.Compile(generatePasswordminimumUppercase, nameof(generatePasswordminimumUppercase), required: false);
-            var __workflow_generatePasswordminimumNumbers = WorkflowExpression.Compile(generatePasswordminimumNumbers, nameof(generatePasswordminimumNumbers), required: false);
-            var __workflow_generatePasswordminimumSymbols = WorkflowExpression.Compile(generatePasswordminimumSymbols, nameof(generatePasswordminimumSymbols), required: false);
+            var __workflow_generatePassword = WorkflowExpression.Compile(generatePassword, nameof(generatePassword), required: true);
             return new DeferredBodyAction<GeneratePasswordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GeneratePassword";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var generatePassword = new JObject();
-                var generatePasswordpropCount = 0;
-                generatePasswordpropCount++;
-                generatePassword["PasswordFormat"] = ExpressionConverter.ConvertO(__workflow_generatePasswordpasswordFormat);
-                if (__workflow_generatePasswordminimumLength != null)
-                {
-                    generatePassword["MinimumLength"] = ExpressionConverter.ConvertO(__workflow_generatePasswordminimumLength);
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordreturnAsPlainText != null)
-                {
-                    if (__workflow_generatePasswordreturnAsPlainText != null)
-                    {
-                        generatePassword["ReturnAsPlainText"] = ExpressionConverter.ConvertO(__workflow_generatePasswordreturnAsPlainText);
-                        generatePasswordpropCount++;
-                    }
-
-                    generatePasswordpropCount++;
-                }
-                else
-                {
-                    generatePassword["ReturnAsPlainText"] = false;
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordstorePasswordAsIdentifier != null)
-                {
-                    generatePassword["StorePasswordAsIdentifier"] = ExpressionConverter.ConvertO(__workflow_generatePasswordstorePasswordAsIdentifier);
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordsupportedSymbols != null)
-                {
-                    generatePassword["SupportedSymbols"] = ExpressionConverter.ConvertO(__workflow_generatePasswordsupportedSymbols);
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordattemptUniquePasswords != null)
-                {
-                    if (__workflow_generatePasswordattemptUniquePasswords != null)
-                    {
-                        generatePassword["AttemptUniquePasswords"] = ExpressionConverter.ConvertO(__workflow_generatePasswordattemptUniquePasswords);
-                        generatePasswordpropCount++;
-                    }
-
-                    generatePasswordpropCount++;
-                }
-                else
-                {
-                    generatePassword["AttemptUniquePasswords"] = true;
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordgenerateAt != null)
-                {
-                    if (__workflow_generatePasswordgenerateAt != null)
-                    {
-                        generatePassword["GenerateAt"] = ExpressionConverter.ConvertO(__workflow_generatePasswordgenerateAt);
-                        generatePasswordpropCount++;
-                    }
-
-                    generatePasswordpropCount++;
-                }
-                else
-                {
-                    generatePassword["GenerateAt"] = "Agent";
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordminimumLowercase != null)
-                {
-                    if (__workflow_generatePasswordminimumLowercase != null)
-                    {
-                        generatePassword["MinimumLowercase"] = ExpressionConverter.ConvertO(__workflow_generatePasswordminimumLowercase);
-                        generatePasswordpropCount++;
-                    }
-
-                    generatePasswordpropCount++;
-                }
-                else
-                {
-                    generatePassword["MinimumLowercase"] = 0;
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordminimumUppercase != null)
-                {
-                    if (__workflow_generatePasswordminimumUppercase != null)
-                    {
-                        generatePassword["MinimumUppercase"] = ExpressionConverter.ConvertO(__workflow_generatePasswordminimumUppercase);
-                        generatePasswordpropCount++;
-                    }
-
-                    generatePasswordpropCount++;
-                }
-                else
-                {
-                    generatePassword["MinimumUppercase"] = 0;
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordminimumNumbers != null)
-                {
-                    if (__workflow_generatePasswordminimumNumbers != null)
-                    {
-                        generatePassword["MinimumNumbers"] = ExpressionConverter.ConvertO(__workflow_generatePasswordminimumNumbers);
-                        generatePasswordpropCount++;
-                    }
-
-                    generatePasswordpropCount++;
-                }
-                else
-                {
-                    generatePassword["MinimumNumbers"] = 0;
-                    generatePasswordpropCount++;
-                }
-
-                if (__workflow_generatePasswordminimumSymbols != null)
-                {
-                    if (__workflow_generatePasswordminimumSymbols != null)
-                    {
-                        generatePassword["MinimumSymbols"] = ExpressionConverter.ConvertO(__workflow_generatePasswordminimumSymbols);
-                        generatePasswordpropCount++;
-                    }
-
-                    generatePasswordpropCount++;
-                }
-                else
-                {
-                    generatePassword["MinimumSymbols"] = 0;
-                    generatePasswordpropCount++;
-                }
-
-                generatePasswordpropCount++;
-                generatePassword["Workflow"] = ExpressionConverter.ConvertO(__workflow_generatePasswordworkflow);
-                if (generatePasswordpropCount > 0)
-                {
-                    callPayload.Body = generatePassword;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generatePassword);
                 return new ApiConnectionAction<GeneratePasswordResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetStoredPasswordResponse, ApiConnectionActionConfiguration> GetStoredPassword(Expression<Func<string>> getStoredPasswordworkflow, Expression<Func<string>> getStoredPasswordpasswordIdentifier = null)
+        public IBodyWorkflowAction<GetStoredPasswordResponse, ApiConnectionActionConfiguration> GetStoredPassword(Expression<Func<GetStoredPasswordInput>> getStoredPassword)
         {
-            var __workflow_getStoredPasswordworkflow = WorkflowExpression.Compile(getStoredPasswordworkflow, nameof(getStoredPasswordworkflow), required: true);
-            var __workflow_getStoredPasswordpasswordIdentifier = WorkflowExpression.Compile(getStoredPasswordpasswordIdentifier, nameof(getStoredPasswordpasswordIdentifier), required: false);
+            var __workflow_getStoredPassword = WorkflowExpression.Compile(getStoredPassword, nameof(getStoredPassword), required: true);
             return new DeferredBodyAction<GetStoredPasswordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetStoredPassword";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getStoredPassword = new JObject();
-                var getStoredPasswordpropCount = 0;
-                if (__workflow_getStoredPasswordpasswordIdentifier != null)
-                {
-                    getStoredPassword["PasswordIdentifier"] = ExpressionConverter.ConvertO(__workflow_getStoredPasswordpasswordIdentifier);
-                    getStoredPasswordpropCount++;
-                }
-
-                getStoredPasswordpropCount++;
-                getStoredPassword["Workflow"] = ExpressionConverter.ConvertO(__workflow_getStoredPasswordworkflow);
-                if (getStoredPasswordpropCount > 0)
-                {
-                    callPayload.Body = getStoredPassword;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getStoredPassword);
                 return new ApiConnectionAction<GetStoredPasswordResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<ExpandPasswordStringResponse, ApiConnectionActionConfiguration> ExpandPasswordString(Expression<Func<string>> expandPasswordStringworkflow, Expression<Func<string>> expandPasswordStringinputString = null)
+        public IBodyWorkflowAction<ExpandPasswordStringResponse, ApiConnectionActionConfiguration> ExpandPasswordString(Expression<Func<ExpandPasswordStringInput>> expandPasswordString)
         {
-            var __workflow_expandPasswordStringworkflow = WorkflowExpression.Compile(expandPasswordStringworkflow, nameof(expandPasswordStringworkflow), required: true);
-            var __workflow_expandPasswordStringinputString = WorkflowExpression.Compile(expandPasswordStringinputString, nameof(expandPasswordStringinputString), required: false);
+            var __workflow_expandPasswordString = WorkflowExpression.Compile(expandPasswordString, nameof(expandPasswordString), required: true);
             return new DeferredBodyAction<ExpandPasswordStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/ExpandPasswordString";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var expandPasswordString = new JObject();
-                var expandPasswordStringpropCount = 0;
-                if (__workflow_expandPasswordStringinputString != null)
-                {
-                    expandPasswordString["InputString"] = ExpressionConverter.ConvertO(__workflow_expandPasswordStringinputString);
-                    expandPasswordStringpropCount++;
-                }
-
-                expandPasswordStringpropCount++;
-                expandPasswordString["Workflow"] = ExpressionConverter.ConvertO(__workflow_expandPasswordStringworkflow);
-                if (expandPasswordStringpropCount > 0)
-                {
-                    callPayload.Body = expandPasswordString;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_expandPasswordString);
                 return new ApiConnectionAction<ExpandPasswordStringResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<StorePasswordInAgentMemoryResponse, ApiConnectionActionConfiguration> StorePasswordInAgentMemory(Expression<Func<string>> storePasswordInAgentMemoryidentifier, Expression<Func<string>> storePasswordInAgentMemorypassword, Expression<Func<string>> storePasswordInAgentMemoryworkflow)
+        public IBodyWorkflowAction<StorePasswordInAgentMemoryResponse, ApiConnectionActionConfiguration> StorePasswordInAgentMemory(Expression<Func<StorePasswordInAgentMemoryInput>> storePasswordInAgentMemory)
         {
-            var __workflow_storePasswordInAgentMemoryidentifier = WorkflowExpression.Compile(storePasswordInAgentMemoryidentifier, nameof(storePasswordInAgentMemoryidentifier), required: true);
-            var __workflow_storePasswordInAgentMemorypassword = WorkflowExpression.Compile(storePasswordInAgentMemorypassword, nameof(storePasswordInAgentMemorypassword), required: true);
-            var __workflow_storePasswordInAgentMemoryworkflow = WorkflowExpression.Compile(storePasswordInAgentMemoryworkflow, nameof(storePasswordInAgentMemoryworkflow), required: true);
+            var __workflow_storePasswordInAgentMemory = WorkflowExpression.Compile(storePasswordInAgentMemory, nameof(storePasswordInAgentMemory), required: true);
             return new DeferredBodyAction<StorePasswordInAgentMemoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/StorePasswordInAgentMemory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var storePasswordInAgentMemory = new JObject();
-                var storePasswordInAgentMemorypropCount = 0;
-                storePasswordInAgentMemorypropCount++;
-                storePasswordInAgentMemory["Identifier"] = ExpressionConverter.ConvertO(__workflow_storePasswordInAgentMemoryidentifier);
-                storePasswordInAgentMemorypropCount++;
-                storePasswordInAgentMemory["Password"] = ExpressionConverter.ConvertO(__workflow_storePasswordInAgentMemorypassword);
-                storePasswordInAgentMemorypropCount++;
-                storePasswordInAgentMemory["Workflow"] = ExpressionConverter.ConvertO(__workflow_storePasswordInAgentMemoryworkflow);
-                if (storePasswordInAgentMemorypropCount > 0)
-                {
-                    callPayload.Body = storePasswordInAgentMemory;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_storePasswordInAgentMemory);
                 return new ApiConnectionAction<StorePasswordInAgentMemoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DeletePasswordInAgentMemoryResponse, ApiConnectionActionConfiguration> DeletePasswordInAgentMemory(Expression<Func<string>> deletePasswordInAgentMemoryworkflow, Expression<Func<bool>> deletePasswordInAgentMemorydeleteAllPasswords = null, Expression<Func<string>> deletePasswordInAgentMemoryidentifier = null)
+        public IBodyWorkflowAction<DeletePasswordInAgentMemoryResponse, ApiConnectionActionConfiguration> DeletePasswordInAgentMemory(Expression<Func<DeletePasswordInAgentMemoryInput>> deletePasswordInAgentMemory)
         {
-            var __workflow_deletePasswordInAgentMemoryworkflow = WorkflowExpression.Compile(deletePasswordInAgentMemoryworkflow, nameof(deletePasswordInAgentMemoryworkflow), required: true);
-            var __workflow_deletePasswordInAgentMemorydeleteAllPasswords = WorkflowExpression.Compile(deletePasswordInAgentMemorydeleteAllPasswords, nameof(deletePasswordInAgentMemorydeleteAllPasswords), required: false);
-            var __workflow_deletePasswordInAgentMemoryidentifier = WorkflowExpression.Compile(deletePasswordInAgentMemoryidentifier, nameof(deletePasswordInAgentMemoryidentifier), required: false);
+            var __workflow_deletePasswordInAgentMemory = WorkflowExpression.Compile(deletePasswordInAgentMemory, nameof(deletePasswordInAgentMemory), required: true);
             return new DeferredBodyAction<DeletePasswordInAgentMemoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/DeletePasswordInAgentMemory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var deletePasswordInAgentMemory = new JObject();
-                var deletePasswordInAgentMemorypropCount = 0;
-                if (__workflow_deletePasswordInAgentMemorydeleteAllPasswords != null)
-                {
-                    if (__workflow_deletePasswordInAgentMemorydeleteAllPasswords != null)
-                    {
-                        deletePasswordInAgentMemory["DeleteAllPasswords"] = ExpressionConverter.ConvertO(__workflow_deletePasswordInAgentMemorydeleteAllPasswords);
-                        deletePasswordInAgentMemorypropCount++;
-                    }
-
-                    deletePasswordInAgentMemorypropCount++;
-                }
-                else
-                {
-                    deletePasswordInAgentMemory["DeleteAllPasswords"] = false;
-                    deletePasswordInAgentMemorypropCount++;
-                }
-
-                if (__workflow_deletePasswordInAgentMemoryidentifier != null)
-                {
-                    deletePasswordInAgentMemory["Identifier"] = ExpressionConverter.ConvertO(__workflow_deletePasswordInAgentMemoryidentifier);
-                    deletePasswordInAgentMemorypropCount++;
-                }
-
-                deletePasswordInAgentMemorypropCount++;
-                deletePasswordInAgentMemory["Workflow"] = ExpressionConverter.ConvertO(__workflow_deletePasswordInAgentMemoryworkflow);
-                if (deletePasswordInAgentMemorypropCount > 0)
-                {
-                    callPayload.Body = deletePasswordInAgentMemory;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deletePasswordInAgentMemory);
                 return new ApiConnectionAction<DeletePasswordInAgentMemoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<CredentialWriteResponse, ApiConnectionActionConfiguration> CredentialWrite(Expression<Func<string>> credentialWritecredentialAddress, Expression<Func<string>> credentialWriteuserName, Expression<Func<string>> credentialWritepassword, Expression<Func<credentialWritecredentialTypeInput>> credentialWritecredentialType, Expression<Func<string>> credentialWriteworkflow, Expression<Func<credentialWritecredentialPersistenceInput>> credentialWritecredentialPersistence = null, Expression<Func<string>> credentialWritesymmetricKey = null, Expression<Func<string>> credentialWritestorePasswordAsIdentifier = null)
+        public IBodyWorkflowAction<CredentialWriteResponse, ApiConnectionActionConfiguration> CredentialWrite(Expression<Func<CredentialWriteInput>> credentialWrite)
         {
-            var __workflow_credentialWritecredentialAddress = WorkflowExpression.Compile(credentialWritecredentialAddress, nameof(credentialWritecredentialAddress), required: true);
-            var __workflow_credentialWriteuserName = WorkflowExpression.Compile(credentialWriteuserName, nameof(credentialWriteuserName), required: true);
-            var __workflow_credentialWritepassword = WorkflowExpression.Compile(credentialWritepassword, nameof(credentialWritepassword), required: true);
-            var __workflow_credentialWritecredentialType = WorkflowExpression.Compile(credentialWritecredentialType, nameof(credentialWritecredentialType), required: true);
-            var __workflow_credentialWriteworkflow = WorkflowExpression.Compile(credentialWriteworkflow, nameof(credentialWriteworkflow), required: true);
-            var __workflow_credentialWritecredentialPersistence = WorkflowExpression.Compile(credentialWritecredentialPersistence, nameof(credentialWritecredentialPersistence), required: false);
-            var __workflow_credentialWritesymmetricKey = WorkflowExpression.Compile(credentialWritesymmetricKey, nameof(credentialWritesymmetricKey), required: false);
-            var __workflow_credentialWritestorePasswordAsIdentifier = WorkflowExpression.Compile(credentialWritestorePasswordAsIdentifier, nameof(credentialWritestorePasswordAsIdentifier), required: false);
+            var __workflow_credentialWrite = WorkflowExpression.Compile(credentialWrite, nameof(credentialWrite), required: true);
             return new DeferredBodyAction<CredentialWriteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/CredentialWrite";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var credentialWrite = new JObject();
-                var credentialWritepropCount = 0;
-                credentialWritepropCount++;
-                credentialWrite["CredentialAddress"] = ExpressionConverter.ConvertO(__workflow_credentialWritecredentialAddress);
-                credentialWritepropCount++;
-                credentialWrite["UserName"] = ExpressionConverter.ConvertO(__workflow_credentialWriteuserName);
-                credentialWritepropCount++;
-                credentialWrite["Password"] = ExpressionConverter.ConvertO(__workflow_credentialWritepassword);
-                credentialWritepropCount++;
-                credentialWrite["CredentialType"] = ExpressionConverter.ConvertO(__workflow_credentialWritecredentialType);
-                if (__workflow_credentialWritecredentialPersistence != null)
-                {
-                    if (__workflow_credentialWritecredentialPersistence != null)
-                    {
-                        credentialWrite["CredentialPersistence"] = ExpressionConverter.ConvertO(__workflow_credentialWritecredentialPersistence);
-                        credentialWritepropCount++;
-                    }
-
-                    credentialWritepropCount++;
-                }
-                else
-                {
-                    credentialWrite["CredentialPersistence"] = "LocalMachine";
-                    credentialWritepropCount++;
-                }
-
-                if (__workflow_credentialWritesymmetricKey != null)
-                {
-                    credentialWrite["SymmetricKey"] = ExpressionConverter.ConvertO(__workflow_credentialWritesymmetricKey);
-                    credentialWritepropCount++;
-                }
-
-                if (__workflow_credentialWritestorePasswordAsIdentifier != null)
-                {
-                    credentialWrite["StorePasswordAsIdentifier"] = ExpressionConverter.ConvertO(__workflow_credentialWritestorePasswordAsIdentifier);
-                    credentialWritepropCount++;
-                }
-
-                credentialWritepropCount++;
-                credentialWrite["Workflow"] = ExpressionConverter.ConvertO(__workflow_credentialWriteworkflow);
-                if (credentialWritepropCount > 0)
-                {
-                    callPayload.Body = credentialWrite;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_credentialWrite);
                 return new ApiConnectionAction<CredentialWriteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<CredentialReadResponse, ApiConnectionActionConfiguration> CredentialRead(Expression<Func<string>> credentialReadcredentialAddress, Expression<Func<credentialReadcredentialTypeInput>> credentialReadcredentialType, Expression<Func<string>> credentialReadworkflow, Expression<Func<string>> credentialReadsymmetricKey = null, Expression<Func<string>> credentialReadstorePasswordAsIdentifier = null, Expression<Func<bool>> credentialReaddontReturnPassword = null)
+        public IBodyWorkflowAction<CredentialReadResponse, ApiConnectionActionConfiguration> CredentialRead(Expression<Func<CredentialReadInput>> credentialRead)
         {
-            var __workflow_credentialReadcredentialAddress = WorkflowExpression.Compile(credentialReadcredentialAddress, nameof(credentialReadcredentialAddress), required: true);
-            var __workflow_credentialReadcredentialType = WorkflowExpression.Compile(credentialReadcredentialType, nameof(credentialReadcredentialType), required: true);
-            var __workflow_credentialReadworkflow = WorkflowExpression.Compile(credentialReadworkflow, nameof(credentialReadworkflow), required: true);
-            var __workflow_credentialReadsymmetricKey = WorkflowExpression.Compile(credentialReadsymmetricKey, nameof(credentialReadsymmetricKey), required: false);
-            var __workflow_credentialReadstorePasswordAsIdentifier = WorkflowExpression.Compile(credentialReadstorePasswordAsIdentifier, nameof(credentialReadstorePasswordAsIdentifier), required: false);
-            var __workflow_credentialReaddontReturnPassword = WorkflowExpression.Compile(credentialReaddontReturnPassword, nameof(credentialReaddontReturnPassword), required: false);
+            var __workflow_credentialRead = WorkflowExpression.Compile(credentialRead, nameof(credentialRead), required: true);
             return new DeferredBodyAction<CredentialReadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/CredentialRead";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var credentialRead = new JObject();
-                var credentialReadpropCount = 0;
-                credentialReadpropCount++;
-                credentialRead["CredentialAddress"] = ExpressionConverter.ConvertO(__workflow_credentialReadcredentialAddress);
-                credentialReadpropCount++;
-                credentialRead["CredentialType"] = ExpressionConverter.ConvertO(__workflow_credentialReadcredentialType);
-                if (__workflow_credentialReadsymmetricKey != null)
-                {
-                    credentialRead["SymmetricKey"] = ExpressionConverter.ConvertO(__workflow_credentialReadsymmetricKey);
-                    credentialReadpropCount++;
-                }
-
-                if (__workflow_credentialReadstorePasswordAsIdentifier != null)
-                {
-                    credentialRead["StorePasswordAsIdentifier"] = ExpressionConverter.ConvertO(__workflow_credentialReadstorePasswordAsIdentifier);
-                    credentialReadpropCount++;
-                }
-
-                if (__workflow_credentialReaddontReturnPassword != null)
-                {
-                    if (__workflow_credentialReaddontReturnPassword != null)
-                    {
-                        credentialRead["DontReturnPassword"] = ExpressionConverter.ConvertO(__workflow_credentialReaddontReturnPassword);
-                        credentialReadpropCount++;
-                    }
-
-                    credentialReadpropCount++;
-                }
-                else
-                {
-                    credentialRead["DontReturnPassword"] = false;
-                    credentialReadpropCount++;
-                }
-
-                credentialReadpropCount++;
-                credentialRead["Workflow"] = ExpressionConverter.ConvertO(__workflow_credentialReadworkflow);
-                if (credentialReadpropCount > 0)
-                {
-                    callPayload.Body = credentialRead;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_credentialRead);
                 return new ApiConnectionAction<CredentialReadResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<CredentialDeleteResponse, ApiConnectionActionConfiguration> CredentialDelete(Expression<Func<string>> credentialDeletecredentialAddress, Expression<Func<credentialDeletecredentialTypeInput>> credentialDeletecredentialType, Expression<Func<string>> credentialDeleteworkflow)
+        public IBodyWorkflowAction<CredentialDeleteResponse, ApiConnectionActionConfiguration> CredentialDelete(Expression<Func<CredentialDeleteInput>> credentialDelete)
         {
-            var __workflow_credentialDeletecredentialAddress = WorkflowExpression.Compile(credentialDeletecredentialAddress, nameof(credentialDeletecredentialAddress), required: true);
-            var __workflow_credentialDeletecredentialType = WorkflowExpression.Compile(credentialDeletecredentialType, nameof(credentialDeletecredentialType), required: true);
-            var __workflow_credentialDeleteworkflow = WorkflowExpression.Compile(credentialDeleteworkflow, nameof(credentialDeleteworkflow), required: true);
+            var __workflow_credentialDelete = WorkflowExpression.Compile(credentialDelete, nameof(credentialDelete), required: true);
             return new DeferredBodyAction<CredentialDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/CredentialDelete";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var credentialDelete = new JObject();
-                var credentialDeletepropCount = 0;
-                credentialDeletepropCount++;
-                credentialDelete["CredentialAddress"] = ExpressionConverter.ConvertO(__workflow_credentialDeletecredentialAddress);
-                credentialDeletepropCount++;
-                credentialDelete["CredentialType"] = ExpressionConverter.ConvertO(__workflow_credentialDeletecredentialType);
-                credentialDeletepropCount++;
-                credentialDelete["Workflow"] = ExpressionConverter.ConvertO(__workflow_credentialDeleteworkflow);
-                if (credentialDeletepropCount > 0)
-                {
-                    callPayload.Body = credentialDelete;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_credentialDelete);
                 return new ApiConnectionAction<CredentialDeleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GenerateRDPFileResponse, ApiConnectionActionConfiguration> GenerateRDPFile(Expression<Func<string>> generateRDPFileremoteAddress, Expression<Func<string>> generateRDPFileoutputFolderPath, Expression<Func<string>> generateRDPFilerDPFileName, Expression<Func<string>> generateRDPFileworkflow, Expression<Func<bool>> generateRDPFileoverwriteRDPFileIfAlreadyExists = null, Expression<Func<bool>> generateRDPFiletrustRemoteComputer = null, Expression<Func<bool>> generateRDPFilestoreCredentials = null, Expression<Func<string>> generateRDPFileuserName = null, Expression<Func<string>> generateRDPFilepassword = null, Expression<Func<generateRDPFilecredentialTypeInput>> generateRDPFilecredentialType = null, Expression<Func<generateRDPFilecredentialPersistenceInput>> generateRDPFilecredentialPersistence = null, Expression<Func<bool>> generateRDPFileredirectPrinters = null, Expression<Func<bool>> generateRDPFileredirectAllDrives = null, Expression<Func<bool>> generateRDPFileredirectClipboard = null, Expression<Func<bool>> generateRDPFilefullscreen = null, Expression<Func<int>> generateRDPFiledesktopWidth = null, Expression<Func<int>> generateRDPFiledesktopHeight = null, Expression<Func<bool>> generateRDPFileuseMultiMonitor = null, Expression<Func<int>> generateRDPFilesessionBPP = null, Expression<Func<bool>> generateRDPFilesmartSizing = null)
+        public IBodyWorkflowAction<GenerateRDPFileResponse, ApiConnectionActionConfiguration> GenerateRDPFile(Expression<Func<GenerateRDPFileInput>> generateRDPFile)
         {
-            var __workflow_generateRDPFileremoteAddress = WorkflowExpression.Compile(generateRDPFileremoteAddress, nameof(generateRDPFileremoteAddress), required: true);
-            var __workflow_generateRDPFileoutputFolderPath = WorkflowExpression.Compile(generateRDPFileoutputFolderPath, nameof(generateRDPFileoutputFolderPath), required: true);
-            var __workflow_generateRDPFilerDPFileName = WorkflowExpression.Compile(generateRDPFilerDPFileName, nameof(generateRDPFilerDPFileName), required: true);
-            var __workflow_generateRDPFileworkflow = WorkflowExpression.Compile(generateRDPFileworkflow, nameof(generateRDPFileworkflow), required: true);
-            var __workflow_generateRDPFileoverwriteRDPFileIfAlreadyExists = WorkflowExpression.Compile(generateRDPFileoverwriteRDPFileIfAlreadyExists, nameof(generateRDPFileoverwriteRDPFileIfAlreadyExists), required: false);
-            var __workflow_generateRDPFiletrustRemoteComputer = WorkflowExpression.Compile(generateRDPFiletrustRemoteComputer, nameof(generateRDPFiletrustRemoteComputer), required: false);
-            var __workflow_generateRDPFilestoreCredentials = WorkflowExpression.Compile(generateRDPFilestoreCredentials, nameof(generateRDPFilestoreCredentials), required: false);
-            var __workflow_generateRDPFileuserName = WorkflowExpression.Compile(generateRDPFileuserName, nameof(generateRDPFileuserName), required: false);
-            var __workflow_generateRDPFilepassword = WorkflowExpression.Compile(generateRDPFilepassword, nameof(generateRDPFilepassword), required: false);
-            var __workflow_generateRDPFilecredentialType = WorkflowExpression.Compile(generateRDPFilecredentialType, nameof(generateRDPFilecredentialType), required: false);
-            var __workflow_generateRDPFilecredentialPersistence = WorkflowExpression.Compile(generateRDPFilecredentialPersistence, nameof(generateRDPFilecredentialPersistence), required: false);
-            var __workflow_generateRDPFileredirectPrinters = WorkflowExpression.Compile(generateRDPFileredirectPrinters, nameof(generateRDPFileredirectPrinters), required: false);
-            var __workflow_generateRDPFileredirectAllDrives = WorkflowExpression.Compile(generateRDPFileredirectAllDrives, nameof(generateRDPFileredirectAllDrives), required: false);
-            var __workflow_generateRDPFileredirectClipboard = WorkflowExpression.Compile(generateRDPFileredirectClipboard, nameof(generateRDPFileredirectClipboard), required: false);
-            var __workflow_generateRDPFilefullscreen = WorkflowExpression.Compile(generateRDPFilefullscreen, nameof(generateRDPFilefullscreen), required: false);
-            var __workflow_generateRDPFiledesktopWidth = WorkflowExpression.Compile(generateRDPFiledesktopWidth, nameof(generateRDPFiledesktopWidth), required: false);
-            var __workflow_generateRDPFiledesktopHeight = WorkflowExpression.Compile(generateRDPFiledesktopHeight, nameof(generateRDPFiledesktopHeight), required: false);
-            var __workflow_generateRDPFileuseMultiMonitor = WorkflowExpression.Compile(generateRDPFileuseMultiMonitor, nameof(generateRDPFileuseMultiMonitor), required: false);
-            var __workflow_generateRDPFilesessionBPP = WorkflowExpression.Compile(generateRDPFilesessionBPP, nameof(generateRDPFilesessionBPP), required: false);
-            var __workflow_generateRDPFilesmartSizing = WorkflowExpression.Compile(generateRDPFilesmartSizing, nameof(generateRDPFilesmartSizing), required: false);
+            var __workflow_generateRDPFile = WorkflowExpression.Compile(generateRDPFile, nameof(generateRDPFile), required: true);
             return new DeferredBodyAction<GenerateRDPFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GenerateRDPFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var generateRDPFile = new JObject();
-                var generateRDPFilepropCount = 0;
-                generateRDPFilepropCount++;
-                generateRDPFile["RemoteAddress"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileremoteAddress);
-                generateRDPFilepropCount++;
-                generateRDPFile["OutputFolderPath"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileoutputFolderPath);
-                generateRDPFilepropCount++;
-                generateRDPFile["RDPFileName"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilerDPFileName);
-                if (__workflow_generateRDPFileoverwriteRDPFileIfAlreadyExists != null)
-                {
-                    if (__workflow_generateRDPFileoverwriteRDPFileIfAlreadyExists != null)
-                    {
-                        generateRDPFile["OverwriteRDPFileIfAlreadyExists"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileoverwriteRDPFileIfAlreadyExists);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["OverwriteRDPFileIfAlreadyExists"] = true;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFiletrustRemoteComputer != null)
-                {
-                    if (__workflow_generateRDPFiletrustRemoteComputer != null)
-                    {
-                        generateRDPFile["TrustRemoteComputer"] = ExpressionConverter.ConvertO(__workflow_generateRDPFiletrustRemoteComputer);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["TrustRemoteComputer"] = true;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFilestoreCredentials != null)
-                {
-                    if (__workflow_generateRDPFilestoreCredentials != null)
-                    {
-                        generateRDPFile["StoreCredentials"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilestoreCredentials);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["StoreCredentials"] = true;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFileuserName != null)
-                {
-                    generateRDPFile["UserName"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileuserName);
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFilepassword != null)
-                {
-                    generateRDPFile["Password"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilepassword);
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFilecredentialType != null)
-                {
-                    if (__workflow_generateRDPFilecredentialType != null)
-                    {
-                        generateRDPFile["CredentialType"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilecredentialType);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["CredentialType"] = "Windows";
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFilecredentialPersistence != null)
-                {
-                    if (__workflow_generateRDPFilecredentialPersistence != null)
-                    {
-                        generateRDPFile["CredentialPersistence"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilecredentialPersistence);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["CredentialPersistence"] = "Session";
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFileredirectPrinters != null)
-                {
-                    if (__workflow_generateRDPFileredirectPrinters != null)
-                    {
-                        generateRDPFile["RedirectPrinters"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileredirectPrinters);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["RedirectPrinters"] = false;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFileredirectAllDrives != null)
-                {
-                    if (__workflow_generateRDPFileredirectAllDrives != null)
-                    {
-                        generateRDPFile["RedirectAllDrives"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileredirectAllDrives);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["RedirectAllDrives"] = false;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFileredirectClipboard != null)
-                {
-                    if (__workflow_generateRDPFileredirectClipboard != null)
-                    {
-                        generateRDPFile["RedirectClipboard"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileredirectClipboard);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["RedirectClipboard"] = true;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFilefullscreen != null)
-                {
-                    if (__workflow_generateRDPFilefullscreen != null)
-                    {
-                        generateRDPFile["Fullscreen"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilefullscreen);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["Fullscreen"] = true;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFiledesktopWidth != null)
-                {
-                    if (__workflow_generateRDPFiledesktopWidth != null)
-                    {
-                        generateRDPFile["DesktopWidth"] = ExpressionConverter.ConvertO(__workflow_generateRDPFiledesktopWidth);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["DesktopWidth"] = 1280;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFiledesktopHeight != null)
-                {
-                    if (__workflow_generateRDPFiledesktopHeight != null)
-                    {
-                        generateRDPFile["DesktopHeight"] = ExpressionConverter.ConvertO(__workflow_generateRDPFiledesktopHeight);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["DesktopHeight"] = 1024;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFileuseMultiMonitor != null)
-                {
-                    if (__workflow_generateRDPFileuseMultiMonitor != null)
-                    {
-                        generateRDPFile["UseMultiMonitor"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileuseMultiMonitor);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["UseMultiMonitor"] = false;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFilesessionBPP != null)
-                {
-                    if (__workflow_generateRDPFilesessionBPP != null)
-                    {
-                        generateRDPFile["SessionBPP"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilesessionBPP);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["SessionBPP"] = 32;
-                    generateRDPFilepropCount++;
-                }
-
-                if (__workflow_generateRDPFilesmartSizing != null)
-                {
-                    if (__workflow_generateRDPFilesmartSizing != null)
-                    {
-                        generateRDPFile["SmartSizing"] = ExpressionConverter.ConvertO(__workflow_generateRDPFilesmartSizing);
-                        generateRDPFilepropCount++;
-                    }
-
-                    generateRDPFilepropCount++;
-                }
-                else
-                {
-                    generateRDPFile["SmartSizing"] = true;
-                    generateRDPFilepropCount++;
-                }
-
-                generateRDPFilepropCount++;
-                generateRDPFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_generateRDPFileworkflow);
-                if (generateRDPFilepropCount > 0)
-                {
-                    callPayload.Body = generateRDPFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generateRDPFile);
                 return new ApiConnectionAction<GenerateRDPFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<LaunchRemoteDesktopSessionResponse, ApiConnectionActionConfiguration> LaunchRemoteDesktopSession(Expression<Func<string>> launchRemoteDesktopSessionrDPFilePath, Expression<Func<string>> launchRemoteDesktopSessionworkflow, Expression<Func<bool>> launchRemoteDesktopSessiontrustRemoteComputer = null)
+        public IBodyWorkflowAction<LaunchRemoteDesktopSessionResponse, ApiConnectionActionConfiguration> LaunchRemoteDesktopSession(Expression<Func<LaunchRemoteDesktopSessionInput>> launchRemoteDesktopSession)
         {
-            var __workflow_launchRemoteDesktopSessionrDPFilePath = WorkflowExpression.Compile(launchRemoteDesktopSessionrDPFilePath, nameof(launchRemoteDesktopSessionrDPFilePath), required: true);
-            var __workflow_launchRemoteDesktopSessionworkflow = WorkflowExpression.Compile(launchRemoteDesktopSessionworkflow, nameof(launchRemoteDesktopSessionworkflow), required: true);
-            var __workflow_launchRemoteDesktopSessiontrustRemoteComputer = WorkflowExpression.Compile(launchRemoteDesktopSessiontrustRemoteComputer, nameof(launchRemoteDesktopSessiontrustRemoteComputer), required: false);
+            var __workflow_launchRemoteDesktopSession = WorkflowExpression.Compile(launchRemoteDesktopSession, nameof(launchRemoteDesktopSession), required: true);
             return new DeferredBodyAction<LaunchRemoteDesktopSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LaunchRemoteDesktopSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var launchRemoteDesktopSession = new JObject();
-                var launchRemoteDesktopSessionpropCount = 0;
-                launchRemoteDesktopSessionpropCount++;
-                launchRemoteDesktopSession["RDPFilePath"] = ExpressionConverter.ConvertO(__workflow_launchRemoteDesktopSessionrDPFilePath);
-                if (__workflow_launchRemoteDesktopSessiontrustRemoteComputer != null)
-                {
-                    if (__workflow_launchRemoteDesktopSessiontrustRemoteComputer != null)
-                    {
-                        launchRemoteDesktopSession["TrustRemoteComputer"] = ExpressionConverter.ConvertO(__workflow_launchRemoteDesktopSessiontrustRemoteComputer);
-                        launchRemoteDesktopSessionpropCount++;
-                    }
-
-                    launchRemoteDesktopSessionpropCount++;
-                }
-                else
-                {
-                    launchRemoteDesktopSession["TrustRemoteComputer"] = true;
-                    launchRemoteDesktopSessionpropCount++;
-                }
-
-                launchRemoteDesktopSessionpropCount++;
-                launchRemoteDesktopSession["Workflow"] = ExpressionConverter.ConvertO(__workflow_launchRemoteDesktopSessionworkflow);
-                if (launchRemoteDesktopSessionpropCount > 0)
-                {
-                    callPayload.Body = launchRemoteDesktopSession;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_launchRemoteDesktopSession);
                 return new ApiConnectionAction<LaunchRemoteDesktopSessionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<IsTCPPortRespondingResponse, ApiConnectionActionConfiguration> IsTCPPortResponding(Expression<Func<string>> isTCPPortRespondingremoteHost, Expression<Func<int>> isTCPPortRespondingtCPPort, Expression<Func<string>> isTCPPortRespondingworkflow, Expression<Func<int>> isTCPPortRespondingtimeoutInSeconds = null)
+        public IBodyWorkflowAction<IsTCPPortRespondingResponse, ApiConnectionActionConfiguration> IsTCPPortResponding(Expression<Func<IsTCPPortRespondingInput>> isTCPPortResponding)
         {
-            var __workflow_isTCPPortRespondingremoteHost = WorkflowExpression.Compile(isTCPPortRespondingremoteHost, nameof(isTCPPortRespondingremoteHost), required: true);
-            var __workflow_isTCPPortRespondingtCPPort = WorkflowExpression.Compile(isTCPPortRespondingtCPPort, nameof(isTCPPortRespondingtCPPort), required: true);
-            var __workflow_isTCPPortRespondingworkflow = WorkflowExpression.Compile(isTCPPortRespondingworkflow, nameof(isTCPPortRespondingworkflow), required: true);
-            var __workflow_isTCPPortRespondingtimeoutInSeconds = WorkflowExpression.Compile(isTCPPortRespondingtimeoutInSeconds, nameof(isTCPPortRespondingtimeoutInSeconds), required: false);
+            var __workflow_isTCPPortResponding = WorkflowExpression.Compile(isTCPPortResponding, nameof(isTCPPortResponding), required: true);
             return new DeferredBodyAction<IsTCPPortRespondingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/IsTCPPortResponding";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var isTCPPortResponding = new JObject();
-                var isTCPPortRespondingpropCount = 0;
-                isTCPPortRespondingpropCount++;
-                isTCPPortResponding["RemoteHost"] = ExpressionConverter.ConvertO(__workflow_isTCPPortRespondingremoteHost);
-                isTCPPortRespondingpropCount++;
-                isTCPPortResponding["TCPPort"] = ExpressionConverter.ConvertO(__workflow_isTCPPortRespondingtCPPort);
-                if (__workflow_isTCPPortRespondingtimeoutInSeconds != null)
-                {
-                    if (__workflow_isTCPPortRespondingtimeoutInSeconds != null)
-                    {
-                        isTCPPortResponding["TimeoutInSeconds"] = ExpressionConverter.ConvertO(__workflow_isTCPPortRespondingtimeoutInSeconds);
-                        isTCPPortRespondingpropCount++;
-                    }
-
-                    isTCPPortRespondingpropCount++;
-                }
-                else
-                {
-                    isTCPPortResponding["TimeoutInSeconds"] = 10;
-                    isTCPPortRespondingpropCount++;
-                }
-
-                isTCPPortRespondingpropCount++;
-                isTCPPortResponding["Workflow"] = ExpressionConverter.ConvertO(__workflow_isTCPPortRespondingworkflow);
-                if (isTCPPortRespondingpropCount > 0)
-                {
-                    callPayload.Body = isTCPPortResponding;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_isTCPPortResponding);
                 return new ApiConnectionAction<IsTCPPortRespondingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<UnlockSessionResponse, ApiConnectionActionConfiguration> UnlockSession(Expression<Func<string>> unlockSessionunlockPassword, Expression<Func<bool>> unlockSessiondetectIfLocked, Expression<Func<bool>> unlockSessiondetectCredentialProvider, Expression<Func<string>> unlockSessionworkflow, Expression<Func<bool>> unlockSessionpasswordContainsStoredPassword = null, Expression<Func<int>> unlockSessionsecondsToWaitForUnlock = null)
+        public IBodyWorkflowAction<UnlockSessionResponse, ApiConnectionActionConfiguration> UnlockSession(Expression<Func<UnlockSessionInput>> unlockSession)
         {
-            var __workflow_unlockSessionunlockPassword = WorkflowExpression.Compile(unlockSessionunlockPassword, nameof(unlockSessionunlockPassword), required: true);
-            var __workflow_unlockSessiondetectIfLocked = WorkflowExpression.Compile(unlockSessiondetectIfLocked, nameof(unlockSessiondetectIfLocked), required: true);
-            var __workflow_unlockSessiondetectCredentialProvider = WorkflowExpression.Compile(unlockSessiondetectCredentialProvider, nameof(unlockSessiondetectCredentialProvider), required: true);
-            var __workflow_unlockSessionworkflow = WorkflowExpression.Compile(unlockSessionworkflow, nameof(unlockSessionworkflow), required: true);
-            var __workflow_unlockSessionpasswordContainsStoredPassword = WorkflowExpression.Compile(unlockSessionpasswordContainsStoredPassword, nameof(unlockSessionpasswordContainsStoredPassword), required: false);
-            var __workflow_unlockSessionsecondsToWaitForUnlock = WorkflowExpression.Compile(unlockSessionsecondsToWaitForUnlock, nameof(unlockSessionsecondsToWaitForUnlock), required: false);
+            var __workflow_unlockSession = WorkflowExpression.Compile(unlockSession, nameof(unlockSession), required: true);
             return new DeferredBodyAction<UnlockSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/UnlockSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var unlockSession = new JObject();
-                var unlockSessionpropCount = 0;
-                unlockSessionpropCount++;
-                unlockSession["UnlockPassword"] = ExpressionConverter.ConvertO(__workflow_unlockSessionunlockPassword);
-                if (__workflow_unlockSessionpasswordContainsStoredPassword != null)
-                {
-                    if (__workflow_unlockSessionpasswordContainsStoredPassword != null)
-                    {
-                        unlockSession["PasswordContainsStoredPassword"] = ExpressionConverter.ConvertO(__workflow_unlockSessionpasswordContainsStoredPassword);
-                        unlockSessionpropCount++;
-                    }
-
-                    unlockSessionpropCount++;
-                }
-                else
-                {
-                    unlockSession["PasswordContainsStoredPassword"] = false;
-                    unlockSessionpropCount++;
-                }
-
-                unlockSessionpropCount++;
-                unlockSession["DetectIfLocked"] = ExpressionConverter.ConvertO(__workflow_unlockSessiondetectIfLocked);
-                unlockSessionpropCount++;
-                unlockSession["DetectCredentialProvider"] = ExpressionConverter.ConvertO(__workflow_unlockSessiondetectCredentialProvider);
-                if (__workflow_unlockSessionsecondsToWaitForUnlock != null)
-                {
-                    if (__workflow_unlockSessionsecondsToWaitForUnlock != null)
-                    {
-                        unlockSession["SecondsToWaitForUnlock"] = ExpressionConverter.ConvertO(__workflow_unlockSessionsecondsToWaitForUnlock);
-                        unlockSessionpropCount++;
-                    }
-
-                    unlockSessionpropCount++;
-                }
-                else
-                {
-                    unlockSession["SecondsToWaitForUnlock"] = 5;
-                    unlockSessionpropCount++;
-                }
-
-                unlockSessionpropCount++;
-                unlockSession["Workflow"] = ExpressionConverter.ConvertO(__workflow_unlockSessionworkflow);
-                if (unlockSessionpropCount > 0)
-                {
-                    callPayload.Body = unlockSession;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_unlockSession);
                 return new ApiConnectionAction<UnlockSessionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<LockSessionResponse, ApiConnectionActionConfiguration> LockSession(Expression<Func<string>> lockSessionworkflow, Expression<Func<int>> lockSessionlockAfterMinutesOfActionInactivity = null, Expression<Func<int>> lockSessionsecondsToWaitAfterLock = null)
+        public IBodyWorkflowAction<LockSessionResponse, ApiConnectionActionConfiguration> LockSession(Expression<Func<LockSessionInput>> lockSession)
         {
-            var __workflow_lockSessionworkflow = WorkflowExpression.Compile(lockSessionworkflow, nameof(lockSessionworkflow), required: true);
-            var __workflow_lockSessionlockAfterMinutesOfActionInactivity = WorkflowExpression.Compile(lockSessionlockAfterMinutesOfActionInactivity, nameof(lockSessionlockAfterMinutesOfActionInactivity), required: false);
-            var __workflow_lockSessionsecondsToWaitAfterLock = WorkflowExpression.Compile(lockSessionsecondsToWaitAfterLock, nameof(lockSessionsecondsToWaitAfterLock), required: false);
+            var __workflow_lockSession = WorkflowExpression.Compile(lockSession, nameof(lockSession), required: true);
             return new DeferredBodyAction<LockSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/LockSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var lockSession = new JObject();
-                var lockSessionpropCount = 0;
-                if (__workflow_lockSessionlockAfterMinutesOfActionInactivity != null)
-                {
-                    if (__workflow_lockSessionlockAfterMinutesOfActionInactivity != null)
-                    {
-                        lockSession["LockAfterMinutesOfActionInactivity"] = ExpressionConverter.ConvertO(__workflow_lockSessionlockAfterMinutesOfActionInactivity);
-                        lockSessionpropCount++;
-                    }
-
-                    lockSessionpropCount++;
-                }
-                else
-                {
-                    lockSession["LockAfterMinutesOfActionInactivity"] = 5;
-                    lockSessionpropCount++;
-                }
-
-                if (__workflow_lockSessionsecondsToWaitAfterLock != null)
-                {
-                    if (__workflow_lockSessionsecondsToWaitAfterLock != null)
-                    {
-                        lockSession["SecondsToWaitAfterLock"] = ExpressionConverter.ConvertO(__workflow_lockSessionsecondsToWaitAfterLock);
-                        lockSessionpropCount++;
-                    }
-
-                    lockSessionpropCount++;
-                }
-                else
-                {
-                    lockSession["SecondsToWaitAfterLock"] = 3;
-                    lockSessionpropCount++;
-                }
-
-                lockSessionpropCount++;
-                lockSession["Workflow"] = ExpressionConverter.ConvertO(__workflow_lockSessionworkflow);
-                if (lockSessionpropCount > 0)
-                {
-                    callPayload.Body = lockSession;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_lockSession);
                 return new ApiConnectionAction<LockSessionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<IsSessionLockedResponse, ApiConnectionActionConfiguration> IsSessionLocked(Expression<Func<string>> isSessionLockedworkflow)
+        public IBodyWorkflowAction<IsSessionLockedResponse, ApiConnectionActionConfiguration> IsSessionLocked(Expression<Func<IsSessionLockedInput>> isSessionLocked)
         {
-            var __workflow_isSessionLockedworkflow = WorkflowExpression.Compile(isSessionLockedworkflow, nameof(isSessionLockedworkflow), required: true);
+            var __workflow_isSessionLocked = WorkflowExpression.Compile(isSessionLocked, nameof(isSessionLocked), required: true);
             return new DeferredBodyAction<IsSessionLockedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/IsSessionLocked";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var isSessionLocked = new JObject();
-                var isSessionLockedpropCount = 0;
-                isSessionLockedpropCount++;
-                isSessionLocked["Workflow"] = ExpressionConverter.ConvertO(__workflow_isSessionLockedworkflow);
-                if (isSessionLockedpropCount > 0)
-                {
-                    callPayload.Body = isSessionLocked;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_isSessionLocked);
                 return new ApiConnectionAction<IsSessionLockedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetGenericCredentialFromOrchestratorResponse, ApiConnectionActionConfiguration> GetGenericCredentialFromOrchestrator(Expression<Func<string>> getGenericCredentialFromOrchestratorfriendlyName = null, Expression<Func<bool>> getGenericCredentialFromOrchestratorretrievePlainTextPassword = null)
+        public IBodyWorkflowAction<GetGenericCredentialFromOrchestratorResponse, ApiConnectionActionConfiguration> GetGenericCredentialFromOrchestrator(Expression<Func<GetGenericCredentialFromOrchestratorInput>> getGenericCredentialFromOrchestrator)
         {
-            var __workflow_getGenericCredentialFromOrchestratorfriendlyName = WorkflowExpression.Compile(getGenericCredentialFromOrchestratorfriendlyName, nameof(getGenericCredentialFromOrchestratorfriendlyName), required: false);
-            var __workflow_getGenericCredentialFromOrchestratorretrievePlainTextPassword = WorkflowExpression.Compile(getGenericCredentialFromOrchestratorretrievePlainTextPassword, nameof(getGenericCredentialFromOrchestratorretrievePlainTextPassword), required: false);
+            var __workflow_getGenericCredentialFromOrchestrator = WorkflowExpression.Compile(getGenericCredentialFromOrchestrator, nameof(getGenericCredentialFromOrchestrator), required: true);
             return new DeferredBodyAction<GetGenericCredentialFromOrchestratorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetGenericCredentialFromOrchestrator";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getGenericCredentialFromOrchestrator = new JObject();
-                var getGenericCredentialFromOrchestratorpropCount = 0;
-                if (__workflow_getGenericCredentialFromOrchestratorfriendlyName != null)
-                {
-                    getGenericCredentialFromOrchestrator["FriendlyName"] = ExpressionConverter.ConvertO(__workflow_getGenericCredentialFromOrchestratorfriendlyName);
-                    getGenericCredentialFromOrchestratorpropCount++;
-                }
-
-                if (__workflow_getGenericCredentialFromOrchestratorretrievePlainTextPassword != null)
-                {
-                    if (__workflow_getGenericCredentialFromOrchestratorretrievePlainTextPassword != null)
-                    {
-                        getGenericCredentialFromOrchestrator["RetrievePlainTextPassword"] = ExpressionConverter.ConvertO(__workflow_getGenericCredentialFromOrchestratorretrievePlainTextPassword);
-                        getGenericCredentialFromOrchestratorpropCount++;
-                    }
-
-                    getGenericCredentialFromOrchestratorpropCount++;
-                }
-                else
-                {
-                    getGenericCredentialFromOrchestrator["RetrievePlainTextPassword"] = false;
-                    getGenericCredentialFromOrchestratorpropCount++;
-                }
-
-                if (getGenericCredentialFromOrchestratorpropCount > 0)
-                {
-                    callPayload.Body = getGenericCredentialFromOrchestrator;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getGenericCredentialFromOrchestrator);
                 return new ApiConnectionAction<GetGenericCredentialFromOrchestratorResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DrawRectangleOnScreenResponse, ApiConnectionActionConfiguration> DrawRectangleOnScreen(Expression<Func<int>> drawRectangleOnScreenrectangleLeftPixelXCoord, Expression<Func<int>> drawRectangleOnScreenrectangleRightPixelXCoord, Expression<Func<int>> drawRectangleOnScreenrectangleTopPixelYCoord, Expression<Func<int>> drawRectangleOnScreenrectangleBottomPixelYCoord, Expression<Func<string>> drawRectangleOnScreenworkflow, Expression<Func<string>> drawRectangleOnScreenpenColour = null, Expression<Func<int>> drawRectangleOnScreenpenThicknessPixels = null, Expression<Func<int>> drawRectangleOnScreensecondsToDisplay = null, Expression<Func<bool>> drawRectangleOnScreencoordinatesArePhysical = null)
+        public IBodyWorkflowAction<DrawRectangleOnScreenResponse, ApiConnectionActionConfiguration> DrawRectangleOnScreen(Expression<Func<DrawRectangleOnScreenInput>> drawRectangleOnScreen)
         {
-            var __workflow_drawRectangleOnScreenrectangleLeftPixelXCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleLeftPixelXCoord, nameof(drawRectangleOnScreenrectangleLeftPixelXCoord), required: true);
-            var __workflow_drawRectangleOnScreenrectangleRightPixelXCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleRightPixelXCoord, nameof(drawRectangleOnScreenrectangleRightPixelXCoord), required: true);
-            var __workflow_drawRectangleOnScreenrectangleTopPixelYCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleTopPixelYCoord, nameof(drawRectangleOnScreenrectangleTopPixelYCoord), required: true);
-            var __workflow_drawRectangleOnScreenrectangleBottomPixelYCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleBottomPixelYCoord, nameof(drawRectangleOnScreenrectangleBottomPixelYCoord), required: true);
-            var __workflow_drawRectangleOnScreenworkflow = WorkflowExpression.Compile(drawRectangleOnScreenworkflow, nameof(drawRectangleOnScreenworkflow), required: true);
-            var __workflow_drawRectangleOnScreenpenColour = WorkflowExpression.Compile(drawRectangleOnScreenpenColour, nameof(drawRectangleOnScreenpenColour), required: false);
-            var __workflow_drawRectangleOnScreenpenThicknessPixels = WorkflowExpression.Compile(drawRectangleOnScreenpenThicknessPixels, nameof(drawRectangleOnScreenpenThicknessPixels), required: false);
-            var __workflow_drawRectangleOnScreensecondsToDisplay = WorkflowExpression.Compile(drawRectangleOnScreensecondsToDisplay, nameof(drawRectangleOnScreensecondsToDisplay), required: false);
-            var __workflow_drawRectangleOnScreencoordinatesArePhysical = WorkflowExpression.Compile(drawRectangleOnScreencoordinatesArePhysical, nameof(drawRectangleOnScreencoordinatesArePhysical), required: false);
+            var __workflow_drawRectangleOnScreen = WorkflowExpression.Compile(drawRectangleOnScreen, nameof(drawRectangleOnScreen), required: true);
             return new DeferredBodyAction<DrawRectangleOnScreenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/DrawRectangleOnScreen";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var drawRectangleOnScreen = new JObject();
-                var drawRectangleOnScreenpropCount = 0;
-                drawRectangleOnScreenpropCount++;
-                drawRectangleOnScreen["RectangleLeftPixelXCoord"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreenrectangleLeftPixelXCoord);
-                drawRectangleOnScreenpropCount++;
-                drawRectangleOnScreen["RectangleRightPixelXCoord"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreenrectangleRightPixelXCoord);
-                drawRectangleOnScreenpropCount++;
-                drawRectangleOnScreen["RectangleTopPixelYCoord"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreenrectangleTopPixelYCoord);
-                drawRectangleOnScreenpropCount++;
-                drawRectangleOnScreen["RectangleBottomPixelYCoord"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreenrectangleBottomPixelYCoord);
-                if (__workflow_drawRectangleOnScreenpenColour != null)
-                {
-                    if (__workflow_drawRectangleOnScreenpenColour != null)
-                    {
-                        drawRectangleOnScreen["PenColour"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreenpenColour);
-                        drawRectangleOnScreenpropCount++;
-                    }
-
-                    drawRectangleOnScreenpropCount++;
-                }
-                else
-                {
-                    drawRectangleOnScreen["PenColour"] = "#800080";
-                    drawRectangleOnScreenpropCount++;
-                }
-
-                if (__workflow_drawRectangleOnScreenpenThicknessPixels != null)
-                {
-                    if (__workflow_drawRectangleOnScreenpenThicknessPixels != null)
-                    {
-                        drawRectangleOnScreen["PenThicknessPixels"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreenpenThicknessPixels);
-                        drawRectangleOnScreenpropCount++;
-                    }
-
-                    drawRectangleOnScreenpropCount++;
-                }
-                else
-                {
-                    drawRectangleOnScreen["PenThicknessPixels"] = 4;
-                    drawRectangleOnScreenpropCount++;
-                }
-
-                if (__workflow_drawRectangleOnScreensecondsToDisplay != null)
-                {
-                    if (__workflow_drawRectangleOnScreensecondsToDisplay != null)
-                    {
-                        drawRectangleOnScreen["SecondsToDisplay"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreensecondsToDisplay);
-                        drawRectangleOnScreenpropCount++;
-                    }
-
-                    drawRectangleOnScreenpropCount++;
-                }
-                else
-                {
-                    drawRectangleOnScreen["SecondsToDisplay"] = 5;
-                    drawRectangleOnScreenpropCount++;
-                }
-
-                if (__workflow_drawRectangleOnScreencoordinatesArePhysical != null)
-                {
-                    if (__workflow_drawRectangleOnScreencoordinatesArePhysical != null)
-                    {
-                        drawRectangleOnScreen["CoordinatesArePhysical"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreencoordinatesArePhysical);
-                        drawRectangleOnScreenpropCount++;
-                    }
-
-                    drawRectangleOnScreenpropCount++;
-                }
-                else
-                {
-                    drawRectangleOnScreen["CoordinatesArePhysical"] = false;
-                    drawRectangleOnScreenpropCount++;
-                }
-
-                drawRectangleOnScreenpropCount++;
-                drawRectangleOnScreen["Workflow"] = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreenworkflow);
-                if (drawRectangleOnScreenpropCount > 0)
-                {
-                    callPayload.Body = drawRectangleOnScreen;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_drawRectangleOnScreen);
                 return new ApiConnectionAction<DrawRectangleOnScreenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse, ApiConnectionActionConfiguration> GetFailedActionErrorMessageFromPowerAutomateResultJSON(Expression<Func<string[]>> getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, Expression<Func<string>> getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus = null)
+        public IBodyWorkflowAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse, ApiConnectionActionConfiguration> GetFailedActionErrorMessageFromPowerAutomateResultJSON(Expression<Func<GetFailedActionErrorMessageFromPowerAutomateResultJSONInput>> getFailedActionErrorMessageFromPowerAutomateResultJSON)
         {
-            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON = WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON), required: true);
-            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus = WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus), required: false);
+            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSON = WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSON, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSON), required: true);
             return new DeferredBodyAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetFailedActionErrorMessageFromPowerAutomateResultJSON";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getFailedActionErrorMessageFromPowerAutomateResultJSON = new JObject();
-                var getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount = 0;
-                getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
-                getFailedActionErrorMessageFromPowerAutomateResultJSON["PowerAutomateResultJSON"] = ExpressionConverter.ConvertO(__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON);
-                if (__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus != null)
-                {
-                    if (__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus != null)
-                    {
-                        getFailedActionErrorMessageFromPowerAutomateResultJSON["SearchStatus"] = ExpressionConverter.ConvertO(__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus);
-                        getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
-                    }
-
-                    getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
-                }
-                else
-                {
-                    getFailedActionErrorMessageFromPowerAutomateResultJSON["SearchStatus"] = "Failed";
-                    getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount++;
-                }
-
-                if (getFailedActionErrorMessageFromPowerAutomateResultJSONpropCount > 0)
-                {
-                    callPayload.Body = getFailedActionErrorMessageFromPowerAutomateResultJSON;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSON);
                 return new ApiConnectionAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetPixelColourAtCoordinateResponse, ApiConnectionActionConfiguration> GetPixelColourAtCoordinate(Expression<Func<int>> getPixelColourAtCoordinateleftXPixels, Expression<Func<int>> getPixelColourAtCoordinatetopYPixels, Expression<Func<string>> getPixelColourAtCoordinateworkflow, Expression<Func<bool>> getPixelColourAtCoordinatehideAgent = null, Expression<Func<bool>> getPixelColourAtCoordinateusePhysicalCoordinates = null)
+        public IBodyWorkflowAction<GetPixelColourAtCoordinateResponse, ApiConnectionActionConfiguration> GetPixelColourAtCoordinate(Expression<Func<GetPixelColourAtCoordinateInput>> getPixelColourAtCoordinate)
         {
-            var __workflow_getPixelColourAtCoordinateleftXPixels = WorkflowExpression.Compile(getPixelColourAtCoordinateleftXPixels, nameof(getPixelColourAtCoordinateleftXPixels), required: true);
-            var __workflow_getPixelColourAtCoordinatetopYPixels = WorkflowExpression.Compile(getPixelColourAtCoordinatetopYPixels, nameof(getPixelColourAtCoordinatetopYPixels), required: true);
-            var __workflow_getPixelColourAtCoordinateworkflow = WorkflowExpression.Compile(getPixelColourAtCoordinateworkflow, nameof(getPixelColourAtCoordinateworkflow), required: true);
-            var __workflow_getPixelColourAtCoordinatehideAgent = WorkflowExpression.Compile(getPixelColourAtCoordinatehideAgent, nameof(getPixelColourAtCoordinatehideAgent), required: false);
-            var __workflow_getPixelColourAtCoordinateusePhysicalCoordinates = WorkflowExpression.Compile(getPixelColourAtCoordinateusePhysicalCoordinates, nameof(getPixelColourAtCoordinateusePhysicalCoordinates), required: false);
+            var __workflow_getPixelColourAtCoordinate = WorkflowExpression.Compile(getPixelColourAtCoordinate, nameof(getPixelColourAtCoordinate), required: true);
             return new DeferredBodyAction<GetPixelColourAtCoordinateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetPixelColourAtCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getPixelColourAtCoordinate = new JObject();
-                var getPixelColourAtCoordinatepropCount = 0;
-                getPixelColourAtCoordinatepropCount++;
-                getPixelColourAtCoordinate["LeftXPixels"] = ExpressionConverter.ConvertO(__workflow_getPixelColourAtCoordinateleftXPixels);
-                getPixelColourAtCoordinatepropCount++;
-                getPixelColourAtCoordinate["TopYPixels"] = ExpressionConverter.ConvertO(__workflow_getPixelColourAtCoordinatetopYPixels);
-                if (__workflow_getPixelColourAtCoordinatehideAgent != null)
-                {
-                    if (__workflow_getPixelColourAtCoordinatehideAgent != null)
-                    {
-                        getPixelColourAtCoordinate["HideAgent"] = ExpressionConverter.ConvertO(__workflow_getPixelColourAtCoordinatehideAgent);
-                        getPixelColourAtCoordinatepropCount++;
-                    }
-
-                    getPixelColourAtCoordinatepropCount++;
-                }
-                else
-                {
-                    getPixelColourAtCoordinate["HideAgent"] = false;
-                    getPixelColourAtCoordinatepropCount++;
-                }
-
-                if (__workflow_getPixelColourAtCoordinateusePhysicalCoordinates != null)
-                {
-                    if (__workflow_getPixelColourAtCoordinateusePhysicalCoordinates != null)
-                    {
-                        getPixelColourAtCoordinate["UsePhysicalCoordinates"] = ExpressionConverter.ConvertO(__workflow_getPixelColourAtCoordinateusePhysicalCoordinates);
-                        getPixelColourAtCoordinatepropCount++;
-                    }
-
-                    getPixelColourAtCoordinatepropCount++;
-                }
-                else
-                {
-                    getPixelColourAtCoordinate["UsePhysicalCoordinates"] = false;
-                    getPixelColourAtCoordinatepropCount++;
-                }
-
-                getPixelColourAtCoordinatepropCount++;
-                getPixelColourAtCoordinate["Workflow"] = ExpressionConverter.ConvertO(__workflow_getPixelColourAtCoordinateworkflow);
-                if (getPixelColourAtCoordinatepropCount > 0)
-                {
-                    callPayload.Body = getPixelColourAtCoordinate;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getPixelColourAtCoordinate);
                 return new ApiConnectionAction<GetPixelColourAtCoordinateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<ConvertRectangleCoordinatesResponse, ApiConnectionActionConfiguration> ConvertRectangleCoordinates(Expression<Func<int>> convertRectangleCoordinatesrectangleLeftPixelXCoord, Expression<Func<int>> convertRectangleCoordinatesrectangleTopPixelYCoord, Expression<Func<int>> convertRectangleCoordinatesrectangleRightPixelXCoord, Expression<Func<int>> convertRectangleCoordinatesrectangleBottomPixelYCoord, Expression<Func<convertRectangleCoordinatesconversionTypeInput>> convertRectangleCoordinatesconversionType, Expression<Func<string>> convertRectangleCoordinatesworkflow)
+        public IBodyWorkflowAction<ConvertRectangleCoordinatesResponse, ApiConnectionActionConfiguration> ConvertRectangleCoordinates(Expression<Func<ConvertRectangleCoordinatesInput>> convertRectangleCoordinates)
         {
-            var __workflow_convertRectangleCoordinatesrectangleLeftPixelXCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleLeftPixelXCoord, nameof(convertRectangleCoordinatesrectangleLeftPixelXCoord), required: true);
-            var __workflow_convertRectangleCoordinatesrectangleTopPixelYCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleTopPixelYCoord, nameof(convertRectangleCoordinatesrectangleTopPixelYCoord), required: true);
-            var __workflow_convertRectangleCoordinatesrectangleRightPixelXCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleRightPixelXCoord, nameof(convertRectangleCoordinatesrectangleRightPixelXCoord), required: true);
-            var __workflow_convertRectangleCoordinatesrectangleBottomPixelYCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleBottomPixelYCoord, nameof(convertRectangleCoordinatesrectangleBottomPixelYCoord), required: true);
-            var __workflow_convertRectangleCoordinatesconversionType = WorkflowExpression.Compile(convertRectangleCoordinatesconversionType, nameof(convertRectangleCoordinatesconversionType), required: true);
-            var __workflow_convertRectangleCoordinatesworkflow = WorkflowExpression.Compile(convertRectangleCoordinatesworkflow, nameof(convertRectangleCoordinatesworkflow), required: true);
+            var __workflow_convertRectangleCoordinates = WorkflowExpression.Compile(convertRectangleCoordinates, nameof(convertRectangleCoordinates), required: true);
             return new DeferredBodyAction<ConvertRectangleCoordinatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/ConvertRectangleCoordinates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var convertRectangleCoordinates = new JObject();
-                var convertRectangleCoordinatespropCount = 0;
-                convertRectangleCoordinatespropCount++;
-                convertRectangleCoordinates["RectangleLeftPixelXCoord"] = ExpressionConverter.ConvertO(__workflow_convertRectangleCoordinatesrectangleLeftPixelXCoord);
-                convertRectangleCoordinatespropCount++;
-                convertRectangleCoordinates["RectangleTopPixelYCoord"] = ExpressionConverter.ConvertO(__workflow_convertRectangleCoordinatesrectangleTopPixelYCoord);
-                convertRectangleCoordinatespropCount++;
-                convertRectangleCoordinates["RectangleRightPixelXCoord"] = ExpressionConverter.ConvertO(__workflow_convertRectangleCoordinatesrectangleRightPixelXCoord);
-                convertRectangleCoordinatespropCount++;
-                convertRectangleCoordinates["RectangleBottomPixelYCoord"] = ExpressionConverter.ConvertO(__workflow_convertRectangleCoordinatesrectangleBottomPixelYCoord);
-                convertRectangleCoordinatespropCount++;
-                convertRectangleCoordinates["ConversionType"] = ExpressionConverter.ConvertO(__workflow_convertRectangleCoordinatesconversionType);
-                convertRectangleCoordinatespropCount++;
-                convertRectangleCoordinates["Workflow"] = ExpressionConverter.ConvertO(__workflow_convertRectangleCoordinatesworkflow);
-                if (convertRectangleCoordinatespropCount > 0)
-                {
-                    callPayload.Body = convertRectangleCoordinates;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_convertRectangleCoordinates);
                 return new ApiConnectionAction<ConvertRectangleCoordinatesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<SendMessageToWebAPIResponse, ApiConnectionActionConfiguration> SendMessageToWebAPI(Expression<Func<string>> sendMessageToWebAPIworkflow, Expression<Func<string>> sendMessageToWebAPIuRL = null, Expression<Func<sendMessageToWebAPImethodInput>> sendMessageToWebAPImethod = null, Expression<Func<int>> sendMessageToWebAPItimeoutInSeconds = null, Expression<Func<string>> sendMessageToWebAPIcontentType = null, Expression<Func<string>> sendMessageToWebAPIaccept = null, Expression<Func<string>> sendMessageToWebAPImessageBody = null, Expression<Func<sendMessageToWebAPItransmitEncodingInput>> sendMessageToWebAPItransmitEncoding = null, Expression<Func<sendMessageToWebAPIresponseEncodingInput>> sendMessageToWebAPIresponseEncoding = null, Expression<Func<int>> sendMessageToWebAPIbufferSize = null, Expression<Func<sendMessageToWebAPIhTTPRequestHeadersListInputItem[]>> sendMessageToWebAPIhTTPRequestHeadersList = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS10 = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS11 = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS12 = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS13 = null, Expression<Func<bool>> sendMessageToWebAPIkeepAlive = null, Expression<Func<bool>> sendMessageToWebAPIexpect100Continue = null, Expression<Func<bool>> sendMessageToWebAPIreturnResponseHeaders = null, Expression<Func<bool>> sendMessageToWebAPIrunAsThread = null, Expression<Func<bool>> sendMessageToWebAPIwaitForThread = null, Expression<Func<int>> sendMessageToWebAPIretrieveOutputDataFromThreadId = null)
+        public IBodyWorkflowAction<SendMessageToWebAPIResponse, ApiConnectionActionConfiguration> SendMessageToWebAPI(Expression<Func<SendMessageToWebAPIInput>> sendMessageToWebAPI)
         {
-            var __workflow_sendMessageToWebAPIworkflow = WorkflowExpression.Compile(sendMessageToWebAPIworkflow, nameof(sendMessageToWebAPIworkflow), required: true);
-            var __workflow_sendMessageToWebAPIuRL = WorkflowExpression.Compile(sendMessageToWebAPIuRL, nameof(sendMessageToWebAPIuRL), required: false);
-            var __workflow_sendMessageToWebAPImethod = WorkflowExpression.Compile(sendMessageToWebAPImethod, nameof(sendMessageToWebAPImethod), required: false);
-            var __workflow_sendMessageToWebAPItimeoutInSeconds = WorkflowExpression.Compile(sendMessageToWebAPItimeoutInSeconds, nameof(sendMessageToWebAPItimeoutInSeconds), required: false);
-            var __workflow_sendMessageToWebAPIcontentType = WorkflowExpression.Compile(sendMessageToWebAPIcontentType, nameof(sendMessageToWebAPIcontentType), required: false);
-            var __workflow_sendMessageToWebAPIaccept = WorkflowExpression.Compile(sendMessageToWebAPIaccept, nameof(sendMessageToWebAPIaccept), required: false);
-            var __workflow_sendMessageToWebAPImessageBody = WorkflowExpression.Compile(sendMessageToWebAPImessageBody, nameof(sendMessageToWebAPImessageBody), required: false);
-            var __workflow_sendMessageToWebAPItransmitEncoding = WorkflowExpression.Compile(sendMessageToWebAPItransmitEncoding, nameof(sendMessageToWebAPItransmitEncoding), required: false);
-            var __workflow_sendMessageToWebAPIresponseEncoding = WorkflowExpression.Compile(sendMessageToWebAPIresponseEncoding, nameof(sendMessageToWebAPIresponseEncoding), required: false);
-            var __workflow_sendMessageToWebAPIbufferSize = WorkflowExpression.Compile(sendMessageToWebAPIbufferSize, nameof(sendMessageToWebAPIbufferSize), required: false);
-            var __workflow_sendMessageToWebAPIhTTPRequestHeadersList = WorkflowExpression.Compile(sendMessageToWebAPIhTTPRequestHeadersList, nameof(sendMessageToWebAPIhTTPRequestHeadersList), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS10 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS10, nameof(sendMessageToWebAPInegotiateTLS10), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS11 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS11, nameof(sendMessageToWebAPInegotiateTLS11), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS12 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS12, nameof(sendMessageToWebAPInegotiateTLS12), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS13 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS13, nameof(sendMessageToWebAPInegotiateTLS13), required: false);
-            var __workflow_sendMessageToWebAPIkeepAlive = WorkflowExpression.Compile(sendMessageToWebAPIkeepAlive, nameof(sendMessageToWebAPIkeepAlive), required: false);
-            var __workflow_sendMessageToWebAPIexpect100Continue = WorkflowExpression.Compile(sendMessageToWebAPIexpect100Continue, nameof(sendMessageToWebAPIexpect100Continue), required: false);
-            var __workflow_sendMessageToWebAPIreturnResponseHeaders = WorkflowExpression.Compile(sendMessageToWebAPIreturnResponseHeaders, nameof(sendMessageToWebAPIreturnResponseHeaders), required: false);
-            var __workflow_sendMessageToWebAPIrunAsThread = WorkflowExpression.Compile(sendMessageToWebAPIrunAsThread, nameof(sendMessageToWebAPIrunAsThread), required: false);
-            var __workflow_sendMessageToWebAPIwaitForThread = WorkflowExpression.Compile(sendMessageToWebAPIwaitForThread, nameof(sendMessageToWebAPIwaitForThread), required: false);
-            var __workflow_sendMessageToWebAPIretrieveOutputDataFromThreadId = WorkflowExpression.Compile(sendMessageToWebAPIretrieveOutputDataFromThreadId, nameof(sendMessageToWebAPIretrieveOutputDataFromThreadId), required: false);
+            var __workflow_sendMessageToWebAPI = WorkflowExpression.Compile(sendMessageToWebAPI, nameof(sendMessageToWebAPI), required: true);
             return new DeferredBodyAction<SendMessageToWebAPIResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/SendMessageToWebAPI";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendMessageToWebAPI = new JObject();
-                var sendMessageToWebAPIpropCount = 0;
-                if (__workflow_sendMessageToWebAPIuRL != null)
-                {
-                    sendMessageToWebAPI["URL"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIuRL);
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPImethod != null)
-                {
-                    if (__workflow_sendMessageToWebAPImethod != null)
-                    {
-                        sendMessageToWebAPI["Method"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPImethod);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["Method"] = "GET";
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPItimeoutInSeconds != null)
-                {
-                    if (__workflow_sendMessageToWebAPItimeoutInSeconds != null)
-                    {
-                        sendMessageToWebAPI["TimeoutInSeconds"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPItimeoutInSeconds);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["TimeoutInSeconds"] = 20;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIcontentType != null)
-                {
-                    if (__workflow_sendMessageToWebAPIcontentType != null)
-                    {
-                        sendMessageToWebAPI["ContentType"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIcontentType);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["ContentType"] = "application/json; charset=utf-8";
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIaccept != null)
-                {
-                    if (__workflow_sendMessageToWebAPIaccept != null)
-                    {
-                        sendMessageToWebAPI["Accept"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIaccept);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["Accept"] = "application/json";
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPImessageBody != null)
-                {
-                    sendMessageToWebAPI["MessageBody"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPImessageBody);
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPItransmitEncoding != null)
-                {
-                    if (__workflow_sendMessageToWebAPItransmitEncoding != null)
-                    {
-                        sendMessageToWebAPI["TransmitEncoding"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPItransmitEncoding);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["TransmitEncoding"] = "UTF-8";
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIresponseEncoding != null)
-                {
-                    if (__workflow_sendMessageToWebAPIresponseEncoding != null)
-                    {
-                        sendMessageToWebAPI["ResponseEncoding"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIresponseEncoding);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["ResponseEncoding"] = "UTF-8";
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIbufferSize != null)
-                {
-                    if (__workflow_sendMessageToWebAPIbufferSize != null)
-                    {
-                        sendMessageToWebAPI["BufferSize"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIbufferSize);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["BufferSize"] = 16384;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIhTTPRequestHeadersList != null)
-                {
-                    sendMessageToWebAPI["HTTPRequestHeadersList"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIhTTPRequestHeadersList);
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPInegotiateTLS10 != null)
-                {
-                    if (__workflow_sendMessageToWebAPInegotiateTLS10 != null)
-                    {
-                        sendMessageToWebAPI["NegotiateTLS10"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPInegotiateTLS10);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["NegotiateTLS10"] = false;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPInegotiateTLS11 != null)
-                {
-                    if (__workflow_sendMessageToWebAPInegotiateTLS11 != null)
-                    {
-                        sendMessageToWebAPI["NegotiateTLS11"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPInegotiateTLS11);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["NegotiateTLS11"] = false;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPInegotiateTLS12 != null)
-                {
-                    if (__workflow_sendMessageToWebAPInegotiateTLS12 != null)
-                    {
-                        sendMessageToWebAPI["NegotiateTLS12"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPInegotiateTLS12);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["NegotiateTLS12"] = true;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPInegotiateTLS13 != null)
-                {
-                    if (__workflow_sendMessageToWebAPInegotiateTLS13 != null)
-                    {
-                        sendMessageToWebAPI["NegotiateTLS13"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPInegotiateTLS13);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["NegotiateTLS13"] = false;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIkeepAlive != null)
-                {
-                    if (__workflow_sendMessageToWebAPIkeepAlive != null)
-                    {
-                        sendMessageToWebAPI["KeepAlive"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIkeepAlive);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["KeepAlive"] = true;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIexpect100Continue != null)
-                {
-                    if (__workflow_sendMessageToWebAPIexpect100Continue != null)
-                    {
-                        sendMessageToWebAPI["Expect100Continue"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIexpect100Continue);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["Expect100Continue"] = false;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIreturnResponseHeaders != null)
-                {
-                    if (__workflow_sendMessageToWebAPIreturnResponseHeaders != null)
-                    {
-                        sendMessageToWebAPI["ReturnResponseHeaders"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIreturnResponseHeaders);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["ReturnResponseHeaders"] = false;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIrunAsThread != null)
-                {
-                    if (__workflow_sendMessageToWebAPIrunAsThread != null)
-                    {
-                        sendMessageToWebAPI["RunAsThread"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIrunAsThread);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["RunAsThread"] = true;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIwaitForThread != null)
-                {
-                    if (__workflow_sendMessageToWebAPIwaitForThread != null)
-                    {
-                        sendMessageToWebAPI["WaitForThread"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIwaitForThread);
-                        sendMessageToWebAPIpropCount++;
-                    }
-
-                    sendMessageToWebAPIpropCount++;
-                }
-                else
-                {
-                    sendMessageToWebAPI["WaitForThread"] = true;
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                if (__workflow_sendMessageToWebAPIretrieveOutputDataFromThreadId != null)
-                {
-                    sendMessageToWebAPI["RetrieveOutputDataFromThreadId"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIretrieveOutputDataFromThreadId);
-                    sendMessageToWebAPIpropCount++;
-                }
-
-                sendMessageToWebAPIpropCount++;
-                sendMessageToWebAPI["Workflow"] = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPIworkflow);
-                if (sendMessageToWebAPIpropCount > 0)
-                {
-                    callPayload.Body = sendMessageToWebAPI;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendMessageToWebAPI);
                 return new ApiConnectionAction<SendMessageToWebAPIResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksAddNewTaskResponse, ApiConnectionActionConfiguration> TasksAddNewTask(Expression<Func<string>> tasksAddNewTaskworkflow, Expression<Func<tasksAddNewTasksetAutomationNameInput>> tasksAddNewTasksetAutomationName = null, Expression<Func<string>> tasksAddNewTaskautomationName = null, Expression<Func<string>> tasksAddNewTasktaskInputData = null, Expression<Func<string>> tasksAddNewTaskprocessStage = null, Expression<Func<int>> tasksAddNewTaskpriority = null, Expression<Func<int>> tasksAddNewTasksLA = null, Expression<Func<bool>> tasksAddNewTasktaskOnHold = null, Expression<Func<string>> tasksAddNewTaskorganisation = null, Expression<Func<string>> tasksAddNewTaskdepartment = null, Expression<Func<string>> tasksAddNewTaskdescription = null, Expression<Func<string>> tasksAddNewTasktags = null)
+        public IBodyWorkflowAction<TasksAddNewTaskResponse, ApiConnectionActionConfiguration> TasksAddNewTask(Expression<Func<TasksAddNewTaskInput>> tasksAddNewTask)
         {
-            var __workflow_tasksAddNewTaskworkflow = WorkflowExpression.Compile(tasksAddNewTaskworkflow, nameof(tasksAddNewTaskworkflow), required: true);
-            var __workflow_tasksAddNewTasksetAutomationName = WorkflowExpression.Compile(tasksAddNewTasksetAutomationName, nameof(tasksAddNewTasksetAutomationName), required: false);
-            var __workflow_tasksAddNewTaskautomationName = WorkflowExpression.Compile(tasksAddNewTaskautomationName, nameof(tasksAddNewTaskautomationName), required: false);
-            var __workflow_tasksAddNewTasktaskInputData = WorkflowExpression.Compile(tasksAddNewTasktaskInputData, nameof(tasksAddNewTasktaskInputData), required: false);
-            var __workflow_tasksAddNewTaskprocessStage = WorkflowExpression.Compile(tasksAddNewTaskprocessStage, nameof(tasksAddNewTaskprocessStage), required: false);
-            var __workflow_tasksAddNewTaskpriority = WorkflowExpression.Compile(tasksAddNewTaskpriority, nameof(tasksAddNewTaskpriority), required: false);
-            var __workflow_tasksAddNewTasksLA = WorkflowExpression.Compile(tasksAddNewTasksLA, nameof(tasksAddNewTasksLA), required: false);
-            var __workflow_tasksAddNewTasktaskOnHold = WorkflowExpression.Compile(tasksAddNewTasktaskOnHold, nameof(tasksAddNewTasktaskOnHold), required: false);
-            var __workflow_tasksAddNewTaskorganisation = WorkflowExpression.Compile(tasksAddNewTaskorganisation, nameof(tasksAddNewTaskorganisation), required: false);
-            var __workflow_tasksAddNewTaskdepartment = WorkflowExpression.Compile(tasksAddNewTaskdepartment, nameof(tasksAddNewTaskdepartment), required: false);
-            var __workflow_tasksAddNewTaskdescription = WorkflowExpression.Compile(tasksAddNewTaskdescription, nameof(tasksAddNewTaskdescription), required: false);
-            var __workflow_tasksAddNewTasktags = WorkflowExpression.Compile(tasksAddNewTasktags, nameof(tasksAddNewTasktags), required: false);
+            var __workflow_tasksAddNewTask = WorkflowExpression.Compile(tasksAddNewTask, nameof(tasksAddNewTask), required: true);
             return new DeferredBodyAction<TasksAddNewTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksAddNewTask = new JObject();
-                var tasksAddNewTaskpropCount = 0;
-                if (__workflow_tasksAddNewTasksetAutomationName != null)
-                {
-                    if (__workflow_tasksAddNewTasksetAutomationName != null)
-                    {
-                        tasksAddNewTask["SetAutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTasksetAutomationName);
-                        tasksAddNewTaskpropCount++;
-                    }
-
-                    tasksAddNewTaskpropCount++;
-                }
-                else
-                {
-                    tasksAddNewTask["SetAutomationName"] = "Auto";
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskautomationName != null)
-                {
-                    tasksAddNewTask["AutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskautomationName);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTasktaskInputData != null)
-                {
-                    tasksAddNewTask["TaskInputData"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTasktaskInputData);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskprocessStage != null)
-                {
-                    tasksAddNewTask["ProcessStage"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskprocessStage);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskpriority != null)
-                {
-                    if (__workflow_tasksAddNewTaskpriority != null)
-                    {
-                        tasksAddNewTask["Priority"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskpriority);
-                        tasksAddNewTaskpropCount++;
-                    }
-
-                    tasksAddNewTaskpropCount++;
-                }
-                else
-                {
-                    tasksAddNewTask["Priority"] = 3;
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTasksLA != null)
-                {
-                    tasksAddNewTask["SLA"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTasksLA);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTasktaskOnHold != null)
-                {
-                    if (__workflow_tasksAddNewTasktaskOnHold != null)
-                    {
-                        tasksAddNewTask["TaskOnHold"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTasktaskOnHold);
-                        tasksAddNewTaskpropCount++;
-                    }
-
-                    tasksAddNewTaskpropCount++;
-                }
-                else
-                {
-                    tasksAddNewTask["TaskOnHold"] = false;
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskorganisation != null)
-                {
-                    tasksAddNewTask["Organisation"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskorganisation);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskdepartment != null)
-                {
-                    tasksAddNewTask["Department"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskdepartment);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskdescription != null)
-                {
-                    tasksAddNewTask["Description"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskdescription);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTasktags != null)
-                {
-                    tasksAddNewTask["Tags"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTasktags);
-                    tasksAddNewTaskpropCount++;
-                }
-
-                tasksAddNewTaskpropCount++;
-                tasksAddNewTask["Workflow"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskworkflow);
-                if (tasksAddNewTaskpropCount > 0)
-                {
-                    callPayload.Body = tasksAddNewTask;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksAddNewTask);
                 return new ApiConnectionAction<TasksAddNewTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksAddNewDeferralResponse, ApiConnectionActionConfiguration> TasksAddNewDeferral(Expression<Func<string>> tasksAddNewDeferralworkflow, Expression<Func<tasksAddNewDeferralsetAutomationNameInput>> tasksAddNewDeferralsetAutomationName = null, Expression<Func<string>> tasksAddNewDeferralautomationName = null, Expression<Func<int>> tasksAddNewDeferraldeferralTimeInMinutes = null, Expression<Func<string>> tasksAddNewDeferraltaskInputData = null, Expression<Func<string>> tasksAddNewDeferraldeferralStoredData = null, Expression<Func<string>> tasksAddNewDeferralprocessStage = null, Expression<Func<int>> tasksAddNewDeferralpriority = null, Expression<Func<bool>> tasksAddNewDeferraltaskOnHold = null, Expression<Func<string>> tasksAddNewDeferralorganisation = null, Expression<Func<string>> tasksAddNewDeferraldepartment = null, Expression<Func<string>> tasksAddNewDeferraldescription = null, Expression<Func<string>> tasksAddNewDeferraltags = null)
+        public IBodyWorkflowAction<TasksAddNewDeferralResponse, ApiConnectionActionConfiguration> TasksAddNewDeferral(Expression<Func<TasksAddNewDeferralInput>> tasksAddNewDeferral)
         {
-            var __workflow_tasksAddNewDeferralworkflow = WorkflowExpression.Compile(tasksAddNewDeferralworkflow, nameof(tasksAddNewDeferralworkflow), required: true);
-            var __workflow_tasksAddNewDeferralsetAutomationName = WorkflowExpression.Compile(tasksAddNewDeferralsetAutomationName, nameof(tasksAddNewDeferralsetAutomationName), required: false);
-            var __workflow_tasksAddNewDeferralautomationName = WorkflowExpression.Compile(tasksAddNewDeferralautomationName, nameof(tasksAddNewDeferralautomationName), required: false);
-            var __workflow_tasksAddNewDeferraldeferralTimeInMinutes = WorkflowExpression.Compile(tasksAddNewDeferraldeferralTimeInMinutes, nameof(tasksAddNewDeferraldeferralTimeInMinutes), required: false);
-            var __workflow_tasksAddNewDeferraltaskInputData = WorkflowExpression.Compile(tasksAddNewDeferraltaskInputData, nameof(tasksAddNewDeferraltaskInputData), required: false);
-            var __workflow_tasksAddNewDeferraldeferralStoredData = WorkflowExpression.Compile(tasksAddNewDeferraldeferralStoredData, nameof(tasksAddNewDeferraldeferralStoredData), required: false);
-            var __workflow_tasksAddNewDeferralprocessStage = WorkflowExpression.Compile(tasksAddNewDeferralprocessStage, nameof(tasksAddNewDeferralprocessStage), required: false);
-            var __workflow_tasksAddNewDeferralpriority = WorkflowExpression.Compile(tasksAddNewDeferralpriority, nameof(tasksAddNewDeferralpriority), required: false);
-            var __workflow_tasksAddNewDeferraltaskOnHold = WorkflowExpression.Compile(tasksAddNewDeferraltaskOnHold, nameof(tasksAddNewDeferraltaskOnHold), required: false);
-            var __workflow_tasksAddNewDeferralorganisation = WorkflowExpression.Compile(tasksAddNewDeferralorganisation, nameof(tasksAddNewDeferralorganisation), required: false);
-            var __workflow_tasksAddNewDeferraldepartment = WorkflowExpression.Compile(tasksAddNewDeferraldepartment, nameof(tasksAddNewDeferraldepartment), required: false);
-            var __workflow_tasksAddNewDeferraldescription = WorkflowExpression.Compile(tasksAddNewDeferraldescription, nameof(tasksAddNewDeferraldescription), required: false);
-            var __workflow_tasksAddNewDeferraltags = WorkflowExpression.Compile(tasksAddNewDeferraltags, nameof(tasksAddNewDeferraltags), required: false);
+            var __workflow_tasksAddNewDeferral = WorkflowExpression.Compile(tasksAddNewDeferral, nameof(tasksAddNewDeferral), required: true);
             return new DeferredBodyAction<TasksAddNewDeferralResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewDeferral";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksAddNewDeferral = new JObject();
-                var tasksAddNewDeferralpropCount = 0;
-                if (__workflow_tasksAddNewDeferralsetAutomationName != null)
-                {
-                    if (__workflow_tasksAddNewDeferralsetAutomationName != null)
-                    {
-                        tasksAddNewDeferral["SetAutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralsetAutomationName);
-                        tasksAddNewDeferralpropCount++;
-                    }
-
-                    tasksAddNewDeferralpropCount++;
-                }
-                else
-                {
-                    tasksAddNewDeferral["SetAutomationName"] = "Auto";
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralautomationName != null)
-                {
-                    tasksAddNewDeferral["AutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralautomationName);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferraldeferralTimeInMinutes != null)
-                {
-                    tasksAddNewDeferral["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferraldeferralTimeInMinutes);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferraltaskInputData != null)
-                {
-                    tasksAddNewDeferral["TaskInputData"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferraltaskInputData);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferraldeferralStoredData != null)
-                {
-                    tasksAddNewDeferral["DeferralStoredData"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferraldeferralStoredData);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralprocessStage != null)
-                {
-                    tasksAddNewDeferral["ProcessStage"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralprocessStage);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralpriority != null)
-                {
-                    if (__workflow_tasksAddNewDeferralpriority != null)
-                    {
-                        tasksAddNewDeferral["Priority"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralpriority);
-                        tasksAddNewDeferralpropCount++;
-                    }
-
-                    tasksAddNewDeferralpropCount++;
-                }
-                else
-                {
-                    tasksAddNewDeferral["Priority"] = 3;
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferraltaskOnHold != null)
-                {
-                    if (__workflow_tasksAddNewDeferraltaskOnHold != null)
-                    {
-                        tasksAddNewDeferral["TaskOnHold"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferraltaskOnHold);
-                        tasksAddNewDeferralpropCount++;
-                    }
-
-                    tasksAddNewDeferralpropCount++;
-                }
-                else
-                {
-                    tasksAddNewDeferral["TaskOnHold"] = false;
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralorganisation != null)
-                {
-                    tasksAddNewDeferral["Organisation"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralorganisation);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferraldepartment != null)
-                {
-                    tasksAddNewDeferral["Department"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferraldepartment);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferraldescription != null)
-                {
-                    tasksAddNewDeferral["Description"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferraldescription);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferraltags != null)
-                {
-                    tasksAddNewDeferral["Tags"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferraltags);
-                    tasksAddNewDeferralpropCount++;
-                }
-
-                tasksAddNewDeferralpropCount++;
-                tasksAddNewDeferral["Workflow"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralworkflow);
-                if (tasksAddNewDeferralpropCount > 0)
-                {
-                    callPayload.Body = tasksAddNewDeferral;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferral);
                 return new ApiConnectionAction<TasksAddNewDeferralResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksDeferExistingTaskResponse, ApiConnectionActionConfiguration> TasksDeferExistingTask(Expression<Func<int>> tasksDeferExistingTasktaskId, Expression<Func<int>> tasksDeferExistingTaskdeferralTimeInMinutes = null, Expression<Func<string>> tasksDeferExistingTaskdeferralStoredData = null, Expression<Func<string>> tasksDeferExistingTaskprocessStage = null, Expression<Func<int>> tasksDeferExistingTaskpriority = null, Expression<Func<bool>> tasksDeferExistingTasktaskOnHold = null)
+        public IBodyWorkflowAction<TasksDeferExistingTaskResponse, ApiConnectionActionConfiguration> TasksDeferExistingTask(Expression<Func<TasksDeferExistingTaskInput>> tasksDeferExistingTask)
         {
-            var __workflow_tasksDeferExistingTasktaskId = WorkflowExpression.Compile(tasksDeferExistingTasktaskId, nameof(tasksDeferExistingTasktaskId), required: true);
-            var __workflow_tasksDeferExistingTaskdeferralTimeInMinutes = WorkflowExpression.Compile(tasksDeferExistingTaskdeferralTimeInMinutes, nameof(tasksDeferExistingTaskdeferralTimeInMinutes), required: false);
-            var __workflow_tasksDeferExistingTaskdeferralStoredData = WorkflowExpression.Compile(tasksDeferExistingTaskdeferralStoredData, nameof(tasksDeferExistingTaskdeferralStoredData), required: false);
-            var __workflow_tasksDeferExistingTaskprocessStage = WorkflowExpression.Compile(tasksDeferExistingTaskprocessStage, nameof(tasksDeferExistingTaskprocessStage), required: false);
-            var __workflow_tasksDeferExistingTaskpriority = WorkflowExpression.Compile(tasksDeferExistingTaskpriority, nameof(tasksDeferExistingTaskpriority), required: false);
-            var __workflow_tasksDeferExistingTasktaskOnHold = WorkflowExpression.Compile(tasksDeferExistingTasktaskOnHold, nameof(tasksDeferExistingTasktaskOnHold), required: false);
+            var __workflow_tasksDeferExistingTask = WorkflowExpression.Compile(tasksDeferExistingTask, nameof(tasksDeferExistingTask), required: true);
             return new DeferredBodyAction<TasksDeferExistingTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeferExistingTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksDeferExistingTask = new JObject();
-                var tasksDeferExistingTaskpropCount = 0;
-                tasksDeferExistingTaskpropCount++;
-                tasksDeferExistingTask["TaskId"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTasktaskId);
-                if (__workflow_tasksDeferExistingTaskdeferralTimeInMinutes != null)
-                {
-                    tasksDeferExistingTask["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskdeferralTimeInMinutes);
-                    tasksDeferExistingTaskpropCount++;
-                }
-
-                if (__workflow_tasksDeferExistingTaskdeferralStoredData != null)
-                {
-                    tasksDeferExistingTask["DeferralStoredData"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskdeferralStoredData);
-                    tasksDeferExistingTaskpropCount++;
-                }
-
-                if (__workflow_tasksDeferExistingTaskprocessStage != null)
-                {
-                    tasksDeferExistingTask["ProcessStage"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskprocessStage);
-                    tasksDeferExistingTaskpropCount++;
-                }
-
-                if (__workflow_tasksDeferExistingTaskpriority != null)
-                {
-                    if (__workflow_tasksDeferExistingTaskpriority != null)
-                    {
-                        tasksDeferExistingTask["Priority"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskpriority);
-                        tasksDeferExistingTaskpropCount++;
-                    }
-
-                    tasksDeferExistingTaskpropCount++;
-                }
-                else
-                {
-                    tasksDeferExistingTask["Priority"] = 3;
-                    tasksDeferExistingTaskpropCount++;
-                }
-
-                if (__workflow_tasksDeferExistingTasktaskOnHold != null)
-                {
-                    if (__workflow_tasksDeferExistingTasktaskOnHold != null)
-                    {
-                        tasksDeferExistingTask["TaskOnHold"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTasktaskOnHold);
-                        tasksDeferExistingTaskpropCount++;
-                    }
-
-                    tasksDeferExistingTaskpropCount++;
-                }
-                else
-                {
-                    tasksDeferExistingTask["TaskOnHold"] = false;
-                    tasksDeferExistingTaskpropCount++;
-                }
-
-                if (tasksDeferExistingTaskpropCount > 0)
-                {
-                    callPayload.Body = tasksDeferExistingTask;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTask);
                 return new ApiConnectionAction<TasksDeferExistingTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksDeferExistingTaskOperationResponse, ApiConnectionActionConfiguration> TasksDeferExistingTaskOperation(Expression<Func<string>> tasksDeferExistingTaskOperationoperationId, Expression<Func<int>> tasksDeferExistingTaskOperationdeferralTimeInMinutes = null, Expression<Func<string>> tasksDeferExistingTaskOperationdeferralStoredData = null, Expression<Func<string>> tasksDeferExistingTaskOperationprocessStage = null, Expression<Func<int>> tasksDeferExistingTaskOperationpriority = null)
+        public IBodyWorkflowAction<TasksDeferExistingTaskOperationResponse, ApiConnectionActionConfiguration> TasksDeferExistingTaskOperation(Expression<Func<TasksDeferExistingTaskOperationInput>> tasksDeferExistingTaskOperation)
         {
-            var __workflow_tasksDeferExistingTaskOperationoperationId = WorkflowExpression.Compile(tasksDeferExistingTaskOperationoperationId, nameof(tasksDeferExistingTaskOperationoperationId), required: true);
-            var __workflow_tasksDeferExistingTaskOperationdeferralTimeInMinutes = WorkflowExpression.Compile(tasksDeferExistingTaskOperationdeferralTimeInMinutes, nameof(tasksDeferExistingTaskOperationdeferralTimeInMinutes), required: false);
-            var __workflow_tasksDeferExistingTaskOperationdeferralStoredData = WorkflowExpression.Compile(tasksDeferExistingTaskOperationdeferralStoredData, nameof(tasksDeferExistingTaskOperationdeferralStoredData), required: false);
-            var __workflow_tasksDeferExistingTaskOperationprocessStage = WorkflowExpression.Compile(tasksDeferExistingTaskOperationprocessStage, nameof(tasksDeferExistingTaskOperationprocessStage), required: false);
-            var __workflow_tasksDeferExistingTaskOperationpriority = WorkflowExpression.Compile(tasksDeferExistingTaskOperationpriority, nameof(tasksDeferExistingTaskOperationpriority), required: false);
+            var __workflow_tasksDeferExistingTaskOperation = WorkflowExpression.Compile(tasksDeferExistingTaskOperation, nameof(tasksDeferExistingTaskOperation), required: true);
             return new DeferredBodyAction<TasksDeferExistingTaskOperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeferExistingTaskOperation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksDeferExistingTaskOperation = new JObject();
-                var tasksDeferExistingTaskOperationpropCount = 0;
-                tasksDeferExistingTaskOperationpropCount++;
-                tasksDeferExistingTaskOperation["OperationId"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskOperationoperationId);
-                if (__workflow_tasksDeferExistingTaskOperationdeferralTimeInMinutes != null)
-                {
-                    tasksDeferExistingTaskOperation["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskOperationdeferralTimeInMinutes);
-                    tasksDeferExistingTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksDeferExistingTaskOperationdeferralStoredData != null)
-                {
-                    tasksDeferExistingTaskOperation["DeferralStoredData"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskOperationdeferralStoredData);
-                    tasksDeferExistingTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksDeferExistingTaskOperationprocessStage != null)
-                {
-                    tasksDeferExistingTaskOperation["ProcessStage"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskOperationprocessStage);
-                    tasksDeferExistingTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksDeferExistingTaskOperationpriority != null)
-                {
-                    if (__workflow_tasksDeferExistingTaskOperationpriority != null)
-                    {
-                        tasksDeferExistingTaskOperation["Priority"] = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskOperationpriority);
-                        tasksDeferExistingTaskOperationpropCount++;
-                    }
-
-                    tasksDeferExistingTaskOperationpropCount++;
-                }
-                else
-                {
-                    tasksDeferExistingTaskOperation["Priority"] = 3;
-                    tasksDeferExistingTaskOperationpropCount++;
-                }
-
-                if (tasksDeferExistingTaskOperationpropCount > 0)
-                {
-                    callPayload.Body = tasksDeferExistingTaskOperation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksDeferExistingTaskOperation);
                 return new ApiConnectionAction<TasksDeferExistingTaskOperationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksDeleteTaskResponse, ApiConnectionActionConfiguration> TasksDeleteTask(Expression<Func<int>> tasksDeleteTasktaskId, Expression<Func<bool>> tasksDeleteTaskupdateSourceSystem = null)
+        public IBodyWorkflowAction<TasksDeleteTaskResponse, ApiConnectionActionConfiguration> TasksDeleteTask(Expression<Func<TasksDeleteTaskInput>> tasksDeleteTask)
         {
-            var __workflow_tasksDeleteTasktaskId = WorkflowExpression.Compile(tasksDeleteTasktaskId, nameof(tasksDeleteTasktaskId), required: true);
-            var __workflow_tasksDeleteTaskupdateSourceSystem = WorkflowExpression.Compile(tasksDeleteTaskupdateSourceSystem, nameof(tasksDeleteTaskupdateSourceSystem), required: false);
+            var __workflow_tasksDeleteTask = WorkflowExpression.Compile(tasksDeleteTask, nameof(tasksDeleteTask), required: true);
             return new DeferredBodyAction<TasksDeleteTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeleteTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksDeleteTask = new JObject();
-                var tasksDeleteTaskpropCount = 0;
-                tasksDeleteTaskpropCount++;
-                tasksDeleteTask["TaskId"] = ExpressionConverter.ConvertO(__workflow_tasksDeleteTasktaskId);
-                if (__workflow_tasksDeleteTaskupdateSourceSystem != null)
-                {
-                    if (__workflow_tasksDeleteTaskupdateSourceSystem != null)
-                    {
-                        tasksDeleteTask["UpdateSourceSystem"] = ExpressionConverter.ConvertO(__workflow_tasksDeleteTaskupdateSourceSystem);
-                        tasksDeleteTaskpropCount++;
-                    }
-
-                    tasksDeleteTaskpropCount++;
-                }
-                else
-                {
-                    tasksDeleteTask["UpdateSourceSystem"] = true;
-                    tasksDeleteTaskpropCount++;
-                }
-
-                if (tasksDeleteTaskpropCount > 0)
-                {
-                    callPayload.Body = tasksDeleteTask;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksDeleteTask);
                 return new ApiConnectionAction<TasksDeleteTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksDeleteTaskOperationResponse, ApiConnectionActionConfiguration> TasksDeleteTaskOperation(Expression<Func<string>> tasksDeleteTaskOperationoperationId, Expression<Func<bool>> tasksDeleteTaskOperationupdateSourceSystem = null)
+        public IBodyWorkflowAction<TasksDeleteTaskOperationResponse, ApiConnectionActionConfiguration> TasksDeleteTaskOperation(Expression<Func<TasksDeleteTaskOperationInput>> tasksDeleteTaskOperation)
         {
-            var __workflow_tasksDeleteTaskOperationoperationId = WorkflowExpression.Compile(tasksDeleteTaskOperationoperationId, nameof(tasksDeleteTaskOperationoperationId), required: true);
-            var __workflow_tasksDeleteTaskOperationupdateSourceSystem = WorkflowExpression.Compile(tasksDeleteTaskOperationupdateSourceSystem, nameof(tasksDeleteTaskOperationupdateSourceSystem), required: false);
+            var __workflow_tasksDeleteTaskOperation = WorkflowExpression.Compile(tasksDeleteTaskOperation, nameof(tasksDeleteTaskOperation), required: true);
             return new DeferredBodyAction<TasksDeleteTaskOperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeleteTaskOperation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksDeleteTaskOperation = new JObject();
-                var tasksDeleteTaskOperationpropCount = 0;
-                tasksDeleteTaskOperationpropCount++;
-                tasksDeleteTaskOperation["OperationId"] = ExpressionConverter.ConvertO(__workflow_tasksDeleteTaskOperationoperationId);
-                if (__workflow_tasksDeleteTaskOperationupdateSourceSystem != null)
-                {
-                    if (__workflow_tasksDeleteTaskOperationupdateSourceSystem != null)
-                    {
-                        tasksDeleteTaskOperation["UpdateSourceSystem"] = ExpressionConverter.ConvertO(__workflow_tasksDeleteTaskOperationupdateSourceSystem);
-                        tasksDeleteTaskOperationpropCount++;
-                    }
-
-                    tasksDeleteTaskOperationpropCount++;
-                }
-                else
-                {
-                    tasksDeleteTaskOperation["UpdateSourceSystem"] = true;
-                    tasksDeleteTaskOperationpropCount++;
-                }
-
-                if (tasksDeleteTaskOperationpropCount > 0)
-                {
-                    callPayload.Body = tasksDeleteTaskOperation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksDeleteTaskOperation);
                 return new ApiConnectionAction<TasksDeleteTaskOperationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksGetAllTasksResponse, ApiConnectionActionConfiguration> TasksGetAllTasks(Expression<Func<string>> tasksGetAllTasksautomationName = null, Expression<Func<tasksGetAllTasksautomationTaskStatusInput>> tasksGetAllTasksautomationTaskStatus = null, Expression<Func<string>> tasksGetAllTasksfilterByPropertyQuery = null, Expression<Func<int>> tasksGetAllTasksminutesUntilDeferralDate = null, Expression<Func<int>> tasksGetAllTasksminimumPriorityLevel = null, Expression<Func<bool>> tasksGetAllTaskssortByDeferralDate = null, Expression<Func<bool>> tasksGetAllTasksretrieveOnHoldTasks = null, Expression<Func<int>> tasksGetAllTasksskip = null, Expression<Func<int>> tasksGetAllTasksmaxResults = null, Expression<Func<bool>> tasksGetAllTasksexcludeTaskData = null)
+        public IBodyWorkflowAction<TasksGetAllTasksResponse, ApiConnectionActionConfiguration> TasksGetAllTasks(Expression<Func<TasksGetAllTasksInput>> tasksGetAllTasks)
         {
-            var __workflow_tasksGetAllTasksautomationName = WorkflowExpression.Compile(tasksGetAllTasksautomationName, nameof(tasksGetAllTasksautomationName), required: false);
-            var __workflow_tasksGetAllTasksautomationTaskStatus = WorkflowExpression.Compile(tasksGetAllTasksautomationTaskStatus, nameof(tasksGetAllTasksautomationTaskStatus), required: false);
-            var __workflow_tasksGetAllTasksfilterByPropertyQuery = WorkflowExpression.Compile(tasksGetAllTasksfilterByPropertyQuery, nameof(tasksGetAllTasksfilterByPropertyQuery), required: false);
-            var __workflow_tasksGetAllTasksminutesUntilDeferralDate = WorkflowExpression.Compile(tasksGetAllTasksminutesUntilDeferralDate, nameof(tasksGetAllTasksminutesUntilDeferralDate), required: false);
-            var __workflow_tasksGetAllTasksminimumPriorityLevel = WorkflowExpression.Compile(tasksGetAllTasksminimumPriorityLevel, nameof(tasksGetAllTasksminimumPriorityLevel), required: false);
-            var __workflow_tasksGetAllTaskssortByDeferralDate = WorkflowExpression.Compile(tasksGetAllTaskssortByDeferralDate, nameof(tasksGetAllTaskssortByDeferralDate), required: false);
-            var __workflow_tasksGetAllTasksretrieveOnHoldTasks = WorkflowExpression.Compile(tasksGetAllTasksretrieveOnHoldTasks, nameof(tasksGetAllTasksretrieveOnHoldTasks), required: false);
-            var __workflow_tasksGetAllTasksskip = WorkflowExpression.Compile(tasksGetAllTasksskip, nameof(tasksGetAllTasksskip), required: false);
-            var __workflow_tasksGetAllTasksmaxResults = WorkflowExpression.Compile(tasksGetAllTasksmaxResults, nameof(tasksGetAllTasksmaxResults), required: false);
-            var __workflow_tasksGetAllTasksexcludeTaskData = WorkflowExpression.Compile(tasksGetAllTasksexcludeTaskData, nameof(tasksGetAllTasksexcludeTaskData), required: false);
+            var __workflow_tasksGetAllTasks = WorkflowExpression.Compile(tasksGetAllTasks, nameof(tasksGetAllTasks), required: true);
             return new DeferredBodyAction<TasksGetAllTasksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetAllTasks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksGetAllTasks = new JObject();
-                var tasksGetAllTaskspropCount = 0;
-                if (__workflow_tasksGetAllTasksautomationName != null)
-                {
-                    tasksGetAllTasks["AutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksautomationName);
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksautomationTaskStatus != null)
-                {
-                    tasksGetAllTasks["AutomationTaskStatus"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksautomationTaskStatus);
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksfilterByPropertyQuery != null)
-                {
-                    tasksGetAllTasks["FilterByPropertyQuery"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksfilterByPropertyQuery);
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksminutesUntilDeferralDate != null)
-                {
-                    tasksGetAllTasks["MinutesUntilDeferralDate"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksminutesUntilDeferralDate);
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksminimumPriorityLevel != null)
-                {
-                    tasksGetAllTasks["MinimumPriorityLevel"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksminimumPriorityLevel);
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTaskssortByDeferralDate != null)
-                {
-                    if (__workflow_tasksGetAllTaskssortByDeferralDate != null)
-                    {
-                        tasksGetAllTasks["SortByDeferralDate"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTaskssortByDeferralDate);
-                        tasksGetAllTaskspropCount++;
-                    }
-
-                    tasksGetAllTaskspropCount++;
-                }
-                else
-                {
-                    tasksGetAllTasks["SortByDeferralDate"] = false;
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksretrieveOnHoldTasks != null)
-                {
-                    if (__workflow_tasksGetAllTasksretrieveOnHoldTasks != null)
-                    {
-                        tasksGetAllTasks["RetrieveOnHoldTasks"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksretrieveOnHoldTasks);
-                        tasksGetAllTaskspropCount++;
-                    }
-
-                    tasksGetAllTaskspropCount++;
-                }
-                else
-                {
-                    tasksGetAllTasks["RetrieveOnHoldTasks"] = true;
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksskip != null)
-                {
-                    if (__workflow_tasksGetAllTasksskip != null)
-                    {
-                        tasksGetAllTasks["Skip"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksskip);
-                        tasksGetAllTaskspropCount++;
-                    }
-
-                    tasksGetAllTaskspropCount++;
-                }
-                else
-                {
-                    tasksGetAllTasks["Skip"] = 0;
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksmaxResults != null)
-                {
-                    if (__workflow_tasksGetAllTasksmaxResults != null)
-                    {
-                        tasksGetAllTasks["MaxResults"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksmaxResults);
-                        tasksGetAllTaskspropCount++;
-                    }
-
-                    tasksGetAllTaskspropCount++;
-                }
-                else
-                {
-                    tasksGetAllTasks["MaxResults"] = 0;
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (__workflow_tasksGetAllTasksexcludeTaskData != null)
-                {
-                    if (__workflow_tasksGetAllTasksexcludeTaskData != null)
-                    {
-                        tasksGetAllTasks["ExcludeTaskData"] = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasksexcludeTaskData);
-                        tasksGetAllTaskspropCount++;
-                    }
-
-                    tasksGetAllTaskspropCount++;
-                }
-                else
-                {
-                    tasksGetAllTasks["ExcludeTaskData"] = false;
-                    tasksGetAllTaskspropCount++;
-                }
-
-                if (tasksGetAllTaskspropCount > 0)
-                {
-                    callPayload.Body = tasksGetAllTasks;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksGetAllTasks);
                 return new ApiConnectionAction<TasksGetAllTasksResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksGetTaskResponse, ApiConnectionActionConfiguration> TasksGetTask(Expression<Func<int>> tasksGetTasktaskId, Expression<Func<tasksGetTaskstatusChangeInput>> tasksGetTaskstatusChange = null)
+        public IBodyWorkflowAction<TasksGetTaskResponse, ApiConnectionActionConfiguration> TasksGetTask(Expression<Func<TasksGetTaskInput>> tasksGetTask)
         {
-            var __workflow_tasksGetTasktaskId = WorkflowExpression.Compile(tasksGetTasktaskId, nameof(tasksGetTasktaskId), required: true);
-            var __workflow_tasksGetTaskstatusChange = WorkflowExpression.Compile(tasksGetTaskstatusChange, nameof(tasksGetTaskstatusChange), required: false);
+            var __workflow_tasksGetTask = WorkflowExpression.Compile(tasksGetTask, nameof(tasksGetTask), required: true);
             return new DeferredBodyAction<TasksGetTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksGetTask = new JObject();
-                var tasksGetTaskpropCount = 0;
-                tasksGetTaskpropCount++;
-                tasksGetTask["TaskId"] = ExpressionConverter.ConvertO(__workflow_tasksGetTasktaskId);
-                if (__workflow_tasksGetTaskstatusChange != null)
-                {
-                    if (__workflow_tasksGetTaskstatusChange != null)
-                    {
-                        tasksGetTask["StatusChange"] = ExpressionConverter.ConvertO(__workflow_tasksGetTaskstatusChange);
-                        tasksGetTaskpropCount++;
-                    }
-
-                    tasksGetTaskpropCount++;
-                }
-                else
-                {
-                    tasksGetTask["StatusChange"] = "Retrieved";
-                    tasksGetTaskpropCount++;
-                }
-
-                if (tasksGetTaskpropCount > 0)
-                {
-                    callPayload.Body = tasksGetTask;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksGetTask);
                 return new ApiConnectionAction<TasksGetTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksGetNextTaskResponse, ApiConnectionActionConfiguration> TasksGetNextTask(Expression<Func<string>> tasksGetNextTaskautomationName = null, Expression<Func<string[]>> tasksGetNextTaskautomationNames = null, Expression<Func<int>> tasksGetNextTaskminimumPriorityLevel = null, Expression<Func<tasksGetNextTaskstatusChangeInput>> tasksGetNextTaskstatusChange = null, Expression<Func<int>> tasksGetNextTaskminutesUntilDeferralDate = null, Expression<Func<bool>> tasksGetNextTaskignoreSLA = null, Expression<Func<int[]>> tasksGetNextTaskexcludeTaskIds = null)
+        public IBodyWorkflowAction<TasksGetNextTaskResponse, ApiConnectionActionConfiguration> TasksGetNextTask(Expression<Func<TasksGetNextTaskInput>> tasksGetNextTask)
         {
-            var __workflow_tasksGetNextTaskautomationName = WorkflowExpression.Compile(tasksGetNextTaskautomationName, nameof(tasksGetNextTaskautomationName), required: false);
-            var __workflow_tasksGetNextTaskautomationNames = WorkflowExpression.Compile(tasksGetNextTaskautomationNames, nameof(tasksGetNextTaskautomationNames), required: false);
-            var __workflow_tasksGetNextTaskminimumPriorityLevel = WorkflowExpression.Compile(tasksGetNextTaskminimumPriorityLevel, nameof(tasksGetNextTaskminimumPriorityLevel), required: false);
-            var __workflow_tasksGetNextTaskstatusChange = WorkflowExpression.Compile(tasksGetNextTaskstatusChange, nameof(tasksGetNextTaskstatusChange), required: false);
-            var __workflow_tasksGetNextTaskminutesUntilDeferralDate = WorkflowExpression.Compile(tasksGetNextTaskminutesUntilDeferralDate, nameof(tasksGetNextTaskminutesUntilDeferralDate), required: false);
-            var __workflow_tasksGetNextTaskignoreSLA = WorkflowExpression.Compile(tasksGetNextTaskignoreSLA, nameof(tasksGetNextTaskignoreSLA), required: false);
-            var __workflow_tasksGetNextTaskexcludeTaskIds = WorkflowExpression.Compile(tasksGetNextTaskexcludeTaskIds, nameof(tasksGetNextTaskexcludeTaskIds), required: false);
+            var __workflow_tasksGetNextTask = WorkflowExpression.Compile(tasksGetNextTask, nameof(tasksGetNextTask), required: true);
             return new DeferredBodyAction<TasksGetNextTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetNextTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksGetNextTask = new JObject();
-                var tasksGetNextTaskpropCount = 0;
-                if (__workflow_tasksGetNextTaskautomationName != null)
-                {
-                    tasksGetNextTask["AutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksGetNextTaskautomationName);
-                    tasksGetNextTaskpropCount++;
-                }
-
-                if (__workflow_tasksGetNextTaskautomationNames != null)
-                {
-                    tasksGetNextTask["AutomationNames"] = ExpressionConverter.ConvertO(__workflow_tasksGetNextTaskautomationNames);
-                    tasksGetNextTaskpropCount++;
-                }
-
-                if (__workflow_tasksGetNextTaskminimumPriorityLevel != null)
-                {
-                    tasksGetNextTask["MinimumPriorityLevel"] = ExpressionConverter.ConvertO(__workflow_tasksGetNextTaskminimumPriorityLevel);
-                    tasksGetNextTaskpropCount++;
-                }
-
-                if (__workflow_tasksGetNextTaskstatusChange != null)
-                {
-                    if (__workflow_tasksGetNextTaskstatusChange != null)
-                    {
-                        tasksGetNextTask["StatusChange"] = ExpressionConverter.ConvertO(__workflow_tasksGetNextTaskstatusChange);
-                        tasksGetNextTaskpropCount++;
-                    }
-
-                    tasksGetNextTaskpropCount++;
-                }
-                else
-                {
-                    tasksGetNextTask["StatusChange"] = "Retrieved";
-                    tasksGetNextTaskpropCount++;
-                }
-
-                if (__workflow_tasksGetNextTaskminutesUntilDeferralDate != null)
-                {
-                    if (__workflow_tasksGetNextTaskminutesUntilDeferralDate != null)
-                    {
-                        tasksGetNextTask["MinutesUntilDeferralDate"] = ExpressionConverter.ConvertO(__workflow_tasksGetNextTaskminutesUntilDeferralDate);
-                        tasksGetNextTaskpropCount++;
-                    }
-
-                    tasksGetNextTaskpropCount++;
-                }
-                else
-                {
-                    tasksGetNextTask["MinutesUntilDeferralDate"] = 0;
-                    tasksGetNextTaskpropCount++;
-                }
-
-                if (__workflow_tasksGetNextTaskignoreSLA != null)
-                {
-                    if (__workflow_tasksGetNextTaskignoreSLA != null)
-                    {
-                        tasksGetNextTask["IgnoreSLA"] = ExpressionConverter.ConvertO(__workflow_tasksGetNextTaskignoreSLA);
-                        tasksGetNextTaskpropCount++;
-                    }
-
-                    tasksGetNextTaskpropCount++;
-                }
-                else
-                {
-                    tasksGetNextTask["IgnoreSLA"] = false;
-                    tasksGetNextTaskpropCount++;
-                }
-
-                if (__workflow_tasksGetNextTaskexcludeTaskIds != null)
-                {
-                    tasksGetNextTask["ExcludeTaskIds"] = ExpressionConverter.ConvertO(__workflow_tasksGetNextTaskexcludeTaskIds);
-                    tasksGetNextTaskpropCount++;
-                }
-
-                if (tasksGetNextTaskpropCount > 0)
-                {
-                    callPayload.Body = tasksGetNextTask;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksGetNextTask);
                 return new ApiConnectionAction<TasksGetNextTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksChangeTaskStatusResponse, ApiConnectionActionConfiguration> TasksChangeTaskStatus(Expression<Func<int>> tasksChangeTaskStatustaskId, Expression<Func<tasksChangeTaskStatusautomationTaskStatusInput>> tasksChangeTaskStatusautomationTaskStatus = null, Expression<Func<bool>> tasksChangeTaskStatustaskOnHold = null, Expression<Func<bool>> tasksChangeTaskStatuseraseTaskInputData = null, Expression<Func<bool>> tasksChangeTaskStatuseraseDeferralStoredData = null, Expression<Func<bool>> tasksChangeTaskStatusupdateSourceSystem = null, Expression<Func<string>> tasksChangeTaskStatustaskClosureReason = null)
+        public IBodyWorkflowAction<TasksChangeTaskStatusResponse, ApiConnectionActionConfiguration> TasksChangeTaskStatus(Expression<Func<TasksChangeTaskStatusInput>> tasksChangeTaskStatus)
         {
-            var __workflow_tasksChangeTaskStatustaskId = WorkflowExpression.Compile(tasksChangeTaskStatustaskId, nameof(tasksChangeTaskStatustaskId), required: true);
-            var __workflow_tasksChangeTaskStatusautomationTaskStatus = WorkflowExpression.Compile(tasksChangeTaskStatusautomationTaskStatus, nameof(tasksChangeTaskStatusautomationTaskStatus), required: false);
-            var __workflow_tasksChangeTaskStatustaskOnHold = WorkflowExpression.Compile(tasksChangeTaskStatustaskOnHold, nameof(tasksChangeTaskStatustaskOnHold), required: false);
-            var __workflow_tasksChangeTaskStatuseraseTaskInputData = WorkflowExpression.Compile(tasksChangeTaskStatuseraseTaskInputData, nameof(tasksChangeTaskStatuseraseTaskInputData), required: false);
-            var __workflow_tasksChangeTaskStatuseraseDeferralStoredData = WorkflowExpression.Compile(tasksChangeTaskStatuseraseDeferralStoredData, nameof(tasksChangeTaskStatuseraseDeferralStoredData), required: false);
-            var __workflow_tasksChangeTaskStatusupdateSourceSystem = WorkflowExpression.Compile(tasksChangeTaskStatusupdateSourceSystem, nameof(tasksChangeTaskStatusupdateSourceSystem), required: false);
-            var __workflow_tasksChangeTaskStatustaskClosureReason = WorkflowExpression.Compile(tasksChangeTaskStatustaskClosureReason, nameof(tasksChangeTaskStatustaskClosureReason), required: false);
+            var __workflow_tasksChangeTaskStatus = WorkflowExpression.Compile(tasksChangeTaskStatus, nameof(tasksChangeTaskStatus), required: true);
             return new DeferredBodyAction<TasksChangeTaskStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksChangeTaskStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksChangeTaskStatus = new JObject();
-                var tasksChangeTaskStatuspropCount = 0;
-                tasksChangeTaskStatuspropCount++;
-                tasksChangeTaskStatus["TaskId"] = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatustaskId);
-                if (__workflow_tasksChangeTaskStatusautomationTaskStatus != null)
-                {
-                    tasksChangeTaskStatus["AutomationTaskStatus"] = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatusautomationTaskStatus);
-                    tasksChangeTaskStatuspropCount++;
-                }
-
-                if (__workflow_tasksChangeTaskStatustaskOnHold != null)
-                {
-                    if (__workflow_tasksChangeTaskStatustaskOnHold != null)
-                    {
-                        tasksChangeTaskStatus["TaskOnHold"] = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatustaskOnHold);
-                        tasksChangeTaskStatuspropCount++;
-                    }
-
-                    tasksChangeTaskStatuspropCount++;
-                }
-                else
-                {
-                    tasksChangeTaskStatus["TaskOnHold"] = false;
-                    tasksChangeTaskStatuspropCount++;
-                }
-
-                if (__workflow_tasksChangeTaskStatuseraseTaskInputData != null)
-                {
-                    if (__workflow_tasksChangeTaskStatuseraseTaskInputData != null)
-                    {
-                        tasksChangeTaskStatus["EraseTaskInputData"] = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatuseraseTaskInputData);
-                        tasksChangeTaskStatuspropCount++;
-                    }
-
-                    tasksChangeTaskStatuspropCount++;
-                }
-                else
-                {
-                    tasksChangeTaskStatus["EraseTaskInputData"] = true;
-                    tasksChangeTaskStatuspropCount++;
-                }
-
-                if (__workflow_tasksChangeTaskStatuseraseDeferralStoredData != null)
-                {
-                    if (__workflow_tasksChangeTaskStatuseraseDeferralStoredData != null)
-                    {
-                        tasksChangeTaskStatus["EraseDeferralStoredData"] = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatuseraseDeferralStoredData);
-                        tasksChangeTaskStatuspropCount++;
-                    }
-
-                    tasksChangeTaskStatuspropCount++;
-                }
-                else
-                {
-                    tasksChangeTaskStatus["EraseDeferralStoredData"] = true;
-                    tasksChangeTaskStatuspropCount++;
-                }
-
-                if (__workflow_tasksChangeTaskStatusupdateSourceSystem != null)
-                {
-                    if (__workflow_tasksChangeTaskStatusupdateSourceSystem != null)
-                    {
-                        tasksChangeTaskStatus["UpdateSourceSystem"] = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatusupdateSourceSystem);
-                        tasksChangeTaskStatuspropCount++;
-                    }
-
-                    tasksChangeTaskStatuspropCount++;
-                }
-                else
-                {
-                    tasksChangeTaskStatus["UpdateSourceSystem"] = true;
-                    tasksChangeTaskStatuspropCount++;
-                }
-
-                if (__workflow_tasksChangeTaskStatustaskClosureReason != null)
-                {
-                    tasksChangeTaskStatus["TaskClosureReason"] = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatustaskClosureReason);
-                    tasksChangeTaskStatuspropCount++;
-                }
-
-                if (tasksChangeTaskStatuspropCount > 0)
-                {
-                    callPayload.Body = tasksChangeTaskStatus;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksChangeTaskStatus);
                 return new ApiConnectionAction<TasksChangeTaskStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksAddNoteResponse, ApiConnectionActionConfiguration> TasksAddNote(Expression<Func<int>> tasksAddNotetaskId, Expression<Func<string>> tasksAddNotenoteText, Expression<Func<tasksAddNotenoteTypeInput>> tasksAddNotenoteType = null, Expression<Func<string>> tasksAddNotenoteTypeOther = null)
+        public IBodyWorkflowAction<TasksAddNoteResponse, ApiConnectionActionConfiguration> TasksAddNote(Expression<Func<TasksAddNoteInput>> tasksAddNote)
         {
-            var __workflow_tasksAddNotetaskId = WorkflowExpression.Compile(tasksAddNotetaskId, nameof(tasksAddNotetaskId), required: true);
-            var __workflow_tasksAddNotenoteText = WorkflowExpression.Compile(tasksAddNotenoteText, nameof(tasksAddNotenoteText), required: true);
-            var __workflow_tasksAddNotenoteType = WorkflowExpression.Compile(tasksAddNotenoteType, nameof(tasksAddNotenoteType), required: false);
-            var __workflow_tasksAddNotenoteTypeOther = WorkflowExpression.Compile(tasksAddNotenoteTypeOther, nameof(tasksAddNotenoteTypeOther), required: false);
+            var __workflow_tasksAddNote = WorkflowExpression.Compile(tasksAddNote, nameof(tasksAddNote), required: true);
             return new DeferredBodyAction<TasksAddNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNote";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksAddNote = new JObject();
-                var tasksAddNotepropCount = 0;
-                tasksAddNotepropCount++;
-                tasksAddNote["TaskId"] = ExpressionConverter.ConvertO(__workflow_tasksAddNotetaskId);
-                tasksAddNotepropCount++;
-                tasksAddNote["NoteText"] = ExpressionConverter.ConvertO(__workflow_tasksAddNotenoteText);
-                if (__workflow_tasksAddNotenoteType != null)
-                {
-                    if (__workflow_tasksAddNotenoteType != null)
-                    {
-                        tasksAddNote["NoteType"] = ExpressionConverter.ConvertO(__workflow_tasksAddNotenoteType);
-                        tasksAddNotepropCount++;
-                    }
-
-                    tasksAddNotepropCount++;
-                }
-                else
-                {
-                    tasksAddNote["NoteType"] = "WorkNote";
-                    tasksAddNotepropCount++;
-                }
-
-                if (__workflow_tasksAddNotenoteTypeOther != null)
-                {
-                    tasksAddNote["NoteTypeOther"] = ExpressionConverter.ConvertO(__workflow_tasksAddNotenoteTypeOther);
-                    tasksAddNotepropCount++;
-                }
-
-                if (tasksAddNotepropCount > 0)
-                {
-                    callPayload.Body = tasksAddNote;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksAddNote);
                 return new ApiConnectionAction<TasksAddNoteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksAssignTaskResponse, ApiConnectionActionConfiguration> TasksAssignTask(Expression<Func<int>> tasksAssignTasktaskId, Expression<Func<string>> tasksAssignTaskassignToUserId = null, Expression<Func<string>> tasksAssignTaskassignToUserName = null, Expression<Func<string>> tasksAssignTaskassignToGroupId = null, Expression<Func<string>> tasksAssignTaskassignToGroupName = null, Expression<Func<bool>> tasksAssignTaskremoveUserAssignmentIfBlank = null, Expression<Func<bool>> tasksAssignTaskremoveGroupAssignmentIfBlank = null)
+        public IBodyWorkflowAction<TasksAssignTaskResponse, ApiConnectionActionConfiguration> TasksAssignTask(Expression<Func<TasksAssignTaskInput>> tasksAssignTask)
         {
-            var __workflow_tasksAssignTasktaskId = WorkflowExpression.Compile(tasksAssignTasktaskId, nameof(tasksAssignTasktaskId), required: true);
-            var __workflow_tasksAssignTaskassignToUserId = WorkflowExpression.Compile(tasksAssignTaskassignToUserId, nameof(tasksAssignTaskassignToUserId), required: false);
-            var __workflow_tasksAssignTaskassignToUserName = WorkflowExpression.Compile(tasksAssignTaskassignToUserName, nameof(tasksAssignTaskassignToUserName), required: false);
-            var __workflow_tasksAssignTaskassignToGroupId = WorkflowExpression.Compile(tasksAssignTaskassignToGroupId, nameof(tasksAssignTaskassignToGroupId), required: false);
-            var __workflow_tasksAssignTaskassignToGroupName = WorkflowExpression.Compile(tasksAssignTaskassignToGroupName, nameof(tasksAssignTaskassignToGroupName), required: false);
-            var __workflow_tasksAssignTaskremoveUserAssignmentIfBlank = WorkflowExpression.Compile(tasksAssignTaskremoveUserAssignmentIfBlank, nameof(tasksAssignTaskremoveUserAssignmentIfBlank), required: false);
-            var __workflow_tasksAssignTaskremoveGroupAssignmentIfBlank = WorkflowExpression.Compile(tasksAssignTaskremoveGroupAssignmentIfBlank, nameof(tasksAssignTaskremoveGroupAssignmentIfBlank), required: false);
+            var __workflow_tasksAssignTask = WorkflowExpression.Compile(tasksAssignTask, nameof(tasksAssignTask), required: true);
             return new DeferredBodyAction<TasksAssignTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksAssignTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksAssignTask = new JObject();
-                var tasksAssignTaskpropCount = 0;
-                tasksAssignTaskpropCount++;
-                tasksAssignTask["TaskId"] = ExpressionConverter.ConvertO(__workflow_tasksAssignTasktaskId);
-                if (__workflow_tasksAssignTaskassignToUserId != null)
-                {
-                    tasksAssignTask["AssignToUserId"] = ExpressionConverter.ConvertO(__workflow_tasksAssignTaskassignToUserId);
-                    tasksAssignTaskpropCount++;
-                }
-
-                if (__workflow_tasksAssignTaskassignToUserName != null)
-                {
-                    tasksAssignTask["AssignToUserName"] = ExpressionConverter.ConvertO(__workflow_tasksAssignTaskassignToUserName);
-                    tasksAssignTaskpropCount++;
-                }
-
-                if (__workflow_tasksAssignTaskassignToGroupId != null)
-                {
-                    tasksAssignTask["AssignToGroupId"] = ExpressionConverter.ConvertO(__workflow_tasksAssignTaskassignToGroupId);
-                    tasksAssignTaskpropCount++;
-                }
-
-                if (__workflow_tasksAssignTaskassignToGroupName != null)
-                {
-                    tasksAssignTask["AssignToGroupName"] = ExpressionConverter.ConvertO(__workflow_tasksAssignTaskassignToGroupName);
-                    tasksAssignTaskpropCount++;
-                }
-
-                if (__workflow_tasksAssignTaskremoveUserAssignmentIfBlank != null)
-                {
-                    if (__workflow_tasksAssignTaskremoveUserAssignmentIfBlank != null)
-                    {
-                        tasksAssignTask["RemoveUserAssignmentIfBlank"] = ExpressionConverter.ConvertO(__workflow_tasksAssignTaskremoveUserAssignmentIfBlank);
-                        tasksAssignTaskpropCount++;
-                    }
-
-                    tasksAssignTaskpropCount++;
-                }
-                else
-                {
-                    tasksAssignTask["RemoveUserAssignmentIfBlank"] = true;
-                    tasksAssignTaskpropCount++;
-                }
-
-                if (__workflow_tasksAssignTaskremoveGroupAssignmentIfBlank != null)
-                {
-                    if (__workflow_tasksAssignTaskremoveGroupAssignmentIfBlank != null)
-                    {
-                        tasksAssignTask["RemoveGroupAssignmentIfBlank"] = ExpressionConverter.ConvertO(__workflow_tasksAssignTaskremoveGroupAssignmentIfBlank);
-                        tasksAssignTaskpropCount++;
-                    }
-
-                    tasksAssignTaskpropCount++;
-                }
-                else
-                {
-                    tasksAssignTask["RemoveGroupAssignmentIfBlank"] = true;
-                    tasksAssignTaskpropCount++;
-                }
-
-                if (tasksAssignTaskpropCount > 0)
-                {
-                    callPayload.Body = tasksAssignTask;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksAssignTask);
                 return new ApiConnectionAction<TasksAssignTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksSetOutputDataResponse, ApiConnectionActionConfiguration> TasksSetOutputData(Expression<Func<int>> tasksSetOutputDatataskId, Expression<Func<string>> tasksSetOutputDatataskOutputData = null)
+        public IBodyWorkflowAction<TasksSetOutputDataResponse, ApiConnectionActionConfiguration> TasksSetOutputData(Expression<Func<TasksSetOutputDataInput>> tasksSetOutputData)
         {
-            var __workflow_tasksSetOutputDatataskId = WorkflowExpression.Compile(tasksSetOutputDatataskId, nameof(tasksSetOutputDatataskId), required: true);
-            var __workflow_tasksSetOutputDatataskOutputData = WorkflowExpression.Compile(tasksSetOutputDatataskOutputData, nameof(tasksSetOutputDatataskOutputData), required: false);
+            var __workflow_tasksSetOutputData = WorkflowExpression.Compile(tasksSetOutputData, nameof(tasksSetOutputData), required: true);
             return new DeferredBodyAction<TasksSetOutputDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksSetOutputData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksSetOutputData = new JObject();
-                var tasksSetOutputDatapropCount = 0;
-                tasksSetOutputDatapropCount++;
-                tasksSetOutputData["TaskId"] = ExpressionConverter.ConvertO(__workflow_tasksSetOutputDatataskId);
-                if (__workflow_tasksSetOutputDatataskOutputData != null)
-                {
-                    tasksSetOutputData["TaskOutputData"] = ExpressionConverter.ConvertO(__workflow_tasksSetOutputDatataskOutputData);
-                    tasksSetOutputDatapropCount++;
-                }
-
-                if (tasksSetOutputDatapropCount > 0)
-                {
-                    callPayload.Body = tasksSetOutputData;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksSetOutputData);
                 return new ApiConnectionAction<TasksSetOutputDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksAddNewTaskOperationResponse, ApiConnectionActionConfiguration> TasksAddNewTaskOperation(Expression<Func<string>> tasksAddNewTaskOperationautomationName = null, Expression<Func<string>> tasksAddNewTaskOperationtaskInputData = null, Expression<Func<string>> tasksAddNewTaskOperationprocessStage = null, Expression<Func<int>> tasksAddNewTaskOperationpriority = null, Expression<Func<int>> tasksAddNewTaskOperationsLA = null, Expression<Func<string>> tasksAddNewTaskOperationorganisation = null, Expression<Func<string>> tasksAddNewTaskOperationdepartment = null, Expression<Func<string>> tasksAddNewTaskOperationdescription = null, Expression<Func<string>> tasksAddNewTaskOperationtags = null)
+        public IBodyWorkflowAction<TasksAddNewTaskOperationResponse, ApiConnectionActionConfiguration> TasksAddNewTaskOperation(Expression<Func<TasksAddNewTaskOperationInput>> tasksAddNewTaskOperation)
         {
-            var __workflow_tasksAddNewTaskOperationautomationName = WorkflowExpression.Compile(tasksAddNewTaskOperationautomationName, nameof(tasksAddNewTaskOperationautomationName), required: false);
-            var __workflow_tasksAddNewTaskOperationtaskInputData = WorkflowExpression.Compile(tasksAddNewTaskOperationtaskInputData, nameof(tasksAddNewTaskOperationtaskInputData), required: false);
-            var __workflow_tasksAddNewTaskOperationprocessStage = WorkflowExpression.Compile(tasksAddNewTaskOperationprocessStage, nameof(tasksAddNewTaskOperationprocessStage), required: false);
-            var __workflow_tasksAddNewTaskOperationpriority = WorkflowExpression.Compile(tasksAddNewTaskOperationpriority, nameof(tasksAddNewTaskOperationpriority), required: false);
-            var __workflow_tasksAddNewTaskOperationsLA = WorkflowExpression.Compile(tasksAddNewTaskOperationsLA, nameof(tasksAddNewTaskOperationsLA), required: false);
-            var __workflow_tasksAddNewTaskOperationorganisation = WorkflowExpression.Compile(tasksAddNewTaskOperationorganisation, nameof(tasksAddNewTaskOperationorganisation), required: false);
-            var __workflow_tasksAddNewTaskOperationdepartment = WorkflowExpression.Compile(tasksAddNewTaskOperationdepartment, nameof(tasksAddNewTaskOperationdepartment), required: false);
-            var __workflow_tasksAddNewTaskOperationdescription = WorkflowExpression.Compile(tasksAddNewTaskOperationdescription, nameof(tasksAddNewTaskOperationdescription), required: false);
-            var __workflow_tasksAddNewTaskOperationtags = WorkflowExpression.Compile(tasksAddNewTaskOperationtags, nameof(tasksAddNewTaskOperationtags), required: false);
+            var __workflow_tasksAddNewTaskOperation = WorkflowExpression.Compile(tasksAddNewTaskOperation, nameof(tasksAddNewTaskOperation), required: true);
             return new DeferredBodyAction<TasksAddNewTaskOperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewTaskOperation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksAddNewTaskOperation = new JObject();
-                var tasksAddNewTaskOperationpropCount = 0;
-                if (__workflow_tasksAddNewTaskOperationautomationName != null)
-                {
-                    tasksAddNewTaskOperation["AutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationautomationName);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationtaskInputData != null)
-                {
-                    tasksAddNewTaskOperation["TaskInputData"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationtaskInputData);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationprocessStage != null)
-                {
-                    tasksAddNewTaskOperation["ProcessStage"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationprocessStage);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationpriority != null)
-                {
-                    if (__workflow_tasksAddNewTaskOperationpriority != null)
-                    {
-                        tasksAddNewTaskOperation["Priority"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationpriority);
-                        tasksAddNewTaskOperationpropCount++;
-                    }
-
-                    tasksAddNewTaskOperationpropCount++;
-                }
-                else
-                {
-                    tasksAddNewTaskOperation["Priority"] = 3;
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationsLA != null)
-                {
-                    tasksAddNewTaskOperation["SLA"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationsLA);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationorganisation != null)
-                {
-                    tasksAddNewTaskOperation["Organisation"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationorganisation);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationdepartment != null)
-                {
-                    tasksAddNewTaskOperation["Department"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationdepartment);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationdescription != null)
-                {
-                    tasksAddNewTaskOperation["Description"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationdescription);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewTaskOperationtags != null)
-                {
-                    tasksAddNewTaskOperation["Tags"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperationtags);
-                    tasksAddNewTaskOperationpropCount++;
-                }
-
-                if (tasksAddNewTaskOperationpropCount > 0)
-                {
-                    callPayload.Body = tasksAddNewTaskOperation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksAddNewTaskOperation);
                 return new ApiConnectionAction<TasksAddNewTaskOperationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksAddNewDeferralOperationResponse, ApiConnectionActionConfiguration> TasksAddNewDeferralOperation(Expression<Func<string>> tasksAddNewDeferralOperationautomationName = null, Expression<Func<int>> tasksAddNewDeferralOperationdeferralTimeInMinutes = null, Expression<Func<string>> tasksAddNewDeferralOperationtaskInputData = null, Expression<Func<string>> tasksAddNewDeferralOperationdeferralStoredData = null, Expression<Func<string>> tasksAddNewDeferralOperationprocessStage = null, Expression<Func<int>> tasksAddNewDeferralOperationpriority = null, Expression<Func<string>> tasksAddNewDeferralOperationorganisation = null, Expression<Func<string>> tasksAddNewDeferralOperationdepartment = null, Expression<Func<string>> tasksAddNewDeferralOperationdescription = null, Expression<Func<string>> tasksAddNewDeferralOperationtags = null)
+        public IBodyWorkflowAction<TasksAddNewDeferralOperationResponse, ApiConnectionActionConfiguration> TasksAddNewDeferralOperation(Expression<Func<TasksAddNewDeferralOperationInput>> tasksAddNewDeferralOperation)
         {
-            var __workflow_tasksAddNewDeferralOperationautomationName = WorkflowExpression.Compile(tasksAddNewDeferralOperationautomationName, nameof(tasksAddNewDeferralOperationautomationName), required: false);
-            var __workflow_tasksAddNewDeferralOperationdeferralTimeInMinutes = WorkflowExpression.Compile(tasksAddNewDeferralOperationdeferralTimeInMinutes, nameof(tasksAddNewDeferralOperationdeferralTimeInMinutes), required: false);
-            var __workflow_tasksAddNewDeferralOperationtaskInputData = WorkflowExpression.Compile(tasksAddNewDeferralOperationtaskInputData, nameof(tasksAddNewDeferralOperationtaskInputData), required: false);
-            var __workflow_tasksAddNewDeferralOperationdeferralStoredData = WorkflowExpression.Compile(tasksAddNewDeferralOperationdeferralStoredData, nameof(tasksAddNewDeferralOperationdeferralStoredData), required: false);
-            var __workflow_tasksAddNewDeferralOperationprocessStage = WorkflowExpression.Compile(tasksAddNewDeferralOperationprocessStage, nameof(tasksAddNewDeferralOperationprocessStage), required: false);
-            var __workflow_tasksAddNewDeferralOperationpriority = WorkflowExpression.Compile(tasksAddNewDeferralOperationpriority, nameof(tasksAddNewDeferralOperationpriority), required: false);
-            var __workflow_tasksAddNewDeferralOperationorganisation = WorkflowExpression.Compile(tasksAddNewDeferralOperationorganisation, nameof(tasksAddNewDeferralOperationorganisation), required: false);
-            var __workflow_tasksAddNewDeferralOperationdepartment = WorkflowExpression.Compile(tasksAddNewDeferralOperationdepartment, nameof(tasksAddNewDeferralOperationdepartment), required: false);
-            var __workflow_tasksAddNewDeferralOperationdescription = WorkflowExpression.Compile(tasksAddNewDeferralOperationdescription, nameof(tasksAddNewDeferralOperationdescription), required: false);
-            var __workflow_tasksAddNewDeferralOperationtags = WorkflowExpression.Compile(tasksAddNewDeferralOperationtags, nameof(tasksAddNewDeferralOperationtags), required: false);
+            var __workflow_tasksAddNewDeferralOperation = WorkflowExpression.Compile(tasksAddNewDeferralOperation, nameof(tasksAddNewDeferralOperation), required: true);
             return new DeferredBodyAction<TasksAddNewDeferralOperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewDeferralOperation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksAddNewDeferralOperation = new JObject();
-                var tasksAddNewDeferralOperationpropCount = 0;
-                if (__workflow_tasksAddNewDeferralOperationautomationName != null)
-                {
-                    tasksAddNewDeferralOperation["AutomationName"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationautomationName);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationdeferralTimeInMinutes != null)
-                {
-                    tasksAddNewDeferralOperation["DeferralTimeInMinutes"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationdeferralTimeInMinutes);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationtaskInputData != null)
-                {
-                    tasksAddNewDeferralOperation["TaskInputData"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationtaskInputData);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationdeferralStoredData != null)
-                {
-                    tasksAddNewDeferralOperation["DeferralStoredData"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationdeferralStoredData);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationprocessStage != null)
-                {
-                    tasksAddNewDeferralOperation["ProcessStage"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationprocessStage);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationpriority != null)
-                {
-                    if (__workflow_tasksAddNewDeferralOperationpriority != null)
-                    {
-                        tasksAddNewDeferralOperation["Priority"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationpriority);
-                        tasksAddNewDeferralOperationpropCount++;
-                    }
-
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-                else
-                {
-                    tasksAddNewDeferralOperation["Priority"] = 3;
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationorganisation != null)
-                {
-                    tasksAddNewDeferralOperation["Organisation"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationorganisation);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationdepartment != null)
-                {
-                    tasksAddNewDeferralOperation["Department"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationdepartment);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationdescription != null)
-                {
-                    tasksAddNewDeferralOperation["Description"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationdescription);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (__workflow_tasksAddNewDeferralOperationtags != null)
-                {
-                    tasksAddNewDeferralOperation["Tags"] = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperationtags);
-                    tasksAddNewDeferralOperationpropCount++;
-                }
-
-                if (tasksAddNewDeferralOperationpropCount > 0)
-                {
-                    callPayload.Body = tasksAddNewDeferralOperation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksAddNewDeferralOperation);
                 return new ApiConnectionAction<TasksAddNewDeferralOperationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<TasksGetTaskOperationResponse, ApiConnectionActionConfiguration> TasksGetTaskOperation(Expression<Func<string>> tasksGetTaskOperationoperationId)
+        public IBodyWorkflowAction<TasksGetTaskOperationResponse, ApiConnectionActionConfiguration> TasksGetTaskOperation(Expression<Func<TasksGetTaskOperationInput>> tasksGetTaskOperation)
         {
-            var __workflow_tasksGetTaskOperationoperationId = WorkflowExpression.Compile(tasksGetTaskOperationoperationId, nameof(tasksGetTaskOperationoperationId), required: true);
+            var __workflow_tasksGetTaskOperation = WorkflowExpression.Compile(tasksGetTaskOperation, nameof(tasksGetTaskOperation), required: true);
             return new DeferredBodyAction<TasksGetTaskOperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetTaskOperation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var tasksGetTaskOperation = new JObject();
-                var tasksGetTaskOperationpropCount = 0;
-                tasksGetTaskOperationpropCount++;
-                tasksGetTaskOperation["OperationId"] = ExpressionConverter.ConvertO(__workflow_tasksGetTaskOperationoperationId);
-                if (tasksGetTaskOperationpropCount > 0)
-                {
-                    callPayload.Body = tasksGetTaskOperation;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_tasksGetTaskOperation);
                 return new ApiConnectionAction<TasksGetTaskOperationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRemoteLoggingLevel(Expression<Func<int>> setRemoteLoggingLevelloggingLevel, Expression<Func<string>> setRemoteLoggingLevelworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRemoteLoggingLevel(Expression<Func<SetRemoteLoggingLevelInput>> setRemoteLoggingLevel)
         {
-            var __workflow_setRemoteLoggingLevelloggingLevel = WorkflowExpression.Compile(setRemoteLoggingLevelloggingLevel, nameof(setRemoteLoggingLevelloggingLevel), required: true);
-            var __workflow_setRemoteLoggingLevelworkflow = WorkflowExpression.Compile(setRemoteLoggingLevelworkflow, nameof(setRemoteLoggingLevelworkflow), required: true);
+            var __workflow_setRemoteLoggingLevel = WorkflowExpression.Compile(setRemoteLoggingLevel, nameof(setRemoteLoggingLevel), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRemoteLoggingLevel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setRemoteLoggingLevel = new JObject();
-                var setRemoteLoggingLevelpropCount = 0;
-                setRemoteLoggingLevelpropCount++;
-                setRemoteLoggingLevel["LoggingLevel"] = ExpressionConverter.ConvertO(__workflow_setRemoteLoggingLevelloggingLevel);
-                setRemoteLoggingLevelpropCount++;
-                setRemoteLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(__workflow_setRemoteLoggingLevelworkflow);
-                if (setRemoteLoggingLevelpropCount > 0)
-                {
-                    callPayload.Body = setRemoteLoggingLevel;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRemoteLoggingLevel);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetRemoteLoggingLevelResponse, ApiConnectionActionConfiguration> GetRemoteLoggingLevel(Expression<Func<string>> getRemoteLoggingLevelworkflow)
+        public IBodyWorkflowAction<GetRemoteLoggingLevelResponse, ApiConnectionActionConfiguration> GetRemoteLoggingLevel(Expression<Func<GetRemoteLoggingLevelInput>> getRemoteLoggingLevel)
         {
-            var __workflow_getRemoteLoggingLevelworkflow = WorkflowExpression.Compile(getRemoteLoggingLevelworkflow, nameof(getRemoteLoggingLevelworkflow), required: true);
+            var __workflow_getRemoteLoggingLevel = WorkflowExpression.Compile(getRemoteLoggingLevel, nameof(getRemoteLoggingLevel), required: true);
             return new DeferredBodyAction<GetRemoteLoggingLevelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetRemoteLoggingLevel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getRemoteLoggingLevel = new JObject();
-                var getRemoteLoggingLevelpropCount = 0;
-                getRemoteLoggingLevelpropCount++;
-                getRemoteLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(__workflow_getRemoteLoggingLevelworkflow);
-                if (getRemoteLoggingLevelpropCount > 0)
-                {
-                    callPayload.Body = getRemoteLoggingLevel;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getRemoteLoggingLevel);
                 return new ApiConnectionAction<GetRemoteLoggingLevelResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetLicenseCode(Expression<Func<string>> setLicenseCodecustomerNETBIOSDomainName, Expression<Func<string>> setLicenseCodecustomerDisplayName, Expression<Func<string>> setLicenseCodevendorName, Expression<Func<string>> setLicenseCodelicenseExpiryDate, Expression<Func<string>> setLicenseCodeactivationCode, Expression<Func<string>> setLicenseCodeworkflow, Expression<Func<bool>> setLicenseCodestoreInRegistry = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetLicenseCode(Expression<Func<SetLicenseCodeInput>> setLicenseCode)
         {
-            var __workflow_setLicenseCodecustomerNETBIOSDomainName = WorkflowExpression.Compile(setLicenseCodecustomerNETBIOSDomainName, nameof(setLicenseCodecustomerNETBIOSDomainName), required: true);
-            var __workflow_setLicenseCodecustomerDisplayName = WorkflowExpression.Compile(setLicenseCodecustomerDisplayName, nameof(setLicenseCodecustomerDisplayName), required: true);
-            var __workflow_setLicenseCodevendorName = WorkflowExpression.Compile(setLicenseCodevendorName, nameof(setLicenseCodevendorName), required: true);
-            var __workflow_setLicenseCodelicenseExpiryDate = WorkflowExpression.Compile(setLicenseCodelicenseExpiryDate, nameof(setLicenseCodelicenseExpiryDate), required: true);
-            var __workflow_setLicenseCodeactivationCode = WorkflowExpression.Compile(setLicenseCodeactivationCode, nameof(setLicenseCodeactivationCode), required: true);
-            var __workflow_setLicenseCodeworkflow = WorkflowExpression.Compile(setLicenseCodeworkflow, nameof(setLicenseCodeworkflow), required: true);
-            var __workflow_setLicenseCodestoreInRegistry = WorkflowExpression.Compile(setLicenseCodestoreInRegistry, nameof(setLicenseCodestoreInRegistry), required: false);
+            var __workflow_setLicenseCode = WorkflowExpression.Compile(setLicenseCode, nameof(setLicenseCode), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetLicenseCode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setLicenseCode = new JObject();
-                var setLicenseCodepropCount = 0;
-                setLicenseCodepropCount++;
-                setLicenseCode["CustomerNETBIOSDomainName"] = ExpressionConverter.ConvertO(__workflow_setLicenseCodecustomerNETBIOSDomainName);
-                setLicenseCodepropCount++;
-                setLicenseCode["CustomerDisplayName"] = ExpressionConverter.ConvertO(__workflow_setLicenseCodecustomerDisplayName);
-                setLicenseCodepropCount++;
-                setLicenseCode["VendorName"] = ExpressionConverter.ConvertO(__workflow_setLicenseCodevendorName);
-                setLicenseCodepropCount++;
-                setLicenseCode["LicenseExpiryDate"] = ExpressionConverter.ConvertO(__workflow_setLicenseCodelicenseExpiryDate);
-                setLicenseCodepropCount++;
-                setLicenseCode["ActivationCode"] = ExpressionConverter.ConvertO(__workflow_setLicenseCodeactivationCode);
-                if (__workflow_setLicenseCodestoreInRegistry != null)
-                {
-                    if (__workflow_setLicenseCodestoreInRegistry != null)
-                    {
-                        setLicenseCode["StoreInRegistry"] = ExpressionConverter.ConvertO(__workflow_setLicenseCodestoreInRegistry);
-                        setLicenseCodepropCount++;
-                    }
-
-                    setLicenseCodepropCount++;
-                }
-                else
-                {
-                    setLicenseCode["StoreInRegistry"] = true;
-                    setLicenseCodepropCount++;
-                }
-
-                setLicenseCodepropCount++;
-                setLicenseCode["Workflow"] = ExpressionConverter.ConvertO(__workflow_setLicenseCodeworkflow);
-                if (setLicenseCodepropCount > 0)
-                {
-                    callPayload.Body = setLicenseCode;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setLicenseCode);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<SetLicenseStringResponse, ApiConnectionActionConfiguration> SetLicenseString(Expression<Func<string>> setLicenseStringlicenseString, Expression<Func<string>> setLicenseStringworkflow, Expression<Func<bool>> setLicenseStringstoreInRegistry = null)
+        public IBodyWorkflowAction<SetLicenseStringResponse, ApiConnectionActionConfiguration> SetLicenseString(Expression<Func<SetLicenseStringInput>> setLicenseString)
         {
-            var __workflow_setLicenseStringlicenseString = WorkflowExpression.Compile(setLicenseStringlicenseString, nameof(setLicenseStringlicenseString), required: true);
-            var __workflow_setLicenseStringworkflow = WorkflowExpression.Compile(setLicenseStringworkflow, nameof(setLicenseStringworkflow), required: true);
-            var __workflow_setLicenseStringstoreInRegistry = WorkflowExpression.Compile(setLicenseStringstoreInRegistry, nameof(setLicenseStringstoreInRegistry), required: false);
+            var __workflow_setLicenseString = WorkflowExpression.Compile(setLicenseString, nameof(setLicenseString), required: true);
             return new DeferredBodyAction<SetLicenseStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetLicenseString";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setLicenseString = new JObject();
-                var setLicenseStringpropCount = 0;
-                setLicenseStringpropCount++;
-                setLicenseString["LicenseString"] = ExpressionConverter.ConvertO(__workflow_setLicenseStringlicenseString);
-                if (__workflow_setLicenseStringstoreInRegistry != null)
-                {
-                    if (__workflow_setLicenseStringstoreInRegistry != null)
-                    {
-                        setLicenseString["StoreInRegistry"] = ExpressionConverter.ConvertO(__workflow_setLicenseStringstoreInRegistry);
-                        setLicenseStringpropCount++;
-                    }
-
-                    setLicenseStringpropCount++;
-                }
-                else
-                {
-                    setLicenseString["StoreInRegistry"] = true;
-                    setLicenseStringpropCount++;
-                }
-
-                setLicenseStringpropCount++;
-                setLicenseString["Workflow"] = ExpressionConverter.ConvertO(__workflow_setLicenseStringworkflow);
-                if (setLicenseStringpropCount > 0)
-                {
-                    callPayload.Body = setLicenseString;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setLicenseString);
                 return new ApiConnectionAction<SetLicenseStringResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetLicenseStateResponse, ApiConnectionActionConfiguration> GetLicenseState(Expression<Func<string>> getLicenseStateworkflow)
+        public IBodyWorkflowAction<GetLicenseStateResponse, ApiConnectionActionConfiguration> GetLicenseState(Expression<Func<GetLicenseStateInput>> getLicenseState)
         {
-            var __workflow_getLicenseStateworkflow = WorkflowExpression.Compile(getLicenseStateworkflow, nameof(getLicenseStateworkflow), required: true);
+            var __workflow_getLicenseState = WorkflowExpression.Compile(getLicenseState, nameof(getLicenseState), required: true);
             return new DeferredBodyAction<GetLicenseStateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetLicenseState";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getLicenseState = new JObject();
-                var getLicenseStatepropCount = 0;
-                getLicenseStatepropCount++;
-                getLicenseState["Workflow"] = ExpressionConverter.ConvertO(__workflow_getLicenseStateworkflow);
-                if (getLicenseStatepropCount > 0)
-                {
-                    callPayload.Body = getLicenseState;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getLicenseState);
                 return new ApiConnectionAction<GetLicenseStateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUITopmost(Expression<Func<string>> setRSAGUITopmostworkflow, Expression<Func<bool>> setRSAGUITopmosttopMost = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUITopmost(Expression<Func<SetRSAGUITopmostInput>> setRSAGUITopmost)
         {
-            var __workflow_setRSAGUITopmostworkflow = WorkflowExpression.Compile(setRSAGUITopmostworkflow, nameof(setRSAGUITopmostworkflow), required: true);
-            var __workflow_setRSAGUITopmosttopMost = WorkflowExpression.Compile(setRSAGUITopmosttopMost, nameof(setRSAGUITopmosttopMost), required: false);
+            var __workflow_setRSAGUITopmost = WorkflowExpression.Compile(setRSAGUITopmost, nameof(setRSAGUITopmost), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUITopmost";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setRSAGUITopmost = new JObject();
-                var setRSAGUITopmostpropCount = 0;
-                if (__workflow_setRSAGUITopmosttopMost != null)
-                {
-                    if (__workflow_setRSAGUITopmosttopMost != null)
-                    {
-                        setRSAGUITopmost["TopMost"] = ExpressionConverter.ConvertO(__workflow_setRSAGUITopmosttopMost);
-                        setRSAGUITopmostpropCount++;
-                    }
-
-                    setRSAGUITopmostpropCount++;
-                }
-                else
-                {
-                    setRSAGUITopmost["TopMost"] = true;
-                    setRSAGUITopmostpropCount++;
-                }
-
-                setRSAGUITopmostpropCount++;
-                setRSAGUITopmost["Workflow"] = ExpressionConverter.ConvertO(__workflow_setRSAGUITopmostworkflow);
-                if (setRSAGUITopmostpropCount > 0)
-                {
-                    callPayload.Body = setRSAGUITopmost;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRSAGUITopmost);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUIOpacity(Expression<Func<double>> setRSAGUIOpacityopacity, Expression<Func<string>> setRSAGUIOpacityworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUIOpacity(Expression<Func<SetRSAGUIOpacityInput>> setRSAGUIOpacity)
         {
-            var __workflow_setRSAGUIOpacityopacity = WorkflowExpression.Compile(setRSAGUIOpacityopacity, nameof(setRSAGUIOpacityopacity), required: true);
-            var __workflow_setRSAGUIOpacityworkflow = WorkflowExpression.Compile(setRSAGUIOpacityworkflow, nameof(setRSAGUIOpacityworkflow), required: true);
+            var __workflow_setRSAGUIOpacity = WorkflowExpression.Compile(setRSAGUIOpacity, nameof(setRSAGUIOpacity), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIOpacity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setRSAGUIOpacity = new JObject();
-                var setRSAGUIOpacitypropCount = 0;
-                setRSAGUIOpacitypropCount++;
-                setRSAGUIOpacity["Opacity"] = ExpressionConverter.ConvertO(__workflow_setRSAGUIOpacityopacity);
-                setRSAGUIOpacitypropCount++;
-                setRSAGUIOpacity["Workflow"] = ExpressionConverter.ConvertO(__workflow_setRSAGUIOpacityworkflow);
-                if (setRSAGUIOpacitypropCount > 0)
-                {
-                    callPayload.Body = setRSAGUIOpacity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRSAGUIOpacity);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUIPosition(Expression<Func<int>> setRSAGUIPositionx, Expression<Func<int>> setRSAGUIPositiony, Expression<Func<string>> setRSAGUIPositionworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRSAGUIPosition(Expression<Func<SetRSAGUIPositionInput>> setRSAGUIPosition)
         {
-            var __workflow_setRSAGUIPositionx = WorkflowExpression.Compile(setRSAGUIPositionx, nameof(setRSAGUIPositionx), required: true);
-            var __workflow_setRSAGUIPositiony = WorkflowExpression.Compile(setRSAGUIPositiony, nameof(setRSAGUIPositiony), required: true);
-            var __workflow_setRSAGUIPositionworkflow = WorkflowExpression.Compile(setRSAGUIPositionworkflow, nameof(setRSAGUIPositionworkflow), required: true);
+            var __workflow_setRSAGUIPosition = WorkflowExpression.Compile(setRSAGUIPosition, nameof(setRSAGUIPosition), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIPosition";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setRSAGUIPosition = new JObject();
-                var setRSAGUIPositionpropCount = 0;
-                setRSAGUIPositionpropCount++;
-                setRSAGUIPosition["X"] = ExpressionConverter.ConvertO(__workflow_setRSAGUIPositionx);
-                setRSAGUIPositionpropCount++;
-                setRSAGUIPosition["Y"] = ExpressionConverter.ConvertO(__workflow_setRSAGUIPositiony);
-                setRSAGUIPositionpropCount++;
-                setRSAGUIPosition["Workflow"] = ExpressionConverter.ConvertO(__workflow_setRSAGUIPositionworkflow);
-                if (setRSAGUIPositionpropCount > 0)
-                {
-                    callPayload.Body = setRSAGUIPosition;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRSAGUIPosition);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BringRSAGUIToFront(Expression<Func<string>> bringRSAGUIToFrontworkflow, Expression<Func<bool>> bringRSAGUIToFrontfocus = null, Expression<Func<bool>> bringRSAGUIToFrontglobalLeftMouseClick = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BringRSAGUIToFront(Expression<Func<BringRSAGUIToFrontInput>> bringRSAGUIToFront)
         {
-            var __workflow_bringRSAGUIToFrontworkflow = WorkflowExpression.Compile(bringRSAGUIToFrontworkflow, nameof(bringRSAGUIToFrontworkflow), required: true);
-            var __workflow_bringRSAGUIToFrontfocus = WorkflowExpression.Compile(bringRSAGUIToFrontfocus, nameof(bringRSAGUIToFrontfocus), required: false);
-            var __workflow_bringRSAGUIToFrontglobalLeftMouseClick = WorkflowExpression.Compile(bringRSAGUIToFrontglobalLeftMouseClick, nameof(bringRSAGUIToFrontglobalLeftMouseClick), required: false);
+            var __workflow_bringRSAGUIToFront = WorkflowExpression.Compile(bringRSAGUIToFront, nameof(bringRSAGUIToFront), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/BringRSAGUIToFront";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var bringRSAGUIToFront = new JObject();
-                var bringRSAGUIToFrontpropCount = 0;
-                if (__workflow_bringRSAGUIToFrontfocus != null)
-                {
-                    if (__workflow_bringRSAGUIToFrontfocus != null)
-                    {
-                        bringRSAGUIToFront["Focus"] = ExpressionConverter.ConvertO(__workflow_bringRSAGUIToFrontfocus);
-                        bringRSAGUIToFrontpropCount++;
-                    }
-
-                    bringRSAGUIToFrontpropCount++;
-                }
-                else
-                {
-                    bringRSAGUIToFront["Focus"] = true;
-                    bringRSAGUIToFrontpropCount++;
-                }
-
-                if (__workflow_bringRSAGUIToFrontglobalLeftMouseClick != null)
-                {
-                    if (__workflow_bringRSAGUIToFrontglobalLeftMouseClick != null)
-                    {
-                        bringRSAGUIToFront["GlobalLeftMouseClick"] = ExpressionConverter.ConvertO(__workflow_bringRSAGUIToFrontglobalLeftMouseClick);
-                        bringRSAGUIToFrontpropCount++;
-                    }
-
-                    bringRSAGUIToFrontpropCount++;
-                }
-                else
-                {
-                    bringRSAGUIToFront["GlobalLeftMouseClick"] = true;
-                    bringRSAGUIToFrontpropCount++;
-                }
-
-                bringRSAGUIToFrontpropCount++;
-                bringRSAGUIToFront["Workflow"] = ExpressionConverter.ConvertO(__workflow_bringRSAGUIToFrontworkflow);
-                if (bringRSAGUIToFrontpropCount > 0)
-                {
-                    callPayload.Body = bringRSAGUIToFront;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_bringRSAGUIToFront);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DisconnectSession(Expression<Func<string>> disconnectSessionworkflow, Expression<Func<int>> disconnectSessionsecondsToWait = null, Expression<Func<bool>> disconnectSessiondoNotDisconnectIfLocalAgent = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DisconnectSession(Expression<Func<DisconnectSessionInput>> disconnectSession)
         {
-            var __workflow_disconnectSessionworkflow = WorkflowExpression.Compile(disconnectSessionworkflow, nameof(disconnectSessionworkflow), required: true);
-            var __workflow_disconnectSessionsecondsToWait = WorkflowExpression.Compile(disconnectSessionsecondsToWait, nameof(disconnectSessionsecondsToWait), required: false);
-            var __workflow_disconnectSessiondoNotDisconnectIfLocalAgent = WorkflowExpression.Compile(disconnectSessiondoNotDisconnectIfLocalAgent, nameof(disconnectSessiondoNotDisconnectIfLocalAgent), required: false);
+            var __workflow_disconnectSession = WorkflowExpression.Compile(disconnectSession, nameof(disconnectSession), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/DisconnectSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var disconnectSession = new JObject();
-                var disconnectSessionpropCount = 0;
-                if (__workflow_disconnectSessionsecondsToWait != null)
-                {
-                    if (__workflow_disconnectSessionsecondsToWait != null)
-                    {
-                        disconnectSession["SecondsToWait"] = ExpressionConverter.ConvertO(__workflow_disconnectSessionsecondsToWait);
-                        disconnectSessionpropCount++;
-                    }
-
-                    disconnectSessionpropCount++;
-                }
-                else
-                {
-                    disconnectSession["SecondsToWait"] = 3;
-                    disconnectSessionpropCount++;
-                }
-
-                if (__workflow_disconnectSessiondoNotDisconnectIfLocalAgent != null)
-                {
-                    if (__workflow_disconnectSessiondoNotDisconnectIfLocalAgent != null)
-                    {
-                        disconnectSession["DoNotDisconnectIfLocalAgent"] = ExpressionConverter.ConvertO(__workflow_disconnectSessiondoNotDisconnectIfLocalAgent);
-                        disconnectSessionpropCount++;
-                    }
-
-                    disconnectSessionpropCount++;
-                }
-                else
-                {
-                    disconnectSession["DoNotDisconnectIfLocalAgent"] = false;
-                    disconnectSessionpropCount++;
-                }
-
-                disconnectSessionpropCount++;
-                disconnectSession["Workflow"] = ExpressionConverter.ConvertO(__workflow_disconnectSessionworkflow);
-                if (disconnectSessionpropCount > 0)
-                {
-                    callPayload.Body = disconnectSession;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_disconnectSession);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LogoffSession(Expression<Func<string>> logoffSessionworkflow, Expression<Func<int>> logoffSessionsecondsToWait = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LogoffSession(Expression<Func<LogoffSessionInput>> logoffSession)
         {
-            var __workflow_logoffSessionworkflow = WorkflowExpression.Compile(logoffSessionworkflow, nameof(logoffSessionworkflow), required: true);
-            var __workflow_logoffSessionsecondsToWait = WorkflowExpression.Compile(logoffSessionsecondsToWait, nameof(logoffSessionsecondsToWait), required: false);
+            var __workflow_logoffSession = WorkflowExpression.Compile(logoffSession, nameof(logoffSession), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/LogoffSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var logoffSession = new JObject();
-                var logoffSessionpropCount = 0;
-                if (__workflow_logoffSessionsecondsToWait != null)
-                {
-                    if (__workflow_logoffSessionsecondsToWait != null)
-                    {
-                        logoffSession["SecondsToWait"] = ExpressionConverter.ConvertO(__workflow_logoffSessionsecondsToWait);
-                        logoffSessionpropCount++;
-                    }
-
-                    logoffSessionpropCount++;
-                }
-                else
-                {
-                    logoffSession["SecondsToWait"] = 3;
-                    logoffSessionpropCount++;
-                }
-
-                logoffSessionpropCount++;
-                logoffSession["Workflow"] = ExpressionConverter.ConvertO(__workflow_logoffSessionworkflow);
-                if (logoffSessionpropCount > 0)
-                {
-                    callPayload.Body = logoffSession;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_logoffSession);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CloseRSAServer(Expression<Func<string>> closeRSAServerworkflow, Expression<Func<int>> closeRSAServersecondsToWait = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CloseRSAServer(Expression<Func<CloseRSAServerInput>> closeRSAServer)
         {
-            var __workflow_closeRSAServerworkflow = WorkflowExpression.Compile(closeRSAServerworkflow, nameof(closeRSAServerworkflow), required: true);
-            var __workflow_closeRSAServersecondsToWait = WorkflowExpression.Compile(closeRSAServersecondsToWait, nameof(closeRSAServersecondsToWait), required: false);
+            var __workflow_closeRSAServer = WorkflowExpression.Compile(closeRSAServer, nameof(closeRSAServer), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/CloseRSAServer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var closeRSAServer = new JObject();
-                var closeRSAServerpropCount = 0;
-                if (__workflow_closeRSAServersecondsToWait != null)
-                {
-                    if (__workflow_closeRSAServersecondsToWait != null)
-                    {
-                        closeRSAServer["SecondsToWait"] = ExpressionConverter.ConvertO(__workflow_closeRSAServersecondsToWait);
-                        closeRSAServerpropCount++;
-                    }
-
-                    closeRSAServerpropCount++;
-                }
-                else
-                {
-                    closeRSAServer["SecondsToWait"] = 3;
-                    closeRSAServerpropCount++;
-                }
-
-                closeRSAServerpropCount++;
-                closeRSAServer["Workflow"] = ExpressionConverter.ConvertO(__workflow_closeRSAServerworkflow);
-                if (closeRSAServerpropCount > 0)
-                {
-                    callPayload.Body = closeRSAServer;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_closeRSAServer);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetRPACommandTimeout(Expression<Func<int>> setRPACommandTimeoutcommandTimeoutInSeconds, Expression<Func<string>> setRPACommandTimeoutworkflow, Expression<Func<bool>> setRPACommandTimeoutterminateTimedoutRPACommandThreads = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetRPACommandTimeout(Expression<Func<SetRPACommandTimeoutInput>> setRPACommandTimeout)
         {
-            var __workflow_setRPACommandTimeoutcommandTimeoutInSeconds = WorkflowExpression.Compile(setRPACommandTimeoutcommandTimeoutInSeconds, nameof(setRPACommandTimeoutcommandTimeoutInSeconds), required: true);
-            var __workflow_setRPACommandTimeoutworkflow = WorkflowExpression.Compile(setRPACommandTimeoutworkflow, nameof(setRPACommandTimeoutworkflow), required: true);
-            var __workflow_setRPACommandTimeoutterminateTimedoutRPACommandThreads = WorkflowExpression.Compile(setRPACommandTimeoutterminateTimedoutRPACommandThreads, nameof(setRPACommandTimeoutterminateTimedoutRPACommandThreads), required: false);
+            var __workflow_setRPACommandTimeout = WorkflowExpression.Compile(setRPACommandTimeout, nameof(setRPACommandTimeout), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetRPACommandTimeout";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setRPACommandTimeout = new JObject();
-                var setRPACommandTimeoutpropCount = 0;
-                setRPACommandTimeoutpropCount++;
-                setRPACommandTimeout["CommandTimeoutInSeconds"] = ExpressionConverter.ConvertO(__workflow_setRPACommandTimeoutcommandTimeoutInSeconds);
-                if (__workflow_setRPACommandTimeoutterminateTimedoutRPACommandThreads != null)
-                {
-                    if (__workflow_setRPACommandTimeoutterminateTimedoutRPACommandThreads != null)
-                    {
-                        setRPACommandTimeout["TerminateTimedoutRPACommandThreads"] = ExpressionConverter.ConvertO(__workflow_setRPACommandTimeoutterminateTimedoutRPACommandThreads);
-                        setRPACommandTimeoutpropCount++;
-                    }
-
-                    setRPACommandTimeoutpropCount++;
-                }
-                else
-                {
-                    setRPACommandTimeout["TerminateTimedoutRPACommandThreads"] = true;
-                    setRPACommandTimeoutpropCount++;
-                }
-
-                setRPACommandTimeoutpropCount++;
-                setRPACommandTimeout["Workflow"] = ExpressionConverter.ConvertO(__workflow_setRPACommandTimeoutworkflow);
-                if (setRPACommandTimeoutpropCount > 0)
-                {
-                    callPayload.Body = setRPACommandTimeout;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setRPACommandTimeout);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RunAlternativeIAConnect(Expression<Func<string>> runAlternativeIAConnectfilename, Expression<Func<string>> runAlternativeIAConnectworkflow, Expression<Func<string>> runAlternativeIAConnectarguments = null, Expression<Func<bool>> runAlternativeIAConnectloadIntoMemory = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RunAlternativeIAConnect(Expression<Func<RunAlternativeIAConnectInput>> runAlternativeIAConnect)
         {
-            var __workflow_runAlternativeIAConnectfilename = WorkflowExpression.Compile(runAlternativeIAConnectfilename, nameof(runAlternativeIAConnectfilename), required: true);
-            var __workflow_runAlternativeIAConnectworkflow = WorkflowExpression.Compile(runAlternativeIAConnectworkflow, nameof(runAlternativeIAConnectworkflow), required: true);
-            var __workflow_runAlternativeIAConnectarguments = WorkflowExpression.Compile(runAlternativeIAConnectarguments, nameof(runAlternativeIAConnectarguments), required: false);
-            var __workflow_runAlternativeIAConnectloadIntoMemory = WorkflowExpression.Compile(runAlternativeIAConnectloadIntoMemory, nameof(runAlternativeIAConnectloadIntoMemory), required: false);
+            var __workflow_runAlternativeIAConnect = WorkflowExpression.Compile(runAlternativeIAConnect, nameof(runAlternativeIAConnect), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/RunAlternativeIAConnect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var runAlternativeIAConnect = new JObject();
-                var runAlternativeIAConnectpropCount = 0;
-                runAlternativeIAConnectpropCount++;
-                runAlternativeIAConnect["Filename"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectfilename);
-                if (__workflow_runAlternativeIAConnectarguments != null)
-                {
-                    runAlternativeIAConnect["Arguments"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectarguments);
-                    runAlternativeIAConnectpropCount++;
-                }
-
-                if (__workflow_runAlternativeIAConnectloadIntoMemory != null)
-                {
-                    if (__workflow_runAlternativeIAConnectloadIntoMemory != null)
-                    {
-                        runAlternativeIAConnect["LoadIntoMemory"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectloadIntoMemory);
-                        runAlternativeIAConnectpropCount++;
-                    }
-
-                    runAlternativeIAConnectpropCount++;
-                }
-                else
-                {
-                    runAlternativeIAConnect["LoadIntoMemory"] = true;
-                    runAlternativeIAConnectpropCount++;
-                }
-
-                runAlternativeIAConnectpropCount++;
-                runAlternativeIAConnect["Workflow"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectworkflow);
-                if (runAlternativeIAConnectpropCount > 0)
-                {
-                    callPayload.Body = runAlternativeIAConnect;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnect);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<RunAlternativeIAConnectSentFromDirectorResponse, ApiConnectionActionConfiguration> RunAlternativeIAConnectSentFromDirector(Expression<Func<string>> runAlternativeIAConnectSentFromDirectorlocalFilename, Expression<Func<string>> runAlternativeIAConnectSentFromDirectorworkflow, Expression<Func<string>> runAlternativeIAConnectSentFromDirectorremoteFilename = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorcompress = null, Expression<Func<string>> runAlternativeIAConnectSentFromDirectorarguments = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorpermitDowngrade = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorskipVersionCheck = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorloadIntoMemory = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory = null)
+        public IBodyWorkflowAction<RunAlternativeIAConnectSentFromDirectorResponse, ApiConnectionActionConfiguration> RunAlternativeIAConnectSentFromDirector(Expression<Func<RunAlternativeIAConnectSentFromDirectorInput>> runAlternativeIAConnectSentFromDirector)
         {
-            var __workflow_runAlternativeIAConnectSentFromDirectorlocalFilename = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorlocalFilename, nameof(runAlternativeIAConnectSentFromDirectorlocalFilename), required: true);
-            var __workflow_runAlternativeIAConnectSentFromDirectorworkflow = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorworkflow, nameof(runAlternativeIAConnectSentFromDirectorworkflow), required: true);
-            var __workflow_runAlternativeIAConnectSentFromDirectorremoteFilename = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorremoteFilename, nameof(runAlternativeIAConnectSentFromDirectorremoteFilename), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorcompress = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorcompress, nameof(runAlternativeIAConnectSentFromDirectorcompress), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorarguments = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorarguments, nameof(runAlternativeIAConnectSentFromDirectorarguments), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorpermitDowngrade = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorpermitDowngrade, nameof(runAlternativeIAConnectSentFromDirectorpermitDowngrade), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorskipVersionCheck = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorskipVersionCheck, nameof(runAlternativeIAConnectSentFromDirectorskipVersionCheck), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorloadIntoMemory = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorloadIntoMemory, nameof(runAlternativeIAConnectSentFromDirectorloadIntoMemory), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory, nameof(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirector = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirector, nameof(runAlternativeIAConnectSentFromDirector), required: true);
             return new DeferredBodyAction<RunAlternativeIAConnectSentFromDirectorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/RunAlternativeIAConnectSentFromDirector";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var runAlternativeIAConnectSentFromDirector = new JObject();
-                var runAlternativeIAConnectSentFromDirectorpropCount = 0;
-                runAlternativeIAConnectSentFromDirectorpropCount++;
-                runAlternativeIAConnectSentFromDirector["LocalFilename"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorlocalFilename);
-                if (__workflow_runAlternativeIAConnectSentFromDirectorremoteFilename != null)
-                {
-                    runAlternativeIAConnectSentFromDirector["RemoteFilename"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorremoteFilename);
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-
-                if (__workflow_runAlternativeIAConnectSentFromDirectorcompress != null)
-                {
-                    if (__workflow_runAlternativeIAConnectSentFromDirectorcompress != null)
-                    {
-                        runAlternativeIAConnectSentFromDirector["Compress"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorcompress);
-                        runAlternativeIAConnectSentFromDirectorpropCount++;
-                    }
-
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-                else
-                {
-                    runAlternativeIAConnectSentFromDirector["Compress"] = true;
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-
-                if (__workflow_runAlternativeIAConnectSentFromDirectorarguments != null)
-                {
-                    runAlternativeIAConnectSentFromDirector["Arguments"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorarguments);
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-
-                if (__workflow_runAlternativeIAConnectSentFromDirectorpermitDowngrade != null)
-                {
-                    if (__workflow_runAlternativeIAConnectSentFromDirectorpermitDowngrade != null)
-                    {
-                        runAlternativeIAConnectSentFromDirector["PermitDowngrade"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorpermitDowngrade);
-                        runAlternativeIAConnectSentFromDirectorpropCount++;
-                    }
-
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-                else
-                {
-                    runAlternativeIAConnectSentFromDirector["PermitDowngrade"] = false;
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-
-                if (__workflow_runAlternativeIAConnectSentFromDirectorskipVersionCheck != null)
-                {
-                    if (__workflow_runAlternativeIAConnectSentFromDirectorskipVersionCheck != null)
-                    {
-                        runAlternativeIAConnectSentFromDirector["SkipVersionCheck"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorskipVersionCheck);
-                        runAlternativeIAConnectSentFromDirectorpropCount++;
-                    }
-
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-                else
-                {
-                    runAlternativeIAConnectSentFromDirector["SkipVersionCheck"] = false;
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-
-                if (__workflow_runAlternativeIAConnectSentFromDirectorloadIntoMemory != null)
-                {
-                    if (__workflow_runAlternativeIAConnectSentFromDirectorloadIntoMemory != null)
-                    {
-                        runAlternativeIAConnectSentFromDirector["LoadIntoMemory"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorloadIntoMemory);
-                        runAlternativeIAConnectSentFromDirectorpropCount++;
-                    }
-
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-                else
-                {
-                    runAlternativeIAConnectSentFromDirector["LoadIntoMemory"] = true;
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-
-                if (__workflow_runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory != null)
-                {
-                    if (__workflow_runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory != null)
-                    {
-                        runAlternativeIAConnectSentFromDirector["SaveToDiskEvenIfRunningFromMemory"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory);
-                        runAlternativeIAConnectSentFromDirectorpropCount++;
-                    }
-
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-                else
-                {
-                    runAlternativeIAConnectSentFromDirector["SaveToDiskEvenIfRunningFromMemory"] = false;
-                    runAlternativeIAConnectSentFromDirectorpropCount++;
-                }
-
-                runAlternativeIAConnectSentFromDirectorpropCount++;
-                runAlternativeIAConnectSentFromDirector["Workflow"] = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirectorworkflow);
-                if (runAlternativeIAConnectSentFromDirectorpropCount > 0)
-                {
-                    callPayload.Body = runAlternativeIAConnectSentFromDirector;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_runAlternativeIAConnectSentFromDirector);
                 return new ApiConnectionAction<RunAlternativeIAConnectSentFromDirectorResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetIAConnectAgentInfoResponse, ApiConnectionActionConfiguration> GetIAConnectAgentInfo(Expression<Func<string>> getIAConnectAgentInfoworkflow)
+        public IBodyWorkflowAction<GetIAConnectAgentInfoResponse, ApiConnectionActionConfiguration> GetIAConnectAgentInfo(Expression<Func<GetIAConnectAgentInfoInput>> getIAConnectAgentInfo)
         {
-            var __workflow_getIAConnectAgentInfoworkflow = WorkflowExpression.Compile(getIAConnectAgentInfoworkflow, nameof(getIAConnectAgentInfoworkflow), required: true);
+            var __workflow_getIAConnectAgentInfo = WorkflowExpression.Compile(getIAConnectAgentInfo, nameof(getIAConnectAgentInfo), required: true);
             return new DeferredBodyAction<GetIAConnectAgentInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetIAConnectAgentInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getIAConnectAgentInfo = new JObject();
-                var getIAConnectAgentInfopropCount = 0;
-                getIAConnectAgentInfopropCount++;
-                getIAConnectAgentInfo["Workflow"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentInfoworkflow);
-                if (getIAConnectAgentInfopropCount > 0)
-                {
-                    callPayload.Body = getIAConnectAgentInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentInfo);
                 return new ApiConnectionAction<GetIAConnectAgentInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetIAConnectAgentLogResponse, ApiConnectionActionConfiguration> GetIAConnectAgentLog(Expression<Func<string>> getIAConnectAgentLogworkflow, Expression<Func<bool>> getIAConnectAgentLogcompress = null, Expression<Func<bool>> getIAConnectAgentLogreturnLastCommandOnly = null, Expression<Func<bool>> getIAConnectAgentLogsaveLogToFile = null, Expression<Func<bool>> getIAConnectAgentLogplaceLogContentInDataItem = null, Expression<Func<string>> getIAConnectAgentLoglocalSaveFolder = null, Expression<Func<bool>> getIAConnectAgentLoguseAgentLogFilename = null, Expression<Func<string>> getIAConnectAgentLoglocalSaveFilename = null, Expression<Func<int>> getIAConnectAgentLogmaxBytesToRead = null)
+        public IBodyWorkflowAction<GetIAConnectAgentLogResponse, ApiConnectionActionConfiguration> GetIAConnectAgentLog(Expression<Func<GetIAConnectAgentLogInput>> getIAConnectAgentLog)
         {
-            var __workflow_getIAConnectAgentLogworkflow = WorkflowExpression.Compile(getIAConnectAgentLogworkflow, nameof(getIAConnectAgentLogworkflow), required: true);
-            var __workflow_getIAConnectAgentLogcompress = WorkflowExpression.Compile(getIAConnectAgentLogcompress, nameof(getIAConnectAgentLogcompress), required: false);
-            var __workflow_getIAConnectAgentLogreturnLastCommandOnly = WorkflowExpression.Compile(getIAConnectAgentLogreturnLastCommandOnly, nameof(getIAConnectAgentLogreturnLastCommandOnly), required: false);
-            var __workflow_getIAConnectAgentLogsaveLogToFile = WorkflowExpression.Compile(getIAConnectAgentLogsaveLogToFile, nameof(getIAConnectAgentLogsaveLogToFile), required: false);
-            var __workflow_getIAConnectAgentLogplaceLogContentInDataItem = WorkflowExpression.Compile(getIAConnectAgentLogplaceLogContentInDataItem, nameof(getIAConnectAgentLogplaceLogContentInDataItem), required: false);
-            var __workflow_getIAConnectAgentLoglocalSaveFolder = WorkflowExpression.Compile(getIAConnectAgentLoglocalSaveFolder, nameof(getIAConnectAgentLoglocalSaveFolder), required: false);
-            var __workflow_getIAConnectAgentLoguseAgentLogFilename = WorkflowExpression.Compile(getIAConnectAgentLoguseAgentLogFilename, nameof(getIAConnectAgentLoguseAgentLogFilename), required: false);
-            var __workflow_getIAConnectAgentLoglocalSaveFilename = WorkflowExpression.Compile(getIAConnectAgentLoglocalSaveFilename, nameof(getIAConnectAgentLoglocalSaveFilename), required: false);
-            var __workflow_getIAConnectAgentLogmaxBytesToRead = WorkflowExpression.Compile(getIAConnectAgentLogmaxBytesToRead, nameof(getIAConnectAgentLogmaxBytesToRead), required: false);
+            var __workflow_getIAConnectAgentLog = WorkflowExpression.Compile(getIAConnectAgentLog, nameof(getIAConnectAgentLog), required: true);
             return new DeferredBodyAction<GetIAConnectAgentLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetIAConnectAgentLog";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getIAConnectAgentLog = new JObject();
-                var getIAConnectAgentLogpropCount = 0;
-                if (__workflow_getIAConnectAgentLogcompress != null)
-                {
-                    if (__workflow_getIAConnectAgentLogcompress != null)
-                    {
-                        getIAConnectAgentLog["Compress"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLogcompress);
-                        getIAConnectAgentLogpropCount++;
-                    }
-
-                    getIAConnectAgentLogpropCount++;
-                }
-                else
-                {
-                    getIAConnectAgentLog["Compress"] = true;
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                if (__workflow_getIAConnectAgentLogreturnLastCommandOnly != null)
-                {
-                    if (__workflow_getIAConnectAgentLogreturnLastCommandOnly != null)
-                    {
-                        getIAConnectAgentLog["ReturnLastCommandOnly"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLogreturnLastCommandOnly);
-                        getIAConnectAgentLogpropCount++;
-                    }
-
-                    getIAConnectAgentLogpropCount++;
-                }
-                else
-                {
-                    getIAConnectAgentLog["ReturnLastCommandOnly"] = false;
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                if (__workflow_getIAConnectAgentLogsaveLogToFile != null)
-                {
-                    if (__workflow_getIAConnectAgentLogsaveLogToFile != null)
-                    {
-                        getIAConnectAgentLog["SaveLogToFile"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLogsaveLogToFile);
-                        getIAConnectAgentLogpropCount++;
-                    }
-
-                    getIAConnectAgentLogpropCount++;
-                }
-                else
-                {
-                    getIAConnectAgentLog["SaveLogToFile"] = true;
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                if (__workflow_getIAConnectAgentLogplaceLogContentInDataItem != null)
-                {
-                    if (__workflow_getIAConnectAgentLogplaceLogContentInDataItem != null)
-                    {
-                        getIAConnectAgentLog["PlaceLogContentInDataItem"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLogplaceLogContentInDataItem);
-                        getIAConnectAgentLogpropCount++;
-                    }
-
-                    getIAConnectAgentLogpropCount++;
-                }
-                else
-                {
-                    getIAConnectAgentLog["PlaceLogContentInDataItem"] = false;
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                if (__workflow_getIAConnectAgentLoglocalSaveFolder != null)
-                {
-                    getIAConnectAgentLog["LocalSaveFolder"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLoglocalSaveFolder);
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                if (__workflow_getIAConnectAgentLoguseAgentLogFilename != null)
-                {
-                    if (__workflow_getIAConnectAgentLoguseAgentLogFilename != null)
-                    {
-                        getIAConnectAgentLog["UseAgentLogFilename"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLoguseAgentLogFilename);
-                        getIAConnectAgentLogpropCount++;
-                    }
-
-                    getIAConnectAgentLogpropCount++;
-                }
-                else
-                {
-                    getIAConnectAgentLog["UseAgentLogFilename"] = true;
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                if (__workflow_getIAConnectAgentLoglocalSaveFilename != null)
-                {
-                    getIAConnectAgentLog["LocalSaveFilename"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLoglocalSaveFilename);
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                if (__workflow_getIAConnectAgentLogmaxBytesToRead != null)
-                {
-                    if (__workflow_getIAConnectAgentLogmaxBytesToRead != null)
-                    {
-                        getIAConnectAgentLog["MaxBytesToRead"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLogmaxBytesToRead);
-                        getIAConnectAgentLogpropCount++;
-                    }
-
-                    getIAConnectAgentLogpropCount++;
-                }
-                else
-                {
-                    getIAConnectAgentLog["MaxBytesToRead"] = 4000;
-                    getIAConnectAgentLogpropCount++;
-                }
-
-                getIAConnectAgentLogpropCount++;
-                getIAConnectAgentLog["Workflow"] = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLogworkflow);
-                if (getIAConnectAgentLogpropCount > 0)
-                {
-                    callPayload.Body = getIAConnectAgentLog;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getIAConnectAgentLog);
                 return new ApiConnectionAction<GetIAConnectAgentLogResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ResetCommandStats(Expression<Func<string>> resetCommandStatsworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ResetCommandStats(Expression<Func<ResetCommandStatsInput>> resetCommandStats)
         {
-            var __workflow_resetCommandStatsworkflow = WorkflowExpression.Compile(resetCommandStatsworkflow, nameof(resetCommandStatsworkflow), required: true);
+            var __workflow_resetCommandStats = WorkflowExpression.Compile(resetCommandStats, nameof(resetCommandStats), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/ResetCommandStats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var resetCommandStats = new JObject();
-                var resetCommandStatspropCount = 0;
-                resetCommandStatspropCount++;
-                resetCommandStats["Workflow"] = ExpressionConverter.ConvertO(__workflow_resetCommandStatsworkflow);
-                if (resetCommandStatspropCount > 0)
-                {
-                    callPayload.Body = resetCommandStats;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_resetCommandStats);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetAllCommandStatsResponse, ApiConnectionActionConfiguration> GetAllCommandStats(Expression<Func<string>> getAllCommandStatsworkflow)
+        public IBodyWorkflowAction<GetAllCommandStatsResponse, ApiConnectionActionConfiguration> GetAllCommandStats(Expression<Func<GetAllCommandStatsInput>> getAllCommandStats)
         {
-            var __workflow_getAllCommandStatsworkflow = WorkflowExpression.Compile(getAllCommandStatsworkflow, nameof(getAllCommandStatsworkflow), required: true);
+            var __workflow_getAllCommandStats = WorkflowExpression.Compile(getAllCommandStats, nameof(getAllCommandStats), required: true);
             return new DeferredBodyAction<GetAllCommandStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAllCommandStats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getAllCommandStats = new JObject();
-                var getAllCommandStatspropCount = 0;
-                getAllCommandStatspropCount++;
-                getAllCommandStats["Workflow"] = ExpressionConverter.ConvertO(__workflow_getAllCommandStatsworkflow);
-                if (getAllCommandStatspropCount > 0)
-                {
-                    callPayload.Body = getAllCommandStats;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getAllCommandStats);
                 return new ApiConnectionAction<GetAllCommandStatsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<EnableNextHopResponse, ApiConnectionActionConfiguration> EnableNextHop(Expression<Func<string>> enableNextHopworkflow, Expression<Func<string>> enableNextHopnextHopDirectorAddress = null, Expression<Func<int>> enableNextHopnextHopDirectorTCPPort = null, Expression<Func<bool>> enableNextHopnextHopDirectorUsesHTTPS = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsLocalhostname = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsHostname = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsFQDN = null, Expression<Func<bool>> enableNextHopincrementNextHopDirectorTCPPortBySessionId = null, Expression<Func<bool>> enableNextHopdisableBeforeEnable = null, Expression<Func<bool>> enableNextHopcheckNextHopDirectorIsRunning = null, Expression<Func<bool>> enableNextHopcheckNextHopAgentIsRunning = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsNamedPipe = null)
+        public IBodyWorkflowAction<EnableNextHopResponse, ApiConnectionActionConfiguration> EnableNextHop(Expression<Func<EnableNextHopInput>> enableNextHop)
         {
-            var __workflow_enableNextHopworkflow = WorkflowExpression.Compile(enableNextHopworkflow, nameof(enableNextHopworkflow), required: true);
-            var __workflow_enableNextHopnextHopDirectorAddress = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddress, nameof(enableNextHopnextHopDirectorAddress), required: false);
-            var __workflow_enableNextHopnextHopDirectorTCPPort = WorkflowExpression.Compile(enableNextHopnextHopDirectorTCPPort, nameof(enableNextHopnextHopDirectorTCPPort), required: false);
-            var __workflow_enableNextHopnextHopDirectorUsesHTTPS = WorkflowExpression.Compile(enableNextHopnextHopDirectorUsesHTTPS, nameof(enableNextHopnextHopDirectorUsesHTTPS), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsLocalhostname = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsLocalhostname, nameof(enableNextHopnextHopDirectorAddressIsLocalhostname), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsHostname = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsHostname, nameof(enableNextHopnextHopDirectorAddressIsHostname), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsFQDN = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsFQDN, nameof(enableNextHopnextHopDirectorAddressIsFQDN), required: false);
-            var __workflow_enableNextHopincrementNextHopDirectorTCPPortBySessionId = WorkflowExpression.Compile(enableNextHopincrementNextHopDirectorTCPPortBySessionId, nameof(enableNextHopincrementNextHopDirectorTCPPortBySessionId), required: false);
-            var __workflow_enableNextHopdisableBeforeEnable = WorkflowExpression.Compile(enableNextHopdisableBeforeEnable, nameof(enableNextHopdisableBeforeEnable), required: false);
-            var __workflow_enableNextHopcheckNextHopDirectorIsRunning = WorkflowExpression.Compile(enableNextHopcheckNextHopDirectorIsRunning, nameof(enableNextHopcheckNextHopDirectorIsRunning), required: false);
-            var __workflow_enableNextHopcheckNextHopAgentIsRunning = WorkflowExpression.Compile(enableNextHopcheckNextHopAgentIsRunning, nameof(enableNextHopcheckNextHopAgentIsRunning), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsNamedPipe = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsNamedPipe, nameof(enableNextHopnextHopDirectorAddressIsNamedPipe), required: false);
+            var __workflow_enableNextHop = WorkflowExpression.Compile(enableNextHop, nameof(enableNextHop), required: true);
             return new DeferredBodyAction<EnableNextHopResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/EnableNextHop";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var enableNextHop = new JObject();
-                var enableNextHoppropCount = 0;
-                if (__workflow_enableNextHopnextHopDirectorAddress != null)
-                {
-                    enableNextHop["NextHopDirectorAddress"] = ExpressionConverter.ConvertO(__workflow_enableNextHopnextHopDirectorAddress);
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopnextHopDirectorTCPPort != null)
-                {
-                    if (__workflow_enableNextHopnextHopDirectorTCPPort != null)
-                    {
-                        enableNextHop["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(__workflow_enableNextHopnextHopDirectorTCPPort);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["NextHopDirectorTCPPort"] = 8002;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopnextHopDirectorUsesHTTPS != null)
-                {
-                    if (__workflow_enableNextHopnextHopDirectorUsesHTTPS != null)
-                    {
-                        enableNextHop["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(__workflow_enableNextHopnextHopDirectorUsesHTTPS);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["NextHopDirectorUsesHTTPS"] = false;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopnextHopDirectorAddressIsLocalhostname != null)
-                {
-                    if (__workflow_enableNextHopnextHopDirectorAddressIsLocalhostname != null)
-                    {
-                        enableNextHop["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(__workflow_enableNextHopnextHopDirectorAddressIsLocalhostname);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["NextHopDirectorAddressIsLocalhostname"] = false;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopnextHopDirectorAddressIsHostname != null)
-                {
-                    if (__workflow_enableNextHopnextHopDirectorAddressIsHostname != null)
-                    {
-                        enableNextHop["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(__workflow_enableNextHopnextHopDirectorAddressIsHostname);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["NextHopDirectorAddressIsHostname"] = false;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopnextHopDirectorAddressIsFQDN != null)
-                {
-                    if (__workflow_enableNextHopnextHopDirectorAddressIsFQDN != null)
-                    {
-                        enableNextHop["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(__workflow_enableNextHopnextHopDirectorAddressIsFQDN);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["NextHopDirectorAddressIsFQDN"] = false;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopincrementNextHopDirectorTCPPortBySessionId != null)
-                {
-                    if (__workflow_enableNextHopincrementNextHopDirectorTCPPortBySessionId != null)
-                    {
-                        enableNextHop["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(__workflow_enableNextHopincrementNextHopDirectorTCPPortBySessionId);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["IncrementNextHopDirectorTCPPortBySessionId"] = true;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopdisableBeforeEnable != null)
-                {
-                    if (__workflow_enableNextHopdisableBeforeEnable != null)
-                    {
-                        enableNextHop["DisableBeforeEnable"] = ExpressionConverter.ConvertO(__workflow_enableNextHopdisableBeforeEnable);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["DisableBeforeEnable"] = true;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopcheckNextHopDirectorIsRunning != null)
-                {
-                    if (__workflow_enableNextHopcheckNextHopDirectorIsRunning != null)
-                    {
-                        enableNextHop["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(__workflow_enableNextHopcheckNextHopDirectorIsRunning);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["CheckNextHopDirectorIsRunning"] = false;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopcheckNextHopAgentIsRunning != null)
-                {
-                    if (__workflow_enableNextHopcheckNextHopAgentIsRunning != null)
-                    {
-                        enableNextHop["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(__workflow_enableNextHopcheckNextHopAgentIsRunning);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["CheckNextHopAgentIsRunning"] = false;
-                    enableNextHoppropCount++;
-                }
-
-                if (__workflow_enableNextHopnextHopDirectorAddressIsNamedPipe != null)
-                {
-                    if (__workflow_enableNextHopnextHopDirectorAddressIsNamedPipe != null)
-                    {
-                        enableNextHop["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(__workflow_enableNextHopnextHopDirectorAddressIsNamedPipe);
-                        enableNextHoppropCount++;
-                    }
-
-                    enableNextHoppropCount++;
-                }
-                else
-                {
-                    enableNextHop["NextHopDirectorAddressIsNamedPipe"] = true;
-                    enableNextHoppropCount++;
-                }
-
-                enableNextHoppropCount++;
-                enableNextHop["Workflow"] = ExpressionConverter.ConvertO(__workflow_enableNextHopworkflow);
-                if (enableNextHoppropCount > 0)
-                {
-                    callPayload.Body = enableNextHop;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_enableNextHop);
                 return new ApiConnectionAction<EnableNextHopResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DisableNextHop(Expression<Func<string>> disableNextHopworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DisableNextHop(Expression<Func<DisableNextHopInput>> disableNextHop)
         {
-            var __workflow_disableNextHopworkflow = WorkflowExpression.Compile(disableNextHopworkflow, nameof(disableNextHopworkflow), required: true);
+            var __workflow_disableNextHop = WorkflowExpression.Compile(disableNextHop, nameof(disableNextHop), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/DisableNextHop";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var disableNextHop = new JObject();
-                var disableNextHoppropCount = 0;
-                disableNextHoppropCount++;
-                disableNextHop["Workflow"] = ExpressionConverter.ConvertO(__workflow_disableNextHopworkflow);
-                if (disableNextHoppropCount > 0)
-                {
-                    callPayload.Body = disableNextHop;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_disableNextHop);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetNextHopStatusResponse, ApiConnectionActionConfiguration> GetNextHopStatus(Expression<Func<string>> getNextHopStatusworkflow, Expression<Func<bool>> getNextHopStatuscheckNextHopDirectorIsRunning = null, Expression<Func<bool>> getNextHopStatuscheckNextHopAgentIsRunning = null)
+        public IBodyWorkflowAction<GetNextHopStatusResponse, ApiConnectionActionConfiguration> GetNextHopStatus(Expression<Func<GetNextHopStatusInput>> getNextHopStatus)
         {
-            var __workflow_getNextHopStatusworkflow = WorkflowExpression.Compile(getNextHopStatusworkflow, nameof(getNextHopStatusworkflow), required: true);
-            var __workflow_getNextHopStatuscheckNextHopDirectorIsRunning = WorkflowExpression.Compile(getNextHopStatuscheckNextHopDirectorIsRunning, nameof(getNextHopStatuscheckNextHopDirectorIsRunning), required: false);
-            var __workflow_getNextHopStatuscheckNextHopAgentIsRunning = WorkflowExpression.Compile(getNextHopStatuscheckNextHopAgentIsRunning, nameof(getNextHopStatuscheckNextHopAgentIsRunning), required: false);
+            var __workflow_getNextHopStatus = WorkflowExpression.Compile(getNextHopStatus, nameof(getNextHopStatus), required: true);
             return new DeferredBodyAction<GetNextHopStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetNextHopStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getNextHopStatus = new JObject();
-                var getNextHopStatuspropCount = 0;
-                if (__workflow_getNextHopStatuscheckNextHopDirectorIsRunning != null)
-                {
-                    if (__workflow_getNextHopStatuscheckNextHopDirectorIsRunning != null)
-                    {
-                        getNextHopStatus["CheckNextHopDirectorIsRunning"] = ExpressionConverter.ConvertO(__workflow_getNextHopStatuscheckNextHopDirectorIsRunning);
-                        getNextHopStatuspropCount++;
-                    }
-
-                    getNextHopStatuspropCount++;
-                }
-                else
-                {
-                    getNextHopStatus["CheckNextHopDirectorIsRunning"] = false;
-                    getNextHopStatuspropCount++;
-                }
-
-                if (__workflow_getNextHopStatuscheckNextHopAgentIsRunning != null)
-                {
-                    if (__workflow_getNextHopStatuscheckNextHopAgentIsRunning != null)
-                    {
-                        getNextHopStatus["CheckNextHopAgentIsRunning"] = ExpressionConverter.ConvertO(__workflow_getNextHopStatuscheckNextHopAgentIsRunning);
-                        getNextHopStatuspropCount++;
-                    }
-
-                    getNextHopStatuspropCount++;
-                }
-                else
-                {
-                    getNextHopStatus["CheckNextHopAgentIsRunning"] = false;
-                    getNextHopStatuspropCount++;
-                }
-
-                getNextHopStatuspropCount++;
-                getNextHopStatus["Workflow"] = ExpressionConverter.ConvertO(__workflow_getNextHopStatusworkflow);
-                if (getNextHopStatuspropCount > 0)
-                {
-                    callPayload.Body = getNextHopStatus;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getNextHopStatus);
                 return new ApiConnectionAction<GetNextHopStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<WaitForNextHopSessionToConnectResponse, ApiConnectionActionConfiguration> WaitForNextHopSessionToConnect(Expression<Func<string>> waitForNextHopSessionToConnectworkflow, Expression<Func<string>> waitForNextHopSessionToConnectnextHopDirectorAddress = null, Expression<Func<int>> waitForNextHopSessionToConnectnextHopDirectorTCPPort = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN = null, Expression<Func<bool>> waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId = null, Expression<Func<double>> waitForNextHopSessionToConnectsecondsToWait = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe = null, Expression<Func<bool>> waitForNextHopSessionToConnectdisableExistingNextHop = null)
+        public IBodyWorkflowAction<WaitForNextHopSessionToConnectResponse, ApiConnectionActionConfiguration> WaitForNextHopSessionToConnect(Expression<Func<WaitForNextHopSessionToConnectInput>> waitForNextHopSessionToConnect)
         {
-            var __workflow_waitForNextHopSessionToConnectworkflow = WorkflowExpression.Compile(waitForNextHopSessionToConnectworkflow, nameof(waitForNextHopSessionToConnectworkflow), required: true);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddress = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddress, nameof(waitForNextHopSessionToConnectnextHopDirectorAddress), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorTCPPort = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorTCPPort, nameof(waitForNextHopSessionToConnectnextHopDirectorTCPPort), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS, nameof(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN), required: false);
-            var __workflow_waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId = WorkflowExpression.Compile(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId, nameof(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId), required: false);
-            var __workflow_waitForNextHopSessionToConnectsecondsToWait = WorkflowExpression.Compile(waitForNextHopSessionToConnectsecondsToWait, nameof(waitForNextHopSessionToConnectsecondsToWait), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe), required: false);
-            var __workflow_waitForNextHopSessionToConnectdisableExistingNextHop = WorkflowExpression.Compile(waitForNextHopSessionToConnectdisableExistingNextHop, nameof(waitForNextHopSessionToConnectdisableExistingNextHop), required: false);
+            var __workflow_waitForNextHopSessionToConnect = WorkflowExpression.Compile(waitForNextHopSessionToConnect, nameof(waitForNextHopSessionToConnect), required: true);
             return new DeferredBodyAction<WaitForNextHopSessionToConnectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/WaitForNextHopSessionToConnect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var waitForNextHopSessionToConnect = new JObject();
-                var waitForNextHopSessionToConnectpropCount = 0;
-                if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddress != null)
-                {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddress"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddress);
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectnextHopDirectorTCPPort != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectnextHopDirectorTCPPort != null)
-                    {
-                        waitForNextHopSessionToConnect["NextHopDirectorTCPPort"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectnextHopDirectorTCPPort);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["NextHopDirectorTCPPort"] = 8002;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS != null)
-                    {
-                        waitForNextHopSessionToConnect["NextHopDirectorUsesHTTPS"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["NextHopDirectorUsesHTTPS"] = false;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname != null)
-                    {
-                        waitForNextHopSessionToConnect["NextHopDirectorAddressIsLocalhostname"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsLocalhostname"] = false;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname != null)
-                    {
-                        waitForNextHopSessionToConnect["NextHopDirectorAddressIsHostname"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsHostname"] = false;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN != null)
-                    {
-                        waitForNextHopSessionToConnect["NextHopDirectorAddressIsFQDN"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsFQDN"] = false;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId != null)
-                    {
-                        waitForNextHopSessionToConnect["IncrementNextHopDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["IncrementNextHopDirectorTCPPortBySessionId"] = true;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectsecondsToWait != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectsecondsToWait != null)
-                    {
-                        waitForNextHopSessionToConnect["SecondsToWait"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectsecondsToWait);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["SecondsToWait"] = 35;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe != null)
-                    {
-                        waitForNextHopSessionToConnect["NextHopDirectorAddressIsNamedPipe"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["NextHopDirectorAddressIsNamedPipe"] = true;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                if (__workflow_waitForNextHopSessionToConnectdisableExistingNextHop != null)
-                {
-                    if (__workflow_waitForNextHopSessionToConnectdisableExistingNextHop != null)
-                    {
-                        waitForNextHopSessionToConnect["DisableExistingNextHop"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectdisableExistingNextHop);
-                        waitForNextHopSessionToConnectpropCount++;
-                    }
-
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-                else
-                {
-                    waitForNextHopSessionToConnect["DisableExistingNextHop"] = true;
-                    waitForNextHopSessionToConnectpropCount++;
-                }
-
-                waitForNextHopSessionToConnectpropCount++;
-                waitForNextHopSessionToConnect["Workflow"] = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnectworkflow);
-                if (waitForNextHopSessionToConnectpropCount > 0)
-                {
-                    callPayload.Body = waitForNextHopSessionToConnect;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_waitForNextHopSessionToConnect);
                 return new ApiConnectionAction<WaitForNextHopSessionToConnectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConfigureNextHopDirector(Expression<Func<string>> configureNextHopDirectorworkflow, Expression<Func<bool>> configureNextHopDirectorsOAPEnabled = null, Expression<Func<bool>> configureNextHopDirectorrESTEnabled = null, Expression<Func<bool>> configureNextHopDirectorwebServerEnabled = null, Expression<Func<bool>> configureNextHopDirectordirectorIsLocalhostOnly = null, Expression<Func<int>> configureNextHopDirectorsOAPTCPPort = null, Expression<Func<int>> configureNextHopDirectorrESTTCPPort = null, Expression<Func<bool>> configureNextHopDirectorsOAPUsesHTTPS = null, Expression<Func<bool>> configureNextHopDirectorrESTUsesHTTPS = null, Expression<Func<bool>> configureNextHopDirectorincrementDirectorTCPPortBySessionId = null, Expression<Func<bool>> configureNextHopDirectorsOAPUsesUserAuthentication = null, Expression<Func<bool>> configureNextHopDirectorrESTUsesUserAuthentication = null, Expression<Func<bool>> configureNextHopDirectorcommandNamedPipeEnabled = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConfigureNextHopDirector(Expression<Func<ConfigureNextHopDirectorInput>> configureNextHopDirector)
         {
-            var __workflow_configureNextHopDirectorworkflow = WorkflowExpression.Compile(configureNextHopDirectorworkflow, nameof(configureNextHopDirectorworkflow), required: true);
-            var __workflow_configureNextHopDirectorsOAPEnabled = WorkflowExpression.Compile(configureNextHopDirectorsOAPEnabled, nameof(configureNextHopDirectorsOAPEnabled), required: false);
-            var __workflow_configureNextHopDirectorrESTEnabled = WorkflowExpression.Compile(configureNextHopDirectorrESTEnabled, nameof(configureNextHopDirectorrESTEnabled), required: false);
-            var __workflow_configureNextHopDirectorwebServerEnabled = WorkflowExpression.Compile(configureNextHopDirectorwebServerEnabled, nameof(configureNextHopDirectorwebServerEnabled), required: false);
-            var __workflow_configureNextHopDirectordirectorIsLocalhostOnly = WorkflowExpression.Compile(configureNextHopDirectordirectorIsLocalhostOnly, nameof(configureNextHopDirectordirectorIsLocalhostOnly), required: false);
-            var __workflow_configureNextHopDirectorsOAPTCPPort = WorkflowExpression.Compile(configureNextHopDirectorsOAPTCPPort, nameof(configureNextHopDirectorsOAPTCPPort), required: false);
-            var __workflow_configureNextHopDirectorrESTTCPPort = WorkflowExpression.Compile(configureNextHopDirectorrESTTCPPort, nameof(configureNextHopDirectorrESTTCPPort), required: false);
-            var __workflow_configureNextHopDirectorsOAPUsesHTTPS = WorkflowExpression.Compile(configureNextHopDirectorsOAPUsesHTTPS, nameof(configureNextHopDirectorsOAPUsesHTTPS), required: false);
-            var __workflow_configureNextHopDirectorrESTUsesHTTPS = WorkflowExpression.Compile(configureNextHopDirectorrESTUsesHTTPS, nameof(configureNextHopDirectorrESTUsesHTTPS), required: false);
-            var __workflow_configureNextHopDirectorincrementDirectorTCPPortBySessionId = WorkflowExpression.Compile(configureNextHopDirectorincrementDirectorTCPPortBySessionId, nameof(configureNextHopDirectorincrementDirectorTCPPortBySessionId), required: false);
-            var __workflow_configureNextHopDirectorsOAPUsesUserAuthentication = WorkflowExpression.Compile(configureNextHopDirectorsOAPUsesUserAuthentication, nameof(configureNextHopDirectorsOAPUsesUserAuthentication), required: false);
-            var __workflow_configureNextHopDirectorrESTUsesUserAuthentication = WorkflowExpression.Compile(configureNextHopDirectorrESTUsesUserAuthentication, nameof(configureNextHopDirectorrESTUsesUserAuthentication), required: false);
-            var __workflow_configureNextHopDirectorcommandNamedPipeEnabled = WorkflowExpression.Compile(configureNextHopDirectorcommandNamedPipeEnabled, nameof(configureNextHopDirectorcommandNamedPipeEnabled), required: false);
+            var __workflow_configureNextHopDirector = WorkflowExpression.Compile(configureNextHopDirector, nameof(configureNextHopDirector), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/ConfigureNextHopDirector";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var configureNextHopDirector = new JObject();
-                var configureNextHopDirectorpropCount = 0;
-                if (__workflow_configureNextHopDirectorsOAPEnabled != null)
-                {
-                    if (__workflow_configureNextHopDirectorsOAPEnabled != null)
-                    {
-                        configureNextHopDirector["SOAPEnabled"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorsOAPEnabled);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["SOAPEnabled"] = false;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorrESTEnabled != null)
-                {
-                    if (__workflow_configureNextHopDirectorrESTEnabled != null)
-                    {
-                        configureNextHopDirector["RESTEnabled"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorrESTEnabled);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["RESTEnabled"] = false;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorwebServerEnabled != null)
-                {
-                    if (__workflow_configureNextHopDirectorwebServerEnabled != null)
-                    {
-                        configureNextHopDirector["WebServerEnabled"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorwebServerEnabled);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["WebServerEnabled"] = false;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectordirectorIsLocalhostOnly != null)
-                {
-                    if (__workflow_configureNextHopDirectordirectorIsLocalhostOnly != null)
-                    {
-                        configureNextHopDirector["DirectorIsLocalhostOnly"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectordirectorIsLocalhostOnly);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["DirectorIsLocalhostOnly"] = true;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorsOAPTCPPort != null)
-                {
-                    if (__workflow_configureNextHopDirectorsOAPTCPPort != null)
-                    {
-                        configureNextHopDirector["SOAPTCPPort"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorsOAPTCPPort);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["SOAPTCPPort"] = 8002;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorrESTTCPPort != null)
-                {
-                    if (__workflow_configureNextHopDirectorrESTTCPPort != null)
-                    {
-                        configureNextHopDirector["RESTTCPPort"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorrESTTCPPort);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["RESTTCPPort"] = 8002;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorsOAPUsesHTTPS != null)
-                {
-                    if (__workflow_configureNextHopDirectorsOAPUsesHTTPS != null)
-                    {
-                        configureNextHopDirector["SOAPUsesHTTPS"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorsOAPUsesHTTPS);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["SOAPUsesHTTPS"] = false;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorrESTUsesHTTPS != null)
-                {
-                    if (__workflow_configureNextHopDirectorrESTUsesHTTPS != null)
-                    {
-                        configureNextHopDirector["RESTUsesHTTPS"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorrESTUsesHTTPS);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["RESTUsesHTTPS"] = false;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorincrementDirectorTCPPortBySessionId != null)
-                {
-                    if (__workflow_configureNextHopDirectorincrementDirectorTCPPortBySessionId != null)
-                    {
-                        configureNextHopDirector["IncrementDirectorTCPPortBySessionId"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorincrementDirectorTCPPortBySessionId);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["IncrementDirectorTCPPortBySessionId"] = true;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorsOAPUsesUserAuthentication != null)
-                {
-                    if (__workflow_configureNextHopDirectorsOAPUsesUserAuthentication != null)
-                    {
-                        configureNextHopDirector["SOAPUsesUserAuthentication"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorsOAPUsesUserAuthentication);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["SOAPUsesUserAuthentication"] = false;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorrESTUsesUserAuthentication != null)
-                {
-                    if (__workflow_configureNextHopDirectorrESTUsesUserAuthentication != null)
-                    {
-                        configureNextHopDirector["RESTUsesUserAuthentication"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorrESTUsesUserAuthentication);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["RESTUsesUserAuthentication"] = false;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                if (__workflow_configureNextHopDirectorcommandNamedPipeEnabled != null)
-                {
-                    if (__workflow_configureNextHopDirectorcommandNamedPipeEnabled != null)
-                    {
-                        configureNextHopDirector["CommandNamedPipeEnabled"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorcommandNamedPipeEnabled);
-                        configureNextHopDirectorpropCount++;
-                    }
-
-                    configureNextHopDirectorpropCount++;
-                }
-                else
-                {
-                    configureNextHopDirector["CommandNamedPipeEnabled"] = true;
-                    configureNextHopDirectorpropCount++;
-                }
-
-                configureNextHopDirectorpropCount++;
-                configureNextHopDirector["Workflow"] = ExpressionConverter.ConvertO(__workflow_configureNextHopDirectorworkflow);
-                if (configureNextHopDirectorpropCount > 0)
-                {
-                    callPayload.Body = configureNextHopDirector;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_configureNextHopDirector);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ResetNextHopDirectorSettings(Expression<Func<string>> resetNextHopDirectorSettingsworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ResetNextHopDirectorSettings(Expression<Func<ResetNextHopDirectorSettingsInput>> resetNextHopDirectorSettings)
         {
-            var __workflow_resetNextHopDirectorSettingsworkflow = WorkflowExpression.Compile(resetNextHopDirectorSettingsworkflow, nameof(resetNextHopDirectorSettingsworkflow), required: true);
+            var __workflow_resetNextHopDirectorSettings = WorkflowExpression.Compile(resetNextHopDirectorSettings, nameof(resetNextHopDirectorSettings), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/ResetNextHopDirectorSettings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var resetNextHopDirectorSettings = new JObject();
-                var resetNextHopDirectorSettingspropCount = 0;
-                resetNextHopDirectorSettingspropCount++;
-                resetNextHopDirectorSettings["Workflow"] = ExpressionConverter.ConvertO(__workflow_resetNextHopDirectorSettingsworkflow);
-                if (resetNextHopDirectorSettingspropCount > 0)
-                {
-                    callPayload.Body = resetNextHopDirectorSettings;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_resetNextHopDirectorSettings);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> WorkflowCompleted(Expression<Func<string>> workflowCompletedworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> WorkflowCompleted(Expression<Func<WorkflowCompletedInput>> workflowCompleted)
         {
-            var __workflow_workflowCompletedworkflow = WorkflowExpression.Compile(workflowCompletedworkflow, nameof(workflowCompletedworkflow), required: true);
+            var __workflow_workflowCompleted = WorkflowExpression.Compile(workflowCompleted, nameof(workflowCompleted), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/WorkflowCompleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var workflowCompleted = new JObject();
-                var workflowCompletedpropCount = 0;
-                workflowCompletedpropCount++;
-                workflowCompleted["Workflow"] = ExpressionConverter.ConvertO(__workflow_workflowCompletedworkflow);
-                if (workflowCompletedpropCount > 0)
-                {
-                    callPayload.Body = workflowCompleted;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_workflowCompleted);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<RaiseExceptionResponse, ApiConnectionActionConfiguration> RaiseException(Expression<Func<string>> raiseExceptioninputException = null, Expression<Func<string>> raiseExceptionexceptionMessage = null)
+        public IBodyWorkflowAction<RaiseExceptionResponse, ApiConnectionActionConfiguration> RaiseException(Expression<Func<RaiseExceptionInput>> raiseException)
         {
-            var __workflow_raiseExceptioninputException = WorkflowExpression.Compile(raiseExceptioninputException, nameof(raiseExceptioninputException), required: false);
-            var __workflow_raiseExceptionexceptionMessage = WorkflowExpression.Compile(raiseExceptionexceptionMessage, nameof(raiseExceptionexceptionMessage), required: false);
+            var __workflow_raiseException = WorkflowExpression.Compile(raiseException, nameof(raiseException), required: true);
             return new DeferredBodyAction<RaiseExceptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/RaiseException";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var raiseException = new JObject();
-                var raiseExceptionpropCount = 0;
-                if (__workflow_raiseExceptioninputException != null)
-                {
-                    raiseException["InputException"] = ExpressionConverter.ConvertO(__workflow_raiseExceptioninputException);
-                    raiseExceptionpropCount++;
-                }
-
-                if (__workflow_raiseExceptionexceptionMessage != null)
-                {
-                    raiseException["ExceptionMessage"] = ExpressionConverter.ConvertO(__workflow_raiseExceptionexceptionMessage);
-                    raiseExceptionpropCount++;
-                }
-
-                if (raiseExceptionpropCount > 0)
-                {
-                    callPayload.Body = raiseException;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_raiseException);
                 return new ApiConnectionAction<RaiseExceptionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<UpdateOrchestratorFlowStatsResultResponse, ApiConnectionActionConfiguration> UpdateOrchestratorFlowStatsResult(Expression<Func<string>> updateOrchestratorFlowStatsResultworkflow, Expression<Func<bool>> updateOrchestratorFlowStatsResultflowLastActionSuccess = null, Expression<Func<string>> updateOrchestratorFlowStatsResultflowLastActionErrorMessage = null, Expression<Func<int>> updateOrchestratorFlowStatsResultflowLastActionCode = null)
+        public IBodyWorkflowAction<UpdateOrchestratorFlowStatsResultResponse, ApiConnectionActionConfiguration> UpdateOrchestratorFlowStatsResult(Expression<Func<UpdateOrchestratorFlowStatsResultInput>> updateOrchestratorFlowStatsResult)
         {
-            var __workflow_updateOrchestratorFlowStatsResultworkflow = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultworkflow, nameof(updateOrchestratorFlowStatsResultworkflow), required: true);
-            var __workflow_updateOrchestratorFlowStatsResultflowLastActionSuccess = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionSuccess, nameof(updateOrchestratorFlowStatsResultflowLastActionSuccess), required: false);
-            var __workflow_updateOrchestratorFlowStatsResultflowLastActionErrorMessage = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionErrorMessage, nameof(updateOrchestratorFlowStatsResultflowLastActionErrorMessage), required: false);
-            var __workflow_updateOrchestratorFlowStatsResultflowLastActionCode = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionCode, nameof(updateOrchestratorFlowStatsResultflowLastActionCode), required: false);
+            var __workflow_updateOrchestratorFlowStatsResult = WorkflowExpression.Compile(updateOrchestratorFlowStatsResult, nameof(updateOrchestratorFlowStatsResult), required: true);
             return new DeferredBodyAction<UpdateOrchestratorFlowStatsResultResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/UpdateOrchestratorFlowStatsResult";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var updateOrchestratorFlowStatsResult = new JObject();
-                var updateOrchestratorFlowStatsResultpropCount = 0;
-                if (__workflow_updateOrchestratorFlowStatsResultflowLastActionSuccess != null)
-                {
-                    updateOrchestratorFlowStatsResult["FlowLastActionSuccess"] = ExpressionConverter.ConvertO(__workflow_updateOrchestratorFlowStatsResultflowLastActionSuccess);
-                    updateOrchestratorFlowStatsResultpropCount++;
-                }
-
-                if (__workflow_updateOrchestratorFlowStatsResultflowLastActionErrorMessage != null)
-                {
-                    updateOrchestratorFlowStatsResult["FlowLastActionErrorMessage"] = ExpressionConverter.ConvertO(__workflow_updateOrchestratorFlowStatsResultflowLastActionErrorMessage);
-                    updateOrchestratorFlowStatsResultpropCount++;
-                }
-
-                if (__workflow_updateOrchestratorFlowStatsResultflowLastActionCode != null)
-                {
-                    updateOrchestratorFlowStatsResult["FlowLastActionCode"] = ExpressionConverter.ConvertO(__workflow_updateOrchestratorFlowStatsResultflowLastActionCode);
-                    updateOrchestratorFlowStatsResultpropCount++;
-                }
-
-                updateOrchestratorFlowStatsResultpropCount++;
-                updateOrchestratorFlowStatsResult["Workflow"] = ExpressionConverter.ConvertO(__workflow_updateOrchestratorFlowStatsResultworkflow);
-                if (updateOrchestratorFlowStatsResultpropCount > 0)
-                {
-                    callPayload.Body = updateOrchestratorFlowStatsResult;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateOrchestratorFlowStatsResult);
                 return new ApiConnectionAction<UpdateOrchestratorFlowStatsResultResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetLastFailedActionFromOrchestratorFlowStatsResponse, ApiConnectionActionConfiguration> GetLastFailedActionFromOrchestratorFlowStats(Expression<Func<string>> getLastFailedActionFromOrchestratorFlowStatsworkflow)
+        public IBodyWorkflowAction<GetLastFailedActionFromOrchestratorFlowStatsResponse, ApiConnectionActionConfiguration> GetLastFailedActionFromOrchestratorFlowStats(Expression<Func<GetLastFailedActionFromOrchestratorFlowStatsInput>> getLastFailedActionFromOrchestratorFlowStats)
         {
-            var __workflow_getLastFailedActionFromOrchestratorFlowStatsworkflow = WorkflowExpression.Compile(getLastFailedActionFromOrchestratorFlowStatsworkflow, nameof(getLastFailedActionFromOrchestratorFlowStatsworkflow), required: true);
+            var __workflow_getLastFailedActionFromOrchestratorFlowStats = WorkflowExpression.Compile(getLastFailedActionFromOrchestratorFlowStats, nameof(getLastFailedActionFromOrchestratorFlowStats), required: true);
             return new DeferredBodyAction<GetLastFailedActionFromOrchestratorFlowStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetLastFailedActionFromOrchestratorFlowStats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getLastFailedActionFromOrchestratorFlowStats = new JObject();
-                var getLastFailedActionFromOrchestratorFlowStatspropCount = 0;
-                getLastFailedActionFromOrchestratorFlowStatspropCount++;
-                getLastFailedActionFromOrchestratorFlowStats["Workflow"] = ExpressionConverter.ConvertO(__workflow_getLastFailedActionFromOrchestratorFlowStatsworkflow);
-                if (getLastFailedActionFromOrchestratorFlowStatspropCount > 0)
-                {
-                    callPayload.Body = getLastFailedActionFromOrchestratorFlowStats;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getLastFailedActionFromOrchestratorFlowStats);
                 return new ApiConnectionAction<GetLastFailedActionFromOrchestratorFlowStatsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetOrchestratorFlowStatsResponse, ApiConnectionActionConfiguration> GetOrchestratorFlowStats(Expression<Func<int>> getOrchestratorFlowStatswithinLastNumberOfDays = null, Expression<Func<string>> getOrchestratorFlowStatssearchFlowName = null, Expression<Func<bool>> getOrchestratorFlowStatssearchFlowLastActionResult = null, Expression<Func<string>> getOrchestratorFlowStatssearchFlowStartTimeStartWindow = null, Expression<Func<string>> getOrchestratorFlowStatssearchFlowStartTimeEndWindow = null)
+        public IBodyWorkflowAction<GetOrchestratorFlowStatsResponse, ApiConnectionActionConfiguration> GetOrchestratorFlowStats(Expression<Func<GetOrchestratorFlowStatsInput>> getOrchestratorFlowStats)
         {
-            var __workflow_getOrchestratorFlowStatswithinLastNumberOfDays = WorkflowExpression.Compile(getOrchestratorFlowStatswithinLastNumberOfDays, nameof(getOrchestratorFlowStatswithinLastNumberOfDays), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowName = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowName, nameof(getOrchestratorFlowStatssearchFlowName), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowLastActionResult = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowLastActionResult, nameof(getOrchestratorFlowStatssearchFlowLastActionResult), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowStartTimeStartWindow = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeStartWindow), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowStartTimeEndWindow = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowStartTimeEndWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeEndWindow), required: false);
+            var __workflow_getOrchestratorFlowStats = WorkflowExpression.Compile(getOrchestratorFlowStats, nameof(getOrchestratorFlowStats), required: true);
             return new DeferredBodyAction<GetOrchestratorFlowStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorFlowStats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getOrchestratorFlowStats = new JObject();
-                var getOrchestratorFlowStatspropCount = 0;
-                if (__workflow_getOrchestratorFlowStatswithinLastNumberOfDays != null)
-                {
-                    getOrchestratorFlowStats["WithinLastNumberOfDays"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorFlowStatswithinLastNumberOfDays);
-                    getOrchestratorFlowStatspropCount++;
-                }
-
-                if (__workflow_getOrchestratorFlowStatssearchFlowName != null)
-                {
-                    getOrchestratorFlowStats["SearchFlowName"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorFlowStatssearchFlowName);
-                    getOrchestratorFlowStatspropCount++;
-                }
-
-                if (__workflow_getOrchestratorFlowStatssearchFlowLastActionResult != null)
-                {
-                    getOrchestratorFlowStats["SearchFlowLastActionResult"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorFlowStatssearchFlowLastActionResult);
-                    getOrchestratorFlowStatspropCount++;
-                }
-
-                if (__workflow_getOrchestratorFlowStatssearchFlowStartTimeStartWindow != null)
-                {
-                    getOrchestratorFlowStats["SearchFlowStartTimeStartWindow"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorFlowStatssearchFlowStartTimeStartWindow);
-                    getOrchestratorFlowStatspropCount++;
-                }
-
-                if (__workflow_getOrchestratorFlowStatssearchFlowStartTimeEndWindow != null)
-                {
-                    getOrchestratorFlowStats["SearchFlowStartTimeEndWindow"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorFlowStatssearchFlowStartTimeEndWindow);
-                    getOrchestratorFlowStatspropCount++;
-                }
-
-                if (getOrchestratorFlowStatspropCount > 0)
-                {
-                    callPayload.Body = getOrchestratorFlowStats;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getOrchestratorFlowStats);
                 return new ApiConnectionAction<GetOrchestratorFlowStatsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetOrchestratorWorkerAvailabilityStatsResponse, ApiConnectionActionConfiguration> GetOrchestratorWorkerAvailabilityStats(Expression<Func<int>> getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays = null, Expression<Func<string>> getOrchestratorWorkerAvailabilityStatssearchFlowName = null, Expression<Func<string>> getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow = null)
+        public IBodyWorkflowAction<GetOrchestratorWorkerAvailabilityStatsResponse, ApiConnectionActionConfiguration> GetOrchestratorWorkerAvailabilityStats(Expression<Func<GetOrchestratorWorkerAvailabilityStatsInput>> getOrchestratorWorkerAvailabilityStats)
         {
-            var __workflow_getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays = WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays, nameof(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays), required: false);
-            var __workflow_getOrchestratorWorkerAvailabilityStatssearchFlowName = WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatssearchFlowName, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowName), required: false);
-            var __workflow_getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow = WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow), required: false);
+            var __workflow_getOrchestratorWorkerAvailabilityStats = WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStats, nameof(getOrchestratorWorkerAvailabilityStats), required: true);
             return new DeferredBodyAction<GetOrchestratorWorkerAvailabilityStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorkerAvailabilityStats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getOrchestratorWorkerAvailabilityStats = new JObject();
-                var getOrchestratorWorkerAvailabilityStatspropCount = 0;
-                if (__workflow_getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays != null)
-                {
-                    getOrchestratorWorkerAvailabilityStats["WithinLastNumberOfDays"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays);
-                    getOrchestratorWorkerAvailabilityStatspropCount++;
-                }
-
-                if (__workflow_getOrchestratorWorkerAvailabilityStatssearchFlowName != null)
-                {
-                    getOrchestratorWorkerAvailabilityStats["SearchFlowName"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerAvailabilityStatssearchFlowName);
-                    getOrchestratorWorkerAvailabilityStatspropCount++;
-                }
-
-                if (__workflow_getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow != null)
-                {
-                    getOrchestratorWorkerAvailabilityStats["SearchFlowStartTimeStartWindow"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow);
-                    getOrchestratorWorkerAvailabilityStatspropCount++;
-                }
-
-                if (getOrchestratorWorkerAvailabilityStatspropCount > 0)
-                {
-                    callPayload.Body = getOrchestratorWorkerAvailabilityStats;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerAvailabilityStats);
                 return new ApiConnectionAction<GetOrchestratorWorkerAvailabilityStatsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetOrchestratorWorkerFlowUsageHeatmapResponse, ApiConnectionActionConfiguration> GetOrchestratorWorkerFlowUsageHeatmap(Expression<Func<string>> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, Expression<Func<string>> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, Expression<Func<int>> getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC = null, Expression<Func<string>> getOrchestratorWorkerFlowUsageHeatmapworkerNames = null)
+        public IBodyWorkflowAction<GetOrchestratorWorkerFlowUsageHeatmapResponse, ApiConnectionActionConfiguration> GetOrchestratorWorkerFlowUsageHeatmap(Expression<Func<GetOrchestratorWorkerFlowUsageHeatmapInput>> getOrchestratorWorkerFlowUsageHeatmap)
         {
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow), required: true);
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow), required: true);
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC, nameof(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC), required: false);
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmapworkerNames = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapworkerNames, nameof(getOrchestratorWorkerFlowUsageHeatmapworkerNames), required: false);
+            var __workflow_getOrchestratorWorkerFlowUsageHeatmap = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmap, nameof(getOrchestratorWorkerFlowUsageHeatmap), required: true);
             return new DeferredBodyAction<GetOrchestratorWorkerFlowUsageHeatmapResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorkerFlowUsageHeatmap";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getOrchestratorWorkerFlowUsageHeatmap = new JObject();
-                var getOrchestratorWorkerFlowUsageHeatmappropCount = 0;
-                getOrchestratorWorkerFlowUsageHeatmappropCount++;
-                getOrchestratorWorkerFlowUsageHeatmap["SearchStartDateStartWindow"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow);
-                getOrchestratorWorkerFlowUsageHeatmappropCount++;
-                getOrchestratorWorkerFlowUsageHeatmap["SearchStartDateEndWindow"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow);
-                if (__workflow_getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC != null)
-                {
-                    if (__workflow_getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC != null)
-                    {
-                        getOrchestratorWorkerFlowUsageHeatmap["TimeZoneMinutesOffsetFromUTC"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC);
-                        getOrchestratorWorkerFlowUsageHeatmappropCount++;
-                    }
-
-                    getOrchestratorWorkerFlowUsageHeatmappropCount++;
-                }
-                else
-                {
-                    getOrchestratorWorkerFlowUsageHeatmap["TimeZoneMinutesOffsetFromUTC"] = 0;
-                    getOrchestratorWorkerFlowUsageHeatmappropCount++;
-                }
-
-                if (__workflow_getOrchestratorWorkerFlowUsageHeatmapworkerNames != null)
-                {
-                    getOrchestratorWorkerFlowUsageHeatmap["WorkerNames"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerFlowUsageHeatmapworkerNames);
-                    getOrchestratorWorkerFlowUsageHeatmappropCount++;
-                }
-
-                if (getOrchestratorWorkerFlowUsageHeatmappropCount > 0)
-                {
-                    callPayload.Body = getOrchestratorWorkerFlowUsageHeatmap;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkerFlowUsageHeatmap);
                 return new ApiConnectionAction<GetOrchestratorWorkerFlowUsageHeatmapResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetOrchestratorLoginHistoryResponse, ApiConnectionActionConfiguration> GetOrchestratorLoginHistory(Expression<Func<int>> getOrchestratorLoginHistorywithinLastNumberOfDays = null, Expression<Func<string>> getOrchestratorLoginHistorysearchByEmail = null, Expression<Func<string>> getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow = null, Expression<Func<string>> getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow = null)
+        public IBodyWorkflowAction<GetOrchestratorLoginHistoryResponse, ApiConnectionActionConfiguration> GetOrchestratorLoginHistory(Expression<Func<GetOrchestratorLoginHistoryInput>> getOrchestratorLoginHistory)
         {
-            var __workflow_getOrchestratorLoginHistorywithinLastNumberOfDays = WorkflowExpression.Compile(getOrchestratorLoginHistorywithinLastNumberOfDays, nameof(getOrchestratorLoginHistorywithinLastNumberOfDays), required: false);
-            var __workflow_getOrchestratorLoginHistorysearchByEmail = WorkflowExpression.Compile(getOrchestratorLoginHistorysearchByEmail, nameof(getOrchestratorLoginHistorysearchByEmail), required: false);
-            var __workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow = WorkflowExpression.Compile(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow), required: false);
-            var __workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow = WorkflowExpression.Compile(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow), required: false);
+            var __workflow_getOrchestratorLoginHistory = WorkflowExpression.Compile(getOrchestratorLoginHistory, nameof(getOrchestratorLoginHistory), required: true);
             return new DeferredBodyAction<GetOrchestratorLoginHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorLoginHistory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getOrchestratorLoginHistory = new JObject();
-                var getOrchestratorLoginHistorypropCount = 0;
-                if (__workflow_getOrchestratorLoginHistorywithinLastNumberOfDays != null)
-                {
-                    getOrchestratorLoginHistory["WithinLastNumberOfDays"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorLoginHistorywithinLastNumberOfDays);
-                    getOrchestratorLoginHistorypropCount++;
-                }
-
-                if (__workflow_getOrchestratorLoginHistorysearchByEmail != null)
-                {
-                    getOrchestratorLoginHistory["SearchByEmail"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorLoginHistorysearchByEmail);
-                    getOrchestratorLoginHistorypropCount++;
-                }
-
-                if (__workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow != null)
-                {
-                    getOrchestratorLoginHistory["SearchLoginHistoryTimeStartWindow"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow);
-                    getOrchestratorLoginHistorypropCount++;
-                }
-
-                if (__workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow != null)
-                {
-                    getOrchestratorLoginHistory["SearchLoginHistoryTimeEndWindow"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow);
-                    getOrchestratorLoginHistorypropCount++;
-                }
-
-                if (getOrchestratorLoginHistorypropCount > 0)
-                {
-                    callPayload.Body = getOrchestratorLoginHistory;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getOrchestratorLoginHistory);
                 return new ApiConnectionAction<GetOrchestratorLoginHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetLocalLoggingLevel(Expression<Func<int>> setLocalLoggingLevelloggingLevel, Expression<Func<string>> setLocalLoggingLevelworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetLocalLoggingLevel(Expression<Func<SetLocalLoggingLevelInput>> setLocalLoggingLevel)
         {
-            var __workflow_setLocalLoggingLevelloggingLevel = WorkflowExpression.Compile(setLocalLoggingLevelloggingLevel, nameof(setLocalLoggingLevelloggingLevel), required: true);
-            var __workflow_setLocalLoggingLevelworkflow = WorkflowExpression.Compile(setLocalLoggingLevelworkflow, nameof(setLocalLoggingLevelworkflow), required: true);
+            var __workflow_setLocalLoggingLevel = WorkflowExpression.Compile(setLocalLoggingLevel, nameof(setLocalLoggingLevel), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetLocalLoggingLevel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setLocalLoggingLevel = new JObject();
-                var setLocalLoggingLevelpropCount = 0;
-                setLocalLoggingLevelpropCount++;
-                setLocalLoggingLevel["LoggingLevel"] = ExpressionConverter.ConvertO(__workflow_setLocalLoggingLevelloggingLevel);
-                setLocalLoggingLevelpropCount++;
-                setLocalLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(__workflow_setLocalLoggingLevelworkflow);
-                if (setLocalLoggingLevelpropCount > 0)
-                {
-                    callPayload.Body = setLocalLoggingLevel;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setLocalLoggingLevel);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<RunCommandResponse, ApiConnectionActionConfiguration> RunCommand(Expression<Func<string>> runCommandcommandName, Expression<Func<string>> runCommandworkflow, Expression<Func<string>> runCommandinputJSON = null)
+        public IBodyWorkflowAction<RunCommandResponse, ApiConnectionActionConfiguration> RunCommand(Expression<Func<RunCommandInput>> runCommand)
         {
-            var __workflow_runCommandcommandName = WorkflowExpression.Compile(runCommandcommandName, nameof(runCommandcommandName), required: true);
-            var __workflow_runCommandworkflow = WorkflowExpression.Compile(runCommandworkflow, nameof(runCommandworkflow), required: true);
-            var __workflow_runCommandinputJSON = WorkflowExpression.Compile(runCommandinputJSON, nameof(runCommandinputJSON), required: false);
+            var __workflow_runCommand = WorkflowExpression.Compile(runCommand, nameof(runCommand), required: true);
             return new DeferredBodyAction<RunCommandResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/RunCommand";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var runCommand = new JObject();
-                var runCommandpropCount = 0;
-                runCommandpropCount++;
-                runCommand["CommandName"] = ExpressionConverter.ConvertO(__workflow_runCommandcommandName);
-                if (__workflow_runCommandinputJSON != null)
-                {
-                    runCommand["InputJSON"] = ExpressionConverter.ConvertO(__workflow_runCommandinputJSON);
-                    runCommandpropCount++;
-                }
-
-                runCommandpropCount++;
-                runCommand["Workflow"] = ExpressionConverter.ConvertO(__workflow_runCommandworkflow);
-                if (runCommandpropCount > 0)
-                {
-                    callPayload.Body = runCommand;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_runCommand);
                 return new ApiConnectionAction<RunCommandResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetLocalLoggingLevelResponse, ApiConnectionActionConfiguration> GetLocalLoggingLevel(Expression<Func<string>> getLocalLoggingLevelworkflow)
+        public IBodyWorkflowAction<GetLocalLoggingLevelResponse, ApiConnectionActionConfiguration> GetLocalLoggingLevel(Expression<Func<GetLocalLoggingLevelInput>> getLocalLoggingLevel)
         {
-            var __workflow_getLocalLoggingLevelworkflow = WorkflowExpression.Compile(getLocalLoggingLevelworkflow, nameof(getLocalLoggingLevelworkflow), required: true);
+            var __workflow_getLocalLoggingLevel = WorkflowExpression.Compile(getLocalLoggingLevel, nameof(getLocalLoggingLevel), required: true);
             return new DeferredBodyAction<GetLocalLoggingLevelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetLocalLoggingLevel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getLocalLoggingLevel = new JObject();
-                var getLocalLoggingLevelpropCount = 0;
-                getLocalLoggingLevelpropCount++;
-                getLocalLoggingLevel["Workflow"] = ExpressionConverter.ConvertO(__workflow_getLocalLoggingLevelworkflow);
-                if (getLocalLoggingLevelpropCount > 0)
-                {
-                    callPayload.Body = getLocalLoggingLevel;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getLocalLoggingLevel);
                 return new ApiConnectionAction<GetLocalLoggingLevelResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetRemoteClientTypeResponse, ApiConnectionActionConfiguration> GetRemoteClientType(Expression<Func<string>> getRemoteClientTypeworkflow)
+        public IBodyWorkflowAction<GetRemoteClientTypeResponse, ApiConnectionActionConfiguration> GetRemoteClientType(Expression<Func<GetRemoteClientTypeInput>> getRemoteClientType)
         {
-            var __workflow_getRemoteClientTypeworkflow = WorkflowExpression.Compile(getRemoteClientTypeworkflow, nameof(getRemoteClientTypeworkflow), required: true);
+            var __workflow_getRemoteClientType = WorkflowExpression.Compile(getRemoteClientType, nameof(getRemoteClientType), required: true);
             return new DeferredBodyAction<GetRemoteClientTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetRemoteClientType";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getRemoteClientType = new JObject();
-                var getRemoteClientTypepropCount = 0;
-                getRemoteClientTypepropCount++;
-                getRemoteClientType["Workflow"] = ExpressionConverter.ConvertO(__workflow_getRemoteClientTypeworkflow);
-                if (getRemoteClientTypepropCount > 0)
-                {
-                    callPayload.Body = getRemoteClientType;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getRemoteClientType);
                 return new ApiConnectionAction<GetRemoteClientTypeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetIAConnectDirectorInfoResponse, ApiConnectionActionConfiguration> GetIAConnectDirectorInfo(Expression<Func<string>> getIAConnectDirectorInfoworkflow)
+        public IBodyWorkflowAction<GetIAConnectDirectorInfoResponse, ApiConnectionActionConfiguration> GetIAConnectDirectorInfo(Expression<Func<GetIAConnectDirectorInfoInput>> getIAConnectDirectorInfo)
         {
-            var __workflow_getIAConnectDirectorInfoworkflow = WorkflowExpression.Compile(getIAConnectDirectorInfoworkflow, nameof(getIAConnectDirectorInfoworkflow), required: true);
+            var __workflow_getIAConnectDirectorInfo = WorkflowExpression.Compile(getIAConnectDirectorInfo, nameof(getIAConnectDirectorInfo), required: true);
             return new DeferredBodyAction<GetIAConnectDirectorInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetIAConnectDirectorInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getIAConnectDirectorInfo = new JObject();
-                var getIAConnectDirectorInfopropCount = 0;
-                getIAConnectDirectorInfopropCount++;
-                getIAConnectDirectorInfo["Workflow"] = ExpressionConverter.ConvertO(__workflow_getIAConnectDirectorInfoworkflow);
-                if (getIAConnectDirectorInfopropCount > 0)
-                {
-                    callPayload.Body = getIAConnectDirectorInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getIAConnectDirectorInfo);
                 return new ApiConnectionAction<GetIAConnectDirectorInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetAvailableIAConnectSessionsResponse, ApiConnectionActionConfiguration> GetAvailableIAConnectSessions(Expression<Func<string>> getAvailableIAConnectSessionsworkflow)
+        public IBodyWorkflowAction<GetAvailableIAConnectSessionsResponse, ApiConnectionActionConfiguration> GetAvailableIAConnectSessions(Expression<Func<GetAvailableIAConnectSessionsInput>> getAvailableIAConnectSessions)
         {
-            var __workflow_getAvailableIAConnectSessionsworkflow = WorkflowExpression.Compile(getAvailableIAConnectSessionsworkflow, nameof(getAvailableIAConnectSessionsworkflow), required: true);
+            var __workflow_getAvailableIAConnectSessions = WorkflowExpression.Compile(getAvailableIAConnectSessions, nameof(getAvailableIAConnectSessions), required: true);
             return new DeferredBodyAction<GetAvailableIAConnectSessionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAvailableIAConnectSessions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getAvailableIAConnectSessions = new JObject();
-                var getAvailableIAConnectSessionspropCount = 0;
-                getAvailableIAConnectSessionspropCount++;
-                getAvailableIAConnectSessions["Workflow"] = ExpressionConverter.ConvertO(__workflow_getAvailableIAConnectSessionsworkflow);
-                if (getAvailableIAConnectSessionspropCount > 0)
-                {
-                    callPayload.Body = getAvailableIAConnectSessions;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getAvailableIAConnectSessions);
                 return new ApiConnectionAction<GetAvailableIAConnectSessionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachToIAConnectSessionByName(Expression<Func<string>> attachToIAConnectSessionByNameiAConnectSessionName, Expression<Func<string>> attachToIAConnectSessionByNameworkflow, Expression<Func<bool>> attachToIAConnectSessionByNamevirtualChannelMustBeConnected = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachToIAConnectSessionByName(Expression<Func<AttachToIAConnectSessionByNameInput>> attachToIAConnectSessionByName)
         {
-            var __workflow_attachToIAConnectSessionByNameiAConnectSessionName = WorkflowExpression.Compile(attachToIAConnectSessionByNameiAConnectSessionName, nameof(attachToIAConnectSessionByNameiAConnectSessionName), required: true);
-            var __workflow_attachToIAConnectSessionByNameworkflow = WorkflowExpression.Compile(attachToIAConnectSessionByNameworkflow, nameof(attachToIAConnectSessionByNameworkflow), required: true);
-            var __workflow_attachToIAConnectSessionByNamevirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToIAConnectSessionByNamevirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByNamevirtualChannelMustBeConnected), required: false);
+            var __workflow_attachToIAConnectSessionByName = WorkflowExpression.Compile(attachToIAConnectSessionByName, nameof(attachToIAConnectSessionByName), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToIAConnectSessionByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var attachToIAConnectSessionByName = new JObject();
-                var attachToIAConnectSessionByNamepropCount = 0;
-                attachToIAConnectSessionByNamepropCount++;
-                attachToIAConnectSessionByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByNameiAConnectSessionName);
-                if (__workflow_attachToIAConnectSessionByNamevirtualChannelMustBeConnected != null)
-                {
-                    if (__workflow_attachToIAConnectSessionByNamevirtualChannelMustBeConnected != null)
-                    {
-                        attachToIAConnectSessionByName["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByNamevirtualChannelMustBeConnected);
-                        attachToIAConnectSessionByNamepropCount++;
-                    }
-
-                    attachToIAConnectSessionByNamepropCount++;
-                }
-                else
-                {
-                    attachToIAConnectSessionByName["VirtualChannelMustBeConnected"] = true;
-                    attachToIAConnectSessionByNamepropCount++;
-                }
-
-                attachToIAConnectSessionByNamepropCount++;
-                attachToIAConnectSessionByName["Workflow"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByNameworkflow);
-                if (attachToIAConnectSessionByNamepropCount > 0)
-                {
-                    callPayload.Body = attachToIAConnectSessionByName;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByName);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<AttachToTier1IAConnectSessionResponse, ApiConnectionActionConfiguration> AttachToTier1IAConnectSession(Expression<Func<string>> attachToTier1IAConnectSessionworkflow, Expression<Func<bool>> attachToTier1IAConnectSessionvirtualChannelMustBeConnected = null)
+        public IBodyWorkflowAction<AttachToTier1IAConnectSessionResponse, ApiConnectionActionConfiguration> AttachToTier1IAConnectSession(Expression<Func<AttachToTier1IAConnectSessionInput>> attachToTier1IAConnectSession)
         {
-            var __workflow_attachToTier1IAConnectSessionworkflow = WorkflowExpression.Compile(attachToTier1IAConnectSessionworkflow, nameof(attachToTier1IAConnectSessionworkflow), required: true);
-            var __workflow_attachToTier1IAConnectSessionvirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToTier1IAConnectSessionvirtualChannelMustBeConnected, nameof(attachToTier1IAConnectSessionvirtualChannelMustBeConnected), required: false);
+            var __workflow_attachToTier1IAConnectSession = WorkflowExpression.Compile(attachToTier1IAConnectSession, nameof(attachToTier1IAConnectSession), required: true);
             return new DeferredBodyAction<AttachToTier1IAConnectSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToTier1IAConnectSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var attachToTier1IAConnectSession = new JObject();
-                var attachToTier1IAConnectSessionpropCount = 0;
-                if (__workflow_attachToTier1IAConnectSessionvirtualChannelMustBeConnected != null)
-                {
-                    if (__workflow_attachToTier1IAConnectSessionvirtualChannelMustBeConnected != null)
-                    {
-                        attachToTier1IAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(__workflow_attachToTier1IAConnectSessionvirtualChannelMustBeConnected);
-                        attachToTier1IAConnectSessionpropCount++;
-                    }
-
-                    attachToTier1IAConnectSessionpropCount++;
-                }
-                else
-                {
-                    attachToTier1IAConnectSession["VirtualChannelMustBeConnected"] = true;
-                    attachToTier1IAConnectSessionpropCount++;
-                }
-
-                attachToTier1IAConnectSessionpropCount++;
-                attachToTier1IAConnectSession["Workflow"] = ExpressionConverter.ConvertO(__workflow_attachToTier1IAConnectSessionworkflow);
-                if (attachToTier1IAConnectSessionpropCount > 0)
-                {
-                    callPayload.Body = attachToTier1IAConnectSession;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_attachToTier1IAConnectSession);
                 return new ApiConnectionAction<AttachToTier1IAConnectSessionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<AttachToIAConnectSessionByIndexResponse, ApiConnectionActionConfiguration> AttachToIAConnectSessionByIndex(Expression<Func<string>> attachToIAConnectSessionByIndexworkflow, Expression<Func<attachToIAConnectSessionByIndexsearchIAConnectSessionTypeInput>> attachToIAConnectSessionByIndexsearchIAConnectSessionType = null, Expression<Func<int>> attachToIAConnectSessionByIndexsearchIAConnectSessionIndex = null, Expression<Func<int>> attachToIAConnectSessionByIndextimeToWaitInSeconds = null, Expression<Func<bool>> attachToIAConnectSessionByIndexraiseExceptionIfTimedout = null, Expression<Func<bool>> attachToIAConnectSessionByIndexvirtualChannelMustBeConnected = null, Expression<Func<bool>> attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore = null)
+        public IBodyWorkflowAction<AttachToIAConnectSessionByIndexResponse, ApiConnectionActionConfiguration> AttachToIAConnectSessionByIndex(Expression<Func<AttachToIAConnectSessionByIndexInput>> attachToIAConnectSessionByIndex)
         {
-            var __workflow_attachToIAConnectSessionByIndexworkflow = WorkflowExpression.Compile(attachToIAConnectSessionByIndexworkflow, nameof(attachToIAConnectSessionByIndexworkflow), required: true);
-            var __workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionType = WorkflowExpression.Compile(attachToIAConnectSessionByIndexsearchIAConnectSessionType, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionType), required: false);
-            var __workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionIndex = WorkflowExpression.Compile(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex), required: false);
-            var __workflow_attachToIAConnectSessionByIndextimeToWaitInSeconds = WorkflowExpression.Compile(attachToIAConnectSessionByIndextimeToWaitInSeconds, nameof(attachToIAConnectSessionByIndextimeToWaitInSeconds), required: false);
-            var __workflow_attachToIAConnectSessionByIndexraiseExceptionIfTimedout = WorkflowExpression.Compile(attachToIAConnectSessionByIndexraiseExceptionIfTimedout, nameof(attachToIAConnectSessionByIndexraiseExceptionIfTimedout), required: false);
-            var __workflow_attachToIAConnectSessionByIndexvirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected), required: false);
-            var __workflow_attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore = WorkflowExpression.Compile(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore, nameof(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore), required: false);
+            var __workflow_attachToIAConnectSessionByIndex = WorkflowExpression.Compile(attachToIAConnectSessionByIndex, nameof(attachToIAConnectSessionByIndex), required: true);
             return new DeferredBodyAction<AttachToIAConnectSessionByIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToIAConnectSessionByIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var attachToIAConnectSessionByIndex = new JObject();
-                var attachToIAConnectSessionByIndexpropCount = 0;
-                if (__workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionType != null)
-                {
-                    attachToIAConnectSessionByIndex["SearchIAConnectSessionType"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionType);
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-
-                if (__workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionIndex != null)
-                {
-                    attachToIAConnectSessionByIndex["SearchIAConnectSessionIndex"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionIndex);
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-
-                if (__workflow_attachToIAConnectSessionByIndextimeToWaitInSeconds != null)
-                {
-                    attachToIAConnectSessionByIndex["TimeToWaitInSeconds"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndextimeToWaitInSeconds);
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-
-                if (__workflow_attachToIAConnectSessionByIndexraiseExceptionIfTimedout != null)
-                {
-                    if (__workflow_attachToIAConnectSessionByIndexraiseExceptionIfTimedout != null)
-                    {
-                        attachToIAConnectSessionByIndex["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndexraiseExceptionIfTimedout);
-                        attachToIAConnectSessionByIndexpropCount++;
-                    }
-
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-                else
-                {
-                    attachToIAConnectSessionByIndex["RaiseExceptionIfTimedout"] = true;
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-
-                if (__workflow_attachToIAConnectSessionByIndexvirtualChannelMustBeConnected != null)
-                {
-                    if (__workflow_attachToIAConnectSessionByIndexvirtualChannelMustBeConnected != null)
-                    {
-                        attachToIAConnectSessionByIndex["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndexvirtualChannelMustBeConnected);
-                        attachToIAConnectSessionByIndexpropCount++;
-                    }
-
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-                else
-                {
-                    attachToIAConnectSessionByIndex["VirtualChannelMustBeConnected"] = true;
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-
-                if (__workflow_attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore != null)
-                {
-                    if (__workflow_attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore != null)
-                    {
-                        attachToIAConnectSessionByIndex["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore);
-                        attachToIAConnectSessionByIndexpropCount++;
-                    }
-
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-                else
-                {
-                    attachToIAConnectSessionByIndex["OnlyCountSessionsNotSeenBefore"] = false;
-                    attachToIAConnectSessionByIndexpropCount++;
-                }
-
-                attachToIAConnectSessionByIndexpropCount++;
-                attachToIAConnectSessionByIndex["Workflow"] = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndexworkflow);
-                if (attachToIAConnectSessionByIndexpropCount > 0)
-                {
-                    callPayload.Body = attachToIAConnectSessionByIndex;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_attachToIAConnectSessionByIndex);
                 return new ApiConnectionAction<AttachToIAConnectSessionByIndexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<AttachToMostRecentIAConnectSessionResponse, ApiConnectionActionConfiguration> AttachToMostRecentIAConnectSession(Expression<Func<string>> attachToMostRecentIAConnectSessionworkflow, Expression<Func<attachToMostRecentIAConnectSessionsearchIAConnectSessionTypeInput>> attachToMostRecentIAConnectSessionsearchIAConnectSessionType = null, Expression<Func<int>> attachToMostRecentIAConnectSessiontimeToWaitInSeconds = null, Expression<Func<bool>> attachToMostRecentIAConnectSessionraiseExceptionIfTimedout = null, Expression<Func<bool>> attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected = null, Expression<Func<bool>> attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore = null)
+        public IBodyWorkflowAction<AttachToMostRecentIAConnectSessionResponse, ApiConnectionActionConfiguration> AttachToMostRecentIAConnectSession(Expression<Func<AttachToMostRecentIAConnectSessionInput>> attachToMostRecentIAConnectSession)
         {
-            var __workflow_attachToMostRecentIAConnectSessionworkflow = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionworkflow, nameof(attachToMostRecentIAConnectSessionworkflow), required: true);
-            var __workflow_attachToMostRecentIAConnectSessionsearchIAConnectSessionType = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionsearchIAConnectSessionType, nameof(attachToMostRecentIAConnectSessionsearchIAConnectSessionType), required: false);
-            var __workflow_attachToMostRecentIAConnectSessiontimeToWaitInSeconds = WorkflowExpression.Compile(attachToMostRecentIAConnectSessiontimeToWaitInSeconds, nameof(attachToMostRecentIAConnectSessiontimeToWaitInSeconds), required: false);
-            var __workflow_attachToMostRecentIAConnectSessionraiseExceptionIfTimedout = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout, nameof(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout), required: false);
-            var __workflow_attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected, nameof(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected), required: false);
-            var __workflow_attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore = WorkflowExpression.Compile(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore, nameof(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore), required: false);
+            var __workflow_attachToMostRecentIAConnectSession = WorkflowExpression.Compile(attachToMostRecentIAConnectSession, nameof(attachToMostRecentIAConnectSession), required: true);
             return new DeferredBodyAction<AttachToMostRecentIAConnectSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToMostRecentIAConnectSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var attachToMostRecentIAConnectSession = new JObject();
-                var attachToMostRecentIAConnectSessionpropCount = 0;
-                if (__workflow_attachToMostRecentIAConnectSessionsearchIAConnectSessionType != null)
-                {
-                    attachToMostRecentIAConnectSession["SearchIAConnectSessionType"] = ExpressionConverter.ConvertO(__workflow_attachToMostRecentIAConnectSessionsearchIAConnectSessionType);
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-
-                if (__workflow_attachToMostRecentIAConnectSessiontimeToWaitInSeconds != null)
-                {
-                    attachToMostRecentIAConnectSession["TimeToWaitInSeconds"] = ExpressionConverter.ConvertO(__workflow_attachToMostRecentIAConnectSessiontimeToWaitInSeconds);
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-
-                if (__workflow_attachToMostRecentIAConnectSessionraiseExceptionIfTimedout != null)
-                {
-                    if (__workflow_attachToMostRecentIAConnectSessionraiseExceptionIfTimedout != null)
-                    {
-                        attachToMostRecentIAConnectSession["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(__workflow_attachToMostRecentIAConnectSessionraiseExceptionIfTimedout);
-                        attachToMostRecentIAConnectSessionpropCount++;
-                    }
-
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-                else
-                {
-                    attachToMostRecentIAConnectSession["RaiseExceptionIfTimedout"] = true;
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-
-                if (__workflow_attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected != null)
-                {
-                    if (__workflow_attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected != null)
-                    {
-                        attachToMostRecentIAConnectSession["VirtualChannelMustBeConnected"] = ExpressionConverter.ConvertO(__workflow_attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected);
-                        attachToMostRecentIAConnectSessionpropCount++;
-                    }
-
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-                else
-                {
-                    attachToMostRecentIAConnectSession["VirtualChannelMustBeConnected"] = true;
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-
-                if (__workflow_attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore != null)
-                {
-                    if (__workflow_attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore != null)
-                    {
-                        attachToMostRecentIAConnectSession["OnlyCountSessionsNotSeenBefore"] = ExpressionConverter.ConvertO(__workflow_attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore);
-                        attachToMostRecentIAConnectSessionpropCount++;
-                    }
-
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-                else
-                {
-                    attachToMostRecentIAConnectSession["OnlyCountSessionsNotSeenBefore"] = false;
-                    attachToMostRecentIAConnectSessionpropCount++;
-                }
-
-                attachToMostRecentIAConnectSessionpropCount++;
-                attachToMostRecentIAConnectSession["Workflow"] = ExpressionConverter.ConvertO(__workflow_attachToMostRecentIAConnectSessionworkflow);
-                if (attachToMostRecentIAConnectSessionpropCount > 0)
-                {
-                    callPayload.Body = attachToMostRecentIAConnectSession;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_attachToMostRecentIAConnectSession);
                 return new ApiConnectionAction<AttachToMostRecentIAConnectSessionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetDirectorUpTimeResponse, ApiConnectionActionConfiguration> GetDirectorUpTime(Expression<Func<string>> getDirectorUpTimeworkflow)
+        public IBodyWorkflowAction<GetDirectorUpTimeResponse, ApiConnectionActionConfiguration> GetDirectorUpTime(Expression<Func<GetDirectorUpTimeInput>> getDirectorUpTime)
         {
-            var __workflow_getDirectorUpTimeworkflow = WorkflowExpression.Compile(getDirectorUpTimeworkflow, nameof(getDirectorUpTimeworkflow), required: true);
+            var __workflow_getDirectorUpTime = WorkflowExpression.Compile(getDirectorUpTime, nameof(getDirectorUpTime), required: true);
             return new DeferredBodyAction<GetDirectorUpTimeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetDirectorUpTime";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getDirectorUpTime = new JObject();
-                var getDirectorUpTimepropCount = 0;
-                getDirectorUpTimepropCount++;
-                getDirectorUpTime["Workflow"] = ExpressionConverter.ConvertO(__workflow_getDirectorUpTimeworkflow);
-                if (getDirectorUpTimepropCount > 0)
-                {
-                    callPayload.Body = getDirectorUpTime;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getDirectorUpTime);
                 return new ApiConnectionAction<GetDirectorUpTimeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DoesIAConnectSessionExistByNameResponse, ApiConnectionActionConfiguration> DoesIAConnectSessionExistByName(Expression<Func<string>> doesIAConnectSessionExistByNameiAConnectSessionName, Expression<Func<string>> doesIAConnectSessionExistByNameworkflow)
+        public IBodyWorkflowAction<DoesIAConnectSessionExistByNameResponse, ApiConnectionActionConfiguration> DoesIAConnectSessionExistByName(Expression<Func<DoesIAConnectSessionExistByNameInput>> doesIAConnectSessionExistByName)
         {
-            var __workflow_doesIAConnectSessionExistByNameiAConnectSessionName = WorkflowExpression.Compile(doesIAConnectSessionExistByNameiAConnectSessionName, nameof(doesIAConnectSessionExistByNameiAConnectSessionName), required: true);
-            var __workflow_doesIAConnectSessionExistByNameworkflow = WorkflowExpression.Compile(doesIAConnectSessionExistByNameworkflow, nameof(doesIAConnectSessionExistByNameworkflow), required: true);
+            var __workflow_doesIAConnectSessionExistByName = WorkflowExpression.Compile(doesIAConnectSessionExistByName, nameof(doesIAConnectSessionExistByName), required: true);
             return new DeferredBodyAction<DoesIAConnectSessionExistByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/DoesIAConnectSessionExistByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var doesIAConnectSessionExistByName = new JObject();
-                var doesIAConnectSessionExistByNamepropCount = 0;
-                doesIAConnectSessionExistByNamepropCount++;
-                doesIAConnectSessionExistByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(__workflow_doesIAConnectSessionExistByNameiAConnectSessionName);
-                doesIAConnectSessionExistByNamepropCount++;
-                doesIAConnectSessionExistByName["Workflow"] = ExpressionConverter.ConvertO(__workflow_doesIAConnectSessionExistByNameworkflow);
-                if (doesIAConnectSessionExistByNamepropCount > 0)
-                {
-                    callPayload.Body = doesIAConnectSessionExistByName;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_doesIAConnectSessionExistByName);
                 return new ApiConnectionAction<DoesIAConnectSessionExistByNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<WaitForIAConnectSessionToCloseByNameResponse, ApiConnectionActionConfiguration> WaitForIAConnectSessionToCloseByName(Expression<Func<string>> waitForIAConnectSessionToCloseByNameiAConnectSessionName, Expression<Func<string>> waitForIAConnectSessionToCloseByNameworkflow, Expression<Func<int>> waitForIAConnectSessionToCloseByNametimeToWaitInSeconds = null, Expression<Func<bool>> waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout = null, Expression<Func<bool>> waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess = null)
+        public IBodyWorkflowAction<WaitForIAConnectSessionToCloseByNameResponse, ApiConnectionActionConfiguration> WaitForIAConnectSessionToCloseByName(Expression<Func<WaitForIAConnectSessionToCloseByNameInput>> waitForIAConnectSessionToCloseByName)
         {
-            var __workflow_waitForIAConnectSessionToCloseByNameiAConnectSessionName = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameiAConnectSessionName, nameof(waitForIAConnectSessionToCloseByNameiAConnectSessionName), required: true);
-            var __workflow_waitForIAConnectSessionToCloseByNameworkflow = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameworkflow, nameof(waitForIAConnectSessionToCloseByNameworkflow), required: true);
-            var __workflow_waitForIAConnectSessionToCloseByNametimeToWaitInSeconds = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds, nameof(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds), required: false);
-            var __workflow_waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout, nameof(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout), required: false);
-            var __workflow_waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess, nameof(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess), required: false);
+            var __workflow_waitForIAConnectSessionToCloseByName = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByName, nameof(waitForIAConnectSessionToCloseByName), required: true);
             return new DeferredBodyAction<WaitForIAConnectSessionToCloseByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/WaitForIAConnectSessionToCloseByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var waitForIAConnectSessionToCloseByName = new JObject();
-                var waitForIAConnectSessionToCloseByNamepropCount = 0;
-                waitForIAConnectSessionToCloseByNamepropCount++;
-                waitForIAConnectSessionToCloseByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(__workflow_waitForIAConnectSessionToCloseByNameiAConnectSessionName);
-                if (__workflow_waitForIAConnectSessionToCloseByNametimeToWaitInSeconds != null)
-                {
-                    waitForIAConnectSessionToCloseByName["TimeToWaitInSeconds"] = ExpressionConverter.ConvertO(__workflow_waitForIAConnectSessionToCloseByNametimeToWaitInSeconds);
-                    waitForIAConnectSessionToCloseByNamepropCount++;
-                }
-
-                if (__workflow_waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout != null)
-                {
-                    if (__workflow_waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout != null)
-                    {
-                        waitForIAConnectSessionToCloseByName["RaiseExceptionIfTimedout"] = ExpressionConverter.ConvertO(__workflow_waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout);
-                        waitForIAConnectSessionToCloseByNamepropCount++;
-                    }
-
-                    waitForIAConnectSessionToCloseByNamepropCount++;
-                }
-                else
-                {
-                    waitForIAConnectSessionToCloseByName["RaiseExceptionIfTimedout"] = true;
-                    waitForIAConnectSessionToCloseByNamepropCount++;
-                }
-
-                if (__workflow_waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess != null)
-                {
-                    if (__workflow_waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess != null)
-                    {
-                        waitForIAConnectSessionToCloseByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(__workflow_waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess);
-                        waitForIAConnectSessionToCloseByNamepropCount++;
-                    }
-
-                    waitForIAConnectSessionToCloseByNamepropCount++;
-                }
-                else
-                {
-                    waitForIAConnectSessionToCloseByName["AttachToTier1IAConnectSessionOnSuccess"] = true;
-                    waitForIAConnectSessionToCloseByNamepropCount++;
-                }
-
-                waitForIAConnectSessionToCloseByNamepropCount++;
-                waitForIAConnectSessionToCloseByName["Workflow"] = ExpressionConverter.ConvertO(__workflow_waitForIAConnectSessionToCloseByNameworkflow);
-                if (waitForIAConnectSessionToCloseByNamepropCount > 0)
-                {
-                    callPayload.Body = waitForIAConnectSessionToCloseByName;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_waitForIAConnectSessionToCloseByName);
                 return new ApiConnectionAction<WaitForIAConnectSessionToCloseByNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KillIAConnectSessionByNameResponse, ApiConnectionActionConfiguration> KillIAConnectSessionByName(Expression<Func<string>> killIAConnectSessionByNameiAConnectSessionName, Expression<Func<string>> killIAConnectSessionByNameworkflow, Expression<Func<bool>> killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess = null)
+        public IBodyWorkflowAction<KillIAConnectSessionByNameResponse, ApiConnectionActionConfiguration> KillIAConnectSessionByName(Expression<Func<KillIAConnectSessionByNameInput>> killIAConnectSessionByName)
         {
-            var __workflow_killIAConnectSessionByNameiAConnectSessionName = WorkflowExpression.Compile(killIAConnectSessionByNameiAConnectSessionName, nameof(killIAConnectSessionByNameiAConnectSessionName), required: true);
-            var __workflow_killIAConnectSessionByNameworkflow = WorkflowExpression.Compile(killIAConnectSessionByNameworkflow, nameof(killIAConnectSessionByNameworkflow), required: true);
-            var __workflow_killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess = WorkflowExpression.Compile(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess, nameof(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess), required: false);
+            var __workflow_killIAConnectSessionByName = WorkflowExpression.Compile(killIAConnectSessionByName, nameof(killIAConnectSessionByName), required: true);
             return new DeferredBodyAction<KillIAConnectSessionByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/KillIAConnectSessionByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var killIAConnectSessionByName = new JObject();
-                var killIAConnectSessionByNamepropCount = 0;
-                killIAConnectSessionByNamepropCount++;
-                killIAConnectSessionByName["IAConnectSessionName"] = ExpressionConverter.ConvertO(__workflow_killIAConnectSessionByNameiAConnectSessionName);
-                if (__workflow_killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess != null)
-                {
-                    if (__workflow_killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess != null)
-                    {
-                        killIAConnectSessionByName["AttachToTier1IAConnectSessionOnSuccess"] = ExpressionConverter.ConvertO(__workflow_killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess);
-                        killIAConnectSessionByNamepropCount++;
-                    }
-
-                    killIAConnectSessionByNamepropCount++;
-                }
-                else
-                {
-                    killIAConnectSessionByName["AttachToTier1IAConnectSessionOnSuccess"] = true;
-                    killIAConnectSessionByNamepropCount++;
-                }
-
-                killIAConnectSessionByNamepropCount++;
-                killIAConnectSessionByName["Workflow"] = ExpressionConverter.ConvertO(__workflow_killIAConnectSessionByNameworkflow);
-                if (killIAConnectSessionByNamepropCount > 0)
-                {
-                    callPayload.Body = killIAConnectSessionByName;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_killIAConnectSessionByName);
                 return new ApiConnectionAction<KillIAConnectSessionByNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<SetAgentGlobalCoordinateConfigurationResponse, ApiConnectionActionConfiguration> SetAgentGlobalCoordinateConfiguration(Expression<Func<string>> setAgentGlobalCoordinateConfigurationworkflow, Expression<Func<setAgentGlobalCoordinateConfigurationmultiMonitorFunctionalityInput>> setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality = null, Expression<Func<setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplierInput>> setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier = null, Expression<Func<setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplierInput>> setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier = null, Expression<Func<bool>> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent = null, Expression<Func<bool>> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos = null, Expression<Func<bool>> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod = null, Expression<Func<setAgentGlobalCoordinateConfigurationjavaCoordinateSystemInput>> setAgentGlobalCoordinateConfigurationjavaCoordinateSystem = null, Expression<Func<setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystemInput>> setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem = null)
+        public IBodyWorkflowAction<SetAgentGlobalCoordinateConfigurationResponse, ApiConnectionActionConfiguration> SetAgentGlobalCoordinateConfiguration(Expression<Func<SetAgentGlobalCoordinateConfigurationInput>> setAgentGlobalCoordinateConfiguration)
         {
-            var __workflow_setAgentGlobalCoordinateConfigurationworkflow = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationworkflow, nameof(setAgentGlobalCoordinateConfigurationworkflow), required: true);
-            var __workflow_setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality, nameof(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationjavaCoordinateSystem = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem), required: false);
+            var __workflow_setAgentGlobalCoordinateConfiguration = WorkflowExpression.Compile(setAgentGlobalCoordinateConfiguration, nameof(setAgentGlobalCoordinateConfiguration), required: true);
             return new DeferredBodyAction<SetAgentGlobalCoordinateConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetAgentGlobalCoordinateConfiguration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setAgentGlobalCoordinateConfiguration = new JObject();
-                var setAgentGlobalCoordinateConfigurationpropCount = 0;
-                if (__workflow_setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["MultiMonitorFunctionality"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["MultiMonitorFunctionality"] = "NotSet";
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["AutoSetMouseInspectionMultiplier"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["AutoSetMouseInspectionMultiplier"] = "NotSet";
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["AutoSetGlobalMouseMultiplier"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["AutoSetGlobalMouseMultiplier"] = "NotSet";
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["MouseInspectionXMultiplier"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["MouseInspectionXMultiplier"] = 0;
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["MouseInspectionYMultiplier"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["MouseInspectionYMultiplier"] = 0;
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["GlobalMouseXMultiplier"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseXMultiplier"] = 0;
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["GlobalMouseYMultiplier"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseYMultiplier"] = 0;
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToMouseEvent"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToMouseEvent"] = true;
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToSetCursorPos"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToSetCursorPos"] = false;
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToCurrentMouseMoveMethod"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["GlobalMouseMultiplierApplyToCurrentMouseMoveMethod"] = false;
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationjavaCoordinateSystem != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationjavaCoordinateSystem != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["JavaCoordinateSystem"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationjavaCoordinateSystem);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["JavaCoordinateSystem"] = "NotSet";
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                if (__workflow_setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem != null)
-                {
-                    if (__workflow_setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem != null)
-                    {
-                        setAgentGlobalCoordinateConfiguration["SAPGUICoordinateSystem"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem);
-                        setAgentGlobalCoordinateConfigurationpropCount++;
-                    }
-
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-                else
-                {
-                    setAgentGlobalCoordinateConfiguration["SAPGUICoordinateSystem"] = "NotSet";
-                    setAgentGlobalCoordinateConfigurationpropCount++;
-                }
-
-                setAgentGlobalCoordinateConfigurationpropCount++;
-                setAgentGlobalCoordinateConfiguration["Workflow"] = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfigurationworkflow);
-                if (setAgentGlobalCoordinateConfigurationpropCount > 0)
-                {
-                    callPayload.Body = setAgentGlobalCoordinateConfiguration;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setAgentGlobalCoordinateConfiguration);
                 return new ApiConnectionAction<SetAgentGlobalCoordinateConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetAgentGlobalCoordinateConfigurationResponse, ApiConnectionActionConfiguration> GetAgentGlobalCoordinateConfiguration(Expression<Func<string>> getAgentGlobalCoordinateConfigurationworkflow)
+        public IBodyWorkflowAction<GetAgentGlobalCoordinateConfigurationResponse, ApiConnectionActionConfiguration> GetAgentGlobalCoordinateConfiguration(Expression<Func<GetAgentGlobalCoordinateConfigurationInput>> getAgentGlobalCoordinateConfiguration)
         {
-            var __workflow_getAgentGlobalCoordinateConfigurationworkflow = WorkflowExpression.Compile(getAgentGlobalCoordinateConfigurationworkflow, nameof(getAgentGlobalCoordinateConfigurationworkflow), required: true);
+            var __workflow_getAgentGlobalCoordinateConfiguration = WorkflowExpression.Compile(getAgentGlobalCoordinateConfiguration, nameof(getAgentGlobalCoordinateConfiguration), required: true);
             return new DeferredBodyAction<GetAgentGlobalCoordinateConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAgentGlobalCoordinateConfiguration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getAgentGlobalCoordinateConfiguration = new JObject();
-                var getAgentGlobalCoordinateConfigurationpropCount = 0;
-                getAgentGlobalCoordinateConfigurationpropCount++;
-                getAgentGlobalCoordinateConfiguration["Workflow"] = ExpressionConverter.ConvertO(__workflow_getAgentGlobalCoordinateConfigurationworkflow);
-                if (getAgentGlobalCoordinateConfigurationpropCount > 0)
-                {
-                    callPayload.Body = getAgentGlobalCoordinateConfiguration;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getAgentGlobalCoordinateConfiguration);
                 return new ApiConnectionAction<GetAgentGlobalCoordinateConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetAgentThreadStatusResponse, ApiConnectionActionConfiguration> GetAgentThreadStatus(Expression<Func<int>> getAgentThreadStatusthreadId, Expression<Func<string>> getAgentThreadStatusworkflow, Expression<Func<bool>> getAgentThreadStatusretrieveThreadOutputData = null, Expression<Func<bool>> getAgentThreadStatusclearOutputDataFromMemoryOnceRead = null)
+        public IBodyWorkflowAction<GetAgentThreadStatusResponse, ApiConnectionActionConfiguration> GetAgentThreadStatus(Expression<Func<GetAgentThreadStatusInput>> getAgentThreadStatus)
         {
-            var __workflow_getAgentThreadStatusthreadId = WorkflowExpression.Compile(getAgentThreadStatusthreadId, nameof(getAgentThreadStatusthreadId), required: true);
-            var __workflow_getAgentThreadStatusworkflow = WorkflowExpression.Compile(getAgentThreadStatusworkflow, nameof(getAgentThreadStatusworkflow), required: true);
-            var __workflow_getAgentThreadStatusretrieveThreadOutputData = WorkflowExpression.Compile(getAgentThreadStatusretrieveThreadOutputData, nameof(getAgentThreadStatusretrieveThreadOutputData), required: false);
-            var __workflow_getAgentThreadStatusclearOutputDataFromMemoryOnceRead = WorkflowExpression.Compile(getAgentThreadStatusclearOutputDataFromMemoryOnceRead, nameof(getAgentThreadStatusclearOutputDataFromMemoryOnceRead), required: false);
+            var __workflow_getAgentThreadStatus = WorkflowExpression.Compile(getAgentThreadStatus, nameof(getAgentThreadStatus), required: true);
             return new DeferredBodyAction<GetAgentThreadStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAgentThreadStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getAgentThreadStatus = new JObject();
-                var getAgentThreadStatuspropCount = 0;
-                getAgentThreadStatuspropCount++;
-                getAgentThreadStatus["ThreadId"] = ExpressionConverter.ConvertO(__workflow_getAgentThreadStatusthreadId);
-                if (__workflow_getAgentThreadStatusretrieveThreadOutputData != null)
-                {
-                    if (__workflow_getAgentThreadStatusretrieveThreadOutputData != null)
-                    {
-                        getAgentThreadStatus["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(__workflow_getAgentThreadStatusretrieveThreadOutputData);
-                        getAgentThreadStatuspropCount++;
-                    }
-
-                    getAgentThreadStatuspropCount++;
-                }
-                else
-                {
-                    getAgentThreadStatus["RetrieveThreadOutputData"] = false;
-                    getAgentThreadStatuspropCount++;
-                }
-
-                if (__workflow_getAgentThreadStatusclearOutputDataFromMemoryOnceRead != null)
-                {
-                    if (__workflow_getAgentThreadStatusclearOutputDataFromMemoryOnceRead != null)
-                    {
-                        getAgentThreadStatus["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(__workflow_getAgentThreadStatusclearOutputDataFromMemoryOnceRead);
-                        getAgentThreadStatuspropCount++;
-                    }
-
-                    getAgentThreadStatuspropCount++;
-                }
-                else
-                {
-                    getAgentThreadStatus["ClearOutputDataFromMemoryOnceRead"] = true;
-                    getAgentThreadStatuspropCount++;
-                }
-
-                getAgentThreadStatuspropCount++;
-                getAgentThreadStatus["Workflow"] = ExpressionConverter.ConvertO(__workflow_getAgentThreadStatusworkflow);
-                if (getAgentThreadStatuspropCount > 0)
-                {
-                    callPayload.Body = getAgentThreadStatus;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getAgentThreadStatus);
                 return new ApiConnectionAction<GetAgentThreadStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<WaitForAgentThreadToCompleteSuccessfullyResponse, ApiConnectionActionConfiguration> WaitForAgentThreadToCompleteSuccessfully(Expression<Func<int>> waitForAgentThreadToCompleteSuccessfullythreadId, Expression<Func<int>> waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, Expression<Func<string>> waitForAgentThreadToCompleteSuccessfullyworkflow, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData = null, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead = null, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted = null, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError = null, Expression<Func<int>> waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall = null)
+        public IBodyWorkflowAction<WaitForAgentThreadToCompleteSuccessfullyResponse, ApiConnectionActionConfiguration> WaitForAgentThreadToCompleteSuccessfully(Expression<Func<WaitForAgentThreadToCompleteSuccessfullyInput>> waitForAgentThreadToCompleteSuccessfully)
         {
-            var __workflow_waitForAgentThreadToCompleteSuccessfullythreadId = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullythreadId, nameof(waitForAgentThreadToCompleteSuccessfullythreadId), required: true);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread), required: true);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyworkflow = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyworkflow, nameof(waitForAgentThreadToCompleteSuccessfullyworkflow), required: true);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData, nameof(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead, nameof(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall), required: false);
+            var __workflow_waitForAgentThreadToCompleteSuccessfully = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfully, nameof(waitForAgentThreadToCompleteSuccessfully), required: true);
             return new DeferredBodyAction<WaitForAgentThreadToCompleteSuccessfullyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/WaitForAgentThreadToCompleteSuccessfully";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var waitForAgentThreadToCompleteSuccessfully = new JObject();
-                var waitForAgentThreadToCompleteSuccessfullypropCount = 0;
-                waitForAgentThreadToCompleteSuccessfullypropCount++;
-                waitForAgentThreadToCompleteSuccessfully["ThreadId"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullythreadId);
-                waitForAgentThreadToCompleteSuccessfullypropCount++;
-                waitForAgentThreadToCompleteSuccessfully["SecondsToWaitForThread"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread);
-                if (__workflow_waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData != null)
-                {
-                    if (__workflow_waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData != null)
-                    {
-                        waitForAgentThreadToCompleteSuccessfully["RetrieveThreadOutputData"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData);
-                        waitForAgentThreadToCompleteSuccessfullypropCount++;
-                    }
-
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-                else
-                {
-                    waitForAgentThreadToCompleteSuccessfully["RetrieveThreadOutputData"] = false;
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-
-                if (__workflow_waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead != null)
-                {
-                    if (__workflow_waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead != null)
-                    {
-                        waitForAgentThreadToCompleteSuccessfully["ClearOutputDataFromMemoryOnceRead"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead);
-                        waitForAgentThreadToCompleteSuccessfullypropCount++;
-                    }
-
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-                else
-                {
-                    waitForAgentThreadToCompleteSuccessfully["ClearOutputDataFromMemoryOnceRead"] = true;
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-
-                if (__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted != null)
-                {
-                    if (__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted != null)
-                    {
-                        waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadNotCompleted"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted);
-                        waitForAgentThreadToCompleteSuccessfullypropCount++;
-                    }
-
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-                else
-                {
-                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadNotCompleted"] = true;
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-
-                if (__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError != null)
-                {
-                    if (__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError != null)
-                    {
-                        waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadError"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError);
-                        waitForAgentThreadToCompleteSuccessfullypropCount++;
-                    }
-
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-                else
-                {
-                    waitForAgentThreadToCompleteSuccessfully["RaiseExceptionIfThreadError"] = true;
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-
-                if (__workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall != null)
-                {
-                    if (__workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall != null)
-                    {
-                        waitForAgentThreadToCompleteSuccessfully["SecondsToWaitPerCall"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall);
-                        waitForAgentThreadToCompleteSuccessfullypropCount++;
-                    }
-
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-                else
-                {
-                    waitForAgentThreadToCompleteSuccessfully["SecondsToWaitPerCall"] = 5;
-                    waitForAgentThreadToCompleteSuccessfullypropCount++;
-                }
-
-                waitForAgentThreadToCompleteSuccessfullypropCount++;
-                waitForAgentThreadToCompleteSuccessfully["Workflow"] = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfullyworkflow);
-                if (waitForAgentThreadToCompleteSuccessfullypropCount > 0)
-                {
-                    callPayload.Body = waitForAgentThreadToCompleteSuccessfully;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_waitForAgentThreadToCompleteSuccessfully);
                 return new ApiConnectionAction<WaitForAgentThreadToCompleteSuccessfullyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetAgentThreadsResponse, ApiConnectionActionConfiguration> GetAgentThreads(Expression<Func<string>> getAgentThreadsworkflow, Expression<Func<getAgentThreadssortOrderInput>> getAgentThreadssortOrder = null)
+        public IBodyWorkflowAction<GetAgentThreadsResponse, ApiConnectionActionConfiguration> GetAgentThreads(Expression<Func<GetAgentThreadsInput>> getAgentThreads)
         {
-            var __workflow_getAgentThreadsworkflow = WorkflowExpression.Compile(getAgentThreadsworkflow, nameof(getAgentThreadsworkflow), required: true);
-            var __workflow_getAgentThreadssortOrder = WorkflowExpression.Compile(getAgentThreadssortOrder, nameof(getAgentThreadssortOrder), required: false);
+            var __workflow_getAgentThreads = WorkflowExpression.Compile(getAgentThreads, nameof(getAgentThreads), required: true);
             return new DeferredBodyAction<GetAgentThreadsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAgentThreads";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getAgentThreads = new JObject();
-                var getAgentThreadspropCount = 0;
-                if (__workflow_getAgentThreadssortOrder != null)
-                {
-                    getAgentThreads["SortOrder"] = ExpressionConverter.ConvertO(__workflow_getAgentThreadssortOrder);
-                    getAgentThreadspropCount++;
-                }
-
-                getAgentThreadspropCount++;
-                getAgentThreads["Workflow"] = ExpressionConverter.ConvertO(__workflow_getAgentThreadsworkflow);
-                if (getAgentThreadspropCount > 0)
-                {
-                    callPayload.Body = getAgentThreads;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getAgentThreads);
                 return new ApiConnectionAction<GetAgentThreadsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KillAgentThreadResponse, ApiConnectionActionConfiguration> KillAgentThread(Expression<Func<int>> killAgentThreadthreadId, Expression<Func<string>> killAgentThreadworkflow)
+        public IBodyWorkflowAction<KillAgentThreadResponse, ApiConnectionActionConfiguration> KillAgentThread(Expression<Func<KillAgentThreadInput>> killAgentThread)
         {
-            var __workflow_killAgentThreadthreadId = WorkflowExpression.Compile(killAgentThreadthreadId, nameof(killAgentThreadthreadId), required: true);
-            var __workflow_killAgentThreadworkflow = WorkflowExpression.Compile(killAgentThreadworkflow, nameof(killAgentThreadworkflow), required: true);
+            var __workflow_killAgentThread = WorkflowExpression.Compile(killAgentThread, nameof(killAgentThread), required: true);
             return new DeferredBodyAction<KillAgentThreadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/KillAgentThread";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var killAgentThread = new JObject();
-                var killAgentThreadpropCount = 0;
-                killAgentThreadpropCount++;
-                killAgentThread["ThreadId"] = ExpressionConverter.ConvertO(__workflow_killAgentThreadthreadId);
-                killAgentThreadpropCount++;
-                killAgentThread["Workflow"] = ExpressionConverter.ConvertO(__workflow_killAgentThreadworkflow);
-                if (killAgentThreadpropCount > 0)
-                {
-                    callPayload.Body = killAgentThread;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_killAgentThread);
                 return new ApiConnectionAction<KillAgentThreadResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DeleteAgentThreadResponse, ApiConnectionActionConfiguration> DeleteAgentThread(Expression<Func<string>> deleteAgentThreadworkflow, Expression<Func<int>> deleteAgentThreadthreadId = null, Expression<Func<bool>> deleteAgentThreaddeleteAllAgentThreads = null, Expression<Func<bool>> deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete = null)
+        public IBodyWorkflowAction<DeleteAgentThreadResponse, ApiConnectionActionConfiguration> DeleteAgentThread(Expression<Func<DeleteAgentThreadInput>> deleteAgentThread)
         {
-            var __workflow_deleteAgentThreadworkflow = WorkflowExpression.Compile(deleteAgentThreadworkflow, nameof(deleteAgentThreadworkflow), required: true);
-            var __workflow_deleteAgentThreadthreadId = WorkflowExpression.Compile(deleteAgentThreadthreadId, nameof(deleteAgentThreadthreadId), required: false);
-            var __workflow_deleteAgentThreaddeleteAllAgentThreads = WorkflowExpression.Compile(deleteAgentThreaddeleteAllAgentThreads, nameof(deleteAgentThreaddeleteAllAgentThreads), required: false);
-            var __workflow_deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete = WorkflowExpression.Compile(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete, nameof(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete), required: false);
+            var __workflow_deleteAgentThread = WorkflowExpression.Compile(deleteAgentThread, nameof(deleteAgentThread), required: true);
             return new DeferredBodyAction<DeleteAgentThreadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/DeleteAgentThread";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var deleteAgentThread = new JObject();
-                var deleteAgentThreadpropCount = 0;
-                if (__workflow_deleteAgentThreadthreadId != null)
-                {
-                    deleteAgentThread["ThreadId"] = ExpressionConverter.ConvertO(__workflow_deleteAgentThreadthreadId);
-                    deleteAgentThreadpropCount++;
-                }
-
-                if (__workflow_deleteAgentThreaddeleteAllAgentThreads != null)
-                {
-                    if (__workflow_deleteAgentThreaddeleteAllAgentThreads != null)
-                    {
-                        deleteAgentThread["DeleteAllAgentThreads"] = ExpressionConverter.ConvertO(__workflow_deleteAgentThreaddeleteAllAgentThreads);
-                        deleteAgentThreadpropCount++;
-                    }
-
-                    deleteAgentThreadpropCount++;
-                }
-                else
-                {
-                    deleteAgentThread["DeleteAllAgentThreads"] = false;
-                    deleteAgentThreadpropCount++;
-                }
-
-                if (__workflow_deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete != null)
-                {
-                    if (__workflow_deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete != null)
-                    {
-                        deleteAgentThread["RaiseExceptionIfAgentThreadFailsToDelete"] = ExpressionConverter.ConvertO(__workflow_deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete);
-                        deleteAgentThreadpropCount++;
-                    }
-
-                    deleteAgentThreadpropCount++;
-                }
-                else
-                {
-                    deleteAgentThread["RaiseExceptionIfAgentThreadFailsToDelete"] = false;
-                    deleteAgentThreadpropCount++;
-                }
-
-                deleteAgentThreadpropCount++;
-                deleteAgentThread["Workflow"] = ExpressionConverter.ConvertO(__workflow_deleteAgentThreadworkflow);
-                if (deleteAgentThreadpropCount > 0)
-                {
-                    callPayload.Body = deleteAgentThread;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteAgentThread);
                 return new ApiConnectionAction<DeleteAgentThreadResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<AllocateWorkerFromOrchestratorResponse, ApiConnectionActionConfiguration> AllocateWorkerFromOrchestrator(Expression<Func<string>> allocateWorkerFromOrchestratorworkflow, Expression<Func<string>> allocateWorkerFromOrchestratorworkerTag = null, Expression<Func<string>> allocateWorkerFromOrchestratorworkerName = null, Expression<Func<bool>> allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable = null)
+        public IBodyWorkflowAction<AllocateWorkerFromOrchestratorResponse, ApiConnectionActionConfiguration> AllocateWorkerFromOrchestrator(Expression<Func<AllocateWorkerFromOrchestratorInput>> allocateWorkerFromOrchestrator)
         {
-            var __workflow_allocateWorkerFromOrchestratorworkflow = WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkflow, nameof(allocateWorkerFromOrchestratorworkflow), required: true);
-            var __workflow_allocateWorkerFromOrchestratorworkerTag = WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkerTag, nameof(allocateWorkerFromOrchestratorworkerTag), required: false);
-            var __workflow_allocateWorkerFromOrchestratorworkerName = WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkerName, nameof(allocateWorkerFromOrchestratorworkerName), required: false);
-            var __workflow_allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable = WorkflowExpression.Compile(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable, nameof(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable), required: false);
+            var __workflow_allocateWorkerFromOrchestrator = WorkflowExpression.Compile(allocateWorkerFromOrchestrator, nameof(allocateWorkerFromOrchestrator), required: true);
             return new DeferredBodyAction<AllocateWorkerFromOrchestratorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/AllocateWorkerFromOrchestrator";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var allocateWorkerFromOrchestrator = new JObject();
-                var allocateWorkerFromOrchestratorpropCount = 0;
-                if (__workflow_allocateWorkerFromOrchestratorworkerTag != null)
-                {
-                    allocateWorkerFromOrchestrator["WorkerTag"] = ExpressionConverter.ConvertO(__workflow_allocateWorkerFromOrchestratorworkerTag);
-                    allocateWorkerFromOrchestratorpropCount++;
-                }
-
-                if (__workflow_allocateWorkerFromOrchestratorworkerName != null)
-                {
-                    allocateWorkerFromOrchestrator["WorkerName"] = ExpressionConverter.ConvertO(__workflow_allocateWorkerFromOrchestratorworkerName);
-                    allocateWorkerFromOrchestratorpropCount++;
-                }
-
-                if (__workflow_allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable != null)
-                {
-                    if (__workflow_allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable != null)
-                    {
-                        allocateWorkerFromOrchestrator["RaiseExceptionIfWorkerNotImmediatelyAvailable"] = ExpressionConverter.ConvertO(__workflow_allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable);
-                        allocateWorkerFromOrchestratorpropCount++;
-                    }
-
-                    allocateWorkerFromOrchestratorpropCount++;
-                }
-                else
-                {
-                    allocateWorkerFromOrchestrator["RaiseExceptionIfWorkerNotImmediatelyAvailable"] = false;
-                    allocateWorkerFromOrchestratorpropCount++;
-                }
-
-                allocateWorkerFromOrchestratorpropCount++;
-                allocateWorkerFromOrchestrator["Workflow"] = ExpressionConverter.ConvertO(__workflow_allocateWorkerFromOrchestratorworkflow);
-                if (allocateWorkerFromOrchestratorpropCount > 0)
-                {
-                    callPayload.Body = allocateWorkerFromOrchestrator;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_allocateWorkerFromOrchestrator);
                 return new ApiConnectionAction<AllocateWorkerFromOrchestratorResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<SetOrchestratorWorkerMaintenanceModeResponse, ApiConnectionActionConfiguration> SetOrchestratorWorkerMaintenanceMode(Expression<Func<int>> setOrchestratorWorkerMaintenanceModeworkerId = null, Expression<Func<string>> setOrchestratorWorkerMaintenanceModeworkerName = null, Expression<Func<bool>> setOrchestratorWorkerMaintenanceModemaintenanceMode = null)
+        public IBodyWorkflowAction<SetOrchestratorWorkerMaintenanceModeResponse, ApiConnectionActionConfiguration> SetOrchestratorWorkerMaintenanceMode(Expression<Func<SetOrchestratorWorkerMaintenanceModeInput>> setOrchestratorWorkerMaintenanceMode)
         {
-            var __workflow_setOrchestratorWorkerMaintenanceModeworkerId = WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModeworkerId, nameof(setOrchestratorWorkerMaintenanceModeworkerId), required: false);
-            var __workflow_setOrchestratorWorkerMaintenanceModeworkerName = WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModeworkerName, nameof(setOrchestratorWorkerMaintenanceModeworkerName), required: false);
-            var __workflow_setOrchestratorWorkerMaintenanceModemaintenanceMode = WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModemaintenanceMode, nameof(setOrchestratorWorkerMaintenanceModemaintenanceMode), required: false);
+            var __workflow_setOrchestratorWorkerMaintenanceMode = WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceMode, nameof(setOrchestratorWorkerMaintenanceMode), required: true);
             return new DeferredBodyAction<SetOrchestratorWorkerMaintenanceModeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/SetOrchestratorWorkerMaintenanceMode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setOrchestratorWorkerMaintenanceMode = new JObject();
-                var setOrchestratorWorkerMaintenanceModepropCount = 0;
-                if (__workflow_setOrchestratorWorkerMaintenanceModeworkerId != null)
-                {
-                    if (__workflow_setOrchestratorWorkerMaintenanceModeworkerId != null)
-                    {
-                        setOrchestratorWorkerMaintenanceMode["WorkerId"] = ExpressionConverter.ConvertO(__workflow_setOrchestratorWorkerMaintenanceModeworkerId);
-                        setOrchestratorWorkerMaintenanceModepropCount++;
-                    }
-
-                    setOrchestratorWorkerMaintenanceModepropCount++;
-                }
-                else
-                {
-                    setOrchestratorWorkerMaintenanceMode["WorkerId"] = 0;
-                    setOrchestratorWorkerMaintenanceModepropCount++;
-                }
-
-                if (__workflow_setOrchestratorWorkerMaintenanceModeworkerName != null)
-                {
-                    setOrchestratorWorkerMaintenanceMode["WorkerName"] = ExpressionConverter.ConvertO(__workflow_setOrchestratorWorkerMaintenanceModeworkerName);
-                    setOrchestratorWorkerMaintenanceModepropCount++;
-                }
-
-                if (__workflow_setOrchestratorWorkerMaintenanceModemaintenanceMode != null)
-                {
-                    if (__workflow_setOrchestratorWorkerMaintenanceModemaintenanceMode != null)
-                    {
-                        setOrchestratorWorkerMaintenanceMode["MaintenanceMode"] = ExpressionConverter.ConvertO(__workflow_setOrchestratorWorkerMaintenanceModemaintenanceMode);
-                        setOrchestratorWorkerMaintenanceModepropCount++;
-                    }
-
-                    setOrchestratorWorkerMaintenanceModepropCount++;
-                }
-                else
-                {
-                    setOrchestratorWorkerMaintenanceMode["MaintenanceMode"] = true;
-                    setOrchestratorWorkerMaintenanceModepropCount++;
-                }
-
-                if (setOrchestratorWorkerMaintenanceModepropCount > 0)
-                {
-                    callPayload.Body = setOrchestratorWorkerMaintenanceMode;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setOrchestratorWorkerMaintenanceMode);
                 return new ApiConnectionAction<SetOrchestratorWorkerMaintenanceModeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<CreateOrchestratorOneTimeSecretResponse, ApiConnectionActionConfiguration> CreateOrchestratorOneTimeSecret(Expression<Func<string>> createOrchestratorOneTimeSecretfriendlyName, Expression<Func<string>> createOrchestratorOneTimeSecretsecretValue = null, Expression<Func<string>> createOrchestratorOneTimeSecretretrievalPhrase1 = null, Expression<Func<string>> createOrchestratorOneTimeSecretretrievalPhrase2 = null, Expression<Func<int>> createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion = null, Expression<Func<bool>> createOrchestratorOneTimeSecretsecretHasAStartDate = null, Expression<Func<string>> createOrchestratorOneTimeSecretsecretStartDateTime = null, Expression<Func<int>> createOrchestratorOneTimeSecrethoursUntilSecretStartTime = null, Expression<Func<bool>> createOrchestratorOneTimeSecretsecretHasAnExpiryDate = null, Expression<Func<string>> createOrchestratorOneTimeSecretsecretExpiryDateTime = null, Expression<Func<int>> createOrchestratorOneTimeSecrethoursUntilSecretExpiry = null)
+        public IBodyWorkflowAction<CreateOrchestratorOneTimeSecretResponse, ApiConnectionActionConfiguration> CreateOrchestratorOneTimeSecret(Expression<Func<CreateOrchestratorOneTimeSecretInput>> createOrchestratorOneTimeSecret)
         {
-            var __workflow_createOrchestratorOneTimeSecretfriendlyName = WorkflowExpression.Compile(createOrchestratorOneTimeSecretfriendlyName, nameof(createOrchestratorOneTimeSecretfriendlyName), required: true);
-            var __workflow_createOrchestratorOneTimeSecretsecretValue = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretValue, nameof(createOrchestratorOneTimeSecretsecretValue), required: false);
-            var __workflow_createOrchestratorOneTimeSecretretrievalPhrase1 = WorkflowExpression.Compile(createOrchestratorOneTimeSecretretrievalPhrase1, nameof(createOrchestratorOneTimeSecretretrievalPhrase1), required: false);
-            var __workflow_createOrchestratorOneTimeSecretretrievalPhrase2 = WorkflowExpression.Compile(createOrchestratorOneTimeSecretretrievalPhrase2, nameof(createOrchestratorOneTimeSecretretrievalPhrase2), required: false);
-            var __workflow_createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion = WorkflowExpression.Compile(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion, nameof(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretHasAStartDate = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretHasAStartDate, nameof(createOrchestratorOneTimeSecretsecretHasAStartDate), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretStartDateTime = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretStartDateTime, nameof(createOrchestratorOneTimeSecretsecretStartDateTime), required: false);
-            var __workflow_createOrchestratorOneTimeSecrethoursUntilSecretStartTime = WorkflowExpression.Compile(createOrchestratorOneTimeSecrethoursUntilSecretStartTime, nameof(createOrchestratorOneTimeSecrethoursUntilSecretStartTime), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretHasAnExpiryDate = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretHasAnExpiryDate, nameof(createOrchestratorOneTimeSecretsecretHasAnExpiryDate), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretExpiryDateTime = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretExpiryDateTime, nameof(createOrchestratorOneTimeSecretsecretExpiryDateTime), required: false);
-            var __workflow_createOrchestratorOneTimeSecrethoursUntilSecretExpiry = WorkflowExpression.Compile(createOrchestratorOneTimeSecrethoursUntilSecretExpiry, nameof(createOrchestratorOneTimeSecrethoursUntilSecretExpiry), required: false);
+            var __workflow_createOrchestratorOneTimeSecret = WorkflowExpression.Compile(createOrchestratorOneTimeSecret, nameof(createOrchestratorOneTimeSecret), required: true);
             return new DeferredBodyAction<CreateOrchestratorOneTimeSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/CreateOrchestratorOneTimeSecret";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var createOrchestratorOneTimeSecret = new JObject();
-                var createOrchestratorOneTimeSecretpropCount = 0;
-                createOrchestratorOneTimeSecretpropCount++;
-                createOrchestratorOneTimeSecret["FriendlyName"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretfriendlyName);
-                if (__workflow_createOrchestratorOneTimeSecretsecretValue != null)
-                {
-                    createOrchestratorOneTimeSecret["SecretValue"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretsecretValue);
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecretretrievalPhrase1 != null)
-                {
-                    createOrchestratorOneTimeSecret["RetrievalPhrase1"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretretrievalPhrase1);
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecretretrievalPhrase2 != null)
-                {
-                    createOrchestratorOneTimeSecret["RetrievalPhrase2"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretretrievalPhrase2);
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion != null)
-                {
-                    if (__workflow_createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion != null)
-                    {
-                        createOrchestratorOneTimeSecret["MaximumRetrievalsBeforeDeletion"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion);
-                        createOrchestratorOneTimeSecretpropCount++;
-                    }
-
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-                else
-                {
-                    createOrchestratorOneTimeSecret["MaximumRetrievalsBeforeDeletion"] = 1;
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecretsecretHasAStartDate != null)
-                {
-                    if (__workflow_createOrchestratorOneTimeSecretsecretHasAStartDate != null)
-                    {
-                        createOrchestratorOneTimeSecret["SecretHasAStartDate"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretsecretHasAStartDate);
-                        createOrchestratorOneTimeSecretpropCount++;
-                    }
-
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-                else
-                {
-                    createOrchestratorOneTimeSecret["SecretHasAStartDate"] = false;
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecretsecretStartDateTime != null)
-                {
-                    createOrchestratorOneTimeSecret["SecretStartDateTime"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretsecretStartDateTime);
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecrethoursUntilSecretStartTime != null)
-                {
-                    createOrchestratorOneTimeSecret["HoursUntilSecretStartTime"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecrethoursUntilSecretStartTime);
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecretsecretHasAnExpiryDate != null)
-                {
-                    if (__workflow_createOrchestratorOneTimeSecretsecretHasAnExpiryDate != null)
-                    {
-                        createOrchestratorOneTimeSecret["SecretHasAnExpiryDate"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretsecretHasAnExpiryDate);
-                        createOrchestratorOneTimeSecretpropCount++;
-                    }
-
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-                else
-                {
-                    createOrchestratorOneTimeSecret["SecretHasAnExpiryDate"] = false;
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecretsecretExpiryDateTime != null)
-                {
-                    createOrchestratorOneTimeSecret["SecretExpiryDateTime"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecretsecretExpiryDateTime);
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (__workflow_createOrchestratorOneTimeSecrethoursUntilSecretExpiry != null)
-                {
-                    createOrchestratorOneTimeSecret["HoursUntilSecretExpiry"] = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecrethoursUntilSecretExpiry);
-                    createOrchestratorOneTimeSecretpropCount++;
-                }
-
-                if (createOrchestratorOneTimeSecretpropCount > 0)
-                {
-                    callPayload.Body = createOrchestratorOneTimeSecret;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createOrchestratorOneTimeSecret);
                 return new ApiConnectionAction<CreateOrchestratorOneTimeSecretResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetListOfOrchestratorWorkersResponse, ApiConnectionActionConfiguration> GetListOfOrchestratorWorkers(Expression<Func<bool>> getListOfOrchestratorWorkersonlyReturnLiveWorkers = null)
+        public IBodyWorkflowAction<GetListOfOrchestratorWorkersResponse, ApiConnectionActionConfiguration> GetListOfOrchestratorWorkers(Expression<Func<GetListOfOrchestratorWorkersInput>> getListOfOrchestratorWorkers)
         {
-            var __workflow_getListOfOrchestratorWorkersonlyReturnLiveWorkers = WorkflowExpression.Compile(getListOfOrchestratorWorkersonlyReturnLiveWorkers, nameof(getListOfOrchestratorWorkersonlyReturnLiveWorkers), required: false);
+            var __workflow_getListOfOrchestratorWorkers = WorkflowExpression.Compile(getListOfOrchestratorWorkers, nameof(getListOfOrchestratorWorkers), required: true);
             return new DeferredBodyAction<GetListOfOrchestratorWorkersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetListOfOrchestratorWorkers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getListOfOrchestratorWorkers = new JObject();
-                var getListOfOrchestratorWorkerspropCount = 0;
-                if (__workflow_getListOfOrchestratorWorkersonlyReturnLiveWorkers != null)
-                {
-                    if (__workflow_getListOfOrchestratorWorkersonlyReturnLiveWorkers != null)
-                    {
-                        getListOfOrchestratorWorkers["OnlyReturnLiveWorkers"] = ExpressionConverter.ConvertO(__workflow_getListOfOrchestratorWorkersonlyReturnLiveWorkers);
-                        getListOfOrchestratorWorkerspropCount++;
-                    }
-
-                    getListOfOrchestratorWorkerspropCount++;
-                }
-                else
-                {
-                    getListOfOrchestratorWorkers["OnlyReturnLiveWorkers"] = false;
-                    getListOfOrchestratorWorkerspropCount++;
-                }
-
-                if (getListOfOrchestratorWorkerspropCount > 0)
-                {
-                    callPayload.Body = getListOfOrchestratorWorkers;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getListOfOrchestratorWorkers);
                 return new ApiConnectionAction<GetListOfOrchestratorWorkersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetOrchestratorWorkerResponse, ApiConnectionActionConfiguration> GetOrchestratorWorker(Expression<Func<int>> getOrchestratorWorkersearchWorkerId = null, Expression<Func<string>> getOrchestratorWorkersearchWorkerName = null)
+        public IBodyWorkflowAction<GetOrchestratorWorkerResponse, ApiConnectionActionConfiguration> GetOrchestratorWorker(Expression<Func<GetOrchestratorWorkerInput>> getOrchestratorWorker)
         {
-            var __workflow_getOrchestratorWorkersearchWorkerId = WorkflowExpression.Compile(getOrchestratorWorkersearchWorkerId, nameof(getOrchestratorWorkersearchWorkerId), required: false);
-            var __workflow_getOrchestratorWorkersearchWorkerName = WorkflowExpression.Compile(getOrchestratorWorkersearchWorkerName, nameof(getOrchestratorWorkersearchWorkerName), required: false);
+            var __workflow_getOrchestratorWorker = WorkflowExpression.Compile(getOrchestratorWorker, nameof(getOrchestratorWorker), required: true);
             return new DeferredBodyAction<GetOrchestratorWorkerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorker";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getOrchestratorWorker = new JObject();
-                var getOrchestratorWorkerpropCount = 0;
-                if (__workflow_getOrchestratorWorkersearchWorkerId != null)
-                {
-                    getOrchestratorWorker["SearchWorkerId"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkersearchWorkerId);
-                    getOrchestratorWorkerpropCount++;
-                }
-
-                if (__workflow_getOrchestratorWorkersearchWorkerName != null)
-                {
-                    getOrchestratorWorker["SearchWorkerName"] = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorkersearchWorkerName);
-                    getOrchestratorWorkerpropCount++;
-                }
-
-                if (getOrchestratorWorkerpropCount > 0)
-                {
-                    callPayload.Body = getOrchestratorWorker;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getOrchestratorWorker);
                 return new ApiConnectionAction<GetOrchestratorWorkerResponse>(callPayload);
             });
         }
@@ -9267,1753 +2347,505 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<FileExistsResponse, ApiConnectionActionConfiguration> FileExists(Expression<Func<string>> fileExistsfilename, Expression<Func<string>> fileExistsworkflow)
+        public IBodyWorkflowAction<FileExistsResponse, ApiConnectionActionConfiguration> FileExists(Expression<Func<FileExistsInput>> fileExists)
         {
-            var __workflow_fileExistsfilename = WorkflowExpression.Compile(fileExistsfilename, nameof(fileExistsfilename), required: true);
-            var __workflow_fileExistsworkflow = WorkflowExpression.Compile(fileExistsworkflow, nameof(fileExistsworkflow), required: true);
+            var __workflow_fileExists = WorkflowExpression.Compile(fileExists, nameof(fileExists), required: true);
             return new DeferredBodyAction<FileExistsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/FileExists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var fileExists = new JObject();
-                var fileExistspropCount = 0;
-                fileExistspropCount++;
-                fileExists["Filename"] = ExpressionConverter.ConvertO(__workflow_fileExistsfilename);
-                fileExistspropCount++;
-                fileExists["Workflow"] = ExpressionConverter.ConvertO(__workflow_fileExistsworkflow);
-                if (fileExistspropCount > 0)
-                {
-                    callPayload.Body = fileExists;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileExists);
                 return new ApiConnectionAction<FileExistsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DirectoryExistsResponse, ApiConnectionActionConfiguration> DirectoryExists(Expression<Func<string>> directoryExistsdirectoryPath, Expression<Func<string>> directoryExistsworkflow)
+        public IBodyWorkflowAction<DirectoryExistsResponse, ApiConnectionActionConfiguration> DirectoryExists(Expression<Func<DirectoryExistsInput>> directoryExists)
         {
-            var __workflow_directoryExistsdirectoryPath = WorkflowExpression.Compile(directoryExistsdirectoryPath, nameof(directoryExistsdirectoryPath), required: true);
-            var __workflow_directoryExistsworkflow = WorkflowExpression.Compile(directoryExistsworkflow, nameof(directoryExistsworkflow), required: true);
+            var __workflow_directoryExists = WorkflowExpression.Compile(directoryExists, nameof(directoryExists), required: true);
             return new DeferredBodyAction<DirectoryExistsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/DirectoryExists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var directoryExists = new JObject();
-                var directoryExistspropCount = 0;
-                directoryExistspropCount++;
-                directoryExists["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_directoryExistsdirectoryPath);
-                directoryExistspropCount++;
-                directoryExists["Workflow"] = ExpressionConverter.ConvertO(__workflow_directoryExistsworkflow);
-                if (directoryExistspropCount > 0)
-                {
-                    callPayload.Body = directoryExists;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_directoryExists);
                 return new ApiConnectionAction<DirectoryExistsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteFile(Expression<Func<string>> deleteFilefilename, Expression<Func<string>> deleteFileworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteFile(Expression<Func<DeleteFileInput>> deleteFile)
         {
-            var __workflow_deleteFilefilename = WorkflowExpression.Compile(deleteFilefilename, nameof(deleteFilefilename), required: true);
-            var __workflow_deleteFileworkflow = WorkflowExpression.Compile(deleteFileworkflow, nameof(deleteFileworkflow), required: true);
+            var __workflow_deleteFile = WorkflowExpression.Compile(deleteFile, nameof(deleteFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/DeleteFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var deleteFile = new JObject();
-                var deleteFilepropCount = 0;
-                deleteFilepropCount++;
-                deleteFile["Filename"] = ExpressionConverter.ConvertO(__workflow_deleteFilefilename);
-                deleteFilepropCount++;
-                deleteFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_deleteFileworkflow);
-                if (deleteFilepropCount > 0)
-                {
-                    callPayload.Body = deleteFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteDirectory(Expression<Func<string>> deleteDirectorydirectoryPath, Expression<Func<string>> deleteDirectoryworkflow, Expression<Func<bool>> deleteDirectoryrecursive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteDirectory(Expression<Func<DeleteDirectoryInput>> deleteDirectory)
         {
-            var __workflow_deleteDirectorydirectoryPath = WorkflowExpression.Compile(deleteDirectorydirectoryPath, nameof(deleteDirectorydirectoryPath), required: true);
-            var __workflow_deleteDirectoryworkflow = WorkflowExpression.Compile(deleteDirectoryworkflow, nameof(deleteDirectoryworkflow), required: true);
-            var __workflow_deleteDirectoryrecursive = WorkflowExpression.Compile(deleteDirectoryrecursive, nameof(deleteDirectoryrecursive), required: false);
+            var __workflow_deleteDirectory = WorkflowExpression.Compile(deleteDirectory, nameof(deleteDirectory), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/DeleteDirectory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var deleteDirectory = new JObject();
-                var deleteDirectorypropCount = 0;
-                deleteDirectorypropCount++;
-                deleteDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_deleteDirectorydirectoryPath);
-                if (__workflow_deleteDirectoryrecursive != null)
-                {
-                    if (__workflow_deleteDirectoryrecursive != null)
-                    {
-                        deleteDirectory["Recursive"] = ExpressionConverter.ConvertO(__workflow_deleteDirectoryrecursive);
-                        deleteDirectorypropCount++;
-                    }
-
-                    deleteDirectorypropCount++;
-                }
-                else
-                {
-                    deleteDirectory["Recursive"] = false;
-                    deleteDirectorypropCount++;
-                }
-
-                deleteDirectorypropCount++;
-                deleteDirectory["Workflow"] = ExpressionConverter.ConvertO(__workflow_deleteDirectoryworkflow);
-                if (deleteDirectorypropCount > 0)
-                {
-                    callPayload.Body = deleteDirectory;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteDirectory);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PurgeDirectory(Expression<Func<string>> purgeDirectorydirectoryPath, Expression<Func<string>> purgeDirectoryworkflow, Expression<Func<bool>> purgeDirectoryrecursive = null, Expression<Func<bool>> purgeDirectorydeleteTopLevel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PurgeDirectory(Expression<Func<PurgeDirectoryInput>> purgeDirectory)
         {
-            var __workflow_purgeDirectorydirectoryPath = WorkflowExpression.Compile(purgeDirectorydirectoryPath, nameof(purgeDirectorydirectoryPath), required: true);
-            var __workflow_purgeDirectoryworkflow = WorkflowExpression.Compile(purgeDirectoryworkflow, nameof(purgeDirectoryworkflow), required: true);
-            var __workflow_purgeDirectoryrecursive = WorkflowExpression.Compile(purgeDirectoryrecursive, nameof(purgeDirectoryrecursive), required: false);
-            var __workflow_purgeDirectorydeleteTopLevel = WorkflowExpression.Compile(purgeDirectorydeleteTopLevel, nameof(purgeDirectorydeleteTopLevel), required: false);
+            var __workflow_purgeDirectory = WorkflowExpression.Compile(purgeDirectory, nameof(purgeDirectory), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/PurgeDirectory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var purgeDirectory = new JObject();
-                var purgeDirectorypropCount = 0;
-                purgeDirectorypropCount++;
-                purgeDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_purgeDirectorydirectoryPath);
-                if (__workflow_purgeDirectoryrecursive != null)
-                {
-                    if (__workflow_purgeDirectoryrecursive != null)
-                    {
-                        purgeDirectory["Recursive"] = ExpressionConverter.ConvertO(__workflow_purgeDirectoryrecursive);
-                        purgeDirectorypropCount++;
-                    }
-
-                    purgeDirectorypropCount++;
-                }
-                else
-                {
-                    purgeDirectory["Recursive"] = false;
-                    purgeDirectorypropCount++;
-                }
-
-                if (__workflow_purgeDirectorydeleteTopLevel != null)
-                {
-                    if (__workflow_purgeDirectorydeleteTopLevel != null)
-                    {
-                        purgeDirectory["DeleteTopLevel"] = ExpressionConverter.ConvertO(__workflow_purgeDirectorydeleteTopLevel);
-                        purgeDirectorypropCount++;
-                    }
-
-                    purgeDirectorypropCount++;
-                }
-                else
-                {
-                    purgeDirectory["DeleteTopLevel"] = false;
-                    purgeDirectorypropCount++;
-                }
-
-                purgeDirectorypropCount++;
-                purgeDirectory["Workflow"] = ExpressionConverter.ConvertO(__workflow_purgeDirectoryworkflow);
-                if (purgeDirectorypropCount > 0)
-                {
-                    callPayload.Body = purgeDirectory;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_purgeDirectory);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CopyFile(Expression<Func<string>> copyFilesourceFilePath, Expression<Func<string>> copyFiledestFilePath, Expression<Func<string>> copyFileworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CopyFile(Expression<Func<CopyFileInput>> copyFile)
         {
-            var __workflow_copyFilesourceFilePath = WorkflowExpression.Compile(copyFilesourceFilePath, nameof(copyFilesourceFilePath), required: true);
-            var __workflow_copyFiledestFilePath = WorkflowExpression.Compile(copyFiledestFilePath, nameof(copyFiledestFilePath), required: true);
-            var __workflow_copyFileworkflow = WorkflowExpression.Compile(copyFileworkflow, nameof(copyFileworkflow), required: true);
+            var __workflow_copyFile = WorkflowExpression.Compile(copyFile, nameof(copyFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/CopyFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var copyFile = new JObject();
-                var copyFilepropCount = 0;
-                copyFilepropCount++;
-                copyFile["SourceFilePath"] = ExpressionConverter.ConvertO(__workflow_copyFilesourceFilePath);
-                copyFilepropCount++;
-                copyFile["DestFilePath"] = ExpressionConverter.ConvertO(__workflow_copyFiledestFilePath);
-                copyFilepropCount++;
-                copyFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_copyFileworkflow);
-                if (copyFilepropCount > 0)
-                {
-                    callPayload.Body = copyFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_copyFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveFile(Expression<Func<string>> moveFilesourceFilePath, Expression<Func<string>> moveFiledestFilePath, Expression<Func<string>> moveFileworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveFile(Expression<Func<MoveFileInput>> moveFile)
         {
-            var __workflow_moveFilesourceFilePath = WorkflowExpression.Compile(moveFilesourceFilePath, nameof(moveFilesourceFilePath), required: true);
-            var __workflow_moveFiledestFilePath = WorkflowExpression.Compile(moveFiledestFilePath, nameof(moveFiledestFilePath), required: true);
-            var __workflow_moveFileworkflow = WorkflowExpression.Compile(moveFileworkflow, nameof(moveFileworkflow), required: true);
+            var __workflow_moveFile = WorkflowExpression.Compile(moveFile, nameof(moveFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/MoveFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var moveFile = new JObject();
-                var moveFilepropCount = 0;
-                moveFilepropCount++;
-                moveFile["SourceFilePath"] = ExpressionConverter.ConvertO(__workflow_moveFilesourceFilePath);
-                moveFilepropCount++;
-                moveFile["DestFilePath"] = ExpressionConverter.ConvertO(__workflow_moveFiledestFilePath);
-                moveFilepropCount++;
-                moveFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_moveFileworkflow);
-                if (moveFilepropCount > 0)
-                {
-                    callPayload.Body = moveFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_moveFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateDirectory(Expression<Func<string>> createDirectorydirectoryPath, Expression<Func<string>> createDirectoryworkflow, Expression<Func<bool>> createDirectoryerrorIfAlreadyExists = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateDirectory(Expression<Func<CreateDirectoryInput>> createDirectory)
         {
-            var __workflow_createDirectorydirectoryPath = WorkflowExpression.Compile(createDirectorydirectoryPath, nameof(createDirectorydirectoryPath), required: true);
-            var __workflow_createDirectoryworkflow = WorkflowExpression.Compile(createDirectoryworkflow, nameof(createDirectoryworkflow), required: true);
-            var __workflow_createDirectoryerrorIfAlreadyExists = WorkflowExpression.Compile(createDirectoryerrorIfAlreadyExists, nameof(createDirectoryerrorIfAlreadyExists), required: false);
+            var __workflow_createDirectory = WorkflowExpression.Compile(createDirectory, nameof(createDirectory), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/CreateDirectory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var createDirectory = new JObject();
-                var createDirectorypropCount = 0;
-                createDirectorypropCount++;
-                createDirectory["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_createDirectorydirectoryPath);
-                if (__workflow_createDirectoryerrorIfAlreadyExists != null)
-                {
-                    if (__workflow_createDirectoryerrorIfAlreadyExists != null)
-                    {
-                        createDirectory["ErrorIfAlreadyExists"] = ExpressionConverter.ConvertO(__workflow_createDirectoryerrorIfAlreadyExists);
-                        createDirectorypropCount++;
-                    }
-
-                    createDirectorypropCount++;
-                }
-                else
-                {
-                    createDirectory["ErrorIfAlreadyExists"] = false;
-                    createDirectorypropCount++;
-                }
-
-                createDirectorypropCount++;
-                createDirectory["Workflow"] = ExpressionConverter.ConvertO(__workflow_createDirectoryworkflow);
-                if (createDirectorypropCount > 0)
-                {
-                    callPayload.Body = createDirectory;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createDirectory);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFileSizeResponse, ApiConnectionActionConfiguration> GetFileSize(Expression<Func<string>> getFileSizefilename, Expression<Func<string>> getFileSizeworkflow)
+        public IBodyWorkflowAction<GetFileSizeResponse, ApiConnectionActionConfiguration> GetFileSize(Expression<Func<GetFileSizeInput>> getFileSize)
         {
-            var __workflow_getFileSizefilename = WorkflowExpression.Compile(getFileSizefilename, nameof(getFileSizefilename), required: true);
-            var __workflow_getFileSizeworkflow = WorkflowExpression.Compile(getFileSizeworkflow, nameof(getFileSizeworkflow), required: true);
+            var __workflow_getFileSize = WorkflowExpression.Compile(getFileSize, nameof(getFileSize), required: true);
             return new DeferredBodyAction<GetFileSizeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFileSize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getFileSize = new JObject();
-                var getFileSizepropCount = 0;
-                getFileSizepropCount++;
-                getFileSize["Filename"] = ExpressionConverter.ConvertO(__workflow_getFileSizefilename);
-                getFileSizepropCount++;
-                getFileSize["Workflow"] = ExpressionConverter.ConvertO(__workflow_getFileSizeworkflow);
-                if (getFileSizepropCount > 0)
-                {
-                    callPayload.Body = getFileSize;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFileSize);
                 return new ApiConnectionAction<GetFileSizeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> WriteTextFile(Expression<Func<string>> writeTextFilefilename, Expression<Func<string>> writeTextFileworkflow, Expression<Func<string>> writeTextFiletextToWrite = null, Expression<Func<bool>> writeTextFileappendExistingFile = null, Expression<Func<writeTextFileencodingInput>> writeTextFileencoding = null, Expression<Func<bool>> writeTextFilecreateFolderIfRequired = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> WriteTextFile(Expression<Func<WriteTextFileInput>> writeTextFile)
         {
-            var __workflow_writeTextFilefilename = WorkflowExpression.Compile(writeTextFilefilename, nameof(writeTextFilefilename), required: true);
-            var __workflow_writeTextFileworkflow = WorkflowExpression.Compile(writeTextFileworkflow, nameof(writeTextFileworkflow), required: true);
-            var __workflow_writeTextFiletextToWrite = WorkflowExpression.Compile(writeTextFiletextToWrite, nameof(writeTextFiletextToWrite), required: false);
-            var __workflow_writeTextFileappendExistingFile = WorkflowExpression.Compile(writeTextFileappendExistingFile, nameof(writeTextFileappendExistingFile), required: false);
-            var __workflow_writeTextFileencoding = WorkflowExpression.Compile(writeTextFileencoding, nameof(writeTextFileencoding), required: false);
-            var __workflow_writeTextFilecreateFolderIfRequired = WorkflowExpression.Compile(writeTextFilecreateFolderIfRequired, nameof(writeTextFilecreateFolderIfRequired), required: false);
+            var __workflow_writeTextFile = WorkflowExpression.Compile(writeTextFile, nameof(writeTextFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/WriteTextFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var writeTextFile = new JObject();
-                var writeTextFilepropCount = 0;
-                writeTextFilepropCount++;
-                writeTextFile["Filename"] = ExpressionConverter.ConvertO(__workflow_writeTextFilefilename);
-                if (__workflow_writeTextFiletextToWrite != null)
-                {
-                    writeTextFile["TextToWrite"] = ExpressionConverter.ConvertO(__workflow_writeTextFiletextToWrite);
-                    writeTextFilepropCount++;
-                }
-
-                if (__workflow_writeTextFileappendExistingFile != null)
-                {
-                    if (__workflow_writeTextFileappendExistingFile != null)
-                    {
-                        writeTextFile["AppendExistingFile"] = ExpressionConverter.ConvertO(__workflow_writeTextFileappendExistingFile);
-                        writeTextFilepropCount++;
-                    }
-
-                    writeTextFilepropCount++;
-                }
-                else
-                {
-                    writeTextFile["AppendExistingFile"] = false;
-                    writeTextFilepropCount++;
-                }
-
-                if (__workflow_writeTextFileencoding != null)
-                {
-                    writeTextFile["Encoding"] = ExpressionConverter.ConvertO(__workflow_writeTextFileencoding);
-                    writeTextFilepropCount++;
-                }
-
-                if (__workflow_writeTextFilecreateFolderIfRequired != null)
-                {
-                    if (__workflow_writeTextFilecreateFolderIfRequired != null)
-                    {
-                        writeTextFile["CreateFolderIfRequired"] = ExpressionConverter.ConvertO(__workflow_writeTextFilecreateFolderIfRequired);
-                        writeTextFilepropCount++;
-                    }
-
-                    writeTextFilepropCount++;
-                }
-                else
-                {
-                    writeTextFile["CreateFolderIfRequired"] = true;
-                    writeTextFilepropCount++;
-                }
-
-                writeTextFilepropCount++;
-                writeTextFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_writeTextFileworkflow);
-                if (writeTextFilepropCount > 0)
-                {
-                    callPayload.Body = writeTextFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_writeTextFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<ReadAllTextFromFileResponse, ApiConnectionActionConfiguration> ReadAllTextFromFile(Expression<Func<string>> readAllTextFromFilefilename, Expression<Func<string>> readAllTextFromFileworkflow)
+        public IBodyWorkflowAction<ReadAllTextFromFileResponse, ApiConnectionActionConfiguration> ReadAllTextFromFile(Expression<Func<ReadAllTextFromFileInput>> readAllTextFromFile)
         {
-            var __workflow_readAllTextFromFilefilename = WorkflowExpression.Compile(readAllTextFromFilefilename, nameof(readAllTextFromFilefilename), required: true);
-            var __workflow_readAllTextFromFileworkflow = WorkflowExpression.Compile(readAllTextFromFileworkflow, nameof(readAllTextFromFileworkflow), required: true);
+            var __workflow_readAllTextFromFile = WorkflowExpression.Compile(readAllTextFromFile, nameof(readAllTextFromFile), required: true);
             return new DeferredBodyAction<ReadAllTextFromFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/ReadAllTextFromFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var readAllTextFromFile = new JObject();
-                var readAllTextFromFilepropCount = 0;
-                readAllTextFromFilepropCount++;
-                readAllTextFromFile["Filename"] = ExpressionConverter.ConvertO(__workflow_readAllTextFromFilefilename);
-                readAllTextFromFilepropCount++;
-                readAllTextFromFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_readAllTextFromFileworkflow);
-                if (readAllTextFromFilepropCount > 0)
-                {
-                    callPayload.Body = readAllTextFromFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_readAllTextFromFile);
                 return new ApiConnectionAction<ReadAllTextFromFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFilesResponse, ApiConnectionActionConfiguration> GetFiles(Expression<Func<string>> getFilesdirectoryPath, Expression<Func<string>> getFilespatternsCSV, Expression<Func<string>> getFilesworkflow)
+        public IBodyWorkflowAction<GetFilesResponse, ApiConnectionActionConfiguration> GetFiles(Expression<Func<GetFilesInput>> getFiles)
         {
-            var __workflow_getFilesdirectoryPath = WorkflowExpression.Compile(getFilesdirectoryPath, nameof(getFilesdirectoryPath), required: true);
-            var __workflow_getFilespatternsCSV = WorkflowExpression.Compile(getFilespatternsCSV, nameof(getFilespatternsCSV), required: true);
-            var __workflow_getFilesworkflow = WorkflowExpression.Compile(getFilesworkflow, nameof(getFilesworkflow), required: true);
+            var __workflow_getFiles = WorkflowExpression.Compile(getFiles, nameof(getFiles), required: true);
             return new DeferredBodyAction<GetFilesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFiles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getFiles = new JObject();
-                var getFilespropCount = 0;
-                getFilespropCount++;
-                getFiles["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_getFilesdirectoryPath);
-                getFilespropCount++;
-                getFiles["PatternsCSV"] = ExpressionConverter.ConvertO(__workflow_getFilespatternsCSV);
-                getFilespropCount++;
-                getFiles["Workflow"] = ExpressionConverter.ConvertO(__workflow_getFilesworkflow);
-                if (getFilespropCount > 0)
-                {
-                    callPayload.Body = getFiles;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFiles);
                 return new ApiConnectionAction<GetFilesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFoldersResponse, ApiConnectionActionConfiguration> GetFolders(Expression<Func<string>> getFoldersdirectoryPath, Expression<Func<string>> getFoldersworkflow)
+        public IBodyWorkflowAction<GetFoldersResponse, ApiConnectionActionConfiguration> GetFolders(Expression<Func<GetFoldersInput>> getFolders)
         {
-            var __workflow_getFoldersdirectoryPath = WorkflowExpression.Compile(getFoldersdirectoryPath, nameof(getFoldersdirectoryPath), required: true);
-            var __workflow_getFoldersworkflow = WorkflowExpression.Compile(getFoldersworkflow, nameof(getFoldersworkflow), required: true);
+            var __workflow_getFolders = WorkflowExpression.Compile(getFolders, nameof(getFolders), required: true);
             return new DeferredBodyAction<GetFoldersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFolders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getFolders = new JObject();
-                var getFolderspropCount = 0;
-                getFolderspropCount++;
-                getFolders["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_getFoldersdirectoryPath);
-                getFolderspropCount++;
-                getFolders["Workflow"] = ExpressionConverter.ConvertO(__workflow_getFoldersworkflow);
-                if (getFolderspropCount > 0)
-                {
-                    callPayload.Body = getFolders;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFolders);
                 return new ApiConnectionAction<GetFoldersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DeleteFilesResponse, ApiConnectionActionConfiguration> DeleteFiles(Expression<Func<string>> deleteFilesdirectoryPath, Expression<Func<string>> deleteFilesworkflow, Expression<Func<string>> deleteFilespattern = null)
+        public IBodyWorkflowAction<DeleteFilesResponse, ApiConnectionActionConfiguration> DeleteFiles(Expression<Func<DeleteFilesInput>> deleteFiles)
         {
-            var __workflow_deleteFilesdirectoryPath = WorkflowExpression.Compile(deleteFilesdirectoryPath, nameof(deleteFilesdirectoryPath), required: true);
-            var __workflow_deleteFilesworkflow = WorkflowExpression.Compile(deleteFilesworkflow, nameof(deleteFilesworkflow), required: true);
-            var __workflow_deleteFilespattern = WorkflowExpression.Compile(deleteFilespattern, nameof(deleteFilespattern), required: false);
+            var __workflow_deleteFiles = WorkflowExpression.Compile(deleteFiles, nameof(deleteFiles), required: true);
             return new DeferredBodyAction<DeleteFilesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/DeleteFiles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var deleteFiles = new JObject();
-                var deleteFilespropCount = 0;
-                deleteFilespropCount++;
-                deleteFiles["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_deleteFilesdirectoryPath);
-                if (__workflow_deleteFilespattern != null)
-                {
-                    deleteFiles["Pattern"] = ExpressionConverter.ConvertO(__workflow_deleteFilespattern);
-                    deleteFilespropCount++;
-                }
-
-                deleteFilespropCount++;
-                deleteFiles["Workflow"] = ExpressionConverter.ConvertO(__workflow_deleteFilesworkflow);
-                if (deleteFilespropCount > 0)
-                {
-                    callPayload.Body = deleteFiles;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_deleteFiles);
                 return new ApiConnectionAction<DeleteFilesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetDiskFreeSpaceResponse, ApiConnectionActionConfiguration> GetDiskFreeSpace(Expression<Func<string>> getDiskFreeSpacedriveLetter, Expression<Func<string>> getDiskFreeSpaceworkflow)
+        public IBodyWorkflowAction<GetDiskFreeSpaceResponse, ApiConnectionActionConfiguration> GetDiskFreeSpace(Expression<Func<GetDiskFreeSpaceInput>> getDiskFreeSpace)
         {
-            var __workflow_getDiskFreeSpacedriveLetter = WorkflowExpression.Compile(getDiskFreeSpacedriveLetter, nameof(getDiskFreeSpacedriveLetter), required: true);
-            var __workflow_getDiskFreeSpaceworkflow = WorkflowExpression.Compile(getDiskFreeSpaceworkflow, nameof(getDiskFreeSpaceworkflow), required: true);
+            var __workflow_getDiskFreeSpace = WorkflowExpression.Compile(getDiskFreeSpace, nameof(getDiskFreeSpace), required: true);
             return new DeferredBodyAction<GetDiskFreeSpaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetDiskFreeSpace";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getDiskFreeSpace = new JObject();
-                var getDiskFreeSpacepropCount = 0;
-                getDiskFreeSpacepropCount++;
-                getDiskFreeSpace["DriveLetter"] = ExpressionConverter.ConvertO(__workflow_getDiskFreeSpacedriveLetter);
-                getDiskFreeSpacepropCount++;
-                getDiskFreeSpace["Workflow"] = ExpressionConverter.ConvertO(__workflow_getDiskFreeSpaceworkflow);
-                if (getDiskFreeSpacepropCount > 0)
-                {
-                    callPayload.Body = getDiskFreeSpace;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getDiskFreeSpace);
                 return new ApiConnectionAction<GetDiskFreeSpaceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetListOfDrivesResponse, ApiConnectionActionConfiguration> GetListOfDrives(Expression<Func<string>> getListOfDrivesworkflow)
+        public IBodyWorkflowAction<GetListOfDrivesResponse, ApiConnectionActionConfiguration> GetListOfDrives(Expression<Func<GetListOfDrivesInput>> getListOfDrives)
         {
-            var __workflow_getListOfDrivesworkflow = WorkflowExpression.Compile(getListOfDrivesworkflow, nameof(getListOfDrivesworkflow), required: true);
+            var __workflow_getListOfDrives = WorkflowExpression.Compile(getListOfDrives, nameof(getListOfDrives), required: true);
             return new DeferredBodyAction<GetListOfDrivesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetListOfDrives";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getListOfDrives = new JObject();
-                var getListOfDrivespropCount = 0;
-                getListOfDrivespropCount++;
-                getListOfDrives["Workflow"] = ExpressionConverter.ConvertO(__workflow_getListOfDrivesworkflow);
-                if (getListOfDrivespropCount > 0)
-                {
-                    callPayload.Body = getListOfDrives;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getListOfDrives);
                 return new ApiConnectionAction<GetListOfDrivesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DirectoryIsAccessibleResponse, ApiConnectionActionConfiguration> DirectoryIsAccessible(Expression<Func<string>> directoryIsAccessibledirectoryPath, Expression<Func<string>> directoryIsAccessibleworkflow)
+        public IBodyWorkflowAction<DirectoryIsAccessibleResponse, ApiConnectionActionConfiguration> DirectoryIsAccessible(Expression<Func<DirectoryIsAccessibleInput>> directoryIsAccessible)
         {
-            var __workflow_directoryIsAccessibledirectoryPath = WorkflowExpression.Compile(directoryIsAccessibledirectoryPath, nameof(directoryIsAccessibledirectoryPath), required: true);
-            var __workflow_directoryIsAccessibleworkflow = WorkflowExpression.Compile(directoryIsAccessibleworkflow, nameof(directoryIsAccessibleworkflow), required: true);
+            var __workflow_directoryIsAccessible = WorkflowExpression.Compile(directoryIsAccessible, nameof(directoryIsAccessible), required: true);
             return new DeferredBodyAction<DirectoryIsAccessibleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/DirectoryIsAccessible";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var directoryIsAccessible = new JObject();
-                var directoryIsAccessiblepropCount = 0;
-                directoryIsAccessiblepropCount++;
-                directoryIsAccessible["DirectoryPath"] = ExpressionConverter.ConvertO(__workflow_directoryIsAccessibledirectoryPath);
-                directoryIsAccessiblepropCount++;
-                directoryIsAccessible["Workflow"] = ExpressionConverter.ConvertO(__workflow_directoryIsAccessibleworkflow);
-                if (directoryIsAccessiblepropCount > 0)
-                {
-                    callPayload.Body = directoryIsAccessible;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_directoryIsAccessible);
                 return new ApiConnectionAction<DirectoryIsAccessibleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetCSVTextAsCollectionResponse, ApiConnectionActionConfiguration> GetCSVTextAsCollection(Expression<Func<string>> getCSVTextAsCollectioncSVFilePath, Expression<Func<string>> getCSVTextAsCollectionworkflow, Expression<Func<bool>> getCSVTextAsCollectionfirstLineIsHeader = null, Expression<Func<bool>> getCSVTextAsCollectiontrimHeaders = null, Expression<Func<bool>> getCSVTextAsCollectionallowBlankRows = null, Expression<Func<bool>> getCSVTextAsCollectionextendColumnsIfRequired = null)
+        public IBodyWorkflowAction<GetCSVTextAsCollectionResponse, ApiConnectionActionConfiguration> GetCSVTextAsCollection(Expression<Func<GetCSVTextAsCollectionInput>> getCSVTextAsCollection)
         {
-            var __workflow_getCSVTextAsCollectioncSVFilePath = WorkflowExpression.Compile(getCSVTextAsCollectioncSVFilePath, nameof(getCSVTextAsCollectioncSVFilePath), required: true);
-            var __workflow_getCSVTextAsCollectionworkflow = WorkflowExpression.Compile(getCSVTextAsCollectionworkflow, nameof(getCSVTextAsCollectionworkflow), required: true);
-            var __workflow_getCSVTextAsCollectionfirstLineIsHeader = WorkflowExpression.Compile(getCSVTextAsCollectionfirstLineIsHeader, nameof(getCSVTextAsCollectionfirstLineIsHeader), required: false);
-            var __workflow_getCSVTextAsCollectiontrimHeaders = WorkflowExpression.Compile(getCSVTextAsCollectiontrimHeaders, nameof(getCSVTextAsCollectiontrimHeaders), required: false);
-            var __workflow_getCSVTextAsCollectionallowBlankRows = WorkflowExpression.Compile(getCSVTextAsCollectionallowBlankRows, nameof(getCSVTextAsCollectionallowBlankRows), required: false);
-            var __workflow_getCSVTextAsCollectionextendColumnsIfRequired = WorkflowExpression.Compile(getCSVTextAsCollectionextendColumnsIfRequired, nameof(getCSVTextAsCollectionextendColumnsIfRequired), required: false);
+            var __workflow_getCSVTextAsCollection = WorkflowExpression.Compile(getCSVTextAsCollection, nameof(getCSVTextAsCollection), required: true);
             return new DeferredBodyAction<GetCSVTextAsCollectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetCSVTextAsCollection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getCSVTextAsCollection = new JObject();
-                var getCSVTextAsCollectionpropCount = 0;
-                getCSVTextAsCollectionpropCount++;
-                getCSVTextAsCollection["CSVFilePath"] = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollectioncSVFilePath);
-                if (__workflow_getCSVTextAsCollectionfirstLineIsHeader != null)
-                {
-                    if (__workflow_getCSVTextAsCollectionfirstLineIsHeader != null)
-                    {
-                        getCSVTextAsCollection["FirstLineIsHeader"] = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollectionfirstLineIsHeader);
-                        getCSVTextAsCollectionpropCount++;
-                    }
-
-                    getCSVTextAsCollectionpropCount++;
-                }
-                else
-                {
-                    getCSVTextAsCollection["FirstLineIsHeader"] = true;
-                    getCSVTextAsCollectionpropCount++;
-                }
-
-                if (__workflow_getCSVTextAsCollectiontrimHeaders != null)
-                {
-                    if (__workflow_getCSVTextAsCollectiontrimHeaders != null)
-                    {
-                        getCSVTextAsCollection["TrimHeaders"] = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollectiontrimHeaders);
-                        getCSVTextAsCollectionpropCount++;
-                    }
-
-                    getCSVTextAsCollectionpropCount++;
-                }
-                else
-                {
-                    getCSVTextAsCollection["TrimHeaders"] = true;
-                    getCSVTextAsCollectionpropCount++;
-                }
-
-                if (__workflow_getCSVTextAsCollectionallowBlankRows != null)
-                {
-                    if (__workflow_getCSVTextAsCollectionallowBlankRows != null)
-                    {
-                        getCSVTextAsCollection["AllowBlankRows"] = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollectionallowBlankRows);
-                        getCSVTextAsCollectionpropCount++;
-                    }
-
-                    getCSVTextAsCollectionpropCount++;
-                }
-                else
-                {
-                    getCSVTextAsCollection["AllowBlankRows"] = true;
-                    getCSVTextAsCollectionpropCount++;
-                }
-
-                if (__workflow_getCSVTextAsCollectionextendColumnsIfRequired != null)
-                {
-                    if (__workflow_getCSVTextAsCollectionextendColumnsIfRequired != null)
-                    {
-                        getCSVTextAsCollection["ExtendColumnsIfRequired"] = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollectionextendColumnsIfRequired);
-                        getCSVTextAsCollectionpropCount++;
-                    }
-
-                    getCSVTextAsCollectionpropCount++;
-                }
-                else
-                {
-                    getCSVTextAsCollection["ExtendColumnsIfRequired"] = false;
-                    getCSVTextAsCollectionpropCount++;
-                }
-
-                getCSVTextAsCollectionpropCount++;
-                getCSVTextAsCollection["Workflow"] = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollectionworkflow);
-                if (getCSVTextAsCollectionpropCount > 0)
-                {
-                    callPayload.Body = getCSVTextAsCollection;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getCSVTextAsCollection);
                 return new ApiConnectionAction<GetCSVTextAsCollectionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<WriteCollectionToCSVFileResponse, ApiConnectionActionConfiguration> WriteCollectionToCSVFile(Expression<Func<string>> writeCollectionToCSVFilecSVFilePath, Expression<Func<string>> writeCollectionToCSVFileworkflow, Expression<Func<JToken[]>> writeCollectionToCSVFileinputTable = null, Expression<Func<string>> writeCollectionToCSVFileinputTableJSON = null, Expression<Func<writeCollectionToCSVFileoutputEncodingInput>> writeCollectionToCSVFileoutputEncoding = null)
+        public IBodyWorkflowAction<WriteCollectionToCSVFileResponse, ApiConnectionActionConfiguration> WriteCollectionToCSVFile(Expression<Func<WriteCollectionToCSVFileInput>> writeCollectionToCSVFile)
         {
-            var __workflow_writeCollectionToCSVFilecSVFilePath = WorkflowExpression.Compile(writeCollectionToCSVFilecSVFilePath, nameof(writeCollectionToCSVFilecSVFilePath), required: true);
-            var __workflow_writeCollectionToCSVFileworkflow = WorkflowExpression.Compile(writeCollectionToCSVFileworkflow, nameof(writeCollectionToCSVFileworkflow), required: true);
-            var __workflow_writeCollectionToCSVFileinputTable = WorkflowExpression.Compile(writeCollectionToCSVFileinputTable, nameof(writeCollectionToCSVFileinputTable), required: false);
-            var __workflow_writeCollectionToCSVFileinputTableJSON = WorkflowExpression.Compile(writeCollectionToCSVFileinputTableJSON, nameof(writeCollectionToCSVFileinputTableJSON), required: false);
-            var __workflow_writeCollectionToCSVFileoutputEncoding = WorkflowExpression.Compile(writeCollectionToCSVFileoutputEncoding, nameof(writeCollectionToCSVFileoutputEncoding), required: false);
+            var __workflow_writeCollectionToCSVFile = WorkflowExpression.Compile(writeCollectionToCSVFile, nameof(writeCollectionToCSVFile), required: true);
             return new DeferredBodyAction<WriteCollectionToCSVFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/WriteCollectionToCSVFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var writeCollectionToCSVFile = new JObject();
-                var writeCollectionToCSVFilepropCount = 0;
-                if (__workflow_writeCollectionToCSVFileinputTable != null)
-                {
-                    writeCollectionToCSVFile["InputTable"] = ExpressionConverter.ConvertO(__workflow_writeCollectionToCSVFileinputTable);
-                    writeCollectionToCSVFilepropCount++;
-                }
-
-                if (__workflow_writeCollectionToCSVFileinputTableJSON != null)
-                {
-                    writeCollectionToCSVFile["InputTableJSON"] = ExpressionConverter.ConvertO(__workflow_writeCollectionToCSVFileinputTableJSON);
-                    writeCollectionToCSVFilepropCount++;
-                }
-
-                writeCollectionToCSVFilepropCount++;
-                writeCollectionToCSVFile["CSVFilePath"] = ExpressionConverter.ConvertO(__workflow_writeCollectionToCSVFilecSVFilePath);
-                if (__workflow_writeCollectionToCSVFileoutputEncoding != null)
-                {
-                    if (__workflow_writeCollectionToCSVFileoutputEncoding != null)
-                    {
-                        writeCollectionToCSVFile["OutputEncoding"] = ExpressionConverter.ConvertO(__workflow_writeCollectionToCSVFileoutputEncoding);
-                        writeCollectionToCSVFilepropCount++;
-                    }
-
-                    writeCollectionToCSVFilepropCount++;
-                }
-                else
-                {
-                    writeCollectionToCSVFile["OutputEncoding"] = "UTF8";
-                    writeCollectionToCSVFilepropCount++;
-                }
-
-                writeCollectionToCSVFilepropCount++;
-                writeCollectionToCSVFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_writeCollectionToCSVFileworkflow);
-                if (writeCollectionToCSVFilepropCount > 0)
-                {
-                    callPayload.Body = writeCollectionToCSVFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_writeCollectionToCSVFile);
                 return new ApiConnectionAction<WriteCollectionToCSVFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetOwnerOnFolder(Expression<Func<string>> setOwnerOnFolderfolderPath, Expression<Func<string>> setOwnerOnFolderuserIdentity, Expression<Func<string>> setOwnerOnFolderworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetOwnerOnFolder(Expression<Func<SetOwnerOnFolderInput>> setOwnerOnFolder)
         {
-            var __workflow_setOwnerOnFolderfolderPath = WorkflowExpression.Compile(setOwnerOnFolderfolderPath, nameof(setOwnerOnFolderfolderPath), required: true);
-            var __workflow_setOwnerOnFolderuserIdentity = WorkflowExpression.Compile(setOwnerOnFolderuserIdentity, nameof(setOwnerOnFolderuserIdentity), required: true);
-            var __workflow_setOwnerOnFolderworkflow = WorkflowExpression.Compile(setOwnerOnFolderworkflow, nameof(setOwnerOnFolderworkflow), required: true);
+            var __workflow_setOwnerOnFolder = WorkflowExpression.Compile(setOwnerOnFolder, nameof(setOwnerOnFolder), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/SetOwnerOnFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setOwnerOnFolder = new JObject();
-                var setOwnerOnFolderpropCount = 0;
-                setOwnerOnFolderpropCount++;
-                setOwnerOnFolder["FolderPath"] = ExpressionConverter.ConvertO(__workflow_setOwnerOnFolderfolderPath);
-                setOwnerOnFolderpropCount++;
-                setOwnerOnFolder["UserIdentity"] = ExpressionConverter.ConvertO(__workflow_setOwnerOnFolderuserIdentity);
-                setOwnerOnFolderpropCount++;
-                setOwnerOnFolder["Workflow"] = ExpressionConverter.ConvertO(__workflow_setOwnerOnFolderworkflow);
-                if (setOwnerOnFolderpropCount > 0)
-                {
-                    callPayload.Body = setOwnerOnFolder;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setOwnerOnFolder);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetOwnerOnFile(Expression<Func<string>> setOwnerOnFilefilePath, Expression<Func<string>> setOwnerOnFileuserIdentity, Expression<Func<string>> setOwnerOnFileworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetOwnerOnFile(Expression<Func<SetOwnerOnFileInput>> setOwnerOnFile)
         {
-            var __workflow_setOwnerOnFilefilePath = WorkflowExpression.Compile(setOwnerOnFilefilePath, nameof(setOwnerOnFilefilePath), required: true);
-            var __workflow_setOwnerOnFileuserIdentity = WorkflowExpression.Compile(setOwnerOnFileuserIdentity, nameof(setOwnerOnFileuserIdentity), required: true);
-            var __workflow_setOwnerOnFileworkflow = WorkflowExpression.Compile(setOwnerOnFileworkflow, nameof(setOwnerOnFileworkflow), required: true);
+            var __workflow_setOwnerOnFile = WorkflowExpression.Compile(setOwnerOnFile, nameof(setOwnerOnFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/SetOwnerOnFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var setOwnerOnFile = new JObject();
-                var setOwnerOnFilepropCount = 0;
-                setOwnerOnFilepropCount++;
-                setOwnerOnFile["FilePath"] = ExpressionConverter.ConvertO(__workflow_setOwnerOnFilefilePath);
-                setOwnerOnFilepropCount++;
-                setOwnerOnFile["UserIdentity"] = ExpressionConverter.ConvertO(__workflow_setOwnerOnFileuserIdentity);
-                setOwnerOnFilepropCount++;
-                setOwnerOnFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_setOwnerOnFileworkflow);
-                if (setOwnerOnFilepropCount > 0)
-                {
-                    callPayload.Body = setOwnerOnFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setOwnerOnFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPermissionToFolder(Expression<Func<string>> addPermissionToFolderfolderPath, Expression<Func<string>> addPermissionToFolderidentity, Expression<Func<addPermissionToFolderpermissionInput>> addPermissionToFolderpermission, Expression<Func<string>> addPermissionToFolderworkflow, Expression<Func<bool>> addPermissionToFolderapplyToFolder = null, Expression<Func<bool>> addPermissionToFolderapplyToSubFolders = null, Expression<Func<bool>> addPermissionToFolderapplyToFiles = null, Expression<Func<bool>> addPermissionToFolderdeny = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPermissionToFolder(Expression<Func<AddPermissionToFolderInput>> addPermissionToFolder)
         {
-            var __workflow_addPermissionToFolderfolderPath = WorkflowExpression.Compile(addPermissionToFolderfolderPath, nameof(addPermissionToFolderfolderPath), required: true);
-            var __workflow_addPermissionToFolderidentity = WorkflowExpression.Compile(addPermissionToFolderidentity, nameof(addPermissionToFolderidentity), required: true);
-            var __workflow_addPermissionToFolderpermission = WorkflowExpression.Compile(addPermissionToFolderpermission, nameof(addPermissionToFolderpermission), required: true);
-            var __workflow_addPermissionToFolderworkflow = WorkflowExpression.Compile(addPermissionToFolderworkflow, nameof(addPermissionToFolderworkflow), required: true);
-            var __workflow_addPermissionToFolderapplyToFolder = WorkflowExpression.Compile(addPermissionToFolderapplyToFolder, nameof(addPermissionToFolderapplyToFolder), required: false);
-            var __workflow_addPermissionToFolderapplyToSubFolders = WorkflowExpression.Compile(addPermissionToFolderapplyToSubFolders, nameof(addPermissionToFolderapplyToSubFolders), required: false);
-            var __workflow_addPermissionToFolderapplyToFiles = WorkflowExpression.Compile(addPermissionToFolderapplyToFiles, nameof(addPermissionToFolderapplyToFiles), required: false);
-            var __workflow_addPermissionToFolderdeny = WorkflowExpression.Compile(addPermissionToFolderdeny, nameof(addPermissionToFolderdeny), required: false);
+            var __workflow_addPermissionToFolder = WorkflowExpression.Compile(addPermissionToFolder, nameof(addPermissionToFolder), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/AddPermissionToFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addPermissionToFolder = new JObject();
-                var addPermissionToFolderpropCount = 0;
-                addPermissionToFolderpropCount++;
-                addPermissionToFolder["FolderPath"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderfolderPath);
-                addPermissionToFolderpropCount++;
-                addPermissionToFolder["Identity"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderidentity);
-                addPermissionToFolderpropCount++;
-                addPermissionToFolder["Permission"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderpermission);
-                if (__workflow_addPermissionToFolderapplyToFolder != null)
-                {
-                    if (__workflow_addPermissionToFolderapplyToFolder != null)
-                    {
-                        addPermissionToFolder["ApplyToFolder"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderapplyToFolder);
-                        addPermissionToFolderpropCount++;
-                    }
-
-                    addPermissionToFolderpropCount++;
-                }
-                else
-                {
-                    addPermissionToFolder["ApplyToFolder"] = false;
-                    addPermissionToFolderpropCount++;
-                }
-
-                if (__workflow_addPermissionToFolderapplyToSubFolders != null)
-                {
-                    if (__workflow_addPermissionToFolderapplyToSubFolders != null)
-                    {
-                        addPermissionToFolder["ApplyToSubFolders"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderapplyToSubFolders);
-                        addPermissionToFolderpropCount++;
-                    }
-
-                    addPermissionToFolderpropCount++;
-                }
-                else
-                {
-                    addPermissionToFolder["ApplyToSubFolders"] = true;
-                    addPermissionToFolderpropCount++;
-                }
-
-                if (__workflow_addPermissionToFolderapplyToFiles != null)
-                {
-                    if (__workflow_addPermissionToFolderapplyToFiles != null)
-                    {
-                        addPermissionToFolder["ApplyToFiles"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderapplyToFiles);
-                        addPermissionToFolderpropCount++;
-                    }
-
-                    addPermissionToFolderpropCount++;
-                }
-                else
-                {
-                    addPermissionToFolder["ApplyToFiles"] = true;
-                    addPermissionToFolderpropCount++;
-                }
-
-                if (__workflow_addPermissionToFolderdeny != null)
-                {
-                    if (__workflow_addPermissionToFolderdeny != null)
-                    {
-                        addPermissionToFolder["Deny"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderdeny);
-                        addPermissionToFolderpropCount++;
-                    }
-
-                    addPermissionToFolderpropCount++;
-                }
-                else
-                {
-                    addPermissionToFolder["Deny"] = false;
-                    addPermissionToFolderpropCount++;
-                }
-
-                addPermissionToFolderpropCount++;
-                addPermissionToFolder["Workflow"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFolderworkflow);
-                if (addPermissionToFolderpropCount > 0)
-                {
-                    callPayload.Body = addPermissionToFolder;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addPermissionToFolder);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPermissionToFile(Expression<Func<string>> addPermissionToFilefilePath, Expression<Func<string>> addPermissionToFileidentity, Expression<Func<addPermissionToFilepermissionInput>> addPermissionToFilepermission, Expression<Func<string>> addPermissionToFileworkflow, Expression<Func<bool>> addPermissionToFiledeny = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPermissionToFile(Expression<Func<AddPermissionToFileInput>> addPermissionToFile)
         {
-            var __workflow_addPermissionToFilefilePath = WorkflowExpression.Compile(addPermissionToFilefilePath, nameof(addPermissionToFilefilePath), required: true);
-            var __workflow_addPermissionToFileidentity = WorkflowExpression.Compile(addPermissionToFileidentity, nameof(addPermissionToFileidentity), required: true);
-            var __workflow_addPermissionToFilepermission = WorkflowExpression.Compile(addPermissionToFilepermission, nameof(addPermissionToFilepermission), required: true);
-            var __workflow_addPermissionToFileworkflow = WorkflowExpression.Compile(addPermissionToFileworkflow, nameof(addPermissionToFileworkflow), required: true);
-            var __workflow_addPermissionToFiledeny = WorkflowExpression.Compile(addPermissionToFiledeny, nameof(addPermissionToFiledeny), required: false);
+            var __workflow_addPermissionToFile = WorkflowExpression.Compile(addPermissionToFile, nameof(addPermissionToFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/AddPermissionToFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addPermissionToFile = new JObject();
-                var addPermissionToFilepropCount = 0;
-                addPermissionToFilepropCount++;
-                addPermissionToFile["FilePath"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFilefilePath);
-                addPermissionToFilepropCount++;
-                addPermissionToFile["Identity"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFileidentity);
-                addPermissionToFilepropCount++;
-                addPermissionToFile["Permission"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFilepermission);
-                if (__workflow_addPermissionToFiledeny != null)
-                {
-                    if (__workflow_addPermissionToFiledeny != null)
-                    {
-                        addPermissionToFile["Deny"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFiledeny);
-                        addPermissionToFilepropCount++;
-                    }
-
-                    addPermissionToFilepropCount++;
-                }
-                else
-                {
-                    addPermissionToFile["Deny"] = false;
-                    addPermissionToFilepropCount++;
-                }
-
-                addPermissionToFilepropCount++;
-                addPermissionToFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_addPermissionToFileworkflow);
-                if (addPermissionToFilepropCount > 0)
-                {
-                    callPayload.Body = addPermissionToFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addPermissionToFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BreakFolderSecurityInheritance(Expression<Func<string>> breakFolderSecurityInheritancefolderPath, Expression<Func<string>> breakFolderSecurityInheritanceworkflow, Expression<Func<bool>> breakFolderSecurityInheritanceconvertInheritedToExplicit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BreakFolderSecurityInheritance(Expression<Func<BreakFolderSecurityInheritanceInput>> breakFolderSecurityInheritance)
         {
-            var __workflow_breakFolderSecurityInheritancefolderPath = WorkflowExpression.Compile(breakFolderSecurityInheritancefolderPath, nameof(breakFolderSecurityInheritancefolderPath), required: true);
-            var __workflow_breakFolderSecurityInheritanceworkflow = WorkflowExpression.Compile(breakFolderSecurityInheritanceworkflow, nameof(breakFolderSecurityInheritanceworkflow), required: true);
-            var __workflow_breakFolderSecurityInheritanceconvertInheritedToExplicit = WorkflowExpression.Compile(breakFolderSecurityInheritanceconvertInheritedToExplicit, nameof(breakFolderSecurityInheritanceconvertInheritedToExplicit), required: false);
+            var __workflow_breakFolderSecurityInheritance = WorkflowExpression.Compile(breakFolderSecurityInheritance, nameof(breakFolderSecurityInheritance), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/BreakFolderSecurityInheritance";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var breakFolderSecurityInheritance = new JObject();
-                var breakFolderSecurityInheritancepropCount = 0;
-                breakFolderSecurityInheritancepropCount++;
-                breakFolderSecurityInheritance["FolderPath"] = ExpressionConverter.ConvertO(__workflow_breakFolderSecurityInheritancefolderPath);
-                if (__workflow_breakFolderSecurityInheritanceconvertInheritedToExplicit != null)
-                {
-                    if (__workflow_breakFolderSecurityInheritanceconvertInheritedToExplicit != null)
-                    {
-                        breakFolderSecurityInheritance["ConvertInheritedToExplicit"] = ExpressionConverter.ConvertO(__workflow_breakFolderSecurityInheritanceconvertInheritedToExplicit);
-                        breakFolderSecurityInheritancepropCount++;
-                    }
-
-                    breakFolderSecurityInheritancepropCount++;
-                }
-                else
-                {
-                    breakFolderSecurityInheritance["ConvertInheritedToExplicit"] = true;
-                    breakFolderSecurityInheritancepropCount++;
-                }
-
-                breakFolderSecurityInheritancepropCount++;
-                breakFolderSecurityInheritance["Workflow"] = ExpressionConverter.ConvertO(__workflow_breakFolderSecurityInheritanceworkflow);
-                if (breakFolderSecurityInheritancepropCount > 0)
-                {
-                    callPayload.Body = breakFolderSecurityInheritance;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_breakFolderSecurityInheritance);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EnableFolderSecurityInheritance(Expression<Func<string>> enableFolderSecurityInheritancefolderPath, Expression<Func<string>> enableFolderSecurityInheritanceworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EnableFolderSecurityInheritance(Expression<Func<EnableFolderSecurityInheritanceInput>> enableFolderSecurityInheritance)
         {
-            var __workflow_enableFolderSecurityInheritancefolderPath = WorkflowExpression.Compile(enableFolderSecurityInheritancefolderPath, nameof(enableFolderSecurityInheritancefolderPath), required: true);
-            var __workflow_enableFolderSecurityInheritanceworkflow = WorkflowExpression.Compile(enableFolderSecurityInheritanceworkflow, nameof(enableFolderSecurityInheritanceworkflow), required: true);
+            var __workflow_enableFolderSecurityInheritance = WorkflowExpression.Compile(enableFolderSecurityInheritance, nameof(enableFolderSecurityInheritance), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/EnableFolderSecurityInheritance";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var enableFolderSecurityInheritance = new JObject();
-                var enableFolderSecurityInheritancepropCount = 0;
-                enableFolderSecurityInheritancepropCount++;
-                enableFolderSecurityInheritance["FolderPath"] = ExpressionConverter.ConvertO(__workflow_enableFolderSecurityInheritancefolderPath);
-                enableFolderSecurityInheritancepropCount++;
-                enableFolderSecurityInheritance["Workflow"] = ExpressionConverter.ConvertO(__workflow_enableFolderSecurityInheritanceworkflow);
-                if (enableFolderSecurityInheritancepropCount > 0)
-                {
-                    callPayload.Body = enableFolderSecurityInheritance;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_enableFolderSecurityInheritance);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFolderSecurityPermissionsResponse, ApiConnectionActionConfiguration> GetFolderSecurityPermissions(Expression<Func<string>> getFolderSecurityPermissionsfolderPath, Expression<Func<string>> getFolderSecurityPermissionsworkflow)
+        public IBodyWorkflowAction<GetFolderSecurityPermissionsResponse, ApiConnectionActionConfiguration> GetFolderSecurityPermissions(Expression<Func<GetFolderSecurityPermissionsInput>> getFolderSecurityPermissions)
         {
-            var __workflow_getFolderSecurityPermissionsfolderPath = WorkflowExpression.Compile(getFolderSecurityPermissionsfolderPath, nameof(getFolderSecurityPermissionsfolderPath), required: true);
-            var __workflow_getFolderSecurityPermissionsworkflow = WorkflowExpression.Compile(getFolderSecurityPermissionsworkflow, nameof(getFolderSecurityPermissionsworkflow), required: true);
+            var __workflow_getFolderSecurityPermissions = WorkflowExpression.Compile(getFolderSecurityPermissions, nameof(getFolderSecurityPermissions), required: true);
             return new DeferredBodyAction<GetFolderSecurityPermissionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFolderSecurityPermissions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getFolderSecurityPermissions = new JObject();
-                var getFolderSecurityPermissionspropCount = 0;
-                getFolderSecurityPermissionspropCount++;
-                getFolderSecurityPermissions["FolderPath"] = ExpressionConverter.ConvertO(__workflow_getFolderSecurityPermissionsfolderPath);
-                getFolderSecurityPermissionspropCount++;
-                getFolderSecurityPermissions["Workflow"] = ExpressionConverter.ConvertO(__workflow_getFolderSecurityPermissionsworkflow);
-                if (getFolderSecurityPermissionspropCount > 0)
-                {
-                    callPayload.Body = getFolderSecurityPermissions;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFolderSecurityPermissions);
                 return new ApiConnectionAction<GetFolderSecurityPermissionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFileSecurityPermissionsResponse, ApiConnectionActionConfiguration> GetFileSecurityPermissions(Expression<Func<string>> getFileSecurityPermissionsfilePath, Expression<Func<string>> getFileSecurityPermissionsworkflow)
+        public IBodyWorkflowAction<GetFileSecurityPermissionsResponse, ApiConnectionActionConfiguration> GetFileSecurityPermissions(Expression<Func<GetFileSecurityPermissionsInput>> getFileSecurityPermissions)
         {
-            var __workflow_getFileSecurityPermissionsfilePath = WorkflowExpression.Compile(getFileSecurityPermissionsfilePath, nameof(getFileSecurityPermissionsfilePath), required: true);
-            var __workflow_getFileSecurityPermissionsworkflow = WorkflowExpression.Compile(getFileSecurityPermissionsworkflow, nameof(getFileSecurityPermissionsworkflow), required: true);
+            var __workflow_getFileSecurityPermissions = WorkflowExpression.Compile(getFileSecurityPermissions, nameof(getFileSecurityPermissions), required: true);
             return new DeferredBodyAction<GetFileSecurityPermissionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFileSecurityPermissions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getFileSecurityPermissions = new JObject();
-                var getFileSecurityPermissionspropCount = 0;
-                getFileSecurityPermissionspropCount++;
-                getFileSecurityPermissions["FilePath"] = ExpressionConverter.ConvertO(__workflow_getFileSecurityPermissionsfilePath);
-                getFileSecurityPermissionspropCount++;
-                getFileSecurityPermissions["Workflow"] = ExpressionConverter.ConvertO(__workflow_getFileSecurityPermissionsworkflow);
-                if (getFileSecurityPermissionspropCount > 0)
-                {
-                    callPayload.Body = getFileSecurityPermissions;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFileSecurityPermissions);
                 return new ApiConnectionAction<GetFileSecurityPermissionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<RemoveIdentityFromFolderSecurityResponse, ApiConnectionActionConfiguration> RemoveIdentityFromFolderSecurity(Expression<Func<string>> removeIdentityFromFolderSecurityfolderPath, Expression<Func<string>> removeIdentityFromFolderSecurityidentityToRemove, Expression<Func<string>> removeIdentityFromFolderSecurityworkflow)
+        public IBodyWorkflowAction<RemoveIdentityFromFolderSecurityResponse, ApiConnectionActionConfiguration> RemoveIdentityFromFolderSecurity(Expression<Func<RemoveIdentityFromFolderSecurityInput>> removeIdentityFromFolderSecurity)
         {
-            var __workflow_removeIdentityFromFolderSecurityfolderPath = WorkflowExpression.Compile(removeIdentityFromFolderSecurityfolderPath, nameof(removeIdentityFromFolderSecurityfolderPath), required: true);
-            var __workflow_removeIdentityFromFolderSecurityidentityToRemove = WorkflowExpression.Compile(removeIdentityFromFolderSecurityidentityToRemove, nameof(removeIdentityFromFolderSecurityidentityToRemove), required: true);
-            var __workflow_removeIdentityFromFolderSecurityworkflow = WorkflowExpression.Compile(removeIdentityFromFolderSecurityworkflow, nameof(removeIdentityFromFolderSecurityworkflow), required: true);
+            var __workflow_removeIdentityFromFolderSecurity = WorkflowExpression.Compile(removeIdentityFromFolderSecurity, nameof(removeIdentityFromFolderSecurity), required: true);
             return new DeferredBodyAction<RemoveIdentityFromFolderSecurityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/RemoveIdentityFromFolderSecurity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var removeIdentityFromFolderSecurity = new JObject();
-                var removeIdentityFromFolderSecuritypropCount = 0;
-                removeIdentityFromFolderSecuritypropCount++;
-                removeIdentityFromFolderSecurity["FolderPath"] = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFolderSecurityfolderPath);
-                removeIdentityFromFolderSecuritypropCount++;
-                removeIdentityFromFolderSecurity["IdentityToRemove"] = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFolderSecurityidentityToRemove);
-                removeIdentityFromFolderSecuritypropCount++;
-                removeIdentityFromFolderSecurity["Workflow"] = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFolderSecurityworkflow);
-                if (removeIdentityFromFolderSecuritypropCount > 0)
-                {
-                    callPayload.Body = removeIdentityFromFolderSecurity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFolderSecurity);
                 return new ApiConnectionAction<RemoveIdentityFromFolderSecurityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<RemoveIdentityFromFileSecurityResponse, ApiConnectionActionConfiguration> RemoveIdentityFromFileSecurity(Expression<Func<string>> removeIdentityFromFileSecurityfilePath, Expression<Func<string>> removeIdentityFromFileSecurityidentityToRemove, Expression<Func<string>> removeIdentityFromFileSecurityworkflow)
+        public IBodyWorkflowAction<RemoveIdentityFromFileSecurityResponse, ApiConnectionActionConfiguration> RemoveIdentityFromFileSecurity(Expression<Func<RemoveIdentityFromFileSecurityInput>> removeIdentityFromFileSecurity)
         {
-            var __workflow_removeIdentityFromFileSecurityfilePath = WorkflowExpression.Compile(removeIdentityFromFileSecurityfilePath, nameof(removeIdentityFromFileSecurityfilePath), required: true);
-            var __workflow_removeIdentityFromFileSecurityidentityToRemove = WorkflowExpression.Compile(removeIdentityFromFileSecurityidentityToRemove, nameof(removeIdentityFromFileSecurityidentityToRemove), required: true);
-            var __workflow_removeIdentityFromFileSecurityworkflow = WorkflowExpression.Compile(removeIdentityFromFileSecurityworkflow, nameof(removeIdentityFromFileSecurityworkflow), required: true);
+            var __workflow_removeIdentityFromFileSecurity = WorkflowExpression.Compile(removeIdentityFromFileSecurity, nameof(removeIdentityFromFileSecurity), required: true);
             return new DeferredBodyAction<RemoveIdentityFromFileSecurityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/RemoveIdentityFromFileSecurity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var removeIdentityFromFileSecurity = new JObject();
-                var removeIdentityFromFileSecuritypropCount = 0;
-                removeIdentityFromFileSecuritypropCount++;
-                removeIdentityFromFileSecurity["FilePath"] = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFileSecurityfilePath);
-                removeIdentityFromFileSecuritypropCount++;
-                removeIdentityFromFileSecurity["IdentityToRemove"] = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFileSecurityidentityToRemove);
-                removeIdentityFromFileSecuritypropCount++;
-                removeIdentityFromFileSecurity["Workflow"] = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFileSecurityworkflow);
-                if (removeIdentityFromFileSecuritypropCount > 0)
-                {
-                    callPayload.Body = removeIdentityFromFileSecurity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_removeIdentityFromFileSecurity);
                 return new ApiConnectionAction<RemoveIdentityFromFileSecurityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CopyFileFromClientToServer(Expression<Func<string>> copyFileFromClientToServerclientFilePath, Expression<Func<string>> copyFileFromClientToServerserverFilePath, Expression<Func<string>> copyFileFromClientToServerworkflow, Expression<Func<bool>> copyFileFromClientToServercompress = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CopyFileFromClientToServer(Expression<Func<CopyFileFromClientToServerInput>> copyFileFromClientToServer)
         {
-            var __workflow_copyFileFromClientToServerclientFilePath = WorkflowExpression.Compile(copyFileFromClientToServerclientFilePath, nameof(copyFileFromClientToServerclientFilePath), required: true);
-            var __workflow_copyFileFromClientToServerserverFilePath = WorkflowExpression.Compile(copyFileFromClientToServerserverFilePath, nameof(copyFileFromClientToServerserverFilePath), required: true);
-            var __workflow_copyFileFromClientToServerworkflow = WorkflowExpression.Compile(copyFileFromClientToServerworkflow, nameof(copyFileFromClientToServerworkflow), required: true);
-            var __workflow_copyFileFromClientToServercompress = WorkflowExpression.Compile(copyFileFromClientToServercompress, nameof(copyFileFromClientToServercompress), required: false);
+            var __workflow_copyFileFromClientToServer = WorkflowExpression.Compile(copyFileFromClientToServer, nameof(copyFileFromClientToServer), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/CopyFileFromClientToServer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var copyFileFromClientToServer = new JObject();
-                var copyFileFromClientToServerpropCount = 0;
-                copyFileFromClientToServerpropCount++;
-                copyFileFromClientToServer["ClientFilePath"] = ExpressionConverter.ConvertO(__workflow_copyFileFromClientToServerclientFilePath);
-                copyFileFromClientToServerpropCount++;
-                copyFileFromClientToServer["ServerFilePath"] = ExpressionConverter.ConvertO(__workflow_copyFileFromClientToServerserverFilePath);
-                if (__workflow_copyFileFromClientToServercompress != null)
-                {
-                    if (__workflow_copyFileFromClientToServercompress != null)
-                    {
-                        copyFileFromClientToServer["Compress"] = ExpressionConverter.ConvertO(__workflow_copyFileFromClientToServercompress);
-                        copyFileFromClientToServerpropCount++;
-                    }
-
-                    copyFileFromClientToServerpropCount++;
-                }
-                else
-                {
-                    copyFileFromClientToServer["Compress"] = true;
-                    copyFileFromClientToServerpropCount++;
-                }
-
-                copyFileFromClientToServerpropCount++;
-                copyFileFromClientToServer["Workflow"] = ExpressionConverter.ConvertO(__workflow_copyFileFromClientToServerworkflow);
-                if (copyFileFromClientToServerpropCount > 0)
-                {
-                    callPayload.Body = copyFileFromClientToServer;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_copyFileFromClientToServer);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceVariableDataInINIFile(Expression<Func<string>> replaceVariableDataInINIFileinputFilename, Expression<Func<string>> replaceVariableDataInINIFileworkflow, Expression<Func<string>> replaceVariableDataInINIFileoutputFilename = null, Expression<Func<string>> replaceVariableDataInINIFilesearchSection = null, Expression<Func<string>> replaceVariableDataInINIFilesearchVariable = null, Expression<Func<string>> replaceVariableDataInINIFilereplaceData = null, Expression<Func<string>> replaceVariableDataInINIFileinputFilenameEncoding = null, Expression<Func<bool>> replaceVariableDataInINIFilecreateNewFileIfNotExists = null, Expression<Func<bool>> replaceVariableDataInINIFilewriteSpaceBeforeEquals = null, Expression<Func<bool>> replaceVariableDataInINIFilewriteSpaceAfterEquals = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceVariableDataInINIFile(Expression<Func<ReplaceVariableDataInINIFileInput>> replaceVariableDataInINIFile)
         {
-            var __workflow_replaceVariableDataInINIFileinputFilename = WorkflowExpression.Compile(replaceVariableDataInINIFileinputFilename, nameof(replaceVariableDataInINIFileinputFilename), required: true);
-            var __workflow_replaceVariableDataInINIFileworkflow = WorkflowExpression.Compile(replaceVariableDataInINIFileworkflow, nameof(replaceVariableDataInINIFileworkflow), required: true);
-            var __workflow_replaceVariableDataInINIFileoutputFilename = WorkflowExpression.Compile(replaceVariableDataInINIFileoutputFilename, nameof(replaceVariableDataInINIFileoutputFilename), required: false);
-            var __workflow_replaceVariableDataInINIFilesearchSection = WorkflowExpression.Compile(replaceVariableDataInINIFilesearchSection, nameof(replaceVariableDataInINIFilesearchSection), required: false);
-            var __workflow_replaceVariableDataInINIFilesearchVariable = WorkflowExpression.Compile(replaceVariableDataInINIFilesearchVariable, nameof(replaceVariableDataInINIFilesearchVariable), required: false);
-            var __workflow_replaceVariableDataInINIFilereplaceData = WorkflowExpression.Compile(replaceVariableDataInINIFilereplaceData, nameof(replaceVariableDataInINIFilereplaceData), required: false);
-            var __workflow_replaceVariableDataInINIFileinputFilenameEncoding = WorkflowExpression.Compile(replaceVariableDataInINIFileinputFilenameEncoding, nameof(replaceVariableDataInINIFileinputFilenameEncoding), required: false);
-            var __workflow_replaceVariableDataInINIFilecreateNewFileIfNotExists = WorkflowExpression.Compile(replaceVariableDataInINIFilecreateNewFileIfNotExists, nameof(replaceVariableDataInINIFilecreateNewFileIfNotExists), required: false);
-            var __workflow_replaceVariableDataInINIFilewriteSpaceBeforeEquals = WorkflowExpression.Compile(replaceVariableDataInINIFilewriteSpaceBeforeEquals, nameof(replaceVariableDataInINIFilewriteSpaceBeforeEquals), required: false);
-            var __workflow_replaceVariableDataInINIFilewriteSpaceAfterEquals = WorkflowExpression.Compile(replaceVariableDataInINIFilewriteSpaceAfterEquals, nameof(replaceVariableDataInINIFilewriteSpaceAfterEquals), required: false);
+            var __workflow_replaceVariableDataInINIFile = WorkflowExpression.Compile(replaceVariableDataInINIFile, nameof(replaceVariableDataInINIFile), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/ReplaceVariableDataInINIFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var replaceVariableDataInINIFile = new JObject();
-                var replaceVariableDataInINIFilepropCount = 0;
-                replaceVariableDataInINIFilepropCount++;
-                replaceVariableDataInINIFile["InputFilename"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFileinputFilename);
-                if (__workflow_replaceVariableDataInINIFileoutputFilename != null)
-                {
-                    replaceVariableDataInINIFile["OutputFilename"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFileoutputFilename);
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                if (__workflow_replaceVariableDataInINIFilesearchSection != null)
-                {
-                    replaceVariableDataInINIFile["SearchSection"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFilesearchSection);
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                if (__workflow_replaceVariableDataInINIFilesearchVariable != null)
-                {
-                    replaceVariableDataInINIFile["SearchVariable"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFilesearchVariable);
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                if (__workflow_replaceVariableDataInINIFilereplaceData != null)
-                {
-                    replaceVariableDataInINIFile["ReplaceData"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFilereplaceData);
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                if (__workflow_replaceVariableDataInINIFileinputFilenameEncoding != null)
-                {
-                    replaceVariableDataInINIFile["InputFilenameEncoding"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFileinputFilenameEncoding);
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                if (__workflow_replaceVariableDataInINIFilecreateNewFileIfNotExists != null)
-                {
-                    if (__workflow_replaceVariableDataInINIFilecreateNewFileIfNotExists != null)
-                    {
-                        replaceVariableDataInINIFile["CreateNewFileIfNotExists"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFilecreateNewFileIfNotExists);
-                        replaceVariableDataInINIFilepropCount++;
-                    }
-
-                    replaceVariableDataInINIFilepropCount++;
-                }
-                else
-                {
-                    replaceVariableDataInINIFile["CreateNewFileIfNotExists"] = true;
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                if (__workflow_replaceVariableDataInINIFilewriteSpaceBeforeEquals != null)
-                {
-                    if (__workflow_replaceVariableDataInINIFilewriteSpaceBeforeEquals != null)
-                    {
-                        replaceVariableDataInINIFile["WriteSpaceBeforeEquals"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFilewriteSpaceBeforeEquals);
-                        replaceVariableDataInINIFilepropCount++;
-                    }
-
-                    replaceVariableDataInINIFilepropCount++;
-                }
-                else
-                {
-                    replaceVariableDataInINIFile["WriteSpaceBeforeEquals"] = true;
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                if (__workflow_replaceVariableDataInINIFilewriteSpaceAfterEquals != null)
-                {
-                    if (__workflow_replaceVariableDataInINIFilewriteSpaceAfterEquals != null)
-                    {
-                        replaceVariableDataInINIFile["WriteSpaceAfterEquals"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFilewriteSpaceAfterEquals);
-                        replaceVariableDataInINIFilepropCount++;
-                    }
-
-                    replaceVariableDataInINIFilepropCount++;
-                }
-                else
-                {
-                    replaceVariableDataInINIFile["WriteSpaceAfterEquals"] = true;
-                    replaceVariableDataInINIFilepropCount++;
-                }
-
-                replaceVariableDataInINIFilepropCount++;
-                replaceVariableDataInINIFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFileworkflow);
-                if (replaceVariableDataInINIFilepropCount > 0)
-                {
-                    callPayload.Body = replaceVariableDataInINIFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_replaceVariableDataInINIFile);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<DownloadHTTPFileResponse, ApiConnectionActionConfiguration> DownloadHTTPFile(Expression<Func<string>> downloadHTTPFiledownloadURL, Expression<Func<string>> downloadHTTPFileworkflow, Expression<Func<string>> downloadHTTPFilesaveFilename = null, Expression<Func<bool>> downloadHTTPFileoverwriteExistingFile = null, Expression<Func<bool>> downloadHTTPFilepassthroughAuthentication = null, Expression<Func<string>> downloadHTTPFileuserAgent = null, Expression<Func<string>> downloadHTTPFileaccept = null, Expression<Func<bool>> downloadHTTPFilesupportTLS10 = null, Expression<Func<bool>> downloadHTTPFilesupportTLS11 = null, Expression<Func<bool>> downloadHTTPFilesupportTLS12 = null, Expression<Func<bool>> downloadHTTPFileautoDecompressDeflate = null, Expression<Func<bool>> downloadHTTPFileautoDecompressGZIP = null, Expression<Func<bool>> downloadHTTPFilereturnContentsAsString = null, Expression<Func<downloadHTTPFilereturnContentEncodingInput>> downloadHTTPFilereturnContentEncoding = null)
+        public IBodyWorkflowAction<DownloadHTTPFileResponse, ApiConnectionActionConfiguration> DownloadHTTPFile(Expression<Func<DownloadHTTPFileInput>> downloadHTTPFile)
         {
-            var __workflow_downloadHTTPFiledownloadURL = WorkflowExpression.Compile(downloadHTTPFiledownloadURL, nameof(downloadHTTPFiledownloadURL), required: true);
-            var __workflow_downloadHTTPFileworkflow = WorkflowExpression.Compile(downloadHTTPFileworkflow, nameof(downloadHTTPFileworkflow), required: true);
-            var __workflow_downloadHTTPFilesaveFilename = WorkflowExpression.Compile(downloadHTTPFilesaveFilename, nameof(downloadHTTPFilesaveFilename), required: false);
-            var __workflow_downloadHTTPFileoverwriteExistingFile = WorkflowExpression.Compile(downloadHTTPFileoverwriteExistingFile, nameof(downloadHTTPFileoverwriteExistingFile), required: false);
-            var __workflow_downloadHTTPFilepassthroughAuthentication = WorkflowExpression.Compile(downloadHTTPFilepassthroughAuthentication, nameof(downloadHTTPFilepassthroughAuthentication), required: false);
-            var __workflow_downloadHTTPFileuserAgent = WorkflowExpression.Compile(downloadHTTPFileuserAgent, nameof(downloadHTTPFileuserAgent), required: false);
-            var __workflow_downloadHTTPFileaccept = WorkflowExpression.Compile(downloadHTTPFileaccept, nameof(downloadHTTPFileaccept), required: false);
-            var __workflow_downloadHTTPFilesupportTLS10 = WorkflowExpression.Compile(downloadHTTPFilesupportTLS10, nameof(downloadHTTPFilesupportTLS10), required: false);
-            var __workflow_downloadHTTPFilesupportTLS11 = WorkflowExpression.Compile(downloadHTTPFilesupportTLS11, nameof(downloadHTTPFilesupportTLS11), required: false);
-            var __workflow_downloadHTTPFilesupportTLS12 = WorkflowExpression.Compile(downloadHTTPFilesupportTLS12, nameof(downloadHTTPFilesupportTLS12), required: false);
-            var __workflow_downloadHTTPFileautoDecompressDeflate = WorkflowExpression.Compile(downloadHTTPFileautoDecompressDeflate, nameof(downloadHTTPFileautoDecompressDeflate), required: false);
-            var __workflow_downloadHTTPFileautoDecompressGZIP = WorkflowExpression.Compile(downloadHTTPFileautoDecompressGZIP, nameof(downloadHTTPFileautoDecompressGZIP), required: false);
-            var __workflow_downloadHTTPFilereturnContentsAsString = WorkflowExpression.Compile(downloadHTTPFilereturnContentsAsString, nameof(downloadHTTPFilereturnContentsAsString), required: false);
-            var __workflow_downloadHTTPFilereturnContentEncoding = WorkflowExpression.Compile(downloadHTTPFilereturnContentEncoding, nameof(downloadHTTPFilereturnContentEncoding), required: false);
+            var __workflow_downloadHTTPFile = WorkflowExpression.Compile(downloadHTTPFile, nameof(downloadHTTPFile), required: true);
             return new DeferredBodyAction<DownloadHTTPFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/DownloadHTTPFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var downloadHTTPFile = new JObject();
-                var downloadHTTPFilepropCount = 0;
-                downloadHTTPFilepropCount++;
-                downloadHTTPFile["DownloadURL"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFiledownloadURL);
-                if (__workflow_downloadHTTPFilesaveFilename != null)
-                {
-                    downloadHTTPFile["SaveFilename"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFilesaveFilename);
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFileoverwriteExistingFile != null)
-                {
-                    if (__workflow_downloadHTTPFileoverwriteExistingFile != null)
-                    {
-                        downloadHTTPFile["OverwriteExistingFile"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFileoverwriteExistingFile);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["OverwriteExistingFile"] = true;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFilepassthroughAuthentication != null)
-                {
-                    if (__workflow_downloadHTTPFilepassthroughAuthentication != null)
-                    {
-                        downloadHTTPFile["PassthroughAuthentication"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFilepassthroughAuthentication);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["PassthroughAuthentication"] = false;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFileuserAgent != null)
-                {
-                    if (__workflow_downloadHTTPFileuserAgent != null)
-                    {
-                        downloadHTTPFile["UserAgent"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFileuserAgent);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["UserAgent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.193 Safari/537.36";
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFileaccept != null)
-                {
-                    if (__workflow_downloadHTTPFileaccept != null)
-                    {
-                        downloadHTTPFile["Accept"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFileaccept);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFilesupportTLS10 != null)
-                {
-                    if (__workflow_downloadHTTPFilesupportTLS10 != null)
-                    {
-                        downloadHTTPFile["SupportTLS10"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFilesupportTLS10);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["SupportTLS10"] = true;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFilesupportTLS11 != null)
-                {
-                    if (__workflow_downloadHTTPFilesupportTLS11 != null)
-                    {
-                        downloadHTTPFile["SupportTLS11"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFilesupportTLS11);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["SupportTLS11"] = true;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFilesupportTLS12 != null)
-                {
-                    if (__workflow_downloadHTTPFilesupportTLS12 != null)
-                    {
-                        downloadHTTPFile["SupportTLS12"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFilesupportTLS12);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["SupportTLS12"] = true;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFileautoDecompressDeflate != null)
-                {
-                    if (__workflow_downloadHTTPFileautoDecompressDeflate != null)
-                    {
-                        downloadHTTPFile["AutoDecompressDeflate"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFileautoDecompressDeflate);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["AutoDecompressDeflate"] = true;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFileautoDecompressGZIP != null)
-                {
-                    if (__workflow_downloadHTTPFileautoDecompressGZIP != null)
-                    {
-                        downloadHTTPFile["AutoDecompressGZIP"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFileautoDecompressGZIP);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["AutoDecompressGZIP"] = true;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFilereturnContentsAsString != null)
-                {
-                    if (__workflow_downloadHTTPFilereturnContentsAsString != null)
-                    {
-                        downloadHTTPFile["ReturnContentsAsString"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFilereturnContentsAsString);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["ReturnContentsAsString"] = false;
-                    downloadHTTPFilepropCount++;
-                }
-
-                if (__workflow_downloadHTTPFilereturnContentEncoding != null)
-                {
-                    if (__workflow_downloadHTTPFilereturnContentEncoding != null)
-                    {
-                        downloadHTTPFile["ReturnContentEncoding"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFilereturnContentEncoding);
-                        downloadHTTPFilepropCount++;
-                    }
-
-                    downloadHTTPFilepropCount++;
-                }
-                else
-                {
-                    downloadHTTPFile["ReturnContentEncoding"] = "UTF8";
-                    downloadHTTPFilepropCount++;
-                }
-
-                downloadHTTPFilepropCount++;
-                downloadHTTPFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_downloadHTTPFileworkflow);
-                if (downloadHTTPFilepropCount > 0)
-                {
-                    callPayload.Body = downloadHTTPFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_downloadHTTPFile);
                 return new ApiConnectionAction<DownloadHTTPFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<UnZIPFileResponse, ApiConnectionActionConfiguration> UnZIPFile(Expression<Func<string>> unZIPFilezIPFilename, Expression<Func<string>> unZIPFileworkflow, Expression<Func<string>> unZIPFileextractFolder = null, Expression<Func<bool>> unZIPFileextractAllFilesToSingleFolder = null, Expression<Func<string>> unZIPFileincludeFilesRegEx = null, Expression<Func<string>> unZIPFileexcludeFilesRegEx = null)
+        public IBodyWorkflowAction<UnZIPFileResponse, ApiConnectionActionConfiguration> UnZIPFile(Expression<Func<UnZIPFileInput>> unZIPFile)
         {
-            var __workflow_unZIPFilezIPFilename = WorkflowExpression.Compile(unZIPFilezIPFilename, nameof(unZIPFilezIPFilename), required: true);
-            var __workflow_unZIPFileworkflow = WorkflowExpression.Compile(unZIPFileworkflow, nameof(unZIPFileworkflow), required: true);
-            var __workflow_unZIPFileextractFolder = WorkflowExpression.Compile(unZIPFileextractFolder, nameof(unZIPFileextractFolder), required: false);
-            var __workflow_unZIPFileextractAllFilesToSingleFolder = WorkflowExpression.Compile(unZIPFileextractAllFilesToSingleFolder, nameof(unZIPFileextractAllFilesToSingleFolder), required: false);
-            var __workflow_unZIPFileincludeFilesRegEx = WorkflowExpression.Compile(unZIPFileincludeFilesRegEx, nameof(unZIPFileincludeFilesRegEx), required: false);
-            var __workflow_unZIPFileexcludeFilesRegEx = WorkflowExpression.Compile(unZIPFileexcludeFilesRegEx, nameof(unZIPFileexcludeFilesRegEx), required: false);
+            var __workflow_unZIPFile = WorkflowExpression.Compile(unZIPFile, nameof(unZIPFile), required: true);
             return new DeferredBodyAction<UnZIPFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/UnZIPFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var unZIPFile = new JObject();
-                var unZIPFilepropCount = 0;
-                unZIPFilepropCount++;
-                unZIPFile["ZIPFilename"] = ExpressionConverter.ConvertO(__workflow_unZIPFilezIPFilename);
-                if (__workflow_unZIPFileextractFolder != null)
-                {
-                    unZIPFile["ExtractFolder"] = ExpressionConverter.ConvertO(__workflow_unZIPFileextractFolder);
-                    unZIPFilepropCount++;
-                }
-
-                if (__workflow_unZIPFileextractAllFilesToSingleFolder != null)
-                {
-                    if (__workflow_unZIPFileextractAllFilesToSingleFolder != null)
-                    {
-                        unZIPFile["ExtractAllFilesToSingleFolder"] = ExpressionConverter.ConvertO(__workflow_unZIPFileextractAllFilesToSingleFolder);
-                        unZIPFilepropCount++;
-                    }
-
-                    unZIPFilepropCount++;
-                }
-                else
-                {
-                    unZIPFile["ExtractAllFilesToSingleFolder"] = false;
-                    unZIPFilepropCount++;
-                }
-
-                if (__workflow_unZIPFileincludeFilesRegEx != null)
-                {
-                    unZIPFile["IncludeFilesRegEx"] = ExpressionConverter.ConvertO(__workflow_unZIPFileincludeFilesRegEx);
-                    unZIPFilepropCount++;
-                }
-
-                if (__workflow_unZIPFileexcludeFilesRegEx != null)
-                {
-                    unZIPFile["ExcludeFilesRegEx"] = ExpressionConverter.ConvertO(__workflow_unZIPFileexcludeFilesRegEx);
-                    unZIPFilepropCount++;
-                }
-
-                unZIPFilepropCount++;
-                unZIPFile["Workflow"] = ExpressionConverter.ConvertO(__workflow_unZIPFileworkflow);
-                if (unZIPFilepropCount > 0)
-                {
-                    callPayload.Body = unZIPFile;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_unZIPFile);
                 return new ApiConnectionAction<UnZIPFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddFileToZIP(Expression<Func<string>> addFileToZIPsourceFilenameToAddToZIP, Expression<Func<string>> addFileToZIPoutputZIPFilename, Expression<Func<string>> addFileToZIPworkflow, Expression<Func<string>> addFileToZIPaddFilenameToFolderInZIP = null, Expression<Func<string>> addFileToZIPsourceFilenameToAddToZIPComment = null, Expression<Func<bool>> addFileToZIPcompress = null, Expression<Func<bool>> addFileToZIPaddToExistingZIPFile = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddFileToZIP(Expression<Func<AddFileToZIPInput>> addFileToZIP)
         {
-            var __workflow_addFileToZIPsourceFilenameToAddToZIP = WorkflowExpression.Compile(addFileToZIPsourceFilenameToAddToZIP, nameof(addFileToZIPsourceFilenameToAddToZIP), required: true);
-            var __workflow_addFileToZIPoutputZIPFilename = WorkflowExpression.Compile(addFileToZIPoutputZIPFilename, nameof(addFileToZIPoutputZIPFilename), required: true);
-            var __workflow_addFileToZIPworkflow = WorkflowExpression.Compile(addFileToZIPworkflow, nameof(addFileToZIPworkflow), required: true);
-            var __workflow_addFileToZIPaddFilenameToFolderInZIP = WorkflowExpression.Compile(addFileToZIPaddFilenameToFolderInZIP, nameof(addFileToZIPaddFilenameToFolderInZIP), required: false);
-            var __workflow_addFileToZIPsourceFilenameToAddToZIPComment = WorkflowExpression.Compile(addFileToZIPsourceFilenameToAddToZIPComment, nameof(addFileToZIPsourceFilenameToAddToZIPComment), required: false);
-            var __workflow_addFileToZIPcompress = WorkflowExpression.Compile(addFileToZIPcompress, nameof(addFileToZIPcompress), required: false);
-            var __workflow_addFileToZIPaddToExistingZIPFile = WorkflowExpression.Compile(addFileToZIPaddToExistingZIPFile, nameof(addFileToZIPaddToExistingZIPFile), required: false);
+            var __workflow_addFileToZIP = WorkflowExpression.Compile(addFileToZIP, nameof(addFileToZIP), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/AddFileToZIP";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addFileToZIP = new JObject();
-                var addFileToZIPpropCount = 0;
-                addFileToZIPpropCount++;
-                addFileToZIP["SourceFilenameToAddToZIP"] = ExpressionConverter.ConvertO(__workflow_addFileToZIPsourceFilenameToAddToZIP);
-                addFileToZIPpropCount++;
-                addFileToZIP["OutputZIPFilename"] = ExpressionConverter.ConvertO(__workflow_addFileToZIPoutputZIPFilename);
-                if (__workflow_addFileToZIPaddFilenameToFolderInZIP != null)
-                {
-                    addFileToZIP["AddFilenameToFolderInZIP"] = ExpressionConverter.ConvertO(__workflow_addFileToZIPaddFilenameToFolderInZIP);
-                    addFileToZIPpropCount++;
-                }
-
-                if (__workflow_addFileToZIPsourceFilenameToAddToZIPComment != null)
-                {
-                    addFileToZIP["SourceFilenameToAddToZIPComment"] = ExpressionConverter.ConvertO(__workflow_addFileToZIPsourceFilenameToAddToZIPComment);
-                    addFileToZIPpropCount++;
-                }
-
-                if (__workflow_addFileToZIPcompress != null)
-                {
-                    if (__workflow_addFileToZIPcompress != null)
-                    {
-                        addFileToZIP["Compress"] = ExpressionConverter.ConvertO(__workflow_addFileToZIPcompress);
-                        addFileToZIPpropCount++;
-                    }
-
-                    addFileToZIPpropCount++;
-                }
-                else
-                {
-                    addFileToZIP["Compress"] = true;
-                    addFileToZIPpropCount++;
-                }
-
-                if (__workflow_addFileToZIPaddToExistingZIPFile != null)
-                {
-                    if (__workflow_addFileToZIPaddToExistingZIPFile != null)
-                    {
-                        addFileToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(__workflow_addFileToZIPaddToExistingZIPFile);
-                        addFileToZIPpropCount++;
-                    }
-
-                    addFileToZIPpropCount++;
-                }
-                else
-                {
-                    addFileToZIP["AddToExistingZIPFile"] = false;
-                    addFileToZIPpropCount++;
-                }
-
-                addFileToZIPpropCount++;
-                addFileToZIP["Workflow"] = ExpressionConverter.ConvertO(__workflow_addFileToZIPworkflow);
-                if (addFileToZIPpropCount > 0)
-                {
-                    callPayload.Body = addFileToZIP;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addFileToZIP);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<AddFolderToZIPResponse, ApiConnectionActionConfiguration> AddFolderToZIP(Expression<Func<string>> addFolderToZIPsourceFolderToAddToZIP, Expression<Func<string>> addFolderToZIPoutputZIPFilename, Expression<Func<string>> addFolderToZIPworkflow, Expression<Func<string>> addFolderToZIPaddFilesToFolderInZIP = null, Expression<Func<bool>> addFolderToZIPcompress = null, Expression<Func<bool>> addFolderToZIPaddToExistingZIPFile = null, Expression<Func<bool>> addFolderToZIPincludeSubfolders = null, Expression<Func<string>> addFolderToZIPincludeFilesRegEx = null, Expression<Func<string>> addFolderToZIPexcludeFilesRegEx = null)
+        public IBodyWorkflowAction<AddFolderToZIPResponse, ApiConnectionActionConfiguration> AddFolderToZIP(Expression<Func<AddFolderToZIPInput>> addFolderToZIP)
         {
-            var __workflow_addFolderToZIPsourceFolderToAddToZIP = WorkflowExpression.Compile(addFolderToZIPsourceFolderToAddToZIP, nameof(addFolderToZIPsourceFolderToAddToZIP), required: true);
-            var __workflow_addFolderToZIPoutputZIPFilename = WorkflowExpression.Compile(addFolderToZIPoutputZIPFilename, nameof(addFolderToZIPoutputZIPFilename), required: true);
-            var __workflow_addFolderToZIPworkflow = WorkflowExpression.Compile(addFolderToZIPworkflow, nameof(addFolderToZIPworkflow), required: true);
-            var __workflow_addFolderToZIPaddFilesToFolderInZIP = WorkflowExpression.Compile(addFolderToZIPaddFilesToFolderInZIP, nameof(addFolderToZIPaddFilesToFolderInZIP), required: false);
-            var __workflow_addFolderToZIPcompress = WorkflowExpression.Compile(addFolderToZIPcompress, nameof(addFolderToZIPcompress), required: false);
-            var __workflow_addFolderToZIPaddToExistingZIPFile = WorkflowExpression.Compile(addFolderToZIPaddToExistingZIPFile, nameof(addFolderToZIPaddToExistingZIPFile), required: false);
-            var __workflow_addFolderToZIPincludeSubfolders = WorkflowExpression.Compile(addFolderToZIPincludeSubfolders, nameof(addFolderToZIPincludeSubfolders), required: false);
-            var __workflow_addFolderToZIPincludeFilesRegEx = WorkflowExpression.Compile(addFolderToZIPincludeFilesRegEx, nameof(addFolderToZIPincludeFilesRegEx), required: false);
-            var __workflow_addFolderToZIPexcludeFilesRegEx = WorkflowExpression.Compile(addFolderToZIPexcludeFilesRegEx, nameof(addFolderToZIPexcludeFilesRegEx), required: false);
+            var __workflow_addFolderToZIP = WorkflowExpression.Compile(addFolderToZIP, nameof(addFolderToZIP), required: true);
             return new DeferredBodyAction<AddFolderToZIPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/AddFolderToZIP";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addFolderToZIP = new JObject();
-                var addFolderToZIPpropCount = 0;
-                addFolderToZIPpropCount++;
-                addFolderToZIP["SourceFolderToAddToZIP"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPsourceFolderToAddToZIP);
-                addFolderToZIPpropCount++;
-                addFolderToZIP["OutputZIPFilename"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPoutputZIPFilename);
-                if (__workflow_addFolderToZIPaddFilesToFolderInZIP != null)
-                {
-                    addFolderToZIP["AddFilesToFolderInZIP"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPaddFilesToFolderInZIP);
-                    addFolderToZIPpropCount++;
-                }
-
-                if (__workflow_addFolderToZIPcompress != null)
-                {
-                    if (__workflow_addFolderToZIPcompress != null)
-                    {
-                        addFolderToZIP["Compress"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPcompress);
-                        addFolderToZIPpropCount++;
-                    }
-
-                    addFolderToZIPpropCount++;
-                }
-                else
-                {
-                    addFolderToZIP["Compress"] = true;
-                    addFolderToZIPpropCount++;
-                }
-
-                if (__workflow_addFolderToZIPaddToExistingZIPFile != null)
-                {
-                    if (__workflow_addFolderToZIPaddToExistingZIPFile != null)
-                    {
-                        addFolderToZIP["AddToExistingZIPFile"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPaddToExistingZIPFile);
-                        addFolderToZIPpropCount++;
-                    }
-
-                    addFolderToZIPpropCount++;
-                }
-                else
-                {
-                    addFolderToZIP["AddToExistingZIPFile"] = false;
-                    addFolderToZIPpropCount++;
-                }
-
-                if (__workflow_addFolderToZIPincludeSubfolders != null)
-                {
-                    if (__workflow_addFolderToZIPincludeSubfolders != null)
-                    {
-                        addFolderToZIP["IncludeSubfolders"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPincludeSubfolders);
-                        addFolderToZIPpropCount++;
-                    }
-
-                    addFolderToZIPpropCount++;
-                }
-                else
-                {
-                    addFolderToZIP["IncludeSubfolders"] = true;
-                    addFolderToZIPpropCount++;
-                }
-
-                if (__workflow_addFolderToZIPincludeFilesRegEx != null)
-                {
-                    addFolderToZIP["IncludeFilesRegEx"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPincludeFilesRegEx);
-                    addFolderToZIPpropCount++;
-                }
-
-                if (__workflow_addFolderToZIPexcludeFilesRegEx != null)
-                {
-                    addFolderToZIP["ExcludeFilesRegEx"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPexcludeFilesRegEx);
-                    addFolderToZIPpropCount++;
-                }
-
-                addFolderToZIPpropCount++;
-                addFolderToZIP["Workflow"] = ExpressionConverter.ConvertO(__workflow_addFolderToZIPworkflow);
-                if (addFolderToZIPpropCount > 0)
-                {
-                    callPayload.Body = addFolderToZIP;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addFolderToZIP);
                 return new ApiConnectionAction<AddFolderToZIPResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetFileContentsAsBase64Response, ApiConnectionActionConfiguration> GetFileContentsAsBase64(Expression<Func<string>> getFileContentsAsBase64filePath, Expression<Func<string>> getFileContentsAsBase64workflow, Expression<Func<bool>> getFileContentsAsBase64compress = null, Expression<Func<int>> getFileContentsAsBase64maxFileSize = null)
+        public IBodyWorkflowAction<GetFileContentsAsBase64Response, ApiConnectionActionConfiguration> GetFileContentsAsBase64(Expression<Func<GetFileContentsAsBase64Input>> getFileContentsAsBase64)
         {
-            var __workflow_getFileContentsAsBase64filePath = WorkflowExpression.Compile(getFileContentsAsBase64filePath, nameof(getFileContentsAsBase64filePath), required: true);
-            var __workflow_getFileContentsAsBase64workflow = WorkflowExpression.Compile(getFileContentsAsBase64workflow, nameof(getFileContentsAsBase64workflow), required: true);
-            var __workflow_getFileContentsAsBase64compress = WorkflowExpression.Compile(getFileContentsAsBase64compress, nameof(getFileContentsAsBase64compress), required: false);
-            var __workflow_getFileContentsAsBase64maxFileSize = WorkflowExpression.Compile(getFileContentsAsBase64maxFileSize, nameof(getFileContentsAsBase64maxFileSize), required: false);
+            var __workflow_getFileContentsAsBase64 = WorkflowExpression.Compile(getFileContentsAsBase64, nameof(getFileContentsAsBase64), required: true);
             return new DeferredBodyAction<GetFileContentsAsBase64Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFileContentsAsBase64";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getFileContentsAsBase64 = new JObject();
-                var getFileContentsAsBase64propCount = 0;
-                getFileContentsAsBase64propCount++;
-                getFileContentsAsBase64["FilePath"] = ExpressionConverter.ConvertO(__workflow_getFileContentsAsBase64filePath);
-                if (__workflow_getFileContentsAsBase64compress != null)
-                {
-                    if (__workflow_getFileContentsAsBase64compress != null)
-                    {
-                        getFileContentsAsBase64["Compress"] = ExpressionConverter.ConvertO(__workflow_getFileContentsAsBase64compress);
-                        getFileContentsAsBase64propCount++;
-                    }
-
-                    getFileContentsAsBase64propCount++;
-                }
-                else
-                {
-                    getFileContentsAsBase64["Compress"] = false;
-                    getFileContentsAsBase64propCount++;
-                }
-
-                if (__workflow_getFileContentsAsBase64maxFileSize != null)
-                {
-                    if (__workflow_getFileContentsAsBase64maxFileSize != null)
-                    {
-                        getFileContentsAsBase64["MaxFileSize"] = ExpressionConverter.ConvertO(__workflow_getFileContentsAsBase64maxFileSize);
-                        getFileContentsAsBase64propCount++;
-                    }
-
-                    getFileContentsAsBase64propCount++;
-                }
-                else
-                {
-                    getFileContentsAsBase64["MaxFileSize"] = 1024000;
-                    getFileContentsAsBase64propCount++;
-                }
-
-                getFileContentsAsBase64propCount++;
-                getFileContentsAsBase64["Workflow"] = ExpressionConverter.ConvertO(__workflow_getFileContentsAsBase64workflow);
-                if (getFileContentsAsBase64propCount > 0)
-                {
-                    callPayload.Body = getFileContentsAsBase64;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getFileContentsAsBase64);
                 return new ApiConnectionAction<GetFileContentsAsBase64Response>(callPayload);
             });
         }
@@ -11028,10 +2860,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string MachineName { get; set; }
     }
 
+    public class GetMachineNameInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetMachineDomainResponse
     {
         public string DomainName { get; set; }
         public string DNSDomainName { get; set; }
+    }
+
+    public class GetMachineDomainInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetRemoteSessionClientHostnameResponse
@@ -11039,9 +2883,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ClientHostname { get; set; }
     }
 
+    public class GetRemoteSessionClientHostnameInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class ExpandEnvironmentVariableResponse
     {
         public string OutputString { get; set; }
+    }
+
+    public class ExpandEnvironmentVariableInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputString { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class KillProcessResponse
@@ -11049,9 +2908,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfProcessesKilled { get; set; }
     }
 
+    public class KillProcessInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class KillProcessIdResponse
     {
         public int NumberOfProcessesKilled { get; set; }
+    }
+
+    public class KillProcessIdInput
+    {
+        [JsonProperty("ProcessID", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ProcessId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetProcessCountByNameResponse
@@ -11059,9 +2936,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfProcesses { get; set; }
     }
 
+    public class GetProcessCountByNameInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetAgentProcessCountResponse
     {
         public int NumberOfProcesses { get; set; }
+    }
+
+    public class GetAgentProcessCountInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class KillAllOtherAgentsResponse
@@ -11070,15 +2962,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfAgentsFailedToKill { get; set; }
     }
 
+    public class KillAllOtherAgentsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetProcessByPIdResponse
     {
         public bool ProcessRunning { get; set; }
+    }
+
+    public class GetProcessByPIdInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ProcessId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetProcessesResponse
     {
         public int NumberOfProcesses { get; set; }
         public string ProcessesJSON { get; set; }
+    }
+
+    public class GetProcessesInput
+    {
+        public string ProcessName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GetProcessCommandLine { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class RunProcessResponse
@@ -11091,8 +3009,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string StandardError { get; set; }
     }
 
+    public class RunProcessInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessName { get; set; }
+        public string Arguments { get; set; }
+        public string WorkingDirectory { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseShellExecute { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CreateNoWindow { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public RunProcessInputWindowStyleType? WindowStyle { get; set; } = RunProcessInputWindowStyleType.Normal;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WaitForProcess { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectStandardOutput { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectStandardError { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectStandardErrorToOutput { get; set; } = false;
+        public RunProcessInputStandardOutputEncodingType? StandardOutputEncoding { get; set; }
+        public RunProcessInputStandardErrorEncodingType? StandardErrorEncoding { get; set; }
+        public string RunAsDomain { get; set; }
+        public string RunAsUsername { get; set; }
+        public string RunAsPassword { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RunAsLoadUserProfile { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RunAsElevate { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TimeoutInSeconds { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum runProcesswindowStyleInput
+    public enum RunProcessInputWindowStyleType
     {
         [EnumMember(Value = "normal")]
         Normal,
@@ -11105,7 +3069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum runProcessstandardOutputEncodingInput
+    public enum RunProcessInputStandardOutputEncodingType
     {
         UTF8,
         UTF7,
@@ -11115,7 +3079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum runProcessstandardErrorEncodingInput
+    public enum RunProcessInputStandardErrorEncodingType
     {
         UTF8,
         UTF7,
@@ -11134,8 +3098,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string StandardError { get; set; }
     }
 
+    public class RunPowerShellProcessInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PowerShellExecutable { get; set; } = "PowerShell.exe";
+        public string PowerShellScriptFilePath { get; set; }
+        public string PowerShellScriptContents { get; set; }
+        public string WorkingDirectory { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CreateNoWindow { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public RunPowerShellProcessInputWindowStyleType? WindowStyle { get; set; } = RunPowerShellProcessInputWindowStyleType.Normal;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WaitForProcess { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectStandardOutput { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectStandardError { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectStandardErrorToOutput { get; set; } = false;
+        public RunPowerShellProcessInputStandardOutputEncodingType? StandardOutputEncoding { get; set; }
+        public RunPowerShellProcessInputStandardErrorEncodingType? StandardErrorEncoding { get; set; }
+        public string RunAsDomain { get; set; }
+        public string RunAsUsername { get; set; }
+        public string RunAsPassword { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RunAsLoadUserProfile { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RunAsElevate { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TimeoutInSeconds { get; set; } = 10;
+        public string PowerShellScriptTempFolder { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum runPowerShellProcesswindowStyleInput
+    public enum RunPowerShellProcessInputWindowStyleType
     {
         [EnumMember(Value = "normal")]
         Normal,
@@ -11148,7 +3157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum runPowerShellProcessstandardOutputEncodingInput
+    public enum RunPowerShellProcessInputStandardOutputEncodingType
     {
         UTF8,
         UTF7,
@@ -11158,7 +3167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum runPowerShellProcessstandardErrorEncodingInput
+    public enum RunPowerShellProcessInputStandardErrorEncodingType
     {
         UTF8,
         UTF7,
@@ -11200,15 +3209,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int FourthDisplayTopEdgePixels { get; set; }
     }
 
+    public class GetScreenResolutionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetDefaultPrinterInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DefaultPrinterName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetDefaultPrinterResponse
     {
         public string DefaultPrinterName { get; set; }
+    }
+
+    public class GetDefaultPrinterInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetListOfPrintersResponse
     {
         public string PrintersJSON { get; set; }
         public int NumberOfPrinters { get; set; }
+    }
+
+    public class GetListOfPrintersInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ListLocalPrinters { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ListNetworkPrinters { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnDetailedInformation { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetMouseMultiplierInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? MouseXMultiplier { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? MouseYMultiplier { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ApplyToMouseEvent { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ApplyToSetCursorPos { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ApplyToCurrentMouseMoveMethod { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetMouseMultiplierResponse
@@ -11218,10 +3284,369 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string MouseMoveMethod { get; set; }
     }
 
+    public class GetMouseMultiplierInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MoveMouseToCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MoveMouseRelativeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LeftMouseButtonDownInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LeftMouseButtonUpInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LeftClickMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LeftClickMouseAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LeftHoldMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double SecondsToHold { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LeftHoldMouseAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double SecondsToHold { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RightMouseButtonDownInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RightMouseButtonUpInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RightClickMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RightClickMouseAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RightHoldMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double SecondsToHold { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RightHoldMouseAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double SecondsToHold { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MiddleMouseButtonDownInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MiddleMouseButtonUpInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MiddleClickMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MiddleClickMouseAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MiddleHoldMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double SecondsToHold { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MiddleHoldMouseAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double SecondsToHold { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class DoubleLeftClickMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? DelayInMilliseconds { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class DoubleLeftClickMouseAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int XCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int YCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? DelayInMilliseconds { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LeftMouseDragBetweenCoordinatesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NumberOfSteps { get; set; } = 20;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? TotalTimeInSeconds { get; set; } = 0.5;
+        public int? MaximumMovementPixelJitter { get; set; }
+        public int? MaximumEndPixelJitter { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaximumMovementPixelJitterDelta { get; set; } = 2;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RightMouseDragBetweenCoordinatesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NumberOfSteps { get; set; } = 20;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? TotalTimeInSeconds { get; set; } = 0.5;
+        public int? MaximumMovementPixelJitter { get; set; }
+        public int? MaximumEndPixelJitter { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaximumMovementPixelJitterDelta { get; set; } = 2;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MiddleMouseDragBetweenCoordinatesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NumberOfSteps { get; set; } = 20;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? TotalTimeInSeconds { get; set; } = 0.5;
+        public int? MaximumMovementPixelJitter { get; set; }
+        public int? MaximumEndPixelJitter { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaximumMovementPixelJitterDelta { get; set; } = 2;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MoveMouseBetweenCoordinatesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NumberOfSteps { get; set; } = 20;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? TotalTimeInSeconds { get; set; } = 0.5;
+        public int? MaximumMovementPixelJitter { get; set; }
+        public int? MaximumEndPixelJitter { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaximumMovementPixelJitterDelta { get; set; } = 2;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class TurnMouseWheelInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int WheelTurns { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetCursorPosInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int X { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Y { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetCursorPosResponse
     {
         public int X { get; set; }
         public int Y { get; set; }
+    }
+
+    public class GetCursorPosInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class CalibrateMouseEventResponse
@@ -11230,13 +3655,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public double MouseYMultiplier { get; set; }
     }
 
+    public class CalibrateMouseEventInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? CalibrationSizeInPixels { get; set; } = 200;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetMouseMoveMethodResponse
     {
         public string MouseMoveMethod { get; set; }
     }
 
+    public class GetMouseMoveMethodInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetMouseMoveMethodInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetMouseMoveMethodInputMouseMoveMethodType MouseMoveMethod { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum setMouseMoveMethodmouseMoveMethodInput
+    public enum SetMouseMoveMethodInputMouseMoveMethodType
     {
         [EnumMember(Value = "mouse_event")]
         MouseEvent,
@@ -11244,9 +3693,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         Setcursorpos
     }
 
+    public class WiggleMouseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? XWiggle { get; set; } = 2;
+        public int? YWiggle { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? WiggleDelayInSeconds { get; set; } = 0.1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SendKeyEventsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Interval { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsPassword { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DontInterpretSymbols { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SendPasswordKeyEventsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Interval { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DontInterpretSymbols { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PasswordContainsStoredPassword { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SendKeysInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Interval { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsPassword { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DontInterpretSymbols { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SendPasswordKeysInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Interval { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DontInterpretSymbols { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PasswordContainsStoredPassword { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class ClearClipboardInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetClipboardDataInput
+    {
+        public string NewClipboardData { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetClipboardDataResponse
     {
         public string ClipboardData { get; set; }
+    }
+
+    public class GetClipboardDataInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class TakeScreenshotResponse
@@ -11256,8 +3810,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ScreenshotErrorMessage { get; set; }
     }
 
+    public class TakeScreenshotInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Fullscreen { get; set; } = true;
+        public int? LeftXPixels { get; set; }
+        public int? TopYPixels { get; set; }
+        public int? WidthPixels { get; set; }
+        public int? HeightPixels { get; set; }
+        public TakeScreenshotInputImageFormatType? ImageFormat { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseDisplayDevice { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionOnError { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideAgent { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UsePhysicalCoordinates { get; set; } = false;
+        public int? DisplayDeviceId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum takeScreenshotimageFormatInput
+    public enum TakeScreenshotInputImageFormatType
     {
         PNG,
         JPG,
@@ -11282,9 +3863,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string CurrentCultureName { get; set; }
     }
 
+    public class GetEnvironmentInfoInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class IsScreenReaderEnabledResponse
     {
         public bool ScreenReaderEnabled { get; set; }
+    }
+
+    public class IsScreenReaderEnabledInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetScreenReaderInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? EnableScreenReader { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetParentProcessIdResponse
@@ -11292,6 +3894,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int ParentProcessId { get; set; }
         public bool ParentProcessStillRunning { get; set; }
         public string ParentProcessName { get; set; }
+    }
+
+    public class GetParentProcessIdInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ProcessId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetProcessIdCommandLineResponse
@@ -11302,11 +3913,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ProcessImagePathName { get; set; }
     }
 
+    public class GetProcessIdCommandLineInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ProcessId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetLastInputInfoResponse
     {
         public int LastInputTotalSeconds { get; set; }
         public int LastInputTotalMinutes { get; set; }
         public int LastInputTotalHours { get; set; }
+    }
+
+    public class GetLastInputInfoInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class KeepSessionAliveResponse
@@ -11315,16 +3941,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class KeepSessionAliveInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? XWiggle { get; set; } = 2;
+        public int? YWiggle { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? WiggleDelayInSeconds { get; set; } = 0.1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? IdleThresholdInSeconds { get; set; } = 120;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? IdleCheckPeriodInSeconds { get; set; } = 30;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TotalKeepaliveRuntimeInSeconds { get; set; } = -1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class StopKeepSessionAliveResponse
     {
         public bool StopKeepSessionAliveResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
+    public class StopKeepSessionAliveInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class CopyFileToClipboardResponse
     {
         public bool CopyFileToClipboardResult { get; set; }
         public string ErrorMessage { get; set; }
+    }
+
+    public class CopyFileToClipboardInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filepath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Cut { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetRemoteSessionInfoResponse
@@ -11334,13 +4000,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string SessionTypeName { get; set; }
     }
 
+    public class GetRemoteSessionInfoInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GeneratePasswordResponse
     {
         public string PlainTextPassword { get; set; }
     }
 
+    public class GeneratePasswordInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PasswordFormat { get; set; }
+        public int? MinimumLength { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnAsPlainText { get; set; } = false;
+        public string StorePasswordAsIdentifier { get; set; }
+        public string SupportedSymbols { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AttemptUniquePasswords { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public GeneratePasswordInputGenerateAtType? GenerateAt { get; set; } = GeneratePasswordInputGenerateAtType.Agent;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MinimumLowercase { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MinimumUppercase { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MinimumNumbers { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MinimumSymbols { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum generatePasswordgenerateAtInput
+    public enum GeneratePasswordInputGenerateAtType
     {
         Agent,
         Orchestrator
@@ -11351,9 +4056,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string PlainTextPassword { get; set; }
     }
 
+    public class GetStoredPasswordInput
+    {
+        public string PasswordIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class ExpandPasswordStringResponse
     {
         public string OutputString { get; set; }
+    }
+
+    public class ExpandPasswordStringInput
+    {
+        public string InputString { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class StorePasswordInAgentMemoryResponse
@@ -11362,10 +4083,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class StorePasswordInAgentMemoryInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Identifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class DeletePasswordInAgentMemoryResponse
     {
         public bool DeletePasswordInAgentMemoryResult { get; set; }
         public string ErrorMessage { get; set; }
+    }
+
+    public class DeletePasswordInAgentMemoryInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DeleteAllPasswords { get; set; } = false;
+        public string Identifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class CredentialWriteResponse
@@ -11374,15 +4117,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class CredentialWriteInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CredentialAddress { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CredentialWriteInputCredentialTypeType CredentialType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CredentialWriteInputCredentialPersistenceType? CredentialPersistence { get; set; } = CredentialWriteInputCredentialPersistenceType.LocalMachine;
+        public string SymmetricKey { get; set; }
+        public string StorePasswordAsIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum credentialWritecredentialTypeInput
+    public enum CredentialWriteInputCredentialTypeType
     {
         Windows,
         Generic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum credentialWritecredentialPersistenceInput
+    public enum CredentialWriteInputCredentialPersistenceType
     {
         Session,
         LocalMachine,
@@ -11395,8 +4161,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Password { get; set; }
     }
 
+    public class CredentialReadInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CredentialAddress { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CredentialReadInputCredentialTypeType CredentialType { get; set; }
+        public string SymmetricKey { get; set; }
+        public string StorePasswordAsIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DontReturnPassword { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum credentialReadcredentialTypeInput
+    public enum CredentialReadInputCredentialTypeType
     {
         Windows,
         Generic
@@ -11408,8 +4191,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class CredentialDeleteInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CredentialAddress { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CredentialDeleteInputCredentialTypeType CredentialType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum credentialDeletecredentialTypeInput
+    public enum CredentialDeleteInputCredentialTypeType
     {
         Windows,
         Generic
@@ -11420,15 +4215,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string RDPFilePath { get; set; }
     }
 
+    public class GenerateRDPFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RemoteAddress { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OutputFolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RDPFileName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? OverwriteRDPFileIfAlreadyExists { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TrustRemoteComputer { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? StoreCredentials { get; set; } = true;
+        public string UserName { get; set; }
+        public string Password { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateRDPFileInputCredentialTypeType? CredentialType { get; set; } = GenerateRDPFileInputCredentialTypeType.Windows;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateRDPFileInputCredentialPersistenceType? CredentialPersistence { get; set; } = GenerateRDPFileInputCredentialPersistenceType.Session;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectPrinters { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectAllDrives { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RedirectClipboard { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Fullscreen { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? DesktopWidth { get; set; } = 1280;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? DesktopHeight { get; set; } = 1024;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseMultiMonitor { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SessionBPP { get; set; } = 32;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SmartSizing { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum generateRDPFilecredentialTypeInput
+    public enum GenerateRDPFileInputCredentialTypeType
     {
         Windows,
         Generic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum generateRDPFilecredentialPersistenceInput
+    public enum GenerateRDPFileInputCredentialPersistenceType
     {
         Session,
         LocalMachine,
@@ -11441,15 +4295,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class LaunchRemoteDesktopSessionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RDPFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TrustRemoteComputer { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class IsTCPPortRespondingResponse
     {
         public bool TCPPortConnected { get; set; }
         public string ConnectionErrorMessage { get; set; }
     }
 
+    public class IsTCPPortRespondingInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RemoteHost { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TCPPort { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TimeoutInSeconds { get; set; } = 10;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class UnlockSessionResponse
     {
         public bool SessionUnlockPerformed { get; set; }
+    }
+
+    public class UnlockSessionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UnlockPassword { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PasswordContainsStoredPassword { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool DetectIfLocked { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool DetectCredentialProvider { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SecondsToWaitForUnlock { get; set; } = 5;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class LockSessionResponse
@@ -11458,9 +4360,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class LockSessionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? LockAfterMinutesOfActionInactivity { get; set; } = 5;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SecondsToWaitAfterLock { get; set; } = 3;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class IsSessionLockedResponse
     {
         public bool SessionIsLocked { get; set; }
+    }
+
+    public class IsSessionLockedInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetGenericCredentialFromOrchestratorResponse
@@ -11474,10 +4394,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string GenericProperty3 { get; set; }
     }
 
+    public class GetGenericCredentialFromOrchestratorInput
+    {
+        public string FriendlyName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RetrievePlainTextPassword { get; set; } = false;
+    }
+
     public class DrawRectangleOnScreenResponse
     {
         public bool DrawRectangleOnScreenResult { get; set; }
         public string ErrorMessage { get; set; }
+    }
+
+    public class DrawRectangleOnScreenInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleLeftPixelXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleRightPixelXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleTopPixelYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleBottomPixelYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PenColour { get; set; } = "#800080";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? PenThicknessPixels { get; set; } = 4;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SecondsToDisplay { get; set; } = 5;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CoordinatesArePhysical { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse
@@ -11485,6 +4443,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ActionErrorMessage { get; set; }
         public string ActionName { get; set; }
         public string ActionCode { get; set; }
+    }
+
+    public class GetFailedActionErrorMessageFromPowerAutomateResultJSONInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] PowerAutomateResultJSON { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchStatus { get; set; } = "Failed";
     }
 
     public class GetPixelColourAtCoordinateResponse
@@ -11497,6 +4464,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string AARRGGBBHexValue { get; set; }
     }
 
+    public class GetPixelColourAtCoordinateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int LeftXPixels { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TopYPixels { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideAgent { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UsePhysicalCoordinates { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class ConvertRectangleCoordinatesResponse
     {
         public int ConvertedRectangleLeftPixelXCoord { get; set; }
@@ -11507,8 +4492,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int ConvertedRectangleHeight { get; set; }
     }
 
+    public class ConvertRectangleCoordinatesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleLeftPixelXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleTopPixelYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleRightPixelXCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int RectangleBottomPixelYCoord { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConvertRectangleCoordinatesInputConversionTypeType ConversionType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum convertRectangleCoordinatesconversionTypeInput
+    public enum ConvertRectangleCoordinatesInputConversionTypeType
     {
         [EnumMember(Value = "P2V")]
         PhysicalToVirtual,
@@ -11525,8 +4531,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int ThreadId { get; set; }
     }
 
+    public class SendMessageToWebAPIInput
+    {
+        public string URL { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendMessageToWebAPIInputMethodType? Method { get; set; } = SendMessageToWebAPIInputMethodType.GET;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TimeoutInSeconds { get; set; } = 20;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentType { get; set; } = "application/json; charset=utf-8";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Accept { get; set; } = "application/json";
+        public string MessageBody { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendMessageToWebAPIInputTransmitEncodingType? TransmitEncoding { get; set; } = SendMessageToWebAPIInputTransmitEncodingType.UTF8;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendMessageToWebAPIInputResponseEncodingType? ResponseEncoding { get; set; } = SendMessageToWebAPIInputResponseEncodingType.UTF8;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? BufferSize { get; set; } = 16384;
+        public SendMessageToWebAPIInputHTTPRequestHeadersListTypeItem[] HTTPRequestHeadersList { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTLS10 { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTLS11 { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTLS12 { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NegotiateTLS13 { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? KeepAlive { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Expect100Continue { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnResponseHeaders { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RunAsThread { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WaitForThread { get; set; } = true;
+        public int? RetrieveOutputDataFromThreadId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sendMessageToWebAPImethodInput
+    public enum SendMessageToWebAPIInputMethodType
     {
         GET,
         PUT,
@@ -11539,7 +4604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sendMessageToWebAPItransmitEncodingInput
+    public enum SendMessageToWebAPIInputTransmitEncodingType
     {
         [EnumMember(Value = "UTF-8")]
         UTF8,
@@ -11553,7 +4618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sendMessageToWebAPIresponseEncodingInput
+    public enum SendMessageToWebAPIInputResponseEncodingType
     {
         [EnumMember(Value = "UTF-8")]
         UTF8,
@@ -11566,7 +4631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         UTF16BE
     }
 
-    public class sendMessageToWebAPIhTTPRequestHeadersListInputItem
+    public class SendMessageToWebAPIInputHTTPRequestHeadersListTypeItem
     {
         public string Property { get; set; }
         public string Value { get; set; }
@@ -11577,8 +4642,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int TaskId { get; set; }
     }
 
+    public class TasksAddNewTaskInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public TasksAddNewTaskInputSetAutomationNameType? SetAutomationName { get; set; } = TasksAddNewTaskInputSetAutomationNameType.AutoUseNameOfTheFlow;
+        public string AutomationName { get; set; }
+        public string TaskInputData { get; set; }
+        public string ProcessStage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Priority { get; set; } = 3;
+        public int? SLA { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TaskOnHold { get; set; } = false;
+        public string Organisation { get; set; }
+        public string Department { get; set; }
+        public string Description { get; set; }
+        public string Tags { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tasksAddNewTasksetAutomationNameInput
+    public enum TasksAddNewTaskInputSetAutomationNameType
     {
         [EnumMember(Value = "Auto")]
         AutoUseNameOfTheFlow,
@@ -11591,8 +4679,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int TaskId { get; set; }
     }
 
+    public class TasksAddNewDeferralInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public TasksAddNewDeferralInputSetAutomationNameType? SetAutomationName { get; set; } = TasksAddNewDeferralInputSetAutomationNameType.AutoUseNameOfTheFlow;
+        public string AutomationName { get; set; }
+        public int? DeferralTimeInMinutes { get; set; }
+        public string TaskInputData { get; set; }
+        public string DeferralStoredData { get; set; }
+        public string ProcessStage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Priority { get; set; } = 3;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TaskOnHold { get; set; } = false;
+        public string Organisation { get; set; }
+        public string Department { get; set; }
+        public string Description { get; set; }
+        public string Tags { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tasksAddNewDeferralsetAutomationNameInput
+    public enum TasksAddNewDeferralInputSetAutomationNameType
     {
         [EnumMember(Value = "Auto")]
         AutoUseNameOfTheFlow,
@@ -11606,10 +4718,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class TasksDeferExistingTaskInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TaskId { get; set; }
+        public int? DeferralTimeInMinutes { get; set; }
+        public string DeferralStoredData { get; set; }
+        public string ProcessStage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Priority { get; set; } = 3;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TaskOnHold { get; set; } = false;
+    }
+
     public class TasksDeferExistingTaskOperationResponse
     {
         public bool TasksDeferExistingTaskOperationResult { get; set; }
         public string ErrorMessage { get; set; }
+    }
+
+    public class TasksDeferExistingTaskOperationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OperationId { get; set; }
+        public int? DeferralTimeInMinutes { get; set; }
+        public string DeferralStoredData { get; set; }
+        public string ProcessStage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Priority { get; set; } = 3;
     }
 
     public class TasksDeleteTaskResponse
@@ -11618,10 +4757,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class TasksDeleteTaskInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TaskId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UpdateSourceSystem { get; set; } = true;
+    }
+
     public class TasksDeleteTaskOperationResponse
     {
         public bool TasksDeleteTaskOperationResult { get; set; }
         public string ErrorMessage { get; set; }
+    }
+
+    public class TasksDeleteTaskOperationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OperationId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UpdateSourceSystem { get; set; } = true;
     }
 
     public class TasksGetAllTasksResponse
@@ -11630,8 +4787,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfAutomationTasks { get; set; }
     }
 
+    public class TasksGetAllTasksInput
+    {
+        public string AutomationName { get; set; }
+        public TasksGetAllTasksInputAutomationTaskStatusType? AutomationTaskStatus { get; set; }
+        public string FilterByPropertyQuery { get; set; }
+        public int? MinutesUntilDeferralDate { get; set; }
+        public int? MinimumPriorityLevel { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SortByDeferralDate { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RetrieveOnHoldTasks { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Skip { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxResults { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ExcludeTaskData { get; set; } = false;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tasksGetAllTasksautomationTaskStatusInput
+    public enum TasksGetAllTasksInputAutomationTaskStatusType
     {
         Deferred,
         New,
@@ -11665,8 +4846,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Tags { get; set; }
     }
 
+    public class TasksGetTaskInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TaskId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public TasksGetTaskInputStatusChangeType? StatusChange { get; set; } = TasksGetTaskInputStatusChangeType.Retrieved;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tasksGetTaskstatusChangeInput
+    public enum TasksGetTaskInputStatusChangeType
     {
         Retrieved,
         [EnumMember(Value = "Do nothing")]
@@ -11699,8 +4889,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Tags { get; set; }
     }
 
+    public class TasksGetNextTaskInput
+    {
+        public string AutomationName { get; set; }
+        public string[] AutomationNames { get; set; }
+        public int? MinimumPriorityLevel { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public TasksGetNextTaskInputStatusChangeType? StatusChange { get; set; } = TasksGetNextTaskInputStatusChangeType.Retrieved;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MinutesUntilDeferralDate { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IgnoreSLA { get; set; } = false;
+        public int[] ExcludeTaskIds { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tasksGetNextTaskstatusChangeInput
+    public enum TasksGetNextTaskInputStatusChangeType
     {
         Retrieved,
         [EnumMember(Value = "Do nothing")]
@@ -11713,8 +4920,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class TasksChangeTaskStatusInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TaskId { get; set; }
+        public TasksChangeTaskStatusInputAutomationTaskStatusType? AutomationTaskStatus { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TaskOnHold { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? EraseTaskInputData { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? EraseDeferralStoredData { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UpdateSourceSystem { get; set; } = true;
+        public string TaskClosureReason { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tasksChangeTaskStatusautomationTaskStatusInput
+    public enum TasksChangeTaskStatusInputAutomationTaskStatusType
     {
         Completed,
         Failed,
@@ -11728,8 +4955,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class TasksAddNoteInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TaskId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NoteText { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public TasksAddNoteInputNoteTypeType? NoteType { get; set; } = TasksAddNoteInputNoteTypeType.WorkNote;
+        public string NoteTypeOther { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tasksAddNotenoteTypeInput
+    public enum TasksAddNoteInputNoteTypeType
     {
         WorkNote,
         [EnumMember(Value = "CloseNote")]
@@ -11745,10 +4985,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class TasksAssignTaskInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TaskId { get; set; }
+        public string AssignToUserId { get; set; }
+        public string AssignToUserName { get; set; }
+        public string AssignToGroupId { get; set; }
+        public string AssignToGroupName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RemoveUserAssignmentIfBlank { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RemoveGroupAssignmentIfBlank { get; set; } = true;
+    }
+
     public class TasksSetOutputDataResponse
     {
         public bool TasksSetOutputDataResult { get; set; }
         public string ErrorMessage { get; set; }
+    }
+
+    public class TasksSetOutputDataInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TaskId { get; set; }
+        public string TaskOutputData { get; set; }
     }
 
     public class TasksAddNewTaskOperationResponse
@@ -11756,9 +5019,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string OperationId { get; set; }
     }
 
+    public class TasksAddNewTaskOperationInput
+    {
+        public string AutomationName { get; set; }
+        public string TaskInputData { get; set; }
+        public string ProcessStage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Priority { get; set; } = 3;
+        public int? SLA { get; set; }
+        public string Organisation { get; set; }
+        public string Department { get; set; }
+        public string Description { get; set; }
+        public string Tags { get; set; }
+    }
+
     public class TasksAddNewDeferralOperationResponse
     {
         public string OperationId { get; set; }
+    }
+
+    public class TasksAddNewDeferralOperationInput
+    {
+        public string AutomationName { get; set; }
+        public int? DeferralTimeInMinutes { get; set; }
+        public string TaskInputData { get; set; }
+        public string DeferralStoredData { get; set; }
+        public string ProcessStage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Priority { get; set; } = 3;
+        public string Organisation { get; set; }
+        public string Department { get; set; }
+        public string Description { get; set; }
+        public string Tags { get; set; }
     }
 
     public class TasksGetTaskOperationResponse
@@ -11781,15 +5075,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Tags { get; set; }
     }
 
+    public class TasksGetTaskOperationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OperationId { get; set; }
+    }
+
+    public class SetRemoteLoggingLevelInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int LoggingLevel { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetRemoteLoggingLevelResponse
     {
         public int LoggingLevel { get; set; }
         public string IAConnectAgentLogFilename { get; set; }
     }
 
+    public class GetRemoteLoggingLevelInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetLicenseCodeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CustomerNETBIOSDomainName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CustomerDisplayName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string VendorName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LicenseExpiryDate { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ActivationCode { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? StoreInRegistry { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class SetLicenseStringResponse
     {
         public int DaysUntilLicenseExpires { get; set; }
+    }
+
+    public class SetLicenseStringInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LicenseString { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? StoreInRegistry { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetLicenseStateResponse
@@ -11806,9 +5157,138 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool IsJMLLicense { get; set; }
     }
 
+    public class GetLicenseStateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetRSAGUITopmostInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TopMost { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetRSAGUIOpacityInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Opacity { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetRSAGUIPositionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int X { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Y { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class BringRSAGUIToFrontInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Focus { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GlobalLeftMouseClick { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class DisconnectSessionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SecondsToWait { get; set; } = 3;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DoNotDisconnectIfLocalAgent { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class LogoffSessionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SecondsToWait { get; set; } = 3;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class CloseRSAServerInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SecondsToWait { get; set; } = 3;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetRPACommandTimeoutInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CommandTimeoutInSeconds { get; set; } = 30;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TerminateTimedoutRPACommandThreads { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class RunAlternativeIAConnectInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filename { get; set; }
+        public string Arguments { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? LoadIntoMemory { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class RunAlternativeIAConnectSentFromDirectorResponse
     {
         public bool AlternativeFileCopied { get; set; }
+    }
+
+    public class RunAlternativeIAConnectSentFromDirectorInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LocalFilename { get; set; }
+        public string RemoteFilename { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Compress { get; set; } = true;
+        public string Arguments { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PermitDowngrade { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SkipVersionCheck { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? LoadIntoMemory { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SaveToDiskEvenIfRunningFromMemory { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetIAConnectAgentInfoResponse
@@ -11824,15 +5304,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string IAConnectAgentLogFilename { get; set; }
     }
 
+    public class GetIAConnectAgentInfoInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetIAConnectAgentLogResponse
     {
         public string IAConnectAgentLogContentsBase64 { get; set; }
         public string IAConnectAgentLogFilenameOnly { get; set; }
     }
 
+    public class GetIAConnectAgentLogInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Compress { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnLastCommandOnly { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SaveLogToFile { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PlaceLogContentInDataItem { get; set; } = false;
+        public string LocalSaveFolder { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseAgentLogFilename { get; set; } = true;
+        public string LocalSaveFilename { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxBytesToRead { get; set; } = 4000;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class ResetCommandStatsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetAllCommandStatsResponse
     {
         public string CommandStatsJSON { get; set; }
+    }
+
+    public class GetAllCommandStatsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class EnableNextHopResponse
@@ -11841,6 +5365,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int ActiveNextHopDirectorTCPPort { get; set; }
         public bool ActiveNextHopDirectorUsesHTTPS { get; set; }
         public string ActiveNextHopDirectorURL { get; set; }
+    }
+
+    public class EnableNextHopInput
+    {
+        public string NextHopDirectorAddress { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NextHopDirectorTCPPort { get; set; } = 8002;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorUsesHTTPS { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsLocalhostname { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsHostname { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsFQDN { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncrementNextHopDirectorTCPPortBySessionId { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DisableBeforeEnable { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CheckNextHopDirectorIsRunning { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CheckNextHopAgentIsRunning { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsNamedPipe { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class DisableNextHopInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetNextHopStatusResponse
@@ -11854,9 +5422,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool ActiveNextHopAgentIsRunning { get; set; }
     }
 
+    public class GetNextHopStatusInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CheckNextHopDirectorIsRunning { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CheckNextHopAgentIsRunning { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class WaitForNextHopSessionToConnectResponse
     {
         public bool NextHopSessionConnected { get; set; }
+    }
+
+    public class WaitForNextHopSessionToConnectInput
+    {
+        public string NextHopDirectorAddress { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? NextHopDirectorTCPPort { get; set; } = 8002;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorUsesHTTPS { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsLocalhostname { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsHostname { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsFQDN { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncrementNextHopDirectorTCPPortBySessionId { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? SecondsToWait { get; set; } = 35;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NextHopDirectorAddressIsNamedPipe { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DisableExistingNextHop { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class ConfigureNextHopDirectorInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SOAPEnabled { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RESTEnabled { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WebServerEnabled { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DirectorIsLocalhostOnly { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SOAPTCPPort { get; set; } = 8002;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? RESTTCPPort { get; set; } = 8002;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SOAPUsesHTTPS { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RESTUsesHTTPS { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncrementDirectorTCPPortBySessionId { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SOAPUsesUserAuthentication { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RESTUsesUserAuthentication { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CommandNamedPipeEnabled { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class ResetNextHopDirectorSettingsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class WorkflowCompletedInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class RaiseExceptionResponse
@@ -11865,10 +5534,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class RaiseExceptionInput
+    {
+        public string InputException { get; set; }
+        public string ExceptionMessage { get; set; }
+    }
+
     public class UpdateOrchestratorFlowStatsResultResponse
     {
         public bool UpdateOrchestratorFlowStatsResultResult { get; set; }
         public string ErrorMessage { get; set; }
+    }
+
+    public class UpdateOrchestratorFlowStatsResultInput
+    {
+        public bool? FlowLastActionSuccess { get; set; }
+        public string FlowLastActionErrorMessage { get; set; }
+        public int? FlowLastActionCode { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetLastFailedActionFromOrchestratorFlowStatsResponse
@@ -11879,10 +5564,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string LastFailedActionErrorMessage { get; set; }
     }
 
+    public class GetLastFailedActionFromOrchestratorFlowStatsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetOrchestratorFlowStatsResponse
     {
         public string OrchestratorFlowStatsJSON { get; set; }
         public int NumberOfOrchestratorFlowStats { get; set; }
+    }
+
+    public class GetOrchestratorFlowStatsInput
+    {
+        public int? WithinLastNumberOfDays { get; set; }
+        public string SearchFlowName { get; set; }
+        public bool? SearchFlowLastActionResult { get; set; }
+        public string SearchFlowStartTimeStartWindow { get; set; }
+        public string SearchFlowStartTimeEndWindow { get; set; }
     }
 
     public class GetOrchestratorWorkerAvailabilityStatsResponse
@@ -11891,10 +5591,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfWorkerAvailabilityStats { get; set; }
     }
 
+    public class GetOrchestratorWorkerAvailabilityStatsInput
+    {
+        public int? WithinLastNumberOfDays { get; set; }
+        public string SearchFlowName { get; set; }
+        public string SearchFlowStartTimeStartWindow { get; set; }
+    }
+
     public class GetOrchestratorWorkerFlowUsageHeatmapResponse
     {
         public string WorkerFlowUsageHeatmapJSON { get; set; }
         public int NumberOfWorkerFlowUsageHeatmapItems { get; set; }
+    }
+
+    public class GetOrchestratorWorkerFlowUsageHeatmapInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchStartDateStartWindow { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchStartDateEndWindow { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TimeZoneMinutesOffsetFromUTC { get; set; } = 0;
+        public string WorkerNames { get; set; }
     }
 
     public class GetOrchestratorLoginHistoryResponse
@@ -11903,15 +5623,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfOrchestratorLogins { get; set; }
     }
 
+    public class GetOrchestratorLoginHistoryInput
+    {
+        public int? WithinLastNumberOfDays { get; set; }
+        public string SearchByEmail { get; set; }
+        public string SearchLoginHistoryTimeStartWindow { get; set; }
+        public string SearchLoginHistoryTimeEndWindow { get; set; }
+    }
+
+    public class SetLocalLoggingLevelInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int LoggingLevel { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class RunCommandResponse
     {
         public string OutputJSON { get; set; }
+    }
+
+    public class RunCommandInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CommandName { get; set; }
+        public string InputJSON { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetLocalLoggingLevelResponse
     {
         public int LoggingLevel { get; set; }
         public string IAConnectDirectorLogFilename { get; set; }
+    }
+
+    public class GetLocalLoggingLevelInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetRemoteClientTypeResponse
@@ -11931,6 +5684,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string NextHopDirectorSessionType { get; set; }
     }
 
+    public class GetRemoteClientTypeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetIAConnectDirectorInfoResponse
     {
         public string IAConnectDirectorVersion { get; set; }
@@ -11943,6 +5702,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string IAConnectDirectorLogFilename { get; set; }
     }
 
+    public class GetIAConnectDirectorInfoInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetAvailableIAConnectSessionsResponse
     {
         public string IAConnectSessionsJSON { get; set; }
@@ -11952,9 +5717,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfMicrosoftRDPIAConnectSessions { get; set; }
     }
 
+    public class GetAvailableIAConnectSessionsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class AttachToIAConnectSessionByNameInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IAConnectSessionName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? VirtualChannelMustBeConnected { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class AttachToTier1IAConnectSessionResponse
     {
         public string AttachedTier1IAConnectSessionName { get; set; }
+    }
+
+    public class AttachToTier1IAConnectSessionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? VirtualChannelMustBeConnected { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class AttachToIAConnectSessionByIndexResponse
@@ -11963,8 +5755,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool AttachedToSession { get; set; }
     }
 
+    public class AttachToIAConnectSessionByIndexInput
+    {
+        public AttachToIAConnectSessionByIndexInputSearchIAConnectSessionTypeType? SearchIAConnectSessionType { get; set; }
+        public int? SearchIAConnectSessionIndex { get; set; }
+        public int? TimeToWaitInSeconds { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionIfTimedout { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? VirtualChannelMustBeConnected { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? OnlyCountSessionsNotSeenBefore { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum attachToIAConnectSessionByIndexsearchIAConnectSessionTypeInput
+    public enum AttachToIAConnectSessionByIndexInputSearchIAConnectSessionTypeType
     {
         [EnumMember(Value = "Local Agent")]
         LocalAgent,
@@ -11981,8 +5792,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool AttachedToSession { get; set; }
     }
 
+    public class AttachToMostRecentIAConnectSessionInput
+    {
+        public AttachToMostRecentIAConnectSessionInputSearchIAConnectSessionTypeType? SearchIAConnectSessionType { get; set; }
+        public int? TimeToWaitInSeconds { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionIfTimedout { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? VirtualChannelMustBeConnected { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? OnlyCountSessionsNotSeenBefore { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum attachToMostRecentIAConnectSessionsearchIAConnectSessionTypeInput
+    public enum AttachToMostRecentIAConnectSessionInputSearchIAConnectSessionTypeType
     {
         [EnumMember(Value = "Local Agent")]
         LocalAgent,
@@ -11998,9 +5827,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int UpTimeInSeconds { get; set; }
     }
 
+    public class GetDirectorUpTimeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class DoesIAConnectSessionExistByNameResponse
     {
         public bool IAConnectSessionExists { get; set; }
+    }
+
+    public class DoesIAConnectSessionExistByNameInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IAConnectSessionName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class WaitForIAConnectSessionToCloseByNameResponse
@@ -12009,10 +5853,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string AttachedTier1IAConnectSessionName { get; set; }
     }
 
+    public class WaitForIAConnectSessionToCloseByNameInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IAConnectSessionName { get; set; }
+        public int? TimeToWaitInSeconds { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionIfTimedout { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AttachToTier1IAConnectSessionOnSuccess { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class KillIAConnectSessionByNameResponse
     {
         public bool IAConnectSessionKilled { get; set; }
         public string AttachedTier1IAConnectSessionName { get; set; }
+    }
+
+    public class KillIAConnectSessionByNameInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IAConnectSessionName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AttachToTier1IAConnectSessionOnSuccess { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class SetAgentGlobalCoordinateConfigurationResponse
@@ -12021,8 +5893,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class SetAgentGlobalCoordinateConfigurationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAgentGlobalCoordinateConfigurationInputMultiMonitorFunctionalityType? MultiMonitorFunctionality { get; set; } = SetAgentGlobalCoordinateConfigurationInputMultiMonitorFunctionalityType.NotSet;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAgentGlobalCoordinateConfigurationInputAutoSetMouseInspectionMultiplierType? AutoSetMouseInspectionMultiplier { get; set; } = SetAgentGlobalCoordinateConfigurationInputAutoSetMouseInspectionMultiplierType.NotSet;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAgentGlobalCoordinateConfigurationInputAutoSetGlobalMouseMultiplierType? AutoSetGlobalMouseMultiplier { get; set; } = SetAgentGlobalCoordinateConfigurationInputAutoSetGlobalMouseMultiplierType.NotSet;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? MouseInspectionXMultiplier { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? MouseInspectionYMultiplier { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? GlobalMouseXMultiplier { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? GlobalMouseYMultiplier { get; set; } = 0;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GlobalMouseMultiplierApplyToMouseEvent { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GlobalMouseMultiplierApplyToSetCursorPos { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? GlobalMouseMultiplierApplyToCurrentMouseMoveMethod { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType? JavaCoordinateSystem { get; set; } = SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType.NotSet;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType? SAPGUICoordinateSystem { get; set; } = SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType.NotSet;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum setAgentGlobalCoordinateConfigurationmultiMonitorFunctionalityInput
+    public enum SetAgentGlobalCoordinateConfigurationInputMultiMonitorFunctionalityType
     {
         NotSet,
         [EnumMember(Value = "PrimaryMonitor")]
@@ -12032,7 +5946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplierInput
+    public enum SetAgentGlobalCoordinateConfigurationInputAutoSetMouseInspectionMultiplierType
     {
         [EnumMember(Value = "Auto")]
         Automatic,
@@ -12041,7 +5955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplierInput
+    public enum SetAgentGlobalCoordinateConfigurationInputAutoSetGlobalMouseMultiplierType
     {
         [EnumMember(Value = "Auto")]
         Automatic,
@@ -12050,7 +5964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum setAgentGlobalCoordinateConfigurationjavaCoordinateSystemInput
+    public enum SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType
     {
         NotSet,
         Virtual,
@@ -12058,7 +5972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystemInput
+    public enum SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType
     {
         NotSet,
         Virtual,
@@ -12079,6 +5993,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string SAPGUICoordinateSystem { get; set; }
     }
 
+    public class GetAgentGlobalCoordinateConfigurationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetAgentThreadStatusResponse
     {
         public bool ThreadStarted { get; set; }
@@ -12092,6 +6012,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ThreadOutputJSON { get; set; }
     }
 
+    public class GetAgentThreadStatusInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ThreadId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RetrieveThreadOutputData { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ClearOutputDataFromMemoryOnceRead { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class WaitForAgentThreadToCompleteSuccessfullyResponse
     {
         public bool ThreadStarted { get; set; }
@@ -12103,6 +6038,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ThreadStatusMessage { get; set; }
         public string ThreadErrorMessage { get; set; }
         public string ThreadOutputJSON { get; set; }
+    }
+
+    public class WaitForAgentThreadToCompleteSuccessfullyInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ThreadId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SecondsToWaitForThread { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RetrieveThreadOutputData { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ClearOutputDataFromMemoryOnceRead { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionIfThreadNotCompleted { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionIfThreadError { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SecondsToWaitPerCall { get; set; } = 5;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetAgentThreadsResponse
@@ -12126,8 +6088,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ThreadErrorMessage { get; set; }
     }
 
+    public class GetAgentThreadsInput
+    {
+        public GetAgentThreadsInputSortOrderType? SortOrder { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum getAgentThreadssortOrderInput
+    public enum GetAgentThreadsInputSortOrderType
     {
         None,
         ThreadStartTime,
@@ -12153,14 +6123,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class KillAgentThreadInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ThreadId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class DeleteAgentThreadResponse
     {
         public int NumberOfAgentThreadsDeleted { get; set; }
     }
 
+    public class DeleteAgentThreadInput
+    {
+        public int? ThreadId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DeleteAllAgentThreads { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionIfAgentThreadFailsToDelete { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class AllocateWorkerFromOrchestratorResponse
     {
         public string WorkerNameAllocated { get; set; }
+    }
+
+    public class AllocateWorkerFromOrchestratorInput
+    {
+        public string WorkerTag { get; set; }
+        public string WorkerName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RaiseExceptionIfWorkerNotImmediatelyAvailable { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class SetOrchestratorWorkerMaintenanceModeResponse
@@ -12169,10 +6174,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class SetOrchestratorWorkerMaintenanceModeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? WorkerId { get; set; } = 0;
+        public string WorkerName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? MaintenanceMode { get; set; } = true;
+    }
+
     public class CreateOrchestratorOneTimeSecretResponse
     {
         public string RetrievalURL { get; set; }
         public string RetrievalId { get; set; }
+    }
+
+    public class CreateOrchestratorOneTimeSecretInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FriendlyName { get; set; }
+        public string SecretValue { get; set; }
+        public string RetrievalPhrase1 { get; set; }
+        public string RetrievalPhrase2 { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaximumRetrievalsBeforeDeletion { get; set; } = 1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SecretHasAStartDate { get; set; } = false;
+        public string SecretStartDateTime { get; set; }
+        public int? HoursUntilSecretStartTime { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SecretHasAnExpiryDate { get; set; } = false;
+        public string SecretExpiryDateTime { get; set; }
+        public int? HoursUntilSecretExpiry { get; set; }
     }
 
     public class GetListOfOrchestratorWorkersResponse
@@ -12193,6 +6230,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int Priority { get; set; }
         public bool AgentIsLicensed { get; set; }
         public bool IsAvailableForWork { get; set; }
+    }
+
+    public class GetListOfOrchestratorWorkersInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? OnlyReturnLiveWorkers { get; set; } = false;
     }
 
     public class GetOrchestratorWorkerResponse
@@ -12232,6 +6275,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int WorkerMandatoryTagsCount { get; set; }
     }
 
+    public class GetOrchestratorWorkerInput
+    {
+        public int? SearchWorkerId { get; set; }
+        public string SearchWorkerName { get; set; }
+    }
+
     public class OrchestratorGetStatusResponse
     {
         public string OrchestratorVersion { get; set; }
@@ -12255,9 +6304,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool FileExists { get; set; }
     }
 
+    public class FileExistsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filename { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class DirectoryExistsResponse
     {
         public bool DirectoryExists { get; set; }
+    }
+
+    public class DirectoryExistsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class DeleteFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filename { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class DeleteDirectoryInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Recursive { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class PurgeDirectoryInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Recursive { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DeleteTopLevel { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class CopyFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class MoveFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class CreateDirectoryInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ErrorIfAlreadyExists { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetFileSizeResponse
@@ -12265,8 +6404,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int FileSize { get; set; }
     }
 
+    public class GetFileSizeInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filename { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class WriteTextFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filename { get; set; }
+        public string TextToWrite { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AppendExistingFile { get; set; } = false;
+        public WriteTextFileInputEncodingType? Encoding { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CreateFolderIfRequired { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum writeTextFileencodingInput
+    public enum WriteTextFileInputEncodingType
     {
         Unicode,
         UTF8,
@@ -12279,11 +6444,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string FileTextContents { get; set; }
     }
 
+    public class ReadAllTextFromFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filename { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetFilesResponse
     {
         public string FilesJSON { get; set; }
         public int NumberOfFilesReadSuccessfully { get; set; }
         public int NumberOfFilesFailedToRead { get; set; }
+    }
+
+    public class GetFilesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PatternsCSV { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetFoldersResponse
@@ -12293,10 +6479,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfFoldersFailedToRead { get; set; }
     }
 
+    public class GetFoldersInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class DeleteFilesResponse
     {
         public int NumberOfFilesDeleted { get; set; }
         public int NumberOfFilesFailedToDelete { get; set; }
+    }
+
+    public class DeleteFilesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+        public string Pattern { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetDiskFreeSpaceResponse
@@ -12307,9 +6512,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int FreeSpaceGB { get; set; }
     }
 
+    public class GetDiskFreeSpaceInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DriveLetter { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetListOfDrivesResponse
     {
         public string DrivesJSON { get; set; }
+    }
+
+    public class GetListOfDrivesInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class DirectoryIsAccessibleResponse
@@ -12318,9 +6538,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool DirectoryAccessUnauthorised { get; set; }
     }
 
+    public class DirectoryIsAccessibleInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DirectoryPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetCSVTextAsCollectionResponse
     {
         public string CSVDataJSON { get; set; }
+    }
+
+    public class GetCSVTextAsCollectionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CSVFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? FirstLineIsHeader { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? TrimHeaders { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AllowBlankRows { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ExtendColumnsIfRequired { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class WriteCollectionToCSVFileResponse
@@ -12329,8 +6579,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    public class WriteCollectionToCSVFileInput
+    {
+        public JToken[] InputTable { get; set; }
+        public string InputTableJSON { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CSVFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public WriteCollectionToCSVFileInputOutputEncodingType? OutputEncoding { get; set; } = WriteCollectionToCSVFileInputOutputEncodingType.UTF8;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum writeCollectionToCSVFileoutputEncodingInput
+    public enum WriteCollectionToCSVFileInputOutputEncodingType
     {
         UTF8,
         UTF7,
@@ -12338,8 +6603,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         ASCII
     }
 
+    public class SetOwnerOnFolderInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserIdentity { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class SetOwnerOnFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserIdentity { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class AddPermissionToFolderInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Identity { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddPermissionToFolderInputPermissionType Permission { get; set; } = AddPermissionToFolderInputPermissionType.Read;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ApplyToFolder { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ApplyToSubFolders { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ApplyToFiles { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Deny { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addPermissionToFolderpermissionInput
+    public enum AddPermissionToFolderInputPermissionType
     {
         Read,
         ReadAndExecute,
@@ -12347,13 +6663,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         FullControl
     }
 
+    public class AddPermissionToFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Identity { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddPermissionToFileInputPermissionType Permission { get; set; } = AddPermissionToFileInputPermissionType.Read;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Deny { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addPermissionToFilepermissionInput
+    public enum AddPermissionToFileInputPermissionType
     {
         Read,
         ReadAndExecute,
         Modify,
         FullControl
+    }
+
+    public class BreakFolderSecurityInheritanceInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ConvertInheritedToExplicit { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class EnableFolderSecurityInheritanceInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class GetFolderSecurityPermissionsResponse
@@ -12361,9 +6716,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string SecurityPermissionsJSON { get; set; }
     }
 
+    public class GetFolderSecurityPermissionsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetFileSecurityPermissionsResponse
     {
         public string SecurityPermissionsJSON { get; set; }
+    }
+
+    public class GetFileSecurityPermissionsInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class RemoveIdentityFromFolderSecurityResponse
@@ -12371,9 +6744,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool PermissionWasRemoved { get; set; }
     }
 
+    public class RemoveIdentityFromFolderSecurityInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IdentityToRemove { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class RemoveIdentityFromFileSecurityResponse
     {
         public bool PermissionWasRemoved { get; set; }
+    }
+
+    public class RemoveIdentityFromFileSecurityInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IdentityToRemove { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class CopyFileFromClientToServerInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ClientFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ServerFilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Compress { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class ReplaceVariableDataInINIFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputFilename { get; set; }
+        public string OutputFilename { get; set; }
+        public string SearchSection { get; set; }
+        public string SearchVariable { get; set; }
+        public string ReplaceData { get; set; }
+        public string InputFilenameEncoding { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CreateNewFileIfNotExists { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WriteSpaceBeforeEquals { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WriteSpaceAfterEquals { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 
     public class DownloadHTTPFileResponse
@@ -12381,8 +6816,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string DownloadFileContents { get; set; }
     }
 
+    public class DownloadHTTPFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DownloadURL { get; set; }
+        public string SaveFilename { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? OverwriteExistingFile { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PassthroughAuthentication { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserAgent { get; set; } = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.193 Safari/537.36";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Accept { get; set; } = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SupportTLS10 { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SupportTLS11 { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? SupportTLS12 { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AutoDecompressDeflate { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AutoDecompressGZIP { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnContentsAsString { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public DownloadHTTPFileInputReturnContentEncodingType? ReturnContentEncoding { get; set; } = DownloadHTTPFileInputReturnContentEncodingType.UTF8;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum downloadHTTPFilereturnContentEncodingInput
+    public enum DownloadHTTPFileInputReturnContentEncodingType
     {
         ASCII,
         UTF7,
@@ -12398,15 +6876,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int FilesExcluded { get; set; }
     }
 
+    public class UnZIPFileInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ZIPFilename { get; set; }
+        public string ExtractFolder { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ExtractAllFilesToSingleFolder { get; set; } = false;
+        public string IncludeFilesRegEx { get; set; }
+        public string ExcludeFilesRegEx { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
+    public class AddFileToZIPInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceFilenameToAddToZIP { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OutputZIPFilename { get; set; }
+        public string AddFilenameToFolderInZIP { get; set; }
+        public string SourceFilenameToAddToZIPComment { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Compress { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AddToExistingZIPFile { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class AddFolderToZIPResponse
     {
         public int FilesAddedSuccessfully { get; set; }
         public int FilesExcluded { get; set; }
     }
 
+    public class AddFolderToZIPInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceFolderToAddToZIP { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OutputZIPFilename { get; set; }
+        public string AddFilesToFolderInZIP { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Compress { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AddToExistingZIPFile { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeSubfolders { get; set; } = true;
+        public string IncludeFilesRegEx { get; set; }
+        public string ExcludeFilesRegEx { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
+    }
+
     public class GetFileContentsAsBase64Response
     {
         public string FileContentsAsBase64 { get; set; }
+    }
+
+    public class GetFileContentsAsBase64Input
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FilePath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Compress { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxFileSize { get; set; } = 1024000;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Workflow { get; set; } = "@{workflow()}";
     }
 }
 

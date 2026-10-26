@@ -2,7 +2,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip;
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbonprem;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
@@ -77,9 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var dataset = "#{dataset}";
             var table = "@{table}";
-            var action = new DynamicsaxActions("connection").GetItems(
+            var action = new DynamicssmbonpremActions("connection").PostItem(
                 () => dataset,
-                () => table);
+                () => table,
+                () => new { });
             var path = ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path;
 
             AssertReturnExpression(

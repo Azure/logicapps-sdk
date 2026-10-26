@@ -27,39 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projprojectName, Expression<Func<string>> projprojectDescription = null, Expression<Func<string>> projprojectStartDate = null)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> siteUrl, Expression<Func<CreateProjectInput>> proj)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            var __workflow_projprojectName = WorkflowExpression.Compile(projprojectName, nameof(projprojectName), required: true);
-            var __workflow_projprojectDescription = WorkflowExpression.Compile(projprojectDescription, nameof(projprojectDescription), required: false);
-            var __workflow_projprojectStartDate = WorkflowExpression.Compile(projprojectStartDate, nameof(projprojectStartDate), required: false);
+            var __workflow_proj = WorkflowExpression.Compile(proj, nameof(proj), required: true);
             return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/ProjectServer/Projects";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
-                var proj = new JObject();
-                var projpropCount = 0;
-                projpropCount++;
-                proj["Name"] = ExpressionConverter.ConvertO(__workflow_projprojectName);
-                if (__workflow_projprojectDescription != null)
-                {
-                    proj["Description"] = ExpressionConverter.ConvertO(__workflow_projprojectDescription);
-                    projpropCount++;
-                }
-
-                if (__workflow_projprojectStartDate != null)
-                {
-                    proj["Start"] = ExpressionConverter.ConvertO(__workflow_projprojectStartDate);
-                    projpropCount++;
-                }
-
-                if (projpropCount > 0)
-                {
-                    callPayload.Body = proj;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_proj);
                 return new ApiConnectionAction<Project>(callPayload);
             });
         }
@@ -83,100 +61,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> taskparameterstaskName, Expression<Func<string>> taskparameterstaskNotes = null, Expression<Func<string>> taskparameterstaskStartDate = null, Expression<Func<string>> taskparameterstaskDuration = null)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<CreateTaskInput>> task)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_taskparameterstaskName = WorkflowExpression.Compile(taskparameterstaskName, nameof(taskparameterstaskName), required: true);
-            var __workflow_taskparameterstaskNotes = WorkflowExpression.Compile(taskparameterstaskNotes, nameof(taskparameterstaskNotes), required: false);
-            var __workflow_taskparameterstaskStartDate = WorkflowExpression.Compile(taskparameterstaskStartDate, nameof(taskparameterstaskStartDate), required: false);
-            var __workflow_taskparameterstaskDuration = WorkflowExpression.Compile(taskparameterstaskDuration, nameof(taskparameterstaskDuration), required: false);
+            var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
             return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Tasks/Add", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
-                var task = new JObject();
-                var taskpropCount = 0;
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                parametersObjectpropCount++;
-                parametersObject["Name"] = ExpressionConverter.ConvertO(__workflow_taskparameterstaskName);
-                if (__workflow_taskparameterstaskNotes != null)
-                {
-                    parametersObject["Notes"] = ExpressionConverter.ConvertO(__workflow_taskparameterstaskNotes);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_taskparameterstaskStartDate != null)
-                {
-                    parametersObject["Start"] = ExpressionConverter.ConvertO(__workflow_taskparameterstaskStartDate);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_taskparameterstaskDuration != null)
-                {
-                    parametersObject["Duration"] = ExpressionConverter.ConvertO(__workflow_taskparameterstaskDuration);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    task["parameters"] = parametersObject;
-                    taskpropCount++;
-                }
-
-                if (taskpropCount > 0)
-                {
-                    callPayload.Body = task;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_task);
                 return new ApiConnectionAction<TaskObject>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<EnterpriseResource, ApiConnectionActionConfiguration> CreateResource(Expression<Func<string>> siteUrl, Expression<Func<string>> resourceresourceName, Expression<Func<bool>> resourceisResourceInBudget = null, Expression<Func<bool>> resourceisResourceGeneric = null, Expression<Func<bool>> resourceisResourceInactive = null)
+        public IBodyWorkflowAction<EnterpriseResource, ApiConnectionActionConfiguration> CreateResource(Expression<Func<string>> siteUrl, Expression<Func<CreateResourceInput>> resource)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            var __workflow_resourceresourceName = WorkflowExpression.Compile(resourceresourceName, nameof(resourceresourceName), required: true);
-            var __workflow_resourceisResourceInBudget = WorkflowExpression.Compile(resourceisResourceInBudget, nameof(resourceisResourceInBudget), required: false);
-            var __workflow_resourceisResourceGeneric = WorkflowExpression.Compile(resourceisResourceGeneric, nameof(resourceisResourceGeneric), required: false);
-            var __workflow_resourceisResourceInactive = WorkflowExpression.Compile(resourceisResourceInactive, nameof(resourceisResourceInactive), required: false);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
             return new DeferredBodyAction<EnterpriseResource, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/ProjectServer/EnterpriseResources";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
-                var resource = new JObject();
-                var resourcepropCount = 0;
-                resourcepropCount++;
-                resource["Name"] = ExpressionConverter.ConvertO(__workflow_resourceresourceName);
-                if (__workflow_resourceisResourceInBudget != null)
-                {
-                    resource["IsBudget"] = ExpressionConverter.ConvertO(__workflow_resourceisResourceInBudget);
-                    resourcepropCount++;
-                }
-
-                if (__workflow_resourceisResourceGeneric != null)
-                {
-                    resource["IsGeneric"] = ExpressionConverter.ConvertO(__workflow_resourceisResourceGeneric);
-                    resourcepropCount++;
-                }
-
-                if (__workflow_resourceisResourceInactive != null)
-                {
-                    resource["IsInactive"] = ExpressionConverter.ConvertO(__workflow_resourceisResourceInactive);
-                    resourcepropCount++;
-                }
-
-                if (resourcepropCount > 0)
-                {
-                    callPayload.Body = resource;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_resource);
                 return new ApiConnectionAction<EnterpriseResource>(callPayload);
             });
         }
@@ -350,6 +262,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         public string WinProjVersion { get; set; }
     }
 
+    public class CreateProjectInput
+    {
+        [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProjectName { get; set; }
+
+        [JsonProperty("Description")]
+        public string ProjectDescription { get; set; }
+
+        [JsonProperty("Start")]
+        public string ProjectStartDate { get; set; }
+    }
+
     public class TaskObject
     {
         [JsonProperty("Created")]
@@ -390,6 +314,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
         [JsonProperty("IsMilestone")]
         public bool IsMilestoneTask { get; set; }
+    }
+
+    public class CreateTaskInput
+    {
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TaskParameters Parameters { get; set; }
+    }
+
+    public class TaskParameters
+    {
+        [JsonProperty("Name")]
+        public string TaskName { get; set; }
+
+        [JsonProperty("Notes")]
+        public string TaskNotes { get; set; }
+
+        [JsonProperty("Start")]
+        public string TaskStartDate { get; set; }
+
+        [JsonProperty("Duration")]
+        public string TaskDuration { get; set; }
     }
 
     public class EnterpriseResource
@@ -440,6 +385,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         public string ResourcePhonetics { get; set; }
         public int ResourceType { get; set; }
         public string TerminationDate { get; set; }
+    }
+
+    public class CreateResourceInput
+    {
+        [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ResourceName { get; set; }
+
+        [JsonProperty("IsBudget")]
+        public bool? IsResourceInBudget { get; set; }
+
+        [JsonProperty("IsGeneric")]
+        public bool? IsResourceGeneric { get; set; }
+
+        [JsonProperty("IsInactive")]
+        public bool? IsResourceInactive { get; set; }
     }
 
     public class TasksWrapper

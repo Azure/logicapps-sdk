@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
     public class AddresslabsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
-        public IBodyWorkflowAction<ParseAddressResponse, ApiConnectionActionConfiguration> ParseAddress(Expression<Func<string>> bodyaddress)
+        public IBodyWorkflowAction<ParseAddressResponse, ApiConnectionActionConfiguration> ParseAddress(Expression<Func<ParseAddressInput>> body)
         {
-            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/parsed-address";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ParseAddressResponse>(callPayload);
             });
         }
@@ -106,6 +98,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
 
         [JsonProperty("last_line")]
         public string DeliveryLastLine { get; set; }
+    }
+
+    public class ParseAddressInput
+    {
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
     }
 }
 

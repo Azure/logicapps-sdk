@@ -27,315 +27,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense, ApiConnectionActionConfiguration> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        public IBodyWorkflowAction<Expense, ApiConnectionActionConfiguration> AddExpense(Expression<Func<string>> accountid, Expression<Func<AddExpenseInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            var __workflow_bodyexpenseamountamount = WorkflowExpression.Compile(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: true);
-            var __workflow_bodyexpenseamountcurrency = WorkflowExpression.Compile(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
-            var __workflow_bodyexpensecategory = WorkflowExpression.Compile(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
-            var __workflow_bodyexpensestaff = WorkflowExpression.Compile(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
-            var __workflow_bodyexpensedate = WorkflowExpression.Compile(bodyexpensedate, nameof(bodyexpensedate), required: false);
-            var __workflow_bodyexpensevendor = WorkflowExpression.Compile(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
-            var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Expense, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var expenseObject = new JObject();
-                var expenseObjectpropCount = 0;
-                var amountObject = new JObject();
-                var amountObjectpropCount = 0;
-                amountObjectpropCount++;
-                amountObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyexpenseamountamount);
-                if (__workflow_bodyexpenseamountcurrency != null)
-                {
-                    amountObject["code"] = ExpressionConverter.ConvertO(__workflow_bodyexpenseamountcurrency);
-                    amountObjectpropCount++;
-                }
-
-                if (amountObjectpropCount > 0)
-                {
-                    expenseObject["amount"] = amountObject;
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensecategory != null)
-                {
-                    expenseObject["categoryid"] = ExpressionConverter.ConvertO(__workflow_bodyexpensecategory);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensestaff != null)
-                {
-                    expenseObject["staffid"] = ExpressionConverter.ConvertO(__workflow_bodyexpensestaff);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensedate != null)
-                {
-                    expenseObject["date"] = ExpressionConverter.ConvertO(__workflow_bodyexpensedate);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensevendor != null)
-                {
-                    expenseObject["vendor"] = ExpressionConverter.ConvertO(__workflow_bodyexpensevendor);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensenotes != null)
-                {
-                    expenseObject["notes"] = ExpressionConverter.ConvertO(__workflow_bodyexpensenotes);
-                    expenseObjectpropCount++;
-                }
-
-                if (expenseObjectpropCount > 0)
-                {
-                    body["expense"] = expenseObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Expense>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<UpdateExpenseInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
-            var __workflow_bodyexpenseamountamount = WorkflowExpression.Compile(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: false);
-            var __workflow_bodyexpenseamountcurrency = WorkflowExpression.Compile(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
-            var __workflow_bodyexpensecategory = WorkflowExpression.Compile(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
-            var __workflow_bodyexpensestaff = WorkflowExpression.Compile(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
-            var __workflow_bodyexpensedate = WorkflowExpression.Compile(bodyexpensedate, nameof(bodyexpensedate), required: false);
-            var __workflow_bodyexpensevendor = WorkflowExpression.Compile(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
-            var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", __workflow_accountid.WithUrlEncoding(1), __workflow_expenseid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var expenseObject = new JObject();
-                var expenseObjectpropCount = 0;
-                var amountObject = new JObject();
-                var amountObjectpropCount = 0;
-                if (__workflow_bodyexpenseamountamount != null)
-                {
-                    amountObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyexpenseamountamount);
-                    amountObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpenseamountcurrency != null)
-                {
-                    amountObject["code"] = ExpressionConverter.ConvertO(__workflow_bodyexpenseamountcurrency);
-                    amountObjectpropCount++;
-                }
-
-                if (amountObjectpropCount > 0)
-                {
-                    expenseObject["amount"] = amountObject;
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensecategory != null)
-                {
-                    expenseObject["categoryid"] = ExpressionConverter.ConvertO(__workflow_bodyexpensecategory);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensestaff != null)
-                {
-                    expenseObject["staffid"] = ExpressionConverter.ConvertO(__workflow_bodyexpensestaff);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensedate != null)
-                {
-                    expenseObject["date"] = ExpressionConverter.ConvertO(__workflow_bodyexpensedate);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensevendor != null)
-                {
-                    expenseObject["vendor"] = ExpressionConverter.ConvertO(__workflow_bodyexpensevendor);
-                    expenseObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpensenotes != null)
-                {
-                    expenseObject["notes"] = ExpressionConverter.ConvertO(__workflow_bodyexpensenotes);
-                    expenseObjectpropCount++;
-                }
-
-                if (expenseObjectpropCount > 0)
-                {
-                    body["expense"] = expenseObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<DeleteExpenseInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", __workflow_accountid.WithUrlEncoding(1), __workflow_expenseid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var expenseObject = new JObject();
-                var expenseObjectpropCount = 0;
-                expenseObject["vis_state"] = 1;
-                expenseObjectpropCount++;
-                if (expenseObjectpropCount > 0)
-                {
-                    body["expense"] = expenseObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
+        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> AddClient(Expression<Func<string>> accountid, Expression<Func<AddClientInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
-            var __workflow_bodyclientfirstName = WorkflowExpression.Compile(bodyclientfirstName, nameof(bodyclientfirstName), required: false);
-            var __workflow_bodyclientlastName = WorkflowExpression.Compile(bodyclientlastName, nameof(bodyclientlastName), required: false);
-            var __workflow_bodyclientorganization = WorkflowExpression.Compile(bodyclientorganization, nameof(bodyclientorganization), required: false);
-            var __workflow_bodyclientemailAddress = WorkflowExpression.Compile(bodyclientemailAddress, nameof(bodyclientemailAddress), required: false);
-            var __workflow_bodyclientphoneNumber = WorkflowExpression.Compile(bodyclientphoneNumber, nameof(bodyclientphoneNumber), required: false);
-            var __workflow_bodyclientcurrency = WorkflowExpression.Compile(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
-            var __workflow_bodyclientstreetAddress1 = WorkflowExpression.Compile(bodyclientstreetAddress1, nameof(bodyclientstreetAddress1), required: false);
-            var __workflow_bodyclientstreetAddress2 = WorkflowExpression.Compile(bodyclientstreetAddress2, nameof(bodyclientstreetAddress2), required: false);
-            var __workflow_bodyclientcity = WorkflowExpression.Compile(bodyclientcity, nameof(bodyclientcity), required: false);
-            var __workflow_bodyclientpostalCode = WorkflowExpression.Compile(bodyclientpostalCode, nameof(bodyclientpostalCode), required: false);
-            var __workflow_bodyclientcountry = WorkflowExpression.Compile(bodyclientcountry, nameof(bodyclientcountry), required: false);
-            var __workflow_bodyclientprovince = WorkflowExpression.Compile(bodyclientprovince, nameof(bodyclientprovince), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Client, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/users/clients", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var clientObject = new JObject();
-                var clientObjectpropCount = 0;
-                if (__workflow_bodyclientfirstName != null)
-                {
-                    clientObject["fname"] = ExpressionConverter.ConvertO(__workflow_bodyclientfirstName);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientlastName != null)
-                {
-                    clientObject["lname"] = ExpressionConverter.ConvertO(__workflow_bodyclientlastName);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientorganization != null)
-                {
-                    clientObject["organization"] = ExpressionConverter.ConvertO(__workflow_bodyclientorganization);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientemailAddress != null)
-                {
-                    clientObject["email"] = ExpressionConverter.ConvertO(__workflow_bodyclientemailAddress);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientphoneNumber != null)
-                {
-                    clientObject["bus_phone"] = ExpressionConverter.ConvertO(__workflow_bodyclientphoneNumber);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientcurrency != null)
-                {
-                    clientObject["currency_code"] = ExpressionConverter.ConvertO(__workflow_bodyclientcurrency);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientstreetAddress1 != null)
-                {
-                    clientObject["p_street"] = ExpressionConverter.ConvertO(__workflow_bodyclientstreetAddress1);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientstreetAddress2 != null)
-                {
-                    clientObject["p_street2"] = ExpressionConverter.ConvertO(__workflow_bodyclientstreetAddress2);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientcity != null)
-                {
-                    clientObject["p_city"] = ExpressionConverter.ConvertO(__workflow_bodyclientcity);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientpostalCode != null)
-                {
-                    clientObject["p_code"] = ExpressionConverter.ConvertO(__workflow_bodyclientpostalCode);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientcountry != null)
-                {
-                    clientObject["p_country"] = ExpressionConverter.ConvertO(__workflow_bodyclientcountry);
-                    clientObjectpropCount++;
-                }
-
-                if (__workflow_bodyclientprovince != null)
-                {
-                    clientObject["p_province"] = ExpressionConverter.ConvertO(__workflow_bodyclientprovince);
-                    clientObjectpropCount++;
-                }
-
-                if (clientObjectpropCount > 0)
-                {
-                    body["client"] = clientObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Client>(callPayload);
             });
         }
@@ -487,8 +239,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string CurrencyCode { get; set; }
     }
 
+    public class AddExpenseInput
+    {
+        [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddExpenseInputExpenseType Expense { get; set; }
+    }
+
+    public class AddExpenseInputExpenseType
+    {
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddExpenseInputExpenseTypeAmountType Amount { get; set; }
+
+        [JsonProperty("categoryid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Category { get; set; }
+
+        [JsonProperty("staffid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Staff { get; set; }
+
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("vendor")]
+        public string Vendor { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+    }
+
+    public class AddExpenseInputExpenseTypeAmountType
+    {
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Amount { get; set; }
+
+        [JsonProperty("code")]
+        public AddExpenseInputExpenseTypeAmountTypeCurrencyType? Currency { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyexpenseamountcurrencyInput
+    public enum AddExpenseInputExpenseTypeAmountTypeCurrencyType
     {
         AED,
         AMD,
@@ -668,6 +456,235 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         ZWL
     }
 
+    public class UpdateExpenseInput
+    {
+        [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateExpenseInputExpenseType Expense { get; set; }
+    }
+
+    public class UpdateExpenseInputExpenseType
+    {
+        [JsonProperty("amount")]
+        public UpdateExpenseInputExpenseTypeAmountType Amount { get; set; }
+
+        [JsonProperty("categoryid")]
+        public int? Category { get; set; }
+
+        [JsonProperty("staffid")]
+        public int? Staff { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("vendor")]
+        public string Vendor { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+    }
+
+    public class UpdateExpenseInputExpenseTypeAmountType
+    {
+        [JsonProperty("amount")]
+        public string Amount { get; set; }
+
+        [JsonProperty("code")]
+        public UpdateExpenseInputExpenseTypeAmountTypeCurrencyType? Currency { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateExpenseInputExpenseTypeAmountTypeCurrencyType
+    {
+        AED,
+        AMD,
+        ANG,
+        ARS,
+        AUD,
+        AWG,
+        AZN,
+        BAM,
+        BBD,
+        BDT,
+        BGN,
+        BHD,
+        BIF,
+        BMD,
+        BND,
+        BOB,
+        BOV,
+        BRL,
+        BSD,
+        BTN,
+        BWP,
+        BYN,
+        BYR,
+        BZD,
+        CAD,
+        CDF,
+        CHE,
+        CHF,
+        CHW,
+        CLF,
+        CLP,
+        CNY,
+        COP,
+        COU,
+        CRC,
+        CUC,
+        CUP,
+        CVE,
+        CZK,
+        DJF,
+        DKK,
+        DOP,
+        EGP,
+        ERN,
+        ETB,
+        EUR,
+        FJD,
+        FKP,
+        GBP,
+        GEL,
+        GHS,
+        GIP,
+        GMD,
+        GNF,
+        GTQ,
+        GYD,
+        HKD,
+        HNL,
+        HRK,
+        HTG,
+        HUF,
+        [EnumMember(Value = "IDR")]
+        IdR,
+        ILS,
+        INR,
+        IQD,
+        IRR,
+        ISK,
+        JMD,
+        JOD,
+        JPY,
+        KES,
+        KGS,
+        KHR,
+        KMF,
+        KPW,
+        KRW,
+        KWD,
+        KYD,
+        KZT,
+        LAK,
+        LBP,
+        LKR,
+        LRD,
+        LSL,
+        LYD,
+        MAD,
+        MDL,
+        MGA,
+        MKD,
+        MMK,
+        MNT,
+        MOP,
+        MRO,
+        MUR,
+        MVR,
+        MWK,
+        MXN,
+        MXV,
+        MYR,
+        MZN,
+        NAD,
+        NGN,
+        NIO,
+        NOK,
+        NPR,
+        NZD,
+        OMR,
+        PAB,
+        PEN,
+        PGK,
+        PHP,
+        PKR,
+        PLN,
+        PYG,
+        QAR,
+        RON,
+        RSD,
+        RUB,
+        RWF,
+        SAR,
+        SBD,
+        SCR,
+        SDG,
+        SEK,
+        SGD,
+        SHP,
+        SLL,
+        SOS,
+        SRD,
+        SSP,
+        STD,
+        SVC,
+        SYP,
+        SZL,
+        THB,
+        TJS,
+        TMT,
+        TND,
+        TOP,
+        TRY,
+        TTD,
+        TWD,
+        TZS,
+        UAH,
+        UGX,
+        USD,
+        USN,
+        UYI,
+        UYU,
+        UZS,
+        VEF,
+        VND,
+        VUV,
+        WST,
+        XAF,
+        XAG,
+        XAU,
+        XBA,
+        XBB,
+        XBC,
+        XBD,
+        XCD,
+        XDR,
+        XOF,
+        XPD,
+        XPF,
+        XPT,
+        XSU,
+        XTS,
+        XUA,
+        XXX,
+        YER,
+        ZAR,
+        ZMW,
+        ZWL
+    }
+
+    public class DeleteExpenseInput
+    {
+        [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DeleteExpenseInputExpenseType Expense { get; set; }
+    }
+
+    public class DeleteExpenseInputExpenseType
+    {
+        [JsonProperty("vis_state", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int VisState { get; set; } = 1;
+    }
+
     public class Client
     {
         [JsonProperty("response")]
@@ -764,8 +781,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string CurrencyCode { get; set; }
     }
 
+    public class AddClientInput
+    {
+        [JsonProperty("client", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddClientInputClientType Client { get; set; }
+    }
+
+    public class AddClientInputClientType
+    {
+        [JsonProperty("fname")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lname")]
+        public string LastName { get; set; }
+
+        [JsonProperty("organization")]
+        public string Organization { get; set; }
+
+        [JsonProperty("email")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("bus_phone")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("currency_code")]
+        public AddClientInputClientTypeCurrencyType? Currency { get; set; }
+
+        [JsonProperty("p_street")]
+        public string StreetAddress1 { get; set; }
+
+        [JsonProperty("p_street2")]
+        public string StreetAddress2 { get; set; }
+
+        [JsonProperty("p_city")]
+        public string City { get; set; }
+
+        [JsonProperty("p_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("p_country")]
+        public string Country { get; set; }
+
+        [JsonProperty("p_province")]
+        public string Province { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyclientcurrencyInput
+    public enum AddClientInputClientTypeCurrencyType
     {
         AED,
         AMD,

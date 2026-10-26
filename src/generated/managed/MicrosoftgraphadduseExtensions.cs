@@ -13,140 +13,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
     public class MicrosoftgraphadduseActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null, Expression<Func<bodyidentitiesInputItem[]>> bodyidentities = null, Expression<Func<string>> bodyonPremisesImmutableId = null)
+        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserPostInput>> body = null)
         {
-            var __workflow_bodyaccountEnabled = WorkflowExpression.Compile(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodymailNickname = WorkflowExpression.Compile(bodymailNickname, nameof(bodymailNickname), required: false);
-            var __workflow_bodyuserPrincipalName = WorkflowExpression.Compile(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
-            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            var __workflow_bodypasswordProfilepassword = WorkflowExpression.Compile(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
-            var __workflow_bodyidentities = WorkflowExpression.Compile(bodyidentities, nameof(bodyidentities), required: false);
-            var __workflow_bodyonPremisesImmutableId = WorkflowExpression.Compile(bodyonPremisesImmutableId, nameof(bodyonPremisesImmutableId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyaccountEnabled != null)
-                {
-                    body["accountEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyaccountEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydisplayName != null)
-                {
-                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymailNickname != null)
-                {
-                    body["mailNickname"] = ExpressionConverter.ConvertO(__workflow_bodymailNickname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserPrincipalName != null)
-                {
-                    body["userPrincipalName"] = ExpressionConverter.ConvertO(__workflow_bodyuserPrincipalName);
-                    bodypropCount++;
-                }
-
-                var passwordProfileObject = new JObject();
-                var passwordProfileObjectpropCount = 0;
-                if (__workflow_bodypasswordProfileforceChangePasswordNextSignIn != null)
-                {
-                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfileforceChangePasswordNextSignIn);
-                    passwordProfileObjectpropCount++;
-                }
-
-                if (__workflow_bodypasswordProfilepassword != null)
-                {
-                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfilepassword);
-                    passwordProfileObjectpropCount++;
-                }
-
-                if (passwordProfileObjectpropCount > 0)
-                {
-                    body["passwordProfile"] = passwordProfileObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidentities != null)
-                {
-                    body["identities"] = ExpressionConverter.ConvertO(__workflow_bodyidentities);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyonPremisesImmutableId != null)
-                {
-                    body["onPremisesImmutableId"] = ExpressionConverter.ConvertO(__workflow_bodyonPremisesImmutableId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserPostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<InvitePostResponse, ApiConnectionActionConfiguration> Invite(Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<string>> bodyinviteRedirectUrl = null)
+        public IBodyWorkflowAction<InvitePostResponse, ApiConnectionActionConfiguration> Invite(Expression<Func<InvitePostInput>> body = null)
         {
-            var __workflow_bodyinvitedUserEmailAddress = WorkflowExpression.Compile(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
-            var __workflow_bodyinviteRedirectUrl = WorkflowExpression.Compile(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InvitePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invitations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyinvitedUserEmailAddress != null)
-                {
-                    body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserEmailAddress);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinviteRedirectUrl != null)
-                {
-                    body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodyinviteRedirectUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvitePostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MembersPatch(Expression<Func<string>> groupId, Expression<Func<string[]>> bodymembersOdataBind)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MembersPatch(Expression<Func<string>> groupId, Expression<Func<MembersPatchInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodymembersOdataBind = WorkflowExpression.Compile(bodymembersOdataBind, nameof(bodymembersOdataBind), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["members@odata.bind"] = ExpressionConverter.ConvertO(__workflow_bodymembersOdataBind);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -213,7 +120,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string IssuerAssignedId { get; set; }
     }
 
-    public class bodyidentitiesInputItem
+    public class UserPostInput
+    {
+        [JsonProperty("accountEnabled")]
+        public bool? AccountEnabled { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("mailNickname")]
+        public string MailNickname { get; set; }
+
+        [JsonProperty("userPrincipalName")]
+        public string UserPrincipalName { get; set; }
+
+        [JsonProperty("passwordProfile")]
+        public UserPostInputPasswordProfileType PasswordProfile { get; set; }
+
+        [JsonProperty("identities")]
+        public UserPostInputIdentitiesTypeItem[] Identities { get; set; }
+
+        [JsonProperty("onPremisesImmutableId")]
+        public string OnPremisesImmutableId { get; set; }
+    }
+
+    public class UserPostInputPasswordProfileType
+    {
+        [JsonProperty("forceChangePasswordNextSignIn")]
+        public bool? ForceChangePasswordNextSignIn { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+    }
+
+    public class UserPostInputIdentitiesTypeItem
     {
         [JsonProperty("signInType")]
         public string SignInType { get; set; }
@@ -295,6 +235,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class InvitePostInput
+    {
+        [JsonProperty("invitedUserEmailAddress")]
+        public string InvitedUserEmailAddress { get; set; }
+
+        [JsonProperty("inviteRedirectUrl")]
+        public string InviteRedirectUrl { get; set; }
+    }
+
+    public class MembersPatchInput
+    {
+        [JsonProperty("members@odata.bind", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] MembersOdataBind { get; set; }
     }
 }
 

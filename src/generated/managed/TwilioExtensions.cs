@@ -13,71 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
     public class TwilioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> sendMessageRequestfrom, Expression<Func<string>> sendMessageRequestto, Expression<Func<string>> sendMessageRequestbody, Expression<Func<string[]>> sendMessageRequestmediaUrl = null, Expression<Func<string>> sendMessageRequeststatusCallback = null, Expression<Func<string>> sendMessageRequestmessagingServiceSid = null, Expression<Func<string>> sendMessageRequestapplicationSid = null, Expression<Func<string>> sendMessageRequestmaxPrice = null, Expression<Func<string>> sendMessageRequestvalidityPeriod = null)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> sendMessageRequest)
         {
-            var __workflow_sendMessageRequestfrom = WorkflowExpression.Compile(sendMessageRequestfrom, nameof(sendMessageRequestfrom), required: true);
-            var __workflow_sendMessageRequestto = WorkflowExpression.Compile(sendMessageRequestto, nameof(sendMessageRequestto), required: true);
-            var __workflow_sendMessageRequestbody = WorkflowExpression.Compile(sendMessageRequestbody, nameof(sendMessageRequestbody), required: true);
-            var __workflow_sendMessageRequestmediaUrl = WorkflowExpression.Compile(sendMessageRequestmediaUrl, nameof(sendMessageRequestmediaUrl), required: false);
-            var __workflow_sendMessageRequeststatusCallback = WorkflowExpression.Compile(sendMessageRequeststatusCallback, nameof(sendMessageRequeststatusCallback), required: false);
-            var __workflow_sendMessageRequestmessagingServiceSid = WorkflowExpression.Compile(sendMessageRequestmessagingServiceSid, nameof(sendMessageRequestmessagingServiceSid), required: false);
-            var __workflow_sendMessageRequestapplicationSid = WorkflowExpression.Compile(sendMessageRequestapplicationSid, nameof(sendMessageRequestapplicationSid), required: false);
-            var __workflow_sendMessageRequestmaxPrice = WorkflowExpression.Compile(sendMessageRequestmaxPrice, nameof(sendMessageRequestmaxPrice), required: false);
-            var __workflow_sendMessageRequestvalidityPeriod = WorkflowExpression.Compile(sendMessageRequestvalidityPeriod, nameof(sendMessageRequestvalidityPeriod), required: false);
+            var __workflow_sendMessageRequest = WorkflowExpression.Compile(sendMessageRequest, nameof(sendMessageRequest), required: true);
             return new DeferredBodyAction<Message, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Messages.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendMessageRequest = new JObject();
-                var sendMessageRequestpropCount = 0;
-                sendMessageRequestpropCount++;
-                sendMessageRequest["from"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestfrom);
-                sendMessageRequestpropCount++;
-                sendMessageRequest["to"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestto);
-                sendMessageRequestpropCount++;
-                sendMessageRequest["body"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestbody);
-                if (__workflow_sendMessageRequestmediaUrl != null)
-                {
-                    sendMessageRequest["media_url"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmediaUrl);
-                    sendMessageRequestpropCount++;
-                }
-
-                if (__workflow_sendMessageRequeststatusCallback != null)
-                {
-                    sendMessageRequest["StatusCallback"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequeststatusCallback);
-                    sendMessageRequestpropCount++;
-                }
-
-                if (__workflow_sendMessageRequestmessagingServiceSid != null)
-                {
-                    sendMessageRequest["messaging_service_sid"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmessagingServiceSid);
-                    sendMessageRequestpropCount++;
-                }
-
-                if (__workflow_sendMessageRequestapplicationSid != null)
-                {
-                    sendMessageRequest["application_sid"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestapplicationSid);
-                    sendMessageRequestpropCount++;
-                }
-
-                if (__workflow_sendMessageRequestmaxPrice != null)
-                {
-                    sendMessageRequest["max_price"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestmaxPrice);
-                    sendMessageRequestpropCount++;
-                }
-
-                if (__workflow_sendMessageRequestvalidityPeriod != null)
-                {
-                    sendMessageRequest["validity_period"] = ExpressionConverter.ConvertO(__workflow_sendMessageRequestvalidityPeriod);
-                    sendMessageRequestpropCount++;
-                }
-
-                if (sendMessageRequestpropCount > 0)
-                {
-                    callPayload.Body = sendMessageRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendMessageRequest);
                 return new ApiConnectionAction<Message>(callPayload);
             });
         }
@@ -187,6 +131,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
 
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; set; }
+    }
+
+    public class SendMessageInput
+    {
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+
+        [JsonProperty("media_url")]
+        public string[] MediaUrl { get; set; }
+        public string StatusCallback { get; set; }
+
+        [JsonProperty("messaging_service_sid")]
+        public string MessagingServiceSid { get; set; }
+
+        [JsonProperty("application_sid")]
+        public string ApplicationSid { get; set; }
+
+        [JsonProperty("max_price")]
+        public string MaxPrice { get; set; }
+
+        [JsonProperty("validity_period")]
+        public string ValidityPeriod { get; set; }
     }
 
     public class MessageListV2

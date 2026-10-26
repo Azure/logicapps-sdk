@@ -13,67 +13,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
     public class ProjectumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GeneratePowerpointDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfoFile = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GeneratePowerpointDoc(Expression<Func<GeneratePowerpointDocInput>> generationInfo)
         {
-            var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            var __workflow_generationInfoFile = WorkflowExpression.Compile(generationInfoFile, nameof(generationInfoFile), required: false);
+            var __workflow_generationInfo = WorkflowExpression.Compile(generationInfo, nameof(generationInfo), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Powerpoint";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var generationInfo = new JObject();
-                var generationInfopropCount = 0;
-                generationInfopropCount++;
-                generationInfo["dataMap"] = ExpressionConverter.ConvertO(__workflow_generationInfodataMap);
-                if (__workflow_generationInfoFile != null)
-                {
-                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfoFile);
-                    generationInfopropCount++;
-                }
-
-                if (generationInfopropCount > 0)
-                {
-                    callPayload.Body = generationInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generationInfo);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateWordDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfoFile = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateWordDoc(Expression<Func<GenerateWordDocInput>> generationInfo)
         {
-            var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            var __workflow_generationInfoFile = WorkflowExpression.Compile(generationInfoFile, nameof(generationInfoFile), required: false);
+            var __workflow_generationInfo = WorkflowExpression.Compile(generationInfo, nameof(generationInfo), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Word";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var generationInfo = new JObject();
-                var generationInfopropCount = 0;
-                generationInfopropCount++;
-                generationInfo["dataMap"] = ExpressionConverter.ConvertO(__workflow_generationInfodataMap);
-                if (__workflow_generationInfoFile != null)
-                {
-                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfoFile);
-                    generationInfopropCount++;
-                }
-
-                if (generationInfopropCount > 0)
-                {
-                    callPayload.Body = generationInfo;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_generationInfo);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePowerpointDocuments(Expression<Func<string[]>> documents = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePowerpointDocuments(Expression<Func<string[]>> documents)
         {
-            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: false);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Powerpoint/Merge";
@@ -85,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeWordDocuments(Expression<Func<string[]>> documents = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeWordDocuments(Expression<Func<string[]>> documents)
         {
-            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: false);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Word/Merge";
@@ -101,6 +71,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
 
     public class ProjectumTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class GeneratePowerpointDocInput
+    {
+        [JsonProperty("dataMap", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataMap { get; set; }
+
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string File { get; set; }
+    }
+
+    public class GenerateWordDocInput
+    {
+        [JsonProperty("dataMap", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DataMap { get; set; }
+
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string File { get; set; }
     }
 }
 

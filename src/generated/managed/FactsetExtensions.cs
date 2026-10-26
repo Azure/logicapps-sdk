@@ -202,57 +202,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<string>> bodytext, Expression<Func<bool>> bodyfilterEntities = null, Expression<Func<bool>> bodyenableIdLookup = null)
+        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<NEREntitiesInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyfilterEntities = WorkflowExpression.Compile(bodyfilterEntities, nameof(bodyfilterEntities), required: false);
-            var __workflow_bodyenableIdLookup = WorkflowExpression.Compile(bodyenableIdLookup, nameof(bodyenableIdLookup), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<NEREntitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cognitive/ner/v2/entities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodyfilterEntities != null)
-                {
-                    if (__workflow_bodyfilterEntities != null)
-                    {
-                        body["filterEntities"] = ExpressionConverter.ConvertO(__workflow_bodyfilterEntities);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["filterEntities"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyenableIdLookup != null)
-                {
-                    if (__workflow_bodyenableIdLookup != null)
-                    {
-                        body["enableIdLookup"] = ExpressionConverter.ConvertO(__workflow_bodyenableIdLookup);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["enableIdLookup"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NEREntitiesResponse>(callPayload);
             });
         }
@@ -282,34 +241,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration> CreateBookFromTemplate(Expression<Func<string>> bodyticker = null, Expression<Func<string>> bodytemplateId = null)
+        public IBodyWorkflowAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration> CreateBookFromTemplate(Expression<Func<CreateBookFromTemplateInput>> body = null)
         {
-            var __workflow_bodyticker = WorkflowExpression.Compile(bodyticker, nameof(bodyticker), required: false);
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/book-builder-api/v1/create-book-from-template";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyticker != null)
-                {
-                    body["ticker"] = ExpressionConverter.ConvertO(__workflow_bodyticker);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemplateId != null)
-                {
-                    body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateBookFromTemplateResponse>(callPayload);
             });
         }
@@ -824,6 +765,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         public string LookupUrl { get; set; }
     }
 
+    public class NEREntitiesInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("filterEntities", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? FilterEntities { get; set; } = true;
+
+        [JsonProperty("enableIdLookup", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? EnableIdLookup { get; set; } = true;
+    }
+
     public class GetBookListResponseItem
     {
         [JsonProperty("bookID")]
@@ -864,6 +817,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
 
         [JsonProperty("bookID")]
         public string BookId { get; set; }
+    }
+
+    public class CreateBookFromTemplateInput
+    {
+        [JsonProperty("ticker")]
+        public string Ticker { get; set; }
+
+        [JsonProperty("template_id")]
+        public string TemplateId { get; set; }
     }
 }
 

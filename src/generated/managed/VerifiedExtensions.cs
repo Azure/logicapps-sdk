@@ -62,26 +62,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<PostEnvelopesEnvelopeIdRecipientsInput>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodygivenName = WorkflowExpression.Compile(bodygivenName, nameof(bodygivenName), required: true);
-            var __workflow_bodyfamilyName = WorkflowExpression.Compile(bodyfamilyName, nameof(bodyfamilyName), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodysigningMethod = WorkflowExpression.Compile(bodysigningMethod, nameof(bodysigningMethod), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyroleaction = WorkflowExpression.Compile(bodyroleaction, nameof(bodyroleaction), required: true);
-            var __workflow_bodyrolelabel = WorkflowExpression.Compile(bodyrolelabel, nameof(bodyrolelabel), required: true);
-            var __workflow_bodyrolename = WorkflowExpression.Compile(bodyrolename, nameof(bodyrolename), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodynotificationMethod = WorkflowExpression.Compile(bodynotificationMethod, nameof(bodynotificationMethod), required: false);
-            var __workflow_bodytelephone = WorkflowExpression.Compile(bodytelephone, nameof(bodytelephone), required: false);
-            var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
-            var __workflow_bodysecure = WorkflowExpression.Compile(bodysecure, nameof(bodysecure), required: false);
-            var __workflow_bodysms = WorkflowExpression.Compile(bodysms, nameof(bodysms), required: false);
-            var __workflow_bodyssn = WorkflowExpression.Compile(bodyssn, nameof(bodyssn), required: false);
-            var __workflow_bodybank = WorkflowExpression.Compile(bodybank, nameof(bodybank), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/recipients", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -91,79 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["givenName"] = ExpressionConverter.ConvertO(__workflow_bodygivenName);
-                bodypropCount++;
-                body["familyName"] = ExpressionConverter.ConvertO(__workflow_bodyfamilyName);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["signingMethod"] = ExpressionConverter.ConvertO(__workflow_bodysigningMethod);
-                if (__workflow_bodynotificationMethod != null)
-                {
-                    body["notificationMethod"] = ExpressionConverter.ConvertO(__workflow_bodynotificationMethod);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodytelephone != null)
-                {
-                    body["telephone"] = ExpressionConverter.ConvertO(__workflow_bodytelephone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorder != null)
-                {
-                    body["order"] = ExpressionConverter.ConvertO(__workflow_bodyorder);
-                    bodypropCount++;
-                }
-
-                var roleObject = new JObject();
-                var roleObjectpropCount = 0;
-                roleObjectpropCount++;
-                roleObject["action"] = ExpressionConverter.ConvertO(__workflow_bodyroleaction);
-                roleObjectpropCount++;
-                roleObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyrolelabel);
-                roleObjectpropCount++;
-                roleObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyrolename);
-                if (roleObjectpropCount > 0)
-                {
-                    body["role"] = roleObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysecure != null)
-                {
-                    body["secure"] = ExpressionConverter.ConvertO(__workflow_bodysecure);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysms != null)
-                {
-                    body["sms"] = ExpressionConverter.ConvertO(__workflow_bodysms);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyssn != null)
-                {
-                    body["ssn"] = ExpressionConverter.ConvertO(__workflow_bodyssn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybank != null)
-                {
-                    body["bank"] = ExpressionConverter.ConvertO(__workflow_bodybank);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -189,27 +103,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<PutEnvelopesEnvelopeIdRecipientsRecipientIdInput>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
-            var __workflow_bodygivenName = WorkflowExpression.Compile(bodygivenName, nameof(bodygivenName), required: true);
-            var __workflow_bodyfamilyName = WorkflowExpression.Compile(bodyfamilyName, nameof(bodyfamilyName), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodysigningMethod = WorkflowExpression.Compile(bodysigningMethod, nameof(bodysigningMethod), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyroleaction = WorkflowExpression.Compile(bodyroleaction, nameof(bodyroleaction), required: true);
-            var __workflow_bodyrolelabel = WorkflowExpression.Compile(bodyrolelabel, nameof(bodyrolelabel), required: true);
-            var __workflow_bodyrolename = WorkflowExpression.Compile(bodyrolename, nameof(bodyrolename), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodynotificationMethod = WorkflowExpression.Compile(bodynotificationMethod, nameof(bodynotificationMethod), required: false);
-            var __workflow_bodytelephone = WorkflowExpression.Compile(bodytelephone, nameof(bodytelephone), required: false);
-            var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
-            var __workflow_bodysecure = WorkflowExpression.Compile(bodysecure, nameof(bodysecure), required: false);
-            var __workflow_bodysms = WorkflowExpression.Compile(bodysms, nameof(bodysms), required: false);
-            var __workflow_bodyssn = WorkflowExpression.Compile(bodyssn, nameof(bodyssn), required: false);
-            var __workflow_bodybank = WorkflowExpression.Compile(bodybank, nameof(bodybank), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/recipients/{1}", __workflow_envelopeId.WithUrlEncoding(1), __workflow_recipientId.WithUrlEncoding(1)));
@@ -219,79 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["givenName"] = ExpressionConverter.ConvertO(__workflow_bodygivenName);
-                bodypropCount++;
-                body["familyName"] = ExpressionConverter.ConvertO(__workflow_bodyfamilyName);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["signingMethod"] = ExpressionConverter.ConvertO(__workflow_bodysigningMethod);
-                if (__workflow_bodynotificationMethod != null)
-                {
-                    body["notificationMethod"] = ExpressionConverter.ConvertO(__workflow_bodynotificationMethod);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodytelephone != null)
-                {
-                    body["telephone"] = ExpressionConverter.ConvertO(__workflow_bodytelephone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorder != null)
-                {
-                    body["order"] = ExpressionConverter.ConvertO(__workflow_bodyorder);
-                    bodypropCount++;
-                }
-
-                var roleObject = new JObject();
-                var roleObjectpropCount = 0;
-                roleObjectpropCount++;
-                roleObject["action"] = ExpressionConverter.ConvertO(__workflow_bodyroleaction);
-                roleObjectpropCount++;
-                roleObject["label"] = ExpressionConverter.ConvertO(__workflow_bodyrolelabel);
-                roleObjectpropCount++;
-                roleObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyrolename);
-                if (roleObjectpropCount > 0)
-                {
-                    body["role"] = roleObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysecure != null)
-                {
-                    body["secure"] = ExpressionConverter.ConvertO(__workflow_bodysecure);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysms != null)
-                {
-                    body["sms"] = ExpressionConverter.ConvertO(__workflow_bodysms);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyssn != null)
-                {
-                    body["ssn"] = ExpressionConverter.ConvertO(__workflow_bodyssn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybank != null)
-                {
-                    body["bank"] = ExpressionConverter.ConvertO(__workflow_bodybank);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -376,15 +204,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<bool>> bodysequentialSigning = null, Expression<Func<string>> bodygreeting = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<double>> bodyautomaticReminders = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<PutEnvelopesEnvelopeIdInput>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodysequentialSigning = WorkflowExpression.Compile(bodysequentialSigning, nameof(bodysequentialSigning), required: false);
-            var __workflow_bodygreeting = WorkflowExpression.Compile(bodygreeting, nameof(bodygreeting), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodyautomaticReminders = WorkflowExpression.Compile(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -394,47 +219,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodysequentialSigning != null)
-                {
-                    body["sequentialSigning"] = ExpressionConverter.ConvertO(__workflow_bodysequentialSigning);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygreeting != null)
-                {
-                    body["greeting"] = ExpressionConverter.ConvertO(__workflow_bodygreeting);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautomaticReminders != null)
-                {
-                    body["automaticReminders"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticReminders);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdPublishStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<bool>> bodypublished, Expression<Func<string>> xNamespace = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdPublishStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<PutEnvelopesEnvelopeIdPublishStatusInput>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodypublished = WorkflowExpression.Compile(bodypublished, nameof(bodypublished), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -445,26 +240,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["published"] = ExpressionConverter.ConvertO(__workflow_bodypublished);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<string>> xNamespace = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<object>> body, Expression<Func<string>> xNamespace = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -475,24 +263,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdAbortStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdAbortStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<PutEnvelopesEnvelopeIdAbortStatusInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/abort-status", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -502,19 +284,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -540,15 +311,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<File, ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyfileType, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyhash = null)
+        public IBodyWorkflowAction<File, ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopesEnvelopeIdDocumentsDocumentIdFilesInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyfileType = WorkflowExpression.Compile(bodyfileType, nameof(bodyfileType), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodyhash = WorkflowExpression.Compile(bodyhash, nameof(bodyhash), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<File, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}/files", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
@@ -558,23 +327,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["fileType"] = ExpressionConverter.ConvertO(__workflow_bodyfileType);
-                if (__workflow_bodyhash != null)
-                {
-                    body["hash"] = ExpressionConverter.ConvertO(__workflow_bodyhash);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<File>(callPayload);
             });
         }
@@ -615,12 +369,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdTrashStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutEnvelopesEnvelopeIdTrashStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<PutEnvelopesEnvelopeIdTrashStatusInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/trash-status", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -630,19 +384,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -789,17 +532,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse, ApiConnectionActionConfiguration> PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes(Expression<Func<string>> token, Expression<Func<string>> envelopeDescriptorId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string>> bodysendergivenName = null, Expression<Func<string>> bodysenderfamilyName = null, Expression<Func<double>> bodyautomaticReminders = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
+        public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse, ApiConnectionActionConfiguration> PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes(Expression<Func<string>> token, Expression<Func<string>> envelopeDescriptorId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeDescriptorId = WorkflowExpression.Compile(envelopeDescriptorId, nameof(envelopeDescriptorId), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodysenderemail = WorkflowExpression.Compile(bodysenderemail, nameof(bodysenderemail), required: false);
-            var __workflow_bodysendergivenName = WorkflowExpression.Compile(bodysendergivenName, nameof(bodysendergivenName), required: false);
-            var __workflow_bodysenderfamilyName = WorkflowExpression.Compile(bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
-            var __workflow_bodyautomaticReminders = WorkflowExpression.Compile(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelope-descriptors/{0}/envelopes", __workflow_envelopeDescriptorId.WithUrlEncoding(1)));
@@ -809,57 +547,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var senderObject = new JObject();
-                var senderObjectpropCount = 0;
-                if (__workflow_bodysenderemail != null)
-                {
-                    senderObject["email"] = ExpressionConverter.ConvertO(__workflow_bodysenderemail);
-                    senderObjectpropCount++;
-                }
-
-                if (__workflow_bodysendergivenName != null)
-                {
-                    senderObject["givenName"] = ExpressionConverter.ConvertO(__workflow_bodysendergivenName);
-                    senderObjectpropCount++;
-                }
-
-                if (__workflow_bodysenderfamilyName != null)
-                {
-                    senderObject["familyName"] = ExpressionConverter.ConvertO(__workflow_bodysenderfamilyName);
-                    senderObjectpropCount++;
-                }
-
-                if (senderObjectpropCount > 0)
-                {
-                    body["sender"] = senderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautomaticReminders != null)
-                {
-                    body["automaticReminders"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticReminders);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse>(callPayload);
             });
         }
@@ -884,14 +573,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodyname, Expression<Func<string>> xNamespace = null, Expression<Func<int>> bodydescriptorhash = null, Expression<Func<string>> bodysource = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopesEnvelopeIdDocumentsInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodydescriptorhash = WorkflowExpression.Compile(bodydescriptorhash, nameof(bodydescriptorhash), required: false);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -901,47 +588,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var descriptorObject = new JObject();
-                var descriptorObjectpropCount = 0;
-                if (__workflow_bodydescriptorhash != null)
-                {
-                    descriptorObject["hash"] = ExpressionConverter.ConvertO(__workflow_bodydescriptorhash);
-                    descriptorObjectpropCount++;
-                }
-
-                if (descriptorObjectpropCount > 0)
-                {
-                    body["descriptor"] = descriptorObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodysource != null)
-                {
-                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse, ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdJobsGetSignLink(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyrecipientid = null, Expression<Func<string>> bodyredirectTo = null)
+        public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse, ApiConnectionActionConfiguration> PostEnvelopesEnvelopeIdJobsGetSignLink(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopesEnvelopeIdJobsGetSignLinkInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodyrecipientid = WorkflowExpression.Compile(bodyrecipientid, nameof(bodyrecipientid), required: false);
-            var __workflow_bodyredirectTo = WorkflowExpression.Compile(bodyredirectTo, nameof(bodyredirectTo), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/jobs/get.sign.link", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -951,48 +610,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var recipientObject = new JObject();
-                var recipientObjectpropCount = 0;
-                if (__workflow_bodyrecipientid != null)
-                {
-                    recipientObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientid);
-                    recipientObjectpropCount++;
-                }
-
-                if (recipientObjectpropCount > 0)
-                {
-                    body["recipient"] = recipientObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirectTo != null)
-                {
-                    body["redirectTo"] = ExpressionConverter.ConvertO(__workflow_bodyredirectTo);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse, ApiConnectionActionConfiguration> PostEnvelopeDescriptorsDefaultEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string>> bodysendergivenName = null, Expression<Func<string>> bodysenderfamilyName = null, Expression<Func<double>> bodyautomaticReminders = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
+        public IBodyWorkflowAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse, ApiConnectionActionConfiguration> PostEnvelopeDescriptorsDefaultEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopeDescriptorsDefaultEnvelopesInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodysenderemail = WorkflowExpression.Compile(bodysenderemail, nameof(bodysenderemail), required: false);
-            var __workflow_bodysendergivenName = WorkflowExpression.Compile(bodysendergivenName, nameof(bodysendergivenName), required: false);
-            var __workflow_bodysenderfamilyName = WorkflowExpression.Compile(bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
-            var __workflow_bodyautomaticReminders = WorkflowExpression.Compile(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/envelope-descriptors/default/envelopes";
@@ -1002,57 +631,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var senderObject = new JObject();
-                var senderObjectpropCount = 0;
-                if (__workflow_bodysenderemail != null)
-                {
-                    senderObject["email"] = ExpressionConverter.ConvertO(__workflow_bodysenderemail);
-                    senderObjectpropCount++;
-                }
-
-                if (__workflow_bodysendergivenName != null)
-                {
-                    senderObject["givenName"] = ExpressionConverter.ConvertO(__workflow_bodysendergivenName);
-                    senderObjectpropCount++;
-                }
-
-                if (__workflow_bodysenderfamilyName != null)
-                {
-                    senderObject["familyName"] = ExpressionConverter.ConvertO(__workflow_bodysenderfamilyName);
-                    senderObjectpropCount++;
-                }
-
-                if (senderObjectpropCount > 0)
-                {
-                    body["sender"] = senderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautomaticReminders != null)
-                {
-                    body["automaticReminders"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticReminders);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse>(callPayload);
             });
         }
@@ -1079,13 +659,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyenvelopegreeting = null, Expression<Func<string>> bodyrecipientid = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<PostEnvelopesEnvelopIdJobsSendNotificationInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodyenvelopegreeting = WorkflowExpression.Compile(bodyenvelopegreeting, nameof(bodyenvelopegreeting), required: false);
-            var __workflow_bodyrecipientid = WorkflowExpression.Compile(bodyrecipientid, nameof(bodyrecipientid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/jobs/send.notification", __workflow_envelopeId.WithUrlEncoding(1)));
@@ -1095,41 +674,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var envelopeObject = new JObject();
-                var envelopeObjectpropCount = 0;
-                if (__workflow_bodyenvelopegreeting != null)
-                {
-                    envelopeObject["greeting"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopegreeting);
-                    envelopeObjectpropCount++;
-                }
-
-                if (envelopeObjectpropCount > 0)
-                {
-                    body["envelope"] = envelopeObject;
-                    bodypropCount++;
-                }
-
-                var recipientObject = new JObject();
-                var recipientObjectpropCount = 0;
-                if (__workflow_bodyrecipientid != null)
-                {
-                    recipientObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientid);
-                    recipientObjectpropCount++;
-                }
-
-                if (recipientObjectpropCount > 0)
-                {
-                    body["recipient"] = recipientObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1295,8 +841,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         public string Date { get; set; }
     }
 
+    public class PostEnvelopesEnvelopeIdRecipientsInput
+    {
+        [JsonProperty("givenName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GivenName { get; set; }
+
+        [JsonProperty("familyName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostEnvelopesEnvelopeIdRecipientsInputLanguageType Language { get; set; }
+
+        [JsonProperty("signingMethod", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostEnvelopesEnvelopeIdRecipientsInputSigningMethodType SigningMethod { get; set; }
+
+        [JsonProperty("notificationMethod")]
+        public PostEnvelopesEnvelopeIdRecipientsInputNotificationMethodType? NotificationMethod { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("telephone")]
+        public string Telephone { get; set; }
+
+        [JsonProperty("order")]
+        public int? Order { get; set; }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RoleInput Role { get; set; }
+
+        [JsonProperty("secure")]
+        public bool? Secure { get; set; }
+
+        [JsonProperty("sms")]
+        public bool? Sms { get; set; }
+
+        [JsonProperty("ssn")]
+        public string Ssn { get; set; }
+
+        [JsonProperty("bank")]
+        public string Bank { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylanguageInput
+    public enum PostEnvelopesEnvelopeIdRecipientsInputLanguageType
     {
         [EnumMember(Value = "nb-NO")]
         NbNO,
@@ -1313,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysigningMethodInput
+    public enum PostEnvelopesEnvelopeIdRecipientsInputSigningMethodType
     {
         [EnumMember(Value = "email")]
         Email,
@@ -1348,7 +936,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodynotificationMethodInput
+    public enum PostEnvelopesEnvelopeIdRecipientsInputNotificationMethodType
+    {
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "sms")]
+        Sms
+    }
+
+    public class RoleInput
+    {
+        [JsonProperty("action")]
+        public string Action { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class PutEnvelopesEnvelopeIdRecipientsRecipientIdInput
+    {
+        [JsonProperty("givenName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GivenName { get; set; }
+
+        [JsonProperty("familyName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PutEnvelopesEnvelopeIdRecipientsRecipientIdInputLanguageType Language { get; set; }
+
+        [JsonProperty("signingMethod", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PutEnvelopesEnvelopeIdRecipientsRecipientIdInputSigningMethodType SigningMethod { get; set; }
+
+        [JsonProperty("notificationMethod")]
+        public PutEnvelopesEnvelopeIdRecipientsRecipientIdInputNotificationMethodType? NotificationMethod { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("telephone")]
+        public string Telephone { get; set; }
+
+        [JsonProperty("order")]
+        public int? Order { get; set; }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RoleInput Role { get; set; }
+
+        [JsonProperty("secure")]
+        public bool? Secure { get; set; }
+
+        [JsonProperty("sms")]
+        public bool? Sms { get; set; }
+
+        [JsonProperty("ssn")]
+        public string Ssn { get; set; }
+
+        [JsonProperty("bank")]
+        public string Bank { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutEnvelopesEnvelopeIdRecipientsRecipientIdInputLanguageType
+    {
+        [EnumMember(Value = "nb-NO")]
+        NbNO,
+        [EnumMember(Value = "sv-SE")]
+        SvSE,
+        [EnumMember(Value = "da-DK")]
+        DaDK,
+        [EnumMember(Value = "fi-FI")]
+        FiFI,
+        [EnumMember(Value = "lt-LT")]
+        LtLT,
+        [EnumMember(Value = "lv-LV")]
+        LvLV
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutEnvelopesEnvelopeIdRecipientsRecipientIdInputSigningMethodType
+    {
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "sms")]
+        Sms,
+        [EnumMember(Value = "bankid-no")]
+        BankidNo,
+        [EnumMember(Value = "bankid-se")]
+        BankidSe,
+        [EnumMember(Value = "bankid-dk")]
+        BankidDk,
+        [EnumMember(Value = "nets-esign-no")]
+        NetsEsignNo,
+        [EnumMember(Value = "nets-esign-se")]
+        NetsEsignSe,
+        [EnumMember(Value = "nets-esign-dk")]
+        NetsEsignDk,
+        [EnumMember(Value = "nets-esign-tupas")]
+        NetsEsignTupas,
+        [EnumMember(Value = "nets-eident-mobiilivarmenne")]
+        NetsEidentMobiilivarmenne,
+        [EnumMember(Value = "nets-eident-fi")]
+        NetsEidentFi,
+        [EnumMember(Value = "nets-eident-dk")]
+        NetsEidentDk,
+        [EnumMember(Value = "eideasy-ee-ideideasy-lv-id")]
+        EideasyEeIdeideasyLvId,
+        [EnumMember(Value = "eideasy-lt-id")]
+        EideasyLtId,
+        [EnumMember(Value = "touch-sign")]
+        TouchSign
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutEnvelopesEnvelopeIdRecipientsRecipientIdInputNotificationMethodType
     {
         [EnumMember(Value = "email")]
         Email,
@@ -1719,6 +1422,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         public string Comment { get; set; }
     }
 
+    public class PutEnvelopesEnvelopeIdInput
+    {
+        [JsonProperty("sequentialSigning")]
+        public bool? SequentialSigning { get; set; }
+
+        [JsonProperty("greeting")]
+        public string Greeting { get; set; }
+
+        [JsonProperty("expiration")]
+        public string Expiration { get; set; }
+
+        [JsonProperty("automaticReminders")]
+        public double? AutomaticReminders { get; set; }
+    }
+
+    public class PutEnvelopesEnvelopeIdPublishStatusInput
+    {
+        [JsonProperty("published", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Published { get; set; }
+    }
+
+    public class PutEnvelopesEnvelopeIdAbortStatusInput
+    {
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
     public class File
     {
         [JsonProperty("id")]
@@ -1764,6 +1494,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         public string Id { get; set; }
     }
 
+    public class PostEnvelopesEnvelopeIdDocumentsDocumentIdFilesInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("fileType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileType { get; set; }
+
+        [JsonProperty("hash")]
+        public string Hash { get; set; }
+    }
+
     public class UserInfo
     {
         [JsonProperty("givenName")]
@@ -1807,6 +1549,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
     {
         [JsonProperty("language")]
         public string Language { get; set; }
+    }
+
+    public class PutEnvelopesEnvelopeIdTrashStatusInput
+    {
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
     }
 
     public class EnvelopeDescriptorString
@@ -1884,10 +1632,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         public string Uid { get; set; }
     }
 
-    public class bodydocumentsInputItem
+    public class PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesInput
+    {
+        [JsonProperty("sender")]
+        public PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesInputSenderType Sender { get; set; }
+
+        [JsonProperty("automaticReminders")]
+        public double? AutomaticReminders { get; set; }
+
+        [JsonProperty("expiration")]
+        public string Expiration { get; set; }
+
+        [JsonProperty("documents")]
+        public PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesInputDocumentsTypeItem[] Documents { get; set; }
+    }
+
+    public class PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesInputSenderType
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("givenName")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("familyName")]
+        public string FamilyName { get; set; }
+    }
+
+    public class PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesInputDocumentsTypeItem
     {
         [JsonProperty("hash")]
         public string Hash { get; set; }
+    }
+
+    public class PostEnvelopesEnvelopeIdDocumentsInput
+    {
+        [JsonProperty("descriptor")]
+        public PostEnvelopesEnvelopeIdDocumentsInputDescriptorType Descriptor { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+    }
+
+    public class PostEnvelopesEnvelopeIdDocumentsInputDescriptorType
+    {
+        [JsonProperty("hash")]
+        public int? Hash { get; set; }
     }
 
     public class PostEnvelopesEnvelopeIdJobsGetSignLinkResponse
@@ -1914,10 +1707,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         public string Url { get; set; }
     }
 
+    public class PostEnvelopesEnvelopeIdJobsGetSignLinkInput
+    {
+        [JsonProperty("recipient")]
+        public PostEnvelopesEnvelopeIdJobsGetSignLinkInputRecipientType Recipient { get; set; }
+
+        [JsonProperty("redirectTo")]
+        public string RedirectTo { get; set; }
+    }
+
+    public class PostEnvelopesEnvelopeIdJobsGetSignLinkInputRecipientType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
     public class PostEnvelopeDescriptorsDefaultEnvelopesResponse
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
+    }
+
+    public class PostEnvelopeDescriptorsDefaultEnvelopesInput
+    {
+        [JsonProperty("sender")]
+        public PostEnvelopeDescriptorsDefaultEnvelopesInputSenderType Sender { get; set; }
+
+        [JsonProperty("automaticReminders")]
+        public double? AutomaticReminders { get; set; }
+
+        [JsonProperty("expiration")]
+        public string Expiration { get; set; }
+
+        [JsonProperty("documents")]
+        public PostEnvelopeDescriptorsDefaultEnvelopesInputDocumentsTypeItem[] Documents { get; set; }
+    }
+
+    public class PostEnvelopeDescriptorsDefaultEnvelopesInputSenderType
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("givenName")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("familyName")]
+        public string FamilyName { get; set; }
+    }
+
+    public class PostEnvelopeDescriptorsDefaultEnvelopesInputDocumentsTypeItem
+    {
+        [JsonProperty("hash")]
+        public string Hash { get; set; }
+    }
+
+    public class PostEnvelopesEnvelopIdJobsSendNotificationInput
+    {
+        [JsonProperty("envelope")]
+        public PostEnvelopesEnvelopIdJobsSendNotificationInputEnvelopeType Envelope { get; set; }
+
+        [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostEnvelopesEnvelopIdJobsSendNotificationInputRecipientType Recipient { get; set; }
+    }
+
+    public class PostEnvelopesEnvelopIdJobsSendNotificationInputEnvelopeType
+    {
+        [JsonProperty("greeting")]
+        public string Greeting { get; set; }
+    }
+
+    public class PostEnvelopesEnvelopIdJobsSendNotificationInputRecipientType
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
     }
 }
 

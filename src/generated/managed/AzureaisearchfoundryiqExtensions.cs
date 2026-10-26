@@ -13,14 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearchfoundryiq
     public class AzureaisearchfoundryiqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearchfoundryiq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AzureAISearchKBRetrieveMcp(Expression<Func<string>> knowledgeBaseName, Expression<Func<string>> apiVersion, Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AzureAISearchKBRetrieveMcp(Expression<Func<string>> knowledgeBaseName, Expression<Func<string>> apiVersion, Expression<Func<string>> mcpSessionId = null, Expression<Func<AzureAISearchKBRetrieveMcpInput>> queryRequest = null)
         {
             var __workflow_knowledgeBaseName = WorkflowExpression.Compile(knowledgeBaseName, nameof(knowledgeBaseName), required: true);
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/knowledgebases/{0}/mcp", __workflow_knowledgeBaseName.WithUrlEncoding(1)));
@@ -29,55 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearchfoundryiq
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 if (__workflow_mcpSessionId != null)
                     callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(__workflow_mcpSessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -85,6 +36,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearchfoundryiq
 
     public class AzureaisearchfoundryiqTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class AzureAISearchKBRetrieveMcpInput
+    {
+        [JsonProperty("jsonrpc")]
+        public string Jsonrpc { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("method")]
+        public string Method { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
+
+        [JsonProperty("result")]
+        public JToken Result { get; set; }
+
+        [JsonProperty("error")]
+        public JToken Error { get; set; }
     }
 }
 

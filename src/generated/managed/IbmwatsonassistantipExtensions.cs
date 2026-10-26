@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatefulMessageResponse, ApiConnectionActionConfiguration> StatefulMessage(Expression<Func<string>> session, Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        public IBodyWorkflowAction<StatefulMessageResponse, ApiConnectionActionConfiguration> StatefulMessage(Expression<Func<string>> session, Expression<Func<StatefulMessageInput>> body, Expression<Func<string>> version = null)
         {
             var __workflow_session = WorkflowExpression.Compile(session, nameof(session), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
-            var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
             return new DeferredBodyAction<StatefulMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sessions/{0}/message", __workflow_session.WithUrlEncoding(1)));
@@ -57,36 +57,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
                 callPayload.Queries["version"] = Convert.ToString("2021-11-27");
                 if (__workflow_version != null)
                     callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                if (__workflow_bodyinputtext != null)
-                {
-                    inputObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputtext);
-                    inputObjectpropCount++;
-                }
-
-                if (inputObjectpropCount > 0)
-                {
-                    body["input"] = inputObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StatefulMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatelessMessageResponse, ApiConnectionActionConfiguration> StatelessMessage(Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        public IBodyWorkflowAction<StatelessMessageResponse, ApiConnectionActionConfiguration> StatelessMessage(Expression<Func<StatelessMessageInput>> body, Expression<Func<string>> version = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
-            var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
             return new DeferredBodyAction<StatelessMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/message";
@@ -95,27 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
                 callPayload.Queries["version"] = Convert.ToString("2021-11-27");
                 if (__workflow_version != null)
                     callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                if (__workflow_bodyinputtext != null)
-                {
-                    inputObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputtext);
-                    inputObjectpropCount++;
-                }
-
-                if (inputObjectpropCount > 0)
-                {
-                    body["input"] = inputObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StatelessMessageResponse>(callPayload);
             });
         }
@@ -167,6 +127,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         public string Text { get; set; }
     }
 
+    public class StatefulMessageInput
+    {
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StatefulMessageInputInputType Input { get; set; }
+    }
+
+    public class StatefulMessageInputInputType
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+    }
+
     public class StatelessMessageResponse
     {
         [JsonProperty("output")]
@@ -200,6 +172,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         public string ResponseType { get; set; }
 
         [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class StatelessMessageInput
+    {
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StatelessMessageInputInputType Input { get; set; }
+    }
+
+    public class StatelessMessageInputInputType
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
 }

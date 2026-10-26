@@ -13,104 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
     public class CraftmypdfipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> Create(Expression<Func<string>> bodydata, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<bool>> bodyisCmyk = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> Create(Expression<Func<CreateInput>> body)
         {
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodyexportType = WorkflowExpression.Compile(bodyexportType, nameof(bodyexportType), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            var __workflow_bodyisCmyk = WorkflowExpression.Compile(bodyisCmyk, nameof(bodyisCmyk), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                if (__workflow_bodyexportType != null)
-                {
-                    body["export_type"] = ExpressionConverter.ConvertO(__workflow_bodyexportType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputFile != null)
-                {
-                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisCmyk != null)
-                {
-                    body["is_cmyk"] = ExpressionConverter.ConvertO(__workflow_bodyisCmyk);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> CreateMerge(Expression<Func<JToken[]>> bodytemplates, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<string>> bodypaging = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> CreateMerge(Expression<Func<CreateMergeInput>> body)
         {
-            var __workflow_bodytemplates = WorkflowExpression.Compile(bodytemplates, nameof(bodytemplates), required: true);
-            var __workflow_bodyexportType = WorkflowExpression.Compile(bodyexportType, nameof(bodyexportType), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            var __workflow_bodypaging = WorkflowExpression.Compile(bodypaging, nameof(bodypaging), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create-merge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["templates"] = ExpressionConverter.ConvertO(__workflow_bodytemplates);
-                if (__workflow_bodyexportType != null)
-                {
-                    body["export_type"] = ExpressionConverter.ConvertO(__workflow_bodyexportType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputFile != null)
-                {
-                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypaging != null)
-                {
-                    body["paging"] = ExpressionConverter.ConvertO(__workflow_bodypaging);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
             });
         }
@@ -134,66 +59,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration> NewTemplateFrom(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration> NewTemplateFrom(Expression<Func<NewTemplateFromInput>> body)
         {
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/new-template-from";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessCreateNewTemplate>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyjson = null)
+        public IBodyWorkflowAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<UpdateTemplateInput>> body)
         {
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyjson = WorkflowExpression.Compile(bodyjson, nameof(bodyjson), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/update-template";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyjson != null)
-                {
-                    body["json"] = ExpressionConverter.ConvertO(__workflow_bodyjson);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseUpdateTemplate>(callPayload);
             });
         }
@@ -213,87 +101,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration> CreateEditorSession(Expression<Func<string>> bodytemplateId, Expression<Func<bool>> bodycanSave = null, Expression<Func<bool>> bodycanCreatePDF = null, Expression<Func<bool>> bodycanViewSettings = null, Expression<Func<bool>> bodycanPreview = null, Expression<Func<bool>> bodycanEditJSON = null, Expression<Func<bool>> bodycanShowHeader = null, Expression<Func<int>> bodyjsonMode = null, Expression<Func<string>> bodybackURL = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration> CreateEditorSession(Expression<Func<CreateEditorSessionInput>> body)
         {
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodycanSave = WorkflowExpression.Compile(bodycanSave, nameof(bodycanSave), required: false);
-            var __workflow_bodycanCreatePDF = WorkflowExpression.Compile(bodycanCreatePDF, nameof(bodycanCreatePDF), required: false);
-            var __workflow_bodycanViewSettings = WorkflowExpression.Compile(bodycanViewSettings, nameof(bodycanViewSettings), required: false);
-            var __workflow_bodycanPreview = WorkflowExpression.Compile(bodycanPreview, nameof(bodycanPreview), required: false);
-            var __workflow_bodycanEditJSON = WorkflowExpression.Compile(bodycanEditJSON, nameof(bodycanEditJSON), required: false);
-            var __workflow_bodycanShowHeader = WorkflowExpression.Compile(bodycanShowHeader, nameof(bodycanShowHeader), required: false);
-            var __workflow_bodyjsonMode = WorkflowExpression.Compile(bodyjsonMode, nameof(bodyjsonMode), required: false);
-            var __workflow_bodybackURL = WorkflowExpression.Compile(bodybackURL, nameof(bodybackURL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create-editor-session";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                var expirationObject = new JObject();
-                var expirationObjectpropCount = 0;
-                if (expirationObjectpropCount > 0)
-                {
-                    body["expiration"] = expirationObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycanSave != null)
-                {
-                    body["canSave"] = ExpressionConverter.ConvertO(__workflow_bodycanSave);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycanCreatePDF != null)
-                {
-                    body["canCreatePDF"] = ExpressionConverter.ConvertO(__workflow_bodycanCreatePDF);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycanViewSettings != null)
-                {
-                    body["canViewSettings"] = ExpressionConverter.ConvertO(__workflow_bodycanViewSettings);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycanPreview != null)
-                {
-                    body["canPreview"] = ExpressionConverter.ConvertO(__workflow_bodycanPreview);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycanEditJSON != null)
-                {
-                    body["canEditJSON"] = ExpressionConverter.ConvertO(__workflow_bodycanEditJSON);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycanShowHeader != null)
-                {
-                    body["canShowHeader"] = ExpressionConverter.ConvertO(__workflow_bodycanShowHeader);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyjsonMode != null)
-                {
-                    body["jsonMode"] = ExpressionConverter.ConvertO(__workflow_bodyjsonMode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybackURL != null)
-                {
-                    body["backURL"] = ExpressionConverter.ConvertO(__workflow_bodybackURL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessCreateNewEditorSession>(callPayload);
             });
         }
@@ -329,111 +145,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<JToken[]>> bodyurls, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<MergePdfsInput>> body)
         {
-            var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/merge-pdfs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputFile != null)
-                {
-                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> AddWatermark(Expression<Func<string>> bodyurl, Expression<Func<string>> bodytext, Expression<Func<int>> bodyfontSize = null, Expression<Func<int>> bodyopacity = null, Expression<Func<int>> bodyrotation = null, Expression<Func<string>> bodyhexColor = null, Expression<Func<string>> bodyfontFamily = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> AddWatermark(Expression<Func<AddWatermarkInput>> body)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyfontSize = WorkflowExpression.Compile(bodyfontSize, nameof(bodyfontSize), required: false);
-            var __workflow_bodyopacity = WorkflowExpression.Compile(bodyopacity, nameof(bodyopacity), required: false);
-            var __workflow_bodyrotation = WorkflowExpression.Compile(bodyrotation, nameof(bodyrotation), required: false);
-            var __workflow_bodyhexColor = WorkflowExpression.Compile(bodyhexColor, nameof(bodyhexColor), required: false);
-            var __workflow_bodyfontFamily = WorkflowExpression.Compile(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodyoutputFile = WorkflowExpression.Compile(bodyoutputFile, nameof(bodyoutputFile), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-watermark";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (__workflow_bodyfontSize != null)
-                {
-                    body["font_size"] = ExpressionConverter.ConvertO(__workflow_bodyfontSize);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopacity != null)
-                {
-                    body["opacity"] = ExpressionConverter.ConvertO(__workflow_bodyopacity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrotation != null)
-                {
-                    body["rotation"] = ExpressionConverter.ConvertO(__workflow_bodyrotation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhexColor != null)
-                {
-                    body["hex_color"] = ExpressionConverter.ConvertO(__workflow_bodyhexColor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfontFamily != null)
-                {
-                    body["font_family"] = ExpressionConverter.ConvertO(__workflow_bodyfontFamily);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputFile != null)
-                {
-                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
             });
         }
@@ -455,6 +189,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public string TransactionRef { get; set; }
     }
 
+    public class CreateInput
+    {
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("export_type")]
+        public string ExportType { get; set; }
+
+        [JsonProperty("expiration")]
+        public int? Expiration { get; set; }
+
+        [JsonProperty("output_file")]
+        public string OutputFile { get; set; }
+
+        [JsonProperty("is_cmyk")]
+        public bool? IsCmyk { get; set; }
+    }
+
+    public class CreateMergeInput
+    {
+        [JsonProperty("templates", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Templates { get; set; }
+
+        [JsonProperty("export_type")]
+        public string ExportType { get; set; }
+
+        [JsonProperty("expiration")]
+        public int? Expiration { get; set; }
+
+        [JsonProperty("output_file")]
+        public string OutputFile { get; set; }
+
+        [JsonProperty("paging")]
+        public string Paging { get; set; }
+    }
+
     public class ResponseListTemplate
     {
         [JsonProperty("status")]
@@ -473,10 +246,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public string TemplateId { get; set; }
     }
 
+    public class NewTemplateFromInput
+    {
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     public class ResponseUpdateTemplate
     {
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class UpdateTemplateInput
+    {
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("json")]
+        public string Json { get; set; }
     }
 
     public class ResponseSuccessDeleteTemplate
@@ -492,6 +286,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class CreateEditorSessionInput
+    {
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("expiration")]
+        public JToken Expiration { get; set; }
+
+        [JsonProperty("canSave")]
+        public bool? CanSave { get; set; }
+
+        [JsonProperty("canCreatePDF")]
+        public bool? CanCreatePDF { get; set; }
+
+        [JsonProperty("canViewSettings")]
+        public bool? CanViewSettings { get; set; }
+
+        [JsonProperty("canPreview")]
+        public bool? CanPreview { get; set; }
+
+        [JsonProperty("canEditJSON")]
+        public bool? CanEditJSON { get; set; }
+
+        [JsonProperty("canShowHeader")]
+        public bool? CanShowHeader { get; set; }
+
+        [JsonProperty("jsonMode")]
+        public int? JsonMode { get; set; }
+
+        [JsonProperty("backURL")]
+        public string BackURL { get; set; }
     }
 
     public class ResponseListTransactions
@@ -510,6 +337,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 
         [JsonProperty("transactions")]
         public JToken[] Transactions { get; set; }
+    }
+
+    public class MergePdfsInput
+    {
+        [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] Urls { get; set; }
+
+        [JsonProperty("expiration")]
+        public int? Expiration { get; set; }
+
+        [JsonProperty("output_file")]
+        public string OutputFile { get; set; }
+    }
+
+    public class AddWatermarkInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("font_size")]
+        public int? FontSize { get; set; }
+
+        [JsonProperty("opacity")]
+        public int? Opacity { get; set; }
+
+        [JsonProperty("rotation")]
+        public int? Rotation { get; set; }
+
+        [JsonProperty("hex_color")]
+        public string HexColor { get; set; }
+
+        [JsonProperty("font_family")]
+        public string FontFamily { get; set; }
+
+        [JsonProperty("expiration")]
+        public int? Expiration { get; set; }
+
+        [JsonProperty("output_file")]
+        public string OutputFile { get; set; }
     }
 }
 

@@ -13,117 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
     public class HoneywellforgeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IBodyWorkflowAction<CloseCaseResponse, ApiConnectionActionConfiguration> CloseServiceCaseAtForge(Expression<Func<string>> projectId, Expression<Func<string>> serviceCaseNumber, Expression<Func<string>> bodysiteId, Expression<Func<string>> bodyresolutionText, Expression<Func<string>> bodyworkOrderIDs = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresolutionCode = null, Expression<Func<string>> bodyrootCauseCode = null, Expression<Func<int>> bodyserviceCaseClosedOn = null)
+        public IBodyWorkflowAction<CloseCaseResponse, ApiConnectionActionConfiguration> CloseServiceCaseAtForge(Expression<Func<string>> projectId, Expression<Func<string>> serviceCaseNumber, Expression<Func<CloseServiceCaseAtForgeInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_serviceCaseNumber = WorkflowExpression.Compile(serviceCaseNumber, nameof(serviceCaseNumber), required: true);
-            var __workflow_bodysiteId = WorkflowExpression.Compile(bodysiteId, nameof(bodysiteId), required: true);
-            var __workflow_bodyresolutionText = WorkflowExpression.Compile(bodyresolutionText, nameof(bodyresolutionText), required: true);
-            var __workflow_bodyworkOrderIDs = WorkflowExpression.Compile(bodyworkOrderIDs, nameof(bodyworkOrderIDs), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyresolutionCode = WorkflowExpression.Compile(bodyresolutionCode, nameof(bodyresolutionCode), required: false);
-            var __workflow_bodyrootCauseCode = WorkflowExpression.Compile(bodyrootCauseCode, nameof(bodyrootCauseCode), required: false);
-            var __workflow_bodyserviceCaseClosedOn = WorkflowExpression.Compile(bodyserviceCaseClosedOn, nameof(bodyserviceCaseClosedOn), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CloseCaseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/service-cases/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_serviceCaseNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["siteId"] = ExpressionConverter.ConvertO(__workflow_bodysiteId);
-                body["status"] = "Closed";
-                bodypropCount++;
-                if (__workflow_bodyworkOrderIDs != null)
-                {
-                    body["workOrderIDs"] = ExpressionConverter.ConvertO(__workflow_bodyworkOrderIDs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    if (__workflow_bodypriority != null)
-                    {
-                        body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["priority"] = "Medium";
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["resolutionText"] = ExpressionConverter.ConvertO(__workflow_bodyresolutionText);
-                if (__workflow_bodyresolutionCode != null)
-                {
-                    body["resolutionCode"] = ExpressionConverter.ConvertO(__workflow_bodyresolutionCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrootCauseCode != null)
-                {
-                    body["rootCauseCode"] = ExpressionConverter.ConvertO(__workflow_bodyrootCauseCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyserviceCaseClosedOn != null)
-                {
-                    body["serviceCaseClosedOn"] = ExpressionConverter.ConvertO(__workflow_bodyserviceCaseClosedOn);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CloseCaseResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEventToForge(Expression<Func<string>> projectId, Expression<Func<string>> bodyeventName, Expression<Func<string>> bodyeventType, Expression<Func<string>> bodymessage, Expression<Func<string>> bodycorrelationId, Expression<Func<string>> bodysource, Expression<Func<string>> bodyconnectorId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEventToForge(Expression<Func<string>> projectId, Expression<Func<SendEventToForgeInput>> body = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: true);
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: true);
-            var __workflow_bodyconnectorId = WorkflowExpression.Compile(bodyconnectorId, nameof(bodyconnectorId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/transactionEvent", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyeventName);
-                bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                bodypropCount++;
-                body["corelationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
-                if (__workflow_bodyconnectorId != null)
-                {
-                    body["connectorId"] = ExpressionConverter.ConvertO(__workflow_bodyconnectorId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -131,24 +47,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
 
     public class HoneywellforgeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId, Expression<Func<ServiceCaseCreatedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_connectorId = WorkflowExpression.Compile(connectorId, nameof(connectorId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/webhooks/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_connectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -158,6 +67,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
     {
         [JsonProperty("correlationId")]
         public string CorrelationId { get; set; }
+    }
+
+    public class CloseServiceCaseAtForgeInput
+    {
+        [JsonProperty("siteId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteId { get; set; }
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Status { get; set; } = "Closed";
+
+        [JsonProperty("workOrderIDs")]
+        public string WorkOrderIDs { get; set; }
+
+        [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Priority { get; set; } = "Medium";
+
+        [JsonProperty("resolutionText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ResolutionText { get; set; }
+
+        [JsonProperty("resolutionCode")]
+        public string ResolutionCode { get; set; }
+
+        [JsonProperty("rootCauseCode")]
+        public string RootCauseCode { get; set; }
+
+        [JsonProperty("serviceCaseClosedOn")]
+        public int? ServiceCaseClosedOn { get; set; }
+    }
+
+    public class SendEventToForgeInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventName { get; set; } = "defaultEvent";
+
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventType { get; set; } = "defaultEventType";
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; } = "defaultMessage";
+
+        [JsonProperty("corelationId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CorrelationId { get; set; } = "defaultCorrelationID";
+
+        [JsonProperty("connectorId")]
+        public string ConnectorId { get; set; }
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Source { get; set; } = "defaultSource";
+    }
+
+    public class ServiceCaseCreatedInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -36,11 +36,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse, ApiConnectionActionConfiguration> NotebookExecution(Expression<Func<bool>> report = null, Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        public IBodyWorkflowAction<NotebookResponse, ApiConnectionActionConfiguration> NotebookExecution(Expression<Func<NotebookExecutionInput>> parameters, Expression<Func<bool>> report = null)
         {
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             var __workflow_report = WorkflowExpression.Compile(report, nameof(report), required: false);
-            var __workflow_parametersnotebook = WorkflowExpression.Compile(parametersnotebook, nameof(parametersnotebook), required: false);
-            var __workflow_parametersparameters = WorkflowExpression.Compile(parametersparameters, nameof(parametersparameters), required: false);
             return new DeferredBodyAction<NotebookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/NotebookExecutions";
@@ -52,58 +51,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
                 callPayload.Queries["report"] = Convert.ToString(false);
                 if (__workflow_report != null)
                     callPayload.Queries["report"] = ExpressionConverter.Convert(__workflow_report);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                if (__workflow_parametersnotebook != null)
-                {
-                    parameters["notebook"] = ExpressionConverter.ConvertO(__workflow_parametersnotebook);
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parametersparameters != null)
-                {
-                    parameters["parameters"] = ExpressionConverter.ConvertO(__workflow_parametersparameters);
-                    parameterspropCount++;
-                }
-
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<NotebookResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<SynapseResponse, ApiConnectionActionConfiguration> UploadToSynapse(Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        public IBodyWorkflowAction<SynapseResponse, ApiConnectionActionConfiguration> UploadToSynapse(Expression<Func<UploadToSynapseInput>> parameters = null)
         {
-            var __workflow_parametersnotebook = WorkflowExpression.Compile(parametersnotebook, nameof(parametersnotebook), required: false);
-            var __workflow_parametersparameters = WorkflowExpression.Compile(parametersparameters, nameof(parametersparameters), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<SynapseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Synapse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                if (__workflow_parametersnotebook != null)
-                {
-                    parameters["notebook"] = ExpressionConverter.ConvertO(__workflow_parametersnotebook);
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parametersparameters != null)
-                {
-                    parameters["parameters"] = ExpressionConverter.ConvertO(__workflow_parametersparameters);
-                    parameterspropCount++;
-                }
-
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                if (__workflow_parameters != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<SynapseResponse>(callPayload);
             });
         }
@@ -143,10 +106,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         public string Exception { get; set; }
     }
 
+    public class NotebookExecutionInput
+    {
+        [JsonProperty("notebook")]
+        public string Notebook { get; set; }
+
+        [JsonProperty("parameters")]
+        public JToken Parameters { get; set; }
+    }
+
     public class SynapseResponse
     {
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class UploadToSynapseInput
+    {
+        [JsonProperty("notebook")]
+        public string Notebook { get; set; }
+
+        [JsonProperty("parameters")]
+        public JToken Parameters { get; set; }
     }
 }
 

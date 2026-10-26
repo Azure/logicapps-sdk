@@ -28,288 +28,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
-        public IBodyWorkflowAction<CreateConversionResponse, ApiConnectionActionConfiguration> CreateConversion(Expression<Func<string>> bodyeventName, Expression<Func<int>> bodyamountCents = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodyeventId = null, Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodycustomerId = null, Expression<Func<string>> bodyattributionToken = null, Expression<Func<string>> bodyoccurredAt = null, Expression<Func<string>> bodyvisitorIP = null)
+        public IBodyWorkflowAction<CreateConversionResponse, ApiConnectionActionConfiguration> CreateConversion(Expression<Func<CreateConversionInput>> body)
         {
-            var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: true);
-            var __workflow_bodyamountCents = WorkflowExpression.Compile(bodyamountCents, nameof(bodyamountCents), required: false);
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
-            var __workflow_bodycurrency = WorkflowExpression.Compile(bodycurrency, nameof(bodycurrency), required: false);
-            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: false);
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: false);
-            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
-            var __workflow_bodyattributionToken = WorkflowExpression.Compile(bodyattributionToken, nameof(bodyattributionToken), required: false);
-            var __workflow_bodyoccurredAt = WorkflowExpression.Compile(bodyoccurredAt, nameof(bodyoccurredAt), required: false);
-            var __workflow_bodyvisitorIP = WorkflowExpression.Compile(bodyvisitorIP, nameof(bodyvisitorIP), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateConversionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyamountCents != null)
-                {
-                    body["amount_cents"] = ExpressionConverter.ConvertO(__workflow_bodyamountCents);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycountry != null)
-                {
-                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycurrency != null)
-                {
-                    body["currency"] = ExpressionConverter.ConvertO(__workflow_bodycurrency);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyeventId != null)
-                {
-                    body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["event_name"] = ExpressionConverter.ConvertO(__workflow_bodyeventName);
-                if (__workflow_bodyeventType != null)
-                {
-                    body["event_type"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomerId != null)
-                {
-                    body["external_id"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyattributionToken != null)
-                {
-                    body["linkly_cid"] = ExpressionConverter.ConvertO(__workflow_bodyattributionToken);
-                    bodypropCount++;
-                }
-
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoccurredAt != null)
-                {
-                    body["occurred_at"] = ExpressionConverter.ConvertO(__workflow_bodyoccurredAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvisitorIP != null)
-                {
-                    body["visitor_ip"] = ExpressionConverter.ConvertO(__workflow_bodyvisitorIP);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateConversionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
-        public IBodyWorkflowAction<CreateOrUpdateLinkResponse, ApiConnectionActionConfiguration> CreateOrUpdateLink(Expression<Func<string>> bodydestinationURL = null, Expression<Func<int>> bodylinkId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyslug = null, Expression<Func<bool>> bodyenabled = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyuTMSource = null, Expression<Func<string>> bodyuTMMedium = null, Expression<Func<string>> bodyuTMCampaign = null, Expression<Func<string>> bodyuTMContent = null, Expression<Func<string>> bodyuTMTerm = null, Expression<Func<string>> bodymetaPixelId = null, Expression<Func<string>> bodygoogleAnalytics4TagId = null, Expression<Func<string>> bodygoogleTagManagerId = null, Expression<Func<bool>> bodyblockBots = null, Expression<Func<string>> bodybodyTags = null, Expression<Func<bool>> bodycloaking = null, Expression<Func<bool>> bodyforwardParameters = null, Expression<Func<string>> bodyheadTags = null, Expression<Func<bool>> bodyhideReferrer = null, Expression<Func<string>> bodyopenGraphDescription = null, Expression<Func<string>> bodyopenGraphImage = null, Expression<Func<string>> bodyopenGraphTitle = null, Expression<Func<string>> bodytikTokPixelId = null)
+        public IBodyWorkflowAction<CreateOrUpdateLinkResponse, ApiConnectionActionConfiguration> CreateOrUpdateLink(Expression<Func<CreateOrUpdateLinkInput>> body)
         {
-            var __workflow_bodydestinationURL = WorkflowExpression.Compile(bodydestinationURL, nameof(bodydestinationURL), required: false);
-            var __workflow_bodylinkId = WorkflowExpression.Compile(bodylinkId, nameof(bodylinkId), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodyenabled = WorkflowExpression.Compile(bodyenabled, nameof(bodyenabled), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodyuTMSource = WorkflowExpression.Compile(bodyuTMSource, nameof(bodyuTMSource), required: false);
-            var __workflow_bodyuTMMedium = WorkflowExpression.Compile(bodyuTMMedium, nameof(bodyuTMMedium), required: false);
-            var __workflow_bodyuTMCampaign = WorkflowExpression.Compile(bodyuTMCampaign, nameof(bodyuTMCampaign), required: false);
-            var __workflow_bodyuTMContent = WorkflowExpression.Compile(bodyuTMContent, nameof(bodyuTMContent), required: false);
-            var __workflow_bodyuTMTerm = WorkflowExpression.Compile(bodyuTMTerm, nameof(bodyuTMTerm), required: false);
-            var __workflow_bodymetaPixelId = WorkflowExpression.Compile(bodymetaPixelId, nameof(bodymetaPixelId), required: false);
-            var __workflow_bodygoogleAnalytics4TagId = WorkflowExpression.Compile(bodygoogleAnalytics4TagId, nameof(bodygoogleAnalytics4TagId), required: false);
-            var __workflow_bodygoogleTagManagerId = WorkflowExpression.Compile(bodygoogleTagManagerId, nameof(bodygoogleTagManagerId), required: false);
-            var __workflow_bodyblockBots = WorkflowExpression.Compile(bodyblockBots, nameof(bodyblockBots), required: false);
-            var __workflow_bodybodyTags = WorkflowExpression.Compile(bodybodyTags, nameof(bodybodyTags), required: false);
-            var __workflow_bodycloaking = WorkflowExpression.Compile(bodycloaking, nameof(bodycloaking), required: false);
-            var __workflow_bodyforwardParameters = WorkflowExpression.Compile(bodyforwardParameters, nameof(bodyforwardParameters), required: false);
-            var __workflow_bodyheadTags = WorkflowExpression.Compile(bodyheadTags, nameof(bodyheadTags), required: false);
-            var __workflow_bodyhideReferrer = WorkflowExpression.Compile(bodyhideReferrer, nameof(bodyhideReferrer), required: false);
-            var __workflow_bodyopenGraphDescription = WorkflowExpression.Compile(bodyopenGraphDescription, nameof(bodyopenGraphDescription), required: false);
-            var __workflow_bodyopenGraphImage = WorkflowExpression.Compile(bodyopenGraphImage, nameof(bodyopenGraphImage), required: false);
-            var __workflow_bodyopenGraphTitle = WorkflowExpression.Compile(bodyopenGraphTitle, nameof(bodyopenGraphTitle), required: false);
-            var __workflow_bodytikTokPixelId = WorkflowExpression.Compile(bodytikTokPixelId, nameof(bodytikTokPixelId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateOrUpdateLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/link";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydestinationURL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodydestinationURL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylinkId != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodylinkId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydomain != null)
-                {
-                    body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyslug != null)
-                {
-                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyenabled != null)
-                {
-                    body["enabled"] = ExpressionConverter.ConvertO(__workflow_bodyenabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuTMSource != null)
-                {
-                    body["utm_source"] = ExpressionConverter.ConvertO(__workflow_bodyuTMSource);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuTMMedium != null)
-                {
-                    body["utm_medium"] = ExpressionConverter.ConvertO(__workflow_bodyuTMMedium);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuTMCampaign != null)
-                {
-                    body["utm_campaign"] = ExpressionConverter.ConvertO(__workflow_bodyuTMCampaign);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuTMContent != null)
-                {
-                    body["utm_content"] = ExpressionConverter.ConvertO(__workflow_bodyuTMContent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuTMTerm != null)
-                {
-                    body["utm_term"] = ExpressionConverter.ConvertO(__workflow_bodyuTMTerm);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymetaPixelId != null)
-                {
-                    body["fb_pixel_id"] = ExpressionConverter.ConvertO(__workflow_bodymetaPixelId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoogleAnalytics4TagId != null)
-                {
-                    body["ga4_tag_id"] = ExpressionConverter.ConvertO(__workflow_bodygoogleAnalytics4TagId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoogleTagManagerId != null)
-                {
-                    body["gtm_id"] = ExpressionConverter.ConvertO(__workflow_bodygoogleTagManagerId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyblockBots != null)
-                {
-                    body["block_bots"] = ExpressionConverter.ConvertO(__workflow_bodyblockBots);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybodyTags != null)
-                {
-                    body["body_tags"] = ExpressionConverter.ConvertO(__workflow_bodybodyTags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycloaking != null)
-                {
-                    body["cloaking"] = ExpressionConverter.ConvertO(__workflow_bodycloaking);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyforwardParameters != null)
-                {
-                    body["forward_params"] = ExpressionConverter.ConvertO(__workflow_bodyforwardParameters);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyheadTags != null)
-                {
-                    body["head_tags"] = ExpressionConverter.ConvertO(__workflow_bodyheadTags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhideReferrer != null)
-                {
-                    body["hide_referrer"] = ExpressionConverter.ConvertO(__workflow_bodyhideReferrer);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopenGraphDescription != null)
-                {
-                    body["og_description"] = ExpressionConverter.ConvertO(__workflow_bodyopenGraphDescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopenGraphImage != null)
-                {
-                    body["og_image"] = ExpressionConverter.ConvertO(__workflow_bodyopenGraphImage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopenGraphTitle != null)
-                {
-                    body["og_title"] = ExpressionConverter.ConvertO(__workflow_bodyopenGraphTitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytikTokPixelId != null)
-                {
-                    body["tiktok_pixel_id"] = ExpressionConverter.ConvertO(__workflow_bodytikTokPixelId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateOrUpdateLinkResponse>(callPayload);
             });
         }
@@ -617,8 +358,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         Unknown
     }
 
+    public class CreateConversionInput
+    {
+        [JsonProperty("amount_cents")]
+        public int? AmountCents { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("event_id")]
+        public string EventId { get; set; }
+
+        [JsonProperty("event_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventName { get; set; }
+
+        [JsonProperty("event_type")]
+        public CreateConversionInputEventTypeType? EventType { get; set; }
+
+        [JsonProperty("external_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("linkly_cid")]
+        public string AttributionToken { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("occurred_at")]
+        public string OccurredAt { get; set; }
+
+        [JsonProperty("visitor_ip")]
+        public string VisitorIP { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventTypeInput
+    public enum CreateConversionInputEventTypeType
     {
         [EnumMember(Value = "lead")]
         Lead,
@@ -785,6 +562,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
 
         [JsonProperty("what")]
         public string What { get; set; }
+    }
+
+    public class CreateOrUpdateLinkInput
+    {
+        [JsonProperty("url")]
+        public string DestinationURL { get; set; }
+
+        [JsonProperty("id")]
+        public int? LinkId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("domain")]
+        public string Domain { get; set; }
+
+        [JsonProperty("slug")]
+        public string Slug { get; set; }
+
+        [JsonProperty("enabled")]
+        public bool? Enabled { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("utm_source")]
+        public string UTMSource { get; set; }
+
+        [JsonProperty("utm_medium")]
+        public string UTMMedium { get; set; }
+
+        [JsonProperty("utm_campaign")]
+        public string UTMCampaign { get; set; }
+
+        [JsonProperty("utm_content")]
+        public string UTMContent { get; set; }
+
+        [JsonProperty("utm_term")]
+        public string UTMTerm { get; set; }
+
+        [JsonProperty("fb_pixel_id")]
+        public string MetaPixelId { get; set; }
+
+        [JsonProperty("ga4_tag_id")]
+        public string GoogleAnalytics4TagId { get; set; }
+
+        [JsonProperty("gtm_id")]
+        public string GoogleTagManagerId { get; set; }
+
+        [JsonProperty("block_bots")]
+        public bool? BlockBots { get; set; }
+
+        [JsonProperty("body_tags")]
+        public string BodyTags { get; set; }
+
+        [JsonProperty("cloaking")]
+        public bool? Cloaking { get; set; }
+
+        [JsonProperty("forward_params")]
+        public bool? ForwardParameters { get; set; }
+
+        [JsonProperty("head_tags")]
+        public string HeadTags { get; set; }
+
+        [JsonProperty("hide_referrer")]
+        public bool? HideReferrer { get; set; }
+
+        [JsonProperty("og_description")]
+        public string OpenGraphDescription { get; set; }
+
+        [JsonProperty("og_image")]
+        public string OpenGraphImage { get; set; }
+
+        [JsonProperty("og_title")]
+        public string OpenGraphTitle { get; set; }
+
+        [JsonProperty("tiktok_pixel_id")]
+        public string TikTokPixelId { get; set; }
     }
 
     public class GetLinkResponse

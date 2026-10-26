@@ -13,26 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
     public class BizzyadminActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
-        public IBodyWorkflowAction<AdminRedactBotMessagePayload, ApiConnectionActionConfiguration> AdminRedactBotMessage(Expression<Func<string>> contentmessageReference, Expression<Func<string>> contentredactionMessage)
+        public IBodyWorkflowAction<AdminRedactBotMessagePayload, ApiConnectionActionConfiguration> AdminRedactBotMessage(Expression<Func<AdminRedactBotMessageInput>> content)
         {
-            var __workflow_contentmessageReference = WorkflowExpression.Compile(contentmessageReference, nameof(contentmessageReference), required: true);
-            var __workflow_contentredactionMessage = WorkflowExpression.Compile(contentredactionMessage, nameof(contentredactionMessage), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<AdminRedactBotMessagePayload, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/admin/redactBotMessage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["messageRef"] = ExpressionConverter.ConvertO(__workflow_contentmessageReference);
-                contentpropCount++;
-                content["redactionMessage"] = ExpressionConverter.ConvertO(__workflow_contentredactionMessage);
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<AdminRedactBotMessagePayload>(callPayload);
             });
         }
@@ -51,10 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateAdminItem(Expression<Func<int>> type, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateAdminItem(Expression<Func<int>> type, Expression<Func<object>> content)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/triggers/admin/AdminItems/{0}", __workflow_type.WithUrlEncoding(1)));
@@ -66,10 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> UpdateAdminItem(Expression<Func<int>> type, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> UpdateAdminItem(Expression<Func<int>> type, Expression<Func<object>> content)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/triggers/admin/AdminItems/{0}", __workflow_type.WithUrlEncoding(1)));
@@ -111,45 +100,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
 
     public class BizzyadminTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPostSkillModified(Expression<Func<string[]>> webHookfilters = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPostSkillModified(Expression<Func<WebHookRegistrationsPostSkillModifiedInput>> webHook, FlowRecurrence recurrence = null)
         {
-            var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerAdmin_SkillModified";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHook = new JObject();
-                var webHookpropCount = 0;
-                webHook["webHookUri"] = "#{listCallbackUrl()}";
-                webHookpropCount++;
-                if (__workflow_webHookfilters != null)
-                {
-                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
-                    webHookpropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    webHook["headers"] = headersObject;
-                    webHookpropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    webHook["properties"] = propertiesObject;
-                    webHookpropCount++;
-                }
-
-                if (webHookpropCount > 0)
-                {
-                    callPayload.Body = webHook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
             });
         }
@@ -159,6 +118,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
     {
         [JsonProperty("response")]
         public string Response { get; set; }
+    }
+
+    public class AdminRedactBotMessageInput
+    {
+        [JsonProperty("messageRef", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MessageReference { get; set; }
+
+        [JsonProperty("redactionMessage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RedactionMessage { get; set; }
     }
 
     public class WebHook
@@ -177,6 +145,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
 
         [JsonProperty("isPaused")]
         public bool IsPaused { get; set; }
+
+        [JsonProperty("filters")]
+        public string[] Filters { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+    }
+
+    public class WebHookRegistrationsPostSkillModifiedInput
+    {
+        [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("filters")]
         public string[] Filters { get; set; }

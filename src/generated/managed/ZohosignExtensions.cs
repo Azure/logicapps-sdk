@@ -13,23 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     public class ZohosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeAPI(Expression<Func<string>> url, Expression<Func<methodInput>> method)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeAPI(Expression<Func<string>> url, Expression<Func<methodInput>> method, Expression<Func<object>> body = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_url.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -140,132 +136,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
-        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> requestId, Expression<Func<string>> bodyrequestsrequestTypeId = null, Expression<Func<string>> bodyrequestsrequestName = null, Expression<Func<bodyrequestsactionsInputItem[]>> bodyrequestsactions = null, Expression<Func<int>> bodyrequestsexpirationDays = null, Expression<Func<bool>> bodyrequestsisSequential = null, Expression<Func<bool>> bodyrequestsemailReminders = null, Expression<Func<int>> bodyrequestsreminderPeriod = null, Expression<Func<string>> bodyrequestsfolderId = null, Expression<Func<string>> bodyrequestsnotes = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> requestId, Expression<Func<UpdateDocumentInput>> body)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            var __workflow_bodyrequestsrequestTypeId = WorkflowExpression.Compile(bodyrequestsrequestTypeId, nameof(bodyrequestsrequestTypeId), required: false);
-            var __workflow_bodyrequestsrequestName = WorkflowExpression.Compile(bodyrequestsrequestName, nameof(bodyrequestsrequestName), required: false);
-            var __workflow_bodyrequestsactions = WorkflowExpression.Compile(bodyrequestsactions, nameof(bodyrequestsactions), required: false);
-            var __workflow_bodyrequestsexpirationDays = WorkflowExpression.Compile(bodyrequestsexpirationDays, nameof(bodyrequestsexpirationDays), required: false);
-            var __workflow_bodyrequestsisSequential = WorkflowExpression.Compile(bodyrequestsisSequential, nameof(bodyrequestsisSequential), required: false);
-            var __workflow_bodyrequestsemailReminders = WorkflowExpression.Compile(bodyrequestsemailReminders, nameof(bodyrequestsemailReminders), required: false);
-            var __workflow_bodyrequestsreminderPeriod = WorkflowExpression.Compile(bodyrequestsreminderPeriod, nameof(bodyrequestsreminderPeriod), required: false);
-            var __workflow_bodyrequestsfolderId = WorkflowExpression.Compile(bodyrequestsfolderId, nameof(bodyrequestsfolderId), required: false);
-            var __workflow_bodyrequestsnotes = WorkflowExpression.Compile(bodyrequestsnotes, nameof(bodyrequestsnotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var requestsObject = new JObject();
-                var requestsObjectpropCount = 0;
-                if (__workflow_bodyrequestsrequestTypeId != null)
-                {
-                    requestsObject["request_type_id"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsrequestTypeId);
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsrequestName != null)
-                {
-                    requestsObject["request_name"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsrequestName);
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsactions != null)
-                {
-                    requestsObject["actions"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsactions);
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsexpirationDays != null)
-                {
-                    if (__workflow_bodyrequestsexpirationDays != null)
-                    {
-                        requestsObject["expiration_days"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsexpirationDays);
-                        requestsObjectpropCount++;
-                    }
-
-                    requestsObjectpropCount++;
-                }
-                else
-                {
-                    requestsObject["expiration_days"] = 15;
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsisSequential != null)
-                {
-                    if (__workflow_bodyrequestsisSequential != null)
-                    {
-                        requestsObject["is_sequential"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsisSequential);
-                        requestsObjectpropCount++;
-                    }
-
-                    requestsObjectpropCount++;
-                }
-                else
-                {
-                    requestsObject["is_sequential"] = true;
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsemailReminders != null)
-                {
-                    if (__workflow_bodyrequestsemailReminders != null)
-                    {
-                        requestsObject["email_reminders"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsemailReminders);
-                        requestsObjectpropCount++;
-                    }
-
-                    requestsObjectpropCount++;
-                }
-                else
-                {
-                    requestsObject["email_reminders"] = true;
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsreminderPeriod != null)
-                {
-                    if (__workflow_bodyrequestsreminderPeriod != null)
-                    {
-                        requestsObject["reminder_period"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsreminderPeriod);
-                        requestsObjectpropCount++;
-                    }
-
-                    requestsObjectpropCount++;
-                }
-                else
-                {
-                    requestsObject["reminder_period"] = 5;
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsfolderId != null)
-                {
-                    requestsObject["folder_id"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsfolderId);
-                    requestsObjectpropCount++;
-                }
-
-                if (__workflow_bodyrequestsnotes != null)
-                {
-                    requestsObject["notes"] = ExpressionConverter.ConvertO(__workflow_bodyrequestsnotes);
-                    requestsObjectpropCount++;
-                }
-
-                if (requestsObjectpropCount > 0)
-                {
-                    body["requests"] = requestsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
             });
         }
@@ -311,29 +191,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
 
     public class ZohosignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ZohoSignTriggers(Expression<Func<bodywebhookActionsInput>> bodywebhookActions, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ZohoSignTriggers(Expression<Func<ZohoSignTriggersInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodywebhookActions = WorkflowExpression.Compile(bodywebhookActions, nameof(bodywebhookActions), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/internal/accounts/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhook_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["webhook_actions"] = ExpressionConverter.ConvertO(__workflow_bodywebhookActions);
-                body["purpose"] = "Microsoft PowerAutomate";
-                bodypropCount++;
-                body["appname"] = "Microsoft PowerAutomate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -632,7 +498,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string Status { get; set; }
     }
 
-    public class bodyrequestsactionsInputItem
+    public class UpdateDocumentInput
+    {
+        [JsonProperty("requests", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateDocumentInputRequestsType Requests { get; set; }
+    }
+
+    public class UpdateDocumentInputRequestsType
+    {
+        [JsonProperty("request_type_id")]
+        public string RequestTypeId { get; set; }
+
+        [JsonProperty("request_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RequestName { get; set; }
+
+        [JsonProperty("actions")]
+        public UpdateDocumentInputRequestsTypeActionsTypeItem[] Actions { get; set; }
+
+        [JsonProperty("expiration_days", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? ExpirationDays { get; set; } = 15;
+
+        [JsonProperty("is_sequential", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsSequential { get; set; } = true;
+
+        [JsonProperty("email_reminders", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? EmailReminders { get; set; } = true;
+
+        [JsonProperty("reminder_period", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? ReminderPeriod { get; set; } = 5;
+
+        [JsonProperty("folder_id")]
+        public string FolderId { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+    }
+
+    public class UpdateDocumentInputRequestsTypeActionsTypeItem
     {
         [JsonProperty("recipient_name")]
         public string RecipientName { get; set; }
@@ -646,27 +548,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         [JsonProperty("recipient_countrycode")]
         public string RecipientCountrycode { get; set; }
 
-        [JsonProperty("action_type")]
-        public bodyrequestsactionsInputItemActionTypeType ActionType { get; set; }
+        [JsonProperty("action_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateDocumentInputRequestsTypeActionsTypeItemActionTypeType? ActionType { get; set; } = UpdateDocumentInputRequestsTypeActionsTypeItemActionTypeType.SIGN;
 
         [JsonProperty("private_notes")]
         public string PrivateNotes { get; set; }
 
-        [JsonProperty("signing_order")]
-        public int SigningOrder { get; set; }
+        [JsonProperty("signing_order", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SigningOrder { get; set; } = 1;
 
-        [JsonProperty("verify_recipient")]
-        public bool VerifyRecipient { get; set; }
+        [JsonProperty("verify_recipient", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? VerifyRecipient { get; set; } = false;
 
-        [JsonProperty("verification_type")]
-        public bodyrequestsactionsInputItemVerificationTypeType VerificationType { get; set; }
+        [JsonProperty("verification_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateDocumentInputRequestsTypeActionsTypeItemVerificationTypeType? VerificationType { get; set; } = UpdateDocumentInputRequestsTypeActionsTypeItemVerificationTypeType.NONE;
 
         [JsonProperty("verification_code")]
         public string VerificationCode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrequestsactionsInputItemActionTypeType
+    public enum UpdateDocumentInputRequestsTypeActionsTypeItemActionTypeType
     {
         SIGN,
         VIEW,
@@ -675,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrequestsactionsInputItemVerificationTypeType
+    public enum UpdateDocumentInputRequestsTypeActionsTypeItemVerificationTypeType
     {
         NONE,
         OFFLINE,
@@ -710,8 +612,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string TemplateName { get; set; }
     }
 
+    public class ZohoSignTriggersInput
+    {
+        [JsonProperty("webhook_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("webhook_actions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ZohoSignTriggersInputWebhookActionsType WebhookActions { get; set; }
+
+        [JsonProperty("purpose", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Purpose { get; set; } = "Microsoft PowerAutomate";
+
+        [JsonProperty("appname", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Appname { get; set; } = "Microsoft PowerAutomate";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodywebhookActionsInput
+    public enum ZohoSignTriggersInputWebhookActionsType
     {
         Sign,
         Decline,

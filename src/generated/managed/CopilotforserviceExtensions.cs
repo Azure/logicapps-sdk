@@ -13,61 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
     public class CopilotforserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> NaturalQueryTextSearch(Expression<Func<string>> bodyprompt = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> NaturalQueryTextSearch(Expression<Func<NaturalQueryTextSearchInput>> body = null)
         {
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/orchestrator/connector";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyprompt != null)
-                {
-                    body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> ExecuteSkill(Expression<Func<ExecuteSkillInput>> body = null)
         {
-            var __workflow_bodyskillId = WorkflowExpression.Compile(bodyskillId, nameof(bodyskillId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/orchestrator/executeSkill";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyskillId != null)
-                {
-                    body["SkillId"] = ExpressionConverter.ConvertO(__workflow_bodyskillId);
-                    bodypropCount++;
-                }
-
-                var inputParametersObject = new JObject();
-                var inputParametersObjectpropCount = 0;
-                if (inputParametersObjectpropCount > 0)
-                {
-                    body["InputParameters"] = inputParametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
             });
         }
@@ -159,6 +129,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
 
         [JsonProperty("allowedValues")]
         public JToken[] AllowedValues { get; set; }
+    }
+
+    public class NaturalQueryTextSearchInput
+    {
+        [JsonProperty("prompt")]
+        public string Prompt { get; set; }
+    }
+
+    public class ExecuteSkillInput
+    {
+        public string SkillId { get; set; }
+        public JToken InputParameters { get; set; }
     }
 }
 

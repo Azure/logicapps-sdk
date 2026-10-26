@@ -25,154 +25,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<NumberLookupResponse, ApiConnectionActionConfiguration> NumberLookup(Expression<Func<string>> bodyrecipient)
+        public IBodyWorkflowAction<NumberLookupResponse, ApiConnectionActionConfiguration> NumberLookup(Expression<Func<NumberLookupInput>> body = null)
         {
-            var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<NumberLookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hlr/v1/lookup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["recipient"] = ExpressionConverter.ConvertO(__workflow_bodyrecipient);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NumberLookupResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<string>> bodyoriginator, Expression<Func<string>> bodyrecipient, Expression<Func<string>> bodycontent, Expression<Func<bodydataCodingInput>> bodydataCoding, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodyretryDelay = null, Expression<Func<string>> bodyretryCount = null, Expression<Func<string>> bodyotpCodeLength = null, Expression<Func<bodyotpTypeInput>> bodyotpType = null, Expression<Func<string>> bodysuccessUrl = null, Expression<Func<string>> bodyfailureUrl = null)
+        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<OTPSendOTPInput>> body = null)
         {
-            var __workflow_bodyoriginator = WorkflowExpression.Compile(bodyoriginator, nameof(bodyoriginator), required: true);
-            var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodydataCoding = WorkflowExpression.Compile(bodydataCoding, nameof(bodydataCoding), required: true);
-            var __workflow_bodyexpiry = WorkflowExpression.Compile(bodyexpiry, nameof(bodyexpiry), required: false);
-            var __workflow_bodyretryDelay = WorkflowExpression.Compile(bodyretryDelay, nameof(bodyretryDelay), required: false);
-            var __workflow_bodyretryCount = WorkflowExpression.Compile(bodyretryCount, nameof(bodyretryCount), required: false);
-            var __workflow_bodyotpCodeLength = WorkflowExpression.Compile(bodyotpCodeLength, nameof(bodyotpCodeLength), required: false);
-            var __workflow_bodyotpType = WorkflowExpression.Compile(bodyotpType, nameof(bodyotpType), required: false);
-            var __workflow_bodysuccessUrl = WorkflowExpression.Compile(bodysuccessUrl, nameof(bodysuccessUrl), required: false);
-            var __workflow_bodyfailureUrl = WorkflowExpression.Compile(bodyfailureUrl, nameof(bodyfailureUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OTPSendOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/send-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["originator"] = ExpressionConverter.ConvertO(__workflow_bodyoriginator);
-                bodypropCount++;
-                body["recipient"] = ExpressionConverter.ConvertO(__workflow_bodyrecipient);
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                bodypropCount++;
-                body["data_coding"] = ExpressionConverter.ConvertO(__workflow_bodydataCoding);
-                if (__workflow_bodyexpiry != null)
-                {
-                    body["expiry"] = ExpressionConverter.ConvertO(__workflow_bodyexpiry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyretryDelay != null)
-                {
-                    body["retry_delay"] = ExpressionConverter.ConvertO(__workflow_bodyretryDelay);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyretryCount != null)
-                {
-                    body["retry_count"] = ExpressionConverter.ConvertO(__workflow_bodyretryCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyotpCodeLength != null)
-                {
-                    body["otp_code_length"] = ExpressionConverter.ConvertO(__workflow_bodyotpCodeLength);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyotpType != null)
-                {
-                    body["otp_type"] = ExpressionConverter.ConvertO(__workflow_bodyotpType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuccessUrl != null)
-                {
-                    body["success_url"] = ExpressionConverter.ConvertO(__workflow_bodysuccessUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfailureUrl != null)
-                {
-                    body["failure_url"] = ExpressionConverter.ConvertO(__workflow_bodyfailureUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OTPSendOTPResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<string>> bodyotpId)
+        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<OTPResendOTPInput>> body = null)
         {
-            var __workflow_bodyotpId = WorkflowExpression.Compile(bodyotpId, nameof(bodyotpId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OTPResendOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/resend-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["otp_id"] = ExpressionConverter.ConvertO(__workflow_bodyotpId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OTPResendOTPResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<string>> bodyotpCode, Expression<Func<string>> bodyotpId = null)
+        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<OTPVerifyOTPInput>> body = null)
         {
-            var __workflow_bodyotpCode = WorkflowExpression.Compile(bodyotpCode, nameof(bodyotpCode), required: true);
-            var __workflow_bodyotpId = WorkflowExpression.Compile(bodyotpId, nameof(bodyotpId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/verify-otp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyotpId != null)
-                {
-                    body["otp_id"] = ExpressionConverter.ConvertO(__workflow_bodyotpId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["otp_code"] = ExpressionConverter.ConvertO(__workflow_bodyotpCode);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OTPVerifyOTPResponse>(callPayload);
             });
         }
@@ -236,6 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public string Status { get; set; }
     }
 
+    public class NumberLookupInput
+    {
+        [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Recipient { get; set; }
+    }
+
     public class OTPSendOTPResponse
     {
         [JsonProperty("otp_id")]
@@ -248,8 +161,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public int Expiry { get; set; }
     }
 
+    public class OTPSendOTPInput
+    {
+        [JsonProperty("originator", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Originator { get; set; }
+
+        [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Recipient { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; } = "Greetings from D7 API, your mobile verification code is: {}";
+
+        [JsonProperty("data_coding", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OTPSendOTPInputDataCodingType DataCoding { get; set; } = OTPSendOTPInputDataCodingType.Auto;
+
+        [JsonProperty("expiry")]
+        public string Expiry { get; set; }
+
+        [JsonProperty("retry_delay")]
+        public string RetryDelay { get; set; }
+
+        [JsonProperty("retry_count")]
+        public string RetryCount { get; set; }
+
+        [JsonProperty("otp_code_length")]
+        public string OtpCodeLength { get; set; }
+
+        [JsonProperty("otp_type")]
+        public OTPSendOTPInputOtpTypeType? OtpType { get; set; }
+
+        [JsonProperty("success_url")]
+        public string SuccessUrl { get; set; }
+
+        [JsonProperty("failure_url")]
+        public string FailureUrl { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodydataCodingInput
+    public enum OTPSendOTPInputDataCodingType
     {
         [EnumMember(Value = "auto")]
         Auto,
@@ -260,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyotpTypeInput
+    public enum OTPSendOTPInputOtpTypeType
     {
         [EnumMember(Value = "numeric")]
         Numeric,
@@ -285,10 +234,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public int ResendCount { get; set; }
     }
 
+    public class OTPResendOTPInput
+    {
+        [JsonProperty("otp_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OtpId { get; set; }
+    }
+
     public class OTPVerifyOTPResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class OTPVerifyOTPInput
+    {
+        [JsonProperty("otp_id")]
+        public string OtpId { get; set; }
+
+        [JsonProperty("otp_code", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OtpCode { get; set; }
     }
 }
 

@@ -13,175 +13,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
     public class CompanyconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChoicePrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference, Expression<Func<string[]>> requestchoices = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChoicePrompt(Expression<Func<ChoicePromptInput>> request)
         {
-            var __workflow_requestprompt = WorkflowExpression.Compile(requestprompt, nameof(requestprompt), required: true);
-            var __workflow_requestconversationReference = WorkflowExpression.Compile(requestconversationReference, nameof(requestconversationReference), required: true);
-            var __workflow_requestchoices = WorkflowExpression.Compile(requestchoices, nameof(requestchoices), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/choicePrompt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                request["callbackUri"] = "#{listCallbackUrl()}";
-                requestpropCount++;
-                requestpropCount++;
-                request["prompt"] = ExpressionConverter.ConvertO(__workflow_requestprompt);
-                if (__workflow_requestchoices != null)
-                {
-                    request["choices"] = ExpressionConverter.ConvertO(__workflow_requestchoices);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["conversationReference"] = ExpressionConverter.ConvertO(__workflow_requestconversationReference);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmPrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference, Expression<Func<string>> requestyesText = null, Expression<Func<string>> requestnoText = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmPrompt(Expression<Func<ConfirmPromptInput>> request)
         {
-            var __workflow_requestprompt = WorkflowExpression.Compile(requestprompt, nameof(requestprompt), required: true);
-            var __workflow_requestconversationReference = WorkflowExpression.Compile(requestconversationReference, nameof(requestconversationReference), required: true);
-            var __workflow_requestyesText = WorkflowExpression.Compile(requestyesText, nameof(requestyesText), required: false);
-            var __workflow_requestnoText = WorkflowExpression.Compile(requestnoText, nameof(requestnoText), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/confirmPrompt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                request["callbackUri"] = "#{listCallbackUrl()}";
-                requestpropCount++;
-                requestpropCount++;
-                request["prompt"] = ExpressionConverter.ConvertO(__workflow_requestprompt);
-                if (__workflow_requestyesText != null)
-                {
-                    if (__workflow_requestyesText != null)
-                    {
-                        request["yesText"] = ExpressionConverter.ConvertO(__workflow_requestyesText);
-                        requestpropCount++;
-                    }
-
-                    requestpropCount++;
-                }
-                else
-                {
-                    request["yesText"] = "Yes";
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestnoText != null)
-                {
-                    if (__workflow_requestnoText != null)
-                    {
-                        request["noText"] = ExpressionConverter.ConvertO(__workflow_requestnoText);
-                        requestpropCount++;
-                    }
-
-                    requestpropCount++;
-                }
-                else
-                {
-                    request["noText"] = "No";
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["conversationReference"] = ExpressionConverter.ConvertO(__workflow_requestconversationReference);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<string>> bodyupn)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<ProactiveDialogStartInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyupn = WorkflowExpression.Compile(bodyupn, nameof(bodyupn), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/proactiveDialogs/{0}/start", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["upn"] = ExpressionConverter.ConvertO(__workflow_bodyupn);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<string>> messageActivitytext, Expression<Func<string>> messageActivityconversationReference = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<ReplyInput>> messageActivity)
         {
-            var __workflow_messageActivitytext = WorkflowExpression.Compile(messageActivitytext, nameof(messageActivitytext), required: true);
-            var __workflow_messageActivityconversationReference = WorkflowExpression.Compile(messageActivityconversationReference, nameof(messageActivityconversationReference), required: false);
+            var __workflow_messageActivity = WorkflowExpression.Compile(messageActivity, nameof(messageActivity), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reply";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var messageActivity = new JObject();
-                var messageActivitypropCount = 0;
-                messageActivitypropCount++;
-                messageActivity["text"] = ExpressionConverter.ConvertO(__workflow_messageActivitytext);
-                if (__workflow_messageActivityconversationReference != null)
-                {
-                    messageActivity["conversationReference"] = ExpressionConverter.ConvertO(__workflow_messageActivityconversationReference);
-                    messageActivitypropCount++;
-                }
-
-                if (messageActivitypropCount > 0)
-                {
-                    callPayload.Body = messageActivity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_messageActivity);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TextPrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TextPrompt(Expression<Func<TextPromptInput>> request)
         {
-            var __workflow_requestprompt = WorkflowExpression.Compile(requestprompt, nameof(requestprompt), required: true);
-            var __workflow_requestconversationReference = WorkflowExpression.Compile(requestconversationReference, nameof(requestconversationReference), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/textPrompt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                request["callbackUri"] = "#{listCallbackUrl()}";
-                requestpropCount++;
-                requestpropCount++;
-                request["prompt"] = ExpressionConverter.ConvertO(__workflow_requestprompt);
-                requestpropCount++;
-                request["conversationReference"] = ExpressionConverter.ConvertO(__workflow_requestconversationReference);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -189,90 +87,143 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class CompanyconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProactiveDialogSubscribe(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProactiveDialogSubscribe(Expression<Func<ProactiveDialogSubscribeInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/proactiveDialogs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartDialogSubscribe(Expression<Func<string>> bodyappId, Expression<Func<string>> bodyintent, Expression<Func<string>> bodydescription, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartDialogSubscribe(Expression<Func<SmartDialogSubscribeInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyappId = WorkflowExpression.Compile(bodyappId, nameof(bodyappId), required: true);
-            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/smartDialogs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["appId"] = ExpressionConverter.ConvertO(__workflow_bodyappId);
-                bodypropCount++;
-                body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartSourceSubscribe(Expression<Func<string>> bodytitle, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyicon = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartSourceSubscribe(Expression<Func<SmartSourceSubscribeInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyicon = WorkflowExpression.Compile(bodyicon, nameof(bodyicon), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/smartSources";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyicon != null)
-                {
-                    body["icon"] = ExpressionConverter.ConvertO(__workflow_bodyicon);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class ChoicePromptInput
+    {
+        [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Prompt { get; set; }
+
+        [JsonProperty("choices")]
+        public string[] Choices { get; set; }
+
+        [JsonProperty("conversationReference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConversationReference { get; set; }
+    }
+
+    public class ConfirmPromptInput
+    {
+        [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Prompt { get; set; }
+
+        [JsonProperty("yesText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string YesText { get; set; } = "Yes";
+
+        [JsonProperty("noText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NoText { get; set; } = "No";
+
+        [JsonProperty("conversationReference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConversationReference { get; set; }
+    }
+
+    public class ProactiveDialogStartInput
+    {
+        [JsonProperty("upn", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Upn { get; set; }
+    }
+
+    public class ReplyInput
+    {
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("conversationReference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConversationReference { get; set; }
+    }
+
+    public class TextPromptInput
+    {
+        [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Prompt { get; set; }
+
+        [JsonProperty("conversationReference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConversationReference { get; set; }
+    }
+
+    public class ProactiveDialogSubscribeInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+    }
+
+    public class SmartDialogSubscribeInput
+    {
+        [JsonProperty("appId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AppId { get; set; }
+
+        [JsonProperty("intent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Intent { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class SmartSourceSubscribeInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("icon")]
+        public string Icon { get; set; }
     }
 }
 

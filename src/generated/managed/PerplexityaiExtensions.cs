@@ -13,68 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
     public class PerplexityaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perplexityai")]
-        public IBodyWorkflowAction<CompletionPostResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<double>> bodytopK = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null)
+        public IBodyWorkflowAction<CompletionPostResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<CompletionPostInput>> body = null)
         {
-            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
-            var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CompletionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                if (__workflow_bodymaxTokens != null)
-                {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemperature != null)
-                {
-                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytopP != null)
-                {
-                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytopK != null)
-                {
-                    body["top_k"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypresencePenalty != null)
-                {
-                    body["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_bodypresencePenalty);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfrequencyPenalty != null)
-                {
-                    body["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyfrequencyPenalty);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CompletionPostResponse>(callPayload);
             });
         }
@@ -150,8 +98,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public int TotalTokens { get; set; }
     }
 
+    public class CompletionPostInput
+    {
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CompletionPostInputModelType Model { get; set; } = CompletionPostInputModelType.Mistral7bInstruct;
+
+        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CompletionPostInputMessagesTypeItem[] Messages { get; set; }
+
+        [JsonProperty("max_tokens")]
+        public int? MaxTokens { get; set; }
+
+        [JsonProperty("temperature")]
+        public double? Temperature { get; set; }
+
+        [JsonProperty("top_p")]
+        public double? TopP { get; set; }
+
+        [JsonProperty("top_k")]
+        public double? TopK { get; set; }
+
+        [JsonProperty("presence_penalty")]
+        public double? PresencePenalty { get; set; }
+
+        [JsonProperty("frequency_penalty")]
+        public double? FrequencyPenalty { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodelInput
+    public enum CompletionPostInputModelType
     {
         [EnumMember(Value = "mistral-7b-instruct")]
         Mistral7bInstruct,
@@ -167,17 +142,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         Mixtral8x7bInstruct
     }
 
-    public class bodymessagesInputItem
+    public class CompletionPostInputMessagesTypeItem
     {
-        [JsonProperty("role")]
-        public bodymessagesInputItemRoleType Role { get; set; }
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CompletionPostInputMessagesTypeItemRoleType Role { get; set; } = CompletionPostInputMessagesTypeItemRoleType.System;
 
-        [JsonProperty("content")]
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymessagesInputItemRoleType
+    public enum CompletionPostInputMessagesTypeItemRoleType
     {
         [EnumMember(Value = "system")]
         System,

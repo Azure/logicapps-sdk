@@ -99,114 +99,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> bodyfromfull = null, Expression<Func<string>> bodyheadersmimeVersion = null, Expression<Func<string>> bodyheadersdate = null, Expression<Func<string>> bodyheaderssubject = null, Expression<Func<string>> bodyheaderscontentType = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodypartsInputItem[]>> bodyparts = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyid = null, Expression<Func<int>> bodytime = null, Expression<Func<int>> bodysecondsAgo = null)
+        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<MessagePostInput>> body = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
-            var __workflow_bodyfromfull = WorkflowExpression.Compile(bodyfromfull, nameof(bodyfromfull), required: false);
-            var __workflow_bodyheadersmimeVersion = WorkflowExpression.Compile(bodyheadersmimeVersion, nameof(bodyheadersmimeVersion), required: false);
-            var __workflow_bodyheadersdate = WorkflowExpression.Compile(bodyheadersdate, nameof(bodyheadersdate), required: false);
-            var __workflow_bodyheaderssubject = WorkflowExpression.Compile(bodyheaderssubject, nameof(bodyheaderssubject), required: false);
-            var __workflow_bodyheaderscontentType = WorkflowExpression.Compile(bodyheaderscontentType, nameof(bodyheaderscontentType), required: false);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodyparts = WorkflowExpression.Compile(bodyparts, nameof(bodyparts), required: false);
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: false);
-            var __workflow_bodysecondsAgo = WorkflowExpression.Compile(bodysecondsAgo, nameof(bodysecondsAgo), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}/messages", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfromfull != null)
-                {
-                    body["fromfull"] = ExpressionConverter.ConvertO(__workflow_bodyfromfull);
-                    bodypropCount++;
-                }
-
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (__workflow_bodyheadersmimeVersion != null)
-                {
-                    headersObject["mime-version"] = ExpressionConverter.ConvertO(__workflow_bodyheadersmimeVersion);
-                    headersObjectpropCount++;
-                }
-
-                if (__workflow_bodyheadersdate != null)
-                {
-                    headersObject["date"] = ExpressionConverter.ConvertO(__workflow_bodyheadersdate);
-                    headersObjectpropCount++;
-                }
-
-                if (__workflow_bodyheaderssubject != null)
-                {
-                    headersObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodyheaderssubject);
-                    headersObjectpropCount++;
-                }
-
-                if (__workflow_bodyheaderscontentType != null)
-                {
-                    headersObject["content-type"] = ExpressionConverter.ConvertO(__workflow_bodyheaderscontentType);
-                    headersObjectpropCount++;
-                }
-
-                if (headersObjectpropCount > 0)
-                {
-                    body["headers"] = headersObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubject != null)
-                {
-                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparts != null)
-                {
-                    body["parts"] = ExpressionConverter.ConvertO(__workflow_bodyparts);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfrom != null)
-                {
-                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyto != null)
-                {
-                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytime != null)
-                {
-                    body["time"] = ExpressionConverter.ConvertO(__workflow_bodytime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysecondsAgo != null)
-                {
-                    body["seconds_ago"] = ExpressionConverter.ConvertO(__workflow_bodysecondsAgo);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MessagePostResponse>(callPayload);
             });
         }
@@ -403,16 +307,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         public string Id { get; set; }
     }
 
-    public class bodypartsInputItem
+    public class MessagePostInput
+    {
+        [JsonProperty("fromfull")]
+        public string Fromfull { get; set; }
+
+        [JsonProperty("headers")]
+        public MessagePostInputHeadersType Headers { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("parts")]
+        public MessagePostInputPartsTypeItem[] Parts { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("time")]
+        public int? Time { get; set; }
+
+        [JsonProperty("seconds_ago")]
+        public int? SecondsAgo { get; set; }
+    }
+
+    public class MessagePostInputHeadersType
+    {
+        [JsonProperty("mime-version")]
+        public string MimeVersion { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("content-type")]
+        public string ContentType { get; set; }
+    }
+
+    public class MessagePostInputPartsTypeItem
     {
         [JsonProperty("headers")]
-        public bodypartsInputItemHeadersType Headers { get; set; }
+        public MessagePostInputPartsTypeItemHeadersType Headers { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
     }
 
-    public class bodypartsInputItemHeadersType
+    public class MessagePostInputPartsTypeItemHeadersType
     {
         [JsonProperty("content-type")]
         public string ContentType { get; set; }

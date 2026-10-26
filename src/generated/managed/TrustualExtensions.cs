@@ -13,129 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
     public class TrustualActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyFile(Expression<Func<string>> bodyfileContent = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
+        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyFile(Expression<Func<CertifyFileInput>> body)
         {
-            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodycertificateLanguage = WorkflowExpression.Compile(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            var __workflow_bodytimeZoneOffset = WorkflowExpression.Compile(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodysandboxMode = WorkflowExpression.Compile(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CertificationOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/certify_file";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileContent != null)
-                {
-                    body["file_base_64"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycertificateLanguage != null)
-                {
-                    if (__workflow_bodycertificateLanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodycertificateLanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimeZoneOffset != null)
-                {
-                    body["offset"] = ExpressionConverter.ConvertO(__workflow_bodytimeZoneOffset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreference != null)
-                {
-                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysandboxMode != null)
-                {
-                    body["sandbox"] = ExpressionConverter.ConvertO(__workflow_bodysandboxMode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CertificationOutput>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyHash(Expression<Func<string>> bodyhash = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
+        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyHash(Expression<Func<CertifyHashInput>> body)
         {
-            var __workflow_bodyhash = WorkflowExpression.Compile(bodyhash, nameof(bodyhash), required: false);
-            var __workflow_bodycertificateLanguage = WorkflowExpression.Compile(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            var __workflow_bodytimeZoneOffset = WorkflowExpression.Compile(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodysandboxMode = WorkflowExpression.Compile(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CertificationOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/certify_hash";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyhash != null)
-                {
-                    body["hash"] = ExpressionConverter.ConvertO(__workflow_bodyhash);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycertificateLanguage != null)
-                {
-                    if (__workflow_bodycertificateLanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodycertificateLanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimeZoneOffset != null)
-                {
-                    body["offset"] = ExpressionConverter.ConvertO(__workflow_bodytimeZoneOffset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreference != null)
-                {
-                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysandboxMode != null)
-                {
-                    body["sandbox"] = ExpressionConverter.ConvertO(__workflow_bodysandboxMode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CertificationOutput>(callPayload);
             });
         }
@@ -212,21 +112,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         Failed
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycertificateLanguageInput
+    public class CertifyFileInput
     {
-        [EnumMember(Value = "de")]
-        De,
-        [EnumMember(Value = "en")]
-        En,
-        [EnumMember(Value = "es")]
-        Es,
-        [EnumMember(Value = "fr")]
-        Fr,
-        [EnumMember(Value = "it")]
-        It,
-        [EnumMember(Value = "nl")]
-        Nl
+        [JsonProperty("file_base_64", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileBase64 { get; set; }
+
+        [JsonProperty("language")]
+        public ZLanguage? Language { get; set; }
+
+        [JsonProperty("offset")]
+        public double? Offset { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("sandbox")]
+        public bool? Sandbox { get; set; }
+    }
+
+    public class CertifyHashInput
+    {
+        [JsonProperty("hash", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Hash { get; set; }
+
+        [JsonProperty("language")]
+        public ZLanguage? Language { get; set; }
+
+        [JsonProperty("offset")]
+        public double? Offset { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("sandbox")]
+        public bool? Sandbox { get; set; }
     }
 }
 

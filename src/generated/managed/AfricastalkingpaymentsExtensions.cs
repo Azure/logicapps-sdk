@@ -13,52 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     public class AfricastalkingpaymentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<MobileB2BResponse, ApiConnectionActionConfiguration> MobileB2B(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodyproviderInput>> bodyprovider, Expression<Func<bodytransferTypeInput>> bodytransferType, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount, Expression<Func<string>> bodydestinationChannel, Expression<Func<string>> bodydestinationAccount)
+        public IBodyWorkflowAction<MobileB2BResponse, ApiConnectionActionConfiguration> MobileB2B(Expression<Func<MobileB2BInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodyprovider = WorkflowExpression.Compile(bodyprovider, nameof(bodyprovider), required: true);
-            var __workflow_bodytransferType = WorkflowExpression.Compile(bodytransferType, nameof(bodytransferType), required: true);
-            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
-            var __workflow_bodydestinationChannel = WorkflowExpression.Compile(bodydestinationChannel, nameof(bodydestinationChannel), required: true);
-            var __workflow_bodydestinationAccount = WorkflowExpression.Compile(bodydestinationAccount, nameof(bodydestinationAccount), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MobileB2BResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mobile/b2b/request";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["productName"] = ExpressionConverter.ConvertO(__workflow_bodyproductName);
-                bodypropCount++;
-                body["provider"] = ExpressionConverter.ConvertO(__workflow_bodyprovider);
-                bodypropCount++;
-                body["transferType"] = ExpressionConverter.ConvertO(__workflow_bodytransferType);
-                bodypropCount++;
-                body["currencyCode"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyCode);
-                bodypropCount++;
-                body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
-                bodypropCount++;
-                body["destinationChannel"] = ExpressionConverter.ConvertO(__workflow_bodydestinationChannel);
-                bodypropCount++;
-                body["destinationAccount"] = ExpressionConverter.ConvertO(__workflow_bodydestinationAccount);
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MobileB2BResponse>(callPayload);
             });
         }
@@ -78,43 +41,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<WalletTransferResponse, ApiConnectionActionConfiguration> WalletTransfer(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<int>> bodytargetProductCode, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount)
+        public IBodyWorkflowAction<WalletTransferResponse, ApiConnectionActionConfiguration> WalletTransfer(Expression<Func<WalletTransferInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodytargetProductCode = WorkflowExpression.Compile(bodytargetProductCode, nameof(bodytargetProductCode), required: true);
-            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WalletTransferResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/transfer/wallet";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["productName"] = ExpressionConverter.ConvertO(__workflow_bodyproductName);
-                bodypropCount++;
-                body["targetProductCode"] = ExpressionConverter.ConvertO(__workflow_bodytargetProductCode);
-                bodypropCount++;
-                body["currencyCode"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyCode);
-                bodypropCount++;
-                body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<WalletTransferResponse>(callPayload);
             });
         }
@@ -144,40 +79,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<TopUpStashResponse, ApiConnectionActionConfiguration> TopUpStash(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount)
+        public IBodyWorkflowAction<TopUpStashResponse, ApiConnectionActionConfiguration> TopUpStash(Expression<Func<TopUpStashInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopUpStashResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/topup/stash";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["productName"] = ExpressionConverter.ConvertO(__workflow_bodyproductName);
-                bodypropCount++;
-                body["currencyCode"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyCode);
-                bodypropCount++;
-                body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TopUpStashResponse>(callPayload);
             });
         }
@@ -227,78 +137,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<MobileCheckoutResponse, ApiConnectionActionConfiguration> MobileCheckout(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<string>> bodyphoneNumber, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount, Expression<Func<string>> bodyproviderChannel = null)
+        public IBodyWorkflowAction<MobileCheckoutResponse, ApiConnectionActionConfiguration> MobileCheckout(Expression<Func<MobileCheckoutInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
-            var __workflow_bodyproviderChannel = WorkflowExpression.Compile(bodyproviderChannel, nameof(bodyproviderChannel), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MobileCheckoutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mobile/checkout/request";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["productName"] = ExpressionConverter.ConvertO(__workflow_bodyproductName);
-                if (__workflow_bodyproviderChannel != null)
-                {
-                    body["providerChannel"] = ExpressionConverter.ConvertO(__workflow_bodyproviderChannel);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["phoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
-                bodypropCount++;
-                body["currencyCode"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyCode);
-                bodypropCount++;
-                body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MobileCheckoutResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<MobileB2CResponse, ApiConnectionActionConfiguration> MobileB2C(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients)
+        public IBodyWorkflowAction<MobileB2CResponse, ApiConnectionActionConfiguration> MobileB2C(Expression<Func<MobileB2CInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MobileB2CResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mobile/b2c/request";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["productName"] = ExpressionConverter.ConvertO(__workflow_bodyproductName);
-                bodypropCount++;
-                body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MobileB2CResponse>(callPayload);
             });
         }
@@ -323,8 +184,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         public string TransactionId { get; set; }
     }
 
+    public class MobileB2BInput
+    {
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProductName { get; set; }
+
+        [JsonProperty("provider", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MobileB2BInputProviderType Provider { get; set; }
+
+        [JsonProperty("transferType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MobileB2BInputTransferTypeType TransferType { get; set; }
+
+        [JsonProperty("currencyCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MobileB2BInputCurrencyCodeType CurrencyCode { get; set; }
+
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Amount { get; set; }
+
+        [JsonProperty("destinationChannel", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationChannel { get; set; }
+
+        [JsonProperty("destinationAccount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationAccount { get; set; }
+
+        [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Metadata { get; set; } = JToken.Parse("{}");
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyproviderInput
+    public enum MobileB2BInputProviderType
     {
         Mpesa,
         TigoTanzania,
@@ -332,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytransferTypeInput
+    public enum MobileB2BInputTransferTypeType
     {
         BusinessBuyGoods,
         BusinessPayBill,
@@ -341,12 +232,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycurrencyCodeInput
+    public enum MobileB2BInputCurrencyCodeType
     {
         KES,
         UGX,
-        TZS,
-        USD
+        NGN,
+        USD,
+        TZS
     }
 
     public class FetchWalletBalanceResponse
@@ -368,6 +260,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; }
+    }
+
+    public class WalletTransferInput
+    {
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProductName { get; set; }
+
+        [JsonProperty("targetProductCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TargetProductCode { get; set; }
+
+        [JsonProperty("currencyCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WalletTransferInputCurrencyCodeType CurrencyCode { get; set; }
+
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Amount { get; set; }
+
+        [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Metadata { get; set; } = JToken.Parse("{}");
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum WalletTransferInputCurrencyCodeType
+    {
+        KES,
+        UGX,
+        USD,
+        TZS
     }
 
     public class FetchWalletTransactionsResponse
@@ -485,6 +407,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
         [JsonProperty("transactionId")]
         public string TransactionId { get; set; }
+    }
+
+    public class TopUpStashInput
+    {
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProductName { get; set; }
+
+        [JsonProperty("currencyCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TopUpStashInputCurrencyCodeType CurrencyCode { get; set; }
+
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Amount { get; set; }
+
+        [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Metadata { get; set; } = JToken.Parse("{}");
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum TopUpStashInputCurrencyCodeType
+    {
+        KES,
+        UGX,
+        USD,
+        TZS
     }
 
     public class FetchProductTransactionsResponse
@@ -637,6 +586,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         public string TransactionId { get; set; }
     }
 
+    public class MobileCheckoutInput
+    {
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProductName { get; set; }
+
+        [JsonProperty("providerChannel")]
+        public string ProviderChannel { get; set; }
+
+        [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("currencyCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MobileCheckoutInputCurrencyCodeType CurrencyCode { get; set; }
+
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Amount { get; set; }
+
+        [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Metadata { get; set; } = JToken.Parse("{}");
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum MobileCheckoutInputCurrencyCodeType
+    {
+        KES,
+        UGX,
+        TZS,
+        USD
+    }
+
     public class MobileB2CResponse
     {
         [JsonProperty("entries")]
@@ -676,32 +658,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         public string TransactionFee { get; set; }
     }
 
-    public class bodyrecipientsInputItem
+    public class MobileB2CInput
     {
-        [JsonProperty("phoneNumber")]
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProductName { get; set; }
+
+        [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MobileB2CInputRecipientsTypeItem[] Recipients { get; set; }
+    }
+
+    public class MobileB2CInputRecipientsTypeItem
+    {
+        [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PhoneNumber { get; set; }
 
-        [JsonProperty("currencyCode")]
-        public bodyrecipientsInputItemCurrencyCodeType CurrencyCode { get; set; }
+        [JsonProperty("currencyCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MobileB2CInputRecipientsTypeItemCurrencyCodeType CurrencyCode { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
 
         [JsonProperty("providerChannel")]
         public string ProviderChannel { get; set; }
 
         [JsonProperty("reason")]
-        public bodyrecipientsInputItemReasonType Reason { get; set; }
+        public MobileB2CInputRecipientsTypeItemReasonType? Reason { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("metadata")]
-        public JToken Metadata { get; set; }
+        [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Metadata { get; set; } = JToken.Parse("{}");
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrecipientsInputItemCurrencyCodeType
+    public enum MobileB2CInputRecipientsTypeItemCurrencyCodeType
     {
         KES,
         UGX,
@@ -710,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrecipientsInputItemReasonType
+    public enum MobileB2CInputRecipientsTypeItemReasonType
     {
         SalaryPayment,
         SalaryPaymentWithWithdrawalChargePaid,

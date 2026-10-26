@@ -13,103 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
     public class ProjectplaceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
-        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<int>> boardId, Expression<Func<string>> bodytitle, Expression<Func<int>> bodycolumnId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyassigneeEmail = null, Expression<Func<int>> bodyplanletId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<int>> bodylabelId = null)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<int>> boardId, Expression<Func<CreateCardInput>> body = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyassigneeEmail = WorkflowExpression.Compile(bodyassigneeEmail, nameof(bodyassigneeEmail), required: false);
-            var __workflow_bodyplanletId = WorkflowExpression.Compile(bodyplanletId, nameof(bodyplanletId), required: false);
-            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodylabelId = WorkflowExpression.Compile(bodylabelId, nameof(bodylabelId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/external_notifications/{0}/create_card", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycolumnId != null)
-                {
-                    body["column_id"] = ExpressionConverter.ConvertO(__workflow_bodycolumnId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassigneeEmail != null)
-                {
-                    body["assignee_email"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplanletId != null)
-                {
-                    body["planlet_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanletId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueDate != null)
-                {
-                    body["due_date"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylabelId != null)
-                {
-                    body["label_id"] = ExpressionConverter.ConvertO(__workflow_bodylabelId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
-        public IBodyWorkflowAction<MoveCardResponse, ApiConnectionActionConfiguration> MoveCard(Expression<Func<int>> boardId, Expression<Func<int>> bodycardId, Expression<Func<string>> bodycardTitle = null, Expression<Func<int>> bodycolumnId = null)
+        public IBodyWorkflowAction<MoveCardResponse, ApiConnectionActionConfiguration> MoveCard(Expression<Func<int>> boardId, Expression<Func<MoveCardInput>> body = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            var __workflow_bodycardId = WorkflowExpression.Compile(bodycardId, nameof(bodycardId), required: true);
-            var __workflow_bodycardTitle = WorkflowExpression.Compile(bodycardTitle, nameof(bodycardTitle), required: false);
-            var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<MoveCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/external_notifications/{0}/move_card", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["card_id"] = ExpressionConverter.ConvertO(__workflow_bodycardId);
-                if (__workflow_bodycardTitle != null)
-                {
-                    body["card_title"] = ExpressionConverter.ConvertO(__workflow_bodycardTitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycolumnId != null)
-                {
-                    body["column_id"] = ExpressionConverter.ConvertO(__workflow_bodycolumnId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MoveCardResponse>(callPayload);
             });
         }
@@ -117,93 +47,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class ProjectplaceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardCreate(Expression<Func<int>> bodyboardId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardCreate(Expression<Func<SetWebhookCardCreateInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/external_notifications/0/hooks/set_power_hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["card_create"] = true;
-                bodypropCount++;
-                body["webhook"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["board_id"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookPropertiesChange(Expression<Func<bool>> bodycardBlocked, Expression<Func<bool>> bodycardUnblock, Expression<Func<bool>> bodystatusChange, Expression<Func<bool>> bodycardDone, Expression<Func<bool>> bodydescriptionChanged, Expression<Func<bool>> bodydueDateChanged, Expression<Func<int>> bodyboardId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookPropertiesChange(Expression<Func<SetWebhookPropertiesChangeInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycardBlocked = WorkflowExpression.Compile(bodycardBlocked, nameof(bodycardBlocked), required: true);
-            var __workflow_bodycardUnblock = WorkflowExpression.Compile(bodycardUnblock, nameof(bodycardUnblock), required: true);
-            var __workflow_bodystatusChange = WorkflowExpression.Compile(bodystatusChange, nameof(bodystatusChange), required: true);
-            var __workflow_bodycardDone = WorkflowExpression.Compile(bodycardDone, nameof(bodycardDone), required: true);
-            var __workflow_bodydescriptionChanged = WorkflowExpression.Compile(bodydescriptionChanged, nameof(bodydescriptionChanged), required: true);
-            var __workflow_bodydueDateChanged = WorkflowExpression.Compile(bodydueDateChanged, nameof(bodydueDateChanged), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/external_notifications/1/hooks/set_power_hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["card_blocked"] = ExpressionConverter.ConvertO(__workflow_bodycardBlocked);
-                bodypropCount++;
-                body["card_unblock"] = ExpressionConverter.ConvertO(__workflow_bodycardUnblock);
-                bodypropCount++;
-                body["status_change"] = ExpressionConverter.ConvertO(__workflow_bodystatusChange);
-                bodypropCount++;
-                body["card_done"] = ExpressionConverter.ConvertO(__workflow_bodycardDone);
-                bodypropCount++;
-                body["description_changed"] = ExpressionConverter.ConvertO(__workflow_bodydescriptionChanged);
-                bodypropCount++;
-                body["due_date_changed"] = ExpressionConverter.ConvertO(__workflow_bodydueDateChanged);
-                body["webhook"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["board_id"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardDueDate(Expression<Func<int>> bodyboardId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardDueDate(Expression<Func<SetWebhookCardDueDateInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/external_notifications/2/hooks/set_power_hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["due_today"] = true;
-                bodypropCount++;
-                body["webhook"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["board_id"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -261,6 +142,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
         [JsonProperty("title")]
         public string Title { get; set; }
+    }
+
+    public class CreateCardInput
+    {
+        [JsonProperty("column_id")]
+        public int? ColumnId { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("assignee_email")]
+        public string AssigneeEmail { get; set; }
+
+        [JsonProperty("planlet_id")]
+        public int? PlanletId { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("label_id")]
+        public int? LabelId { get; set; }
     }
 
     public class MoveCardResponse
@@ -324,6 +229,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
         [JsonProperty("title")]
         public string Title { get; set; }
+    }
+
+    public class MoveCardInput
+    {
+        [JsonProperty("card_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CardId { get; set; }
+
+        [JsonProperty("card_title")]
+        public string CardTitle { get; set; }
+
+        [JsonProperty("column_id")]
+        public int? ColumnId { get; set; }
+    }
+
+    public class SetWebhookCardCreateInput
+    {
+        [JsonProperty("card_create", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool CardCreate { get; set; } = true;
+
+        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Webhook { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("board_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int BoardId { get; set; }
+    }
+
+    public class SetWebhookPropertiesChangeInput
+    {
+        [JsonProperty("card_blocked", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool CardBlocked { get; set; } = true;
+
+        [JsonProperty("card_unblock", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool CardUnblock { get; set; } = true;
+
+        [JsonProperty("status_change", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool StatusChange { get; set; } = true;
+
+        [JsonProperty("card_done", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool CardDone { get; set; } = true;
+
+        [JsonProperty("description_changed", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool DescriptionChanged { get; set; } = true;
+
+        [JsonProperty("due_date_changed", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool DueDateChanged { get; set; } = true;
+
+        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Webhook { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("board_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int BoardId { get; set; }
+    }
+
+    public class SetWebhookCardDueDateInput
+    {
+        [JsonProperty("due_today", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool DueToday { get; set; } = true;
+
+        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Webhook { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("board_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int BoardId { get; set; }
     }
 }
 

@@ -13,30 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
     public class StarmindActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
-        public IBodyWorkflowAction<FindExpertsV3Response, ApiConnectionActionConfiguration> FindExperts(Expression<Func<string>> bodytextQuery, Expression<Func<bodylanguageInput>> bodylanguage = null)
+        public IBodyWorkflowAction<FindExpertsV3Response, ApiConnectionActionConfiguration> FindExperts(Expression<Func<FindExpertsV3Input>> body)
         {
-            var __workflow_bodytextQuery = WorkflowExpression.Compile(bodytextQuery, nameof(bodytextQuery), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindExpertsV3Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/experts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["text_query"] = ExpressionConverter.ConvertO(__workflow_bodytextQuery);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FindExpertsV3Response>(callPayload);
             });
         }
@@ -79,51 +64,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
-        public IBodyWorkflowAction<Question, ApiConnectionActionConfiguration> PostQuestionDraft(Expression<Func<string>> bodytitle, Expression<Func<int>> bodycategory = null, Expression<Func<string>> bodydescription = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<int>> bodyknowledgeSpace = null)
+        public IBodyWorkflowAction<Question, ApiConnectionActionConfiguration> PostQuestionDraft(Expression<Func<PostQuestionDraftV3Input>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyknowledgeSpace = WorkflowExpression.Compile(bodyknowledgeSpace, nameof(bodyknowledgeSpace), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Question, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/questions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyknowledgeSpace != null)
-                {
-                    body["knowledge_space"] = ExpressionConverter.ConvertO(__workflow_bodyknowledgeSpace);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Question>(callPayload);
             });
         }
@@ -333,29 +282,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         public string PrimaryLabel { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylanguageInput
+    public class FindExpertsV3Input
     {
-        [EnumMember(Value = "de")]
-        De,
-        [EnumMember(Value = "en")]
-        En,
-        [EnumMember(Value = "es")]
-        Es,
-        [EnumMember(Value = "fr")]
-        Fr,
-        [EnumMember(Value = "hr")]
-        Hr,
-        [EnumMember(Value = "it")]
-        It,
-        [EnumMember(Value = "pt")]
-        Pt,
-        [EnumMember(Value = "ro")]
-        Ro,
-        [EnumMember(Value = "xx")]
-        Xx,
-        [EnumMember(Value = "zh")]
-        Zh
+        [JsonProperty("language")]
+        public Language? Language { get; set; }
+
+        [JsonProperty("text_query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TextQuery { get; set; }
     }
 
     public class FindQuestionsV3Response
@@ -547,6 +480,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
 
         [JsonProperty("line")]
         public int Line { get; set; }
+    }
+
+    public class PostQuestionDraftV3Input
+    {
+        [JsonProperty("category")]
+        public int? Category { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("language")]
+        public Language? Language { get; set; }
+
+        [JsonProperty("knowledge_space")]
+        public int? KnowledgeSpace { get; set; }
     }
 
     public class PublishQuestionDraftV3Response
