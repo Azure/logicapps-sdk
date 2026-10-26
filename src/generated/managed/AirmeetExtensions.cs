@@ -717,34 +717,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
     public class AirmeetTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AirmeetTriggersResponse, ApiConnectionTriggerConfiguration> AirmeetTriggersOperation(Expression<Func<bodytriggerMetaInfoIdInput>> bodytriggerMetaInfoId, Expression<Func<string>> airmeetId = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
-        {
-            var __workflow_bodytriggerMetaInfoId = WorkflowExpression.Compile(bodytriggerMetaInfoId, nameof(bodytriggerMetaInfoId), required: true);
-            var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: false);
-            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyTrigger<AirmeetTriggersResponse, ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/platform-integration/v1/webhook-register";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_airmeetId != null)
-                    callPayload.Queries["airmeetId"] = ExpressionConverter.Convert(__workflow_airmeetId);
-                if (__workflow_sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["triggerMetaInfoId"] = ExpressionConverter.ConvertO(__workflow_bodytriggerMetaInfoId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<AirmeetTriggersResponse>(callPayload, recurrence: recurrence);
-            });
-        }
     }
 
     public class GetAirmeetsResponse
@@ -1228,50 +1200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [EnumMember(Value = "SPEED_NETWORKING")]
         SPEEDNETWORKING,
         STREAMING
-    }
-
-    public class AirmeetTriggersResponse
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("triggerMetaInfoId")]
-        public string TriggerMetaInfoId { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytriggerMetaInfoIdInput
-    {
-        [EnumMember(Value = "trigger.airmeet.created")]
-        TriggerAirmeetCreated,
-        [EnumMember(Value = "trigger.airmeet.attendee.added")]
-        TriggerAirmeetAttendeeAdded,
-        [EnumMember(Value = "trigger.airmeet.started")]
-        TriggerAirmeetStarted,
-        [EnumMember(Value = "trigger.airmeet.finished")]
-        TriggerAirmeetFinished,
-        [EnumMember(Value = "trigger.airmeet.reminder")]
-        TriggerAirmeetReminder,
-        [EnumMember(Value = "trigger.airmeet.recording.available")]
-        TriggerAirmeetRecordingAvailable,
-        [EnumMember(Value = "trigger.airmeet.registrant.added")]
-        TriggerAirmeetRegistrantAdded,
-        [EnumMember(Value = "trigger.airmeet.attendee.joined")]
-        TriggerAirmeetAttendeeJoined,
-        [EnumMember(Value = "trigger.session.attendee.joined")]
-        TriggerSessionAttendeeJoined,
-        [EnumMember(Value = "trigger.airmeet.polls")]
-        TriggerAirmeetPolls,
-        [EnumMember(Value = "trigger.airmeet.questions")]
-        TriggerAirmeetQuestions,
-        [EnumMember(Value = "trigger.attendee.booth.joined")]
-        TriggerAttendeeBoothJoined
     }
 }
 
