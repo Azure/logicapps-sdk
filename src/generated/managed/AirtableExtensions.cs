@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
     public class AirtableActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<ListRecordsResponse, ApiConnectionActionConfiguration> ListRecords(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> filterByFormula = null, Expression<Func<int>> maxRecords = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> view = null, Expression<Func<string>> cellFormat = null, Expression<Func<string>> timeZone = null, Expression<Func<string>> userLocale = null)
+        public IBodyWorkflowAction<ListRecordsResponse, ApiConnectionActionConfiguration> ListRecords(Expression<Func<string>> baseId, Expression<Func<string>> table, Expression<Func<string>> filterByFormula = null, Expression<Func<int>> maxRecords = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> view = null, Expression<Func<string>> cellFormat = null, Expression<Func<string>> timeZone = null, Expression<Func<string>> userLocale = null)
         {
-            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_baseId = WorkflowExpression.Compile(baseId, nameof(baseId), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_filterByFormula = WorkflowExpression.Compile(filterByFormula, nameof(filterByFormula), required: false);
             var __workflow_maxRecords = WorkflowExpression.Compile(maxRecords, nameof(maxRecords), required: false);
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             var __workflow_userLocale = WorkflowExpression.Compile(userLocale, nameof(userLocale), required: false);
             return new DeferredBodyAction<ListRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_baseId.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filterByFormula != null)
@@ -47,13 +48,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<CreateaRecordResponse, ApiConnectionActionConfiguration> CreateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table)
+        public IBodyWorkflowAction<CreateaRecordResponse, ApiConnectionActionConfiguration> CreateaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table)
         {
-            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_baseId = WorkflowExpression.Compile(baseId, nameof(baseId), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyAction<CreateaRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_baseId.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -69,14 +70,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<RetrieveaRecordResponse, ApiConnectionActionConfiguration> RetrieveaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
+        public IBodyWorkflowAction<RetrieveaRecordResponse, ApiConnectionActionConfiguration> RetrieveaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table, Expression<Func<string>> recordId)
         {
-            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_baseId = WorkflowExpression.Compile(baseId, nameof(baseId), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<RetrieveaRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseId.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RetrieveaRecordResponse>(callPayload);
@@ -84,14 +85,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<DeleteaRecordResponse, ApiConnectionActionConfiguration> DeleteaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
+        public IBodyWorkflowAction<DeleteaRecordResponse, ApiConnectionActionConfiguration> DeleteaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table, Expression<Func<string>> recordId)
         {
-            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_baseId = WorkflowExpression.Compile(baseId, nameof(baseId), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<DeleteaRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseId.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteaRecordResponse>(callPayload);
@@ -99,15 +100,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<UpdateaRecordResponse, ApiConnectionActionConfiguration> UpdateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<UpdateaRecordResponse, ApiConnectionActionConfiguration> UpdateaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table, Expression<Func<string>> recordId, Expression<Func<string>> contentType = null)
         {
-            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_baseId = WorkflowExpression.Compile(baseId, nameof(baseId), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<UpdateaRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseId.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_contentType != null)

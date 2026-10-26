@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
 {
     using System.Linq.Expressions;
@@ -95,10 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
         public IBodyWorkflowAction<UsageInformationResponse, ApiConnectionActionConfiguration> UsageInformation()
         {
-            var apiCallPath = "/v1/usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UsageInformationResponse>(callPayload);
+            return new DeferredBodyAction<UsageInformationResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/usage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UsageInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetcategoriesResponseItem[], ApiConnectionActionConfiguration> Getcategories()
         {
-            var apiCallPath = "/general/v1/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetcategoriesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetcategoriesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetcategoriesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -311,10 +315,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetdepartmentsResponse, ApiConnectionActionConfiguration> Getdepartments()
         {
-            var apiCallPath = "/general/v1/departments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetdepartmentsResponse>(callPayload);
+            return new DeferredBodyAction<GetdepartmentsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/departments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetdepartmentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -531,10 +538,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetfunnelLanesResponse, ApiConnectionActionConfiguration> GetfunnelLanes()
         {
-            var apiCallPath = "/general/v1/funnel_lanes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetfunnelLanesResponse>(callPayload);
+            return new DeferredBodyAction<GetfunnelLanesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/funnel_lanes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetfunnelLanesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -590,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PutfunnelLanesIdResponse, ApiConnectionActionConfiguration> PutfunnelLanesId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyfunnelStageType = null, Expression<Func<int>> bodystageType = null, Expression<Func<string>> bodycolor = null, Expression<Func<int>> bodydeadline = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodymodifiedBy = null, Expression<Func<int>> bodyfunnelId = null, Expression<Func<int>> bodyfunnelStatusId = null, Expression<Func<int>> bodyownerId = null, Expression<Func<bool>> bodyenableNotification = null, Expression<Func<int>> bodyideasCount = null, Expression<Func<int>> bodyprojectsCount = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodyfile = null, Expression<Func<bool>> bodyshowInGraph = null, Expression<Func<bool>> bodyshowInBubble = null, Expression<Func<int>> bodyconfettiType = null, Expression<Func<string>> bodyautomationOwnerId = null)
+        public IBodyWorkflowAction<PutfunnelLanesIdResponse, ApiConnectionActionConfiguration> PutfunnelLanesId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyfunnelStageType = null, Expression<Func<int>> bodystageType = null, Expression<Func<string>> bodycolor = null, Expression<Func<int>> bodydeadline = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodymodifiedBy = null, Expression<Func<int>> bodyfunnelId = null, Expression<Func<int>> bodyfunnelStatusId = null, Expression<Func<int>> bodyownerId = null, Expression<Func<bool>> bodyenableNotification = null, Expression<Func<int>> bodyideasCount = null, Expression<Func<int>> bodyprojectsCount = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodyFile = null, Expression<Func<bool>> bodyshowInGraph = null, Expression<Func<bool>> bodyshowInBubble = null, Expression<Func<int>> bodyconfettiType = null, Expression<Func<string>> bodyautomationOwnerId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
@@ -609,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
             var __workflow_bodyprojectsCount = WorkflowExpression.Compile(bodyprojectsCount, nameof(bodyprojectsCount), required: false);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
             var __workflow_bodyshowInGraph = WorkflowExpression.Compile(bodyshowInGraph, nameof(bodyshowInGraph), required: false);
             var __workflow_bodyshowInBubble = WorkflowExpression.Compile(bodyshowInBubble, nameof(bodyshowInBubble), required: false);
             var __workflow_bodyconfettiType = WorkflowExpression.Compile(bodyconfettiType, nameof(bodyconfettiType), required: false);
@@ -717,9 +727,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfile != null)
+                if (__workflow_bodyFile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                     bodypropCount++;
                 }
 
@@ -786,10 +796,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetfunnelsResponse, ApiConnectionActionConfiguration> Getfunnels()
         {
-            var apiCallPath = "/general/v1/funnels";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetfunnelsResponse>(callPayload);
+            return new DeferredBodyAction<GetfunnelsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/funnels";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetfunnelsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1062,10 +1075,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetideasResponse, ApiConnectionActionConfiguration> Getideas()
         {
-            var apiCallPath = "/general/v1/ideas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetideasResponse>(callPayload);
+            return new DeferredBodyAction<GetideasResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/ideas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetideasResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1806,10 +1822,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetmissionsResponse, ApiConnectionActionConfiguration> Getmissions()
         {
-            var apiCallPath = "/general/v1/missions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetmissionsResponse>(callPayload);
+            return new DeferredBodyAction<GetmissionsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/missions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetmissionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2342,10 +2361,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetprojectsResponse, ApiConnectionActionConfiguration> Getprojects()
         {
-            var apiCallPath = "/general/v1/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetprojectsResponse>(callPayload);
+            return new DeferredBodyAction<GetprojectsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetprojectsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3019,10 +3041,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GettopicsResponse, ApiConnectionActionConfiguration> Gettopics()
         {
-            var apiCallPath = "/general/v1/topics";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GettopicsResponse>(callPayload);
+            return new DeferredBodyAction<GettopicsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/topics";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GettopicsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3041,10 +3066,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetusersResponse, ApiConnectionActionConfiguration> Getusers()
         {
-            var apiCallPath = "/general/v1/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetusersResponse>(callPayload);
+            return new DeferredBodyAction<GetusersResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetusersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3111,10 +3139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetusersGetCompanyResponse, ApiConnectionActionConfiguration> GetusersGetCompany()
         {
-            var apiCallPath = "/general/v1/users/get_company";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetusersGetCompanyResponse>(callPayload);
+            return new DeferredBodyAction<GetusersGetCompanyResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/general/v1/users/get_company";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetusersGetCompanyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3518,512 +3549,602 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
     {
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/ideas/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/ideas/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/ideas/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/ideas/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/ideas/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/ideas/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/projects/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/projects/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/projects/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/projects/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectDelete(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/projects/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/projects/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/tasks/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/tasks/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggercategoryCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/categories/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/categories/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCategoryUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/categories/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/categories/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCategoryDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/categories/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/categories/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/departments/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/departments/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/departments/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/departments/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/departments/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/departments/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/funnel_lanes/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/funnel_lanes/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/funnel_lanes/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/funnel_lanes/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/funnel_lanes/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/funnel_lanes/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/funnels/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/funnels/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/funnels/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/funnels/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/funnels/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/funnels/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/missions/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/missions/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/missions/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/missions/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/missions/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/missions/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/topics/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/topics/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/topics/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/topics/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/topics/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/topics/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/tasks/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/tasks/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/tasks/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/tasks/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/users/add_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/users/add_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/users/edit_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/users/edit_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/general/v1/users/delete_redirect_url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/general/v1/users/delete_redirect_url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
 {
     using System.Linq.Expressions;
@@ -105,10 +106,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<GetTeamsResponse, ApiConnectionActionConfiguration> GetTeams()
         {
-            var apiCallPath = "/api/v2/team";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTeamsResponse>(callPayload);
+            return new DeferredBodyAction<GetTeamsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v2/team";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTeamsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]

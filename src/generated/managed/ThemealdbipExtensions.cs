@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Themealdbip
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Themealdbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "themealdbip")]
         public IBodyWorkflowAction<GetARandomMealResponse, ApiConnectionActionConfiguration> GetARandomMeal()
         {
-            var apiCallPath = "/random.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetARandomMealResponse>(callPayload);
+            return new DeferredBodyAction<GetARandomMealResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/random.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetARandomMealResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "themealdbip")]
         public IBodyWorkflowAction<ListAllMealsCategoriesResponse, ApiConnectionActionConfiguration> ListAllMealsCategories()
         {
-            var apiCallPath = "/categories.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAllMealsCategoriesResponse>(callPayload);
+            return new DeferredBodyAction<ListAllMealsCategoriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/categories.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListAllMealsCategoriesResponse>(callPayload);
+            });
         }
     }
 

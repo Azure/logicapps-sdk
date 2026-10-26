@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
 {
     using System.Linq.Expressions;
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public FacilityAttributes Attributes { get; set; }
 
         [JsonProperty("id")]
-        public string FacilityID { get; set; }
+        public string FacilityId { get; set; }
 
         [JsonProperty("type")]
         public FacilityFacilityTypeType FacilityType { get; set; }
@@ -325,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
     public class SupplementalStatus
     {
         [JsonProperty("id")]
-        public string StatusID { get; set; }
+        public string StatusId { get; set; }
 
         [JsonProperty("label")]
         public string StatusLabel { get; set; }
@@ -334,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
     public class Parent
     {
         [JsonProperty("id")]
-        public string ParentFacilityID { get; set; }
+        public string ParentFacilityId { get; set; }
 
         [JsonProperty("link")]
         public string ParentFacilityAPILink { get; set; }
@@ -418,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ServiceName { get; set; }
 
         [JsonProperty("serviceId")]
-        public string ServiceID { get; set; }
+        public string ServiceId { get; set; }
     }
 
     public class ServiceHealthService
@@ -430,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ServiceName { get; set; }
 
         [JsonProperty("serviceId")]
-        public string ServiceID { get; set; }
+        public string ServiceId { get; set; }
     }
 
     public class ServiceOtherService
@@ -442,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ServiceName { get; set; }
 
         [JsonProperty("serviceId")]
-        public string ServiceID { get; set; }
+        public string ServiceId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -488,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public double DistanceInMiles { get; set; }
 
         [JsonProperty("id")]
-        public string FacilityID { get; set; }
+        public string FacilityId { get; set; }
     }
 
     public class Pagination
@@ -552,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ServiceName { get; set; }
 
         [JsonProperty("serviceId")]
-        public string ServiceID { get; set; }
+        public string ServiceId { get; set; }
 
         [JsonProperty("path")]
         public string ServiceDetailsPath { get; set; }
@@ -588,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ServiceName { get; set; }
 
         [JsonProperty("serviceId")]
-        public string ServiceID { get; set; }
+        public string ServiceId { get; set; }
 
         [JsonProperty("serviceType")]
         public ServiceInfoServiceTypeType ServiceType { get; set; }
@@ -740,7 +741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public NearbyAttributes Attributes { get; set; }
 
         [JsonProperty("id")]
-        public string FacilityID { get; set; }
+        public string FacilityId { get; set; }
 
         [JsonProperty("type")]
         public NearbyFacilityTypeType FacilityType { get; set; }

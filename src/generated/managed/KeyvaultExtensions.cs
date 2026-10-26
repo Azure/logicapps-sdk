@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadataCollection, ApiConnectionActionConfiguration> ListKeys()
         {
-            var apiCallPath = "/keys";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
+            return new DeferredBodyAction<KeyMetadataCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/keys";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
@@ -169,10 +173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadataCollection, ApiConnectionActionConfiguration> ListSecrets()
         {
-            var apiCallPath = "/secrets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
+            return new DeferredBodyAction<SecretMetadataCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/secrets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]

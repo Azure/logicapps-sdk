@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
 {
     using System.Linq.Expressions;
@@ -27,10 +28,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetKeysResponse, ApiConnectionActionConfiguration> GetKeys()
         {
-            var apiCallPath = "/key";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetKeysResponse>(callPayload);
+            return new DeferredBodyAction<GetKeysResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/key";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetKeysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
@@ -86,24 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<object>> files, Expression<Func<string[]>> languages, Expression<Func<string>> workflowId, Expression<Func<string>> title, Expression<Func<string>> callbackUri)
-        {
-            var __workflow_files = WorkflowExpression.Compile(files, nameof(files), required: true);
-            var __workflow_languages = WorkflowExpression.Compile(languages, nameof(languages), required: true);
-            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
-            var __workflow_callbackUri = WorkflowExpression.Compile(callbackUri, nameof(callbackUri), required: true);
-            return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/project";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["app_source"] = Convert.ToString("powerautomate");
-                return new ApiConnectionAction<CreateProjectResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetProjectResponse, ApiConnectionActionConfiguration> GetProject(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -140,25 +126,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmProject(Expression<Func<string>> projectId)
-        {
-            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/project/confirm";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
         public IBodyWorkflowAction<GetTokenBalanceResponse, ApiConnectionActionConfiguration> GetTokenBalance()
         {
-            var apiCallPath = "/user/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTokenBalanceResponse>(callPayload);
+            return new DeferredBodyAction<GetTokenBalanceResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/user/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTokenBalanceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
@@ -207,15 +183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
 
         [JsonProperty("name")]
         public string Name { get; set; }
-    }
-
-    public class CreateProjectResponse
-    {
-        [JsonProperty("message")]
-        public JToken Message { get; set; }
-
-        [JsonProperty("project_id")]
-        public string ProjectId { get; set; }
     }
 
     public class GetProjectResponse

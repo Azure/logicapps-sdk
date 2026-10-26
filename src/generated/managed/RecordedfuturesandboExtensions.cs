@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
 {
     using System.Linq.Expressions;
@@ -12,46 +13,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
     public class RecordedfuturesandboActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<GetReportResponse, ApiConnectionActionConfiguration> GetReport(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
+        public IBodyWorkflowAction<GetReportResponse, ApiConnectionActionConfiguration> GetReport(Expression<Func<string>> sampleId, Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null)
         {
-            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
-            var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
+            var __workflow_sampleId = WorkflowExpression.Compile(sampleId, nameof(sampleId), required: true);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
             return new DeferredBodyAction<GetReportResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/samples/{0}/overview.json", __workflow_sampleID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/samples/{0}/overview.json", __workflow_sampleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                if (__workflow_sandboxToken != null)
+                    callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                callPayload.Headers["Region"] = Convert.ToString("eu");
+                if (__workflow_region != null)
+                    callPayload.Headers["Region"] = ExpressionConverter.Convert(__workflow_region);
                 return new ApiConnectionAction<GetReportResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<GetSummaryResponse, ApiConnectionActionConfiguration> GetSummary(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
+        public IBodyWorkflowAction<GetSummaryResponse, ApiConnectionActionConfiguration> GetSummary(Expression<Func<string>> sampleId, Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null)
         {
-            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
-            var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
+            var __workflow_sampleId = WorkflowExpression.Compile(sampleId, nameof(sampleId), required: true);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
             return new DeferredBodyAction<GetSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/samples/{0}", __workflow_sampleID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/samples/{0}", __workflow_sampleId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                if (__workflow_sandboxToken != null)
+                    callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                callPayload.Headers["Region"] = Convert.ToString("eu");
+                if (__workflow_region != null)
+                    callPayload.Headers["Region"] = ExpressionConverter.Convert(__workflow_region);
                 return new ApiConnectionAction<GetSummaryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration> SubmitUrlSample(Expression<Func<string>> sandboxToken, Expression<Func<string>> bodyurl = null)
+        public IBodyWorkflowAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration> SubmitUrlSample(Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null, Expression<Func<string>> bodyurl = null)
         {
-            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             return new DeferredBodyAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/samples/url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                if (__workflow_sandboxToken != null)
+                    callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                callPayload.Headers["Region"] = Convert.ToString("eu");
+                if (__workflow_region != null)
+                    callPayload.Headers["Region"] = ExpressionConverter.Convert(__workflow_region);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (__workflow_bodyurl != null)
@@ -66,23 +82,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
                 }
 
                 return new ApiConnectionAction<SubmitUrlSampleResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<SubmitFileSampleResponse, ApiConnectionActionConfiguration> SubmitFileSample(Expression<Func<string>> sandboxToken, Expression<Func<object>> file, Expression<Func<string>> password = null, Expression<Func<string>> userTags = null)
-        {
-            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
-            var __workflow_userTags = WorkflowExpression.Compile(userTags, nameof(userTags), required: false);
-            return new DeferredBodyAction<SubmitFileSampleResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/samples/file";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
-                return new ApiConnectionAction<SubmitFileSampleResponse>(callPayload);
             });
         }
     }
@@ -199,6 +198,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         public string[] Ttp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum regionInput
+    {
+        [EnumMember(Value = "us")]
+        Us,
+        [EnumMember(Value = "eu")]
+        Eu,
+        [EnumMember(Value = "apj")]
+        Apj
+    }
+
     public class GetSummaryResponse
     {
         [JsonProperty("id")]
@@ -221,27 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
     }
 
     public class SubmitUrlSampleResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("kind")]
-        public string Kind { get; set; }
-
-        [JsonProperty("private")]
-        public bool Private { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("submitted")]
-        public string Submitted { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
-    public class SubmitFileSampleResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }

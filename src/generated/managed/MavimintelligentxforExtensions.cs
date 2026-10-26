@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
 {
     using System.Linq.Expressions;
@@ -30,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
                 callPayload.Queries["range"] = Convert.ToString(0);
                 if (__workflow_range != null)
                     callPayload.Queries["range"] = ExpressionConverter.Convert(__workflow_range);
-                callPayload.Queries["dataLanguage"] = Convert.ToString("en");
+                callPayload.Queries["data-language"] = Convert.ToString("en");
                 if (__workflow_dataLanguage != null)
-                    callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(__workflow_dataLanguage);
+                    callPayload.Queries["data-language"] = ExpressionConverter.Convert(__workflow_dataLanguage);
                 return new ApiConnectionAction<AuditLog[]>(callPayload);
             });
         }

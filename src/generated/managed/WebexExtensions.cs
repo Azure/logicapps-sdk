@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 {
     using System.Linq.Expressions;
@@ -171,10 +172,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetMyOwnDetailsResponse, ApiConnectionActionConfiguration> GetMyOwnDetails()
         {
-            var apiCallPath = "/v1/people/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMyOwnDetailsResponse>(callPayload);
+            return new DeferredBodyAction<GetMyOwnDetailsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/people/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMyOwnDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
@@ -285,163 +289,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
     {
         public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration> MembershipsUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "updated";
-            bodypropCount++;
-            body["name"] = "MembershipUpdated";
-            bodypropCount++;
-            body["resource"] = "memberships";
-            bodypropCount++;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/webhooks/1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "updated";
+                bodypropCount++;
+                body["name"] = "MembershipUpdated";
+                bodypropCount++;
+                body["resource"] = "memberships";
+                bodypropCount++;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration> MembershipsDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "deleted";
-            bodypropCount++;
-            body["name"] = "MembershipDeleted";
-            bodypropCount++;
-            body["resource"] = "memberships";
-            bodypropCount++;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/webhooks/2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "deleted";
+                bodypropCount++;
+                body["name"] = "MembershipDeleted";
+                bodypropCount++;
+                body["resource"] = "memberships";
+                bodypropCount++;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration> MembershipsCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/3";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "created";
-            bodypropCount++;
-            body["name"] = "MembershipCreated";
-            bodypropCount++;
-            body["resource"] = "memberships";
-            bodypropCount++;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/webhooks/3";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "created";
+                bodypropCount++;
+                body["name"] = "MembershipCreated";
+                bodypropCount++;
+                body["resource"] = "memberships";
+                bodypropCount++;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration> MessagesCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/4";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "created";
-            bodypropCount++;
-            body["name"] = "MessageCreated";
-            bodypropCount++;
-            body["resource"] = "messages";
-            bodypropCount++;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/webhooks/4";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "created";
+                bodypropCount++;
+                body["name"] = "MessageCreated";
+                bodypropCount++;
+                body["resource"] = "messages";
+                bodypropCount++;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration> MessagesDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/5";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "deleted";
-            bodypropCount++;
-            body["name"] = "MessageDeleted";
-            bodypropCount++;
-            body["resource"] = "messages";
-            bodypropCount++;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/webhooks/5";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "deleted";
+                bodypropCount++;
+                body["name"] = "MessageDeleted";
+                bodypropCount++;
+                body["resource"] = "messages";
+                bodypropCount++;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration> SpaceCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/6";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "created";
-            bodypropCount++;
-            body["name"] = "SpaceCreated";
-            bodypropCount++;
-            body["resource"] = "rooms";
-            bodypropCount++;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/webhooks/6";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "created";
+                bodypropCount++;
+                body["name"] = "SpaceCreated";
+                bodypropCount++;
+                body["resource"] = "rooms";
+                bodypropCount++;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration> SpaceUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/7";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "updated";
-            bodypropCount++;
-            body["name"] = "SpaceUpdated";
-            bodypropCount++;
-            body["resource"] = "rooms";
-            bodypropCount++;
-            body["targetUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/webhooks/7";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "updated";
+                bodypropCount++;
+                body["name"] = "SpaceUpdated";
+                bodypropCount++;
+                body["resource"] = "rooms";
+                bodypropCount++;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<SpaceUpdatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<SpaceUpdatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

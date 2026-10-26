@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<ApplicationCollection, ApiConnectionActionConfiguration> GetApplications()
         {
-            var apiCallPath = "/v1.0/applications";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ApplicationCollection>(callPayload);
+            return new DeferredBodyAction<ApplicationCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/applications";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ApplicationCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -113,19 +117,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IWorkflowAction<ApiConnectionActionConfiguration> Me()
         {
-            var apiCallPath = "/v1.0/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<PermissionGrantCollection, ApiConnectionActionConfiguration> GetPermissionGrants()
         {
-            var apiCallPath = "/v1.0/oauth2PermissionGrants";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PermissionGrantCollection>(callPayload);
+            return new DeferredBodyAction<PermissionGrantCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/oauth2PermissionGrants";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PermissionGrantCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -185,10 +195,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<UserFlowCollection, ApiConnectionActionConfiguration> GetUserflows()
         {
-            var apiCallPath = "/beta/identity/userFlows";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserFlowCollection>(callPayload);
+            return new DeferredBodyAction<UserFlowCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/beta/identity/userFlows";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserFlowCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -234,10 +247,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<UserFlowCollection, ApiConnectionActionConfiguration> GetB2cuserflows()
         {
-            var apiCallPath = "/beta/identity/b2cUserflows";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserFlowCollection>(callPayload);
+            return new DeferredBodyAction<UserFlowCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/beta/identity/b2cUserflows";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserFlowCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -318,10 +334,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<ServicePrincipleCollection, ApiConnectionActionConfiguration> GetServicePrinciple()
         {
-            var apiCallPath = "/v1.0/serviceprincipals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ServicePrincipleCollection>(callPayload);
+            return new DeferredBodyAction<ServicePrincipleCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/serviceprincipals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ServicePrincipleCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]

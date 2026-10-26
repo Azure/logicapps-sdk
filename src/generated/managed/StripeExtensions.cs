@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 {
     using System.Linq.Expressions;
@@ -232,34 +233,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
     {
         public IBodyWorkflowTrigger<ListCustomersResponseItem[], ApiConnectionTriggerConfiguration> OnNewCustomer(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1/customers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListCustomersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/v1/customers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration> OnNewOrder(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1/orders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/v1/orders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<ListChargesResponseItem[], ApiConnectionTriggerConfiguration> OnNewCharge(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1/charges";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListChargesResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/v1/charges";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[], ApiConnectionTriggerConfiguration> OnNewInvoiceItem(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1/invoiceitems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListInvoiceItemsResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListInvoiceItemsResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/v1/invoiceitems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListInvoiceItemsResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

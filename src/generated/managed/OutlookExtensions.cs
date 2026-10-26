@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 {
     using System.Linq.Expressions;
@@ -406,10 +407,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseTable, ApiConnectionActionConfiguration> CalendarGetTables()
         {
-            var apiCallPath = "/datasets/calendars/tables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntityListResponseTable>(callPayload);
+            return new DeferredBodyAction<EntityListResponseTable, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/calendars/tables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntityListResponseTable>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -429,10 +433,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseTable, ApiConnectionActionConfiguration> ContactGetTables()
         {
-            var apiCallPath = "/datasets/contacts/tables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntityListResponseTable>(callPayload);
+            return new DeferredBodyAction<EntityListResponseTable, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/contacts/tables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntityListResponseTable>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -2412,7 +2419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string ResponseTime { get; set; }
 
         [JsonProperty("ICalUId")]
-        public string EventUniqueID { get; set; }
+        public string EventUniqueId { get; set; }
         public string Id { get; set; }
 
         [JsonProperty("DateTimeCreated")]
@@ -2505,7 +2512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string ResponseTime { get; set; }
 
         [JsonProperty("ICalUId")]
-        public string EventUniqueID { get; set; }
+        public string EventUniqueId { get; set; }
         public int Importance { get; set; }
         public string Id { get; set; }
 
@@ -2907,7 +2914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string ResponseTime { get; set; }
 
         [JsonProperty("ICalUId")]
-        public string EventUniqueID { get; set; }
+        public string EventUniqueId { get; set; }
         public int Importance { get; set; }
         public string Id { get; set; }
 

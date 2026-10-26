@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
 {
     using System.Linq.Expressions;
@@ -12,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
     public class RainbirdActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<StartResponse, ApiConnectionActionConfiguration> Start(Expression<Func<environmentInput>> environment, Expression<Func<string>> kmID)
+        public IBodyWorkflowAction<StartResponse, ApiConnectionActionConfiguration> Start(Expression<Func<environmentInput>> environment, Expression<Func<string>> kmId)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
-            var __workflow_kmID = WorkflowExpression.Compile(kmID, nameof(kmID), required: true);
+            var __workflow_kmId = WorkflowExpression.Compile(kmId, nameof(kmId), required: true);
             return new DeferredBodyAction<StartResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/start/{0}", __workflow_kmID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/start/{0}", __workflow_kmId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
@@ -27,14 +28,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<InjectResponse, ApiConnectionActionConfiguration> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<InjectResponse, ApiConnectionActionConfiguration> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<bodyInputItem[]>> body = null)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
-            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InjectResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/inject", __workflow_sessionID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/inject", __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
@@ -44,16 +45,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
-            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_bodyrelationship = WorkflowExpression.Compile(bodyrelationship, nameof(bodyrelationship), required: true);
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
             var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/query", __workflow_sessionID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/query", __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
@@ -83,14 +84,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyanswersInputItem[]>> bodyanswers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<bodyanswersInputItem[]>> bodyanswers = null)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
-            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_bodyanswers = WorkflowExpression.Compile(bodyanswers, nameof(bodyanswers), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/response", __workflow_sessionID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/response", __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
@@ -112,13 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
-            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/undo", __workflow_sessionID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/undo", __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
@@ -134,14 +135,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<EvidenceResponse, ApiConnectionActionConfiguration> Evidence(Expression<Func<environmentInput>> environment, Expression<Func<string>> factID, Expression<Func<string>> sessionID)
+        public IBodyWorkflowAction<EvidenceResponse, ApiConnectionActionConfiguration> Evidence(Expression<Func<environmentInput>> environment, Expression<Func<string>> factId, Expression<Func<string>> sessionId)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
-            var __workflow_factID = WorkflowExpression.Compile(factID, nameof(factID), required: true);
-            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_factId = WorkflowExpression.Compile(factId, nameof(factId), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredBodyAction<EvidenceResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/analysis/evidence/{0}/{1}", __workflow_factID.WithUrlEncoding(1), __workflow_sessionID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/analysis/evidence/{0}/{1}", __workflow_factId.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
@@ -234,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public EvidenceResponseFactType Fact { get; set; }
 
         [JsonProperty("factID")]
-        public string FactID { get; set; }
+        public string FactId { get; set; }
 
         [JsonProperty("rule")]
         public EvidenceResponseRuleType Rule { get; set; }
@@ -309,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public double Certainty { get; set; }
 
         [JsonProperty("factID")]
-        public string FactID { get; set; }
+        public string FactId { get; set; }
 
         [JsonProperty("object")]
         public JToken ObjectEntity { get; set; }

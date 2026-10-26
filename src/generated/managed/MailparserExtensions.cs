@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailparser")]
         public IBodyWorkflowAction<InboxListResponse, ApiConnectionActionConfiguration> InboxList()
         {
-            var apiCallPath = "/inboxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<InboxListResponse>(callPayload);
+            return new DeferredBodyAction<InboxListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/inboxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<InboxListResponse>(callPayload);
+            });
         }
     }
 

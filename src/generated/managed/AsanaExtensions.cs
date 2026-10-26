@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 {
     using System.Linq.Expressions;
@@ -60,13 +61,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ProjectResponseV2, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
+        public IBodyWorkflowAction<ProjectResponseV2, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdataPublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
             var __workflow_projectdataprojectName = WorkflowExpression.Compile(projectdataprojectName, nameof(projectdataprojectName), required: false);
             var __workflow_projectdatadueDate = WorkflowExpression.Compile(projectdatadueDate, nameof(projectdatadueDate), required: false);
-            var __workflow_projectdatapublic = WorkflowExpression.Compile(projectdatapublic, nameof(projectdatapublic), required: false);
+            var __workflow_projectdataPublic = WorkflowExpression.Compile(projectdataPublic, nameof(projectdataPublic), required: false);
             var __workflow_projectdataprojectColor = WorkflowExpression.Compile(projectdataprojectColor, nameof(projectdataprojectColor), required: false);
             var __workflow_projectdataprojectNotes = WorkflowExpression.Compile(projectdataprojectNotes, nameof(projectdataprojectNotes), required: false);
             var __workflow_projectdataowner = WorkflowExpression.Compile(projectdataowner, nameof(projectdataowner), required: false);
@@ -95,11 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                     dataObjectpropCount++;
                 }
 
-                if (__workflow_projectdatapublic != null)
+                if (__workflow_projectdataPublic != null)
                 {
-                    if (__workflow_projectdatapublic != null)
+                    if (__workflow_projectdataPublic != null)
                     {
-                        dataObject["public"] = ExpressionConverter.ConvertO(__workflow_projectdatapublic);
+                        dataObject["public"] = ExpressionConverter.ConvertO(__workflow_projectdataPublic);
                         dataObjectpropCount++;
                     }
 
@@ -382,13 +383,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Type { get; set; }
 
         [JsonProperty("gid")]
-        public string CommentID { get; set; }
+        public string CommentId { get; set; }
     }
 
     public class TargetV2
     {
         [JsonProperty("gid")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -397,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class CreatedByV2
     {
         [JsonProperty("gid")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -406,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class TaskResponseV2
     {
         [JsonProperty("gid")]
-        public string TaskID { get; set; }
+        public string TaskId { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
@@ -454,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class AssigneeV2
     {
         [JsonProperty("gid")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -463,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class WorkSpaceV2
     {
         [JsonProperty("gid")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -472,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class ProjectResponseV2
     {
         [JsonProperty("gid")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("name")]
         public string ProjectName { get; set; }
@@ -511,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class OwnerV2
     {
         [JsonProperty("gid")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -532,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class CurrentStatusV2AuthorType
     {
         [JsonProperty("gid")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -591,7 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class UserResponseV2
     {
         [JsonProperty("gid")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [JsonProperty("name")]
         public string UserName { get; set; }
@@ -615,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class ListTeamsResponseV2DataTypeItem
     {
         [JsonProperty("gid")]
-        public string TeamID { get; set; }
+        public string TeamId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

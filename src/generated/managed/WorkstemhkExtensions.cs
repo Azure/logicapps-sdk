@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
 {
     using System.Linq.Expressions;
@@ -81,10 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3TenantResp, ApiConnectionActionConfiguration> _001getCompanyInfo()
         {
-            var apiCallPath = "/v3/company/getCompanyInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultV3TenantResp>(callPayload);
+            return new DeferredBodyAction<ResultV3TenantResp, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/company/getCompanyInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResultV3TenantResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -104,10 +108,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV3SysEnterpriseUserResp, ApiConnectionActionConfiguration> _002getUserList()
         {
-            var apiCallPath = "/v3/company/getUserList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultListV3SysEnterpriseUserResp>(callPayload);
+            return new DeferredBodyAction<ResultListV3SysEnterpriseUserResp, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/company/getUserList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResultListV3SysEnterpriseUserResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1727,10 +1734,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV3BizAttendanceConfigureResp, ApiConnectionActionConfiguration> _01getAttendanceConfigurationList()
         {
-            var apiCallPath = "/v3/settings/getAttendanceConfigurationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultV3BizAttendanceConfigureResp>(callPayload);
+            return new DeferredBodyAction<ResultV3BizAttendanceConfigureResp, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/settings/getAttendanceConfigurationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResultV3BizAttendanceConfigureResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2525,10 +2535,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryResp, ApiConnectionActionConfiguration> _02getDataDictionaryList()
         {
-            var apiCallPath = "/v3/settings/getDataDictionaryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryResp>(callPayload);
+            return new DeferredBodyAction<ResultListV3BizCustomizeDictionaryResp, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/settings/getDataDictionaryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6120,10 +6133,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
         public IBodyWorkflowAction<ResultV2TenantResp, ApiConnectionActionConfiguration> GetTenantInfo()
         {
-            var apiCallPath = "/v2/tenant/getById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultV2TenantResp>(callPayload);
+            return new DeferredBodyAction<ResultV2TenantResp, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/tenant/getById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResultV2TenantResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]

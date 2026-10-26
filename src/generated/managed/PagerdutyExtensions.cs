@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 {
     using System.Linq.Expressions;
@@ -230,10 +231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
         public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnNewIncidentCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger2/incidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger2/incidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAssigned(Expression<Func<string>> userId, FlowRecurrence recurrence = null)
@@ -250,18 +254,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
         public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAcknowledged(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger4/incidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger4/incidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentResolved(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger5/incidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger5/incidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -304,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public Assignment[] ListOfAllAssignmentsForThisIncident { get; set; }
 
         [JsonProperty("assignedUserId")]
-        public string AssignedUserID { get; set; }
+        public string AssignedUserId { get; set; }
 
         [JsonProperty("acknowledgements")]
         public Acknowledgement[] ListOfAllAcknowledgementsForThisIncident { get; set; }

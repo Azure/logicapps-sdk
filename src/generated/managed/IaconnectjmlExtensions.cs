@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
 {
     using System.Linq.Expressions;
@@ -3041,11 +3042,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsExchangePowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsExchangePowerShellRunspaceOpen(Expression<Func<string>> isExchangePowerShellRunspaceOpenworkflow, Expression<Func<bool>> isExchangePowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
+        public IBodyWorkflowAction<IsExchangePowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsExchangePowerShellRunspaceOpen(Expression<Func<string>> isExchangePowerShellRunspaceOpenworkflow, Expression<Func<bool>> isExchangePowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePId = null)
         {
             var __workflow_isExchangePowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenworkflow, nameof(isExchangePowerShellRunspaceOpenworkflow), required: true);
             var __workflow_isExchangePowerShellRunspaceOpentestCommunications = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpentestCommunications, nameof(isExchangePowerShellRunspaceOpentestCommunications), required: false);
-            var __workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
+            var __workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePId = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePId, nameof(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePId), required: false);
             return new DeferredBodyAction<IsExchangePowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsExchangePowerShellRunspaceOpen";
@@ -3069,11 +3070,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                     isExchangePowerShellRunspaceOpenpropCount++;
                 }
 
-                if (__workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                if (__workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePId != null)
                 {
-                    if (__workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                    if (__workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePId != null)
                     {
-                        isExchangePowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(__workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                        isExchangePowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(__workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePId);
                         isExchangePowerShellRunspaceOpenpropCount++;
                     }
 
@@ -6055,10 +6056,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsAzureADv2PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsAzureADv2PowerShellRunspaceOpen(Expression<Func<string>> isAzureADv2PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
+        public IBodyWorkflowAction<IsAzureADv2PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsAzureADv2PowerShellRunspaceOpen(Expression<Func<string>> isAzureADv2PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePId = null)
         {
             var __workflow_isAzureADv2PowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenworkflow, nameof(isAzureADv2PowerShellRunspaceOpenworkflow), required: true);
-            var __workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
+            var __workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePId = WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePId, nameof(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePId), required: false);
             return new DeferredBodyAction<IsAzureADv2PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/IsAzureADv2PowerShellRunspaceOpen";
@@ -6066,11 +6067,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var isAzureADv2PowerShellRunspaceOpen = new JObject();
                 var isAzureADv2PowerShellRunspaceOpenpropCount = 0;
-                if (__workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                if (__workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePId != null)
                 {
-                    if (__workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                    if (__workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePId != null)
                     {
-                        isAzureADv2PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(__workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                        isAzureADv2PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(__workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePId);
                         isAzureADv2PowerShellRunspaceOpenpropCount++;
                     }
 
@@ -8931,11 +8932,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsO365PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsO365PowerShellRunspaceOpen(Expression<Func<string>> isO365PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isO365PowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
+        public IBodyWorkflowAction<IsO365PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsO365PowerShellRunspaceOpen(Expression<Func<string>> isO365PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isO365PowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePId = null)
         {
             var __workflow_isO365PowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isO365PowerShellRunspaceOpenworkflow, nameof(isO365PowerShellRunspaceOpenworkflow), required: true);
             var __workflow_isO365PowerShellRunspaceOpentestCommunications = WorkflowExpression.Compile(isO365PowerShellRunspaceOpentestCommunications, nameof(isO365PowerShellRunspaceOpentestCommunications), required: false);
-            var __workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
+            var __workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePId = WorkflowExpression.Compile(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePId, nameof(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePId), required: false);
             return new DeferredBodyAction<IsO365PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsO365PowerShellRunspaceOpen";
@@ -8959,11 +8960,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                     isO365PowerShellRunspaceOpenpropCount++;
                 }
 
-                if (__workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                if (__workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePId != null)
                 {
-                    if (__workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID != null)
+                    if (__workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePId != null)
                     {
-                        isO365PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(__workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
+                        isO365PowerShellRunspaceOpen["RetrievePowerShellRunSpacePID"] = ExpressionConverter.ConvertO(__workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePId);
                         isO365PowerShellRunspaceOpenpropCount++;
                     }
 
@@ -10148,9 +10149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365NewMailboxResponse, ApiConnectionActionConfiguration> O365NewMailbox(Expression<Func<string>> o365NewMailboxmicrosoftOnlineServicesID, Expression<Func<string>> o365NewMailboxname, Expression<Func<string>> o365NewMailboxworkflow, Expression<Func<string>> o365NewMailboxfirstName = null, Expression<Func<string>> o365NewMailboxlastName = null, Expression<Func<string>> o365NewMailboxinitials = null, Expression<Func<string>> o365NewMailboxdisplayName = null, Expression<Func<string>> o365NewMailboxalias = null, Expression<Func<string>> o365NewMailboxprimarySmtpAddress = null, Expression<Func<string>> o365NewMailboxpassword = null, Expression<Func<bool>> o365NewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> o365NewMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> o365NewMailboxarchive = null, Expression<Func<string>> o365NewMailboxmailboxPlan = null, Expression<Func<string>> o365NewMailboxmailboxRegion = null)
+        public IBodyWorkflowAction<O365NewMailboxResponse, ApiConnectionActionConfiguration> O365NewMailbox(Expression<Func<string>> o365NewMailboxmicrosoftOnlineServicesId, Expression<Func<string>> o365NewMailboxname, Expression<Func<string>> o365NewMailboxworkflow, Expression<Func<string>> o365NewMailboxfirstName = null, Expression<Func<string>> o365NewMailboxlastName = null, Expression<Func<string>> o365NewMailboxinitials = null, Expression<Func<string>> o365NewMailboxdisplayName = null, Expression<Func<string>> o365NewMailboxalias = null, Expression<Func<string>> o365NewMailboxprimarySmtpAddress = null, Expression<Func<string>> o365NewMailboxpassword = null, Expression<Func<bool>> o365NewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> o365NewMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> o365NewMailboxarchive = null, Expression<Func<string>> o365NewMailboxmailboxPlan = null, Expression<Func<string>> o365NewMailboxmailboxRegion = null)
         {
-            var __workflow_o365NewMailboxmicrosoftOnlineServicesID = WorkflowExpression.Compile(o365NewMailboxmicrosoftOnlineServicesID, nameof(o365NewMailboxmicrosoftOnlineServicesID), required: true);
+            var __workflow_o365NewMailboxmicrosoftOnlineServicesId = WorkflowExpression.Compile(o365NewMailboxmicrosoftOnlineServicesId, nameof(o365NewMailboxmicrosoftOnlineServicesId), required: true);
             var __workflow_o365NewMailboxname = WorkflowExpression.Compile(o365NewMailboxname, nameof(o365NewMailboxname), required: true);
             var __workflow_o365NewMailboxworkflow = WorkflowExpression.Compile(o365NewMailboxworkflow, nameof(o365NewMailboxworkflow), required: true);
             var __workflow_o365NewMailboxfirstName = WorkflowExpression.Compile(o365NewMailboxfirstName, nameof(o365NewMailboxfirstName), required: false);
@@ -10173,7 +10174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 var o365NewMailbox = new JObject();
                 var o365NewMailboxpropCount = 0;
                 o365NewMailboxpropCount++;
-                o365NewMailbox["MicrosoftOnlineServicesID"] = ExpressionConverter.ConvertO(__workflow_o365NewMailboxmicrosoftOnlineServicesID);
+                o365NewMailbox["MicrosoftOnlineServicesID"] = ExpressionConverter.ConvertO(__workflow_o365NewMailboxmicrosoftOnlineServicesId);
                 o365NewMailboxpropCount++;
                 o365NewMailbox["Name"] = ExpressionConverter.ConvertO(__workflow_o365NewMailboxname);
                 if (__workflow_o365NewMailboxfirstName != null)
@@ -11042,13 +11043,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string DistinguishedName { get; set; }
         public string DNSRoot { get; set; }
         public string DomainMode { get; set; }
-        public string DomainSID { get; set; }
+
+        [JsonProperty("DomainSID")]
+        public string DomainSId { get; set; }
         public string Forest { get; set; }
         public string InfrastructureMaster { get; set; }
         public string NetBIOSName { get; set; }
         public string ObjectGUID { get; set; }
         public string PDCEmulator { get; set; }
-        public string RIDMaster { get; set; }
+
+        [JsonProperty("RIDMaster")]
+        public string RIdMaster { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -11161,7 +11166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     {
         public bool ExchangeRunspaceOpen { get; set; }
         public string ExchangeConnectionMethod { get; set; }
-        public int PowerShellRunspacePID { get; set; }
+
+        [JsonProperty("PowerShellRunspacePID")]
+        public int PowerShellRunspacePId { get; set; }
         public bool IsAgentHostingPowerShellRunSpace { get; set; }
     }
 
@@ -11593,7 +11600,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     {
         public bool AzureADv2RunspaceOpen { get; set; }
         public string AzureADAPI { get; set; }
-        public int PowerShellRunspacePID { get; set; }
+
+        [JsonProperty("PowerShellRunspacePID")]
+        public int PowerShellRunspacePId { get; set; }
         public bool IsAgentHostingPowerShellRunSpace { get; set; }
     }
 
@@ -11969,7 +11978,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     {
         public bool O365RunspaceOpen { get; set; }
         public string Office365ConnectionMethod { get; set; }
-        public int PowerShellRunspacePID { get; set; }
+
+        [JsonProperty("PowerShellRunspacePID")]
+        public int PowerShellRunspacePId { get; set; }
         public bool IsAgentHostingPowerShellRunSpace { get; set; }
     }
 
@@ -12210,7 +12221,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class O365NewMailboxResponse
     {
         public string PowerShellJSONOutput { get; set; }
-        public string NewUserMicrosoftOnlineServicesID { get; set; }
+
+        [JsonProperty("NewUserMicrosoftOnlineServicesID")]
+        public string NewUserMicrosoftOnlineServicesId { get; set; }
         public string NewMailboxGUID { get; set; }
         public string NewMailboxPrimarySmtpAddress { get; set; }
     }
@@ -12218,7 +12231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class O365NewSharedMailboxResponse
     {
         public string PowerShellJSONOutput { get; set; }
-        public string NewUserMicrosoftOnlineServicesID { get; set; }
+
+        [JsonProperty("NewUserMicrosoftOnlineServicesID")]
+        public string NewUserMicrosoftOnlineServicesId { get; set; }
         public string NewMailboxGUID { get; set; }
         public string NewMailboxPrimarySmtpAddress { get; set; }
     }

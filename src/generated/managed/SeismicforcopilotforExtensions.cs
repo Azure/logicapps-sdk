@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
 {
     using System.Linq.Expressions;
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<EmailDraftResponseEnvelope, ApiConnectionActionConfiguration> ScpGetContentSuggestions(Expression<Func<string>> requestBodyresourceType, Expression<Func<string>> xMsMessageId = null, Expression<Func<string>> xMsConversationId = null, Expression<Func<string>> requestBodyresourceDataplainTextBody = null, Expression<Func<string>> requestBodyresourceDatafullHTMLBody = null, Expression<Func<string>> requestBodyresourceDatasubject = null, Expression<Func<string>> requestBodyresourceDatafrom = null, Expression<Func<string[]>> requestBodyresourceDatato = null, Expression<Func<string[]>> requestBodyresourceDatacC = null, Expression<Func<string[]>> requestBodyresourceDatabCC = null, Expression<Func<string>> requestBodyresourceDatasentDateTime = null, Expression<Func<string>> requestBodyresourceDatatheGraphMessageId = null, Expression<Func<string>> requestBodyresourceDatatheGraphConversationID = null, Expression<Func<string>> requestBodyrecordType = null, Expression<Func<string>> requestBodyrecordID = null, Expression<Func<string>> requestBodycRMType = null, Expression<Func<string>> requestBodycRMOrgURL = null, Expression<Func<string>> requestBodyinputPrompt = null, Expression<Func<int>> requestBodytop = null, Expression<Func<int>> requestBodyskip = null)
+        public IBodyWorkflowAction<EmailDraftResponseEnvelope, ApiConnectionActionConfiguration> ScpGetContentSuggestions(Expression<Func<string>> requestBodyresourceType, Expression<Func<string>> xMsMessageId = null, Expression<Func<string>> xMsConversationId = null, Expression<Func<string>> requestBodyresourceDataplainTextBody = null, Expression<Func<string>> requestBodyresourceDatafullHTMLBody = null, Expression<Func<string>> requestBodyresourceDatasubject = null, Expression<Func<string>> requestBodyresourceDatafrom = null, Expression<Func<string[]>> requestBodyresourceDatato = null, Expression<Func<string[]>> requestBodyresourceDatacC = null, Expression<Func<string[]>> requestBodyresourceDatabCC = null, Expression<Func<string>> requestBodyresourceDatasentDateTime = null, Expression<Func<string>> requestBodyresourceDatatheGraphMessageId = null, Expression<Func<string>> requestBodyresourceDatatheGraphConversationId = null, Expression<Func<string>> requestBodyrecordType = null, Expression<Func<string>> requestBodyrecordId = null, Expression<Func<string>> requestBodycRMType = null, Expression<Func<string>> requestBodycRMOrgURL = null, Expression<Func<string>> requestBodyinputPrompt = null, Expression<Func<int>> requestBodytop = null, Expression<Func<int>> requestBodyskip = null)
         {
             var __workflow_requestBodyresourceType = WorkflowExpression.Compile(requestBodyresourceType, nameof(requestBodyresourceType), required: true);
             var __workflow_xMsMessageId = WorkflowExpression.Compile(xMsMessageId, nameof(xMsMessageId), required: false);
@@ -149,9 +150,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var __workflow_requestBodyresourceDatabCC = WorkflowExpression.Compile(requestBodyresourceDatabCC, nameof(requestBodyresourceDatabCC), required: false);
             var __workflow_requestBodyresourceDatasentDateTime = WorkflowExpression.Compile(requestBodyresourceDatasentDateTime, nameof(requestBodyresourceDatasentDateTime), required: false);
             var __workflow_requestBodyresourceDatatheGraphMessageId = WorkflowExpression.Compile(requestBodyresourceDatatheGraphMessageId, nameof(requestBodyresourceDatatheGraphMessageId), required: false);
-            var __workflow_requestBodyresourceDatatheGraphConversationID = WorkflowExpression.Compile(requestBodyresourceDatatheGraphConversationID, nameof(requestBodyresourceDatatheGraphConversationID), required: false);
+            var __workflow_requestBodyresourceDatatheGraphConversationId = WorkflowExpression.Compile(requestBodyresourceDatatheGraphConversationId, nameof(requestBodyresourceDatatheGraphConversationId), required: false);
             var __workflow_requestBodyrecordType = WorkflowExpression.Compile(requestBodyrecordType, nameof(requestBodyrecordType), required: false);
-            var __workflow_requestBodyrecordID = WorkflowExpression.Compile(requestBodyrecordID, nameof(requestBodyrecordID), required: false);
+            var __workflow_requestBodyrecordId = WorkflowExpression.Compile(requestBodyrecordId, nameof(requestBodyrecordId), required: false);
             var __workflow_requestBodycRMType = WorkflowExpression.Compile(requestBodycRMType, nameof(requestBodycRMType), required: false);
             var __workflow_requestBodycRMOrgURL = WorkflowExpression.Compile(requestBodycRMOrgURL, nameof(requestBodycRMOrgURL), required: false);
             var __workflow_requestBodyinputPrompt = WorkflowExpression.Compile(requestBodyinputPrompt, nameof(requestBodyinputPrompt), required: false);
@@ -224,9 +225,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                     resourceDataObjectpropCount++;
                 }
 
-                if (__workflow_requestBodyresourceDatatheGraphConversationID != null)
+                if (__workflow_requestBodyresourceDatatheGraphConversationId != null)
                 {
-                    resourceDataObject["conversationId"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatatheGraphConversationID);
+                    resourceDataObject["conversationId"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatatheGraphConversationId);
                     resourceDataObjectpropCount++;
                 }
 
@@ -244,9 +245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                     requestBodypropCount++;
                 }
 
-                if (__workflow_requestBodyrecordID != null)
+                if (__workflow_requestBodyrecordId != null)
                 {
-                    requestBody["recordId"] = ExpressionConverter.ConvertO(__workflow_requestBodyrecordID);
+                    requestBody["recordId"] = ExpressionConverter.ConvertO(__workflow_requestBodyrecordId);
                     requestBodypropCount++;
                 }
 
@@ -306,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
     public class ExternalRelatedRecord
     {
         [JsonProperty("recordId")]
-        public string RecordID { get; set; }
+        public string RecordId { get; set; }
 
         [JsonProperty("recordTypeDisplayName")]
         public string RecordTypeDisplayName { get; set; }

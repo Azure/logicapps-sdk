@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 {
     using System.Linq.Expressions;
@@ -119,10 +120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<SendEmailCampaignResponse, ApiConnectionActionConfiguration> SendEmailCampaign(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<int[]>> bodyaddressBookIDs = null, Expression<Func<int[]>> bodycontactIDs = null, Expression<Func<string>> bodysendDate = null)
+        public IBodyWorkflowAction<SendEmailCampaignResponse, ApiConnectionActionConfiguration> SendEmailCampaign(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignId, Expression<Func<int[]>> bodyaddressBookIDs = null, Expression<Func<int[]>> bodycontactIDs = null, Expression<Func<string>> bodysendDate = null)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
-            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: true);
+            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: true);
             var __workflow_bodyaddressBookIDs = WorkflowExpression.Compile(bodyaddressBookIDs, nameof(bodyaddressBookIDs), required: false);
             var __workflow_bodycontactIDs = WorkflowExpression.Compile(bodycontactIDs, nameof(bodycontactIDs), required: false);
             var __workflow_bodysendDate = WorkflowExpression.Compile(bodysendDate, nameof(bodysendDate), required: false);
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                 }
 
                 bodypropCount++;
-                body["CampaignID"] = ExpressionConverter.ConvertO(__workflow_bodycampaignID);
+                body["CampaignID"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
                 if (__workflow_bodycontactIDs != null)
                 {
                     body["ContactIDs"] = ExpressionConverter.ConvertO(__workflow_bodycontactIDs);
@@ -164,10 +165,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<string[]>> bodytoAddresses, Expression<Func<bodypersonalizationValuesInputItem[]>> bodypersonalizationValues = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignId, Expression<Func<string[]>> bodytoAddresses, Expression<Func<bodypersonalizationValuesInputItem[]>> bodypersonalizationValues = null)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
-            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: true);
+            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: true);
             var __workflow_bodytoAddresses = WorkflowExpression.Compile(bodytoAddresses, nameof(bodytoAddresses), required: true);
             var __workflow_bodypersonalizationValues = WorkflowExpression.Compile(bodypersonalizationValues, nameof(bodypersonalizationValues), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["CampaignID"] = ExpressionConverter.ConvertO(__workflow_bodycampaignID);
+                body["CampaignID"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
                 if (__workflow_bodypersonalizationValues != null)
                 {
                     body["PersonalizationValues"] = ExpressionConverter.ConvertO(__workflow_bodypersonalizationValues);
@@ -198,10 +199,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateProgramEnrolmentResponse, ApiConnectionActionConfiguration> CreateProgramEnrolment(Expression<Func<regionInput>> region, Expression<Func<int>> bodyprogramID, Expression<Func<int[]>> bodyaddressBooks = null, Expression<Func<int[]>> bodycontacts = null)
+        public IBodyWorkflowAction<CreateProgramEnrolmentResponse, ApiConnectionActionConfiguration> CreateProgramEnrolment(Expression<Func<regionInput>> region, Expression<Func<int>> bodyprogramId, Expression<Func<int[]>> bodyaddressBooks = null, Expression<Func<int[]>> bodycontacts = null)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
-            var __workflow_bodyprogramID = WorkflowExpression.Compile(bodyprogramID, nameof(bodyprogramID), required: true);
+            var __workflow_bodyprogramId = WorkflowExpression.Compile(bodyprogramId, nameof(bodyprogramId), required: true);
             var __workflow_bodyaddressBooks = WorkflowExpression.Compile(bodyaddressBooks, nameof(bodyaddressBooks), required: false);
             var __workflow_bodycontacts = WorkflowExpression.Compile(bodycontacts, nameof(bodycontacts), required: false);
             return new DeferredBodyAction<CreateProgramEnrolmentResponse, ApiConnectionActionConfiguration>(() =>
@@ -225,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                 }
 
                 bodypropCount++;
-                body["ProgramID"] = ExpressionConverter.ConvertO(__workflow_bodyprogramID);
+                body["ProgramID"] = ExpressionConverter.ConvertO(__workflow_bodyprogramId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -256,20 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkContactsImport(Expression<Func<string>> addressBook, Expression<Func<object>> filedata)
-        {
-            var __workflow_addressBook = WorkflowExpression.Compile(addressBook, nameof(addressBook), required: true);
-            var __workflow_filedata = WorkflowExpression.Compile(filedata, nameof(filedata), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/address-books/{0}/contacts/import", __workflow_addressBook.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -320,15 +307,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public string Visibility { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum regionInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

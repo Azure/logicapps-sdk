@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         public IBodyWorkflowAction<UserInfo, ApiConnectionActionConfiguration> CurrentUser()
         {
-            var apiCallPath = "/users/info.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserInfo>(callPayload);
+            return new DeferredBodyAction<UserInfo, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/info.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
@@ -302,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public ListScheduledInfoRejectionReasonType RejectionReason { get; set; }
 
         [JsonProperty("_id")]
-        public string MessageID { get; set; }
+        public string MessageId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -361,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string RejectReason { get; set; }
 
         [JsonProperty("_id")]
-        public string MessageID { get; set; }
+        public string MessageId { get; set; }
     }
 
     public class RecipientInfo

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetGlobalSettings()
         {
-            var apiCallPath = "/global-settings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/global-settings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
@@ -548,104 +552,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
     {
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewTicket(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/new-ticket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["url"] = "#{listCallbackUrl()}";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/webhooks/new-ticket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["url"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnResolvedTicket(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/resolved-ticket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["url"] = "#{listCallbackUrl()}";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/webhooks/resolved-ticket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["url"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdatedTicketTopic(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/updated-ticket-topic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["url"] = "#{listCallbackUrl()}";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/webhooks/updated-ticket-topic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["url"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewAnswer(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/new-answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["url"] = "#{listCallbackUrl()}";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/webhooks/new-answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["url"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdateAnswer(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/update-answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["url"] = "#{listCallbackUrl()}";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/webhooks/update-answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["url"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnAskedQuestion(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/asked-question";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["url"] = "#{listCallbackUrl()}";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/webhooks/asked-question";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["url"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
 {
     using System.Linq.Expressions;
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         public string IconURL { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("url")]
         public string URL { get; set; }
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         public string IconURL { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }

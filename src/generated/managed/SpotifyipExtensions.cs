@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
 {
     using System.Linq.Expressions;
@@ -14,28 +15,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
         public IBodyWorkflowAction<GetSavedAlbumsResponse, ApiConnectionActionConfiguration> GetSavedAlbums()
         {
-            var apiCallPath = "/v1/me/albums";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSavedAlbumsResponse>(callPayload);
+            return new DeferredBodyAction<GetSavedAlbumsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/me/albums";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSavedAlbumsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
         public IBodyWorkflowAction<PrivateUser, ApiConnectionActionConfiguration> GetUserProfile()
         {
-            var apiCallPath = "/v1/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PrivateUser>(callPayload);
+            return new DeferredBodyAction<PrivateUser, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PrivateUser>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
         public IBodyWorkflowAction<GetTopArtistsResponse, ApiConnectionActionConfiguration> GetTopArtists()
         {
-            var apiCallPath = "/v1/me/top/artists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTopArtistsResponse>(callPayload);
+            return new DeferredBodyAction<GetTopArtistsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/me/top/artists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTopArtistsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
@@ -229,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Href { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("is_local")]
         public bool IsLocal { get; set; }
@@ -405,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Href { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("images")]
         public Image[] Images { get; set; }

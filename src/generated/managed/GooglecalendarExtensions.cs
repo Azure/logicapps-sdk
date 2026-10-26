@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 {
     using System.Linq.Expressions;
@@ -297,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     public class CalendarListEntry
     {
         [JsonProperty("id")]
-        public string CalendarID { get; set; }
+        public string CalendarId { get; set; }
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
@@ -355,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public string HTMLLink { get; set; }
 
         [JsonProperty("id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [JsonProperty("attendees")]
         public string Attendees { get; set; }
@@ -431,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public string HTMLLink { get; set; }
 
         [JsonProperty("id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [JsonProperty("attendees")]
         public string Attendees { get; set; }

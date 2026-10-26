@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
 {
     using System.Linq.Expressions;
@@ -28,19 +29,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<HashtagsTrendingGetResponse, ApiConnectionActionConfiguration> HashtagsTrendingGet()
         {
-            var apiCallPath = "/tag/trending";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<HashtagsTrendingGetResponse>(callPayload);
+            return new DeferredBodyAction<HashtagsTrendingGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/tag/trending";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<HashtagsTrendingGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<HashtagsTopGetResponse, ApiConnectionActionConfiguration> HashtagsTopGet()
         {
-            var apiCallPath = "/tag/top";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<HashtagsTopGetResponse>(callPayload);
+            return new DeferredBodyAction<HashtagsTopGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/tag/top";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<HashtagsTopGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
@@ -82,10 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CategoriesGetResponse, ApiConnectionActionConfiguration> CategoriesGet()
         {
-            var apiCallPath = "/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CategoriesGetResponse>(callPayload);
+            return new DeferredBodyAction<CategoriesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CategoriesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
@@ -117,10 +127,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CountriesGetResponse, ApiConnectionActionConfiguration> CountriesGet()
         {
-            var apiCallPath = "/trending/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CountriesGetResponse>(callPayload);
+            return new DeferredBodyAction<CountriesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/trending/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CountriesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]

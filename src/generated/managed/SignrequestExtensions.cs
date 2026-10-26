@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
     public class SignrequestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signrequest")]
-        public IBodyWorkflowAction<SignRequestQuickCreate, ApiConnectionActionConfiguration> SignrequestQuickCreateCreate(Expression<Func<Signer[]>> datasigners, Expression<Func<int>> dataautoDeleteDays = null, Expression<Func<int>> dataautoExpireDays = null, Expression<Func<bool>> datadisableAttachments = null, Expression<Func<bool>> datadisableBlockchainProof = null, Expression<Func<bool>> datadisableDate = null, Expression<Func<bool>> datadisableEmails = null, Expression<Func<bool>> datadisableText = null, Expression<Func<bool>> datadisableTextSignatures = null, Expression<Func<bool>> datadisableUploadSignatures = null, Expression<Func<string>> datadocument = null, Expression<Func<string>> dataeventsCallbackUrl = null, Expression<Func<string>> dataexternalId = null, Expression<Func<string>> datafile = null, Expression<Func<string>> datafileFromContent = null, Expression<Func<string>> datafileFromContentName = null, Expression<Func<string>> datafileFromUrl = null, Expression<Func<string>> datafromEmail = null, Expression<Func<string>> datafromEmailName = null, Expression<Func<string>> datafrontendId = null, Expression<Func<bool>> dataisBeingPrepared = null, Expression<Func<string>> datamessage = null, Expression<Func<string>> dataname = null, Expression<Func<InlinePrefillTags[]>> dataprefillTags = null, Expression<Func<string>> dataprepareUrl = null, Expression<Func<string>> dataredirectUrl = null, Expression<Func<string>> dataredirectUrlDeclined = null, Expression<Func<RequiredAttachment[]>> datarequiredAttachments = null, Expression<Func<bool>> datasendReminders = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datasubject = null, Expression<Func<string>> datatemplate = null, Expression<Func<bool>> datatextMessageVerificationLocked = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null, Expression<Func<datawhoInput>> datawho = null)
+        public IBodyWorkflowAction<SignRequestQuickCreate, ApiConnectionActionConfiguration> SignrequestQuickCreateCreate(Expression<Func<Signer[]>> datasigners, Expression<Func<int>> dataautoDeleteDays = null, Expression<Func<int>> dataautoExpireDays = null, Expression<Func<bool>> datadisableAttachments = null, Expression<Func<bool>> datadisableBlockchainProof = null, Expression<Func<bool>> datadisableDate = null, Expression<Func<bool>> datadisableEmails = null, Expression<Func<bool>> datadisableText = null, Expression<Func<bool>> datadisableTextSignatures = null, Expression<Func<bool>> datadisableUploadSignatures = null, Expression<Func<string>> datadocument = null, Expression<Func<string>> dataeventsCallbackUrl = null, Expression<Func<string>> dataexternalId = null, Expression<Func<string>> dataFile = null, Expression<Func<string>> datafileFromContent = null, Expression<Func<string>> datafileFromContentName = null, Expression<Func<string>> datafileFromUrl = null, Expression<Func<string>> datafromEmail = null, Expression<Func<string>> datafromEmailName = null, Expression<Func<string>> datafrontendId = null, Expression<Func<bool>> dataisBeingPrepared = null, Expression<Func<string>> datamessage = null, Expression<Func<string>> dataname = null, Expression<Func<InlinePrefillTags[]>> dataprefillTags = null, Expression<Func<string>> dataprepareUrl = null, Expression<Func<string>> dataredirectUrl = null, Expression<Func<string>> dataredirectUrlDeclined = null, Expression<Func<RequiredAttachment[]>> datarequiredAttachments = null, Expression<Func<bool>> datasendReminders = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datasubject = null, Expression<Func<string>> datatemplate = null, Expression<Func<bool>> datatextMessageVerificationLocked = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null, Expression<Func<datawhoInput>> datawho = null)
         {
             var __workflow_datasigners = WorkflowExpression.Compile(datasigners, nameof(datasigners), required: true);
             var __workflow_dataautoDeleteDays = WorkflowExpression.Compile(dataautoDeleteDays, nameof(dataautoDeleteDays), required: false);
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
             var __workflow_datadocument = WorkflowExpression.Compile(datadocument, nameof(datadocument), required: false);
             var __workflow_dataeventsCallbackUrl = WorkflowExpression.Compile(dataeventsCallbackUrl, nameof(dataeventsCallbackUrl), required: false);
             var __workflow_dataexternalId = WorkflowExpression.Compile(dataexternalId, nameof(dataexternalId), required: false);
-            var __workflow_datafile = WorkflowExpression.Compile(datafile, nameof(datafile), required: false);
+            var __workflow_dataFile = WorkflowExpression.Compile(dataFile, nameof(dataFile), required: false);
             var __workflow_datafileFromContent = WorkflowExpression.Compile(datafileFromContent, nameof(datafileFromContent), required: false);
             var __workflow_datafileFromContentName = WorkflowExpression.Compile(datafileFromContentName, nameof(datafileFromContentName), required: false);
             var __workflow_datafileFromUrl = WorkflowExpression.Compile(datafileFromUrl, nameof(datafileFromUrl), required: false);
@@ -129,9 +130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
                     datapropCount++;
                 }
 
-                if (__workflow_datafile != null)
+                if (__workflow_dataFile != null)
                 {
-                    data["file"] = ExpressionConverter.ConvertO(__workflow_datafile);
+                    data["file"] = ExpressionConverter.ConvertO(__workflow_dataFile);
                     datapropCount++;
                 }
 

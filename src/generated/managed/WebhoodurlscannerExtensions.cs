@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
 {
     using System.Linq.Expressions;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
     public class Scan
     {
         [JsonProperty("id")]
-        public string ScanID { get; set; }
+        public string ScanId { get; set; }
 
         [JsonProperty("created")]
         public string Created { get; set; }

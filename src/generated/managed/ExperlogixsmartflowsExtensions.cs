@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
 {
     using System.Linq.Expressions;
@@ -263,21 +264,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ImportPackage(Expression<Func<object>> package, Expression<Func<bool>> overwriteExisting)
-        {
-            var __workflow_package = WorkflowExpression.Compile(package, nameof(package), required: true);
-            var __workflow_overwriteExisting = WorkflowExpression.Compile(overwriteExisting, nameof(overwriteExisting), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/Import";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["overwriteExisting"] = ExpressionConverter.Convert(__workflow_overwriteExisting);
-                return new ApiConnectionAction(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BackupPackage(Expression<Func<bool>> reqincludeHistory, Expression<Func<bool>> req00000000000000000000000000000000 = null)
         {
             var __workflow_reqincludeHistory = WorkflowExpression.Compile(reqincludeHistory, nameof(reqincludeHistory), required: true);
@@ -313,19 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RestorePackage(Expression<Func<object>> package)
-        {
-            var __workflow_package = WorkflowExpression.Compile(package, nameof(package), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/Restore";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
             });
         }
     }

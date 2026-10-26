@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odbc
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odbc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odbc")]
         public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetTables()
         {
-            var apiCallPath = "/datasets/default/tables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
+            return new DeferredBodyAction<TablesList, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TablesList>(callPayload);
+            });
         }
     }
 

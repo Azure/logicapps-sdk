@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<GetCreditsResponse, ApiConnectionActionConfiguration> GetCredits()
         {
-            var apiCallPath = "/v1/credits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCreditsResponse>(callPayload);
+            return new DeferredBodyAction<GetCreditsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/credits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCreditsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
@@ -37,10 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ListModelsResponse, ApiConnectionActionConfiguration> ListModels()
         {
-            var apiCallPath = "/v1/models";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListModelsResponse>(callPayload);
+            return new DeferredBodyAction<ListModelsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/models";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListModelsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]

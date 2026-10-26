@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
 {
     using System.Linq.Expressions;
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
     public class CreateCommunicationIdentityResponseIdentityType
     {
         [JsonProperty("id")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
     }
 
     public class AccessTokenInfo

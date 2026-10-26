@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 {
     using System.Linq.Expressions;
@@ -196,13 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodycontent, Expression<Func<string>> bodyagentEmail = null, Expression<Func<string>> bodynotifyAgent = null, Expression<Func<bodyprivateInput>> bodyprivate = null)
+        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodycontent, Expression<Func<string>> bodyagentEmail = null, Expression<Func<string>> bodynotifyAgent = null, Expression<Func<bodyPrivateInput>> bodyPrivate = null)
         {
             var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
             var __workflow_bodyagentEmail = WorkflowExpression.Compile(bodyagentEmail, nameof(bodyagentEmail), required: false);
             var __workflow_bodynotifyAgent = WorkflowExpression.Compile(bodynotifyAgent, nameof(bodynotifyAgent), required: false);
-            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
+            var __workflow_bodyPrivate = WorkflowExpression.Compile(bodyPrivate, nameof(bodyPrivate), required: false);
             return new DeferredBodyAction<AddNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_note";
@@ -225,11 +226,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyprivate != null)
+                if (__workflow_bodyPrivate != null)
                 {
-                    if (__workflow_bodyprivate != null)
+                    if (__workflow_bodyPrivate != null)
                     {
-                        body["Private"] = ExpressionConverter.ConvertO(__workflow_bodyprivate);
+                        body["Private"] = ExpressionConverter.ConvertO(__workflow_bodyPrivate);
                         bodypropCount++;
                     }
 
@@ -377,11 +378,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyprivateInput>> bodyprivate = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyPrivateInput>> bodyPrivate = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
+            var __workflow_bodyPrivate = WorkflowExpression.Compile(bodyPrivate, nameof(bodyPrivate), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_note_webhook";
@@ -401,9 +402,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyprivate != null)
+                if (__workflow_bodyPrivate != null)
                 {
-                    body["Private"] = ExpressionConverter.ConvertO(__workflow_bodyprivate);
+                    body["Private"] = ExpressionConverter.ConvertO(__workflow_bodyPrivate);
                     bodypropCount++;
                 }
 
@@ -604,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyprivateInput
+    public enum bodyPrivateInput
     {
         Yes,
         No

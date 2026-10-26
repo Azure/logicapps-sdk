@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<AccountGetResponse, ApiConnectionActionConfiguration> AccountGet()
         {
-            var apiCallPath = "/account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountGetResponse>(callPayload);
+            return new DeferredBodyAction<AccountGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
@@ -625,10 +629,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
         public IBodyWorkflowAction<PlanListResponse, ApiConnectionActionConfiguration> PlanList()
         {
-            var apiCallPath = "/plans";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PlanListResponse>(callPayload);
+            return new DeferredBodyAction<PlanListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/plans";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PlanListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]

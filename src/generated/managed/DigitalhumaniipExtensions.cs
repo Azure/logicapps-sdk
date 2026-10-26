@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
 {
     using System.Linq.Expressions;
@@ -27,10 +28,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<ProjectGetResponseItem[], ApiConnectionActionConfiguration> ProjectGet()
         {
-            var apiCallPath = "/project";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<ProjectGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/project";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]

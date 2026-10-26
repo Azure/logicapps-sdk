@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
 {
     using System.Linq.Expressions;
@@ -123,10 +124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse[], ApiConnectionActionConfiguration> GetTeamsites()
         {
-            var apiCallPath = "/integration/v2/teamsites";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicTeamsitesTeamsiteResponse[]>(callPayload);
+            return new DeferredBodyAction<SeismicTeamsitesTeamsiteResponse[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/integration/v2/teamsites";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SeismicTeamsitesTeamsiteResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
@@ -145,10 +149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
         public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse[], ApiConnectionActionConfiguration> GetUserTeamsites()
         {
-            var apiCallPath = "/integration/v2/users/teamsites";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicTeamsitesTeamsiteResponse[]>(callPayload);
+            return new DeferredBodyAction<SeismicTeamsitesTeamsiteResponse[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/integration/v2/users/teamsites";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SeismicTeamsitesTeamsiteResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]

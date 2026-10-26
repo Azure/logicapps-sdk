@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 {
     using System.Linq.Expressions;
@@ -40,15 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
                 callPayload.Queries["userUpn"] = ExpressionConverter.Convert(__workflow_userUpn);
                 return new ApiConnectionAction(callPayload);
             });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
-        public IBodyWorkflowAction<ListOwnedGroupsResponse, ApiConnectionActionConfiguration> ListOwnedGroups()
-        {
-            var apiCallPath = "/v1.0/me/memberOf/$/microsoft.graph.group";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListOwnedGroupsResponse>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
@@ -228,10 +220,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupsResponse, ApiConnectionActionConfiguration> ListDeletedGroups()
         {
-            var apiCallPath = "/v1.0/directory/deletedItems/microsoft.graph.group";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+            return new DeferredBodyAction<ListGroupsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/directory/deletedItems/microsoft.graph.group";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
@@ -442,6 +437,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
+        public IBodyWorkflowAction<ListOwnedGroupsResponse, ApiConnectionActionConfiguration> ListOwnedGroups(Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        {
+            var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
+            return new DeferredBodyAction<ListOwnedGroupsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/v1.0/me/memberOf/$/microsoft.graph.group";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_fetchSensitivityLabelMetadata != null)
+                    callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(__workflow_fetchSensitivityLabelMetadata);
+                return new ApiConnectionAction<ListOwnedGroupsResponse>(callPayload);
+            });
+        }
     }
 
     public class Office365groupsTriggers([ConnectionName] string connectionId)
@@ -515,99 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public string UserPrincipalName { get; set; }
     }
 
-    public class ListOwnedGroupsResponse
-    {
-        [JsonProperty("@odata.context")]
-        public string ODataContext { get; set; }
-
-        [JsonProperty("value")]
-        public ListOwnedGroupsResponseValueTypeItem[] Value { get; set; }
-    }
-
-    public class ListOwnedGroupsResponseValueTypeItem
-    {
-        [JsonProperty("classification")]
-        public string Classification { get; set; }
-
-        [JsonProperty("createdDateTime")]
-        public string CreatedDateTime { get; set; }
-
-        [JsonProperty("deletedDateTime")]
-        public string DeletedDateTime { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("displayName")]
-        public string Name { get; set; }
-
-        [JsonProperty("id")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("mail")]
-        public string Email { get; set; }
-
-        [JsonProperty("mailEnabled")]
-        public bool MailEnabled { get; set; }
-
-        [JsonProperty("mailNickname")]
-        public string Nickname { get; set; }
-
-        [JsonProperty("onPremisesLastSyncDateTime")]
-        public string OnPremisesLastSyncDateTime { get; set; }
-
-        [JsonProperty("onPremisesSecurityIdentifier")]
-        public string OnPremisesSecurityIdentifier { get; set; }
-
-        [JsonProperty("onPremisesSyncEnabled")]
-        public string OnPremisesSyncEnabled { get; set; }
-
-        [JsonProperty("renewedDateTime")]
-        public string RenewedDateTime { get; set; }
-
-        [JsonProperty("securityEnabled")]
-        public bool SecurityEnabled { get; set; }
-
-        [JsonProperty("visibility")]
-        public string Visibility { get; set; }
-
-        [JsonProperty("sensitivityLabelInfo")]
-        public SensitivityLabelMetadata[] SensitivityLabelInfo { get; set; }
-    }
-
-    public class SensitivityLabelMetadata
-    {
-        [JsonProperty("sensitivityLabelId")]
-        public string SensitivityLabelId { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("displayName")]
-        public string SensitivityLabelDisplayNameInfo { get; set; }
-
-        [JsonProperty("tooltip")]
-        public string TooltipInfo { get; set; }
-
-        [JsonProperty("priority")]
-        public int PriorityOfSensitivityLabel { get; set; }
-
-        [JsonProperty("color")]
-        public string ColorToBeDisplayedForSensitivityLabel { get; set; }
-
-        [JsonProperty("isEncrypted")]
-        public bool IsEncryptedStatusOfSensitivityLabel { get; set; }
-
-        [JsonProperty("isEnabled")]
-        public bool WhetherSensitivityLabelIsEnabled { get; set; }
-
-        [JsonProperty("isParent")]
-        public bool WhetherSensitivityLabelIsParent { get; set; }
-
-        [JsonProperty("parentSensitivityLabelId")]
-        public string ParentSensitivityLabelId { get; set; }
-    }
-
     public class ListGroupsResponse
     {
         [JsonProperty("@odata.context")]
@@ -666,6 +586,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
         [JsonProperty("sensitivityLabelInfo")]
         public SensitivityLabelMetadata[] SensitivityLabelInfo { get; set; }
+    }
+
+    public class SensitivityLabelMetadata
+    {
+        [JsonProperty("sensitivityLabelId")]
+        public string SensitivityLabelId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("displayName")]
+        public string SensitivityLabelDisplayNameInfo { get; set; }
+
+        [JsonProperty("tooltip")]
+        public string TooltipInfo { get; set; }
+
+        [JsonProperty("priority")]
+        public int PriorityOfSensitivityLabel { get; set; }
+
+        [JsonProperty("color")]
+        public string ColorToBeDisplayedForSensitivityLabel { get; set; }
+
+        [JsonProperty("isEncrypted")]
+        public bool IsEncryptedStatusOfSensitivityLabel { get; set; }
+
+        [JsonProperty("isEnabled")]
+        public bool WhetherSensitivityLabelIsEnabled { get; set; }
+
+        [JsonProperty("isParent")]
+        public bool WhetherSensitivityLabelIsParent { get; set; }
+
+        [JsonProperty("parentSensitivityLabelId")]
+        public string ParentSensitivityLabelId { get; set; }
     }
 
     public class CreateCalendarEventResponse
@@ -767,6 +720,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         PUT,
         PATCH,
         DELETE
+    }
+
+    public class ListOwnedGroupsResponse
+    {
+        [JsonProperty("@odata.context")]
+        public string ODataContext { get; set; }
+
+        [JsonProperty("value")]
+        public ListOwnedGroupsResponseValueTypeItem[] Value { get; set; }
+    }
+
+    public class ListOwnedGroupsResponseValueTypeItem
+    {
+        [JsonProperty("classification")]
+        public string Classification { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedDateTime { get; set; }
+
+        [JsonProperty("deletedDateTime")]
+        public string DeletedDateTime { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("displayName")]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("mail")]
+        public string Email { get; set; }
+
+        [JsonProperty("mailEnabled")]
+        public bool MailEnabled { get; set; }
+
+        [JsonProperty("mailNickname")]
+        public string Nickname { get; set; }
+
+        [JsonProperty("onPremisesLastSyncDateTime")]
+        public string OnPremisesLastSyncDateTime { get; set; }
+
+        [JsonProperty("onPremisesSecurityIdentifier")]
+        public string OnPremisesSecurityIdentifier { get; set; }
+
+        [JsonProperty("onPremisesSyncEnabled")]
+        public string OnPremisesSyncEnabled { get; set; }
+
+        [JsonProperty("renewedDateTime")]
+        public string RenewedDateTime { get; set; }
+
+        [JsonProperty("securityEnabled")]
+        public bool SecurityEnabled { get; set; }
+
+        [JsonProperty("visibility")]
+        public string Visibility { get; set; }
+
+        [JsonProperty("sensitivityLabelInfo")]
+        public SensitivityLabelMetadata[] SensitivityLabelInfo { get; set; }
     }
 
     public class OnGroupMemberAddedOrRemovedResponseItem

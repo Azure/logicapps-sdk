@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<FederalState[], ApiConnectionActionConfiguration> GetFederalStatesDE()
         {
-            var apiCallPath = "/de/FederalStates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FederalState[]>(callPayload);
+            return new DeferredBodyAction<FederalState[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/de/FederalStates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FederalState[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -322,10 +326,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<CommuneLI[], ApiConnectionActionConfiguration> GetCommunesLI()
         {
-            var apiCallPath = "/li/Communes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommuneLI[]>(callPayload);
+            return new DeferredBodyAction<CommuneLI[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/li/Communes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommuneLI[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -402,10 +409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<CantonCH[], ApiConnectionActionConfiguration> GetCantonsCH()
         {
-            var apiCallPath = "/ch/Cantons";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CantonCH[]>(callPayload);
+            return new DeferredBodyAction<CantonCH[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/ch/Cantons";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CantonCH[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -577,10 +587,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<FederalProvinceAT[], ApiConnectionActionConfiguration> GetFederalProvincesAT()
         {
-            var apiCallPath = "/at/FederalProvinces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FederalProvinceAT[]>(callPayload);
+            return new DeferredBodyAction<FederalProvinceAT[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/at/FederalProvinces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FederalProvinceAT[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]

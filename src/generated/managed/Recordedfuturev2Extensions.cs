@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 {
     using System.Linq.Expressions;
@@ -1460,6 +1461,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
         [JsonProperty("json_alert")]
         public string JsonAlert { get; set; }
+
+        [JsonProperty("alert_description")]
+        public string AlertDescription { get; set; }
     }
 
     public class DetectionRuleSearchResponse
@@ -1539,15 +1543,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         Snort
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylimitInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "100")]
-        _100
+        _1 = 1,
+        _10 = 10,
+        _100 = 100
     }
 
     public class RListDResponseItem

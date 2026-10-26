@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
 {
     using System.Linq.Expressions;
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
         public string Year { get; set; }
 
         [JsonProperty("imdbID")]
-        public string ImdbID { get; set; }
+        public string ImdbId { get; set; }
         public string Type { get; set; }
         public string Poster { get; set; }
     }

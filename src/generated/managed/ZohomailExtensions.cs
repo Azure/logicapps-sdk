@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetMailAccountResponse, ApiConnectionActionConfiguration> GetMailAccount()
         {
-            var apiCallPath = "/api/accounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMailAccountResponse>(callPayload);
+            return new DeferredBodyAction<GetMailAccountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/accounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMailAccountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
@@ -187,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SearchMailResponse, ApiConnectionActionConfiguration> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<string>> bodyentire = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodysender = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyfromDate = null, Expression<Func<string>> bodytoDate = null, Expression<Func<bool>> bodygroupResult = null, Expression<Func<string>> bodyin = null, Expression<Func<string>> bodylabel = null)
+        public IBodyWorkflowAction<SearchMailResponse, ApiConnectionActionConfiguration> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<string>> bodyentire = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodysender = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyfromDate = null, Expression<Func<string>> bodytoDate = null, Expression<Func<bool>> bodygroupResult = null, Expression<Func<string>> bodyIn = null, Expression<Func<string>> bodylabel = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
@@ -203,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_bodyfromDate = WorkflowExpression.Compile(bodyfromDate, nameof(bodyfromDate), required: false);
             var __workflow_bodytoDate = WorkflowExpression.Compile(bodytoDate, nameof(bodytoDate), required: false);
             var __workflow_bodygroupResult = WorkflowExpression.Compile(bodygroupResult, nameof(bodygroupResult), required: false);
-            var __workflow_bodyin = WorkflowExpression.Compile(bodyin, nameof(bodyin), required: false);
+            var __workflow_bodyIn = WorkflowExpression.Compile(bodyIn, nameof(bodyIn), required: false);
             var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: false);
             return new DeferredBodyAction<SearchMailResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -280,9 +284,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyin != null)
+                if (__workflow_bodyIn != null)
                 {
-                    body["in"] = ExpressionConverter.ConvertO(__workflow_bodyin);
+                    body["in"] = ExpressionConverter.ConvertO(__workflow_bodyIn);
                     bodypropCount++;
                 }
 
@@ -733,7 +737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public GetEmailAttachmentInfoResponseDataTypeAttachmentsTypeItem[] Attachments { get; set; }
 
         [JsonProperty("messageId")]
-        public string MessageID { get; set; }
+        public string MessageId { get; set; }
     }
 
     public class GetEmailAttachmentInfoResponseDataTypeAttachmentsTypeItem
@@ -745,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string AttachmentName { get; set; }
 
         [JsonProperty("attachmentId")]
-        public string AttachmentID { get; set; }
+        public string AttachmentId { get; set; }
     }
 
     public class NewMailTriggerResponse

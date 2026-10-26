@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervision
 {
     using System.Linq.Expressions;
@@ -11,38 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
 
     public class CognitiveservicescomputervisionActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DetectResponse, ApiConnectionActionConfiguration> DetectObjects(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
-        {
-            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<DetectResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/vision/v2.0/detect";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
-                return new ApiConnectionAction<DetectResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AreaOfInterestResponse, ApiConnectionActionConfiguration> GetAreaOfInterest(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
-        {
-            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
-            return new DeferredBodyAction<AreaOfInterestResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/vision/v2.0/areaOfInterest";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
-                return new ApiConnectionAction<AreaOfInterestResponse>(callPayload);
-            });
-        }
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
         {
@@ -138,6 +107,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 }
 
                 return new ApiConnectionAction<DescribeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        public IBodyWorkflowAction<DetectResponse, ApiConnectionActionConfiguration> DetectObjects(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        {
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<DetectResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/detect", __workflow_subdomainName.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<DetectResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        public IBodyWorkflowAction<AreaOfInterestResponse, ApiConnectionActionConfiguration> GetAreaOfInterest(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        {
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<AreaOfInterestResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/areaOfInterest", __workflow_subdomainName.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<AreaOfInterestResponse>(callPayload);
             });
         }
 
@@ -244,39 +247,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     {
     }
 
-    public class DetectResponse
-    {
-        [JsonProperty("objects")]
-        public DetectResponseObjectsTypeItem[] Objects { get; set; }
-    }
-
-    public class DetectResponseObjectsTypeItem
-    {
-        [JsonProperty("rectangle")]
-        public JToken BoundingBox { get; set; }
-
-        [JsonProperty("confidence")]
-        public double ObjectConfidenceScore { get; set; }
-
-        [JsonProperty("object")]
-        public string ObjectName { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
-    {
-        [EnumMember(Value = "Image Content")]
-        ImageContent,
-        [EnumMember(Value = "Image URL")]
-        ImageURL
-    }
-
-    public class AreaOfInterestResponse
-    {
-        [JsonProperty("areaOfInterest")]
-        public JToken AreaOfInterest { get; set; }
-    }
-
     public class AnalyzeResponse
     {
         [JsonProperty("categories")]
@@ -326,6 +296,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum formatInput
+    {
+        [EnumMember(Value = "Image Content")]
+        ImageContent,
+        [EnumMember(Value = "Image URL")]
+        ImageURL
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         [EnumMember(Value = "en")]
@@ -360,6 +339,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
 
         [JsonProperty("text")]
         public string CaptionText { get; set; }
+    }
+
+    public class DetectResponse
+    {
+        [JsonProperty("objects")]
+        public DetectResponseObjectsTypeItem[] Objects { get; set; }
+    }
+
+    public class DetectResponseObjectsTypeItem
+    {
+        [JsonProperty("rectangle")]
+        public JToken BoundingBox { get; set; }
+
+        [JsonProperty("confidence")]
+        public double ObjectConfidenceScore { get; set; }
+
+        [JsonProperty("object")]
+        public string ObjectName { get; set; }
+    }
+
+    public class AreaOfInterestResponse
+    {
+        [JsonProperty("areaOfInterest")]
+        public JToken AreaOfInterest { get; set; }
     }
 
     public class OCRJsonResponse

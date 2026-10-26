@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 {
     using System.Linq.Expressions;
@@ -15,16 +16,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 
     public class JotformenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
-            var __workflow_workspaceID = WorkflowExpression.Compile(workspaceID, nameof(workspaceID), required: true);
-            var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/msflow/v2/forms/{0}/webhooks", __workflow_formID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/msflow/v2/forms/{0}/webhooks", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(__workflow_workspaceID);
+                callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callbackURL"] = "#{listCallbackUrl()}";

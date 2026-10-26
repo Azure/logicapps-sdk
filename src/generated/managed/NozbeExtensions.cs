@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 {
     using System.Linq.Expressions;
@@ -129,11 +130,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<GetTeamMembersResponseItem[], ApiConnectionActionConfiguration> GetTeamMembers()
         {
-            var apiCallPath = "/team_members";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = Convert.ToString("active");
-            return new ApiConnectionAction<GetTeamMembersResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetTeamMembersResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/team_members";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = Convert.ToString("active");
+                return new ApiConnectionAction<GetTeamMembersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]

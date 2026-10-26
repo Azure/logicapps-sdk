@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 {
     using System.Linq.Expressions;
@@ -859,25 +860,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<ProjectTypesResponseItem[], ApiConnectionActionConfiguration> ProjectTypes()
         {
-            var apiCallPath = "/project-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectTypesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<ProjectTypesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/project-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectTypesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<AccountResponse, ApiConnectionActionConfiguration> Account()
         {
-            var apiCallPath = "/account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountResponse>(callPayload);
+            return new DeferredBodyAction<AccountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<ConvertEstimateResponse, ApiConnectionActionConfiguration> ConvertEstimate(Expression<Func<string>> bodytransactionID)
+        public IBodyWorkflowAction<ConvertEstimateResponse, ApiConnectionActionConfiguration> ConvertEstimate(Expression<Func<string>> bodytransactionId)
         {
-            var __workflow_bodytransactionID = WorkflowExpression.Compile(bodytransactionID, nameof(bodytransactionID), required: true);
+            var __workflow_bodytransactionId = WorkflowExpression.Compile(bodytransactionId, nameof(bodytransactionId), required: true);
             return new DeferredBodyAction<ConvertEstimateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/purchases";
@@ -886,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["transaction_ID"] = ExpressionConverter.ConvertO(__workflow_bodytransactionID);
+                body["transaction_ID"] = ExpressionConverter.ConvertO(__workflow_bodytransactionId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

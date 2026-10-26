@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 {
     using System.Linq.Expressions;
@@ -12,89 +13,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
     public class IaconnectmainframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISetHLLAPIDLL(Expression<Func<string>> hLLAPISetHLLAPIDLLdLLFilename, Expression<Func<string>> hLLAPISetHLLAPIDLLworkflow, Expression<Func<string>> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, Expression<Func<string>> hLLAPISetHLLAPIDLLentryPointName = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLisEnhancedInterface = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISetHLLAPIdLL(Expression<Func<string>> hLLAPISetHLLAPIdLLdLLFilename, Expression<Func<string>> hLLAPISetHLLAPIdLLworkflow, Expression<Func<string>> hLLAPISetHLLAPIdLLiAHLLAPIPath = null, Expression<Func<string>> hLLAPISetHLLAPIdLLentryPointName = null, Expression<Func<bool>> hLLAPISetHLLAPIdLLisEnhancedInterface = null, Expression<Func<bool>> hLLAPISetHLLAPIdLLis64BitHLLAPIdLL = null, Expression<Func<bool>> hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL = null)
         {
-            var __workflow_hLLAPISetHLLAPIDLLdLLFilename = WorkflowExpression.Compile(hLLAPISetHLLAPIDLLdLLFilename, nameof(hLLAPISetHLLAPIDLLdLLFilename), required: true);
-            var __workflow_hLLAPISetHLLAPIDLLworkflow = WorkflowExpression.Compile(hLLAPISetHLLAPIDLLworkflow, nameof(hLLAPISetHLLAPIDLLworkflow), required: true);
-            var __workflow_hLLAPISetHLLAPIDLLiAHLLAPIPath = WorkflowExpression.Compile(hLLAPISetHLLAPIDLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIDLLiAHLLAPIPath), required: false);
-            var __workflow_hLLAPISetHLLAPIDLLentryPointName = WorkflowExpression.Compile(hLLAPISetHLLAPIDLLentryPointName, nameof(hLLAPISetHLLAPIDLLentryPointName), required: false);
-            var __workflow_hLLAPISetHLLAPIDLLisEnhancedInterface = WorkflowExpression.Compile(hLLAPISetHLLAPIDLLisEnhancedInterface, nameof(hLLAPISetHLLAPIDLLisEnhancedInterface), required: false);
-            var __workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = WorkflowExpression.Compile(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL), required: false);
-            var __workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = WorkflowExpression.Compile(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL), required: false);
+            var __workflow_hLLAPISetHLLAPIdLLdLLFilename = WorkflowExpression.Compile(hLLAPISetHLLAPIdLLdLLFilename, nameof(hLLAPISetHLLAPIdLLdLLFilename), required: true);
+            var __workflow_hLLAPISetHLLAPIdLLworkflow = WorkflowExpression.Compile(hLLAPISetHLLAPIdLLworkflow, nameof(hLLAPISetHLLAPIdLLworkflow), required: true);
+            var __workflow_hLLAPISetHLLAPIdLLiAHLLAPIPath = WorkflowExpression.Compile(hLLAPISetHLLAPIdLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIdLLiAHLLAPIPath), required: false);
+            var __workflow_hLLAPISetHLLAPIdLLentryPointName = WorkflowExpression.Compile(hLLAPISetHLLAPIdLLentryPointName, nameof(hLLAPISetHLLAPIdLLentryPointName), required: false);
+            var __workflow_hLLAPISetHLLAPIdLLisEnhancedInterface = WorkflowExpression.Compile(hLLAPISetHLLAPIdLLisEnhancedInterface, nameof(hLLAPISetHLLAPIdLLisEnhancedInterface), required: false);
+            var __workflow_hLLAPISetHLLAPIdLLis64BitHLLAPIdLL = WorkflowExpression.Compile(hLLAPISetHLLAPIdLLis64BitHLLAPIdLL, nameof(hLLAPISetHLLAPIdLLis64BitHLLAPIdLL), required: false);
+            var __workflow_hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL = WorkflowExpression.Compile(hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL, nameof(hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var hLLAPISetHLLAPIDLL = new JObject();
-                var hLLAPISetHLLAPIDLLpropCount = 0;
-                hLLAPISetHLLAPIDLLpropCount++;
-                hLLAPISetHLLAPIDLL["DLLFilename"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLdLLFilename);
-                if (__workflow_hLLAPISetHLLAPIDLLiAHLLAPIPath != null)
+                var hLLAPISetHLLAPIdLL = new JObject();
+                var hLLAPISetHLLAPIdLLpropCount = 0;
+                hLLAPISetHLLAPIdLLpropCount++;
+                hLLAPISetHLLAPIdLL["DLLFilename"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLLdLLFilename);
+                if (__workflow_hLLAPISetHLLAPIdLLiAHLLAPIPath != null)
                 {
-                    hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLiAHLLAPIPath);
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["IAHLLAPIPath"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLLiAHLLAPIPath);
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (__workflow_hLLAPISetHLLAPIDLLentryPointName != null)
+                if (__workflow_hLLAPISetHLLAPIdLLentryPointName != null)
                 {
-                    hLLAPISetHLLAPIDLL["EntryPointName"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLentryPointName);
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["EntryPointName"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLLentryPointName);
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (__workflow_hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                if (__workflow_hLLAPISetHLLAPIdLLisEnhancedInterface != null)
                 {
-                    if (__workflow_hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                    if (__workflow_hLLAPISetHLLAPIdLLisEnhancedInterface != null)
                     {
-                        hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLisEnhancedInterface);
-                        hLLAPISetHLLAPIDLLpropCount++;
+                        hLLAPISetHLLAPIdLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLLisEnhancedInterface);
+                        hLLAPISetHLLAPIdLLpropCount++;
                     }
 
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
                 else
                 {
-                    hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = false;
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["IsEnhancedInterface"] = false;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (__workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                if (__workflow_hLLAPISetHLLAPIdLLis64BitHLLAPIdLL != null)
                 {
-                    if (__workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                    if (__workflow_hLLAPISetHLLAPIdLLis64BitHLLAPIdLL != null)
                     {
-                        hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
-                        hLLAPISetHLLAPIDLLpropCount++;
+                        hLLAPISetHLLAPIdLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLLis64BitHLLAPIdLL);
+                        hLLAPISetHLLAPIdLLpropCount++;
                     }
 
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
                 else
                 {
-                    hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = false;
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["Is64BitHLLAPIDLL"] = false;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (__workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                if (__workflow_hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL != null)
                 {
-                    if (__workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                    if (__workflow_hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL != null)
                     {
-                        hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
-                        hLLAPISetHLLAPIDLLpropCount++;
+                        hLLAPISetHLLAPIdLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL);
+                        hLLAPISetHLLAPIdLLpropCount++;
                     }
 
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
                 else
                 {
-                    hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = false;
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["UseCOMFor64BitHLLAPIDLL"] = false;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                hLLAPISetHLLAPIDLLpropCount++;
-                hLLAPISetHLLAPIDLL["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLworkflow);
-                if (hLLAPISetHLLAPIDLLpropCount > 0)
+                hLLAPISetHLLAPIdLLpropCount++;
+                hLLAPISetHLLAPIdLL["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLLworkflow);
+                if (hLLAPISetHLLAPIdLLpropCount > 0)
                 {
-                    callPayload.Body = hLLAPISetHLLAPIDLL;
+                    callPayload.Body = hLLAPISetHLLAPIdLL;
                 }
 
                 return new ApiConnectionAction(callPayload);
@@ -124,9 +125,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIConnect(Expression<Func<string>> hLLAPIConnectsessionID, Expression<Func<string>> hLLAPIConnectworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIConnect(Expression<Func<string>> hLLAPIConnectsessionId, Expression<Func<string>> hLLAPIConnectworkflow)
         {
-            var __workflow_hLLAPIConnectsessionID = WorkflowExpression.Compile(hLLAPIConnectsessionID, nameof(hLLAPIConnectsessionID), required: true);
+            var __workflow_hLLAPIConnectsessionId = WorkflowExpression.Compile(hLLAPIConnectsessionId, nameof(hLLAPIConnectsessionId), required: true);
             var __workflow_hLLAPIConnectworkflow = WorkflowExpression.Compile(hLLAPIConnectworkflow, nameof(hLLAPIConnectworkflow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIConnect = new JObject();
                 var hLLAPIConnectpropCount = 0;
                 hLLAPIConnectpropCount++;
-                hLLAPIConnect["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIConnectsessionID);
+                hLLAPIConnect["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIConnectsessionId);
                 hLLAPIConnectpropCount++;
                 hLLAPIConnect["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIConnectworkflow);
                 if (hLLAPIConnectpropCount > 0)
@@ -149,9 +150,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse, ApiConnectionActionConfiguration> HLLAPIGetConnectStatus(Expression<Func<string>> hLLAPIGetConnectStatussessionID, Expression<Func<string>> hLLAPIGetConnectStatusworkflow)
+        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse, ApiConnectionActionConfiguration> HLLAPIGetConnectStatus(Expression<Func<string>> hLLAPIGetConnectStatussessionId, Expression<Func<string>> hLLAPIGetConnectStatusworkflow)
         {
-            var __workflow_hLLAPIGetConnectStatussessionID = WorkflowExpression.Compile(hLLAPIGetConnectStatussessionID, nameof(hLLAPIGetConnectStatussessionID), required: true);
+            var __workflow_hLLAPIGetConnectStatussessionId = WorkflowExpression.Compile(hLLAPIGetConnectStatussessionId, nameof(hLLAPIGetConnectStatussessionId), required: true);
             var __workflow_hLLAPIGetConnectStatusworkflow = WorkflowExpression.Compile(hLLAPIGetConnectStatusworkflow, nameof(hLLAPIGetConnectStatusworkflow), required: true);
             return new DeferredBodyAction<HLLAPIGetConnectStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -161,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIGetConnectStatus = new JObject();
                 var hLLAPIGetConnectStatuspropCount = 0;
                 hLLAPIGetConnectStatuspropCount++;
-                hLLAPIGetConnectStatus["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetConnectStatussessionID);
+                hLLAPIGetConnectStatus["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetConnectStatussessionId);
                 hLLAPIGetConnectStatuspropCount++;
                 hLLAPIGetConnectStatus["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetConnectStatusworkflow);
                 if (hLLAPIGetConnectStatuspropCount > 0)
@@ -174,9 +175,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIDisconnect(Expression<Func<string>> hLLAPIDisconnectsessionID, Expression<Func<string>> hLLAPIDisconnectworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIDisconnect(Expression<Func<string>> hLLAPIDisconnectsessionId, Expression<Func<string>> hLLAPIDisconnectworkflow)
         {
-            var __workflow_hLLAPIDisconnectsessionID = WorkflowExpression.Compile(hLLAPIDisconnectsessionID, nameof(hLLAPIDisconnectsessionID), required: true);
+            var __workflow_hLLAPIDisconnectsessionId = WorkflowExpression.Compile(hLLAPIDisconnectsessionId, nameof(hLLAPIDisconnectsessionId), required: true);
             var __workflow_hLLAPIDisconnectworkflow = WorkflowExpression.Compile(hLLAPIDisconnectworkflow, nameof(hLLAPIDisconnectworkflow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIDisconnect = new JObject();
                 var hLLAPIDisconnectpropCount = 0;
                 hLLAPIDisconnectpropCount++;
-                hLLAPIDisconnect["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIDisconnectsessionID);
+                hLLAPIDisconnect["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIDisconnectsessionId);
                 hLLAPIDisconnectpropCount++;
                 hLLAPIDisconnect["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIDisconnectworkflow);
                 if (hLLAPIDisconnectpropCount > 0)
@@ -199,9 +200,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISetCursorPos(Expression<Func<string>> hLLAPISetCursorPossessionID, Expression<Func<int>> hLLAPISetCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISetCursorPoscursorColIndex, Expression<Func<string>> hLLAPISetCursorPosworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISetCursorPos(Expression<Func<string>> hLLAPISetCursorPossessionId, Expression<Func<int>> hLLAPISetCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISetCursorPoscursorColIndex, Expression<Func<string>> hLLAPISetCursorPosworkflow)
         {
-            var __workflow_hLLAPISetCursorPossessionID = WorkflowExpression.Compile(hLLAPISetCursorPossessionID, nameof(hLLAPISetCursorPossessionID), required: true);
+            var __workflow_hLLAPISetCursorPossessionId = WorkflowExpression.Compile(hLLAPISetCursorPossessionId, nameof(hLLAPISetCursorPossessionId), required: true);
             var __workflow_hLLAPISetCursorPoscursorRowIndex = WorkflowExpression.Compile(hLLAPISetCursorPoscursorRowIndex, nameof(hLLAPISetCursorPoscursorRowIndex), required: true);
             var __workflow_hLLAPISetCursorPoscursorColIndex = WorkflowExpression.Compile(hLLAPISetCursorPoscursorColIndex, nameof(hLLAPISetCursorPoscursorColIndex), required: true);
             var __workflow_hLLAPISetCursorPosworkflow = WorkflowExpression.Compile(hLLAPISetCursorPosworkflow, nameof(hLLAPISetCursorPosworkflow), required: true);
@@ -213,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISetCursorPos = new JObject();
                 var hLLAPISetCursorPospropCount = 0;
                 hLLAPISetCursorPospropCount++;
-                hLLAPISetCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPossessionID);
+                hLLAPISetCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPossessionId);
                 hLLAPISetCursorPospropCount++;
                 hLLAPISetCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPoscursorRowIndex);
                 hLLAPISetCursorPospropCount++;
@@ -230,9 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse, ApiConnectionActionConfiguration> HLLAPIGetCursorPos(Expression<Func<string>> hLLAPIGetCursorPossessionID, Expression<Func<string>> hLLAPIGetCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse, ApiConnectionActionConfiguration> HLLAPIGetCursorPos(Expression<Func<string>> hLLAPIGetCursorPossessionId, Expression<Func<string>> hLLAPIGetCursorPosworkflow)
         {
-            var __workflow_hLLAPIGetCursorPossessionID = WorkflowExpression.Compile(hLLAPIGetCursorPossessionID, nameof(hLLAPIGetCursorPossessionID), required: true);
+            var __workflow_hLLAPIGetCursorPossessionId = WorkflowExpression.Compile(hLLAPIGetCursorPossessionId, nameof(hLLAPIGetCursorPossessionId), required: true);
             var __workflow_hLLAPIGetCursorPosworkflow = WorkflowExpression.Compile(hLLAPIGetCursorPosworkflow, nameof(hLLAPIGetCursorPosworkflow), required: true);
             return new DeferredBodyAction<HLLAPIGetCursorPosResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIGetCursorPos = new JObject();
                 var hLLAPIGetCursorPospropCount = 0;
                 hLLAPIGetCursorPospropCount++;
-                hLLAPIGetCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetCursorPossessionID);
+                hLLAPIGetCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetCursorPossessionId);
                 hLLAPIGetCursorPospropCount++;
                 hLLAPIGetCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetCursorPosworkflow);
                 if (hLLAPIGetCursorPospropCount > 0)
@@ -305,9 +306,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendStringAtCursorPos(Expression<Func<string>> hLLAPISendStringAtCursorPossessionID, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendStringAtCursorPosinputString, Expression<Func<string>> hLLAPISendStringAtCursorPosworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendStringAtCursorPos(Expression<Func<string>> hLLAPISendStringAtCursorPossessionId, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendStringAtCursorPosinputString, Expression<Func<string>> hLLAPISendStringAtCursorPosworkflow)
         {
-            var __workflow_hLLAPISendStringAtCursorPossessionID = WorkflowExpression.Compile(hLLAPISendStringAtCursorPossessionID, nameof(hLLAPISendStringAtCursorPossessionID), required: true);
+            var __workflow_hLLAPISendStringAtCursorPossessionId = WorkflowExpression.Compile(hLLAPISendStringAtCursorPossessionId, nameof(hLLAPISendStringAtCursorPossessionId), required: true);
             var __workflow_hLLAPISendStringAtCursorPoscursorRowIndex = WorkflowExpression.Compile(hLLAPISendStringAtCursorPoscursorRowIndex, nameof(hLLAPISendStringAtCursorPoscursorRowIndex), required: true);
             var __workflow_hLLAPISendStringAtCursorPoscursorColIndex = WorkflowExpression.Compile(hLLAPISendStringAtCursorPoscursorColIndex, nameof(hLLAPISendStringAtCursorPoscursorColIndex), required: true);
             var __workflow_hLLAPISendStringAtCursorPosinputString = WorkflowExpression.Compile(hLLAPISendStringAtCursorPosinputString, nameof(hLLAPISendStringAtCursorPosinputString), required: true);
@@ -320,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendStringAtCursorPos = new JObject();
                 var hLLAPISendStringAtCursorPospropCount = 0;
                 hLLAPISendStringAtCursorPospropCount++;
-                hLLAPISendStringAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPossessionID);
+                hLLAPISendStringAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPossessionId);
                 hLLAPISendStringAtCursorPospropCount++;
                 hLLAPISendStringAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPoscursorRowIndex);
                 hLLAPISendStringAtCursorPospropCount++;
@@ -339,9 +340,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendPasswordAtCursorPos(Expression<Func<string>> hLLAPISendPasswordAtCursorPossessionID, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendPasswordAtCursorPosinputPassword, Expression<Func<string>> hLLAPISendPasswordAtCursorPosworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendPasswordAtCursorPos(Expression<Func<string>> hLLAPISendPasswordAtCursorPossessionId, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendPasswordAtCursorPosinputPassword, Expression<Func<string>> hLLAPISendPasswordAtCursorPosworkflow)
         {
-            var __workflow_hLLAPISendPasswordAtCursorPossessionID = WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPossessionID, nameof(hLLAPISendPasswordAtCursorPossessionID), required: true);
+            var __workflow_hLLAPISendPasswordAtCursorPossessionId = WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPossessionId, nameof(hLLAPISendPasswordAtCursorPossessionId), required: true);
             var __workflow_hLLAPISendPasswordAtCursorPoscursorRowIndex = WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPoscursorRowIndex, nameof(hLLAPISendPasswordAtCursorPoscursorRowIndex), required: true);
             var __workflow_hLLAPISendPasswordAtCursorPoscursorColIndex = WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPoscursorColIndex, nameof(hLLAPISendPasswordAtCursorPoscursorColIndex), required: true);
             var __workflow_hLLAPISendPasswordAtCursorPosinputPassword = WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPosinputPassword, nameof(hLLAPISendPasswordAtCursorPosinputPassword), required: true);
@@ -354,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendPasswordAtCursorPos = new JObject();
                 var hLLAPISendPasswordAtCursorPospropCount = 0;
                 hLLAPISendPasswordAtCursorPospropCount++;
-                hLLAPISendPasswordAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPossessionID);
+                hLLAPISendPasswordAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPossessionId);
                 hLLAPISendPasswordAtCursorPospropCount++;
                 hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPoscursorRowIndex);
                 hLLAPISendPasswordAtCursorPospropCount++;
@@ -373,9 +374,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse, ApiConnectionActionConfiguration> HLLAPIReadScreenAtCursorPos(Expression<Func<string>> hLLAPIReadScreenAtCursorPossessionID, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorColIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPosreadScreenLength, Expression<Func<string>> hLLAPIReadScreenAtCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse, ApiConnectionActionConfiguration> HLLAPIReadScreenAtCursorPos(Expression<Func<string>> hLLAPIReadScreenAtCursorPossessionId, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorColIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPosreadScreenLength, Expression<Func<string>> hLLAPIReadScreenAtCursorPosworkflow)
         {
-            var __workflow_hLLAPIReadScreenAtCursorPossessionID = WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPossessionID, nameof(hLLAPIReadScreenAtCursorPossessionID), required: true);
+            var __workflow_hLLAPIReadScreenAtCursorPossessionId = WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPossessionId, nameof(hLLAPIReadScreenAtCursorPossessionId), required: true);
             var __workflow_hLLAPIReadScreenAtCursorPoscursorRowIndex = WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPoscursorRowIndex, nameof(hLLAPIReadScreenAtCursorPoscursorRowIndex), required: true);
             var __workflow_hLLAPIReadScreenAtCursorPoscursorColIndex = WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPoscursorColIndex, nameof(hLLAPIReadScreenAtCursorPoscursorColIndex), required: true);
             var __workflow_hLLAPIReadScreenAtCursorPosreadScreenLength = WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPosreadScreenLength, nameof(hLLAPIReadScreenAtCursorPosreadScreenLength), required: true);
@@ -388,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIReadScreenAtCursorPos = new JObject();
                 var hLLAPIReadScreenAtCursorPospropCount = 0;
                 hLLAPIReadScreenAtCursorPospropCount++;
-                hLLAPIReadScreenAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPossessionID);
+                hLLAPIReadScreenAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPossessionId);
                 hLLAPIReadScreenAtCursorPospropCount++;
                 hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPoscursorRowIndex);
                 hLLAPIReadScreenAtCursorPospropCount++;
@@ -429,9 +430,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse, ApiConnectionActionConfiguration> HLLAPIReadScreenRows(Expression<Func<string>> hLLAPIReadScreenRowssessionID, Expression<Func<int>> hLLAPIReadScreenRowsstartRowIndex, Expression<Func<int>> hLLAPIReadScreenRowsendRowIndex, Expression<Func<string>> hLLAPIReadScreenRowsworkflow, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfRowsInSession = null, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
+        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse, ApiConnectionActionConfiguration> HLLAPIReadScreenRows(Expression<Func<string>> hLLAPIReadScreenRowssessionId, Expression<Func<int>> hLLAPIReadScreenRowsstartRowIndex, Expression<Func<int>> hLLAPIReadScreenRowsendRowIndex, Expression<Func<string>> hLLAPIReadScreenRowsworkflow, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfRowsInSession = null, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
         {
-            var __workflow_hLLAPIReadScreenRowssessionID = WorkflowExpression.Compile(hLLAPIReadScreenRowssessionID, nameof(hLLAPIReadScreenRowssessionID), required: true);
+            var __workflow_hLLAPIReadScreenRowssessionId = WorkflowExpression.Compile(hLLAPIReadScreenRowssessionId, nameof(hLLAPIReadScreenRowssessionId), required: true);
             var __workflow_hLLAPIReadScreenRowsstartRowIndex = WorkflowExpression.Compile(hLLAPIReadScreenRowsstartRowIndex, nameof(hLLAPIReadScreenRowsstartRowIndex), required: true);
             var __workflow_hLLAPIReadScreenRowsendRowIndex = WorkflowExpression.Compile(hLLAPIReadScreenRowsendRowIndex, nameof(hLLAPIReadScreenRowsendRowIndex), required: true);
             var __workflow_hLLAPIReadScreenRowsworkflow = WorkflowExpression.Compile(hLLAPIReadScreenRowsworkflow, nameof(hLLAPIReadScreenRowsworkflow), required: true);
@@ -445,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIReadScreenRows = new JObject();
                 var hLLAPIReadScreenRowspropCount = 0;
                 hLLAPIReadScreenRowspropCount++;
-                hLLAPIReadScreenRows["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowssessionID);
+                hLLAPIReadScreenRows["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowssessionId);
                 hLLAPIReadScreenRowspropCount++;
                 hLLAPIReadScreenRows["StartRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowsstartRowIndex);
                 hLLAPIReadScreenRowspropCount++;
@@ -602,9 +603,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPISearchForStringResponse, ApiConnectionActionConfiguration> HLLAPISearchForString(Expression<Func<string>> hLLAPISearchForStringsessionID, Expression<Func<string>> hLLAPISearchForStringsearchString, Expression<Func<string>> hLLAPISearchForStringworkflow, Expression<Func<bool>> hLLAPISearchForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPISearchForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPISearchForStringsearchStartColIndex = null)
+        public IBodyWorkflowAction<HLLAPISearchForStringResponse, ApiConnectionActionConfiguration> HLLAPISearchForString(Expression<Func<string>> hLLAPISearchForStringsessionId, Expression<Func<string>> hLLAPISearchForStringsearchString, Expression<Func<string>> hLLAPISearchForStringworkflow, Expression<Func<bool>> hLLAPISearchForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPISearchForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPISearchForStringsearchStartColIndex = null)
         {
-            var __workflow_hLLAPISearchForStringsessionID = WorkflowExpression.Compile(hLLAPISearchForStringsessionID, nameof(hLLAPISearchForStringsessionID), required: true);
+            var __workflow_hLLAPISearchForStringsessionId = WorkflowExpression.Compile(hLLAPISearchForStringsessionId, nameof(hLLAPISearchForStringsessionId), required: true);
             var __workflow_hLLAPISearchForStringsearchString = WorkflowExpression.Compile(hLLAPISearchForStringsearchString, nameof(hLLAPISearchForStringsearchString), required: true);
             var __workflow_hLLAPISearchForStringworkflow = WorkflowExpression.Compile(hLLAPISearchForStringworkflow, nameof(hLLAPISearchForStringworkflow), required: true);
             var __workflow_hLLAPISearchForStringsearchEntireScreen = WorkflowExpression.Compile(hLLAPISearchForStringsearchEntireScreen, nameof(hLLAPISearchForStringsearchEntireScreen), required: false);
@@ -618,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISearchForString = new JObject();
                 var hLLAPISearchForStringpropCount = 0;
                 hLLAPISearchForStringpropCount++;
-                hLLAPISearchForString["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsessionID);
+                hLLAPISearchForString["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsessionId);
                 hLLAPISearchForStringpropCount++;
                 hLLAPISearchForString["SearchString"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsearchString);
                 if (__workflow_hLLAPISearchForStringsearchEntireScreen != null)
@@ -661,9 +662,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForStringResponse, ApiConnectionActionConfiguration> HLLAPIWaitForString(Expression<Func<string>> hLLAPIWaitForStringsessionID, Expression<Func<string>> hLLAPIWaitForStringsearchString, Expression<Func<double>> hLLAPIWaitForStringsecondsToWait, Expression<Func<string>> hLLAPIWaitForStringworkflow, Expression<Func<bool>> hLLAPIWaitForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartColIndex = null, Expression<Func<double>> hLLAPIWaitForStringdeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForStringResponse, ApiConnectionActionConfiguration> HLLAPIWaitForString(Expression<Func<string>> hLLAPIWaitForStringsessionId, Expression<Func<string>> hLLAPIWaitForStringsearchString, Expression<Func<double>> hLLAPIWaitForStringsecondsToWait, Expression<Func<string>> hLLAPIWaitForStringworkflow, Expression<Func<bool>> hLLAPIWaitForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartColIndex = null, Expression<Func<double>> hLLAPIWaitForStringdeltaSecondsToWait = null)
         {
-            var __workflow_hLLAPIWaitForStringsessionID = WorkflowExpression.Compile(hLLAPIWaitForStringsessionID, nameof(hLLAPIWaitForStringsessionID), required: true);
+            var __workflow_hLLAPIWaitForStringsessionId = WorkflowExpression.Compile(hLLAPIWaitForStringsessionId, nameof(hLLAPIWaitForStringsessionId), required: true);
             var __workflow_hLLAPIWaitForStringsearchString = WorkflowExpression.Compile(hLLAPIWaitForStringsearchString, nameof(hLLAPIWaitForStringsearchString), required: true);
             var __workflow_hLLAPIWaitForStringsecondsToWait = WorkflowExpression.Compile(hLLAPIWaitForStringsecondsToWait, nameof(hLLAPIWaitForStringsecondsToWait), required: true);
             var __workflow_hLLAPIWaitForStringworkflow = WorkflowExpression.Compile(hLLAPIWaitForStringworkflow, nameof(hLLAPIWaitForStringworkflow), required: true);
@@ -679,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIWaitForString = new JObject();
                 var hLLAPIWaitForStringpropCount = 0;
                 hLLAPIWaitForStringpropCount++;
-                hLLAPIWaitForString["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsessionID);
+                hLLAPIWaitForString["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsessionId);
                 hLLAPIWaitForStringpropCount++;
                 hLLAPIWaitForString["SearchString"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsearchString);
                 if (__workflow_hLLAPIWaitForStringsearchEntireScreen != null)
@@ -819,8 +820,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public bool SystemBusy { get; set; }
         public bool KeyboardLocked { get; set; }
         public bool SessionInUseByAnotherHLLAPIApplication { get; set; }
-        public int HLLAPIThreadID { get; set; }
-        public int COMThreadID { get; set; }
+
+        [JsonProperty("HLLAPIThreadID")]
+        public int HLLAPIThreadId { get; set; }
+
+        [JsonProperty("COMThreadID")]
+        public int COMThreadId { get; set; }
         public int CallCount { get; set; }
     }
 

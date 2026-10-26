@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
 {
     using System.Linq.Expressions;
@@ -11,34 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
 
     public class HarnesspdfxActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harnesspdfx")]
-        public IBodyWorkflowAction<PostPdfResponse, ApiConnectionActionConfiguration> PostPdf(Expression<Func<object>> fileToProcess = null)
-        {
-            var __workflow_fileToProcess = WorkflowExpression.Compile(fileToProcess, nameof(fileToProcess), required: false);
-            return new DeferredBodyAction<PostPdfResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/pdfs";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<PostPdfResponse>(callPayload);
-            });
-        }
     }
 
     public class HarnesspdfxTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class PostPdfResponse
-    {
-        [JsonProperty("data")]
-        public PostPdfResponseDataType Data { get; set; }
-    }
-
-    public class PostPdfResponseDataType
-    {
-        [JsonProperty("job_token")]
-        public string JobToken { get; set; }
     }
 }
 

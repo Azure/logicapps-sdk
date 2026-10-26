@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
     public class YoutubetranscriptActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
-        public IBodyWorkflowAction<TranscriptResponse, ApiConnectionActionConfiguration> GetTranscript(Expression<Func<string>> bodyyouTubeVideoID)
+        public IBodyWorkflowAction<TranscriptResponse, ApiConnectionActionConfiguration> GetTranscript(Expression<Func<string>> bodyyouTubeVideoId)
         {
-            var __workflow_bodyyouTubeVideoID = WorkflowExpression.Compile(bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
+            var __workflow_bodyyouTubeVideoId = WorkflowExpression.Compile(bodyyouTubeVideoId, nameof(bodyyouTubeVideoId), required: true);
             return new DeferredBodyAction<TranscriptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/youtubei/v1/get_transcript";
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
                 }
 
                 bodypropCount++;
-                body["externalVideoId"] = ExpressionConverter.ConvertO(__workflow_bodyyouTubeVideoID);
+                body["externalVideoId"] = ExpressionConverter.ConvertO(__workflow_bodyyouTubeVideoId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

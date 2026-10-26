@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 {
     using System.Linq.Expressions;
@@ -202,10 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public int Code { get; set; }
 
         [JsonProperty("job_id")]
-        public string JobID { get; set; }
+        public string JobId { get; set; }
 
         [JsonProperty("bot_id")]
-        public string BOTID { get; set; }
+        public string BOTId { get; set; }
 
         [JsonProperty("bot_name")]
         public string BOTName { get; set; }

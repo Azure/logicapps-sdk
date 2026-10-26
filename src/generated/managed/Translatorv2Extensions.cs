@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
 {
     using System.Linq.Expressions;
@@ -14,11 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<Language[], ApiConnectionActionConfiguration> Languages()
         {
-            var apiCallPath = "/Languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["scope"] = Convert.ToString("translation");
-            return new ApiConnectionAction<Language[]>(callPayload);
+            return new DeferredBodyAction<Language[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["scope"] = Convert.ToString("translation");
+                return new ApiConnectionAction<Language[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]

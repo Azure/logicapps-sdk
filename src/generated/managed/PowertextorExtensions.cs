@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 {
     using System.Linq.Expressions;
@@ -1392,92 +1393,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 return new ApiConnectionAction<SendTextMessageResponse>(callPayload);
             });
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSGroupResponse, ApiConnectionActionConfiguration> SendMMSGroup(Expression<Func<string>> groupName, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
-        {
-            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
-            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
-            var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: true);
-            var __workflow_replySTOPToOptOut = WorkflowExpression.Compile(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMMSGroupResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/messages/sendmmsgroup";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SendMMSGroupResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSNewContactResponse, ApiConnectionActionConfiguration> SendMMSNewContact(Expression<Func<string>> contactNumber, Expression<Func<object>> attachment, Expression<Func<string>> message, Expression<Func<string>> contactName = null, Expression<Func<string>> contactLastName = null, Expression<Func<bool>> replySTOPToOptOut = null)
-        {
-            var __workflow_contactNumber = WorkflowExpression.Compile(contactNumber, nameof(contactNumber), required: true);
-            var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: true);
-            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
-            var __workflow_contactName = WorkflowExpression.Compile(contactName, nameof(contactName), required: false);
-            var __workflow_contactLastName = WorkflowExpression.Compile(contactLastName, nameof(contactLastName), required: false);
-            var __workflow_replySTOPToOptOut = WorkflowExpression.Compile(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMMSNewContactResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/messages/sendmmsnewcontact";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SendMMSNewContactResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSContactsResponse, ApiConnectionActionConfiguration> SendMMSContacts(Expression<Func<string>> to, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
-        {
-            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
-            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
-            var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: true);
-            var __workflow_replySTOPToOptOut = WorkflowExpression.Compile(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMMSContactsResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/messages/sendmmscontacts";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SendMMSContactsResponse>(callPayload);
-            });
-        }
     }
 
     public class PowertextorTriggers([ConnectionName] string connectionId)
     {
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductionWebhook(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/twilio/registration";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/twilio/registration";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MMSWebhook(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/twilio/MMSregistration";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/twilio/MMSregistration";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -2703,87 +2660,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
     {
         public string Status { get; set; }
         public string Message { get; set; }
-    }
-
-    public class SendMMSGroupResponse
-    {
-        public bool Success { get; set; }
-        public SendMMSGroupResponseErrorType Error { get; set; }
-        public SendMMSGroupResponseDataType Data { get; set; }
-    }
-
-    public class SendMMSGroupResponseErrorType
-    {
-        public string Status { get; set; }
-        public string Message { get; set; }
-    }
-
-    public class SendMMSGroupResponseDataType
-    {
-        public string CampaignId { get; set; }
-        public string AccountId { get; set; }
-        public string Type { get; set; }
-        public string Body { get; set; }
-        public string SendDate { get; set; }
-        public string PlaceId { get; set; }
-        public string Status { get; set; }
-        public string CreatedAt { get; set; }
-        public string CreatedBy { get; set; }
-        public bool IsReminder { get; set; }
-    }
-
-    public class SendMMSNewContactResponse
-    {
-        public bool Success { get; set; }
-        public SendMMSNewContactResponseErrorType Error { get; set; }
-        public SendMMSNewContactResponseDataType Data { get; set; }
-    }
-
-    public class SendMMSNewContactResponseErrorType
-    {
-        public string Status { get; set; }
-        public string Message { get; set; }
-    }
-
-    public class SendMMSNewContactResponseDataType
-    {
-        public string CampaignId { get; set; }
-        public string AccountId { get; set; }
-        public string Type { get; set; }
-        public string Body { get; set; }
-        public string SendDate { get; set; }
-        public string PlaceId { get; set; }
-        public string Status { get; set; }
-        public string CreatedAt { get; set; }
-        public string CreatedBy { get; set; }
-        public bool IsReminder { get; set; }
-    }
-
-    public class SendMMSContactsResponse
-    {
-        public bool Success { get; set; }
-        public SendMMSContactsResponseErrorType Error { get; set; }
-        public SendMMSContactsResponseDataType Data { get; set; }
-    }
-
-    public class SendMMSContactsResponseErrorType
-    {
-        public string Status { get; set; }
-        public string Message { get; set; }
-    }
-
-    public class SendMMSContactsResponseDataType
-    {
-        public string CampaignId { get; set; }
-        public string AccountId { get; set; }
-        public string Type { get; set; }
-        public string Body { get; set; }
-        public string SendDate { get; set; }
-        public string PlaceId { get; set; }
-        public string Status { get; set; }
-        public string CreatedAt { get; set; }
-        public string CreatedBy { get; set; }
-        public bool IsReminder { get; set; }
     }
 }
 

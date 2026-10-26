@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
 {
     using System.Linq.Expressions;
@@ -56,12 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
-        public IBodyWorkflowAction<DownloadKnowledgeBaseResponse, ApiConnectionActionConfiguration> DownloadKnowledgeBaseOld(Expression<Func<string>> knowledgeBaseId)
+        public IBodyWorkflowAction<DownloadKnowledgeBaseResponse, ApiConnectionActionConfiguration> DownloadKnowledgeBaseOld(Expression<Func<string>> subdomainName, Expression<Func<string>> knowledgeBaseId)
         {
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_knowledgeBaseId = WorkflowExpression.Compile(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
             return new DeferredBodyAction<DownloadKnowledgeBaseResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qnamaker/v4.0/knowledgebases/{0}", __workflow_knowledgeBaseId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/subdomain/{0}/qnamaker/v4.0/knowledgebases/{1}", __workflow_subdomainName.WithUrlEncoding(2), __workflow_knowledgeBaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DownloadKnowledgeBaseResponse>(callPayload);

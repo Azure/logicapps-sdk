@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
 {
     using System.Linq.Expressions;
@@ -28,9 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
-        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> listID, Expression<Func<string>> email, Expression<Func<string>> firstName = null, Expression<Func<string>> middleName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> jobTitle = null, Expression<Func<string>> phone = null, Expression<Func<string>> notes = null)
+        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> listId, Expression<Func<string>> email, Expression<Func<string>> firstName = null, Expression<Func<string>> middleName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> jobTitle = null, Expression<Func<string>> phone = null, Expression<Func<string>> notes = null)
         {
-            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
             var __workflow_middleName = WorkflowExpression.Compile(middleName, nameof(middleName), required: false);
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["output"] = Convert.ToString("json");
                 callPayload.Queries["method"] = Convert.ToString("listAddContacts");
-                callPayload.Queries["listID"] = ExpressionConverter.Convert(__workflow_listID);
+                callPayload.Queries["listID"] = ExpressionConverter.Convert(__workflow_listId);
                 callPayload.Queries["Email"] = ExpressionConverter.Convert(__workflow_email);
                 if (__workflow_firstName != null)
                     callPayload.Queries["FirstName"] = ExpressionConverter.Convert(__workflow_firstName);

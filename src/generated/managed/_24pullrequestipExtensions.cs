@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
 {
     using System.Linq.Expressions;
@@ -29,37 +30,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetProjectsResponseItem[], ApiConnectionActionConfiguration> GetProjects()
         {
-            var apiCallPath = "/projects.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProjectsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetProjectsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/projects.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetProjectsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetPullRequestsResponseItem[], ApiConnectionActionConfiguration> GetPullRequests()
         {
-            var apiCallPath = "/pull_requests.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPullRequestsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetPullRequestsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/pull_requests.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPullRequestsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetContributionsInfoResponse, ApiConnectionActionConfiguration> GetContributionsInfo()
         {
-            var apiCallPath = "/pull_requests/meta.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContributionsInfoResponse>(callPayload);
+            return new DeferredBodyAction<GetContributionsInfoResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/pull_requests/meta.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetContributionsInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetAllOrganisationsResponseItem[], ApiConnectionActionConfiguration> GetAllOrganisations()
         {
-            var apiCallPath = "/organisations.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllOrganisationsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetAllOrganisationsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/organisations.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllOrganisationsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]

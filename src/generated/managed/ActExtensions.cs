@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
 {
     using System.Linq.Expressions;
@@ -112,10 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
     {
         public IBodyWorkflowTrigger<ActWebApiModelsContact[], ApiConnectionTriggerConfiguration> TrigNewContact(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/Contacts/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ActWebApiModelsContact[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ActWebApiModelsContact[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/Contacts/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ActWebApiModelsContact[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

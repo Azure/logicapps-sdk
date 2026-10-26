@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetStationsResponseItem[], ApiConnectionActionConfiguration> GetStations()
         {
-            var apiCallPath = "/metadata/stations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetStationsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetStationsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/metadata/stations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetStationsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
@@ -109,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         public string TrainCategory { get; set; }
 
         [JsonProperty("commuterLineID")]
-        public string CommuterLineID { get; set; }
+        public string CommuterLineId { get; set; }
 
         [JsonProperty("runningCurrently")]
         public bool RunningCurrently { get; set; }
@@ -181,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         public string TrainCategory { get; set; }
 
         [JsonProperty("commuterLineID")]
-        public string CommuterLineID { get; set; }
+        public string CommuterLineId { get; set; }
 
         [JsonProperty("runningCurrently")]
         public bool RunningCurrently { get; set; }

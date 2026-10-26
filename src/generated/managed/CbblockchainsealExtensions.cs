@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class CbblockchainsealActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<CreateSealResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<string>> bodyfile)
+        public IBodyWorkflowAction<CreateSealResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<string>> bodyFile)
         {
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: true);
             return new DeferredBodyAction<CreateSealResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/CreateSeal";
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -34,9 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<ListSealsResponse, ApiConnectionActionConfiguration> ListSeals(Expression<Func<string>> bodyfile = null)
+        public IBodyWorkflowAction<ListSealsResponse, ApiConnectionActionConfiguration> ListSeals(Expression<Func<string>> bodyFile = null)
         {
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
             return new DeferredBodyAction<ListSealsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ListSeals";
@@ -44,9 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyfile != null)
+                if (__workflow_bodyFile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                     bodypropCount++;
                 }
 
@@ -60,9 +61,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> VerifySeal(Expression<Func<string>> bodyfile, Expression<Func<string>> bodysealId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> VerifySeal(Expression<Func<string>> bodyFile, Expression<Func<string>> bodysealId)
         {
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: true);
             var __workflow_bodysealId = WorkflowExpression.Compile(bodysealId, nameof(bodysealId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                 bodypropCount++;
                 body["sealId"] = ExpressionConverter.ConvertO(__workflow_bodysealId);
                 if (bodypropCount > 0)

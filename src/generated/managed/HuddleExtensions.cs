@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
 {
     using System.Linq.Expressions;
@@ -167,15 +168,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodyassignee = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodydueDate = null, Expression<Func<string>> requestBodyfileID = null, Expression<Func<string>> requestBodytaskID = null, Expression<Func<string>> requestBodystatus = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodyassignee = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodydueDate = null, Expression<Func<string>> requestBodyfileId = null, Expression<Func<string>> requestBodytaskId = null, Expression<Func<string>> requestBodystatus = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_requestBodytitle = WorkflowExpression.Compile(requestBodytitle, nameof(requestBodytitle), required: true);
             var __workflow_requestBodyassignee = WorkflowExpression.Compile(requestBodyassignee, nameof(requestBodyassignee), required: false);
             var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: false);
             var __workflow_requestBodydueDate = WorkflowExpression.Compile(requestBodydueDate, nameof(requestBodydueDate), required: false);
-            var __workflow_requestBodyfileID = WorkflowExpression.Compile(requestBodyfileID, nameof(requestBodyfileID), required: false);
-            var __workflow_requestBodytaskID = WorkflowExpression.Compile(requestBodytaskID, nameof(requestBodytaskID), required: false);
+            var __workflow_requestBodyfileId = WorkflowExpression.Compile(requestBodyfileId, nameof(requestBodyfileId), required: false);
+            var __workflow_requestBodytaskId = WorkflowExpression.Compile(requestBodytaskId, nameof(requestBodytaskId), required: false);
             var __workflow_requestBodystatus = WorkflowExpression.Compile(requestBodystatus, nameof(requestBodystatus), required: false);
             return new DeferredBodyAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -202,15 +203,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
                     requestBodypropCount++;
                 }
 
-                if (__workflow_requestBodyfileID != null)
+                if (__workflow_requestBodyfileId != null)
                 {
-                    requestBody["fileId"] = ExpressionConverter.ConvertO(__workflow_requestBodyfileID);
+                    requestBody["fileId"] = ExpressionConverter.ConvertO(__workflow_requestBodyfileId);
                     requestBodypropCount++;
                 }
 
-                if (__workflow_requestBodytaskID != null)
+                if (__workflow_requestBodytaskId != null)
                 {
-                    requestBody["id"] = ExpressionConverter.ConvertO(__workflow_requestBodytaskID);
+                    requestBody["id"] = ExpressionConverter.ConvertO(__workflow_requestBodytaskId);
                     requestBodypropCount++;
                 }
 
@@ -282,10 +283,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string Extension { get; set; }
 
         [JsonProperty("folderId")]
-        public string FolderID { get; set; }
+        public string FolderId { get; set; }
 
         [JsonProperty("id")]
-        public string FileID { get; set; }
+        public string FileId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -294,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string LastUpdated { get; set; }
 
         [JsonProperty("workspaceId")]
-        public string WorkspaceID { get; set; }
+        public string WorkspaceId { get; set; }
     }
 
     public class DeleteFolderResponse
@@ -315,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public File[] Files { get; set; }
 
         [JsonProperty("id")]
-        public string FolderID { get; set; }
+        public string FolderId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -339,10 +340,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string DueDate { get; set; }
 
         [JsonProperty("fileId")]
-        public string FileID { get; set; }
+        public string FileId { get; set; }
 
         [JsonProperty("id")]
-        public string TaskID { get; set; }
+        public string TaskId { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -354,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string Type { get; set; }
 
         [JsonProperty("workspaceId")]
-        public string WorkspaceID { get; set; }
+        public string WorkspaceId { get; set; }
     }
 
     public class CreateWorkspaceTaskResponse
@@ -378,10 +379,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string Description { get; set; }
 
         [JsonProperty("folderId")]
-        public string FolderID { get; set; }
+        public string FolderId { get; set; }
 
         [JsonProperty("id")]
-        public string FileID { get; set; }
+        public string FileId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -390,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string LastUpdated { get; set; }
 
         [JsonProperty("workspaceId")]
-        public string WorkspaceID { get; set; }
+        public string WorkspaceId { get; set; }
     }
 
     public class PollWorkspaceForNewApprovalResponse
@@ -426,13 +427,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string CreatedDate { get; set; }
 
         [JsonProperty("fileId")]
-        public string FileID { get; set; }
+        public string FileId { get; set; }
 
         [JsonProperty("fileTitle")]
         public string FileTitle { get; set; }
 
         [JsonProperty("id")]
-        public string ApprovalTaskID { get; set; }
+        public string ApprovalTaskId { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -441,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string TaskType { get; set; }
 
         [JsonProperty("workspaceId")]
-        public string WorkspaceID { get; set; }
+        public string WorkspaceId { get; set; }
 
         [JsonProperty("workspaceName")]
         public string WorkspaceName { get; set; }

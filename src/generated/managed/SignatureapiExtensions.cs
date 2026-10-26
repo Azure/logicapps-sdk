@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 {
     using System.Linq.Expressions;
@@ -1583,7 +1584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class EnvelopeDeliverable
     {
         [JsonProperty("id")]
-        public string DeliverableID { get; set; }
+        public string DeliverableId { get; set; }
     }
 
     public class Capture

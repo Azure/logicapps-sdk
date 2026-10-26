@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
 {
     using System.Linq.Expressions;
@@ -14,22 +15,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetBoardResponse[], ApiConnectionActionConfiguration> GetBoards()
         {
-            var apiCallPath = "/api/v1/boards.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBoardResponse[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetBoardResponse, ApiConnectionActionConfiguration> GetBoard(Expression<Func<string>> boardId)
-        {
-            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            return new DeferredBodyAction<GetBoardResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetBoardResponse[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}.json", __workflow_boardId.WithUrlEncoding(1)));
+                var apiCallPath = "/api/v1/boards.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetBoardResponse>(callPayload);
+                return new ApiConnectionAction<GetBoardResponse[]>(callPayload);
             });
         }
 

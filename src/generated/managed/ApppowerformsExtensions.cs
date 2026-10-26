@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 {
     using System.Linq.Expressions;
@@ -48,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddFormField(Expression<Func<string>> bodyformID, Expression<Func<string>> bodyformName, Expression<Func<string>> bodyfieldName, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldConfiguration = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddFormField(Expression<Func<string>> bodyformId, Expression<Func<string>> bodyformName, Expression<Func<string>> bodyfieldName, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldConfiguration = null)
         {
-            var __workflow_bodyformID = WorkflowExpression.Compile(bodyformID, nameof(bodyformID), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
             var __workflow_bodyformName = WorkflowExpression.Compile(bodyformName, nameof(bodyformName), required: true);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: true);
             var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: true);
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["instanceId"] = ExpressionConverter.ConvertO(__workflow_bodyformID);
+                body["instanceId"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
                 bodypropCount++;
                 body["formName"] = ExpressionConverter.ConvertO(__workflow_bodyformName);
                 bodypropCount++;
@@ -176,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         public string FormName { get; set; }
 
         [JsonProperty("formId")]
-        public string FormID { get; set; }
+        public string FormId { get; set; }
 
         [JsonProperty("submitted")]
         public string Submitted { get; set; }

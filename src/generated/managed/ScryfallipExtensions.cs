@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
 {
     using System.Linq.Expressions;
@@ -215,10 +216,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SetsGetResponse, ApiConnectionActionConfiguration> SetsGet()
         {
-            var apiCallPath = "/sets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SetsGetResponse>(callPayload);
+            return new DeferredBodyAction<SetsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/sets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SetsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
@@ -289,154 +293,205 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SymbolsGetResponse, ApiConnectionActionConfiguration> SymbolsGet()
         {
-            var apiCallPath = "/symbology";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SymbolsGetResponse>(callPayload);
+            return new DeferredBodyAction<SymbolsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/symbology";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SymbolsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogNamesGetResponse, ApiConnectionActionConfiguration> CatalogNamesGet()
         {
-            var apiCallPath = "/catalog/card-names";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogNamesGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogNamesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/card-names";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogNamesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogArtistsGetResponse, ApiConnectionActionConfiguration> CatalogArtistsGet()
         {
-            var apiCallPath = "/catalog/artist-names";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogArtistsGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogArtistsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/artist-names";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogArtistsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogWordsGetResponse, ApiConnectionActionConfiguration> CatalogWordsGet()
         {
-            var apiCallPath = "/catalog/word-bank";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogWordsGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogWordsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/word-bank";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogWordsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogCreaturesGetResponse, ApiConnectionActionConfiguration> CatalogCreaturesGet()
         {
-            var apiCallPath = "/catalog/creature-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogCreaturesGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogCreaturesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/creature-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogCreaturesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogPlaneswalkersGetResponse, ApiConnectionActionConfiguration> CatalogPlaneswalkersGet()
         {
-            var apiCallPath = "/catalog/planeswalker-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogPlaneswalkersGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogPlaneswalkersGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/planeswalker-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogPlaneswalkersGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogLandsGetResponse, ApiConnectionActionConfiguration> CatalogLandsGet()
         {
-            var apiCallPath = "/catalog/land-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogLandsGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogLandsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/land-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogLandsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogArtifactsGetResponse, ApiConnectionActionConfiguration> CatalogArtifactsGet()
         {
-            var apiCallPath = "/catalog/artifact-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogArtifactsGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogArtifactsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/artifact-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogArtifactsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogEnchantmentsGetResponse, ApiConnectionActionConfiguration> CatalogEnchantmentsGet()
         {
-            var apiCallPath = "/catalog/enchantment-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogEnchantmentsGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogEnchantmentsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/enchantment-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogEnchantmentsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogSpellGetResponse, ApiConnectionActionConfiguration> CatalogSpellGet()
         {
-            var apiCallPath = "/catalog/spell-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogSpellGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogSpellGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/spell-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogSpellGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogPowersGetResponse, ApiConnectionActionConfiguration> CatalogPowersGet()
         {
-            var apiCallPath = "/catalog/powers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogPowersGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogPowersGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/powers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogPowersGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogToughnessGetResponse, ApiConnectionActionConfiguration> CatalogToughnessGet()
         {
-            var apiCallPath = "/catalog/toughnesses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogToughnessGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogToughnessGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/toughnesses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogToughnessGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogLoyaltiesGetResponse, ApiConnectionActionConfiguration> CatalogLoyaltiesGet()
         {
-            var apiCallPath = "/catalog/loyalties";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogLoyaltiesGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogLoyaltiesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/loyalties";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogLoyaltiesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogWatermarksGetResponse, ApiConnectionActionConfiguration> CatalogWatermarksGet()
         {
-            var apiCallPath = "/catalog/watermarks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogWatermarksGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogWatermarksGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/watermarks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogWatermarksGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogKeyAbilitiesGetResponse, ApiConnectionActionConfiguration> CatalogKeyAbilitiesGet()
         {
-            var apiCallPath = "/catalog/keyword-abilities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogKeyAbilitiesGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogKeyAbilitiesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/keyword-abilities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogKeyAbilitiesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogKeyActionsGetResponse, ApiConnectionActionConfiguration> CatalogKeyActionsGet()
         {
-            var apiCallPath = "/catalog/keyword-actions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogKeyActionsGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogKeyActionsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/keyword-actions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogKeyActionsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CatalogAbilitiesGetResponse, ApiConnectionActionConfiguration> CatalogAbilitiesGet()
         {
-            var apiCallPath = "/catalog/ability-words";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CatalogAbilitiesGetResponse>(callPayload);
+            return new DeferredBodyAction<CatalogAbilitiesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/catalog/ability-words";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CatalogAbilitiesGetResponse>(callPayload);
+            });
         }
     }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 {
     using System.Linq.Expressions;
@@ -1086,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string ContactFirstName { get; set; }
 
         [JsonProperty("Personal_UniqueID")]
-        public string PersonalUniqueID { get; set; }
+        public string PersonalUniqueId { get; set; }
 
         [JsonProperty("Contact_MiddleName")]
         public string ContactMiddleName { get; set; }
@@ -2016,7 +2017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string ContactFirstName { get; set; }
 
         [JsonProperty("Personal_UniqueID")]
-        public string PersonalUniqueID { get; set; }
+        public string PersonalUniqueId { get; set; }
 
         [JsonProperty("Other_AverageStay")]
         public string OtherAverageStay { get; set; }

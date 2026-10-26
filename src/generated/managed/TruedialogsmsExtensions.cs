@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 {
     using System.Linq.Expressions;
@@ -243,10 +244,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> UserGetSelfInfo()
         {
-            var apiCallPath = "/userinfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/userinfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
     }
 

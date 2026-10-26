@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Testconnector
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,28 +15,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Testconnector
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "testconnector")]
         public IBodyWorkflowAction<HealthResponse, ApiConnectionActionConfiguration> Health()
         {
-            var apiCallPath = "/health";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<HealthResponse>(callPayload);
+            return new DeferredBodyAction<HealthResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/health";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<HealthResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "testconnector")]
         public IBodyWorkflowAction<ClientErrorResponse, ApiConnectionActionConfiguration> ClientError()
         {
-            var apiCallPath = "/clientError/basic";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ClientErrorResponse>(callPayload);
+            return new DeferredBodyAction<ClientErrorResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/clientError/basic";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ClientErrorResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "testconnector")]
         public IBodyWorkflowAction<ServerErrorResponse, ApiConnectionActionConfiguration> ServerError()
         {
-            var apiCallPath = "/serverError/basic";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ServerErrorResponse>(callPayload);
+            return new DeferredBodyAction<ServerErrorResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/serverError/basic";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ServerErrorResponse>(callPayload);
+            });
         }
     }
 

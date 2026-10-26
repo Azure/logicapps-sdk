@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 {
     using System.Linq.Expressions;
@@ -57,10 +58,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<LeadResponse[], ApiConnectionActionConfiguration> ListLeads()
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LeadResponse[]>(callPayload);
+            return new DeferredBodyAction<LeadResponse[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LeadResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
@@ -152,34 +156,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     {
         public IBodyWorkflowTrigger<TrigLeadResponse[], ApiConnectionTriggerConfiguration> TrigNewLead(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/create_lead_trigger/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<TrigLeadResponse[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/create_lead_trigger/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<TrigUserResponse[], ApiConnectionTriggerConfiguration> TrigNewUser(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/create_user_trigger/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<TrigUserResponse[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/create_user_trigger/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<TrigUserResponse[], ApiConnectionTriggerConfiguration> TrigUpdateUser(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/update_user_trigger/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<TrigUserResponse[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/update_user_trigger/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<TrigConversationResponse[], ApiConnectionTriggerConfiguration> TrigNewConversation(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/create_conversation_trigger/conversations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigConversationResponse[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<TrigConversationResponse[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/create_conversation_trigger/conversations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TrigConversationResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

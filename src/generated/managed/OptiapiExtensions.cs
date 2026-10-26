@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 {
     using System.Linq.Expressions;
@@ -430,13 +431,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse, ApiConnectionActionConfiguration> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyinputFormat, Expression<Func<string>> bodyoutputFormat, Expression<Func<string>> bodystring, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse, ApiConnectionActionConfiguration> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyinputFormat, Expression<Func<string>> bodyoutputFormat, Expression<Func<string>> bodyString, Expression<Func<string>> bodytimezone = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_bodyinputFormat = WorkflowExpression.Compile(bodyinputFormat, nameof(bodyinputFormat), required: true);
             var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: true);
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
             return new DeferredBodyAction<ConvertAStringToADatetimeObjectResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -452,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 bodypropCount++;
                 body["outputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (__workflow_bodytimezone != null)
                 {
                     body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
@@ -469,9 +470,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse, ApiConnectionActionConfiguration> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<string>> bodyfile, Expression<Func<bodyoemInput>> bodyoem, Expression<Func<bodypsmInput>> bodypsm, Expression<Func<bool>> bodytrim, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodylanguage = null)
+        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse, ApiConnectionActionConfiguration> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<string>> bodyFile, Expression<Func<bodyoemInput>> bodyoem, Expression<Func<bodypsmInput>> bodypsm, Expression<Func<bool>> bodytrim, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodylanguage = null)
         {
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: true);
             var __workflow_bodyoem = WorkflowExpression.Compile(bodyoem, nameof(bodyoem), required: true);
             var __workflow_bodypsm = WorkflowExpression.Compile(bodypsm, nameof(bodypsm), required: true);
             var __workflow_bodytrim = WorkflowExpression.Compile(bodytrim, nameof(bodytrim), required: true);
@@ -487,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                 if (__workflow_bodylanguage != null)
                 {
                     if (__workflow_bodylanguage != null)
@@ -864,46 +865,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Text { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoemInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypsmInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

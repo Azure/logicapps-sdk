@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 {
     using System.Linq.Expressions;
@@ -29,19 +30,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<UserAccountGetResponse, ApiConnectionActionConfiguration> UserAccountGet()
         {
-            var apiCallPath = "/v1/user/account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserAccountGetResponse>(callPayload);
+            return new DeferredBodyAction<UserAccountGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/user/account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserAccountGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<UserBalanceGetResponse, ApiConnectionActionConfiguration> UserBalanceGet()
         {
-            var apiCallPath = "/v1/user/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserBalanceGetResponse>(callPayload);
+            return new DeferredBodyAction<UserBalanceGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/user/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserBalanceGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]

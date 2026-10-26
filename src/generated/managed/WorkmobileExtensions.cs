@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workmobile")]
         public IBodyWorkflowAction<UsergroupsResponseItem[], ApiConnectionActionConfiguration> Usergroups()
         {
-            var apiCallPath = "/api/usergroups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UsergroupsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<UsergroupsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/usergroups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UsergroupsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workmobile")]
         public IBodyWorkflowAction<RetrieveMobileUsersResponseItem[], ApiConnectionActionConfiguration> RetrieveMobileUsers()
         {
-            var apiCallPath = "/api/mobileusers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RetrieveMobileUsersResponseItem[]>(callPayload);
+            return new DeferredBodyAction<RetrieveMobileUsersResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/mobileusers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RetrieveMobileUsersResponseItem[]>(callPayload);
+            });
         }
     }
 

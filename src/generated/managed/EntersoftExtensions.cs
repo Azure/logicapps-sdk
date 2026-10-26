@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 {
     using System.Linq.Expressions;
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDownloadBlobDataByGID(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDownloadBlobDataByGId(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
             var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
@@ -121,12 +122,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogID = null, Expression<Func<string>> blobInfoobjectID = null, Expression<Func<string>> blobInfokeyID = null, Expression<Func<int>> blobInfotypeID = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogId = null, Expression<Func<string>> blobInfoobjectId = null, Expression<Func<string>> blobInfokeyId = null, Expression<Func<int>> blobInfotypeId = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
         {
-            var __workflow_blobInfogID = WorkflowExpression.Compile(blobInfogID, nameof(blobInfogID), required: false);
-            var __workflow_blobInfoobjectID = WorkflowExpression.Compile(blobInfoobjectID, nameof(blobInfoobjectID), required: false);
-            var __workflow_blobInfokeyID = WorkflowExpression.Compile(blobInfokeyID, nameof(blobInfokeyID), required: false);
-            var __workflow_blobInfotypeID = WorkflowExpression.Compile(blobInfotypeID, nameof(blobInfotypeID), required: false);
+            var __workflow_blobInfogId = WorkflowExpression.Compile(blobInfogId, nameof(blobInfogId), required: false);
+            var __workflow_blobInfoobjectId = WorkflowExpression.Compile(blobInfoobjectId, nameof(blobInfoobjectId), required: false);
+            var __workflow_blobInfokeyId = WorkflowExpression.Compile(blobInfokeyId, nameof(blobInfokeyId), required: false);
+            var __workflow_blobInfotypeId = WorkflowExpression.Compile(blobInfotypeId, nameof(blobInfotypeId), required: false);
             var __workflow_blobInfoext = WorkflowExpression.Compile(blobInfoext, nameof(blobInfoext), required: false);
             var __workflow_blobInfotextBody = WorkflowExpression.Compile(blobInfotextBody, nameof(blobInfotextBody), required: false);
             var __workflow_blobInfoisNew = WorkflowExpression.Compile(blobInfoisNew, nameof(blobInfoisNew), required: false);
@@ -137,27 +138,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var blobInfo = new JObject();
                 var blobInfopropCount = 0;
-                if (__workflow_blobInfogID != null)
+                if (__workflow_blobInfogId != null)
                 {
-                    blobInfo["GID"] = ExpressionConverter.ConvertO(__workflow_blobInfogID);
+                    blobInfo["GID"] = ExpressionConverter.ConvertO(__workflow_blobInfogId);
                     blobInfopropCount++;
                 }
 
-                if (__workflow_blobInfoobjectID != null)
+                if (__workflow_blobInfoobjectId != null)
                 {
-                    blobInfo["ObjectID"] = ExpressionConverter.ConvertO(__workflow_blobInfoobjectID);
+                    blobInfo["ObjectID"] = ExpressionConverter.ConvertO(__workflow_blobInfoobjectId);
                     blobInfopropCount++;
                 }
 
-                if (__workflow_blobInfokeyID != null)
+                if (__workflow_blobInfokeyId != null)
                 {
-                    blobInfo["KeyID"] = ExpressionConverter.ConvertO(__workflow_blobInfokeyID);
+                    blobInfo["KeyID"] = ExpressionConverter.ConvertO(__workflow_blobInfokeyId);
                     blobInfopropCount++;
                 }
 
-                if (__workflow_blobInfotypeID != null)
+                if (__workflow_blobInfotypeId != null)
                 {
-                    blobInfo["TypeID"] = ExpressionConverter.ConvertO(__workflow_blobInfotypeID);
+                    blobInfo["TypeID"] = ExpressionConverter.ConvertO(__workflow_blobInfotypeId);
                     blobInfopropCount++;
                 }
 
@@ -208,19 +209,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgID = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableID = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgId = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableId = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGId = null, Expression<Func<string>> paramsfDetailLineGId = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGId = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
         {
-            var __workflow_paramsgID = WorkflowExpression.Compile(paramsgID, nameof(paramsgID), required: false);
+            var __workflow_paramsgId = WorkflowExpression.Compile(paramsgId, nameof(paramsgId), required: false);
             var __workflow_paramscode = WorkflowExpression.Compile(paramscode, nameof(paramscode), required: false);
             var __workflow_paramstitle = WorkflowExpression.Compile(paramstitle, nameof(paramstitle), required: false);
             var __workflow_paramsdescription = WorkflowExpression.Compile(paramsdescription, nameof(paramsdescription), required: false);
             var __workflow_paramscaption = WorkflowExpression.Compile(paramscaption, nameof(paramscaption), required: false);
             var __workflow_paramseDate = WorkflowExpression.Compile(paramseDate, nameof(paramseDate), required: false);
             var __workflow_paramsfType = WorkflowExpression.Compile(paramsfType, nameof(paramsfType), required: false);
-            var __workflow_paramstableID = WorkflowExpression.Compile(paramstableID, nameof(paramstableID), required: false);
+            var __workflow_paramstableId = WorkflowExpression.Compile(paramstableId, nameof(paramstableId), required: false);
             var __workflow_paramstableName = WorkflowExpression.Compile(paramstableName, nameof(paramstableName), required: false);
-            var __workflow_paramsfGID = WorkflowExpression.Compile(paramsfGID, nameof(paramsfGID), required: false);
-            var __workflow_paramsfDetailLineGID = WorkflowExpression.Compile(paramsfDetailLineGID, nameof(paramsfDetailLineGID), required: false);
+            var __workflow_paramsfGId = WorkflowExpression.Compile(paramsfGId, nameof(paramsfGId), required: false);
+            var __workflow_paramsfDetailLineGId = WorkflowExpression.Compile(paramsfDetailLineGId, nameof(paramsfDetailLineGId), required: false);
             var __workflow_paramsuNCPath = WorkflowExpression.Compile(paramsuNCPath, nameof(paramsuNCPath), required: false);
             var __workflow_paramsoriginalPath = WorkflowExpression.Compile(paramsoriginalPath, nameof(paramsoriginalPath), required: false);
             var __workflow_paramsoriginalFN = WorkflowExpression.Compile(paramsoriginalFN, nameof(paramsoriginalFN), required: false);
@@ -235,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_paramseSUCreated = WorkflowExpression.Compile(paramseSUCreated, nameof(paramseSUCreated), required: false);
             var __workflow_paramsisBLOB = WorkflowExpression.Compile(paramsisBLOB, nameof(paramsisBLOB), required: false);
             var __workflow_paramsingoing = WorkflowExpression.Compile(paramsingoing, nameof(paramsingoing), required: false);
-            var __workflow_paramsfRLSNodeGID = WorkflowExpression.Compile(paramsfRLSNodeGID, nameof(paramsfRLSNodeGID), required: false);
+            var __workflow_paramsfRLSNodeGId = WorkflowExpression.Compile(paramsfRLSNodeGId, nameof(paramsfRLSNodeGId), required: false);
             var __workflow_paramsbLOBDATALength = WorkflowExpression.Compile(paramsbLOBDATALength, nameof(paramsbLOBDATALength), required: false);
             var __workflow_paramsbLOBDATA = WorkflowExpression.Compile(paramsbLOBDATA, nameof(paramsbLOBDATA), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -245,9 +246,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var @params = new JObject();
                 var @paramspropCount = 0;
-                if (__workflow_paramsgID != null)
+                if (__workflow_paramsgId != null)
                 {
-                    @params["GID"] = ExpressionConverter.ConvertO(__workflow_paramsgID);
+                    @params["GID"] = ExpressionConverter.ConvertO(__workflow_paramsgId);
                     @paramspropCount++;
                 }
 
@@ -287,9 +288,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     @paramspropCount++;
                 }
 
-                if (__workflow_paramstableID != null)
+                if (__workflow_paramstableId != null)
                 {
-                    @params["TableID"] = ExpressionConverter.ConvertO(__workflow_paramstableID);
+                    @params["TableID"] = ExpressionConverter.ConvertO(__workflow_paramstableId);
                     @paramspropCount++;
                 }
 
@@ -299,15 +300,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     @paramspropCount++;
                 }
 
-                if (__workflow_paramsfGID != null)
+                if (__workflow_paramsfGId != null)
                 {
-                    @params["fGID"] = ExpressionConverter.ConvertO(__workflow_paramsfGID);
+                    @params["fGID"] = ExpressionConverter.ConvertO(__workflow_paramsfGId);
                     @paramspropCount++;
                 }
 
-                if (__workflow_paramsfDetailLineGID != null)
+                if (__workflow_paramsfDetailLineGId != null)
                 {
-                    @params["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_paramsfDetailLineGID);
+                    @params["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_paramsfDetailLineGId);
                     @paramspropCount++;
                 }
 
@@ -395,9 +396,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     @paramspropCount++;
                 }
 
-                if (__workflow_paramsfRLSNodeGID != null)
+                if (__workflow_paramsfRLSNodeGId != null)
                 {
-                    @params["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_paramsfRLSNodeGID);
+                    @params["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_paramsfRLSNodeGId);
                     @paramspropCount++;
                 }
 
@@ -423,19 +424,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgID = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableID = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgId = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableId = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGId = null, Expression<Func<string>> inDocfDetailLineGId = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGId = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
         {
-            var __workflow_inDocgID = WorkflowExpression.Compile(inDocgID, nameof(inDocgID), required: false);
+            var __workflow_inDocgId = WorkflowExpression.Compile(inDocgId, nameof(inDocgId), required: false);
             var __workflow_inDoccode = WorkflowExpression.Compile(inDoccode, nameof(inDoccode), required: false);
             var __workflow_inDoctitle = WorkflowExpression.Compile(inDoctitle, nameof(inDoctitle), required: false);
             var __workflow_inDocdescription = WorkflowExpression.Compile(inDocdescription, nameof(inDocdescription), required: false);
             var __workflow_inDoccaption = WorkflowExpression.Compile(inDoccaption, nameof(inDoccaption), required: false);
             var __workflow_inDoceDate = WorkflowExpression.Compile(inDoceDate, nameof(inDoceDate), required: false);
             var __workflow_inDocfType = WorkflowExpression.Compile(inDocfType, nameof(inDocfType), required: false);
-            var __workflow_inDoctableID = WorkflowExpression.Compile(inDoctableID, nameof(inDoctableID), required: false);
+            var __workflow_inDoctableId = WorkflowExpression.Compile(inDoctableId, nameof(inDoctableId), required: false);
             var __workflow_inDoctableName = WorkflowExpression.Compile(inDoctableName, nameof(inDoctableName), required: false);
-            var __workflow_inDocfGID = WorkflowExpression.Compile(inDocfGID, nameof(inDocfGID), required: false);
-            var __workflow_inDocfDetailLineGID = WorkflowExpression.Compile(inDocfDetailLineGID, nameof(inDocfDetailLineGID), required: false);
+            var __workflow_inDocfGId = WorkflowExpression.Compile(inDocfGId, nameof(inDocfGId), required: false);
+            var __workflow_inDocfDetailLineGId = WorkflowExpression.Compile(inDocfDetailLineGId, nameof(inDocfDetailLineGId), required: false);
             var __workflow_inDocuNCPath = WorkflowExpression.Compile(inDocuNCPath, nameof(inDocuNCPath), required: false);
             var __workflow_inDocoriginalPath = WorkflowExpression.Compile(inDocoriginalPath, nameof(inDocoriginalPath), required: false);
             var __workflow_inDocoriginalFN = WorkflowExpression.Compile(inDocoriginalFN, nameof(inDocoriginalFN), required: false);
@@ -450,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_inDoceSUCreated = WorkflowExpression.Compile(inDoceSUCreated, nameof(inDoceSUCreated), required: false);
             var __workflow_inDocisBLOB = WorkflowExpression.Compile(inDocisBLOB, nameof(inDocisBLOB), required: false);
             var __workflow_inDocingoing = WorkflowExpression.Compile(inDocingoing, nameof(inDocingoing), required: false);
-            var __workflow_inDocfRLSNodeGID = WorkflowExpression.Compile(inDocfRLSNodeGID, nameof(inDocfRLSNodeGID), required: false);
+            var __workflow_inDocfRLSNodeGId = WorkflowExpression.Compile(inDocfRLSNodeGId, nameof(inDocfRLSNodeGId), required: false);
             var __workflow_inDocbLOBDATALength = WorkflowExpression.Compile(inDocbLOBDATALength, nameof(inDocbLOBDATALength), required: false);
             var __workflow_inDocbLOBDATA = WorkflowExpression.Compile(inDocbLOBDATA, nameof(inDocbLOBDATA), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration>(() =>
@@ -460,9 +461,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var inDoc = new JObject();
                 var inDocpropCount = 0;
-                if (__workflow_inDocgID != null)
+                if (__workflow_inDocgId != null)
                 {
-                    inDoc["GID"] = ExpressionConverter.ConvertO(__workflow_inDocgID);
+                    inDoc["GID"] = ExpressionConverter.ConvertO(__workflow_inDocgId);
                     inDocpropCount++;
                 }
 
@@ -502,9 +503,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     inDocpropCount++;
                 }
 
-                if (__workflow_inDoctableID != null)
+                if (__workflow_inDoctableId != null)
                 {
-                    inDoc["TableID"] = ExpressionConverter.ConvertO(__workflow_inDoctableID);
+                    inDoc["TableID"] = ExpressionConverter.ConvertO(__workflow_inDoctableId);
                     inDocpropCount++;
                 }
 
@@ -514,15 +515,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     inDocpropCount++;
                 }
 
-                if (__workflow_inDocfGID != null)
+                if (__workflow_inDocfGId != null)
                 {
-                    inDoc["fGID"] = ExpressionConverter.ConvertO(__workflow_inDocfGID);
+                    inDoc["fGID"] = ExpressionConverter.ConvertO(__workflow_inDocfGId);
                     inDocpropCount++;
                 }
 
-                if (__workflow_inDocfDetailLineGID != null)
+                if (__workflow_inDocfDetailLineGId != null)
                 {
-                    inDoc["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_inDocfDetailLineGID);
+                    inDoc["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_inDocfDetailLineGId);
                     inDocpropCount++;
                 }
 
@@ -610,9 +611,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     inDocpropCount++;
                 }
 
-                if (__workflow_inDocfRLSNodeGID != null)
+                if (__workflow_inDocfRLSNodeGId != null)
                 {
-                    inDoc["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_inDocfRLSNodeGID);
+                    inDoc["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_inDocfRLSNodeGId);
                     inDocpropCount++;
                 }
 
@@ -812,13 +813,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse, ApiConnectionActionConfiguration> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
+        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse, ApiConnectionActionConfiguration> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceId = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
         {
             var __workflow_msgrecipients = WorkflowExpression.Compile(msgrecipients, nameof(msgrecipients), required: false);
             var __workflow_msgdateToSend = WorkflowExpression.Compile(msgdateToSend, nameof(msgdateToSend), required: false);
             var __workflow_msgexpiresInSecs = WorkflowExpression.Compile(msgexpiresInSecs, nameof(msgexpiresInSecs), required: false);
             var __workflow_msgexpiryText = WorkflowExpression.Compile(msgexpiryText, nameof(msgexpiryText), required: false);
-            var __workflow_msgfReferenceID = WorkflowExpression.Compile(msgfReferenceID, nameof(msgfReferenceID), required: false);
+            var __workflow_msgfReferenceId = WorkflowExpression.Compile(msgfReferenceId, nameof(msgfReferenceId), required: false);
             var __workflow_msgcallback = WorkflowExpression.Compile(msgcallback, nameof(msgcallback), required: false);
             var __workflow_msgbody = WorkflowExpression.Compile(msgbody, nameof(msgbody), required: false);
             var __workflow_msgimage = WorkflowExpression.Compile(msgimage, nameof(msgimage), required: false);
@@ -856,9 +857,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     msgpropCount++;
                 }
 
-                if (__workflow_msgfReferenceID != null)
+                if (__workflow_msgfReferenceId != null)
                 {
-                    msg["fReferenceID"] = ExpressionConverter.ConvertO(__workflow_msgfReferenceID);
+                    msg["fReferenceID"] = ExpressionConverter.ConvertO(__workflow_msgfReferenceId);
                     msgpropCount++;
                 }
 
@@ -1100,15 +1101,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest, ApiConnectionActionConfiguration> ESCollaborationFetchRequest(Expression<Func<string>> requestID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest, ApiConnectionActionConfiguration> ESCollaborationFetchRequest(Expression<Func<string>> requestId)
         {
-            var __workflow_requestID = WorkflowExpression.Compile(requestID, nameof(requestID), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFARequest, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/FetchRequest/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RequestID"] = ExpressionConverter.Convert(__workflow_requestID);
+                callPayload.Queries["RequestID"] = ExpressionConverter.Convert(__workflow_requestId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFARequest>(callPayload);
             });
         }
@@ -1140,16 +1141,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityDeleteEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityDeleteEntityById(Expression<Func<string>> entityId, Expression<Func<string>> pK)
         {
-            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/DeleteEntityByID/";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction(callPayload);
             });
@@ -1172,16 +1173,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityUpdateEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityUpdateEntityById(Expression<Func<string>> entityId, Expression<Func<string>> pK)
         {
-            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/UpdateEntityByID/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 var updProperties = new JObject();
                 var updPropertiespropCount = 0;
@@ -1218,15 +1219,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration> ESEntityCreateEntityByID(Expression<Func<string>> entityID)
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration> ESEntityCreateEntityById(Expression<Func<string>> entityId)
         {
-            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/CreateEntityByID/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityId);
                 var updProperties = new JObject();
                 var updPropertiespropCount = 0;
                 if (updPropertiespropCount > 0)
@@ -1260,16 +1261,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration> ESEntityEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration> ESEntityEntityById(Expression<Func<string>> entityId, Expression<Func<string>> pK)
         {
-            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityByID/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
             });
@@ -1292,9 +1293,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesById(Expression<Func<string>> entityId, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
-            var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_fetchOptionsselectFields = WorkflowExpression.Compile(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
             var __workflow_fetchOptionsorderByFields = WorkflowExpression.Compile(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
             var __workflow_fetchOptionspage = WorkflowExpression.Compile(fetchOptionspage, nameof(fetchOptionspage), required: false);
@@ -1304,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallPath = "/api/esentity/EntitiesByID/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityId);
                 var fetchOptions = new JObject();
                 var fetchOptionspropCount = 0;
                 if (__workflow_fetchOptionsselectFields != null)
@@ -1319,11 +1320,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     fetchOptionspropCount++;
                 }
 
-                var paramsObject = new JObject();
-                var paramsObjectpropCount = 0;
-                if (paramsObjectpropCount > 0)
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
                 {
-                    fetchOptions["Params"] = paramsObject;
+                    fetchOptions["Params"] = @paramsObject;
                     fetchOptionspropCount++;
                 }
 
@@ -1396,11 +1397,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     fetchOptionspropCount++;
                 }
 
-                var paramsObject = new JObject();
-                var paramsObjectpropCount = 0;
-                if (paramsObjectpropCount > 0)
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
                 {
-                    fetchOptions["Params"] = paramsObject;
+                    fetchOptions["Params"] = @paramsObject;
                     fetchOptionspropCount++;
                 }
 
@@ -1872,12 +1873,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionActionConfiguration> ESBusinessHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionActionConfiguration> ESBusinessHookGet(Expression<Func<string>> hookId)
         {
-            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            var __workflow_hookId = WorkflowExpression.Compile(hookId, nameof(hookId), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/businesshook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/businesshook/{0}", __workflow_hookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
@@ -1885,12 +1886,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionActionConfiguration> ESPodHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionActionConfiguration> ESPodHookGet(Expression<Func<string>> hookId)
         {
-            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            var __workflow_hookId = WorkflowExpression.Compile(hookId, nameof(hookId), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/podhook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/podhook/{0}", __workflow_hookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
@@ -1898,12 +1899,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionActionConfiguration> ESRFAHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionActionConfiguration> ESRFAHookGet(Expression<Func<string>> hookId)
         {
-            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            var __workflow_hookId = WorkflowExpression.Compile(hookId, nameof(hookId), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rfahook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rfahook/{0}", __workflow_hookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
@@ -1911,12 +1912,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionActionConfiguration> ESHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionActionConfiguration> ESHookGet(Expression<Func<string>> hookId)
         {
-            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            var __workflow_hookId = WorkflowExpression.Compile(hookId, nameof(hookId), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/hook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/hook/{0}", __workflow_hookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
@@ -1924,12 +1925,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionActionConfiguration> ESSystemHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionActionConfiguration> ESSystemHookGet(Expression<Func<string>> hookId)
         {
-            var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
+            var __workflow_hookId = WorkflowExpression.Compile(hookId, nameof(hookId), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/systemhook/{0}", __workflow_hookID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/systemhook/{0}", __workflow_hookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload);
@@ -2171,9 +2172,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> ESRPCLog(Expression<Func<string>> iD, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> ESRPCLog(Expression<Func<string>> id, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
         {
-            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
             var __workflow_severity = WorkflowExpression.Compile(severity, nameof(severity), required: false);
             return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
@@ -2181,7 +2182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallPath = "/api/rpc/Log/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
+                callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_id);
                 if (__workflow_description != null)
                     callPayload.Queries["Description"] = ExpressionConverter.Convert(__workflow_description);
                 if (__workflow_severity != null)
@@ -2230,10 +2231,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerID, Expression<Func<string>> eSScrollerCommandcommandID, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerId, Expression<Func<string>> eSScrollerCommandcommandId, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
         {
-            var __workflow_eSScrollerCommandscrollerID = WorkflowExpression.Compile(eSScrollerCommandscrollerID, nameof(eSScrollerCommandscrollerID), required: true);
-            var __workflow_eSScrollerCommandcommandID = WorkflowExpression.Compile(eSScrollerCommandcommandID, nameof(eSScrollerCommandcommandID), required: true);
+            var __workflow_eSScrollerCommandscrollerId = WorkflowExpression.Compile(eSScrollerCommandscrollerId, nameof(eSScrollerCommandscrollerId), required: true);
+            var __workflow_eSScrollerCommandcommandId = WorkflowExpression.Compile(eSScrollerCommandcommandId, nameof(eSScrollerCommandcommandId), required: true);
             var __workflow_eSScrollerCommandscrollerDatasetJson = WorkflowExpression.Compile(eSScrollerCommandscrollerDatasetJson, nameof(eSScrollerCommandscrollerDatasetJson), required: false);
             var __workflow_eSScrollerCommandrequiresTransaction = WorkflowExpression.Compile(eSScrollerCommandrequiresTransaction, nameof(eSScrollerCommandrequiresTransaction), required: false);
             var __workflow_eSScrollerCommandonlyPrepareTargetDatasets = WorkflowExpression.Compile(eSScrollerCommandonlyPrepareTargetDatasets, nameof(eSScrollerCommandonlyPrepareTargetDatasets), required: false);
@@ -2300,9 +2301,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 eSScrollerCommandpropCount++;
-                eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandscrollerID);
+                eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandscrollerId);
                 eSScrollerCommandpropCount++;
-                eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandcommandID);
+                eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandcommandId);
                 var commandParamsObject = new JObject();
                 var commandParamsObjectpropCount = 0;
                 if (commandParamsObjectpropCount > 0)
@@ -2329,10 +2330,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerID, Expression<Func<string>> eSCommandIncommandID)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerId, Expression<Func<string>> eSCommandIncommandId)
         {
-            var __workflow_eSCommandInscrollerID = WorkflowExpression.Compile(eSCommandInscrollerID, nameof(eSCommandInscrollerID), required: true);
-            var __workflow_eSCommandIncommandID = WorkflowExpression.Compile(eSCommandIncommandID, nameof(eSCommandIncommandID), required: true);
+            var __workflow_eSCommandInscrollerId = WorkflowExpression.Compile(eSCommandInscrollerId, nameof(eSCommandInscrollerId), required: true);
+            var __workflow_eSCommandIncommandId = WorkflowExpression.Compile(eSCommandIncommandId, nameof(eSCommandIncommandId), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rpc/ExecuteCommand/";
@@ -2341,9 +2342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var eSCommandIn = new JObject();
                 var eSCommandInpropCount = 0;
                 eSCommandInpropCount++;
-                eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSCommandInscrollerID);
+                eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSCommandInscrollerId);
                 eSCommandInpropCount++;
-                eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSCommandIncommandID);
+                eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSCommandIncommandId);
                 var commandParamsObject = new JObject();
                 var commandParamsObjectpropCount = 0;
                 if (commandParamsObjectpropCount > 0)
@@ -2370,16 +2371,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityID = null, Expression<Func<string>> formCommandcommandID = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGID = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerID = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityId = null, Expression<Func<string>> formCommandcommandId = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGId = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerId = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
         {
-            var __workflow_formCommandentityID = WorkflowExpression.Compile(formCommandentityID, nameof(formCommandentityID), required: false);
-            var __workflow_formCommandcommandID = WorkflowExpression.Compile(formCommandcommandID, nameof(formCommandcommandID), required: false);
+            var __workflow_formCommandentityId = WorkflowExpression.Compile(formCommandentityId, nameof(formCommandentityId), required: false);
+            var __workflow_formCommandcommandId = WorkflowExpression.Compile(formCommandcommandId, nameof(formCommandcommandId), required: false);
             var __workflow_formCommandentityDatasetJson = WorkflowExpression.Compile(formCommandentityDatasetJson, nameof(formCommandentityDatasetJson), required: false);
-            var __workflow_formCommandentityGID = WorkflowExpression.Compile(formCommandentityGID, nameof(formCommandentityGID), required: false);
+            var __workflow_formCommandentityGId = WorkflowExpression.Compile(formCommandentityGId, nameof(formCommandentityGId), required: false);
             var __workflow_formCommandentityGIDs = WorkflowExpression.Compile(formCommandentityGIDs, nameof(formCommandentityGIDs), required: false);
             var __workflow_formCommandentityCode = WorkflowExpression.Compile(formCommandentityCode, nameof(formCommandentityCode), required: false);
             var __workflow_formCommandentityCodes = WorkflowExpression.Compile(formCommandentityCodes, nameof(formCommandentityCodes), required: false);
-            var __workflow_formCommandentityScrollerID = WorkflowExpression.Compile(formCommandentityScrollerID, nameof(formCommandentityScrollerID), required: false);
+            var __workflow_formCommandentityScrollerId = WorkflowExpression.Compile(formCommandentityScrollerId, nameof(formCommandentityScrollerId), required: false);
             var __workflow_formCommandrequiresTransaction = WorkflowExpression.Compile(formCommandrequiresTransaction, nameof(formCommandrequiresTransaction), required: false);
             var __workflow_formCommandcreateNewEmptySourceEntity = WorkflowExpression.Compile(formCommandcreateNewEmptySourceEntity, nameof(formCommandcreateNewEmptySourceEntity), required: false);
             var __workflow_formCommandonlyPrepareTargetDatasets = WorkflowExpression.Compile(formCommandonlyPrepareTargetDatasets, nameof(formCommandonlyPrepareTargetDatasets), required: false);
@@ -2394,15 +2395,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var formCommand = new JObject();
                 var formCommandpropCount = 0;
-                if (__workflow_formCommandentityID != null)
+                if (__workflow_formCommandentityId != null)
                 {
-                    formCommand["EntityID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityID);
+                    formCommand["EntityID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityId);
                     formCommandpropCount++;
                 }
 
-                if (__workflow_formCommandcommandID != null)
+                if (__workflow_formCommandcommandId != null)
                 {
-                    formCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_formCommandcommandID);
+                    formCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_formCommandcommandId);
                     formCommandpropCount++;
                 }
 
@@ -2420,9 +2421,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     formCommandpropCount++;
                 }
 
-                if (__workflow_formCommandentityGID != null)
+                if (__workflow_formCommandentityGId != null)
                 {
-                    formCommand["EntityGID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityGID);
+                    formCommand["EntityGID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityGId);
                     formCommandpropCount++;
                 }
 
@@ -2452,9 +2453,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     formCommandpropCount++;
                 }
 
-                if (__workflow_formCommandentityScrollerID != null)
+                if (__workflow_formCommandentityScrollerId != null)
                 {
-                    formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityScrollerID);
+                    formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityScrollerId);
                     formCommandpropCount++;
                 }
 
@@ -2822,12 +2823,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalId = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationbusinessEventType = WorkflowExpression.Compile(registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
             var __workflow_registrationcontext = WorkflowExpression.Compile(registrationcontext, nameof(registrationcontext), required: false);
             var __workflow_registrationvalue = WorkflowExpression.Compile(registrationvalue, nameof(registrationvalue), required: false);
-            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationexternalId = WorkflowExpression.Compile(registrationexternalId, nameof(registrationexternalId), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -2861,9 +2862,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (__workflow_registrationexternalID != null)
+                if (__workflow_registrationexternalId != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalId);
                     registrationpropCount++;
                 }
 
@@ -2900,15 +2901,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchId = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalId = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationstate = WorkflowExpression.Compile(registrationstate, nameof(registrationstate), required: false);
             var __workflow_registrationpackageType = WorkflowExpression.Compile(registrationpackageType, nameof(registrationpackageType), required: false);
             var __workflow_registrationconveyanceLicencePlate = WorkflowExpression.Compile(registrationconveyanceLicencePlate, nameof(registrationconveyanceLicencePlate), required: false);
-            var __workflow_registrationbranchID = WorkflowExpression.Compile(registrationbranchID, nameof(registrationbranchID), required: false);
+            var __workflow_registrationbranchId = WorkflowExpression.Compile(registrationbranchId, nameof(registrationbranchId), required: false);
             var __workflow_registrationtradeAccountName = WorkflowExpression.Compile(registrationtradeAccountName, nameof(registrationtradeAccountName), required: false);
             var __workflow_registrationdriverCode = WorkflowExpression.Compile(registrationdriverCode, nameof(registrationdriverCode), required: false);
-            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationexternalId = WorkflowExpression.Compile(registrationexternalId, nameof(registrationexternalId), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -2956,9 +2957,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (__workflow_registrationbranchID != null)
+                if (__workflow_registrationbranchId != null)
                 {
-                    registration["BranchID"] = ExpressionConverter.ConvertO(__workflow_registrationbranchID);
+                    registration["BranchID"] = ExpressionConverter.ConvertO(__workflow_registrationbranchId);
                     registrationpropCount++;
                 }
 
@@ -2974,9 +2975,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (__workflow_registrationexternalID != null)
+                if (__workflow_registrationexternalId != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalId);
                     registrationpropCount++;
                 }
 
@@ -3013,14 +3014,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalId = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationrequestedBy = WorkflowExpression.Compile(registrationrequestedBy, nameof(registrationrequestedBy), required: false);
             var __workflow_registrationpriority = WorkflowExpression.Compile(registrationpriority, nameof(registrationpriority), required: false);
             var __workflow_registrationrequestClass = WorkflowExpression.Compile(registrationrequestClass, nameof(registrationrequestClass), required: false);
             var __workflow_registrationrequestCategory = WorkflowExpression.Compile(registrationrequestCategory, nameof(registrationrequestCategory), required: false);
             var __workflow_registrationnumericValue = WorkflowExpression.Compile(registrationnumericValue, nameof(registrationnumericValue), required: false);
-            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationexternalId = WorkflowExpression.Compile(registrationexternalId, nameof(registrationexternalId), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -3070,9 +3071,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (__workflow_registrationexternalID != null)
+                if (__workflow_registrationexternalId != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalId);
                     registrationpropCount++;
                 }
 
@@ -3109,11 +3110,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalId = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationentityType = WorkflowExpression.Compile(registrationentityType, nameof(registrationentityType), required: true);
             var __workflow_registrationeventType = WorkflowExpression.Compile(registrationeventType, nameof(registrationeventType), required: true);
-            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationexternalId = WorkflowExpression.Compile(registrationexternalId, nameof(registrationexternalId), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -3127,9 +3128,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 registration["EntityType"] = ExpressionConverter.ConvertO(__workflow_registrationentityType);
                 registrationpropCount++;
                 registration["EventType"] = ExpressionConverter.ConvertO(__workflow_registrationeventType);
-                if (__workflow_registrationexternalID != null)
+                if (__workflow_registrationexternalId != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalId);
                     registrationpropCount++;
                 }
 
@@ -3166,11 +3167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalId = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationsystemEventType = WorkflowExpression.Compile(registrationsystemEventType, nameof(registrationsystemEventType), required: true);
             var __workflow_registrationotherEvent = WorkflowExpression.Compile(registrationotherEvent, nameof(registrationotherEvent), required: false);
-            var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationexternalId = WorkflowExpression.Compile(registrationexternalId, nameof(registrationexternalId), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -3188,9 +3189,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (__workflow_registrationexternalID != null)
+                if (__workflow_registrationexternalId != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalId);
                     registrationpropCount++;
                 }
 
@@ -3230,21 +3231,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsES00DocumentInfo
     {
-        public string GID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Caption { get; set; }
         public string EDate { get; set; }
         public string FType { get; set; }
-        public string TableID { get; set; }
+
+        [JsonProperty("TableID")]
+        public string TableId { get; set; }
         public string TableName { get; set; }
 
         [JsonProperty("fGID")]
-        public string FGID { get; set; }
+        public string FGId { get; set; }
 
         [JsonProperty("fDetailLineGID")]
-        public string FDetailLineGID { get; set; }
+        public string FDetailLineGId { get; set; }
         public string UNCPath { get; set; }
         public string OriginalPath { get; set; }
         public string OriginalFN { get; set; }
@@ -3271,17 +3275,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool Ingoing { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
         public int BLOBDATALength { get; set; }
         public string BLOBDATA { get; set; }
     }
 
     public class EntersoftWebApiModelsES00BlobInfo
     {
-        public string GID { get; set; }
-        public string ObjectID { get; set; }
-        public string KeyID { get; set; }
-        public int TypeID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
+
+        [JsonProperty("ObjectID")]
+        public string ObjectId { get; set; }
+
+        [JsonProperty("KeyID")]
+        public string KeyId { get; set; }
+
+        [JsonProperty("TypeID")]
+        public int TypeId { get; set; }
         public string Ext { get; set; }
         public string TextBody { get; set; }
         public bool IsNew { get; set; }
@@ -3293,18 +3304,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FScenarioCode { get; set; }
 
         [JsonProperty("fFiscalYearGID")]
-        public string FFiscalYearGID { get; set; }
+        public string FFiscalYearGId { get; set; }
 
         [JsonProperty("fCurrencyCode")]
         public string FCurrencyCode { get; set; }
         public string Comments { get; set; }
 
         [JsonProperty("fBudgetSheetProfileGID")]
-        public string FBudgetSheetProfileGID { get; set; }
+        public string FBudgetSheetProfileGId { get; set; }
         public string RegistrationDate { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -3319,7 +3330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fBudgetCategoryCode")]
         public string FBudgetCategoryCode { get; set; }
@@ -3365,20 +3376,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string DateField5 { get; set; }
 
         [JsonProperty("fAllocationProfileGID")]
-        public string FAllocationProfileGID { get; set; }
+        public string FAllocationProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESBGBudgetSheetObjProductionStatusType ProductionStatus { get; set; }
         public int Version { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
         public string PostingDateLimitv { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -3715,7 +3728,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     {
         public string PK { get; set; }
         public string Code { get; set; }
-        public string EntityID { get; set; }
+
+        [JsonProperty("EntityID")]
+        public string EntityId { get; set; }
         public EntersoftWebApiApiControllersESCreatedEntityInfoEntityTypeType EntityType { get; set; }
     }
 
@@ -3968,7 +3983,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApi2ODSModelsESBaseEntity
     {
-        public string GID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -3995,46 +4011,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESFIDocumentTradeObj
     {
         [JsonProperty("fADDocumentUpdateProfileGID")]
-        public string FADDocumentUpdateProfileGID { get; set; }
+        public string FADDocumentUpdateProfileGId { get; set; }
 
         [JsonProperty("fADDocumentTypeGID")]
-        public string FADDocumentTypeGID { get; set; }
+        public string FADDocumentTypeGId { get; set; }
 
         [JsonProperty("fADDocumentSeriesGID")]
-        public string FADDocumentSeriesGID { get; set; }
+        public string FADDocumentSeriesGId { get; set; }
         public double ADNumber { get; set; }
         public string ADCode { get; set; }
         public string ADRegistrationDate { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fTradeAccountSiteGID")]
-        public string FTradeAccountSiteGID { get; set; }
+        public string FTradeAccountSiteGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjTradeAccountTypeType TradeAccountType { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjTradeAccountNatureType TradeAccountNature { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjADDocumentStateType ADDocumentState { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fPaymentMethodGID")]
-        public string FPaymentMethodGID { get; set; }
+        public string FPaymentMethodGId { get; set; }
         public string ADAlternativeCode { get; set; }
         public string ADAlternativeDate { get; set; }
         public string ADReferenceCode { get; set; }
 
         [JsonProperty("fInvoicePolicyGID")]
-        public string FInvoicePolicyGID { get; set; }
+        public string FInvoicePolicyGId { get; set; }
         public double Discount { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjVATStatusType VATStatus { get; set; }
         public string DeliveryDueDate { get; set; }
 
         [JsonProperty("fDeliverySiteGID")]
-        public string FDeliverySiteGID { get; set; }
+        public string FDeliverySiteGId { get; set; }
 
         [JsonProperty("fCompanyWHGID")]
-        public string FCompanyWHGID { get; set; }
+        public string FCompanyWHGId { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
@@ -4052,7 +4068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FTradeNatureCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
         public bool ADInterCompany { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjADCancelStateType ADCancelState { get; set; }
         public string ADApprovalCode { get; set; }
@@ -4083,10 +4099,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ADAlternativeReasoning { get; set; }
 
         [JsonProperty("fWareHouseGID")]
-        public string FWareHouseGID { get; set; }
+        public string FWareHouseGId { get; set; }
 
         [JsonProperty("fDeliveryPersonGID")]
-        public string FDeliveryPersonGID { get; set; }
+        public string FDeliveryPersonGId { get; set; }
         public string ADComments { get; set; }
 
         [JsonProperty("fADTableField1Code")]
@@ -4115,7 +4131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ADStringField5 { get; set; }
 
         [JsonProperty("fADProjectGID")]
-        public string FADProjectGID { get; set; }
+        public string FADProjectGId { get; set; }
 
         [JsonProperty("fADActivityCode")]
         public string FADActivityCode { get; set; }
@@ -4130,10 +4146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FADDimension2Code { get; set; }
 
         [JsonProperty("fADSiteGID")]
-        public string FADSiteGID { get; set; }
+        public string FADSiteGId { get; set; }
         public double PaymentAmount { get; set; }
         public double CurrencyPaymentAmount { get; set; }
-        public int TransitionBatchID { get; set; }
+
+        [JsonProperty("TransitionBatchID")]
+        public int TransitionBatchId { get; set; }
 
         [JsonProperty("fTransitionStepCode")]
         public string FTransitionStepCode { get; set; }
@@ -4142,10 +4160,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjADFiscalPeriodTypeType ADFiscalPeriodType { get; set; }
 
         [JsonProperty("fPriceListGID")]
-        public string FPriceListGID { get; set; }
+        public string FPriceListGId { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
 
         [JsonProperty("fADNoteStateCode")]
         public string FADNoteStateCode { get; set; }
@@ -4155,25 +4173,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double TradeAccountPreviousBalance { get; set; }
 
         [JsonProperty("fIntercessorGID")]
-        public string FIntercessorGID { get; set; }
+        public string FIntercessorGId { get; set; }
         public double CommissionValue2 { get; set; }
 
         [JsonProperty("fSNPostStateCode")]
         public string FSNPostStateCode { get; set; }
 
         [JsonProperty("fCostingFolderGID")]
-        public string FCostingFolderGID { get; set; }
+        public string FCostingFolderGId { get; set; }
         public string ConcerningDocCode { get; set; }
         public bool ADTransitionAvailability { get; set; }
         public int ConcerningDocClass { get; set; }
         public string ConcerningBeginDate { get; set; }
         public string ConcerningEndDate { get; set; }
-        public int StockValuationBatchID { get; set; }
+
+        [JsonProperty("StockValuationBatchID")]
+        public int StockValuationBatchId { get; set; }
         public bool Allocated { get; set; }
         public double CustomsRate { get; set; }
 
         [JsonProperty("fADAccountManagerGID")]
-        public string FADAccountManagerGID { get; set; }
+        public string FADAccountManagerGId { get; set; }
         public int ADPriority { get; set; }
 
         [JsonProperty("fConveyanceCode")]
@@ -4186,17 +4206,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool SortimentHandling { get; set; }
 
         [JsonProperty("fSenderPersonGID")]
-        public string FSenderPersonGID { get; set; }
+        public string FSenderPersonGId { get; set; }
 
         [JsonProperty("fContactGID")]
-        public string FContactGID { get; set; }
+        public string FContactGId { get; set; }
         public double TradeAccountPreviousBonusBalance { get; set; }
         public double TotalBonusValue { get; set; }
         public double CurrencyTotalBonusValue { get; set; }
         public bool KEPYOUpdate { get; set; }
 
         [JsonProperty("fOrderPersonGID")]
-        public string FOrderPersonGID { get; set; }
+        public string FOrderPersonGId { get; set; }
         public int IncludedLines { get; set; }
         public bool ADFlag1 { get; set; }
         public bool ADFlag2 { get; set; }
@@ -4206,7 +4226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjADTransitionStateType ADTransitionState { get; set; }
 
         [JsonProperty("fADTaskGID")]
-        public string FADTaskGID { get; set; }
+        public string FADTaskGId { get; set; }
         public double SponsionNetValue { get; set; }
         public double CurrencySponsionNetValue { get; set; }
         public double SponsionTotalValue { get; set; }
@@ -4214,19 +4234,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double SponsionTotalQtyBaseMU { get; set; }
 
         [JsonProperty("fADDocumentUpdateProfileGLGID")]
-        public string FADDocumentUpdateProfileGLGID { get; set; }
+        public string FADDocumentUpdateProfileGLGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjADLockModeType ADLockMode { get; set; }
 
         [JsonProperty("fTransporterSiteGID")]
-        public string FTransporterSiteGID { get; set; }
+        public string FTransporterSiteGId { get; set; }
         public string ADReportingDate { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjCalculatedCashFlowTypeType CalculatedCashFlowType { get; set; }
 
         [JsonProperty("fBudgetSheetGID")]
-        public string FBudgetSheetGID { get; set; }
+        public string FBudgetSheetGId { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public double TransportCost { get; set; }
         public double CurrencyTransportCost { get; set; }
 
@@ -4240,30 +4260,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool MandatoryBankMediation { get; set; }
 
         [JsonProperty("fProductProposalTaskGID")]
-        public string FProductProposalTaskGID { get; set; }
+        public string FProductProposalTaskGId { get; set; }
 
         [JsonProperty("fSenderSiteGID")]
-        public string FSenderSiteGID { get; set; }
+        public string FSenderSiteGId { get; set; }
 
         [JsonProperty("fDriverGID")]
-        public string FDriverGID { get; set; }
+        public string FDriverGId { get; set; }
         public bool ZeroTransportCost { get; set; }
 
         [JsonProperty("fTransportPlanGID")]
-        public string FTransportPlanGID { get; set; }
+        public string FTransportPlanGId { get; set; }
         public string CouponCode { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentTradeObjADProcessStateType ADProcessState { get; set; }
         public string ADBarcode { get; set; }
         public int NumberOfContainers { get; set; }
 
         [JsonProperty("fDepositionGID")]
-        public string FDepositionGID { get; set; }
+        public string FDepositionGId { get; set; }
         public bool PurchaseVATDeductible { get; set; }
         public string ReasonForVATExemption { get; set; }
         public bool TaxFree { get; set; }
 
         [JsonProperty("fTerritoryGID")]
-        public string FTerritoryGID { get; set; }
+        public string FTerritoryGId { get; set; }
         public bool SplitOnVATRequired { get; set; }
         public string CommercialDate { get; set; }
 
@@ -4271,19 +4291,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FVoucherStateCode { get; set; }
 
         [JsonProperty("fADShiftGID")]
-        public string FADShiftGID { get; set; }
+        public string FADShiftGId { get; set; }
         public string FiscalCode { get; set; }
 
         [JsonProperty("fADMyDataDocumentTypeCode")]
         public string FADMyDataDocumentTypeCode { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
         public int ApplyCommercialPolicy { get; set; }
         public int BOMExecution { get; set; }
 
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
         public int CheckStockLevel { get; set; }
 
         [JsonProperty("VATAnalysis_Netvalue1")]
@@ -4443,7 +4463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TDSLEFieldRelativeDocument { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_fCancellingSeriesGID")]
-        public string CANCELAFTERSAVEFCancellingSeriesGID { get; set; }
+        public string CANCELAFTERSAVEFCancellingSeriesGId { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_ADNumber")]
         public double CANCELAFTERSAVEADNumber { get; set; }
@@ -4465,7 +4485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int CalculateTransportCost { get; set; }
 
         [JsonProperty("NS_TCourier_TrackingID")]
-        public string NSTCourierTrackingID { get; set; }
+        public string NSTCourierTrackingId { get; set; }
 
         [JsonProperty("NS_TCourier_DeliveryDate")]
         public string NSTCourierDeliveryDate { get; set; }
@@ -4495,40 +4515,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSTCourierShippingStatus { get; set; }
 
         [JsonProperty("NS_TCourier_JobID")]
-        public string NSTCourierJobID { get; set; }
+        public string NSTCourierJobId { get; set; }
 
         [JsonProperty("NS_fDeliveryPersonGID_fCategoryCode")]
-        public string NSFDeliveryPersonGIDFCategoryCode { get; set; }
+        public string NSFDeliveryPersonGIdFCategoryCode { get; set; }
 
         [JsonProperty("NS_fDeliveryPersonGID_fGroupCode")]
-        public string NSFDeliveryPersonGIDFGroupCode { get; set; }
+        public string NSFDeliveryPersonGIdFGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fSiteTypeCode")]
-        public string NSFDeliverySiteGIDFSiteTypeCode { get; set; }
+        public string NSFDeliverySiteGIdFSiteTypeCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode_fGroupRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCodeFGroupRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCodeFGroupRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode_fCategoryRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderPersonGID_fCategoryCode")]
-        public string NSFSenderPersonGIDFCategoryCode { get; set; }
+        public string NSFSenderPersonGIdFCategoryCode { get; set; }
 
         [JsonProperty("NS_fSenderPersonGID_fGroupCode")]
-        public string NSFSenderPersonGIDFGroupCode { get; set; }
+        public string NSFSenderPersonGIdFGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fSiteTypeCode")]
-        public string NSFSenderSiteGIDFSiteTypeCode { get; set; }
+        public string NSFSenderSiteGIdFSiteTypeCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fRegionGroupCode")]
-        public string NSFSenderSiteGIDFRegionGroupCode { get; set; }
+        public string NSFSenderSiteGIdFRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fRegionGroupCode_fCategoryRegionGroupCode")]
-        public string NSFSenderSiteGIDFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
+        public string NSFSenderSiteGIdFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
         public int AllowPaymentMethodApply { get; set; }
         public string ADRegistrationDatePrev { get; set; }
         public int NumValeurDaysPrev { get; set; }
@@ -4687,10 +4707,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int HasLinesVATExempt { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
         public string ADReferenceCodeList { get; set; }
         public int InvokeInvoicePolicy { get; set; }
 
@@ -4747,7 +4767,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("EInvoice_AdditionalInterchangeableExpense_OverallTotalValue")]
         public double EInvoiceAdditionalInterchangeableExpenseOverallTotalValue { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -4876,11 +4898,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemExpensesObjAssemblyTypeType AssemblyType { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpensesObjItemClassType ItemClass { get; set; }
 
         [JsonProperty("fMainSupplierGID")]
-        public string FMainSupplierGID { get; set; }
+        public string FMainSupplierGId { get; set; }
 
         [JsonProperty("fItemPricingCategoryCode")]
         public string FItemPricingCategoryCode { get; set; }
@@ -4893,7 +4915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool RetailPriceIncludedVAT { get; set; }
 
         [JsonProperty("fMainMUGID")]
-        public string FMainMUGID { get; set; }
+        public string FMainMUGId { get; set; }
 
         [JsonProperty("fVATCategoryCode")]
         public string FVATCategoryCode { get; set; }
@@ -4913,21 +4935,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FItemSubcategoryCode { get; set; }
 
         [JsonProperty("fTaxesGroupGID")]
-        public string FTaxesGroupGID { get; set; }
+        public string FTaxesGroupGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fBaseBOMGID")]
-        public string FBaseBOMGID { get; set; }
+        public string FBaseBOMGId { get; set; }
         public double StandardCost { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpensesObjValuationMethodType ValuationMethod { get; set; }
 
         [JsonProperty("fItemControlProfileGID")]
-        public string FItemControlProfileGID { get; set; }
+        public string FItemControlProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpensesObjIncludedTaxReportsType IncludedTaxReports { get; set; }
         public string Comment { get; set; }
         public string GLAccountCode { get; set; }
@@ -5008,7 +5030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fCostElementTypeGID")]
-        public string FCostElementTypeGID { get; set; }
+        public string FCostElementTypeGId { get; set; }
 
         [JsonProperty("fBudgetItemGroupCode")]
         public string FBudgetItemGroupCode { get; set; }
@@ -5028,23 +5050,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemExpensesObjSubTypeType SubType { get; set; }
 
         [JsonProperty("fItemNetProfitCodesGID")]
-        public string FItemNetProfitCodesGID { get; set; }
+        public string FItemNetProfitCodesGId { get; set; }
         public bool WEB { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
 
         [JsonProperty("fWarrantyTermGID")]
-        public string FWarrantyTermGID { get; set; }
+        public string FWarrantyTermGId { get; set; }
 
         [JsonProperty("fAllocationProfileGID")]
-        public string FAllocationProfileGID { get; set; }
+        public string FAllocationProfileGId { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public bool Mobile { get; set; }
         public bool SelectInMobileOrder { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpensesObjExpenseTypeType ExpenseType { get; set; }
@@ -5052,12 +5074,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double PerCentOfTaxExclusion { get; set; }
 
         [JsonProperty("fTaxDifferencesAccountGID")]
-        public string FTaxDifferencesAccountGID { get; set; }
+        public string FTaxDifferencesAccountGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpensesObjElementExportCategoryType ElementExportCategory { get; set; }
         public bool OpeningPerFiscalYear { get; set; }
 
         [JsonProperty("fReportingMUGID")]
-        public string FReportingMUGID { get; set; }
+        public string FReportingMUGId { get; set; }
         public int CatalogueItemBehaviour { get; set; }
 
         [JsonProperty("fMUCode")]
@@ -5071,7 +5093,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("NS_MainSupplierName_Col")]
         public string NSMainSupplierNameCol { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -5191,10 +5215,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string AlternativeName { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -5214,10 +5238,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Remarks { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
 
         [JsonProperty("fInvoicePolicyGID")]
-        public string FInvoicePolicyGID { get; set; }
+        public string FInvoicePolicyGId { get; set; }
 
         [JsonProperty("fTradeAccountPricingCategoryCode")]
         public string FTradeAccountPricingCategoryCode { get; set; }
@@ -5227,48 +5251,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FFamilyCode { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fAccountManagerGID")]
-        public string FAccountManagerGID { get; set; }
+        public string FAccountManagerGId { get; set; }
 
         [JsonProperty("fCommissionLevelCode")]
         public string FCommissionLevelCode { get; set; }
 
         [JsonProperty("fFixedSupplierGID")]
-        public string FFixedSupplierGID { get; set; }
+        public string FFixedSupplierGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fPaymentMethodGID")]
-        public string FPaymentMethodGID { get; set; }
+        public string FPaymentMethodGId { get; set; }
         public int OrderPriority { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fUsualRouteCode")]
         public string FUsualRouteCode { get; set; }
         public string AccountStartDate { get; set; }
 
         [JsonProperty("fGLAccountGID")]
-        public string FGLAccountGID { get; set; }
+        public string FGLAccountGId { get; set; }
 
         [JsonProperty("fTradeCurrencyCode")]
         public string FTradeCurrencyCode { get; set; }
 
         [JsonProperty("fCreditControlProfileGID")]
-        public string FCreditControlProfileGID { get; set; }
+        public string FCreditControlProfileGId { get; set; }
         public double BalanceLimit { get; set; }
         public double OpenBalanceNotesLimit { get; set; }
         public double OpenBalanceTotalNotesLimit { get; set; }
@@ -5277,17 +5301,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FInterestProfileCode { get; set; }
 
         [JsonProperty("fCollectorGID")]
-        public string FCollectorGID { get; set; }
+        public string FCollectorGId { get; set; }
         public string PaymentDay { get; set; }
         public string FromHours { get; set; }
         public string ToHours { get; set; }
         public EntersoftWebApi2ODSModelsESFICreditorObjMatchingCriteriaType MatchingCriteria { get; set; }
 
         [JsonProperty("fMatchingFieldGID")]
-        public string FMatchingFieldGID { get; set; }
+        public string FMatchingFieldGId { get; set; }
 
         [JsonProperty("fWareHouseGID")]
-        public string FWareHouseGID { get; set; }
+        public string FWareHouseGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -5353,7 +5377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FGLSegCode { get; set; }
 
         [JsonProperty("fPriceListGID")]
-        public string FPriceListGID { get; set; }
+        public string FPriceListGId { get; set; }
         public string GLAccountCode { get; set; }
         public string DayOfMonth { get; set; }
         public string DocumentMessage { get; set; }
@@ -5376,11 +5400,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ClubCardNumber { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
         public bool ConsignmentParticipation { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public EntersoftWebApi2ODSModelsESFICreditorObjProposedPaymentTypeType ProposedPaymentType { get; set; }
         public EntersoftWebApi2ODSModelsESFICreditorObjIncludeTaxDocsType IncludeTaxDocs { get; set; }
         public string PrintFormPostfix { get; set; }
@@ -5390,7 +5414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string InvoiceEMailAddress { get; set; }
 
         [JsonProperty("fEInvoiceProfileGID")]
-        public string FEInvoiceProfileGID { get; set; }
+        public string FEInvoiceProfileGId { get; set; }
 
         [JsonProperty("eInvoice")]
         public bool EInvoice { get; set; }
@@ -5398,17 +5422,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TwitterAccount { get; set; }
 
         [JsonProperty("fIntercessorGID")]
-        public string FIntercessorGID { get; set; }
+        public string FIntercessorGId { get; set; }
         public EntersoftWebApi2ODSModelsESFICreditorObjConcernsType Concerns { get; set; }
         public int BarcodeStack { get; set; }
         public bool SubjectToTax { get; set; }
         public bool AllowBackOrders { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
         public int HasPerson { get; set; }
         public int MainAddressVATStatus { get; set; }
 
@@ -5416,11 +5440,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSMatching { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -5517,26 +5543,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESFIDocumentCashObj
     {
         [JsonProperty("fADDocumentUpdateProfileGID")]
-        public string FADDocumentUpdateProfileGID { get; set; }
+        public string FADDocumentUpdateProfileGId { get; set; }
 
         [JsonProperty("fADDocumentTypeGID")]
-        public string FADDocumentTypeGID { get; set; }
+        public string FADDocumentTypeGId { get; set; }
 
         [JsonProperty("fADDocumentSeriesGID")]
-        public string FADDocumentSeriesGID { get; set; }
+        public string FADDocumentSeriesGId { get; set; }
         public double ADNumber { get; set; }
         public string ADCode { get; set; }
         public string ADRegistrationDate { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fTradeAccountSiteGID")]
-        public string FTradeAccountSiteGID { get; set; }
+        public string FTradeAccountSiteGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentCashObjADDocumentStateType ADDocumentState { get; set; }
 
         [JsonProperty("fCollectorGID")]
-        public string FCollectorGID { get; set; }
+        public string FCollectorGId { get; set; }
         public string ADAlternativeCode { get; set; }
         public string ADAlternativeDate { get; set; }
         public string ADReferenceCode { get; set; }
@@ -5584,7 +5610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ADStringField5 { get; set; }
 
         [JsonProperty("fADProjectGID")]
-        public string FADProjectGID { get; set; }
+        public string FADProjectGId { get; set; }
 
         [JsonProperty("fADActivityCode")]
         public string FADActivityCode { get; set; }
@@ -5599,13 +5625,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FADDimension2Code { get; set; }
 
         [JsonProperty("fADSiteGID")]
-        public string FADSiteGID { get; set; }
+        public string FADSiteGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentCashObjVATStatusType VATStatus { get; set; }
         public double CurrencyDeductionsValue { get; set; }
         public double CurrencyChargesValue { get; set; }
         public double CurrencyTaxesValue { get; set; }
         public double CurrencyPayableAmount { get; set; }
-        public int TransitionBatchID { get; set; }
+
+        [JsonProperty("TransitionBatchID")]
+        public int TransitionBatchId { get; set; }
 
         [JsonProperty("fTransitionStepCode")]
         public string FTransitionStepCode { get; set; }
@@ -5615,7 +5643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIDocumentCashObjADFiscalPeriodTypeType ADFiscalPeriodType { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
 
         [JsonProperty("fADNoteStateCode")]
         public string FADNoteStateCode { get; set; }
@@ -5623,11 +5651,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ADTransitionAvailability { get; set; }
 
         [JsonProperty("fADAccountManagerGID")]
-        public string FADAccountManagerGID { get; set; }
+        public string FADAccountManagerGId { get; set; }
         public int ADPriority { get; set; }
 
         [JsonProperty("fCostingFolderGID")]
-        public string FCostingFolderGID { get; set; }
+        public string FCostingFolderGId { get; set; }
         public double ADValueField1 { get; set; }
         public double ADValueField2 { get; set; }
         public double ADValueField3 { get; set; }
@@ -5635,7 +5663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double ADValueField5 { get; set; }
 
         [JsonProperty("fContactGID")]
-        public string FContactGID { get; set; }
+        public string FContactGId { get; set; }
         public double TradeAccountPreviousBonusBalance { get; set; }
         public double TotalBonusValue { get; set; }
         public double CurrencyTotalBonusValue { get; set; }
@@ -5648,34 +5676,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIDocumentCashObjADTransitionStateType ADTransitionState { get; set; }
 
         [JsonProperty("fADTaskGID")]
-        public string FADTaskGID { get; set; }
+        public string FADTaskGId { get; set; }
 
         [JsonProperty("fADDocumentUpdateProfileGLGID")]
-        public string FADDocumentUpdateProfileGLGID { get; set; }
+        public string FADDocumentUpdateProfileGLGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentCashObjADLockModeType ADLockMode { get; set; }
         public string ADReportingDate { get; set; }
 
         [JsonProperty("fBudgetSheetGID")]
-        public string FBudgetSheetGID { get; set; }
+        public string FBudgetSheetGId { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
         public bool PaymentVATRequired { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentCashObjADProcessStateType ADProcessState { get; set; }
         public string ADBarcode { get; set; }
 
         [JsonProperty("fPersonBankAccountGID")]
-        public string FPersonBankAccountGID { get; set; }
+        public string FPersonBankAccountGId { get; set; }
         public bool SplitOnVATRequired { get; set; }
 
         [JsonProperty("fADShiftGID")]
-        public string FADShiftGID { get; set; }
+        public string FADShiftGId { get; set; }
 
         [JsonProperty("fADMyDataDocumentTypeCode")]
         public string FADMyDataDocumentTypeCode { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("fVoucherStateCode")]
         public string FVoucherStateCode { get; set; }
@@ -5768,7 +5796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TDSLEFieldRelativeDocument { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_fCancellingSeriesGID")]
-        public string CANCELAFTERSAVEFCancellingSeriesGID { get; set; }
+        public string CANCELAFTERSAVEFCancellingSeriesGId { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_ADNumber")]
         public double CANCELAFTERSAVEADNumber { get; set; }
@@ -5822,12 +5850,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double CurrencyRedeemGiftVoucherPayableValue { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
         public string ADReferenceCodeList { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -5920,7 +5950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESMMStockOrderPlanObj
     {
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
 
         [JsonProperty("fItemFamilyCode")]
         public string FItemFamilyCode { get; set; }
@@ -5935,7 +5965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FItemSubcategoryCode { get; set; }
 
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
 
         [JsonProperty("fColorCode")]
         public string FColorCode { get; set; }
@@ -5951,7 +5981,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("fStockCategoryCode")]
         public string FStockCategoryCode { get; set; }
-        public string CrossCompanyID { get; set; }
+
+        [JsonProperty("CrossCompanyID")]
+        public string CrossCompanyId { get; set; }
         public double BottomLevel { get; set; }
         public double UpperLevel { get; set; }
         public double NumericField1 { get; set; }
@@ -5959,7 +5991,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double NumericField3 { get; set; }
         public double NumericField4 { get; set; }
         public double NumericField5 { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -5981,10 +6015,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string AlternativeName { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -6004,10 +6038,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Remarks { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
 
         [JsonProperty("fInvoicePolicyGID")]
-        public string FInvoicePolicyGID { get; set; }
+        public string FInvoicePolicyGId { get; set; }
 
         [JsonProperty("fTradeAccountPricingCategoryCode")]
         public string FTradeAccountPricingCategoryCode { get; set; }
@@ -6017,48 +6051,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FFamilyCode { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fAccountManagerGID")]
-        public string FAccountManagerGID { get; set; }
+        public string FAccountManagerGId { get; set; }
 
         [JsonProperty("fCommissionLevelCode")]
         public string FCommissionLevelCode { get; set; }
 
         [JsonProperty("fFixedSupplierGID")]
-        public string FFixedSupplierGID { get; set; }
+        public string FFixedSupplierGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fPaymentMethodGID")]
-        public string FPaymentMethodGID { get; set; }
+        public string FPaymentMethodGId { get; set; }
         public int OrderPriority { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fUsualRouteCode")]
         public string FUsualRouteCode { get; set; }
         public string AccountStartDate { get; set; }
 
         [JsonProperty("fGLAccountGID")]
-        public string FGLAccountGID { get; set; }
+        public string FGLAccountGId { get; set; }
 
         [JsonProperty("fTradeCurrencyCode")]
         public string FTradeCurrencyCode { get; set; }
 
         [JsonProperty("fCreditControlProfileGID")]
-        public string FCreditControlProfileGID { get; set; }
+        public string FCreditControlProfileGId { get; set; }
         public double BalanceLimit { get; set; }
         public double OpenBalanceNotesLimit { get; set; }
         public double OpenBalanceTotalNotesLimit { get; set; }
@@ -6067,17 +6101,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FInterestProfileCode { get; set; }
 
         [JsonProperty("fCollectorGID")]
-        public string FCollectorGID { get; set; }
+        public string FCollectorGId { get; set; }
         public string PaymentDay { get; set; }
         public string FromHours { get; set; }
         public string ToHours { get; set; }
         public EntersoftWebApi2ODSModelsESFISupplierObjMatchingCriteriaType MatchingCriteria { get; set; }
 
         [JsonProperty("fMatchingFieldGID")]
-        public string FMatchingFieldGID { get; set; }
+        public string FMatchingFieldGId { get; set; }
 
         [JsonProperty("fWareHouseGID")]
-        public string FWareHouseGID { get; set; }
+        public string FWareHouseGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -6143,7 +6177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FGLSegCode { get; set; }
 
         [JsonProperty("fPriceListGID")]
-        public string FPriceListGID { get; set; }
+        public string FPriceListGId { get; set; }
         public string GLAccountCode { get; set; }
         public string DayOfMonth { get; set; }
         public string DocumentMessage { get; set; }
@@ -6166,11 +6200,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ClubCardNumber { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
         public bool ConsignmentParticipation { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public EntersoftWebApi2ODSModelsESFISupplierObjProposedPaymentTypeType ProposedPaymentType { get; set; }
         public EntersoftWebApi2ODSModelsESFISupplierObjIncludeTaxDocsType IncludeTaxDocs { get; set; }
         public string PrintFormPostfix { get; set; }
@@ -6180,7 +6214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string InvoiceEMailAddress { get; set; }
 
         [JsonProperty("fEInvoiceProfileGID")]
-        public string FEInvoiceProfileGID { get; set; }
+        public string FEInvoiceProfileGId { get; set; }
 
         [JsonProperty("eInvoice")]
         public bool EInvoice { get; set; }
@@ -6188,17 +6222,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TwitterAccount { get; set; }
 
         [JsonProperty("fIntercessorGID")]
-        public string FIntercessorGID { get; set; }
+        public string FIntercessorGId { get; set; }
         public EntersoftWebApi2ODSModelsESFISupplierObjConcernsType Concerns { get; set; }
         public int BarcodeStack { get; set; }
         public bool SubjectToTax { get; set; }
         public bool AllowBackOrders { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
         public int HasPerson { get; set; }
         public int MainAddressVATStatus { get; set; }
 
@@ -6206,11 +6240,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSMatching { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -6317,11 +6353,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemExpenseObjAssemblyTypeType AssemblyType { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpenseObjItemClassType ItemClass { get; set; }
 
         [JsonProperty("fMainSupplierGID")]
-        public string FMainSupplierGID { get; set; }
+        public string FMainSupplierGId { get; set; }
 
         [JsonProperty("fItemPricingCategoryCode")]
         public string FItemPricingCategoryCode { get; set; }
@@ -6334,7 +6370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool RetailPriceIncludedVAT { get; set; }
 
         [JsonProperty("fMainMUGID")]
-        public string FMainMUGID { get; set; }
+        public string FMainMUGId { get; set; }
 
         [JsonProperty("fVATCategoryCode")]
         public string FVATCategoryCode { get; set; }
@@ -6354,21 +6390,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FItemSubcategoryCode { get; set; }
 
         [JsonProperty("fTaxesGroupGID")]
-        public string FTaxesGroupGID { get; set; }
+        public string FTaxesGroupGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fBaseBOMGID")]
-        public string FBaseBOMGID { get; set; }
+        public string FBaseBOMGId { get; set; }
         public double StandardCost { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpenseObjValuationMethodType ValuationMethod { get; set; }
 
         [JsonProperty("fItemControlProfileGID")]
-        public string FItemControlProfileGID { get; set; }
+        public string FItemControlProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpenseObjIncludedTaxReportsType IncludedTaxReports { get; set; }
         public string Comment { get; set; }
         public string GLAccountCode { get; set; }
@@ -6449,7 +6485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fCostElementTypeGID")]
-        public string FCostElementTypeGID { get; set; }
+        public string FCostElementTypeGId { get; set; }
 
         [JsonProperty("fBudgetItemGroupCode")]
         public string FBudgetItemGroupCode { get; set; }
@@ -6469,23 +6505,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemExpenseObjSubTypeType SubType { get; set; }
 
         [JsonProperty("fItemNetProfitCodesGID")]
-        public string FItemNetProfitCodesGID { get; set; }
+        public string FItemNetProfitCodesGId { get; set; }
         public bool WEB { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
 
         [JsonProperty("fWarrantyTermGID")]
-        public string FWarrantyTermGID { get; set; }
+        public string FWarrantyTermGId { get; set; }
 
         [JsonProperty("fAllocationProfileGID")]
-        public string FAllocationProfileGID { get; set; }
+        public string FAllocationProfileGId { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public bool Mobile { get; set; }
         public bool SelectInMobileOrder { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpenseObjExpenseTypeType ExpenseType { get; set; }
@@ -6493,12 +6529,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double PerCentOfTaxExclusion { get; set; }
 
         [JsonProperty("fTaxDifferencesAccountGID")]
-        public string FTaxDifferencesAccountGID { get; set; }
+        public string FTaxDifferencesAccountGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemExpenseObjElementExportCategoryType ElementExportCategory { get; set; }
         public bool OpeningPerFiscalYear { get; set; }
 
         [JsonProperty("fReportingMUGID")]
-        public string FReportingMUGID { get; set; }
+        public string FReportingMUGId { get; set; }
         public int CatalogueItemBehaviour { get; set; }
 
         [JsonProperty("fMUCode")]
@@ -6512,7 +6548,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("NS_MainSupplierName_Col")]
         public string NSMainSupplierNameCol { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -6631,10 +6669,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string AlternativeName { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fCommercialUnitCode")]
         public string FCommercialUnitCode { get; set; }
@@ -6645,7 +6683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double BaseCommission { get; set; }
 
         [JsonProperty("fCommissionProfileGID")]
-        public string FCommissionProfileGID { get; set; }
+        public string FCommissionProfileGId { get; set; }
         public string Remarks { get; set; }
 
         [JsonProperty("fTableField1Code")]
@@ -6699,7 +6737,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("NS_InitSalesPersons_Replacement")]
         public bool NSInitSalesPersonsReplacement { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -6723,13 +6763,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double LimitAmount { get; set; }
 
         [JsonProperty("fNewPaymentMethodGID")]
-        public string FNewPaymentMethodGID { get; set; }
+        public string FNewPaymentMethodGId { get; set; }
 
         [JsonProperty("fGLSegCode")]
         public string FGLSegCode { get; set; }
         public int GroupType { get; set; }
         public bool Mobile { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -6757,11 +6799,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemObjAssemblyTypeType AssemblyType { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemObjItemClassType ItemClass { get; set; }
 
         [JsonProperty("fMainSupplierGID")]
-        public string FMainSupplierGID { get; set; }
+        public string FMainSupplierGId { get; set; }
 
         [JsonProperty("fItemPricingCategoryCode")]
         public string FItemPricingCategoryCode { get; set; }
@@ -6774,7 +6816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool RetailPriceIncludedVAT { get; set; }
 
         [JsonProperty("fMainMUGID")]
-        public string FMainMUGID { get; set; }
+        public string FMainMUGId { get; set; }
 
         [JsonProperty("fVATCategoryCode")]
         public string FVATCategoryCode { get; set; }
@@ -6794,21 +6836,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FItemSubcategoryCode { get; set; }
 
         [JsonProperty("fTaxesGroupGID")]
-        public string FTaxesGroupGID { get; set; }
+        public string FTaxesGroupGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fBaseBOMGID")]
-        public string FBaseBOMGID { get; set; }
+        public string FBaseBOMGId { get; set; }
         public double StandardCost { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemObjValuationMethodType ValuationMethod { get; set; }
 
         [JsonProperty("fItemControlProfileGID")]
-        public string FItemControlProfileGID { get; set; }
+        public string FItemControlProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemObjIncludedTaxReportsType IncludedTaxReports { get; set; }
         public string Comment { get; set; }
         public string GLAccountCode { get; set; }
@@ -6889,7 +6931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fCostElementTypeGID")]
-        public string FCostElementTypeGID { get; set; }
+        public string FCostElementTypeGId { get; set; }
 
         [JsonProperty("fBudgetItemGroupCode")]
         public string FBudgetItemGroupCode { get; set; }
@@ -6909,23 +6951,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemObjSubTypeType SubType { get; set; }
 
         [JsonProperty("fItemNetProfitCodesGID")]
-        public string FItemNetProfitCodesGID { get; set; }
+        public string FItemNetProfitCodesGId { get; set; }
         public bool WEB { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
 
         [JsonProperty("fWarrantyTermGID")]
-        public string FWarrantyTermGID { get; set; }
+        public string FWarrantyTermGId { get; set; }
 
         [JsonProperty("fAllocationProfileGID")]
-        public string FAllocationProfileGID { get; set; }
+        public string FAllocationProfileGId { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public bool Mobile { get; set; }
         public bool SelectInMobileOrder { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemObjExpenseTypeType ExpenseType { get; set; }
@@ -6933,12 +6975,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double PerCentOfTaxExclusion { get; set; }
 
         [JsonProperty("fTaxDifferencesAccountGID")]
-        public string FTaxDifferencesAccountGID { get; set; }
+        public string FTaxDifferencesAccountGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemObjElementExportCategoryType ElementExportCategory { get; set; }
         public bool OpeningPerFiscalYear { get; set; }
 
         [JsonProperty("fReportingMUGID")]
-        public string FReportingMUGID { get; set; }
+        public string FReportingMUGId { get; set; }
         public int CatalogueItemBehaviour { get; set; }
 
         [JsonProperty("fMUCode")]
@@ -6952,7 +6994,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("NS_MainSupplierName_Col")]
         public string NSMainSupplierNameCol { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -7074,7 +7118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string CustomCondition { get; set; }
 
         [JsonProperty("fAccountGID")]
-        public string FAccountGID { get; set; }
+        public string FAccountGId { get; set; }
         public bool StandAloneLine { get; set; }
 
         [JsonProperty("fVATCategoryCode")]
@@ -7101,7 +7145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool IncludedInItemsGrossPrice { get; set; }
 
         [JsonProperty("fRelativeCarrierGID")]
-        public string FRelativeCarrierGID { get; set; }
+        public string FRelativeCarrierGId { get; set; }
         public bool GiftCard { get; set; }
         public bool AutoSplit { get; set; }
         public bool IsTaxDeduction { get; set; }
@@ -7147,7 +7191,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("fDiscountKindCode")]
         public string FDiscountKindCode { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -7291,33 +7337,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESFIDocumentStockObj
     {
         [JsonProperty("fADDocumentUpdateProfileGID")]
-        public string FADDocumentUpdateProfileGID { get; set; }
+        public string FADDocumentUpdateProfileGId { get; set; }
 
         [JsonProperty("fADDocumentTypeGID")]
-        public string FADDocumentTypeGID { get; set; }
+        public string FADDocumentTypeGId { get; set; }
 
         [JsonProperty("fADDocumentSeriesGID")]
-        public string FADDocumentSeriesGID { get; set; }
+        public string FADDocumentSeriesGId { get; set; }
         public double ADNumber { get; set; }
         public string ADCode { get; set; }
         public string ADRegistrationDate { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentStockObjSourceTypeType SourceType { get; set; }
 
         [JsonProperty("fSourceGID")]
-        public string FSourceGID { get; set; }
+        public string FSourceGId { get; set; }
         public string SourceName { get; set; }
 
         [JsonProperty("fSourceSiteGID")]
-        public string FSourceSiteGID { get; set; }
+        public string FSourceSiteGId { get; set; }
         public string SourceSiteName { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentStockObjTargetTypeType TargetType { get; set; }
 
         [JsonProperty("fTargetGID")]
-        public string FTargetGID { get; set; }
+        public string FTargetGId { get; set; }
         public string TargetName { get; set; }
 
         [JsonProperty("fTargetSiteGID")]
-        public string FTargetSiteGID { get; set; }
+        public string FTargetSiteGId { get; set; }
         public string TargetSiteName { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentStockObjADDocumentStateType ADDocumentState { get; set; }
         public string ADAlternativeCode { get; set; }
@@ -7358,7 +7404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ADStringField5 { get; set; }
 
         [JsonProperty("fADProjectGID")]
-        public string FADProjectGID { get; set; }
+        public string FADProjectGId { get; set; }
 
         [JsonProperty("fADActivityCode")]
         public string FADActivityCode { get; set; }
@@ -7373,8 +7419,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FADDimension2Code { get; set; }
 
         [JsonProperty("fADSiteGID")]
-        public string FADSiteGID { get; set; }
-        public int TransitionBatchID { get; set; }
+        public string FADSiteGId { get; set; }
+
+        [JsonProperty("TransitionBatchID")]
+        public int TransitionBatchId { get; set; }
 
         [JsonProperty("fTransitionStepCode")]
         public string FTransitionStepCode { get; set; }
@@ -7389,14 +7437,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ADTransitionAvailability { get; set; }
 
         [JsonProperty("fADAccountManagerGID")]
-        public string FADAccountManagerGID { get; set; }
+        public string FADAccountManagerGId { get; set; }
         public int ADPriority { get; set; }
 
         [JsonProperty("fConveyanceCode")]
         public string FConveyanceCode { get; set; }
 
         [JsonProperty("fCostingFolderGID")]
-        public string FCostingFolderGID { get; set; }
+        public string FCostingFolderGId { get; set; }
         public double ADValueField1 { get; set; }
         public double ADValueField2 { get; set; }
         public double ADValueField3 { get; set; }
@@ -7405,22 +7453,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool SortimentHandling { get; set; }
 
         [JsonProperty("fDeliveryPersonGID")]
-        public string FDeliveryPersonGID { get; set; }
+        public string FDeliveryPersonGId { get; set; }
 
         [JsonProperty("fDeliverySiteGID")]
-        public string FDeliverySiteGID { get; set; }
+        public string FDeliverySiteGId { get; set; }
 
         [JsonProperty("fRouteCode")]
         public string FRouteCode { get; set; }
 
         [JsonProperty("fSenderPersonGID")]
-        public string FSenderPersonGID { get; set; }
+        public string FSenderPersonGId { get; set; }
 
         [JsonProperty("fShippingPurposeCode")]
         public string FShippingPurposeCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
@@ -7433,48 +7481,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIDocumentStockObjADTransitionStateType ADTransitionState { get; set; }
 
         [JsonProperty("fContactGID")]
-        public string FContactGID { get; set; }
+        public string FContactGId { get; set; }
 
         [JsonProperty("fADTaskGID")]
-        public string FADTaskGID { get; set; }
+        public string FADTaskGId { get; set; }
 
         [JsonProperty("fADDocumentUpdateProfileGLGID")]
-        public string FADDocumentUpdateProfileGLGID { get; set; }
+        public string FADDocumentUpdateProfileGLGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentStockObjADLockModeType ADLockMode { get; set; }
 
         [JsonProperty("fTransporterSiteGID")]
-        public string FTransporterSiteGID { get; set; }
+        public string FTransporterSiteGId { get; set; }
         public string ADReportingDate { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fWFStepCode")]
         public string FWFStepCode { get; set; }
 
         [JsonProperty("fSenderSiteGID")]
-        public string FSenderSiteGID { get; set; }
+        public string FSenderSiteGId { get; set; }
 
         [JsonProperty("fDriverGID")]
-        public string FDriverGID { get; set; }
+        public string FDriverGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentStockObjADProcessStateType ADProcessState { get; set; }
 
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
         public string ADBarcode { get; set; }
         public int NumberOfContainers { get; set; }
 
         [JsonProperty("fDepositionGID")]
-        public string FDepositionGID { get; set; }
+        public string FDepositionGId { get; set; }
 
         [JsonProperty("fADShiftGID")]
-        public string FADShiftGID { get; set; }
+        public string FADShiftGId { get; set; }
 
         [JsonProperty("fADMyDataDocumentTypeCode")]
         public string FADMyDataDocumentTypeCode { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("fADCurrencyCode")]
         public string FADCurrencyCode { get; set; }
@@ -7484,7 +7532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int BOMExecution { get; set; }
 
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
         public int CheckStockLevel { get; set; }
 
         [JsonProperty("Ref_DocumentsList")]
@@ -7575,7 +7623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TDSLEFieldRelativeDocument { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_fCancellingSeriesGID")]
-        public string CANCELAFTERSAVEFCancellingSeriesGID { get; set; }
+        public string CANCELAFTERSAVEFCancellingSeriesGId { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_ADNumber")]
         public double CANCELAFTERSAVEADNumber { get; set; }
@@ -7594,7 +7642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double ADCurrencyReversedRate { get; set; }
 
         [JsonProperty("NS_TCourier_TrackingID")]
-        public string NSTCourierTrackingID { get; set; }
+        public string NSTCourierTrackingId { get; set; }
 
         [JsonProperty("NS_TCourier_DeliveryDate")]
         public string NSTCourierDeliveryDate { get; set; }
@@ -7624,14 +7672,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSTCourierShippingStatus { get; set; }
 
         [JsonProperty("NS_TCourier_JobID")]
-        public string NSTCourierJobID { get; set; }
+        public string NSTCourierJobId { get; set; }
         public string BannerColumn { get; set; }
 
         [JsonProperty("fSourcePersonCodeGID")]
-        public string FSourcePersonCodeGID { get; set; }
+        public string FSourcePersonCodeGId { get; set; }
 
         [JsonProperty("fTargetPersonCodeGID")]
-        public string FTargetPersonCodeGID { get; set; }
+        public string FTargetPersonCodeGId { get; set; }
         public int CompactLineItemsOnSave { get; set; }
         public int AddLIAFromDomainOnRetailMode { get; set; }
         public double TotalQtyBaseMU { get; set; }
@@ -7654,45 +7702,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string VTotalWeight { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
         public string ADReferenceCodeList { get; set; }
 
         [JsonProperty("NS_fDeliveryPersonGID_fCategoryCode")]
-        public string NSFDeliveryPersonGIDFCategoryCode { get; set; }
+        public string NSFDeliveryPersonGIdFCategoryCode { get; set; }
 
         [JsonProperty("NS_fDeliveryPersonGID_fGroupCode")]
-        public string NSFDeliveryPersonGIDFGroupCode { get; set; }
+        public string NSFDeliveryPersonGIdFGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fSiteTypeCode")]
-        public string NSFDeliverySiteGIDFSiteTypeCode { get; set; }
+        public string NSFDeliverySiteGIdFSiteTypeCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode_fGroupRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCodeFGroupRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCodeFGroupRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode_fCategoryRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderPersonGID_fCategoryCode")]
-        public string NSFSenderPersonGIDFCategoryCode { get; set; }
+        public string NSFSenderPersonGIdFCategoryCode { get; set; }
 
         [JsonProperty("NS_fSenderPersonGID_fGroupCode")]
-        public string NSFSenderPersonGIDFGroupCode { get; set; }
+        public string NSFSenderPersonGIdFGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fSiteTypeCode")]
-        public string NSFSenderSiteGIDFSiteTypeCode { get; set; }
+        public string NSFSenderSiteGIdFSiteTypeCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fRegionGroupCode")]
-        public string NSFSenderSiteGIDFRegionGroupCode { get; set; }
+        public string NSFSenderSiteGIdFRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fRegionGroupCode_fCategoryRegionGroupCode")]
-        public string NSFSenderSiteGIDFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
-        public string GID { get; set; }
+        public string NSFSenderSiteGIdFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -7807,14 +7857,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string DueDate { get; set; }
 
         [JsonProperty("fPaymentAccountGID")]
-        public string FPaymentAccountGID { get; set; }
+        public string FPaymentAccountGId { get; set; }
 
         [JsonProperty("fPersonBankGID")]
-        public string FPersonBankGID { get; set; }
+        public string FPersonBankGId { get; set; }
         public string Bank { get; set; }
 
         [JsonProperty("fRegistrationDocumentGID")]
-        public string FRegistrationDocumentGID { get; set; }
+        public string FRegistrationDocumentGId { get; set; }
 
         [JsonProperty("fCurrencyCode")]
         public string FCurrencyCode { get; set; }
@@ -7825,43 +7875,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFINoteObjSourceAccountTypeType SourceAccountType { get; set; }
 
         [JsonProperty("fSourceAccountGID")]
-        public string FSourceAccountGID { get; set; }
+        public string FSourceAccountGId { get; set; }
 
         [JsonProperty("fSourceAccountSiteGID")]
-        public string FSourceAccountSiteGID { get; set; }
+        public string FSourceAccountSiteGId { get; set; }
         public EntersoftWebApi2ODSModelsESFINoteObjTargetAccountTypeType TargetAccountType { get; set; }
 
         [JsonProperty("fTargetAccountGID")]
-        public string FTargetAccountGID { get; set; }
+        public string FTargetAccountGId { get; set; }
 
         [JsonProperty("fTargetAccountSiteGID")]
-        public string FTargetAccountSiteGID { get; set; }
+        public string FTargetAccountSiteGId { get; set; }
         public EntersoftWebApi2ODSModelsESFINoteObjHolderTypeType HolderType { get; set; }
 
         [JsonProperty("fHolderGID")]
-        public string FHolderGID { get; set; }
+        public string FHolderGId { get; set; }
         public string HolderName { get; set; }
 
         [JsonProperty("fHolderAddressGID")]
-        public string FHolderAddressGID { get; set; }
+        public string FHolderAddressGId { get; set; }
         public string HolderAddress { get; set; }
         public EntersoftWebApi2ODSModelsESFINoteObjIssuedByTypeType IssuedByType { get; set; }
 
         [JsonProperty("fIssuedByGID")]
-        public string FIssuedByGID { get; set; }
+        public string FIssuedByGId { get; set; }
         public string IssuedByName { get; set; }
 
         [JsonProperty("fIssuedByAddressGID")]
-        public string FIssuedByAddressGID { get; set; }
+        public string FIssuedByAddressGId { get; set; }
         public string IssuedByAddress { get; set; }
         public EntersoftWebApi2ODSModelsESFINoteObjUnderwriterTypeType UnderwriterType { get; set; }
 
         [JsonProperty("fUnderwriterGID")]
-        public string FUnderwriterGID { get; set; }
+        public string FUnderwriterGId { get; set; }
         public string UnderwriterName { get; set; }
 
         [JsonProperty("fUnderwriterAddressGID")]
-        public string FUnderwriterAddressGID { get; set; }
+        public string FUnderwriterAddressGId { get; set; }
         public string UnderwriterAddress { get; set; }
         public string Comments { get; set; }
         public double CurrencyRate { get; set; }
@@ -7903,13 +7953,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool Printed { get; set; }
 
         [JsonProperty("fNoteDepositBankAccountGID")]
-        public string FNoteDepositBankAccountGID { get; set; }
+        public string FNoteDepositBankAccountGId { get; set; }
         public EntersoftWebApi2ODSModelsESFINoteObjConcernsType Concerns { get; set; }
         public double OpenValue { get; set; }
         public double OpenCurrencyValue { get; set; }
         public bool Computerized { get; set; }
         public double CurrencyReversedRate { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -8009,19 +8061,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string AlternativeCode { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fPriceListGID")]
-        public string FPriceListGID { get; set; }
+        public string FPriceListGId { get; set; }
 
         [JsonProperty("fPaymentMethodGID")]
-        public string FPaymentMethodGID { get; set; }
+        public string FPaymentMethodGId { get; set; }
 
         [JsonProperty("fInvoicePolicyGID")]
-        public string FInvoicePolicyGID { get; set; }
+        public string FInvoicePolicyGId { get; set; }
 
         [JsonProperty("fBlanketOrderGID")]
-        public string FBlanketOrderGID { get; set; }
+        public string FBlanketOrderGId { get; set; }
         public bool CheckItems { get; set; }
 
         [JsonProperty("fCurrencyCode")]
@@ -8033,19 +8085,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string SignDate { get; set; }
 
         [JsonProperty("fResponsibleGID")]
-        public string FResponsibleGID { get; set; }
+        public string FResponsibleGId { get; set; }
 
         [JsonProperty("fResponsibleContactGID")]
-        public string FResponsibleContactGID { get; set; }
+        public string FResponsibleContactGId { get; set; }
 
         [JsonProperty("fRepresentativeGID")]
-        public string FRepresentativeGID { get; set; }
+        public string FRepresentativeGId { get; set; }
 
         [JsonProperty("fReferenceGID")]
-        public string FReferenceGID { get; set; }
+        public string FReferenceGId { get; set; }
 
         [JsonProperty("fReferenceOrganizationGID")]
-        public string FReferenceOrganizationGID { get; set; }
+        public string FReferenceOrganizationGId { get; set; }
         public double TotalValue { get; set; }
         public double TotalCost { get; set; }
         public string DateField1 { get; set; }
@@ -8082,7 +8134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Attachment { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -8139,31 +8191,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FTableField10Code { get; set; }
 
         [JsonProperty("fContractTypeGID")]
-        public string FContractTypeGID { get; set; }
+        public string FContractTypeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fWarrantyTermGID")]
-        public string FWarrantyTermGID { get; set; }
+        public string FWarrantyTermGId { get; set; }
         public bool IsServiceContract { get; set; }
         public EntersoftWebApi2ODSModelsESFITradeAccountContractObjPeriodLengthType PeriodLength { get; set; }
 
         [JsonProperty("fSupersededContractGID")]
-        public string FSupersededContractGID { get; set; }
+        public string FSupersededContractGId { get; set; }
         public int CreditDays { get; set; }
 
         [JsonProperty("fFinancialAgreementGID")]
-        public string FFinancialAgreementGID { get; set; }
+        public string FFinancialAgreementGId { get; set; }
 
         [JsonProperty("fTradeAccountSiteGID")]
-        public string FTradeAccountSiteGID { get; set; }
+        public string FTradeAccountSiteGId { get; set; }
 
         [JsonProperty("fCategoryCode")]
         public string FCategoryCode { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("nsComments_RTF")]
         public string NsCommentsRTF { get; set; }
@@ -8178,11 +8230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double NSRemainedValue { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -8217,7 +8271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Barcode { get; set; }
 
         [JsonProperty("fVoucherPromotionProfileGID")]
-        public string FVoucherPromotionProfileGID { get; set; }
+        public string FVoucherPromotionProfileGId { get; set; }
         public double DiscVoucherValue { get; set; }
         public double DiscVoucherPercentage { get; set; }
         public double GiftVoucherValue { get; set; }
@@ -8231,10 +8285,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Notes { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
 
         [JsonProperty("fDocumentGID")]
-        public string FDocumentGID { get; set; }
+        public string FDocumentGId { get; set; }
         public bool Printed { get; set; }
         public bool Flag1 { get; set; }
         public bool Flag2 { get; set; }
@@ -8259,7 +8313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FTableField3Code { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -8274,17 +8328,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fCashAccountGID")]
-        public string FCashAccountGID { get; set; }
+        public string FCashAccountGId { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fTaskItemGID")]
-        public string FTaskItemGID { get; set; }
+        public string FTaskItemGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
-        public string GID { get; set; }
+        public string FPersonGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -8314,10 +8370,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string AlternativeName { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -8337,10 +8393,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Remarks { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
 
         [JsonProperty("fInvoicePolicyGID")]
-        public string FInvoicePolicyGID { get; set; }
+        public string FInvoicePolicyGId { get; set; }
 
         [JsonProperty("fTradeAccountPricingCategoryCode")]
         public string FTradeAccountPricingCategoryCode { get; set; }
@@ -8350,48 +8406,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FFamilyCode { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fAccountManagerGID")]
-        public string FAccountManagerGID { get; set; }
+        public string FAccountManagerGId { get; set; }
 
         [JsonProperty("fCommissionLevelCode")]
         public string FCommissionLevelCode { get; set; }
 
         [JsonProperty("fFixedSupplierGID")]
-        public string FFixedSupplierGID { get; set; }
+        public string FFixedSupplierGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fPaymentMethodGID")]
-        public string FPaymentMethodGID { get; set; }
+        public string FPaymentMethodGId { get; set; }
         public int OrderPriority { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fUsualRouteCode")]
         public string FUsualRouteCode { get; set; }
         public string AccountStartDate { get; set; }
 
         [JsonProperty("fGLAccountGID")]
-        public string FGLAccountGID { get; set; }
+        public string FGLAccountGId { get; set; }
 
         [JsonProperty("fTradeCurrencyCode")]
         public string FTradeCurrencyCode { get; set; }
 
         [JsonProperty("fCreditControlProfileGID")]
-        public string FCreditControlProfileGID { get; set; }
+        public string FCreditControlProfileGId { get; set; }
         public double BalanceLimit { get; set; }
         public double OpenBalanceNotesLimit { get; set; }
         public double OpenBalanceTotalNotesLimit { get; set; }
@@ -8400,17 +8456,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FInterestProfileCode { get; set; }
 
         [JsonProperty("fCollectorGID")]
-        public string FCollectorGID { get; set; }
+        public string FCollectorGId { get; set; }
         public string PaymentDay { get; set; }
         public string FromHours { get; set; }
         public string ToHours { get; set; }
         public EntersoftWebApi2ODSModelsESFICustomerObjMatchingCriteriaType MatchingCriteria { get; set; }
 
         [JsonProperty("fMatchingFieldGID")]
-        public string FMatchingFieldGID { get; set; }
+        public string FMatchingFieldGId { get; set; }
 
         [JsonProperty("fWareHouseGID")]
-        public string FWareHouseGID { get; set; }
+        public string FWareHouseGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -8476,7 +8532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FGLSegCode { get; set; }
 
         [JsonProperty("fPriceListGID")]
-        public string FPriceListGID { get; set; }
+        public string FPriceListGId { get; set; }
         public string GLAccountCode { get; set; }
         public string DayOfMonth { get; set; }
         public string DocumentMessage { get; set; }
@@ -8499,11 +8555,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ClubCardNumber { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
         public bool ConsignmentParticipation { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public EntersoftWebApi2ODSModelsESFICustomerObjProposedPaymentTypeType ProposedPaymentType { get; set; }
         public EntersoftWebApi2ODSModelsESFICustomerObjIncludeTaxDocsType IncludeTaxDocs { get; set; }
         public string PrintFormPostfix { get; set; }
@@ -8513,7 +8569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string InvoiceEMailAddress { get; set; }
 
         [JsonProperty("fEInvoiceProfileGID")]
-        public string FEInvoiceProfileGID { get; set; }
+        public string FEInvoiceProfileGId { get; set; }
 
         [JsonProperty("eInvoice")]
         public bool EInvoice { get; set; }
@@ -8521,17 +8577,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TwitterAccount { get; set; }
 
         [JsonProperty("fIntercessorGID")]
-        public string FIntercessorGID { get; set; }
+        public string FIntercessorGId { get; set; }
         public EntersoftWebApi2ODSModelsESFICustomerObjConcernsType Concerns { get; set; }
         public int BarcodeStack { get; set; }
         public bool SubjectToTax { get; set; }
         public bool AllowBackOrders { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
         public int HasPerson { get; set; }
         public int MainAddressVATStatus { get; set; }
 
@@ -8539,11 +8595,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSMatching { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -8644,10 +8702,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string AlternativeName { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -8667,10 +8725,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Remarks { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
 
         [JsonProperty("fInvoicePolicyGID")]
-        public string FInvoicePolicyGID { get; set; }
+        public string FInvoicePolicyGId { get; set; }
 
         [JsonProperty("fTradeAccountPricingCategoryCode")]
         public string FTradeAccountPricingCategoryCode { get; set; }
@@ -8680,48 +8738,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FFamilyCode { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fAccountManagerGID")]
-        public string FAccountManagerGID { get; set; }
+        public string FAccountManagerGId { get; set; }
 
         [JsonProperty("fCommissionLevelCode")]
         public string FCommissionLevelCode { get; set; }
 
         [JsonProperty("fFixedSupplierGID")]
-        public string FFixedSupplierGID { get; set; }
+        public string FFixedSupplierGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fPaymentMethodGID")]
-        public string FPaymentMethodGID { get; set; }
+        public string FPaymentMethodGId { get; set; }
         public int OrderPriority { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fUsualRouteCode")]
         public string FUsualRouteCode { get; set; }
         public string AccountStartDate { get; set; }
 
         [JsonProperty("fGLAccountGID")]
-        public string FGLAccountGID { get; set; }
+        public string FGLAccountGId { get; set; }
 
         [JsonProperty("fTradeCurrencyCode")]
         public string FTradeCurrencyCode { get; set; }
 
         [JsonProperty("fCreditControlProfileGID")]
-        public string FCreditControlProfileGID { get; set; }
+        public string FCreditControlProfileGId { get; set; }
         public double BalanceLimit { get; set; }
         public double OpenBalanceNotesLimit { get; set; }
         public double OpenBalanceTotalNotesLimit { get; set; }
@@ -8730,17 +8788,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FInterestProfileCode { get; set; }
 
         [JsonProperty("fCollectorGID")]
-        public string FCollectorGID { get; set; }
+        public string FCollectorGId { get; set; }
         public string PaymentDay { get; set; }
         public string FromHours { get; set; }
         public string ToHours { get; set; }
         public EntersoftWebApi2ODSModelsESFIDebtorObjMatchingCriteriaType MatchingCriteria { get; set; }
 
         [JsonProperty("fMatchingFieldGID")]
-        public string FMatchingFieldGID { get; set; }
+        public string FMatchingFieldGId { get; set; }
 
         [JsonProperty("fWareHouseGID")]
-        public string FWareHouseGID { get; set; }
+        public string FWareHouseGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -8806,7 +8864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FGLSegCode { get; set; }
 
         [JsonProperty("fPriceListGID")]
-        public string FPriceListGID { get; set; }
+        public string FPriceListGId { get; set; }
         public string GLAccountCode { get; set; }
         public string DayOfMonth { get; set; }
         public string DocumentMessage { get; set; }
@@ -8829,11 +8887,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ClubCardNumber { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
         public bool ConsignmentParticipation { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDebtorObjProposedPaymentTypeType ProposedPaymentType { get; set; }
         public EntersoftWebApi2ODSModelsESFIDebtorObjIncludeTaxDocsType IncludeTaxDocs { get; set; }
         public string PrintFormPostfix { get; set; }
@@ -8843,7 +8901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string InvoiceEMailAddress { get; set; }
 
         [JsonProperty("fEInvoiceProfileGID")]
-        public string FEInvoiceProfileGID { get; set; }
+        public string FEInvoiceProfileGId { get; set; }
 
         [JsonProperty("eInvoice")]
         public bool EInvoice { get; set; }
@@ -8851,17 +8909,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TwitterAccount { get; set; }
 
         [JsonProperty("fIntercessorGID")]
-        public string FIntercessorGID { get; set; }
+        public string FIntercessorGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDebtorObjConcernsType Concerns { get; set; }
         public int BarcodeStack { get; set; }
         public bool SubjectToTax { get; set; }
         public bool AllowBackOrders { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
         public int HasPerson { get; set; }
         public int MainAddressVATStatus { get; set; }
 
@@ -8869,11 +8927,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSMatching { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -8975,7 +9035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FTradeAccountPricingCategoryCode { get; set; }
 
         [JsonProperty("fReferencedPricelistGID")]
-        public string FReferencedPricelistGID { get; set; }
+        public string FReferencedPricelistGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIPricelistObjDiscountAssignmentType DiscountAssignment { get; set; }
 
         [JsonProperty("fItemPricingCategoryCode")]
@@ -9006,7 +9066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string StringField3 { get; set; }
 
         [JsonProperty("fDeliveryPersonGID")]
-        public string FDeliveryPersonGID { get; set; }
+        public string FDeliveryPersonGId { get; set; }
         public bool Flag4 { get; set; }
         public bool Flag5 { get; set; }
         public bool Flag6 { get; set; }
@@ -9029,7 +9089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FTableField8Code { get; set; }
 
         [JsonProperty("fTransportPlanGID")]
-        public string FTransportPlanGID { get; set; }
+        public string FTransportPlanGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIPricelistObjTypeType Type { get; set; }
         public bool ApplyAnyCurrencyPrice { get; set; }
         public EntersoftWebApi2ODSModelsESFIPricelistObjDiscountSelectionType DiscountSelection { get; set; }
@@ -9037,7 +9097,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("fDiscountKindCode")]
         public string FDiscountKindCode { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -9099,11 +9161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemServiceObjAssemblyTypeType AssemblyType { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemServiceObjItemClassType ItemClass { get; set; }
 
         [JsonProperty("fMainSupplierGID")]
-        public string FMainSupplierGID { get; set; }
+        public string FMainSupplierGId { get; set; }
 
         [JsonProperty("fItemPricingCategoryCode")]
         public string FItemPricingCategoryCode { get; set; }
@@ -9116,7 +9178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool RetailPriceIncludedVAT { get; set; }
 
         [JsonProperty("fMainMUGID")]
-        public string FMainMUGID { get; set; }
+        public string FMainMUGId { get; set; }
 
         [JsonProperty("fVATCategoryCode")]
         public string FVATCategoryCode { get; set; }
@@ -9136,21 +9198,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FItemSubcategoryCode { get; set; }
 
         [JsonProperty("fTaxesGroupGID")]
-        public string FTaxesGroupGID { get; set; }
+        public string FTaxesGroupGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fBaseBOMGID")]
-        public string FBaseBOMGID { get; set; }
+        public string FBaseBOMGId { get; set; }
         public double StandardCost { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemServiceObjValuationMethodType ValuationMethod { get; set; }
 
         [JsonProperty("fItemControlProfileGID")]
-        public string FItemControlProfileGID { get; set; }
+        public string FItemControlProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemServiceObjIncludedTaxReportsType IncludedTaxReports { get; set; }
         public string Comment { get; set; }
         public string GLAccountCode { get; set; }
@@ -9231,7 +9293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fCostElementTypeGID")]
-        public string FCostElementTypeGID { get; set; }
+        public string FCostElementTypeGId { get; set; }
 
         [JsonProperty("fBudgetItemGroupCode")]
         public string FBudgetItemGroupCode { get; set; }
@@ -9251,23 +9313,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIItemServiceObjSubTypeType SubType { get; set; }
 
         [JsonProperty("fItemNetProfitCodesGID")]
-        public string FItemNetProfitCodesGID { get; set; }
+        public string FItemNetProfitCodesGId { get; set; }
         public bool WEB { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
 
         [JsonProperty("fWarrantyTermGID")]
-        public string FWarrantyTermGID { get; set; }
+        public string FWarrantyTermGId { get; set; }
 
         [JsonProperty("fAllocationProfileGID")]
-        public string FAllocationProfileGID { get; set; }
+        public string FAllocationProfileGId { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public bool Mobile { get; set; }
         public bool SelectInMobileOrder { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemServiceObjExpenseTypeType ExpenseType { get; set; }
@@ -9275,12 +9337,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double PerCentOfTaxExclusion { get; set; }
 
         [JsonProperty("fTaxDifferencesAccountGID")]
-        public string FTaxDifferencesAccountGID { get; set; }
+        public string FTaxDifferencesAccountGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIItemServiceObjElementExportCategoryType ElementExportCategory { get; set; }
         public bool OpeningPerFiscalYear { get; set; }
 
         [JsonProperty("fReportingMUGID")]
-        public string FReportingMUGID { get; set; }
+        public string FReportingMUGId { get; set; }
         public int CatalogueItemBehaviour { get; set; }
 
         [JsonProperty("fMUCode")]
@@ -9294,7 +9356,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("NS_MainSupplierName_Col")]
         public string NSMainSupplierNameCol { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -9413,24 +9477,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Name { get; set; }
 
         [JsonProperty("fPersonBankGID")]
-        public string FPersonBankGID { get; set; }
+        public string FPersonBankGId { get; set; }
         public string SpecialCode { get; set; }
 
         [JsonProperty("fCashAccountTypeCode")]
         public string FCashAccountTypeCode { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
         public string AlternativeName { get; set; }
         public string AlternativeCode { get; set; }
 
         [JsonProperty("fBankSiteGID")]
-        public string FBankSiteGID { get; set; }
+        public string FBankSiteGId { get; set; }
         public string Remarks { get; set; }
         public string AccountStartDate { get; set; }
 
         [JsonProperty("fGLAccountGID")]
-        public string FGLAccountGID { get; set; }
+        public string FGLAccountGId { get; set; }
 
         [JsonProperty("fTradeCurrencyCode")]
         public string FTradeCurrencyCode { get; set; }
@@ -9444,10 +9508,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ConcernsCard { get; set; }
 
         [JsonProperty("fCashRequirementsAccountGID")]
-        public string FCashRequirementsAccountGID { get; set; }
+        public string FCashRequirementsAccountGId { get; set; }
 
         [JsonProperty("fCardRateProfileGID")]
-        public string FCardRateProfileGID { get; set; }
+        public string FCardRateProfileGId { get; set; }
         public double NumericField1 { get; set; }
         public double NumericField2 { get; set; }
         public double NumericField3 { get; set; }
@@ -9486,7 +9550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ConcernsThirdCashOnDelivery { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
 
         [JsonProperty("fElectronicTransactionsProfileCode")]
         public string FElectronicTransactionsProfileCode { get; set; }
@@ -9498,7 +9562,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("fMyDataPaymentMethodsCode")]
         public string FMyDataPaymentMethodsCode { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -9541,23 +9607,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj
     {
         [JsonProperty("fADDocumentUpdateProfileGID")]
-        public string FADDocumentUpdateProfileGID { get; set; }
+        public string FADDocumentUpdateProfileGId { get; set; }
 
         [JsonProperty("fADDocumentTypeGID")]
-        public string FADDocumentTypeGID { get; set; }
+        public string FADDocumentTypeGId { get; set; }
 
         [JsonProperty("fADDocumentSeriesGID")]
-        public string FADDocumentSeriesGID { get; set; }
+        public string FADDocumentSeriesGId { get; set; }
         public double ADNumber { get; set; }
         public string ADCode { get; set; }
         public string ADRegistrationDate { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjAccountTypeType AccountType { get; set; }
 
         [JsonProperty("fAccountGID")]
-        public string FAccountGID { get; set; }
+        public string FAccountGId { get; set; }
 
         [JsonProperty("fAccountSiteGID")]
-        public string FAccountSiteGID { get; set; }
+        public string FAccountSiteGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADDocumentStateType ADDocumentState { get; set; }
         public string ADAlternativeCode { get; set; }
         public string ADAlternativeDate { get; set; }
@@ -9602,7 +9668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ADStringField5 { get; set; }
 
         [JsonProperty("fADProjectGID")]
-        public string FADProjectGID { get; set; }
+        public string FADProjectGId { get; set; }
 
         [JsonProperty("fADActivityCode")]
         public string FADActivityCode { get; set; }
@@ -9617,8 +9683,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FADDimension2Code { get; set; }
 
         [JsonProperty("fADSiteGID")]
-        public string FADSiteGID { get; set; }
-        public int TransitionBatchID { get; set; }
+        public string FADSiteGId { get; set; }
+
+        [JsonProperty("TransitionBatchID")]
+        public int TransitionBatchId { get; set; }
 
         [JsonProperty("fTransitionStepCode")]
         public string FTransitionStepCode { get; set; }
@@ -9628,7 +9696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADFiscalPeriodTypeType ADFiscalPeriodType { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
 
         [JsonProperty("fADNoteStateCode")]
         public string FADNoteStateCode { get; set; }
@@ -9640,20 +9708,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FSNPostStateCode { get; set; }
 
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
 
         [JsonProperty("fCostingFolderGID")]
-        public string FCostingFolderGID { get; set; }
+        public string FCostingFolderGId { get; set; }
         public string ConcerningDocCode { get; set; }
         public bool ADTransitionAvailability { get; set; }
         public int ConcerningDocClass { get; set; }
         public string ConcerningBeginDate { get; set; }
         public string ConcerningEndDate { get; set; }
-        public int StockValuationBatchID { get; set; }
+
+        [JsonProperty("StockValuationBatchID")]
+        public int StockValuationBatchId { get; set; }
         public bool Allocated { get; set; }
 
         [JsonProperty("fADAccountManagerGID")]
-        public string FADAccountManagerGID { get; set; }
+        public string FADAccountManagerGId { get; set; }
         public int ADPriority { get; set; }
 
         [JsonProperty("fConveyanceCode")]
@@ -9663,27 +9733,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double ADValueField3 { get; set; }
         public double ADValueField4 { get; set; }
         public double ADValueField5 { get; set; }
-        public int DepreciationBatchID { get; set; }
-        public int AssetRevaluationBatchID { get; set; }
+
+        [JsonProperty("DepreciationBatchID")]
+        public int DepreciationBatchId { get; set; }
+
+        [JsonProperty("AssetRevaluationBatchID")]
+        public int AssetRevaluationBatchId { get; set; }
         public bool SortimentHandling { get; set; }
 
         [JsonProperty("fDeliveryPersonGID")]
-        public string FDeliveryPersonGID { get; set; }
+        public string FDeliveryPersonGId { get; set; }
 
         [JsonProperty("fDeliverySiteGID")]
-        public string FDeliverySiteGID { get; set; }
+        public string FDeliverySiteGId { get; set; }
 
         [JsonProperty("fRouteCode")]
         public string FRouteCode { get; set; }
 
         [JsonProperty("fSenderPersonGID")]
-        public string FSenderPersonGID { get; set; }
+        public string FSenderPersonGId { get; set; }
 
         [JsonProperty("fShippingPurposeCode")]
         public string FShippingPurposeCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
@@ -9698,37 +9772,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjVATStatusType VATStatus { get; set; }
 
         [JsonProperty("fContactGID")]
-        public string FContactGID { get; set; }
+        public string FContactGId { get; set; }
 
         [JsonProperty("fADTaskGID")]
-        public string FADTaskGID { get; set; }
+        public string FADTaskGId { get; set; }
 
         [JsonProperty("fADDocumentUpdateProfileGLGID")]
-        public string FADDocumentUpdateProfileGLGID { get; set; }
+        public string FADDocumentUpdateProfileGLGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADLockModeType ADLockMode { get; set; }
 
         [JsonProperty("fTransporterSiteGID")]
-        public string FTransporterSiteGID { get; set; }
+        public string FTransporterSiteGId { get; set; }
         public string ADReportingDate { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public bool PaymentVATRequired { get; set; }
 
         [JsonProperty("fWFStepCode")]
         public string FWFStepCode { get; set; }
 
         [JsonProperty("fSenderSiteGID")]
-        public string FSenderSiteGID { get; set; }
+        public string FSenderSiteGId { get; set; }
 
         [JsonProperty("fDriverGID")]
-        public string FDriverGID { get; set; }
+        public string FDriverGId { get; set; }
         public EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADProcessStateType ADProcessState { get; set; }
         public string ADBarcode { get; set; }
         public int NumberOfContainers { get; set; }
 
         [JsonProperty("fDepositionGID")]
-        public string FDepositionGID { get; set; }
+        public string FDepositionGId { get; set; }
         public bool SplitOnVATRequired { get; set; }
 
         [JsonProperty("fTradeTypeCode")]
@@ -9738,18 +9812,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FVoucherStateCode { get; set; }
 
         [JsonProperty("fADShiftGID")]
-        public string FADShiftGID { get; set; }
+        public string FADShiftGId { get; set; }
 
         [JsonProperty("fADMyDataDocumentTypeCode")]
         public string FADMyDataDocumentTypeCode { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
         public int ApplyCommercialPolicy { get; set; }
         public int BOMExecution { get; set; }
 
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
         public int CheckStockLevel { get; set; }
 
         [JsonProperty("Ref_DocumentsList")]
@@ -9840,7 +9914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TDSLEFieldRelativeDocument { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_fCancellingSeriesGID")]
-        public string CANCELAFTERSAVEFCancellingSeriesGID { get; set; }
+        public string CANCELAFTERSAVEFCancellingSeriesGId { get; set; }
 
         [JsonProperty("CANCEL_AFTER_SAVE_ADNumber")]
         public double CANCELAFTERSAVEADNumber { get; set; }
@@ -9860,7 +9934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int CreditControl { get; set; }
 
         [JsonProperty("NS_TCourier_TrackingID")]
-        public string NSTCourierTrackingID { get; set; }
+        public string NSTCourierTrackingId { get; set; }
 
         [JsonProperty("NS_TCourier_DeliveryDate")]
         public string NSTCourierDeliveryDate { get; set; }
@@ -9890,7 +9964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSTCourierShippingStatus { get; set; }
 
         [JsonProperty("NS_TCourier_JobID")]
-        public string NSTCourierJobID { get; set; }
+        public string NSTCourierJobId { get; set; }
 
         [JsonProperty("fCurrencyRateGroupCode")]
         public string FCurrencyRateGroupCode { get; set; }
@@ -9904,10 +9978,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string BannerColumn { get; set; }
 
         [JsonProperty("fPaymentAccountGID")]
-        public string FPaymentAccountGID { get; set; }
+        public string FPaymentAccountGId { get; set; }
 
         [JsonProperty("IGNORE_fPaymentAccountGID")]
-        public int IGNOREFPaymentAccountGID { get; set; }
+        public int IGNOREFPaymentAccountGId { get; set; }
 
         [JsonProperty("vTotalQuantity")]
         public string VTotalQuantity { get; set; }
@@ -9955,45 +10029,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double BTotalCurrencyTotalValue { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
         public string ADReferenceCodeList { get; set; }
 
         [JsonProperty("NS_fDeliveryPersonGID_fCategoryCode")]
-        public string NSFDeliveryPersonGIDFCategoryCode { get; set; }
+        public string NSFDeliveryPersonGIdFCategoryCode { get; set; }
 
         [JsonProperty("NS_fDeliveryPersonGID_fGroupCode")]
-        public string NSFDeliveryPersonGIDFGroupCode { get; set; }
+        public string NSFDeliveryPersonGIdFGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fSiteTypeCode")]
-        public string NSFDeliverySiteGIDFSiteTypeCode { get; set; }
+        public string NSFDeliverySiteGIdFSiteTypeCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode_fGroupRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCodeFGroupRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCodeFGroupRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fDeliverySiteGID_fRegionGroupCode_fCategoryRegionGroupCode")]
-        public string NSFDeliverySiteGIDFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
+        public string NSFDeliverySiteGIdFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderPersonGID_fCategoryCode")]
-        public string NSFSenderPersonGIDFCategoryCode { get; set; }
+        public string NSFSenderPersonGIdFCategoryCode { get; set; }
 
         [JsonProperty("NS_fSenderPersonGID_fGroupCode")]
-        public string NSFSenderPersonGIDFGroupCode { get; set; }
+        public string NSFSenderPersonGIdFGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fSiteTypeCode")]
-        public string NSFSenderSiteGIDFSiteTypeCode { get; set; }
+        public string NSFSenderSiteGIdFSiteTypeCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fRegionGroupCode")]
-        public string NSFSenderSiteGIDFRegionGroupCode { get; set; }
+        public string NSFSenderSiteGIdFRegionGroupCode { get; set; }
 
         [JsonProperty("NS_fSenderSiteGID_fRegionGroupCode_fCategoryRegionGroupCode")]
-        public string NSFSenderSiteGIDFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
-        public string GID { get; set; }
+        public string NSFSenderSiteGIdFRegionGroupCodeFCategoryRegionGroupCode { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -10103,10 +10179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string AlternativeName { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fBusinessUnitCode")]
         public string FBusinessUnitCode { get; set; }
@@ -10126,10 +10202,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Remarks { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
 
         [JsonProperty("fInvoicePolicyGID")]
-        public string FInvoicePolicyGID { get; set; }
+        public string FInvoicePolicyGId { get; set; }
 
         [JsonProperty("fTradeAccountPricingCategoryCode")]
         public string FTradeAccountPricingCategoryCode { get; set; }
@@ -10139,48 +10215,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FFamilyCode { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fAccountManagerGID")]
-        public string FAccountManagerGID { get; set; }
+        public string FAccountManagerGId { get; set; }
 
         [JsonProperty("fCommissionLevelCode")]
         public string FCommissionLevelCode { get; set; }
 
         [JsonProperty("fFixedSupplierGID")]
-        public string FFixedSupplierGID { get; set; }
+        public string FFixedSupplierGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fPaymentMethodGID")]
-        public string FPaymentMethodGID { get; set; }
+        public string FPaymentMethodGId { get; set; }
         public int OrderPriority { get; set; }
 
         [JsonProperty("fShippingMethodCode")]
         public string FShippingMethodCode { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fUsualRouteCode")]
         public string FUsualRouteCode { get; set; }
         public string AccountStartDate { get; set; }
 
         [JsonProperty("fGLAccountGID")]
-        public string FGLAccountGID { get; set; }
+        public string FGLAccountGId { get; set; }
 
         [JsonProperty("fTradeCurrencyCode")]
         public string FTradeCurrencyCode { get; set; }
 
         [JsonProperty("fCreditControlProfileGID")]
-        public string FCreditControlProfileGID { get; set; }
+        public string FCreditControlProfileGId { get; set; }
         public double BalanceLimit { get; set; }
         public double OpenBalanceNotesLimit { get; set; }
         public double OpenBalanceTotalNotesLimit { get; set; }
@@ -10189,17 +10265,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FInterestProfileCode { get; set; }
 
         [JsonProperty("fCollectorGID")]
-        public string FCollectorGID { get; set; }
+        public string FCollectorGId { get; set; }
         public string PaymentDay { get; set; }
         public string FromHours { get; set; }
         public string ToHours { get; set; }
         public EntersoftWebApi2ODSModelsESFITradeAccountObjMatchingCriteriaType MatchingCriteria { get; set; }
 
         [JsonProperty("fMatchingFieldGID")]
-        public string FMatchingFieldGID { get; set; }
+        public string FMatchingFieldGId { get; set; }
 
         [JsonProperty("fWareHouseGID")]
-        public string FWareHouseGID { get; set; }
+        public string FWareHouseGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -10265,7 +10341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FGLSegCode { get; set; }
 
         [JsonProperty("fPriceListGID")]
-        public string FPriceListGID { get; set; }
+        public string FPriceListGId { get; set; }
         public string GLAccountCode { get; set; }
         public string DayOfMonth { get; set; }
         public string DocumentMessage { get; set; }
@@ -10288,11 +10364,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ClubCardNumber { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
         public bool ConsignmentParticipation { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public EntersoftWebApi2ODSModelsESFITradeAccountObjProposedPaymentTypeType ProposedPaymentType { get; set; }
         public EntersoftWebApi2ODSModelsESFITradeAccountObjIncludeTaxDocsType IncludeTaxDocs { get; set; }
         public string PrintFormPostfix { get; set; }
@@ -10302,7 +10378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string InvoiceEMailAddress { get; set; }
 
         [JsonProperty("fEInvoiceProfileGID")]
-        public string FEInvoiceProfileGID { get; set; }
+        public string FEInvoiceProfileGId { get; set; }
 
         [JsonProperty("eInvoice")]
         public bool EInvoice { get; set; }
@@ -10310,17 +10386,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TwitterAccount { get; set; }
 
         [JsonProperty("fIntercessorGID")]
-        public string FIntercessorGID { get; set; }
+        public string FIntercessorGId { get; set; }
         public EntersoftWebApi2ODSModelsESFITradeAccountObjConcernsType Concerns { get; set; }
         public int BarcodeStack { get; set; }
         public bool SubjectToTax { get; set; }
         public bool AllowBackOrders { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("fTradeAccountContractGID")]
-        public string FTradeAccountContractGID { get; set; }
+        public string FTradeAccountContractGId { get; set; }
         public int HasPerson { get; set; }
         public int MainAddressVATStatus { get; set; }
 
@@ -10328,11 +10404,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int NSMatching { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -10444,15 +10522,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESFAFixedAssetObjAssemblyTypeType AssemblyType { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFAFixedAssetObjItemClassType ItemClass { get; set; }
         public EntersoftWebApi2ODSModelsESFAFixedAssetObjItemTypeType ItemType { get; set; }
 
         [JsonProperty("fMainSupplierGID")]
-        public string FMainSupplierGID { get; set; }
+        public string FMainSupplierGId { get; set; }
 
         [JsonProperty("fManufacturerPersonGID")]
-        public string FManufacturerPersonGID { get; set; }
+        public string FManufacturerPersonGId { get; set; }
         public string Manufacturer { get; set; }
 
         [JsonProperty("fCountryOriginCode")]
@@ -10471,16 +10549,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool RetailPriceIncludedVAT { get; set; }
 
         [JsonProperty("fMainMUGID")]
-        public string FMainMUGID { get; set; }
+        public string FMainMUGId { get; set; }
 
         [JsonProperty("fAltMUGID")]
-        public string FAltMUGID { get; set; }
+        public string FAltMUGId { get; set; }
 
         [JsonProperty("fWeightMUGID")]
-        public string FWeightMUGID { get; set; }
+        public string FWeightMUGId { get; set; }
 
         [JsonProperty("fVolumeMUGID")]
-        public string FVolumeMUGID { get; set; }
+        public string FVolumeMUGId { get; set; }
 
         [JsonProperty("fVATCategoryCode")]
         public string FVATCategoryCode { get; set; }
@@ -10503,21 +10581,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FItemSubcategoryCode { get; set; }
 
         [JsonProperty("fTaxesGroupGID")]
-        public string FTaxesGroupGID { get; set; }
+        public string FTaxesGroupGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fBaseBOMGID")]
-        public string FBaseBOMGID { get; set; }
+        public string FBaseBOMGId { get; set; }
         public double StandardCost { get; set; }
         public EntersoftWebApi2ODSModelsESFAFixedAssetObjValuationMethodType ValuationMethod { get; set; }
 
         [JsonProperty("fItemControlProfileGID")]
-        public string FItemControlProfileGID { get; set; }
+        public string FItemControlProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESFAFixedAssetObjIncludedTaxReportsType IncludedTaxReports { get; set; }
         public bool SerialNumberMgmt { get; set; }
         public bool LotMgmt { get; set; }
@@ -10527,16 +10605,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool StockDim2Mgmt { get; set; }
 
         [JsonProperty("fColorSetGID")]
-        public string FColorSetGID { get; set; }
+        public string FColorSetGId { get; set; }
 
         [JsonProperty("fSizeSetGID")]
-        public string FSizeSetGID { get; set; }
+        public string FSizeSetGId { get; set; }
 
         [JsonProperty("fStockDim1SetGID")]
-        public string FStockDim1SetGID { get; set; }
+        public string FStockDim1SetGId { get; set; }
 
         [JsonProperty("fStockDim2SetGID")]
-        public string FStockDim2SetGID { get; set; }
+        public string FStockDim2SetGId { get; set; }
         public string Comment { get; set; }
         public string GLAccountCode { get; set; }
 
@@ -10544,7 +10622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FGLSegCode { get; set; }
 
         [JsonProperty("fCatalogueItemGID")]
-        public string FCatalogueItemGID { get; set; }
+        public string FCatalogueItemGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -10621,23 +10699,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fCostElementTypeGID")]
-        public string FCostElementTypeGID { get; set; }
+        public string FCostElementTypeGId { get; set; }
         public int BOMLevel { get; set; }
         public EntersoftWebApi2ODSModelsESFAFixedAssetObjAssetTypeType AssetType { get; set; }
         public bool MainCode { get; set; }
 
         [JsonProperty("fDepreciationProfileGID")]
-        public string FDepreciationProfileGID { get; set; }
+        public string FDepreciationProfileGId { get; set; }
 
         [JsonProperty("fAlternativeDepreciationProfileGID")]
-        public string FAlternativeDepreciationProfileGID { get; set; }
+        public string FAlternativeDepreciationProfileGId { get; set; }
 
         [JsonProperty("fInformativeDepreciationProfileGID")]
-        public string FInformativeDepreciationProfileGID { get; set; }
+        public string FInformativeDepreciationProfileGId { get; set; }
         public bool OutOfUsage { get; set; }
 
         [JsonProperty("fMainAssetGID")]
-        public string FMainAssetGID { get; set; }
+        public string FMainAssetGId { get; set; }
 
         [JsonProperty("fAssetGLSegCode")]
         public string FAssetGLSegCode { get; set; }
@@ -10667,19 +10745,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool CostIncludedVAT { get; set; }
 
         [JsonProperty("fAllocationProfileGID")]
-        public string FAllocationProfileGID { get; set; }
+        public string FAllocationProfileGId { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public bool Mobile { get; set; }
         public double PerCentOfTaxExclusion { get; set; }
 
         [JsonProperty("fTaxDifferencesAccountGID")]
-        public string FTaxDifferencesAccountGID { get; set; }
+        public string FTaxDifferencesAccountGId { get; set; }
         public bool OpeningPerFiscalYear { get; set; }
 
         [JsonProperty("fItemAllocationProfileGIDPrev")]
-        public string FItemAllocationProfileGIDPrev { get; set; }
+        public string FItemAllocationProfileGIdPrev { get; set; }
         public int CatalogueItemBehaviour { get; set; }
 
         [JsonProperty("NS_fMainMUCode")]
@@ -10707,17 +10785,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string NSFVolumeMUDescription { get; set; }
 
         [JsonProperty("NS_fSupplierGID")]
-        public string NSFSupplierGID { get; set; }
+        public string NSFSupplierGId { get; set; }
 
         [JsonProperty("NS_fSupplierGID_SupplierItemCode")]
-        public string NSFSupplierGIDSupplierItemCode { get; set; }
+        public string NSFSupplierGIdSupplierItemCode { get; set; }
 
         [JsonProperty("NS_fSupplierGID_SupplierItemDescription")]
-        public string NSFSupplierGIDSupplierItemDescription { get; set; }
+        public string NSFSupplierGIdSupplierItemDescription { get; set; }
 
         [JsonProperty("NS_IsAssembly")]
         public int NSIsAssembly { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -10812,7 +10892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool GroupPerson { get; set; }
 
         [JsonProperty("fParentGID")]
-        public string FParentGID { get; set; }
+        public string FParentGId { get; set; }
 
         [JsonProperty("fCompanyKindCode")]
         public string FCompanyKindCode { get; set; }
@@ -10827,7 +10907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESGOPersonObjVATStatusType VATStatus { get; set; }
 
         [JsonProperty("fMainAddressGID")]
-        public string FMainAddressGID { get; set; }
+        public string FMainAddressGId { get; set; }
 
         [JsonProperty("fGroupCode")]
         public string FGroupCode { get; set; }
@@ -10850,7 +10930,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FatherName { get; set; }
         public string MotherName { get; set; }
         public EntersoftWebApi2ODSModelsESGOPersonObjSexType Sex { get; set; }
-        public string IDCode { get; set; }
+
+        [JsonProperty("IDCode")]
+        public string IdCode { get; set; }
         public EntersoftWebApi2ODSModelsESGOPersonObjFamilyStatusType FamilyStatus { get; set; }
         public string Birthday { get; set; }
         public string Anniversary { get; set; }
@@ -10928,7 +11010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool FlagField10 { get; set; }
 
         [JsonProperty("fCalendarItemGID")]
-        public string FCalendarItemGID { get; set; }
+        public string FCalendarItemGId { get; set; }
 
         [JsonProperty("fEducationLevelCode")]
         public string FEducationLevelCode { get; set; }
@@ -10944,14 +11026,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string DateOfBirth { get; set; }
 
         [JsonProperty("fReferredPersonGID")]
-        public string FReferredPersonGID { get; set; }
+        public string FReferredPersonGId { get; set; }
         public EntersoftWebApi2ODSModelsESGOPersonObjPreferredWayOfContractType PreferredWayOfContract { get; set; }
         public string BulStat { get; set; }
         public string TradeRegistrationNumber { get; set; }
         public string PersonalNumericCode { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public bool PaymentVATRequired { get; set; }
         public string EORINumber { get; set; }
         public bool SplitOnVATRequired { get; set; }
@@ -11067,8 +11149,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int DuplicateIBANChecked { get; set; }
 
         [JsonProperty("NS_MainAddress_fManagerNameGID")]
-        public string NSMainAddressFManagerNameGID { get; set; }
-        public string GID { get; set; }
+        public string NSMainAddressFManagerNameGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -11130,16 +11214,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsES00DeviceObj
     {
         [JsonProperty("fSerialNumberGID")]
-        public string FSerialNumberGID { get; set; }
+        public string FSerialNumberGId { get; set; }
 
         [JsonProperty("fUserGID")]
-        public string FUserGID { get; set; }
+        public string FUserGId { get; set; }
 
         [JsonProperty("fSalesPersonGID")]
-        public string FSalesPersonGID { get; set; }
+        public string FSalesPersonGId { get; set; }
 
         [JsonProperty("fResourceGID")]
-        public string FResourceGID { get; set; }
+        public string FResourceGId { get; set; }
         public EntersoftWebApi2ODSModelsES00DeviceObjLogTypeType LogType { get; set; }
         public string LastKnownVersion { get; set; }
         public EntersoftWebApi2ODSModelsES00DeviceObjStateType State { get; set; }
@@ -11148,7 +11232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FCountryCode { get; set; }
 
         [JsonProperty("fMobileNetworkGID")]
-        public string FMobileNetworkGID { get; set; }
+        public string FMobileNetworkGId { get; set; }
         public string LastSyncDate { get; set; }
         public string LastUpLoadDate { get; set; }
         public string LastDownLoadDate { get; set; }
@@ -11179,9 +11263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FColorCode { get; set; }
 
         [JsonProperty("fCurrentBackupUserGID")]
-        public string FCurrentBackupUserGID { get; set; }
+        public string FCurrentBackupUserGId { get; set; }
         public string NotificationToken { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -11247,19 +11333,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESGOWebUserObj
     {
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
         public string Password { get; set; }
         public EntersoftWebApi2ODSModelsESGOWebUserObjStatusType Status { get; set; }
         public string ActivationToken { get; set; }
         public string TokenExpirationDate { get; set; }
-        public string FacebookAuthID { get; set; }
-        public string TwitterAuthID { get; set; }
-        public string WindowsLiveAuthID { get; set; }
-        public string GoogleAuthID { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("FacebookAuthID")]
+        public string FacebookAuthId { get; set; }
+
+        [JsonProperty("TwitterAuthID")]
+        public string TwitterAuthId { get; set; }
+
+        [JsonProperty("WindowsLiveAuthID")]
+        public string WindowsLiveAuthId { get; set; }
+
+        [JsonProperty("GoogleAuthID")]
+        public string GoogleAuthId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -11284,7 +11380,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApi2ODSModelsESGOUserObj
     {
-        public string UserID { get; set; }
+        [JsonProperty("UserID")]
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string NTLoginName { get; set; }
 
@@ -11299,11 +11396,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FLanguageCode { get; set; }
 
         [JsonProperty("fPersonLinkGID")]
-        public string FPersonLinkGID { get; set; }
+        public string FPersonLinkGId { get; set; }
         public bool Administrator { get; set; }
 
         [JsonProperty("fCompanySiteGID")]
-        public string FCompanySiteGID { get; set; }
+        public string FCompanySiteGId { get; set; }
         public bool EnableKeyOnSave { get; set; }
         public string KeyOnSave { get; set; }
 
@@ -11312,13 +11409,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESGOUserObjUserTypeType UserType { get; set; }
 
         [JsonProperty("fB2BAdminGID")]
-        public string FB2BAdminGID { get; set; }
+        public string FB2BAdminGId { get; set; }
         public string InternalPhone { get; set; }
         public bool ChgPwdFlag { get; set; }
         public string ChgPwdDate { get; set; }
         public bool FaultLogins { get; set; }
         public EntersoftWebApi2ODSModelsESGOUserObjValidAuthMethodsType ValidAuthMethods { get; set; }
-        public string LDAPUserID { get; set; }
+
+        [JsonProperty("LDAPUserID")]
+        public string LDAPUserId { get; set; }
         public string LDAPUserName { get; set; }
         public EntersoftWebApi2ODSModelsESGOUserObjAllowAccessFromSourceType AllowAccessFromSource { get; set; }
         public string FiscalCode { get; set; }
@@ -11327,7 +11426,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("nsPassword")]
         public string NsPassword { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -11402,12 +11503,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Location { get; set; }
         public string ModifiedOn { get; set; }
         public string Owner { get; set; }
-        public string ESSubscriptionID { get; set; }
-        public string ESSubscriptionGID { get; set; }
-        public string ESDatabaseID { get; set; }
-        public string ESCompanyID { get; set; }
-        public string ESApplicationID { get; set; }
-        public string ExternalID { get; set; }
+
+        [JsonProperty("ESSubscriptionID")]
+        public string ESSubscriptionId { get; set; }
+
+        [JsonProperty("ESSubscriptionGID")]
+        public string ESSubscriptionGId { get; set; }
+
+        [JsonProperty("ESDatabaseID")]
+        public string ESDatabaseId { get; set; }
+
+        [JsonProperty("ESCompanyID")]
+        public string ESCompanyId { get; set; }
+
+        [JsonProperty("ESApplicationID")]
+        public string ESApplicationId { get; set; }
+
+        [JsonProperty("ExternalID")]
+        public string ExternalId { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public string CallbackURL { get; set; }
@@ -11459,7 +11572,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApiInfrastructureESPodHookRegistrationResponseStateType State { get; set; }
         public EntersoftWebApiInfrastructureESPodHookRegistrationResponsePackageTypeType PackageType { get; set; }
         public string ConveyanceLicencePlate { get; set; }
-        public string BranchID { get; set; }
+
+        [JsonProperty("BranchID")]
+        public string BranchId { get; set; }
         public string TradeAccountName { get; set; }
         public string DriverCode { get; set; }
 
@@ -11469,12 +11584,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Location { get; set; }
         public string ModifiedOn { get; set; }
         public string Owner { get; set; }
-        public string ESSubscriptionID { get; set; }
-        public string ESSubscriptionGID { get; set; }
-        public string ESDatabaseID { get; set; }
-        public string ESCompanyID { get; set; }
-        public string ESApplicationID { get; set; }
-        public string ExternalID { get; set; }
+
+        [JsonProperty("ESSubscriptionID")]
+        public string ESSubscriptionId { get; set; }
+
+        [JsonProperty("ESSubscriptionGID")]
+        public string ESSubscriptionGId { get; set; }
+
+        [JsonProperty("ESDatabaseID")]
+        public string ESDatabaseId { get; set; }
+
+        [JsonProperty("ESCompanyID")]
+        public string ESCompanyId { get; set; }
+
+        [JsonProperty("ESApplicationID")]
+        public string ESApplicationId { get; set; }
+
+        [JsonProperty("ExternalID")]
+        public string ExternalId { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public string CallbackURL { get; set; }
@@ -11535,12 +11662,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Location { get; set; }
         public string ModifiedOn { get; set; }
         public string Owner { get; set; }
-        public string ESSubscriptionID { get; set; }
-        public string ESSubscriptionGID { get; set; }
-        public string ESDatabaseID { get; set; }
-        public string ESCompanyID { get; set; }
-        public string ESApplicationID { get; set; }
-        public string ExternalID { get; set; }
+
+        [JsonProperty("ESSubscriptionID")]
+        public string ESSubscriptionId { get; set; }
+
+        [JsonProperty("ESSubscriptionGID")]
+        public string ESSubscriptionGId { get; set; }
+
+        [JsonProperty("ESDatabaseID")]
+        public string ESDatabaseId { get; set; }
+
+        [JsonProperty("ESCompanyID")]
+        public string ESCompanyId { get; set; }
+
+        [JsonProperty("ESApplicationID")]
+        public string ESApplicationId { get; set; }
+
+        [JsonProperty("ExternalID")]
+        public string ExternalId { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public string CallbackURL { get; set; }
@@ -11582,12 +11721,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Location { get; set; }
         public string ModifiedOn { get; set; }
         public string Owner { get; set; }
-        public string ESSubscriptionID { get; set; }
-        public string ESSubscriptionGID { get; set; }
-        public string ESDatabaseID { get; set; }
-        public string ESCompanyID { get; set; }
-        public string ESApplicationID { get; set; }
-        public string ExternalID { get; set; }
+
+        [JsonProperty("ESSubscriptionID")]
+        public string ESSubscriptionId { get; set; }
+
+        [JsonProperty("ESSubscriptionGID")]
+        public string ESSubscriptionGId { get; set; }
+
+        [JsonProperty("ESDatabaseID")]
+        public string ESDatabaseId { get; set; }
+
+        [JsonProperty("ESCompanyID")]
+        public string ESCompanyId { get; set; }
+
+        [JsonProperty("ESApplicationID")]
+        public string ESApplicationId { get; set; }
+
+        [JsonProperty("ExternalID")]
+        public string ExternalId { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public string CallbackURL { get; set; }
@@ -11877,12 +12028,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Location { get; set; }
         public string ModifiedOn { get; set; }
         public string Owner { get; set; }
-        public string ESSubscriptionID { get; set; }
-        public string ESSubscriptionGID { get; set; }
-        public string ESDatabaseID { get; set; }
-        public string ESCompanyID { get; set; }
-        public string ESApplicationID { get; set; }
-        public string ExternalID { get; set; }
+
+        [JsonProperty("ESSubscriptionID")]
+        public string ESSubscriptionId { get; set; }
+
+        [JsonProperty("ESSubscriptionGID")]
+        public string ESSubscriptionGId { get; set; }
+
+        [JsonProperty("ESDatabaseID")]
+        public string ESDatabaseId { get; set; }
+
+        [JsonProperty("ESCompanyID")]
+        public string ESCompanyId { get; set; }
+
+        [JsonProperty("ESApplicationID")]
+        public string ESApplicationId { get; set; }
+
+        [JsonProperty("ExternalID")]
+        public string ExternalId { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public string CallbackURL { get; set; }
@@ -11933,10 +12096,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESMLModelObjSubSystemType SubSystem { get; set; }
 
         [JsonProperty("fRuleSetGID")]
-        public string FRuleSetGID { get; set; }
+        public string FRuleSetGId { get; set; }
 
         [JsonProperty("fForecastRuleSetGID")]
-        public string FForecastRuleSetGID { get; set; }
+        public string FForecastRuleSetGId { get; set; }
         public EntersoftWebApi2ODSModelsESMLModelObjAlgorithmType Algorithm { get; set; }
         public EntersoftWebApi2ODSModelsESMLModelObjMeasureType Measure { get; set; }
         public EntersoftWebApi2ODSModelsESMLModelObjAggregateType Aggregate { get; set; }
@@ -11964,13 +12127,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESMLModelObjTransactionKPIFeaturesType TransactionKPIFeatures { get; set; }
 
         [JsonProperty("fLabel1ScaleGID")]
-        public string FLabel1ScaleGID { get; set; }
+        public string FLabel1ScaleGId { get; set; }
 
         [JsonProperty("fLabel2ScaleGID")]
-        public string FLabel2ScaleGID { get; set; }
+        public string FLabel2ScaleGId { get; set; }
 
         [JsonProperty("fLabel3ScaleGID")]
-        public string FLabel3ScaleGID { get; set; }
+        public string FLabel3ScaleGId { get; set; }
         public double FeatureImportancePercentage { get; set; }
         public string PositiveLabel1 { get; set; }
         public double ClassificationPercentage { get; set; }
@@ -11995,7 +12158,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESMLModelObjFeatureCorrelationNumAlgortithmType FeatureCorrelationNumAlgortithm { get; set; }
         public EntersoftWebApi2ODSModelsESMLModelObjFeatureCorrelationCatAlgortithmType FeatureCorrelationCatAlgortithm { get; set; }
         public double FeatureCorrelationDropThreshold { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -12111,7 +12276,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public enum EntersoftWebApi2ODSModelsESMLModelObjTransactionGroupsType
     {
         Date,
-        TransactionID
+        [EnumMember(Value = "TransactionID")]
+        TransactionId
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -12514,7 +12680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESMMSerialNumberObj
     {
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
         public string SerialNumberCode { get; set; }
         public string TechnicalDescription { get; set; }
 
@@ -12534,18 +12700,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESMMSerialNumberObjPositionTypeType PositionType { get; set; }
 
         [JsonProperty("fPositionGID")]
-        public string FPositionGID { get; set; }
+        public string FPositionGId { get; set; }
         public string PositionName { get; set; }
 
         [JsonProperty("fPositionSiteGID")]
-        public string FPositionSiteGID { get; set; }
+        public string FPositionSiteGId { get; set; }
         public string PositionSiteName { get; set; }
 
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
 
         [JsonProperty("fLotGID")]
-        public string FLotGID { get; set; }
+        public string FLotGId { get; set; }
 
         [JsonProperty("fColorCode")]
         public string FColorCode { get; set; }
@@ -12569,7 +12735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public double Volume { get; set; }
 
         [JsonProperty("fItemMUGID")]
-        public string FItemMUGID { get; set; }
+        public string FItemMUGId { get; set; }
         public string DateField1 { get; set; }
         public string DateField2 { get; set; }
         public string DateField3 { get; set; }
@@ -12623,38 +12789,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string WarrantyEnd { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
         public string PhysicalLocation { get; set; }
 
         [JsonProperty("fRootSerialNumberGID")]
-        public string FRootSerialNumberGID { get; set; }
+        public string FRootSerialNumberGId { get; set; }
 
         [JsonProperty("fStorageLocationGID")]
-        public string FStorageLocationGID { get; set; }
+        public string FStorageLocationGId { get; set; }
 
         [JsonProperty("fContainerGID")]
-        public string FContainerGID { get; set; }
+        public string FContainerGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fTradeAccountSiteGID")]
-        public string FTradeAccountSiteGID { get; set; }
+        public string FTradeAccountSiteGId { get; set; }
 
         [JsonProperty("fPackageGID")]
-        public string FPackageGID { get; set; }
+        public string FPackageGId { get; set; }
 
         [JsonProperty("fMasterPackageGID")]
-        public string FMasterPackageGID { get; set; }
+        public string FMasterPackageGId { get; set; }
 
         [JsonProperty("fPalletGID")]
-        public string FPalletGID { get; set; }
+        public string FPalletGId { get; set; }
 
         [JsonProperty("fTransportGID")]
-        public string FTransportGID { get; set; }
+        public string FTransportGId { get; set; }
 
         [JsonProperty("fSortingGID")]
-        public string FSortingGID { get; set; }
+        public string FSortingGId { get; set; }
         public bool LocationInWH { get; set; }
 
         [JsonProperty("vPositionName")]
@@ -12662,7 +12828,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("vPositionSiteName")]
         public string VPositionSiteName { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -12724,7 +12892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FTableField10 { get; set; }
 
         [JsonProperty("fGeneralCatalogueItemGID")]
-        public string FGeneralCatalogueItemGID { get; set; }
+        public string FGeneralCatalogueItemGId { get; set; }
         public double SalesRetailPrice { get; set; }
         public bool SalesRetailPriceIncludedVAT { get; set; }
         public double PurchasesPrice { get; set; }
@@ -12764,16 +12932,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FCurrencyCode { get; set; }
 
         [JsonProperty("fRelatedPerson1GID")]
-        public string FRelatedPerson1GID { get; set; }
+        public string FRelatedPerson1GId { get; set; }
 
         [JsonProperty("fRelatedPerson2GID")]
-        public string FRelatedPerson2GID { get; set; }
+        public string FRelatedPerson2GId { get; set; }
 
         [JsonProperty("fRelatedPerson3GID")]
-        public string FRelatedPerson3GID { get; set; }
+        public string FRelatedPerson3GId { get; set; }
 
         [JsonProperty("fManufacturerPersonGID")]
-        public string FManufacturerPersonGID { get; set; }
+        public string FManufacturerPersonGId { get; set; }
         public bool WEB { get; set; }
         public string Notes { get; set; }
         public EntersoftWebApi2ODSModelsESMMCatalogueItemObjNotesTextTypeType NotesTextType { get; set; }
@@ -12788,8 +12956,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESMMCatalogueItemObjProductTypeType ProductType { get; set; }
 
         [JsonProperty("fCompetitorCategoryValueGID")]
-        public string FCompetitorCategoryValueGID { get; set; }
-        public string GID { get; set; }
+        public string FCompetitorCategoryValueGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -12823,10 +12993,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESMMStorageLocationObj
     {
         [JsonProperty("fParentLocationGID")]
-        public string FParentLocationGID { get; set; }
+        public string FParentLocationGId { get; set; }
 
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
 
         [JsonProperty("fStorageSystemCode")]
         public string FStorageSystemCode { get; set; }
@@ -12850,14 +13020,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int LocDepth { get; set; }
 
         [JsonProperty("fStorageLocationProfileGID")]
-        public string FStorageLocationProfileGID { get; set; }
+        public string FStorageLocationProfileGId { get; set; }
         public bool IsTransit { get; set; }
 
         [JsonProperty("fAisleCode")]
         public string FAisleCode { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
         public string LocColumnCode { get; set; }
         public string LocLevelCode { get; set; }
         public EntersoftWebApi2ODSModelsESMMStorageLocationObjAisleSideTypeType AisleSideType { get; set; }
@@ -12865,13 +13035,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool IsBeam { get; set; }
 
         [JsonProperty("fSortingGID")]
-        public string FSortingGID { get; set; }
+        public string FSortingGId { get; set; }
 
         [JsonProperty("fLockReasonContextGID")]
-        public string FLockReasonContextGID { get; set; }
+        public string FLockReasonContextGId { get; set; }
         public bool PhisicalDimensionsMonitoring { get; set; }
         public int Number { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -12912,15 +13084,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESMMStockItemObjAssemblyTypeType AssemblyType { get; set; }
 
         [JsonProperty("fCommercialProfileGID")]
-        public string FCommercialProfileGID { get; set; }
+        public string FCommercialProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESMMStockItemObjItemClassType ItemClass { get; set; }
         public EntersoftWebApi2ODSModelsESMMStockItemObjItemTypeType ItemType { get; set; }
 
         [JsonProperty("fMainSupplierGID")]
-        public string FMainSupplierGID { get; set; }
+        public string FMainSupplierGId { get; set; }
 
         [JsonProperty("fManufacturerPersonGID")]
-        public string FManufacturerPersonGID { get; set; }
+        public string FManufacturerPersonGId { get; set; }
         public string Manufacturer { get; set; }
 
         [JsonProperty("fCountryOriginCode")]
@@ -12939,16 +13111,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool RetailPriceIncludedVAT { get; set; }
 
         [JsonProperty("fMainMUGID")]
-        public string FMainMUGID { get; set; }
+        public string FMainMUGId { get; set; }
 
         [JsonProperty("fAltMUGID")]
-        public string FAltMUGID { get; set; }
+        public string FAltMUGId { get; set; }
 
         [JsonProperty("fWeightMUGID")]
-        public string FWeightMUGID { get; set; }
+        public string FWeightMUGId { get; set; }
 
         [JsonProperty("fVolumeMUGID")]
-        public string FVolumeMUGID { get; set; }
+        public string FVolumeMUGId { get; set; }
 
         [JsonProperty("fVATCategoryCode")]
         public string FVATCategoryCode { get; set; }
@@ -12971,21 +13143,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FItemSubcategoryCode { get; set; }
 
         [JsonProperty("fTaxesGroupGID")]
-        public string FTaxesGroupGID { get; set; }
+        public string FTaxesGroupGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
 
         [JsonProperty("fBaseBOMGID")]
-        public string FBaseBOMGID { get; set; }
+        public string FBaseBOMGId { get; set; }
         public double StandardCost { get; set; }
         public EntersoftWebApi2ODSModelsESMMStockItemObjValuationMethodType ValuationMethod { get; set; }
 
         [JsonProperty("fItemControlProfileGID")]
-        public string FItemControlProfileGID { get; set; }
+        public string FItemControlProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESMMStockItemObjIncludedTaxReportsType IncludedTaxReports { get; set; }
         public bool SerialNumberMgmt { get; set; }
         public bool LotMgmt { get; set; }
@@ -12995,16 +13167,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool StockDim2Mgmt { get; set; }
 
         [JsonProperty("fColorSetGID")]
-        public string FColorSetGID { get; set; }
+        public string FColorSetGId { get; set; }
 
         [JsonProperty("fSizeSetGID")]
-        public string FSizeSetGID { get; set; }
+        public string FSizeSetGId { get; set; }
 
         [JsonProperty("fStockDim1SetGID")]
-        public string FStockDim1SetGID { get; set; }
+        public string FStockDim1SetGId { get; set; }
 
         [JsonProperty("fStockDim2SetGID")]
-        public string FStockDim2SetGID { get; set; }
+        public string FStockDim2SetGId { get; set; }
         public string Comment { get; set; }
         public string GLAccountCode { get; set; }
 
@@ -13012,7 +13184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FGLSegCode { get; set; }
 
         [JsonProperty("fCatalogueItemGID")]
-        public string FCatalogueItemGID { get; set; }
+        public string FCatalogueItemGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -13089,11 +13261,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fCostElementTypeGID")]
-        public string FCostElementTypeGID { get; set; }
+        public string FCostElementTypeGId { get; set; }
         public bool MainCode { get; set; }
 
         [JsonProperty("fMainAssetGID")]
-        public string FMainAssetGID { get; set; }
+        public string FMainAssetGId { get; set; }
 
         [JsonProperty("fBudgetItemGroupCode")]
         public string FBudgetItemGroupCode { get; set; }
@@ -13120,60 +13292,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int VATCalculationValue { get; set; }
 
         [JsonProperty("fItemNetProfitCodesGID")]
-        public string FItemNetProfitCodesGID { get; set; }
+        public string FItemNetProfitCodesGId { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public bool WEB { get; set; }
 
         [JsonProperty("fDeductionGroupGID")]
-        public string FDeductionGroupGID { get; set; }
+        public string FDeductionGroupGId { get; set; }
 
         [JsonProperty("fBonusGroupGID")]
-        public string FBonusGroupGID { get; set; }
+        public string FBonusGroupGId { get; set; }
         public int ValuationMethodAnalysis { get; set; }
 
         [JsonProperty("fWarrantyTermGID")]
-        public string FWarrantyTermGID { get; set; }
+        public string FWarrantyTermGId { get; set; }
         public bool ValuationPerPeriod { get; set; }
         public string DocumentMessage { get; set; }
         public EntersoftWebApi2ODSModelsESMMStockItemObjServiceMUTypeType ServiceMUType { get; set; }
 
         [JsonProperty("fAllocationProfileGID")]
-        public string FAllocationProfileGID { get; set; }
+        public string FAllocationProfileGId { get; set; }
 
         [JsonProperty("fItemAllocationProfileGID")]
-        public string FItemAllocationProfileGID { get; set; }
+        public string FItemAllocationProfileGId { get; set; }
         public bool Mobile { get; set; }
         public bool SelectInMobileOrder { get; set; }
         public double PerCentOfTaxExclusion { get; set; }
 
         [JsonProperty("fTaxDifferencesAccountGID")]
-        public string FTaxDifferencesAccountGID { get; set; }
+        public string FTaxDifferencesAccountGId { get; set; }
         public double MarkupOnPrice1 { get; set; }
         public double MarkupOnPrice2 { get; set; }
         public double MarkupOnPrice3 { get; set; }
         public bool OpeningPerFiscalYear { get; set; }
 
         [JsonProperty("fItemControlPolicyGID")]
-        public string FItemControlPolicyGID { get; set; }
+        public string FItemControlPolicyGId { get; set; }
         public EntersoftWebApi2ODSModelsESMMStockItemObjLotCharacteristicsMgmtType LotCharacteristicsMgmt { get; set; }
 
         [JsonProperty("fValidStockDimensionsProfileGID")]
-        public string FValidStockDimensionsProfileGID { get; set; }
+        public string FValidStockDimensionsProfileGId { get; set; }
 
         [JsonProperty("fBCSNValidationTypeCode")]
         public string FBCSNValidationTypeCode { get; set; }
 
         [JsonProperty("fReportingMUGID")]
-        public string FReportingMUGID { get; set; }
+        public string FReportingMUGId { get; set; }
 
         [JsonProperty("fLockReasonCode")]
         public string FLockReasonCode { get; set; }
         public bool Locked { get; set; }
 
         [JsonProperty("fLockReasonContextGID")]
-        public string FLockReasonContextGID { get; set; }
+        public string FLockReasonContextGId { get; set; }
 
         [JsonProperty("fMUServiceCode")]
         public string FMUServiceCode { get; set; }
@@ -13196,7 +13368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int CatalogueItemBehaviour { get; set; }
 
         [JsonProperty("fCreateLikeItemGID")]
-        public string FCreateLikeItemGID { get; set; }
+        public string FCreateLikeItemGId { get; set; }
 
         [JsonProperty("NS_MainSupplierDescription_Col")]
         public string NSMainSupplierDescriptionCol { get; set; }
@@ -13239,7 +13411,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("NS_MainSupplierCurrencyPurchaseNetPrice_Col")]
         public double NSMainSupplierCurrencyPurchaseNetPriceCol { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -13373,13 +13547,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool RetailPriceIncludedVAT { get; set; }
 
         [JsonProperty("fTaxesGroupGID")]
-        public string FTaxesGroupGID { get; set; }
+        public string FTaxesGroupGId { get; set; }
 
         [JsonProperty("fChargesGroupGID")]
-        public string FChargesGroupGID { get; set; }
+        public string FChargesGroupGId { get; set; }
 
         [JsonProperty("fDiscountGroupGID")]
-        public string FDiscountGroupGID { get; set; }
+        public string FDiscountGroupGId { get; set; }
         public double Discount { get; set; }
         public double MaxDiscount { get; set; }
         public double MinProfitMargin { get; set; }
@@ -13389,7 +13563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FCommissionLevelCode { get; set; }
 
         [JsonProperty("fItemControlProfileGID")]
-        public string FItemControlProfileGID { get; set; }
+        public string FItemControlProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESMMCommercialProfileObjIncludedTaxReportsType IncludedTaxReports { get; set; }
 
         [JsonProperty("fMainMUCode")]
@@ -13413,16 +13587,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool StockDim2Mgmt { get; set; }
 
         [JsonProperty("fColorSetGID")]
-        public string FColorSetGID { get; set; }
+        public string FColorSetGId { get; set; }
 
         [JsonProperty("fSizeSetGID")]
-        public string FSizeSetGID { get; set; }
+        public string FSizeSetGId { get; set; }
 
         [JsonProperty("fStockDim1SetGID")]
-        public string FStockDim1SetGID { get; set; }
+        public string FStockDim1SetGId { get; set; }
 
         [JsonProperty("fStockDim2SetGID")]
-        public string FStockDim2SetGID { get; set; }
+        public string FStockDim2SetGId { get; set; }
 
         [JsonProperty("fGLSegCode")]
         public string FGLSegCode { get; set; }
@@ -13452,18 +13626,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDepreciationGLSegCode { get; set; }
 
         [JsonProperty("fDepreciationProfileGID")]
-        public string FDepreciationProfileGID { get; set; }
+        public string FDepreciationProfileGId { get; set; }
 
         [JsonProperty("fAlternativeDepreciationProfileGID")]
-        public string FAlternativeDepreciationProfileGID { get; set; }
+        public string FAlternativeDepreciationProfileGId { get; set; }
 
         [JsonProperty("fInformativeDepreciationProfileGID")]
-        public string FInformativeDepreciationProfileGID { get; set; }
+        public string FInformativeDepreciationProfileGId { get; set; }
         public EntersoftWebApi2ODSModelsESMMCommercialProfileObjLotCharacteristicsMgmtType LotCharacteristicsMgmt { get; set; }
 
         [JsonProperty("fItemControlPolicyGID")]
-        public string FItemControlPolicyGID { get; set; }
-        public string GID { get; set; }
+        public string FItemControlPolicyGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -13580,20 +13756,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESMMSortimentObj
     {
         [JsonProperty("fColorSetGID")]
-        public string FColorSetGID { get; set; }
+        public string FColorSetGId { get; set; }
 
         [JsonProperty("fSizeSetGID")]
-        public string FSizeSetGID { get; set; }
+        public string FSizeSetGId { get; set; }
 
         [JsonProperty("fStockDim1SetGID")]
-        public string FStockDim1SetGID { get; set; }
+        public string FStockDim1SetGId { get; set; }
 
         [JsonProperty("fStockDim2SetGID")]
-        public string FStockDim2SetGID { get; set; }
+        public string FStockDim2SetGId { get; set; }
 
         [JsonProperty("fMUCode")]
         public string FMUCode { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -13611,7 +13789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESMMLotObj
     {
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
         public string ExpirationDate { get; set; }
         public string ProductionDate { get; set; }
         public string DeliveryDate { get; set; }
@@ -13621,7 +13799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FLotQualifierCode { get; set; }
 
         [JsonProperty("fItemMUGID")]
-        public string FItemMUGID { get; set; }
+        public string FItemMUGId { get; set; }
 
         [JsonProperty("fColorCode")]
         public string FColorCode { get; set; }
@@ -13675,10 +13853,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string BarCode { get; set; }
 
         [JsonProperty("fDepositionGID")]
-        public string FDepositionGID { get; set; }
+        public string FDepositionGId { get; set; }
         public string DepositionLine { get; set; }
         public string CustomsRegime { get; set; }
-        public string StockBookID { get; set; }
+
+        [JsonProperty("StockBookID")]
+        public string StockBookId { get; set; }
 
         [JsonProperty("fTariffCode")]
         public string FTariffCode { get; set; }
@@ -13692,7 +13872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string LastControlDate { get; set; }
 
         [JsonProperty("fDepositionDocumentLineItemAnalysisGID")]
-        public string FDepositionDocumentLineItemAnalysisGID { get; set; }
+        public string FDepositionDocumentLineItemAnalysisGId { get; set; }
         public string EndofMaintenanceLimit { get; set; }
         public string DepositionDocumentReferenceNumber { get; set; }
 
@@ -13725,7 +13905,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("NS_Qty_ExciseDutyMU")]
         public double NSQtyExciseDutyMU { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -13747,7 +13929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string EndDate { get; set; }
 
         [JsonProperty("fProductionUnitGID")]
-        public string FProductionUnitGID { get; set; }
+        public string FProductionUnitGId { get; set; }
         public string DemandForecastFilter { get; set; }
         public string DemandForecastFilterParams { get; set; }
         public string InOrderFilter { get; set; }
@@ -13764,7 +13946,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESMMProductionPlanObjDatesCalculationBasedOnType DatesCalculationBasedOn { get; set; }
         public bool EnableBatchQuantity { get; set; }
         public bool EnableMinQuantity { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -13800,7 +13984,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsESPropertySet
     {
-        public string GID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -13828,10 +14013,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsESPropertySetLine
     {
-        public string GID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
         public int SeqNum { get; set; }
 
         [JsonProperty("Category_Code")]
@@ -13884,18 +14070,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsESSurveyCampaign
     {
-        public string GID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Description { get; set; }
         public string TaskNotes { get; set; }
     }
 
     public class EntersoftWebApiModelsESScale
     {
-        public string GID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
-        public string InternationalID { get; set; }
+
+        [JsonProperty("InternationalID")]
+        public string InternationalId { get; set; }
         public bool Inactive { get; set; }
         public bool ESSystem { get; set; }
         public EntersoftWebApiModelsESScaleRange[] Ranges { get; set; }
@@ -13903,10 +14093,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsESScaleRange
     {
-        public string GID { get; set; }
+        [JsonProperty("GID")]
+        public string GId { get; set; }
 
         [JsonProperty("fScaleGID")]
-        public string FScaleGID { get; set; }
+        public string FScaleGId { get; set; }
         public int SeqNum { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
@@ -13931,9 +14122,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsESPQLayoutFilter
     {
-        public string ID { get; set; }
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public string Caption { get; set; }
-        public string QueryID { get; set; }
+
+        [JsonProperty("QueryID")]
+        public string QueryId { get; set; }
         public string RootTable { get; set; }
         public string SelectedMasterTable { get; set; }
         public string SelectedMasterField { get; set; }
@@ -13952,7 +14146,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsESPQLayoutParam
     {
-        public string ID { get; set; }
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public string AA { get; set; }
         public string Caption { get; set; }
         public string Tooltip { get; set; }
@@ -13965,7 +14160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ODSTag { get; set; }
         public string Tags { get; set; }
         public string Visibility { get; set; }
-        public string InvQueryID { get; set; }
+
+        [JsonProperty("InvQueryID")]
+        public string InvQueryId { get; set; }
         public string InvSelectedMasterTable { get; set; }
         public string InvSelectedMasterField { get; set; }
         public string InvTableMappings { get; set; }
@@ -13974,22 +14171,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApiModelsESPQLayoutDefaultValue
     {
         [JsonProperty("fParamID")]
-        public string FParamID { get; set; }
+        public string FParamId { get; set; }
         public string Value { get; set; }
     }
 
     public class EntersoftWebApiModelsESPQLayoutEnumItem
     {
         [JsonProperty("fParamID")]
-        public string FParamID { get; set; }
-        public string ID { get; set; }
+        public string FParamId { get; set; }
+
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public string Caption { get; set; }
     }
 
     public class EntersoftWebApiModelsESPQLayoutColumn
     {
         [JsonProperty("fFilterID")]
-        public string FFilterID { get; set; }
+        public string FFilterId { get; set; }
         public string ColName { get; set; }
         public string AA { get; set; }
         public string Caption { get; set; }
@@ -14018,7 +14217,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftWebApiModelsCompanyParamEx
     {
-        public string ID { get; set; }
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public JToken Value { get; set; }
         public string Description { get; set; }
         public string Help { get; set; }
@@ -14057,14 +14257,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj
     {
         [JsonProperty("fTaskTypeGID")]
-        public string FTaskTypeGID { get; set; }
+        public string FTaskTypeGId { get; set; }
         public EntersoftWebApi2ODSModelsESTMMobileTaskTypeObjSignatureType Signature { get; set; }
         public int DaysForFutureMobileTasks { get; set; }
         public int DaysForClosedMobileTasks { get; set; }
         public int DefaultMinutesToEnd { get; set; }
         public int DefaultMinutesToPrepare { get; set; }
         public string GroupField { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -14092,41 +14294,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int SeqNum { get; set; }
 
         [JsonProperty("fTaskTypeGID")]
-        public string FTaskTypeGID { get; set; }
+        public string FTaskTypeGId { get; set; }
 
         [JsonProperty("fOwnerGID")]
-        public string FOwnerGID { get; set; }
+        public string FOwnerGId { get; set; }
         public string TaskNotes { get; set; }
 
         [JsonProperty("fStatusGID")]
-        public string FStatusGID { get; set; }
+        public string FStatusGId { get; set; }
 
         [JsonProperty("fAssignedToGID")]
-        public string FAssignedToGID { get; set; }
+        public string FAssignedToGId { get; set; }
 
         [JsonProperty("fResourceGroupGID")]
-        public string FResourceGroupGID { get; set; }
+        public string FResourceGroupGId { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fParentTaskGID")]
-        public string FParentTaskGID { get; set; }
+        public string FParentTaskGId { get; set; }
 
         [JsonProperty("fRootTaskGID")]
-        public string FRootTaskGID { get; set; }
+        public string FRootTaskGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fAddressGID")]
-        public string FAddressGID { get; set; }
+        public string FAddressGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fTaskMediaCode")]
         public string FTaskMediaCode { get; set; }
@@ -14135,7 +14337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FPriorityCode { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public string RegistrationDate { get; set; }
         public string PlannedStartDate { get; set; }
         public string ActualStartDate { get; set; }
@@ -14148,47 +14350,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ActivateNotification { get; set; }
 
         [JsonProperty("fAccessLevelGID")]
-        public string FAccessLevelGID { get; set; }
+        public string FAccessLevelGId { get; set; }
         public bool CalendarItem { get; set; }
 
         [JsonProperty("fRecurrentDataGID")]
-        public string FRecurrentDataGID { get; set; }
+        public string FRecurrentDataGId { get; set; }
         public bool AllDay { get; set; }
 
         [JsonProperty("fCampaignGID")]
-        public string FCampaignGID { get; set; }
+        public string FCampaignGId { get; set; }
         public bool IsCampaignExecutionTask { get; set; }
         public string SharedNotes { get; set; }
 
         [JsonProperty("fCategoryValue1GID")]
-        public string FCategoryValue1GID { get; set; }
+        public string FCategoryValue1GId { get; set; }
 
         [JsonProperty("fCategoryValue2GID")]
-        public string FCategoryValue2GID { get; set; }
+        public string FCategoryValue2GId { get; set; }
 
         [JsonProperty("fCategoryValue3GID")]
-        public string FCategoryValue3GID { get; set; }
+        public string FCategoryValue3GId { get; set; }
 
         [JsonProperty("fCategoryValue4GID")]
-        public string FCategoryValue4GID { get; set; }
+        public string FCategoryValue4GId { get; set; }
 
         [JsonProperty("fCategoryValue5GID")]
-        public string FCategoryValue5GID { get; set; }
+        public string FCategoryValue5GId { get; set; }
 
         [JsonProperty("fCategoryValue6GID")]
-        public string FCategoryValue6GID { get; set; }
+        public string FCategoryValue6GId { get; set; }
 
         [JsonProperty("fCategoryValue7GID")]
-        public string FCategoryValue7GID { get; set; }
+        public string FCategoryValue7GId { get; set; }
 
         [JsonProperty("fCategoryValue8GID")]
-        public string FCategoryValue8GID { get; set; }
+        public string FCategoryValue8GId { get; set; }
 
         [JsonProperty("fCategoryValue9GID")]
-        public string FCategoryValue9GID { get; set; }
+        public string FCategoryValue9GId { get; set; }
 
         [JsonProperty("fCategoryValue10GID")]
-        public string FCategoryValue10GID { get; set; }
+        public string FCategoryValue10GId { get; set; }
         public string StringField1 { get; set; }
         public string StringField2 { get; set; }
         public string StringField3 { get; set; }
@@ -14244,66 +14446,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
-        public int ExtCallID { get; set; }
+        public string FSiteGId { get; set; }
+
+        [JsonProperty("ExtCallID")]
+        public int ExtCallId { get; set; }
 
         [JsonProperty("fMetricSetGID")]
-        public string FMetricSetGID { get; set; }
+        public string FMetricSetGId { get; set; }
         public int DefaultVisitTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMServiceRequestObjDefaultVisitTimeUnitType DefaultVisitTimeUnit { get; set; }
         public int DefaultPreparationTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMServiceRequestObjDefaultPreparationTimeUnitType DefaultPreparationTimeUnit { get; set; }
 
         [JsonProperty("fTaskTemplateGID")]
-        public string FTaskTemplateGID { get; set; }
-        public int ID { get; set; }
+        public string FTaskTemplateGId { get; set; }
+
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("fCancellationReasonGID")]
-        public string FCancellationReasonGID { get; set; }
+        public string FCancellationReasonGId { get; set; }
         public EntersoftWebApi2ODSModelsESTMServiceRequestObjTaskNotesTextTypeType TaskNotesTextType { get; set; }
 
         [JsonProperty("fRequestGID")]
-        public string FRequestGID { get; set; }
+        public string FRequestGId { get; set; }
 
         [JsonProperty("fActionGID")]
-        public string FActionGID { get; set; }
+        public string FActionGId { get; set; }
 
         [JsonProperty("fWMWorkPackageGID")]
-        public string FWMWorkPackageGID { get; set; }
+        public string FWMWorkPackageGId { get; set; }
 
         [JsonProperty("fTerritoryGID")]
-        public string FTerritoryGID { get; set; }
+        public string FTerritoryGId { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("ns_Caption")]
         public string NsCaption { get; set; }
 
         [JsonProperty("ns_fParentTaskGID")]
-        public string NsFParentTaskGID { get; set; }
+        public string NsFParentTaskGId { get; set; }
 
         [JsonProperty("ns_TimerSeconds")]
         public int NsTimerSeconds { get; set; }
 
         [JsonProperty("ns_TemplateTaskGID")]
-        public string NsTemplateTaskGID { get; set; }
+        public string NsTemplateTaskGId { get; set; }
 
         [JsonProperty("ns_fResponseValueGID")]
-        public string NsFResponseValueGID { get; set; }
+        public string NsFResponseValueGId { get; set; }
 
         [JsonProperty("ns_RecurrentData")]
         public string NsRecurrentData { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -14353,7 +14561,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApi2ODSModelsESTMRFMModelObjStateType State { get; set; }
         public string CalculationDate { get; set; }
         public EntersoftWebApi2ODSModelsESTMRFMModelObjCalculationSourceType CalculationSource { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -14392,14 +14602,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj
     {
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public EntersoftWebApi2ODSModelsESTMNewsletterRecipientObjStateType State { get; set; }
 
         [JsonProperty("fStateReasoningCategoryValueGID")]
-        public string FStateReasoningCategoryValueGID { get; set; }
-        public string GID { get; set; }
+        public string FStateReasoningCategoryValueGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -14428,41 +14640,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int SeqNum { get; set; }
 
         [JsonProperty("fTaskTypeGID")]
-        public string FTaskTypeGID { get; set; }
+        public string FTaskTypeGId { get; set; }
 
         [JsonProperty("fOwnerGID")]
-        public string FOwnerGID { get; set; }
+        public string FOwnerGId { get; set; }
         public string TaskNotes { get; set; }
 
         [JsonProperty("fStatusGID")]
-        public string FStatusGID { get; set; }
+        public string FStatusGId { get; set; }
 
         [JsonProperty("fAssignedToGID")]
-        public string FAssignedToGID { get; set; }
+        public string FAssignedToGId { get; set; }
 
         [JsonProperty("fResourceGroupGID")]
-        public string FResourceGroupGID { get; set; }
+        public string FResourceGroupGId { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fParentTaskGID")]
-        public string FParentTaskGID { get; set; }
+        public string FParentTaskGId { get; set; }
 
         [JsonProperty("fRootTaskGID")]
-        public string FRootTaskGID { get; set; }
+        public string FRootTaskGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fAddressGID")]
-        public string FAddressGID { get; set; }
+        public string FAddressGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fTaskMediaCode")]
         public string FTaskMediaCode { get; set; }
@@ -14471,7 +14683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FPriorityCode { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public string RegistrationDate { get; set; }
         public string PlannedStartDate { get; set; }
         public string ActualStartDate { get; set; }
@@ -14484,47 +14696,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ActivateNotification { get; set; }
 
         [JsonProperty("fAccessLevelGID")]
-        public string FAccessLevelGID { get; set; }
+        public string FAccessLevelGId { get; set; }
         public bool CalendarItem { get; set; }
 
         [JsonProperty("fRecurrentDataGID")]
-        public string FRecurrentDataGID { get; set; }
+        public string FRecurrentDataGId { get; set; }
         public bool AllDay { get; set; }
 
         [JsonProperty("fCampaignGID")]
-        public string FCampaignGID { get; set; }
+        public string FCampaignGId { get; set; }
         public bool IsCampaignExecutionTask { get; set; }
         public string SharedNotes { get; set; }
 
         [JsonProperty("fCategoryValue1GID")]
-        public string FCategoryValue1GID { get; set; }
+        public string FCategoryValue1GId { get; set; }
 
         [JsonProperty("fCategoryValue2GID")]
-        public string FCategoryValue2GID { get; set; }
+        public string FCategoryValue2GId { get; set; }
 
         [JsonProperty("fCategoryValue3GID")]
-        public string FCategoryValue3GID { get; set; }
+        public string FCategoryValue3GId { get; set; }
 
         [JsonProperty("fCategoryValue4GID")]
-        public string FCategoryValue4GID { get; set; }
+        public string FCategoryValue4GId { get; set; }
 
         [JsonProperty("fCategoryValue5GID")]
-        public string FCategoryValue5GID { get; set; }
+        public string FCategoryValue5GId { get; set; }
 
         [JsonProperty("fCategoryValue6GID")]
-        public string FCategoryValue6GID { get; set; }
+        public string FCategoryValue6GId { get; set; }
 
         [JsonProperty("fCategoryValue7GID")]
-        public string FCategoryValue7GID { get; set; }
+        public string FCategoryValue7GId { get; set; }
 
         [JsonProperty("fCategoryValue8GID")]
-        public string FCategoryValue8GID { get; set; }
+        public string FCategoryValue8GId { get; set; }
 
         [JsonProperty("fCategoryValue9GID")]
-        public string FCategoryValue9GID { get; set; }
+        public string FCategoryValue9GId { get; set; }
 
         [JsonProperty("fCategoryValue10GID")]
-        public string FCategoryValue10GID { get; set; }
+        public string FCategoryValue10GId { get; set; }
         public string StringField1 { get; set; }
         public string StringField2 { get; set; }
         public string StringField3 { get; set; }
@@ -14580,66 +14792,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
-        public int ExtCallID { get; set; }
+        public string FSiteGId { get; set; }
+
+        [JsonProperty("ExtCallID")]
+        public int ExtCallId { get; set; }
 
         [JsonProperty("fMetricSetGID")]
-        public string FMetricSetGID { get; set; }
+        public string FMetricSetGId { get; set; }
         public int DefaultVisitTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMInteractionObjDefaultVisitTimeUnitType DefaultVisitTimeUnit { get; set; }
         public int DefaultPreparationTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMInteractionObjDefaultPreparationTimeUnitType DefaultPreparationTimeUnit { get; set; }
 
         [JsonProperty("fTaskTemplateGID")]
-        public string FTaskTemplateGID { get; set; }
-        public int ID { get; set; }
+        public string FTaskTemplateGId { get; set; }
+
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("fCancellationReasonGID")]
-        public string FCancellationReasonGID { get; set; }
+        public string FCancellationReasonGId { get; set; }
         public EntersoftWebApi2ODSModelsESTMInteractionObjTaskNotesTextTypeType TaskNotesTextType { get; set; }
 
         [JsonProperty("fRequestGID")]
-        public string FRequestGID { get; set; }
+        public string FRequestGId { get; set; }
 
         [JsonProperty("fActionGID")]
-        public string FActionGID { get; set; }
+        public string FActionGId { get; set; }
 
         [JsonProperty("fWMWorkPackageGID")]
-        public string FWMWorkPackageGID { get; set; }
+        public string FWMWorkPackageGId { get; set; }
 
         [JsonProperty("fTerritoryGID")]
-        public string FTerritoryGID { get; set; }
+        public string FTerritoryGId { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("ns_Caption")]
         public string NsCaption { get; set; }
 
         [JsonProperty("ns_fParentTaskGID")]
-        public string NsFParentTaskGID { get; set; }
+        public string NsFParentTaskGId { get; set; }
 
         [JsonProperty("ns_TimerSeconds")]
         public int NsTimerSeconds { get; set; }
 
         [JsonProperty("ns_TemplateTaskGID")]
-        public string NsTemplateTaskGID { get; set; }
+        public string NsTemplateTaskGId { get; set; }
 
         [JsonProperty("ns_fResponseValueGID")]
-        public string NsFResponseValueGID { get; set; }
+        public string NsFResponseValueGId { get; set; }
 
         [JsonProperty("ns_RecurrentData")]
         public string NsRecurrentData { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -14679,16 +14897,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESTMObjectRatingObj
     {
         [JsonProperty("fWebUserGID")]
-        public string FWebUserGID { get; set; }
+        public string FWebUserGId { get; set; }
 
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
 
         [JsonProperty("fTaskGID")]
-        public string FTaskGID { get; set; }
+        public string FTaskGId { get; set; }
         public string Date { get; set; }
         public int Rating { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -14708,41 +14928,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int SeqNum { get; set; }
 
         [JsonProperty("fTaskTypeGID")]
-        public string FTaskTypeGID { get; set; }
+        public string FTaskTypeGId { get; set; }
 
         [JsonProperty("fOwnerGID")]
-        public string FOwnerGID { get; set; }
+        public string FOwnerGId { get; set; }
         public string TaskNotes { get; set; }
 
         [JsonProperty("fStatusGID")]
-        public string FStatusGID { get; set; }
+        public string FStatusGId { get; set; }
 
         [JsonProperty("fAssignedToGID")]
-        public string FAssignedToGID { get; set; }
+        public string FAssignedToGId { get; set; }
 
         [JsonProperty("fResourceGroupGID")]
-        public string FResourceGroupGID { get; set; }
+        public string FResourceGroupGId { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fParentTaskGID")]
-        public string FParentTaskGID { get; set; }
+        public string FParentTaskGId { get; set; }
 
         [JsonProperty("fRootTaskGID")]
-        public string FRootTaskGID { get; set; }
+        public string FRootTaskGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fAddressGID")]
-        public string FAddressGID { get; set; }
+        public string FAddressGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fTaskMediaCode")]
         public string FTaskMediaCode { get; set; }
@@ -14751,7 +14971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FPriorityCode { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public string RegistrationDate { get; set; }
         public string PlannedStartDate { get; set; }
         public string ActualStartDate { get; set; }
@@ -14764,47 +14984,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ActivateNotification { get; set; }
 
         [JsonProperty("fAccessLevelGID")]
-        public string FAccessLevelGID { get; set; }
+        public string FAccessLevelGId { get; set; }
         public bool CalendarItem { get; set; }
 
         [JsonProperty("fRecurrentDataGID")]
-        public string FRecurrentDataGID { get; set; }
+        public string FRecurrentDataGId { get; set; }
         public bool AllDay { get; set; }
 
         [JsonProperty("fCampaignGID")]
-        public string FCampaignGID { get; set; }
+        public string FCampaignGId { get; set; }
         public bool IsCampaignExecutionTask { get; set; }
         public string SharedNotes { get; set; }
 
         [JsonProperty("fCategoryValue1GID")]
-        public string FCategoryValue1GID { get; set; }
+        public string FCategoryValue1GId { get; set; }
 
         [JsonProperty("fCategoryValue2GID")]
-        public string FCategoryValue2GID { get; set; }
+        public string FCategoryValue2GId { get; set; }
 
         [JsonProperty("fCategoryValue3GID")]
-        public string FCategoryValue3GID { get; set; }
+        public string FCategoryValue3GId { get; set; }
 
         [JsonProperty("fCategoryValue4GID")]
-        public string FCategoryValue4GID { get; set; }
+        public string FCategoryValue4GId { get; set; }
 
         [JsonProperty("fCategoryValue5GID")]
-        public string FCategoryValue5GID { get; set; }
+        public string FCategoryValue5GId { get; set; }
 
         [JsonProperty("fCategoryValue6GID")]
-        public string FCategoryValue6GID { get; set; }
+        public string FCategoryValue6GId { get; set; }
 
         [JsonProperty("fCategoryValue7GID")]
-        public string FCategoryValue7GID { get; set; }
+        public string FCategoryValue7GId { get; set; }
 
         [JsonProperty("fCategoryValue8GID")]
-        public string FCategoryValue8GID { get; set; }
+        public string FCategoryValue8GId { get; set; }
 
         [JsonProperty("fCategoryValue9GID")]
-        public string FCategoryValue9GID { get; set; }
+        public string FCategoryValue9GId { get; set; }
 
         [JsonProperty("fCategoryValue10GID")]
-        public string FCategoryValue10GID { get; set; }
+        public string FCategoryValue10GId { get; set; }
         public string StringField1 { get; set; }
         public string StringField2 { get; set; }
         public string StringField3 { get; set; }
@@ -14860,66 +15080,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
-        public int ExtCallID { get; set; }
+        public string FSiteGId { get; set; }
+
+        [JsonProperty("ExtCallID")]
+        public int ExtCallId { get; set; }
 
         [JsonProperty("fMetricSetGID")]
-        public string FMetricSetGID { get; set; }
+        public string FMetricSetGId { get; set; }
         public int DefaultVisitTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMTaskObjDefaultVisitTimeUnitType DefaultVisitTimeUnit { get; set; }
         public int DefaultPreparationTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMTaskObjDefaultPreparationTimeUnitType DefaultPreparationTimeUnit { get; set; }
 
         [JsonProperty("fTaskTemplateGID")]
-        public string FTaskTemplateGID { get; set; }
-        public int ID { get; set; }
+        public string FTaskTemplateGId { get; set; }
+
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("fCancellationReasonGID")]
-        public string FCancellationReasonGID { get; set; }
+        public string FCancellationReasonGId { get; set; }
         public EntersoftWebApi2ODSModelsESTMTaskObjTaskNotesTextTypeType TaskNotesTextType { get; set; }
 
         [JsonProperty("fRequestGID")]
-        public string FRequestGID { get; set; }
+        public string FRequestGId { get; set; }
 
         [JsonProperty("fActionGID")]
-        public string FActionGID { get; set; }
+        public string FActionGId { get; set; }
 
         [JsonProperty("fWMWorkPackageGID")]
-        public string FWMWorkPackageGID { get; set; }
+        public string FWMWorkPackageGId { get; set; }
 
         [JsonProperty("fTerritoryGID")]
-        public string FTerritoryGID { get; set; }
+        public string FTerritoryGId { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("ns_Caption")]
         public string NsCaption { get; set; }
 
         [JsonProperty("ns_fParentTaskGID")]
-        public string NsFParentTaskGID { get; set; }
+        public string NsFParentTaskGId { get; set; }
 
         [JsonProperty("ns_TimerSeconds")]
         public int NsTimerSeconds { get; set; }
 
         [JsonProperty("ns_TemplateTaskGID")]
-        public string NsTemplateTaskGID { get; set; }
+        public string NsTemplateTaskGId { get; set; }
 
         [JsonProperty("ns_fResponseValueGID")]
-        public string NsFResponseValueGID { get; set; }
+        public string NsFResponseValueGId { get; set; }
 
         [JsonProperty("ns_RecurrentData")]
         public string NsRecurrentData { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -14962,10 +15188,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool InterCompany { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
 
         [JsonProperty("fMUCode")]
         public string FMUCode { get; set; }
@@ -14973,17 +15199,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string EmailAddress { get; set; }
 
         [JsonProperty("fSeasonCalendarGID")]
-        public string FSeasonCalendarGID { get; set; }
+        public string FSeasonCalendarGId { get; set; }
         public bool Production { get; set; }
 
         [JsonProperty("fProductionUnitGID")]
-        public string FProductionUnitGID { get; set; }
+        public string FProductionUnitGId { get; set; }
         public int LockResource { get; set; }
 
         [JsonProperty("fUserGID")]
-        public string FUserGID { get; set; }
+        public string FUserGId { get; set; }
         public int InvalidEmailAddress { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -15012,41 +15240,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int SeqNum { get; set; }
 
         [JsonProperty("fTaskTypeGID")]
-        public string FTaskTypeGID { get; set; }
+        public string FTaskTypeGId { get; set; }
 
         [JsonProperty("fOwnerGID")]
-        public string FOwnerGID { get; set; }
+        public string FOwnerGId { get; set; }
         public string TaskNotes { get; set; }
 
         [JsonProperty("fStatusGID")]
-        public string FStatusGID { get; set; }
+        public string FStatusGId { get; set; }
 
         [JsonProperty("fAssignedToGID")]
-        public string FAssignedToGID { get; set; }
+        public string FAssignedToGId { get; set; }
 
         [JsonProperty("fResourceGroupGID")]
-        public string FResourceGroupGID { get; set; }
+        public string FResourceGroupGId { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fParentTaskGID")]
-        public string FParentTaskGID { get; set; }
+        public string FParentTaskGId { get; set; }
 
         [JsonProperty("fRootTaskGID")]
-        public string FRootTaskGID { get; set; }
+        public string FRootTaskGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fAddressGID")]
-        public string FAddressGID { get; set; }
+        public string FAddressGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fTaskMediaCode")]
         public string FTaskMediaCode { get; set; }
@@ -15055,7 +15283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FPriorityCode { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public string RegistrationDate { get; set; }
         public string PlannedStartDate { get; set; }
         public string ActualStartDate { get; set; }
@@ -15068,47 +15296,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ActivateNotification { get; set; }
 
         [JsonProperty("fAccessLevelGID")]
-        public string FAccessLevelGID { get; set; }
+        public string FAccessLevelGId { get; set; }
         public bool CalendarItem { get; set; }
 
         [JsonProperty("fRecurrentDataGID")]
-        public string FRecurrentDataGID { get; set; }
+        public string FRecurrentDataGId { get; set; }
         public bool AllDay { get; set; }
 
         [JsonProperty("fCampaignGID")]
-        public string FCampaignGID { get; set; }
+        public string FCampaignGId { get; set; }
         public bool IsCampaignExecutionTask { get; set; }
         public string SharedNotes { get; set; }
 
         [JsonProperty("fCategoryValue1GID")]
-        public string FCategoryValue1GID { get; set; }
+        public string FCategoryValue1GId { get; set; }
 
         [JsonProperty("fCategoryValue2GID")]
-        public string FCategoryValue2GID { get; set; }
+        public string FCategoryValue2GId { get; set; }
 
         [JsonProperty("fCategoryValue3GID")]
-        public string FCategoryValue3GID { get; set; }
+        public string FCategoryValue3GId { get; set; }
 
         [JsonProperty("fCategoryValue4GID")]
-        public string FCategoryValue4GID { get; set; }
+        public string FCategoryValue4GId { get; set; }
 
         [JsonProperty("fCategoryValue5GID")]
-        public string FCategoryValue5GID { get; set; }
+        public string FCategoryValue5GId { get; set; }
 
         [JsonProperty("fCategoryValue6GID")]
-        public string FCategoryValue6GID { get; set; }
+        public string FCategoryValue6GId { get; set; }
 
         [JsonProperty("fCategoryValue7GID")]
-        public string FCategoryValue7GID { get; set; }
+        public string FCategoryValue7GId { get; set; }
 
         [JsonProperty("fCategoryValue8GID")]
-        public string FCategoryValue8GID { get; set; }
+        public string FCategoryValue8GId { get; set; }
 
         [JsonProperty("fCategoryValue9GID")]
-        public string FCategoryValue9GID { get; set; }
+        public string FCategoryValue9GId { get; set; }
 
         [JsonProperty("fCategoryValue10GID")]
-        public string FCategoryValue10GID { get; set; }
+        public string FCategoryValue10GId { get; set; }
         public string StringField1 { get; set; }
         public string StringField2 { get; set; }
         public string StringField3 { get; set; }
@@ -15164,66 +15392,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
-        public int ExtCallID { get; set; }
+        public string FSiteGId { get; set; }
+
+        [JsonProperty("ExtCallID")]
+        public int ExtCallId { get; set; }
 
         [JsonProperty("fMetricSetGID")]
-        public string FMetricSetGID { get; set; }
+        public string FMetricSetGId { get; set; }
         public int DefaultVisitTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMCampaignObjDefaultVisitTimeUnitType DefaultVisitTimeUnit { get; set; }
         public int DefaultPreparationTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMCampaignObjDefaultPreparationTimeUnitType DefaultPreparationTimeUnit { get; set; }
 
         [JsonProperty("fTaskTemplateGID")]
-        public string FTaskTemplateGID { get; set; }
-        public int ID { get; set; }
+        public string FTaskTemplateGId { get; set; }
+
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("fCancellationReasonGID")]
-        public string FCancellationReasonGID { get; set; }
+        public string FCancellationReasonGId { get; set; }
         public EntersoftWebApi2ODSModelsESTMCampaignObjTaskNotesTextTypeType TaskNotesTextType { get; set; }
 
         [JsonProperty("fRequestGID")]
-        public string FRequestGID { get; set; }
+        public string FRequestGId { get; set; }
 
         [JsonProperty("fActionGID")]
-        public string FActionGID { get; set; }
+        public string FActionGId { get; set; }
 
         [JsonProperty("fWMWorkPackageGID")]
-        public string FWMWorkPackageGID { get; set; }
+        public string FWMWorkPackageGId { get; set; }
 
         [JsonProperty("fTerritoryGID")]
-        public string FTerritoryGID { get; set; }
+        public string FTerritoryGId { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("ns_Caption")]
         public string NsCaption { get; set; }
 
         [JsonProperty("ns_fParentTaskGID")]
-        public string NsFParentTaskGID { get; set; }
+        public string NsFParentTaskGId { get; set; }
 
         [JsonProperty("ns_TimerSeconds")]
         public int NsTimerSeconds { get; set; }
 
         [JsonProperty("ns_TemplateTaskGID")]
-        public string NsTemplateTaskGID { get; set; }
+        public string NsTemplateTaskGId { get; set; }
 
         [JsonProperty("ns_fResponseValueGID")]
-        public string NsFResponseValueGID { get; set; }
+        public string NsFResponseValueGId { get; set; }
 
         [JsonProperty("ns_RecurrentData")]
         public string NsRecurrentData { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -15265,41 +15499,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int SeqNum { get; set; }
 
         [JsonProperty("fTaskTypeGID")]
-        public string FTaskTypeGID { get; set; }
+        public string FTaskTypeGId { get; set; }
 
         [JsonProperty("fOwnerGID")]
-        public string FOwnerGID { get; set; }
+        public string FOwnerGId { get; set; }
         public string TaskNotes { get; set; }
 
         [JsonProperty("fStatusGID")]
-        public string FStatusGID { get; set; }
+        public string FStatusGId { get; set; }
 
         [JsonProperty("fAssignedToGID")]
-        public string FAssignedToGID { get; set; }
+        public string FAssignedToGId { get; set; }
 
         [JsonProperty("fResourceGroupGID")]
-        public string FResourceGroupGID { get; set; }
+        public string FResourceGroupGId { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fParentTaskGID")]
-        public string FParentTaskGID { get; set; }
+        public string FParentTaskGId { get; set; }
 
         [JsonProperty("fRootTaskGID")]
-        public string FRootTaskGID { get; set; }
+        public string FRootTaskGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fAddressGID")]
-        public string FAddressGID { get; set; }
+        public string FAddressGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fTaskMediaCode")]
         public string FTaskMediaCode { get; set; }
@@ -15308,7 +15542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FPriorityCode { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public string RegistrationDate { get; set; }
         public string PlannedStartDate { get; set; }
         public string ActualStartDate { get; set; }
@@ -15321,47 +15555,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ActivateNotification { get; set; }
 
         [JsonProperty("fAccessLevelGID")]
-        public string FAccessLevelGID { get; set; }
+        public string FAccessLevelGId { get; set; }
         public bool CalendarItem { get; set; }
 
         [JsonProperty("fRecurrentDataGID")]
-        public string FRecurrentDataGID { get; set; }
+        public string FRecurrentDataGId { get; set; }
         public bool AllDay { get; set; }
 
         [JsonProperty("fCampaignGID")]
-        public string FCampaignGID { get; set; }
+        public string FCampaignGId { get; set; }
         public bool IsCampaignExecutionTask { get; set; }
         public string SharedNotes { get; set; }
 
         [JsonProperty("fCategoryValue1GID")]
-        public string FCategoryValue1GID { get; set; }
+        public string FCategoryValue1GId { get; set; }
 
         [JsonProperty("fCategoryValue2GID")]
-        public string FCategoryValue2GID { get; set; }
+        public string FCategoryValue2GId { get; set; }
 
         [JsonProperty("fCategoryValue3GID")]
-        public string FCategoryValue3GID { get; set; }
+        public string FCategoryValue3GId { get; set; }
 
         [JsonProperty("fCategoryValue4GID")]
-        public string FCategoryValue4GID { get; set; }
+        public string FCategoryValue4GId { get; set; }
 
         [JsonProperty("fCategoryValue5GID")]
-        public string FCategoryValue5GID { get; set; }
+        public string FCategoryValue5GId { get; set; }
 
         [JsonProperty("fCategoryValue6GID")]
-        public string FCategoryValue6GID { get; set; }
+        public string FCategoryValue6GId { get; set; }
 
         [JsonProperty("fCategoryValue7GID")]
-        public string FCategoryValue7GID { get; set; }
+        public string FCategoryValue7GId { get; set; }
 
         [JsonProperty("fCategoryValue8GID")]
-        public string FCategoryValue8GID { get; set; }
+        public string FCategoryValue8GId { get; set; }
 
         [JsonProperty("fCategoryValue9GID")]
-        public string FCategoryValue9GID { get; set; }
+        public string FCategoryValue9GId { get; set; }
 
         [JsonProperty("fCategoryValue10GID")]
-        public string FCategoryValue10GID { get; set; }
+        public string FCategoryValue10GId { get; set; }
         public string StringField1 { get; set; }
         public string StringField2 { get; set; }
         public string StringField3 { get; set; }
@@ -15417,66 +15651,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
-        public int ExtCallID { get; set; }
+        public string FSiteGId { get; set; }
+
+        [JsonProperty("ExtCallID")]
+        public int ExtCallId { get; set; }
 
         [JsonProperty("fMetricSetGID")]
-        public string FMetricSetGID { get; set; }
+        public string FMetricSetGId { get; set; }
         public int DefaultVisitTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMSMActivityObjDefaultVisitTimeUnitType DefaultVisitTimeUnit { get; set; }
         public int DefaultPreparationTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMSMActivityObjDefaultPreparationTimeUnitType DefaultPreparationTimeUnit { get; set; }
 
         [JsonProperty("fTaskTemplateGID")]
-        public string FTaskTemplateGID { get; set; }
-        public int ID { get; set; }
+        public string FTaskTemplateGId { get; set; }
+
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("fCancellationReasonGID")]
-        public string FCancellationReasonGID { get; set; }
+        public string FCancellationReasonGId { get; set; }
         public EntersoftWebApi2ODSModelsESTMSMActivityObjTaskNotesTextTypeType TaskNotesTextType { get; set; }
 
         [JsonProperty("fRequestGID")]
-        public string FRequestGID { get; set; }
+        public string FRequestGId { get; set; }
 
         [JsonProperty("fActionGID")]
-        public string FActionGID { get; set; }
+        public string FActionGId { get; set; }
 
         [JsonProperty("fWMWorkPackageGID")]
-        public string FWMWorkPackageGID { get; set; }
+        public string FWMWorkPackageGId { get; set; }
 
         [JsonProperty("fTerritoryGID")]
-        public string FTerritoryGID { get; set; }
+        public string FTerritoryGId { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("ns_Caption")]
         public string NsCaption { get; set; }
 
         [JsonProperty("ns_fParentTaskGID")]
-        public string NsFParentTaskGID { get; set; }
+        public string NsFParentTaskGId { get; set; }
 
         [JsonProperty("ns_TimerSeconds")]
         public int NsTimerSeconds { get; set; }
 
         [JsonProperty("ns_TemplateTaskGID")]
-        public string NsTemplateTaskGID { get; set; }
+        public string NsTemplateTaskGId { get; set; }
 
         [JsonProperty("ns_fResponseValueGID")]
-        public string NsFResponseValueGID { get; set; }
+        public string NsFResponseValueGId { get; set; }
 
         [JsonProperty("ns_RecurrentData")]
         public string NsRecurrentData { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -15518,41 +15758,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public int SeqNum { get; set; }
 
         [JsonProperty("fTaskTypeGID")]
-        public string FTaskTypeGID { get; set; }
+        public string FTaskTypeGId { get; set; }
 
         [JsonProperty("fOwnerGID")]
-        public string FOwnerGID { get; set; }
+        public string FOwnerGId { get; set; }
         public string TaskNotes { get; set; }
 
         [JsonProperty("fStatusGID")]
-        public string FStatusGID { get; set; }
+        public string FStatusGId { get; set; }
 
         [JsonProperty("fAssignedToGID")]
-        public string FAssignedToGID { get; set; }
+        public string FAssignedToGId { get; set; }
 
         [JsonProperty("fResourceGroupGID")]
-        public string FResourceGroupGID { get; set; }
+        public string FResourceGroupGId { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fParentTaskGID")]
-        public string FParentTaskGID { get; set; }
+        public string FParentTaskGId { get; set; }
 
         [JsonProperty("fRootTaskGID")]
-        public string FRootTaskGID { get; set; }
+        public string FRootTaskGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fAddressGID")]
-        public string FAddressGID { get; set; }
+        public string FAddressGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fTaskMediaCode")]
         public string FTaskMediaCode { get; set; }
@@ -15561,7 +15801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FPriorityCode { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public string RegistrationDate { get; set; }
         public string PlannedStartDate { get; set; }
         public string ActualStartDate { get; set; }
@@ -15574,47 +15814,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool ActivateNotification { get; set; }
 
         [JsonProperty("fAccessLevelGID")]
-        public string FAccessLevelGID { get; set; }
+        public string FAccessLevelGId { get; set; }
         public bool CalendarItem { get; set; }
 
         [JsonProperty("fRecurrentDataGID")]
-        public string FRecurrentDataGID { get; set; }
+        public string FRecurrentDataGId { get; set; }
         public bool AllDay { get; set; }
 
         [JsonProperty("fCampaignGID")]
-        public string FCampaignGID { get; set; }
+        public string FCampaignGId { get; set; }
         public bool IsCampaignExecutionTask { get; set; }
         public string SharedNotes { get; set; }
 
         [JsonProperty("fCategoryValue1GID")]
-        public string FCategoryValue1GID { get; set; }
+        public string FCategoryValue1GId { get; set; }
 
         [JsonProperty("fCategoryValue2GID")]
-        public string FCategoryValue2GID { get; set; }
+        public string FCategoryValue2GId { get; set; }
 
         [JsonProperty("fCategoryValue3GID")]
-        public string FCategoryValue3GID { get; set; }
+        public string FCategoryValue3GId { get; set; }
 
         [JsonProperty("fCategoryValue4GID")]
-        public string FCategoryValue4GID { get; set; }
+        public string FCategoryValue4GId { get; set; }
 
         [JsonProperty("fCategoryValue5GID")]
-        public string FCategoryValue5GID { get; set; }
+        public string FCategoryValue5GId { get; set; }
 
         [JsonProperty("fCategoryValue6GID")]
-        public string FCategoryValue6GID { get; set; }
+        public string FCategoryValue6GId { get; set; }
 
         [JsonProperty("fCategoryValue7GID")]
-        public string FCategoryValue7GID { get; set; }
+        public string FCategoryValue7GId { get; set; }
 
         [JsonProperty("fCategoryValue8GID")]
-        public string FCategoryValue8GID { get; set; }
+        public string FCategoryValue8GId { get; set; }
 
         [JsonProperty("fCategoryValue9GID")]
-        public string FCategoryValue9GID { get; set; }
+        public string FCategoryValue9GId { get; set; }
 
         [JsonProperty("fCategoryValue10GID")]
-        public string FCategoryValue10GID { get; set; }
+        public string FCategoryValue10GId { get; set; }
         public string StringField1 { get; set; }
         public string StringField2 { get; set; }
         public string StringField3 { get; set; }
@@ -15670,66 +15910,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FDimension2Code { get; set; }
 
         [JsonProperty("fPropertySetGID")]
-        public string FPropertySetGID { get; set; }
+        public string FPropertySetGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
-        public int ExtCallID { get; set; }
+        public string FSiteGId { get; set; }
+
+        [JsonProperty("ExtCallID")]
+        public int ExtCallId { get; set; }
 
         [JsonProperty("fMetricSetGID")]
-        public string FMetricSetGID { get; set; }
+        public string FMetricSetGId { get; set; }
         public int DefaultVisitTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMOpportunityObjDefaultVisitTimeUnitType DefaultVisitTimeUnit { get; set; }
         public int DefaultPreparationTime { get; set; }
         public EntersoftWebApi2ODSModelsESTMOpportunityObjDefaultPreparationTimeUnitType DefaultPreparationTimeUnit { get; set; }
 
         [JsonProperty("fTaskTemplateGID")]
-        public string FTaskTemplateGID { get; set; }
-        public int ID { get; set; }
+        public string FTaskTemplateGId { get; set; }
+
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("fCancellationReasonGID")]
-        public string FCancellationReasonGID { get; set; }
+        public string FCancellationReasonGId { get; set; }
         public EntersoftWebApi2ODSModelsESTMOpportunityObjTaskNotesTextTypeType TaskNotesTextType { get; set; }
 
         [JsonProperty("fRequestGID")]
-        public string FRequestGID { get; set; }
+        public string FRequestGId { get; set; }
 
         [JsonProperty("fActionGID")]
-        public string FActionGID { get; set; }
+        public string FActionGId { get; set; }
 
         [JsonProperty("fWMWorkPackageGID")]
-        public string FWMWorkPackageGID { get; set; }
+        public string FWMWorkPackageGId { get; set; }
 
         [JsonProperty("fTerritoryGID")]
-        public string FTerritoryGID { get; set; }
+        public string FTerritoryGId { get; set; }
 
         [JsonProperty("fRLSNodeGID")]
-        public string FRLSNodeGID { get; set; }
+        public string FRLSNodeGId { get; set; }
 
         [JsonProperty("ns_Caption")]
         public string NsCaption { get; set; }
 
         [JsonProperty("ns_fParentTaskGID")]
-        public string NsFParentTaskGID { get; set; }
+        public string NsFParentTaskGId { get; set; }
 
         [JsonProperty("ns_TimerSeconds")]
         public int NsTimerSeconds { get; set; }
 
         [JsonProperty("ns_TemplateTaskGID")]
-        public string NsTemplateTaskGID { get; set; }
+        public string NsTemplateTaskGId { get; set; }
 
         [JsonProperty("ns_fResponseValueGID")]
-        public string NsFResponseValueGID { get; set; }
+        public string NsFResponseValueGId { get; set; }
 
         [JsonProperty("ns_RecurrentData")]
         public string NsRecurrentData { get; set; }
 
         [JsonProperty("fRLSTreeGID")]
-        public string FRLSTreeGID { get; set; }
+        public string FRLSTreeGId { get; set; }
 
         [JsonProperty("fPrevRLSNodeGID")]
-        public string FPrevRLSNodeGID { get; set; }
-        public string GID { get; set; }
+        public string FPrevRLSNodeGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -15771,29 +16017,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RegistrationDate { get; set; }
 
         [JsonProperty("fActionTypeGID")]
-        public string FActionTypeGID { get; set; }
+        public string FActionTypeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
 
         [JsonProperty("fStorageLocationGID")]
-        public string FStorageLocationGID { get; set; }
+        public string FStorageLocationGId { get; set; }
 
         [JsonProperty("fTaskGID")]
-        public string FTaskGID { get; set; }
+        public string FTaskGId { get; set; }
 
         [JsonProperty("fStepCode")]
         public string FStepCode { get; set; }
         public double QtyPackMU { get; set; }
 
         [JsonProperty("fDeviceGID")]
-        public string FDeviceGID { get; set; }
+        public string FDeviceGId { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public EntersoftWebApi2ODSModelsESWMTransportActionObjBalancePostingType BalancePosting { get; set; }
         public string StringField1 { get; set; }
         public string StringField2 { get; set; }
@@ -15802,22 +16048,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string StringField5 { get; set; }
 
         [JsonProperty("fFromStorageLocationGID")]
-        public string FFromStorageLocationGID { get; set; }
+        public string FFromStorageLocationGId { get; set; }
 
         [JsonProperty("fFromWarehouseGID")]
-        public string FFromWarehouseGID { get; set; }
+        public string FFromWarehouseGId { get; set; }
 
         [JsonProperty("fFromSiteGID")]
-        public string FFromSiteGID { get; set; }
+        public string FFromSiteGId { get; set; }
 
         [JsonProperty("fToStorageLocationGID")]
-        public string FToStorageLocationGID { get; set; }
+        public string FToStorageLocationGId { get; set; }
 
         [JsonProperty("fToWarehouseGID")]
-        public string FToWarehouseGID { get; set; }
+        public string FToWarehouseGId { get; set; }
 
         [JsonProperty("fToSiteGID")]
-        public string FToSiteGID { get; set; }
+        public string FToSiteGId { get; set; }
 
         [JsonProperty("fFromReservationReasonCode")]
         public string FFromReservationReasonCode { get; set; }
@@ -15832,31 +16078,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FToDispositionReasonCode { get; set; }
 
         [JsonProperty("fSelectedDepositorGID")]
-        public string FSelectedDepositorGID { get; set; }
+        public string FSelectedDepositorGId { get; set; }
         public string SelectedDepositorCode { get; set; }
 
         [JsonProperty("fSelectedTradeAccountGID")]
-        public string FSelectedTradeAccountGID { get; set; }
+        public string FSelectedTradeAccountGId { get; set; }
         public string SelectedTradeAccountCode { get; set; }
 
         [JsonProperty("fSelectedDocumentGID")]
-        public string FSelectedDocumentGID { get; set; }
+        public string FSelectedDocumentGId { get; set; }
         public string SelectedDocumentCode { get; set; }
 
         [JsonProperty("fSelectedContainerTypeGID")]
-        public string FSelectedContainerTypeGID { get; set; }
+        public string FSelectedContainerTypeGId { get; set; }
 
         [JsonProperty("fSelectedPackageContainerTypeGID")]
-        public string FSelectedPackageContainerTypeGID { get; set; }
+        public string FSelectedPackageContainerTypeGId { get; set; }
 
         [JsonProperty("fSelectedPalletContainerTypeGID")]
-        public string FSelectedPalletContainerTypeGID { get; set; }
+        public string FSelectedPalletContainerTypeGId { get; set; }
 
         [JsonProperty("fSelectedMasterPackageContainerTypeGID")]
-        public string FSelectedMasterPackageContainerTypeGID { get; set; }
+        public string FSelectedMasterPackageContainerTypeGId { get; set; }
 
         [JsonProperty("fSelectedTransportContainerTypeGID")]
-        public string FSelectedTransportContainerTypeGID { get; set; }
+        public string FSelectedTransportContainerTypeGId { get; set; }
         public string SelectedContainerTypeCode { get; set; }
         public string SelectedPackageContainerTypeCode { get; set; }
         public string SelectedPalletContainerTypeCode { get; set; }
@@ -15864,87 +16110,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string SelectedTransportContainerTypeCode { get; set; }
 
         [JsonProperty("fSelectedContainerGID")]
-        public string FSelectedContainerGID { get; set; }
+        public string FSelectedContainerGId { get; set; }
         public string SelectedContainerCode { get; set; }
 
         [JsonProperty("fSelectedPackageContainerGID")]
-        public string FSelectedPackageContainerGID { get; set; }
+        public string FSelectedPackageContainerGId { get; set; }
         public string SelectedPackageContainerCode { get; set; }
 
         [JsonProperty("fSelectedPalletContainerGID")]
-        public string FSelectedPalletContainerGID { get; set; }
+        public string FSelectedPalletContainerGId { get; set; }
         public string SelectedPalletContainerCode { get; set; }
 
         [JsonProperty("fSelectedMasterPackageContainerGID")]
-        public string FSelectedMasterPackageContainerGID { get; set; }
+        public string FSelectedMasterPackageContainerGId { get; set; }
         public string SelectedMasterPackageContainerCode { get; set; }
 
         [JsonProperty("fSelectedTransportContainerGID")]
-        public string FSelectedTransportContainerGID { get; set; }
+        public string FSelectedTransportContainerGId { get; set; }
         public string SelectedTransportContainerCode { get; set; }
 
         [JsonProperty("fSelectedStorageLocationGID")]
-        public string FSelectedStorageLocationGID { get; set; }
+        public string FSelectedStorageLocationGId { get; set; }
         public string SelectedStorageLocationCode { get; set; }
 
         [JsonProperty("fSelectedItemGID")]
-        public string FSelectedItemGID { get; set; }
+        public string FSelectedItemGId { get; set; }
         public string SelectedItemCode { get; set; }
 
         [JsonProperty("fSelectedDeliveryPersonGID")]
-        public string FSelectedDeliveryPersonGID { get; set; }
+        public string FSelectedDeliveryPersonGId { get; set; }
         public string SelectedDeliveryPersonCode { get; set; }
 
         [JsonProperty("fSelectedEntityGID")]
-        public string FSelectedEntityGID { get; set; }
+        public string FSelectedEntityGId { get; set; }
         public string SelectedEntityCode { get; set; }
 
         [JsonProperty("fInputItemGID")]
-        public string FInputItemGID { get; set; }
+        public string FInputItemGId { get; set; }
         public string InputItemCode { get; set; }
         public double InputQuantity { get; set; }
 
         [JsonProperty("fInputContainerGID")]
-        public string FInputContainerGID { get; set; }
+        public string FInputContainerGId { get; set; }
         public string InputContainerCode { get; set; }
 
         [JsonProperty("fInputPackageContainerGID")]
-        public string FInputPackageContainerGID { get; set; }
+        public string FInputPackageContainerGId { get; set; }
         public string InputPackageContainerCode { get; set; }
 
         [JsonProperty("fInputPalletContainerGID")]
-        public string FInputPalletContainerGID { get; set; }
+        public string FInputPalletContainerGId { get; set; }
         public string InputPalletContainerCode { get; set; }
 
         [JsonProperty("fInputMasterPackageContainerGID")]
-        public string FInputMasterPackageContainerGID { get; set; }
+        public string FInputMasterPackageContainerGId { get; set; }
         public string InputMasterPackageContainerCode { get; set; }
 
         [JsonProperty("fInputTransportContainerGID")]
-        public string FInputTransportContainerGID { get; set; }
+        public string FInputTransportContainerGId { get; set; }
         public string InputTransportContainerCode { get; set; }
 
         [JsonProperty("fInputStorageLocationGID")]
-        public string FInputStorageLocationGID { get; set; }
+        public string FInputStorageLocationGId { get; set; }
         public string InputStorageLocationCode { get; set; }
 
         [JsonProperty("fSelectedDeliverySiteGID")]
-        public string FSelectedDeliverySiteGID { get; set; }
+        public string FSelectedDeliverySiteGId { get; set; }
         public string SelectedDeliverySiteCode { get; set; }
         public string SelectedDate { get; set; }
 
         [JsonProperty("fSelectedRequestItemGID")]
-        public string FSelectedRequestItemGID { get; set; }
+        public string FSelectedRequestItemGId { get; set; }
 
         [JsonProperty("fSelectedItemContainmentGID")]
-        public string FSelectedItemContainmentGID { get; set; }
+        public string FSelectedItemContainmentGId { get; set; }
 
         [JsonProperty("fSelectedItemContainerTypeGID")]
-        public string FSelectedItemContainerTypeGID { get; set; }
+        public string FSelectedItemContainerTypeGId { get; set; }
         public string SelectedItemContainerTypeCode { get; set; }
 
         [JsonProperty("fSelectedItemMUGID")]
-        public string FSelectedItemMUGID { get; set; }
+        public string FSelectedItemMUGId { get; set; }
         public string SelectedItemMUCode { get; set; }
         public int SelectedContainmentType { get; set; }
         public double InputRelationToBaseMU { get; set; }
@@ -15960,10 +16206,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string SelectedItemContainerCode { get; set; }
 
         [JsonProperty("fSelectedItemContainerGID")]
-        public string FSelectedItemContainerGID { get; set; }
+        public string FSelectedItemContainerGId { get; set; }
 
         [JsonProperty("fInputItemContainerGID")]
-        public string FInputItemContainerGID { get; set; }
+        public string FInputItemContainerGId { get; set; }
         public string InputItemContainerCode { get; set; }
         public string InputPackageComment { get; set; }
         public string InputMasterPackageComment { get; set; }
@@ -15974,14 +16220,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string SelectedContainerStorageLocationCode { get; set; }
 
         [JsonProperty("fSelectedContainerStorageLocationGID")]
-        public string FSelectedContainerStorageLocationGID { get; set; }
+        public string FSelectedContainerStorageLocationGId { get; set; }
         public string DerivedShipmentCode { get; set; }
         public string SpareField1 { get; set; }
         public string SpareField2 { get; set; }
 
         [JsonProperty("fSelectedSortingContainerGID")]
-        public string FSelectedSortingContainerGID { get; set; }
-        public string GID { get; set; }
+        public string FSelectedSortingContainerGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16008,31 +16256,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RegistrationDate { get; set; }
 
         [JsonProperty("fActionTypeGID")]
-        public string FActionTypeGID { get; set; }
+        public string FActionTypeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
 
         [JsonProperty("fStorageLocationGID")]
-        public string FStorageLocationGID { get; set; }
+        public string FStorageLocationGId { get; set; }
 
         [JsonProperty("fTaskGID")]
-        public string FTaskGID { get; set; }
+        public string FTaskGId { get; set; }
 
         [JsonProperty("fStepCode")]
         public string FStepCode { get; set; }
         public double QtyPackMU { get; set; }
 
         [JsonProperty("fDeviceGID")]
-        public string FDeviceGID { get; set; }
+        public string FDeviceGId { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public int MUInvgType { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16052,13 +16302,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string DeliveryDueDate { get; set; }
 
         [JsonProperty("fTransporterGID")]
-        public string FTransporterGID { get; set; }
+        public string FTransporterGId { get; set; }
 
         [JsonProperty("fConveyanceCode")]
         public string FConveyanceCode { get; set; }
 
         [JsonProperty("fDriverGID")]
-        public string FDriverGID { get; set; }
+        public string FDriverGId { get; set; }
 
         [JsonProperty("fRouteCode")]
         public string FRouteCode { get; set; }
@@ -16081,9 +16331,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string ShippingDate { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
         public string GoogleMapsRouteURL { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16109,12 +16361,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESWMWorkPackageObj
     {
         [JsonProperty("fWorkPackageTypeGID")]
-        public string FWorkPackageTypeGID { get; set; }
+        public string FWorkPackageTypeGId { get; set; }
 
         [JsonProperty("fTaskGID")]
-        public string FTaskGID { get; set; }
+        public string FTaskGId { get; set; }
         public string Barcode { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16134,31 +16388,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RegistrationDate { get; set; }
 
         [JsonProperty("fRequestTypeGID")]
-        public string FRequestTypeGID { get; set; }
+        public string FRequestTypeGId { get; set; }
 
         [JsonProperty("fSiteGID")]
-        public string FSiteGID { get; set; }
+        public string FSiteGId { get; set; }
 
         [JsonProperty("fWarehouseGID")]
-        public string FWarehouseGID { get; set; }
+        public string FWarehouseGId { get; set; }
 
         [JsonProperty("fStorageLocationGID")]
-        public string FStorageLocationGID { get; set; }
+        public string FStorageLocationGId { get; set; }
 
         [JsonProperty("fTaskGID")]
-        public string FTaskGID { get; set; }
+        public string FTaskGId { get; set; }
 
         [JsonProperty("fStepCode")]
         public string FStepCode { get; set; }
 
         [JsonProperty("fDeviceGID")]
-        public string FDeviceGID { get; set; }
+        public string FDeviceGId { get; set; }
         public string Barcode { get; set; }
         public bool Printed { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
-        public string GID { get; set; }
+        public string FWorkPackageGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16176,21 +16432,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESWMContainerObj
     {
         [JsonProperty("fContainerTypeGID")]
-        public string FContainerTypeGID { get; set; }
+        public string FContainerTypeGId { get; set; }
 
         [JsonProperty("fSerialNumberGID")]
-        public string FSerialNumberGID { get; set; }
+        public string FSerialNumberGId { get; set; }
 
         [JsonProperty("fSortimentGID")]
-        public string FSortimentGID { get; set; }
+        public string FSortimentGId { get; set; }
 
         [JsonProperty("fContainerControlPolicyGID")]
-        public string FContainerControlPolicyGID { get; set; }
+        public string FContainerControlPolicyGId { get; set; }
         public bool Printed { get; set; }
         public string Comment { get; set; }
         public bool UseInStockAllocation { get; set; }
         public bool PhisicalDimensionsMonitoring { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16214,23 +16472,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FRequestTypesCode { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fParentRequestGID")]
-        public string FParentRequestGID { get; set; }
+        public string FParentRequestGId { get; set; }
         public string DateIssued { get; set; }
         public string DeadLine { get; set; }
         public string DatePlanned { get; set; }
         public string DeliveryDate { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fProjectPersonGID")]
-        public string FProjectPersonGID { get; set; }
+        public string FProjectPersonGId { get; set; }
 
         [JsonProperty("fWorkPackageGID")]
-        public string FWorkPackageGID { get; set; }
+        public string FWorkPackageGId { get; set; }
         public double BudgetedEffort { get; set; }
         public double BudgetedCost { get; set; }
 
@@ -16275,13 +16533,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool Flag5 { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
         public bool IsComplain { get; set; }
         public string StringField6 { get; set; }
         public string StringField7 { get; set; }
@@ -16321,7 +16579,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
         [JsonProperty("___RTF_CTX___")]
         public string RTFCTX { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16343,8 +16603,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string DateModified { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
-        public string GID { get; set; }
+        public string FProjectGId { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }
@@ -16362,10 +16624,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftWebApi2ODSModelsESWPActualTaskObj
     {
         [JsonProperty("fTaskRequestGID")]
-        public string FTaskRequestGID { get; set; }
+        public string FTaskRequestGId { get; set; }
 
         [JsonProperty("fPersonGID")]
-        public string FPersonGID { get; set; }
+        public string FPersonGId { get; set; }
 
         [JsonProperty("fActivityTypeCode")]
         public string FActivityTypeCode { get; set; }
@@ -16385,20 +16647,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FExpenseType2Code { get; set; }
         public double ExpenseAmount2 { get; set; }
         public string ExpenseComment { get; set; }
-        public string WorkNoteID { get; set; }
+
+        [JsonProperty("WorkNoteID")]
+        public string WorkNoteId { get; set; }
 
         [JsonProperty("fAssignToGID")]
-        public string FAssignToGID { get; set; }
+        public string FAssignToGId { get; set; }
         public string Comments { get; set; }
 
         [JsonProperty("fProjectGID")]
-        public string FProjectGID { get; set; }
+        public string FProjectGId { get; set; }
 
         [JsonProperty("fTradeAccountGID")]
-        public string FTradeAccountGID { get; set; }
+        public string FTradeAccountGId { get; set; }
 
         [JsonProperty("fContactPersonGID")]
-        public string FContactPersonGID { get; set; }
+        public string FContactPersonGId { get; set; }
 
         [JsonProperty("fTableField1Code")]
         public string FTableField1Code { get; set; }
@@ -16445,20 +16709,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string FTaskRequestTableField3 { get; set; }
 
         [JsonProperty("fPersonCodeGID")]
-        public string FPersonCodeGID { get; set; }
+        public string FPersonCodeGId { get; set; }
         public string Comments2 { get; set; }
         public string EntryTime { get; set; }
 
         [JsonProperty("fItemGID")]
-        public string FItemGID { get; set; }
+        public string FItemGId { get; set; }
 
         [JsonProperty("fSerialNumberGID")]
-        public string FSerialNumberGID { get; set; }
+        public string FSerialNumberGId { get; set; }
         public string TimerColumn { get; set; }
 
         [JsonProperty("___RTF_CTX___")]
         public string RTFCTX { get; set; }
-        public string GID { get; set; }
+
+        [JsonProperty("GID")]
+        public string GId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public string AlternativeDescription { get; set; }

@@ -1,9 +1,11 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecontacts")]
         public IBodyWorkflowAction<PeopleApiListContactsV4Response, ApiConnectionActionConfiguration> PeopleApiListContacts()
         {
-            var apiCallPath = "/v4/people/v1/me/connections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PeopleApiListContactsV4Response>(callPayload);
+            return new DeferredBodyAction<PeopleApiListContactsV4Response, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v4/people/v1/me/connections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PeopleApiListContactsV4Response>(callPayload);
+            });
         }
     }
 
@@ -24,10 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
     {
         public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedV3Response, ApiConnectionTriggerConfiguration> PeopleApiOnContactUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v3/people/trigger/onContactUpdated";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PeopleApiOnContactUpdatedV3Response>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<PeopleApiOnContactUpdatedV3Response, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/people/trigger/onContactUpdated";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<PeopleApiOnContactUpdatedV3Response>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

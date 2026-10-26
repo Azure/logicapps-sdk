@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "restcountriesip")]
         public IBodyWorkflowAction<ALLResponseItem[], ApiConnectionActionConfiguration> ALL()
         {
-            var apiCallPath = "/all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ALLResponseItem[]>(callPayload);
+            return new DeferredBodyAction<ALLResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ALLResponseItem[]>(callPayload);
+            });
         }
     }
 

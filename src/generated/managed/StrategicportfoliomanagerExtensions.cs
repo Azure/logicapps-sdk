@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 {
     using System.Linq.Expressions;
@@ -11,6 +12,159 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class StrategicportfoliomanagerActions([ConnectionName] string connectionId)
     {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> FinancialEntitiesExecuteStageValidation(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
+            return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/ExecuteStageValidation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                if (__workflow_stageId != null)
+                    callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
+                return new ApiConnectionAction<bool>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesExecuteStageTransition(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/ExecuteStageTransition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                if (__workflow_stageId != null)
+                    callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<EntityHistoryEntry[], ApiConnectionActionConfiguration> FinancialEntitiesGetEntityHistoryEntries(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            return new DeferredBodyAction<EntityHistoryEntry[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/GetEntityHistoryEntries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                return new ApiConnectionAction<EntityHistoryEntry[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesLogEntityHistoryEntry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> activityType, Expression<Func<string>> activityTypeIcon, Expression<Func<string>> activityDetails, Expression<Func<string>> initiator)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_activityType = WorkflowExpression.Compile(activityType, nameof(activityType), required: true);
+            var __workflow_activityTypeIcon = WorkflowExpression.Compile(activityTypeIcon, nameof(activityTypeIcon), required: true);
+            var __workflow_activityDetails = WorkflowExpression.Compile(activityDetails, nameof(activityDetails), required: true);
+            var __workflow_initiator = WorkflowExpression.Compile(initiator, nameof(initiator), required: true);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/LogEntityHistoryEntry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["activityType"] = ExpressionConverter.Convert(__workflow_activityType);
+                callPayload.Queries["activityTypeIcon"] = ExpressionConverter.Convert(__workflow_activityTypeIcon);
+                callPayload.Queries["activityDetails"] = ExpressionConverter.Convert(__workflow_activityDetails);
+                callPayload.Queries["initiator"] = ExpressionConverter.Convert(__workflow_initiator);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<LifecycleApprovalRequest[], ApiConnectionActionConfiguration> EntityLifecycleGetLifecycleApprovalRequestsByUser(Expression<Func<string>> siteUrl, Expression<Func<string>> approver, Expression<Func<int>> status = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_approver = WorkflowExpression.Compile(approver, nameof(approver), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            return new DeferredBodyAction<LifecycleApprovalRequest[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestsByUser";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["approver"] = ExpressionConverter.Convert(__workflow_approver);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                return new ApiConnectionAction<LifecycleApprovalRequest[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<LifecycleApprovalRequest[], ApiConnectionActionConfiguration> EntityLifecycleGetLifecycleApprovalRequestsByEntity(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<int>> status = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            return new DeferredBodyAction<LifecycleApprovalRequest[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestsByEntity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                return new ApiConnectionAction<LifecycleApprovalRequest[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<LifecycleApprovalRequest, ApiConnectionActionConfiguration> EntityLifecycleGetLifecycleApprovalRequestDetails(Expression<Func<string>> siteUrl, Expression<Func<string>> requestInstanceId)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_requestInstanceId = WorkflowExpression.Compile(requestInstanceId, nameof(requestInstanceId), required: true);
+            return new DeferredBodyAction<LifecycleApprovalRequest, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestDetails";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["requestInstanceId"] = ExpressionConverter.Convert(__workflow_requestInstanceId);
+                return new ApiConnectionAction<LifecycleApprovalRequest>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> EntityLifecycleSetLifecycleApprovalResponse(Expression<Func<string>> siteUrl, Expression<Func<string>> requestUid, Expression<Func<int>> response, Expression<Func<string>> comment = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_requestUid = WorkflowExpression.Compile(requestUid, nameof(requestUid), required: true);
+            var __workflow_response = WorkflowExpression.Compile(response, nameof(response), required: true);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/EntityLifecycle/SetLifecycleApprovalResponse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["requestUid"] = ExpressionConverter.Convert(__workflow_requestUid);
+                callPayload.Queries["response"] = ExpressionConverter.Convert(__workflow_response);
+                if (__workflow_comment != null)
+                    callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[], ApiConnectionActionConfiguration> EntityTypesGetEntityTypes(Expression<Func<string>> siteUrl)
         {
@@ -40,6 +194,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["entityTypeUid"] = ExpressionConverter.Convert(__workflow_entityTypeUid);
                 callPayload.Queries["entityName"] = ExpressionConverter.Convert(__workflow_entityName);
                 return new ApiConnectionAction<CallResultWithData>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesDeleteEntity(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/DeleteEntity";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                return new ApiConnectionAction(callPayload);
             });
         }
 
@@ -191,21 +361,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> FinancialEntitiesExecuteStageValidation(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesSetEntityFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> fieldIdentifier, Expression<Func<string>> value)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
-            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
-            return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
+            var __workflow_fieldIdentifier = WorkflowExpression.Compile(fieldIdentifier, nameof(fieldIdentifier), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/FinancialEntities/ExecuteStageValidation";
-                var apiCallHttpMethod = "get";
+                var apiCallPath = "/FinancialEntities/SetEntityFieldValue";
+                var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
-                if (__workflow_stageId != null)
-                    callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
-                return new ApiConnectionAction<bool>(callPayload);
+                callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(__workflow_fieldIdentifier);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
+                return new ApiConnectionAction(callPayload);
             });
         }
 
@@ -226,6 +397,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(__workflow_fieldIdentifier);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<CallResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesSetEntityFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/SetEntityFieldsValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fieldValues);
+                return new ApiConnectionAction(callPayload);
             });
         }
 
@@ -362,41 +551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesExecuteStageTransition(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
-        {
-            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
-            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/FinancialEntities/ExecuteStageTransition";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
-                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
-                if (__workflow_stageId != null)
-                    callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
-                return new ApiConnectionAction(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<EntityHistoryEntry[], ApiConnectionActionConfiguration> FinancialEntitiesGetEntityHistoryEntries(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
-        {
-            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
-            return new DeferredBodyAction<EntityHistoryEntry[], ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/FinancialEntities/GetEntityHistoryEntries";
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
-                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
-                return new ApiConnectionAction<EntityHistoryEntry[]>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResult, ApiConnectionActionConfiguration> FinancialEntitiesCreateEntityRelationship(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> relatedEntityId)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
@@ -411,30 +565,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Queries["relatedEntityId"] = ExpressionConverter.Convert(__workflow_relatedEntityId);
                 return new ApiConnectionAction<CallResult>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FinancialEntitiesLogEntityHistoryEntry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> activityType, Expression<Func<string>> activityTypeIcon, Expression<Func<string>> activityDetails, Expression<Func<string>> initiator)
-        {
-            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
-            var __workflow_activityType = WorkflowExpression.Compile(activityType, nameof(activityType), required: true);
-            var __workflow_activityTypeIcon = WorkflowExpression.Compile(activityTypeIcon, nameof(activityTypeIcon), required: true);
-            var __workflow_activityDetails = WorkflowExpression.Compile(activityDetails, nameof(activityDetails), required: true);
-            var __workflow_initiator = WorkflowExpression.Compile(initiator, nameof(initiator), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/FinancialEntities/LogEntityHistoryEntry";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
-                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
-                callPayload.Queries["activityType"] = ExpressionConverter.Convert(__workflow_activityType);
-                callPayload.Queries["activityTypeIcon"] = ExpressionConverter.Convert(__workflow_activityTypeIcon);
-                callPayload.Queries["activityDetails"] = ExpressionConverter.Convert(__workflow_activityDetails);
-                callPayload.Queries["initiator"] = ExpressionConverter.Convert(__workflow_initiator);
-                return new ApiConnectionAction(callPayload);
             });
         }
 
@@ -465,6 +595,185 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["optionSetUid"] = ExpressionConverter.Convert(__workflow_optionSetUid);
                 return new ApiConnectionAction<Item[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<Item[], ApiConnectionActionConfiguration> MilestonesGetMilestones(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            return new DeferredBodyAction<Item[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/GetMilestones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                return new ApiConnectionAction<Item[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MilestonesCreateMilestone(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> name, Expression<Func<string>> plannedDate, Expression<Func<string>> description = null, Expression<Func<bool>> showInRoadmaps = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_plannedDate = WorkflowExpression.Compile(plannedDate, nameof(plannedDate), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_showInRoadmaps = WorkflowExpression.Compile(showInRoadmaps, nameof(showInRoadmaps), required: false);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/CreateMilestone";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Queries["plannedDate"] = ExpressionConverter.Convert(__workflow_plannedDate);
+                if (__workflow_description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_showInRoadmaps != null)
+                    callPayload.Queries["showInRoadmaps"] = ExpressionConverter.Convert(__workflow_showInRoadmaps);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<EntityMilestone, ApiConnectionActionConfiguration> MilestonesGetMilestone(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_milestoneId = WorkflowExpression.Compile(milestoneId, nameof(milestoneId), required: true);
+            return new DeferredBodyAction<EntityMilestone, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/GetMilestone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["milestoneId"] = ExpressionConverter.Convert(__workflow_milestoneId);
+                return new ApiConnectionAction<EntityMilestone>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> MilestonesUpdateMilestone(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId, Expression<Func<string>> name = null, Expression<Func<string>> description = null, Expression<Func<string>> plannedDate = null, Expression<Func<string>> actualDate = null, Expression<Func<string>> transitionalActualDate = null, Expression<Func<bool>> showInRoadmaps = null, Expression<Func<string>> status = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_milestoneId = WorkflowExpression.Compile(milestoneId, nameof(milestoneId), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_plannedDate = WorkflowExpression.Compile(plannedDate, nameof(plannedDate), required: false);
+            var __workflow_actualDate = WorkflowExpression.Compile(actualDate, nameof(actualDate), required: false);
+            var __workflow_transitionalActualDate = WorkflowExpression.Compile(transitionalActualDate, nameof(transitionalActualDate), required: false);
+            var __workflow_showInRoadmaps = WorkflowExpression.Compile(showInRoadmaps, nameof(showInRoadmaps), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/UpdateMilestone";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["milestoneId"] = ExpressionConverter.Convert(__workflow_milestoneId);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_plannedDate != null)
+                    callPayload.Queries["plannedDate"] = ExpressionConverter.Convert(__workflow_plannedDate);
+                if (__workflow_actualDate != null)
+                    callPayload.Queries["actualDate"] = ExpressionConverter.Convert(__workflow_actualDate);
+                if (__workflow_transitionalActualDate != null)
+                    callPayload.Queries["transitionalActualDate"] = ExpressionConverter.Convert(__workflow_transitionalActualDate);
+                if (__workflow_showInRoadmaps != null)
+                    callPayload.Queries["showInRoadmaps"] = ExpressionConverter.Convert(__workflow_showInRoadmaps);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<FieldValue[], ApiConnectionActionConfiguration> MilestonesGetMilestoneFieldValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_milestoneId = WorkflowExpression.Compile(milestoneId, nameof(milestoneId), required: true);
+            return new DeferredBodyAction<FieldValue[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/GetMilestoneFieldValues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["milestoneId"] = ExpressionConverter.Convert(__workflow_milestoneId);
+                return new ApiConnectionAction<FieldValue[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<FieldValue, ApiConnectionActionConfiguration> MilestonesGetMilestoneFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId, Expression<Func<string>> fieldName)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_milestoneId = WorkflowExpression.Compile(milestoneId, nameof(milestoneId), required: true);
+            var __workflow_fieldName = WorkflowExpression.Compile(fieldName, nameof(fieldName), required: true);
+            return new DeferredBodyAction<FieldValue, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/GetMilestoneFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["milestoneId"] = ExpressionConverter.Convert(__workflow_milestoneId);
+                callPayload.Queries["fieldName"] = ExpressionConverter.Convert(__workflow_fieldName);
+                return new ApiConnectionAction<FieldValue>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> MilestonesSetMilestoneFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId, Expression<Func<string>> fieldName, Expression<Func<string>> value)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_milestoneId = WorkflowExpression.Compile(milestoneId, nameof(milestoneId), required: true);
+            var __workflow_fieldName = WorkflowExpression.Compile(fieldName, nameof(fieldName), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/SetMilestoneFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["milestoneId"] = ExpressionConverter.Convert(__workflow_milestoneId);
+                callPayload.Queries["fieldName"] = ExpressionConverter.Convert(__workflow_fieldName);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> MilestonesSetMilestoneFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> milestoneId, Expression<Func<MilestoneFieldValuePair[]>> fieldValues = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_milestoneId = WorkflowExpression.Compile(milestoneId, nameof(milestoneId), required: true);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Milestones/SetMilestoneFieldsValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
+                callPayload.Queries["milestoneId"] = ExpressionConverter.Convert(__workflow_milestoneId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fieldValues);
+                return new ApiConnectionAction(callPayload);
             });
         }
     }
@@ -930,6 +1239,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
+
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        {
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/Events/AddApprovalRequestCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
+        {
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/Events/AddApprovalRequestChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(__workflow_eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
+        }
+    }
+
+    public class EntityHistoryEntry
+    {
+        public string Id { get; set; }
+        public string EntityId { get; set; }
+        public string Date { get; set; }
+        public string DateString { get; set; }
+        public string Claim { get; set; }
+        public string Initiator { get; set; }
+        public string ActivityType { get; set; }
+        public string ActivityTypeIcon { get; set; }
+        public string ActivityDetails { get; set; }
+    }
+
+    public class LifecycleApprovalRequest
+    {
+        public string Id { get; set; }
+        public string RequestId { get; set; }
+        public string EntityId { get; set; }
+        public string EntityName { get; set; }
+        public string RequestName { get; set; }
+        public string ApproverName { get; set; }
+        public string ApproverEmail { get; set; }
+        public string StageId { get; set; }
+        public string StageName { get; set; }
+        public string Status { get; set; }
+        public string RequestedDate { get; set; }
+        public string CompletedDate { get; set; }
+        public string Comment { get; set; }
+        public string EntityTypeId { get; set; }
+        public string EntityTypeName { get; set; }
+        public string RequestedByName { get; set; }
+        public string RequestedByEmail { get; set; }
+        public string ResponseType { get; set; }
     }
 
     public class Item
@@ -977,6 +1367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         public string FieldName { get; set; }
         public string FieldUid { get; set; }
         public JToken Value { get; set; }
+        public JToken NormalizedValue { get; set; }
     }
 
     public class CallResult
@@ -1016,17 +1407,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         public string Name { get; set; }
     }
 
-    public class EntityHistoryEntry
+    public class EntityMilestone
     {
-        public string Id { get; set; }
-        public string EntityId { get; set; }
-        public string Date { get; set; }
-        public string DateString { get; set; }
-        public string Claim { get; set; }
-        public string Initiator { get; set; }
-        public string ActivityType { get; set; }
-        public string ActivityTypeIcon { get; set; }
-        public string ActivityDetails { get; set; }
+        public string MilestoneId { get; set; }
+        public string ActualDate { get; set; }
+        public string Description { get; set; }
+        public string Name { get; set; }
+        public string PlannedDate { get; set; }
+        public int Status { get; set; }
+        public string TransitionalActualDate { get; set; }
+    }
+
+    public class MilestoneFieldValuePair
+    {
+        public string Uid { get; set; }
+        public string Value { get; set; }
     }
 
     public class EventCreationResponse

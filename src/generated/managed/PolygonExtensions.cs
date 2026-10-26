@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
 {
     using System.Linq.Expressions;
@@ -569,19 +570,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         public string Ticker { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum frequencyInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "12")]
-        _12
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _12 = 12
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

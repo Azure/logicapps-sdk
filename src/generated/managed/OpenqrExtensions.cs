@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 {
     using System.Linq.Expressions;
@@ -37,10 +38,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<FoldersGetResponse, ApiConnectionActionConfiguration> FoldersGet()
         {
-            var apiCallPath = "/folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FoldersGetResponse>(callPayload);
+            return new DeferredBodyAction<FoldersGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FoldersGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
@@ -68,10 +72,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<QRsGetResponse, ApiConnectionActionConfiguration> QRsGet()
         {
-            var apiCallPath = "/qr-codes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<QRsGetResponse>(callPayload);
+            return new DeferredBodyAction<QRsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/qr-codes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<QRsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
@@ -189,22 +196,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
         public IBodyWorkflowAction<FilesGetResponse, ApiConnectionActionConfiguration> FilesGet()
         {
-            var apiCallPath = "/files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilesGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FilePostResponse, ApiConnectionActionConfiguration> File(Expression<Func<object>> file)
-        {
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<FilePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FilesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/files";
-                var apiCallHttpMethod = "post";
+                var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FilePostResponse>(callPayload);
+                return new ApiConnectionAction<FilesGetResponse>(callPayload);
             });
         }
     }
@@ -582,30 +579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
         [JsonProperty("prev_cursor")]
         public string PrevCursor { get; set; }
-    }
-
-    public class FilePostResponse
-    {
-        [JsonProperty("data")]
-        public FilePostResponseDataType Data { get; set; }
-    }
-
-    public class FilePostResponseDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("mime_type")]
-        public string MimeType { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("public")]
-        public bool Public { get; set; }
     }
 }
 

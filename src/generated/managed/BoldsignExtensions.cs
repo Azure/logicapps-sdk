@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 {
     using System.Linq.Expressions;
@@ -12,11 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     public class BoldsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<SendDocumentFromTemplateResponse, ApiConnectionActionConfiguration> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> title, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
+        public IBodyWorkflowAction<SendDocumentFromTemplateResponse, ApiConnectionActionConfiguration> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_isSandbox = WorkflowExpression.Compile(isSandbox, nameof(isSandbox), required: true);
-            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
             var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: false);
@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["templateId"] = ExpressionConverter.Convert(__workflow_templateId);
                 callPayload.Queries["isSandbox"] = ExpressionConverter.Convert(__workflow_isSandbox);
-                callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
                 if (__workflow_message != null)
                     callPayload.Queries["message"] = ExpressionConverter.Convert(__workflow_message);
                 if (__workflow_cc != null)

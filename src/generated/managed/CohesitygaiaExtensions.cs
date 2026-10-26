@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         public IBodyWorkflowAction<GetLlmListResponse, ApiConnectionActionConfiguration> GetLlmList()
         {
-            var apiCallPath = "/mcm/gaia/llms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetLlmListResponse>(callPayload);
+            return new DeferredBodyAction<GetLlmListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/mcm/gaia/llms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetLlmListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         public IBodyWorkflowAction<GetDatasetsResponse, ApiConnectionActionConfiguration> GetDatasets()
         {
-            var apiCallPath = "/mcm/gaia/datasets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDatasetsResponse>(callPayload);
+            return new DeferredBodyAction<GetDatasetsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/mcm/gaia/datasets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDatasetsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]

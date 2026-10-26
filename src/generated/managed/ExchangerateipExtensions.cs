@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
 {
     using System.Linq.Expressions;
@@ -41,10 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<ListCurrenciesResponse, ApiConnectionActionConfiguration> ListCurrencies()
         {
-            var apiCallPath = "/codes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListCurrenciesResponse>(callPayload);
+            return new DeferredBodyAction<ListCurrenciesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/codes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListCurrenciesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]

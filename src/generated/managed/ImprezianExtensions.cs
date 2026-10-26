@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> CampaignGetValues()
         {
-            var apiCallPath = "/api/Campaign";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/Campaign";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -147,10 +151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ComLogGetValues()
         {
-            var apiCallPath = "/api/ComLog";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/ComLog";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -390,10 +397,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ContactGetValues()
         {
-            var apiCallPath = "/api/Contact";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/Contact";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -892,10 +902,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> FollowUpGetValues()
         {
-            var apiCallPath = "/api/FollowUp";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/FollowUp";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -1079,10 +1092,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ItemListGetValues()
         {
-            var apiCallPath = "/api/ItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/ItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -1210,10 +1226,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> LeadGetValues()
         {
-            var apiCallPath = "/api/Lead";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/Lead";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -1834,10 +1853,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ShippingGetValues()
         {
-            var apiCallPath = "/api/Shipping";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/Shipping";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -2049,10 +2071,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> SOGetValues()
         {
-            var apiCallPath = "/api/SO";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/SO";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -2411,10 +2436,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> WorkOrderGetValues()
         {
-            var apiCallPath = "/api/WorkOrder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/WorkOrder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
@@ -2761,47 +2789,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     {
         public IBodyWorkflowTrigger<NewSalesLeadResponseItem[], ApiConnectionTriggerConfiguration> NewSalesLead(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/new_lead";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewSalesLeadResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<NewSalesLeadResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/new_lead";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NewSalesLeadResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<NewMarketingCampaignResponseItem[], ApiConnectionTriggerConfiguration> NewMarketingCampaign(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/new_campaign";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<NewMarketingCampaignResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/new_campaign";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[], ApiConnectionTriggerConfiguration> NewMembersLeads(Expression<Func<int>> promotionID, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[], ApiConnectionTriggerConfiguration> NewMembersLeads(Expression<Func<int>> promotionId, FlowRecurrence recurrence = null)
         {
-            var __workflow_promotionID = WorkflowExpression.Compile(promotionID, nameof(promotionID), required: true);
+            var __workflow_promotionId = WorkflowExpression.Compile(promotionId, nameof(promotionId), required: true);
             return new DeferredBodyTrigger<NewMembersLeadsResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/api/new_members_leads";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["PromotionID"] = ExpressionConverter.Convert(__workflow_promotionID);
+                callPayload.Queries["PromotionID"] = ExpressionConverter.Convert(__workflow_promotionId);
                 return new ApiConnectionTrigger<NewMembersLeadsResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }
 
         public IBodyWorkflowTrigger<NewSalesOrderResponseItem[], ApiConnectionTriggerConfiguration> NewSalesOrder(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/new_orders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewSalesOrderResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<NewSalesOrderResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/new_orders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NewSalesOrderResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<NewProposalCreatedResponseItem[], ApiConnectionTriggerConfiguration> NewProposalCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/new_quotes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewProposalCreatedResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<NewProposalCreatedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/new_quotes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NewProposalCreatedResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[], ApiConnectionTriggerConfiguration> OrderStatusChanged(Expression<Func<string>> status, FlowRecurrence recurrence = null)
@@ -2819,58 +2859,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         public IBodyWorkflowTrigger<OrderInHistoryResponseItem[], ApiConnectionTriggerConfiguration> OrderInHistory(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/orders_final";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OrderInHistoryResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<OrderInHistoryResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/orders_final";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OrderInHistoryResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<OrderInProcessingResponseItem[], ApiConnectionTriggerConfiguration> OrderInProcessing(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/orders_processing";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OrderInProcessingResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<OrderInProcessingResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/orders_processing";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OrderInProcessingResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<OrderIsShippingResponseItem[], ApiConnectionTriggerConfiguration> OrderIsShipping(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/orders_shipping";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OrderIsShippingResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<OrderIsShippingResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/orders_shipping";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OrderIsShippingResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<ProposalNeedsApprovalResponseItem[], ApiConnectionTriggerConfiguration> ProposalNeedsApproval(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/quotes_approval";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ProposalNeedsApprovalResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ProposalNeedsApprovalResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/quotes_approval";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ProposalNeedsApprovalResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<WorkOrderClosedResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderClosed(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/wo_closed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WorkOrderClosedResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<WorkOrderClosedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/wo_closed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<WorkOrderClosedResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<WorkOrderCreatedResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/wo_opened";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WorkOrderCreatedResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<WorkOrderCreatedResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/wo_opened";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<WorkOrderCreatedResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<WorkOrderPastDueResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderPastDue(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/wo_pastdue";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WorkOrderPastDueResponseItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<WorkOrderPastDueResponseItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/api/wo_pastdue";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<WorkOrderPastDueResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[], ApiConnectionTriggerConfiguration> WorkOrderStatusChanged(Expression<Func<string>> status, FlowRecurrence recurrence = null)
@@ -2889,7 +2950,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
     public class CampaignGetValueResponse
     {
-        public string PromoID { get; set; }
+        [JsonProperty("PromoID")]
+        public string PromoId { get; set; }
 
         [JsonProperty("Campaign Manager")]
         public string CampaignManager { get; set; }
@@ -2976,14 +3038,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string SalesLead { get; set; }
 
         [JsonProperty("Project ID")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
         public string Recipient { get; set; }
 
         [JsonProperty("cc")]
         public string Cc { get; set; }
         public string Bcc { get; set; }
         public string CallNumber { get; set; }
-        public string RecordID { get; set; }
+
+        [JsonProperty("RecordID")]
+        public string RecordId { get; set; }
 
         [JsonProperty("Company Name")]
         public string CompanyName { get; set; }
@@ -2993,7 +3057,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     {
         [JsonProperty("account")]
         public string Account { get; set; }
-        public string RecallID { get; set; }
+
+        [JsonProperty("RecallID")]
+        public string RecallId { get; set; }
 
         [JsonProperty("Employee Name")]
         public string EmployeeName { get; set; }
@@ -3047,13 +3113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string SalesLead { get; set; }
 
         [JsonProperty("Project ID")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
     }
 
     public class ItemListPostValueResponse
     {
         [JsonProperty("id")]
-        public string NewCodeID { get; set; }
+        public string NewCodeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3616,7 +3682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Customer { get; set; }
 
         [JsonProperty("Order ID")]
-        public string OrderID { get; set; }
+        public string OrderId { get; set; }
 
         [JsonProperty("Model Number")]
         public string ModelNumber { get; set; }
@@ -3624,7 +3690,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         [JsonProperty("Shipped Qty")]
         public string ShippedQty { get; set; }
-        public string BoxID { get; set; }
+
+        [JsonProperty("BoxID")]
+        public string BoxId { get; set; }
         public string Tracking { get; set; }
 
         [JsonProperty("Ship Date")]
@@ -3658,8 +3726,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         [JsonProperty("Ship_Phone")]
         public string ShipPhone { get; set; }
         public string Carrier { get; set; }
-        public string ShipmentID { get; set; }
-        public string ItemID { get; set; }
+
+        [JsonProperty("ShipmentID")]
+        public string ShipmentId { get; set; }
+
+        [JsonProperty("ItemID")]
+        public string ItemId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3699,7 +3771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     public class SOGetValueResponse
     {
         [JsonProperty("Order ID")]
-        public string OrderID { get; set; }
+        public string OrderId { get; set; }
 
         [JsonProperty("PROCESSING PHASE")]
         public string PROCESSINGPHASE { get; set; }
@@ -3821,7 +3893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Margin { get; set; }
 
         [JsonProperty("Project ID")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("Next Appointment")]
         public string NextAppointment { get; set; }
@@ -3917,7 +3989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string OpenedBy { get; set; }
 
         [JsonProperty("CONTRACT ID")]
-        public string CONTRACTID { get; set; }
+        public string CONTRACTId { get; set; }
         public string Source { get; set; }
 
         [JsonProperty("Custom Status")]
@@ -3980,7 +4052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string ServiceAppointment { get; set; }
 
         [JsonProperty("Project ID")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("Total Charge")]
         public string TotalCharge { get; set; }
@@ -4010,43 +4082,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     public class NewSalesOrderResponseItem
     {
         [JsonProperty("Order ID")]
-        public string OrderID { get; set; }
+        public string OrderId { get; set; }
     }
 
     public class NewProposalCreatedResponseItem
     {
         [JsonProperty("Quote ID")]
-        public string QuoteID { get; set; }
+        public string QuoteId { get; set; }
     }
 
     public class OrderStatusChangedResponseItem
     {
         [JsonProperty("Order ID")]
-        public string OrderID { get; set; }
+        public string OrderId { get; set; }
     }
 
     public class OrderInHistoryResponseItem
     {
         [JsonProperty("Order ID")]
-        public string OrderID { get; set; }
+        public string OrderId { get; set; }
     }
 
     public class OrderInProcessingResponseItem
     {
         [JsonProperty("Order ID")]
-        public string OrderID { get; set; }
+        public string OrderId { get; set; }
     }
 
     public class OrderIsShippingResponseItem
     {
         [JsonProperty("Order ID")]
-        public string OrderID { get; set; }
+        public string OrderId { get; set; }
     }
 
     public class ProposalNeedsApprovalResponseItem
     {
         [JsonProperty("Quote ID")]
-        public string QuoteID { get; set; }
+        public string QuoteId { get; set; }
     }
 
     public class WorkOrderClosedResponseItem

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
 {
     using System.Linq.Expressions;
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         public string ArticleType { get; set; }
 
         [JsonProperty("id")]
-        public int ArticleID { get; set; }
+        public int ArticleId { get; set; }
 
         [JsonProperty("title")]
         public string ArticleTitle { get; set; }
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         public string UserName { get; set; }
 
         [JsonProperty("user_id")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("username")]
         public string UserUsername { get; set; }

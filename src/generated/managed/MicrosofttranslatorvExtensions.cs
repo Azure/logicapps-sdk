@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsofttranslatorv
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsofttranslatorv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsofttranslatorv")]
         public IBodyWorkflowAction<LanguageInfo[], ApiConnectionActionConfiguration> GetTranslateSupportedLanguages()
         {
-            var apiCallPath = "/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageInfo[]>(callPayload);
+            return new DeferredBodyAction<LanguageInfo[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LanguageInfo[]>(callPayload);
+            });
         }
     }
 

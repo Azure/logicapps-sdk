@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 {
     using System.Linq.Expressions;
@@ -31,21 +32,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
     {
         public IBodyWorkflowTrigger<Error, ApiConnectionTriggerConfiguration> WebhookDocumentSignedTrigger(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["endpoint"] = "#{listCallbackUrl()}";
-            requestpropCount++;
-            request["event"] = "esign.request.completed";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            return new DeferredBodyTrigger<Error, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = request;
-            }
+                var apiCallPath = "/v2/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["endpoint"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                request["event"] = "esign.request.completed";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            return new ApiConnectionTrigger<Error>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<Error>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

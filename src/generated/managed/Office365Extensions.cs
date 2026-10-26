@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
         public IBodyWorkflowAction<GraphOutlookCategory[], ApiConnectionActionConfiguration> GetOutlookCategoryNames()
         {
-            var apiCallPath = "/Categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GraphOutlookCategory[]>(callPayload);
+            return new DeferredBodyAction<GraphOutlookCategory[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GraphOutlookCategory[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
@@ -881,13 +885,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
         public IBodyWorkflowAction<CalendarGetTablesV2Response, ApiConnectionActionConfiguration> CalendarGetTables()
         {
-            var apiCallPath = "/codeless/v1.0/me/calendars";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["skip"] = Convert.ToString(0);
-            callPayload.Queries["top"] = Convert.ToString(256);
-            callPayload.Queries["orderBy"] = Convert.ToString("name");
-            return new ApiConnectionAction<CalendarGetTablesV2Response>(callPayload);
+            return new DeferredBodyAction<CalendarGetTablesV2Response, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/codeless/v1.0/me/calendars";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["skip"] = Convert.ToString(0);
+                callPayload.Queries["top"] = Convert.ToString(256);
+                callPayload.Queries["orderBy"] = Convert.ToString("name");
+                return new ApiConnectionAction<CalendarGetTablesV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
@@ -1249,10 +1256,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
         public IBodyWorkflowAction<EntityListResponseGraphContactFolder, ApiConnectionActionConfiguration> ContactGetTables()
         {
-            var apiCallPath = "/v2/datasets/contacts/tables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntityListResponseGraphContactFolder>(callPayload);
+            return new DeferredBodyAction<EntityListResponseGraphContactFolder, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/datasets/contacts/tables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EntityListResponseGraphContactFolder>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
@@ -2166,12 +2176,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ForwardEmail(Expression<Func<string>> messageId, Expression<Func<string>> bodyto, Expression<Func<string>> mailboxAddress = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ForwardEmail(Expression<Func<string>> messageId, Expression<Func<string>> bodyto, Expression<Func<string>> mailboxAddress = null, Expression<Func<string>> bodycomment = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_mailboxAddress = WorkflowExpression.Compile(mailboxAddress, nameof(mailboxAddress), required: false);
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/me/messages/{0}/forward", __workflow_messageId.WithUrlEncoding(1)));
@@ -2179,6 +2191,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mailboxAddress != null)
                     callPayload.Queries["mailboxAddress"] = ExpressionConverter.Convert(__workflow_mailboxAddress);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_fetchSensitivityLabelMetadata != null)
+                    callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(__workflow_fetchSensitivityLabelMetadata);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (__workflow_bodycomment != null)
@@ -2368,19 +2384,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
         public IBodyWorkflowAction<GetRoomListsV2Response, ApiConnectionActionConfiguration> GetRoomLists()
         {
-            var apiCallPath = "/codeless/beta/me/findRoomLists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRoomListsV2Response>(callPayload);
+            return new DeferredBodyAction<GetRoomListsV2Response, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/codeless/beta/me/findRoomLists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRoomListsV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
         public IBodyWorkflowAction<GetRoomsV2Response, ApiConnectionActionConfiguration> GetRooms()
         {
-            var apiCallPath = "/codeless/beta/me/findRooms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRoomsV2Response>(callPayload);
+            return new DeferredBodyAction<GetRoomsV2Response, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/codeless/beta/me/findRooms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRoomsV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365")]
@@ -3584,7 +3606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     public class CalendarGetTablesV2ResponseValueTypeItem
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4090,13 +4112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     public class GraphContactFolder
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
         [JsonProperty("parentFolderId")]
-        public string ParentFolderID { get; set; }
+        public string ParentFolderId { get; set; }
     }
 
     public class FindMeetingTimesV2Response

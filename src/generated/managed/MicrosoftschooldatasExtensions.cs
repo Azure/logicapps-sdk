@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
 {
     using System.Linq.Expressions;
@@ -14,18 +15,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IBodyWorkflowAction<GetDelegatedTokenResponse, ApiConnectionActionConfiguration> GetDelegatedToken()
         {
-            var apiCallPath = "/common/oauth2/token";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            return new DeferredBodyAction<GetDelegatedTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/common/oauth2/token";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetDelegatedTokenResponse>(callPayload);
+                return new ApiConnectionAction<GetDelegatedTokenResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
 {
     using System.Linq.Expressions;
@@ -42,21 +43,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4POSTFileResponse, ApiConnectionActionConfiguration> MD4POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
-        {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<MD4POSTFileResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/hash/md4/base64";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
-                return new ApiConnectionAction<MD4POSTFileResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<MD5GETResponse, ApiConnectionActionConfiguration> MD5GET(Expression<Func<string>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -83,21 +69,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MD5POSTResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5POSTFileResponse, ApiConnectionActionConfiguration> MD5POSTFile(Expression<Func<string>> value, Expression<Func<string>> file)
-        {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<MD5POSTFileResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/hash/md5/base64";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
-                return new ApiConnectionAction<MD5POSTFileResponse>(callPayload);
             });
         }
 
@@ -281,22 +252,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<M200, ApiConnectionActionConfiguration> SHA1POSTForm(Expression<Func<string>> xHashifyProcess, Expression<Func<string>> digestFormat, Expression<Func<string>> file)
-        {
-            var __workflow_xHashifyProcess = WorkflowExpression.Compile(xHashifyProcess, nameof(xHashifyProcess), required: true);
-            var __workflow_digestFormat = WorkflowExpression.Compile(digestFormat, nameof(digestFormat), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<M200, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha1/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-Hashify-Process"] = ExpressionConverter.Convert(__workflow_xHashifyProcess);
-                return new ApiConnectionAction<M200>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA256GETResponse, ApiConnectionActionConfiguration> SHA256GET(Expression<Func<string>> value, Expression<Func<string>> digestFormat)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -331,19 +286,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<StatusCheckResponse, ApiConnectionActionConfiguration> StatusCheck()
         {
-            var apiCallPath = "/status";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatusCheckResponse>(callPayload);
+            return new DeferredBodyAction<StatusCheckResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/status";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StatusCheckResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<M200[], ApiConnectionActionConfiguration> Methods()
         {
-            var apiCallPath = "/methods";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<M200[]>(callPayload);
+            return new DeferredBodyAction<M200[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/methods";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<M200[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -380,14 +341,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         public string Key { get; set; }
     }
 
-    public class MD4POSTFileResponse
-    {
-        public string Digest { get; set; }
-        public string DigestEnc { get; set; }
-        public string Type { get; set; }
-        public string Key { get; set; }
-    }
-
     public class MD5GETResponse
     {
         public string Digest { get; set; }
@@ -397,14 +350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
     }
 
     public class MD5POSTResponse
-    {
-        public string Digest { get; set; }
-        public string DigestEnc { get; set; }
-        public string Type { get; set; }
-        public string Key { get; set; }
-    }
-
-    public class MD5POSTFileResponse
     {
         public string Digest { get; set; }
         public string DigestEnc { get; set; }
@@ -492,14 +437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         public string Key { get; set; }
     }
 
-    public class M200
-    {
-        public string Digest { get; set; }
-        public string DigestEnc { get; set; }
-        public string Type { get; set; }
-        public JToken Key { get; set; }
-    }
-
     public class SHA256GETResponse
     {
         public string Digest { get; set; }
@@ -532,6 +469,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
 
         [JsonProperty("uptime")]
         public string Uptime { get; set; }
+    }
+
+    public class M200
+    {
+        public string Digest { get; set; }
+        public string DigestEnc { get; set; }
+        public string Type { get; set; }
+        public JToken Key { get; set; }
     }
 }
 
