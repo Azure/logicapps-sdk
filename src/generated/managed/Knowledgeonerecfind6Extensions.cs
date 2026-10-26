@@ -109,16 +109,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<SendFileResponse, ApiConnectionActionConfiguration> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> bodyfileContents = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycreatedDate = null, Expression<Func<string>> bodyeDOCType = null, Expression<Func<bodyextraFieldsInputItem[]>> bodyextraFields = null)
+        public IBodyWorkflowAction<SendFileResponse, ApiConnectionActionConfiguration> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<SendFileInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
-            var __workflow_bodyfileContents = WorkflowExpression.Compile(bodyfileContents, nameof(bodyfileContents), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodycreatedDate = WorkflowExpression.Compile(bodycreatedDate, nameof(bodycreatedDate), required: false);
-            var __workflow_bodyeDOCType = WorkflowExpression.Compile(bodyeDOCType, nameof(bodyeDOCType), required: false);
-            var __workflow_bodyextraFields = WorkflowExpression.Compile(bodyextraFields, nameof(bodyextraFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SendFile";
@@ -128,49 +123,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
                     callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
                 if (__workflow_userName != null)
                     callPayload.Queries["UserName"] = ExpressionConverter.Convert(__workflow_userName);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileContents != null)
-                {
-                    body["FileContents"] = ExpressionConverter.ConvertO(__workflow_bodyfileContents);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedDate != null)
-                {
-                    body["CreatedDate"] = ExpressionConverter.ConvertO(__workflow_bodycreatedDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyeDOCType != null)
-                {
-                    body["EDOCType"] = ExpressionConverter.ConvertO(__workflow_bodyeDOCType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyextraFields != null)
-                {
-                    body["ExtraFields"] = ExpressionConverter.ConvertO(__workflow_bodyextraFields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendFileResponse>(callPayload);
             });
         }
@@ -234,7 +188,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         public string Result { get; set; }
     }
 
-    public class bodyextraFieldsInputItem
+    public class SendFileInput
+    {
+        public string FileContents { get; set; }
+        public string FileName { get; set; }
+        public string Title { get; set; }
+        public string CreatedDate { get; set; }
+        public string EDOCType { get; set; }
+        public SendFileInputExtraFieldsTypeItem[] ExtraFields { get; set; }
+    }
+
+    public class SendFileInputExtraFieldsTypeItem
     {
         public string FldName { get; set; }
         public string FldValue { get; set; }

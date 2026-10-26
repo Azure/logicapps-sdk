@@ -49,14 +49,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<Webhook, ApiConnectionActionConfiguration> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
+        public IBodyWorkflowAction<Webhook, ApiConnectionActionConfiguration> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<ExecuteWebhookInput>> body = null)
         {
             var __workflow_webhookId = WorkflowExpression.Compile(webhookId, nameof(webhookId), required: true);
             var __workflow_webhookToken = WorkflowExpression.Compile(webhookToken, nameof(webhookToken), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodyavatarURL = WorkflowExpression.Compile(bodyavatarURL, nameof(bodyavatarURL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Webhook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v9/webhooks/{0}/{1}", __workflow_webhookId.WithUrlEncoding(1), __workflow_webhookToken.WithUrlEncoding(1)));
@@ -65,31 +63,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["content-type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarURL != null)
-                {
-                    body["avatar-url"] = ExpressionConverter.ConvertO(__workflow_bodyavatarURL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Webhook>(callPayload);
             });
         }
@@ -229,6 +204,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         ApplicationJson,
         [EnumMember(Value = "multipart/form-data")]
         MultipartFormData
+    }
+
+    public class ExecuteWebhookInput
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("avatar-url")]
+        public string AvatarURL { get; set; }
     }
 }
 

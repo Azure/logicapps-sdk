@@ -13,56 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
     public class MeetingroommapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomLocations(Expression<Func<string[]>> bodycategories = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomLocations(Expression<Func<GetCustomLocationsInput>> body = null)
         {
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CustomLocations/GetCustomLocations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategories != null)
-                {
-                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IBodyWorkflowAction<GetCustomLocationsByImageNameResponse, ApiConnectionActionConfiguration> GetCustomLocationsByImageName(Expression<Func<string>> bodyimageName, Expression<Func<string[]>> bodycategories = null)
+        public IBodyWorkflowAction<GetCustomLocationsByImageNameResponse, ApiConnectionActionConfiguration> GetCustomLocationsByImageName(Expression<Func<GetCustomLocationsByImageNameInput>> body = null)
         {
-            var __workflow_bodyimageName = WorkflowExpression.Compile(bodyimageName, nameof(bodyimageName), required: true);
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetCustomLocationsByImageNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CustomLocations/GetCustomLocationsByImageName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["imageName"] = ExpressionConverter.ConvertO(__workflow_bodyimageName);
-                if (__workflow_bodycategories != null)
-                {
-                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetCustomLocationsByImageNameResponse>(callPayload);
             });
         }
@@ -317,6 +292,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
     {
     }
 
+    public class GetCustomLocationsInput
+    {
+        [JsonProperty("categories")]
+        public string[] Categories { get; set; }
+    }
+
     public class GetCustomLocationsByImageNameResponse
     {
         [JsonProperty("customLocationCollection")]
@@ -393,6 +374,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
 
         [JsonProperty("originalUrl")]
         public string OriginalUrl { get; set; }
+    }
+
+    public class GetCustomLocationsByImageNameInput
+    {
+        [JsonProperty("imageName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ImageName { get; set; } = "The unique image name to return mapped locations by";
+
+        [JsonProperty("categories")]
+        public string[] Categories { get; set; }
     }
 
     public class SearchLocationsResponseItem

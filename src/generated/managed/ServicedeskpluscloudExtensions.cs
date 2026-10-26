@@ -13,1105 +13,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
     public class ServicedeskpluscloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateRequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatarequestsubject, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
+        public IBodyWorkflowAction<CreateRequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateRequestInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            var __workflow_bodyinputDatarequestsubject = WorkflowExpression.Compile(bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: true);
-            var __workflow_bodyinputDatarequesttemplatename = WorkflowExpression.Compile(bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
-            var __workflow_bodyinputDatarequestrequestTypename = WorkflowExpression.Compile(bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
-            var __workflow_bodyinputDatarequestrequestername = WorkflowExpression.Compile(bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
-            var __workflow_bodyinputDatarequeststatusname = WorkflowExpression.Compile(bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
-            var __workflow_bodyinputDatarequesttechnicianemailId = WorkflowExpression.Compile(bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
-            var __workflow_bodyinputDatarequestsitename = WorkflowExpression.Compile(bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
-            var __workflow_bodyinputDatarequestgroupname = WorkflowExpression.Compile(bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
-            var __workflow_bodyinputDatarequestdescription = WorkflowExpression.Compile(bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
-            var __workflow_bodyinputDatarequestpriorityname = WorkflowExpression.Compile(bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
-            var __workflow_bodyinputDatarequesturgencyname = WorkflowExpression.Compile(bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
-            var __workflow_bodyinputDatarequestimpactname = WorkflowExpression.Compile(bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
-            var __workflow_bodyinputDatarequestmodename = WorkflowExpression.Compile(bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
-            var __workflow_bodyinputDatarequestcategoryname = WorkflowExpression.Compile(bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
-            var __workflow_bodyinputDatarequestsubcategoryname = WorkflowExpression.Compile(bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
-            var __workflow_bodyinputDatarequestitemname = WorkflowExpression.Compile(bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
-            var __workflow_bodyinputDatarequestassets = WorkflowExpression.Compile(bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
-            var __workflow_bodyinputDatarequestudfFields = WorkflowExpression.Compile(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/requests", __workflow_serviceDeskInstance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputDataObject = new JObject();
-                var inputDataObjectpropCount = 0;
-                var requestObject = new JObject();
-                var requestObjectpropCount = 0;
-                requestObjectpropCount++;
-                requestObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubject);
-                var templateObject = new JObject();
-                var templateObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequesttemplatename != null)
-                {
-                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttemplatename);
-                    templateObjectpropCount++;
-                }
-
-                if (templateObjectpropCount > 0)
-                {
-                    requestObject["template"] = templateObject;
-                    requestObjectpropCount++;
-                }
-
-                var requestTypeObject = new JObject();
-                var requestTypeObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestrequestTypename != null)
-                {
-                    requestTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestTypename);
-                    requestTypeObjectpropCount++;
-                }
-
-                if (requestTypeObjectpropCount > 0)
-                {
-                    requestObject["request_type"] = requestTypeObject;
-                    requestObjectpropCount++;
-                }
-
-                var requesterObject = new JObject();
-                var requesterObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestrequestername != null)
-                {
-                    requesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestername);
-                    requesterObjectpropCount++;
-                }
-
-                if (requesterObjectpropCount > 0)
-                {
-                    requestObject["requester"] = requesterObject;
-                    requestObjectpropCount++;
-                }
-
-                var statusObject = new JObject();
-                var statusObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequeststatusname != null)
-                {
-                    statusObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequeststatusname);
-                    statusObjectpropCount++;
-                }
-
-                if (statusObjectpropCount > 0)
-                {
-                    requestObject["status"] = statusObject;
-                    requestObjectpropCount++;
-                }
-
-                var technicianObject = new JObject();
-                var technicianObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequesttechnicianemailId != null)
-                {
-                    technicianObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttechnicianemailId);
-                    technicianObjectpropCount++;
-                }
-
-                if (technicianObjectpropCount > 0)
-                {
-                    requestObject["technician"] = technicianObject;
-                    requestObjectpropCount++;
-                }
-
-                var siteObject = new JObject();
-                var siteObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestsitename != null)
-                {
-                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsitename);
-                    siteObjectpropCount++;
-                }
-
-                if (siteObjectpropCount > 0)
-                {
-                    requestObject["site"] = siteObject;
-                    requestObjectpropCount++;
-                }
-
-                var groupObject = new JObject();
-                var groupObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestgroupname != null)
-                {
-                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestgroupname);
-                    groupObjectpropCount++;
-                }
-
-                if (groupObjectpropCount > 0)
-                {
-                    requestObject["group"] = groupObject;
-                    requestObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatarequestdescription != null)
-                {
-                    requestObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestdescription);
-                    requestObjectpropCount++;
-                }
-
-                var priorityObject = new JObject();
-                var priorityObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestpriorityname != null)
-                {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestpriorityname);
-                    priorityObjectpropCount++;
-                }
-
-                if (priorityObjectpropCount > 0)
-                {
-                    requestObject["priority"] = priorityObject;
-                    requestObjectpropCount++;
-                }
-
-                var urgencyObject = new JObject();
-                var urgencyObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequesturgencyname != null)
-                {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesturgencyname);
-                    urgencyObjectpropCount++;
-                }
-
-                if (urgencyObjectpropCount > 0)
-                {
-                    requestObject["urgency"] = urgencyObject;
-                    requestObjectpropCount++;
-                }
-
-                var impactObject = new JObject();
-                var impactObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestimpactname != null)
-                {
-                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestimpactname);
-                    impactObjectpropCount++;
-                }
-
-                if (impactObjectpropCount > 0)
-                {
-                    requestObject["impact"] = impactObject;
-                    requestObjectpropCount++;
-                }
-
-                var modeObject = new JObject();
-                var modeObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestmodename != null)
-                {
-                    modeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestmodename);
-                    modeObjectpropCount++;
-                }
-
-                if (modeObjectpropCount > 0)
-                {
-                    requestObject["mode"] = modeObject;
-                    requestObjectpropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestcategoryname != null)
-                {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestcategoryname);
-                    categoryObjectpropCount++;
-                }
-
-                if (categoryObjectpropCount > 0)
-                {
-                    requestObject["category"] = categoryObject;
-                    requestObjectpropCount++;
-                }
-
-                var subcategoryObject = new JObject();
-                var subcategoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestsubcategoryname != null)
-                {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubcategoryname);
-                    subcategoryObjectpropCount++;
-                }
-
-                if (subcategoryObjectpropCount > 0)
-                {
-                    requestObject["subcategory"] = subcategoryObject;
-                    requestObjectpropCount++;
-                }
-
-                var itemObject = new JObject();
-                var itemObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestitemname != null)
-                {
-                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestitemname);
-                    itemObjectpropCount++;
-                }
-
-                if (itemObjectpropCount > 0)
-                {
-                    requestObject["item"] = itemObject;
-                    requestObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatarequestassets != null)
-                {
-                    requestObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestassets);
-                    requestObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatarequestudfFields != null)
-                {
-                    requestObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestudfFields);
-                    requestObjectpropCount++;
-                }
-
-                if (requestObjectpropCount > 0)
-                {
-                    inputDataObject["request"] = requestObject;
-                    inputDataObjectpropCount++;
-                }
-
-                if (inputDataObjectpropCount > 0)
-                {
-                    body["input_data"] = inputDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatarequestsubject = null, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
+        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateRequestInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyinputDatarequestsubject = WorkflowExpression.Compile(bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: false);
-            var __workflow_bodyinputDatarequesttemplatename = WorkflowExpression.Compile(bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
-            var __workflow_bodyinputDatarequestrequestTypename = WorkflowExpression.Compile(bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
-            var __workflow_bodyinputDatarequestrequestername = WorkflowExpression.Compile(bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
-            var __workflow_bodyinputDatarequeststatusname = WorkflowExpression.Compile(bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
-            var __workflow_bodyinputDatarequesttechnicianemailId = WorkflowExpression.Compile(bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
-            var __workflow_bodyinputDatarequestsitename = WorkflowExpression.Compile(bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
-            var __workflow_bodyinputDatarequestgroupname = WorkflowExpression.Compile(bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
-            var __workflow_bodyinputDatarequestdescription = WorkflowExpression.Compile(bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
-            var __workflow_bodyinputDatarequestpriorityname = WorkflowExpression.Compile(bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
-            var __workflow_bodyinputDatarequesturgencyname = WorkflowExpression.Compile(bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
-            var __workflow_bodyinputDatarequestimpactname = WorkflowExpression.Compile(bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
-            var __workflow_bodyinputDatarequestmodename = WorkflowExpression.Compile(bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
-            var __workflow_bodyinputDatarequestcategoryname = WorkflowExpression.Compile(bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
-            var __workflow_bodyinputDatarequestsubcategoryname = WorkflowExpression.Compile(bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
-            var __workflow_bodyinputDatarequestitemname = WorkflowExpression.Compile(bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
-            var __workflow_bodyinputDatarequestassets = WorkflowExpression.Compile(bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
-            var __workflow_bodyinputDatarequestudfFields = WorkflowExpression.Compile(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/requests/{1}", __workflow_serviceDeskInstance.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputDataObject = new JObject();
-                var inputDataObjectpropCount = 0;
-                var requestObject = new JObject();
-                var requestObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestsubject != null)
-                {
-                    requestObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubject);
-                    requestObjectpropCount++;
-                }
-
-                var templateObject = new JObject();
-                var templateObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequesttemplatename != null)
-                {
-                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttemplatename);
-                    templateObjectpropCount++;
-                }
-
-                if (templateObjectpropCount > 0)
-                {
-                    requestObject["template"] = templateObject;
-                    requestObjectpropCount++;
-                }
-
-                var requestTypeObject = new JObject();
-                var requestTypeObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestrequestTypename != null)
-                {
-                    requestTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestTypename);
-                    requestTypeObjectpropCount++;
-                }
-
-                if (requestTypeObjectpropCount > 0)
-                {
-                    requestObject["request_type"] = requestTypeObject;
-                    requestObjectpropCount++;
-                }
-
-                var requesterObject = new JObject();
-                var requesterObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestrequestername != null)
-                {
-                    requesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestername);
-                    requesterObjectpropCount++;
-                }
-
-                if (requesterObjectpropCount > 0)
-                {
-                    requestObject["requester"] = requesterObject;
-                    requestObjectpropCount++;
-                }
-
-                var statusObject = new JObject();
-                var statusObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequeststatusname != null)
-                {
-                    statusObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequeststatusname);
-                    statusObjectpropCount++;
-                }
-
-                if (statusObjectpropCount > 0)
-                {
-                    requestObject["status"] = statusObject;
-                    requestObjectpropCount++;
-                }
-
-                var technicianObject = new JObject();
-                var technicianObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequesttechnicianemailId != null)
-                {
-                    technicianObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttechnicianemailId);
-                    technicianObjectpropCount++;
-                }
-
-                if (technicianObjectpropCount > 0)
-                {
-                    requestObject["technician"] = technicianObject;
-                    requestObjectpropCount++;
-                }
-
-                var siteObject = new JObject();
-                var siteObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestsitename != null)
-                {
-                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsitename);
-                    siteObjectpropCount++;
-                }
-
-                if (siteObjectpropCount > 0)
-                {
-                    requestObject["site"] = siteObject;
-                    requestObjectpropCount++;
-                }
-
-                var groupObject = new JObject();
-                var groupObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestgroupname != null)
-                {
-                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestgroupname);
-                    groupObjectpropCount++;
-                }
-
-                if (groupObjectpropCount > 0)
-                {
-                    requestObject["group"] = groupObject;
-                    requestObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatarequestdescription != null)
-                {
-                    requestObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestdescription);
-                    requestObjectpropCount++;
-                }
-
-                var priorityObject = new JObject();
-                var priorityObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestpriorityname != null)
-                {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestpriorityname);
-                    priorityObjectpropCount++;
-                }
-
-                if (priorityObjectpropCount > 0)
-                {
-                    requestObject["priority"] = priorityObject;
-                    requestObjectpropCount++;
-                }
-
-                var urgencyObject = new JObject();
-                var urgencyObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequesturgencyname != null)
-                {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesturgencyname);
-                    urgencyObjectpropCount++;
-                }
-
-                if (urgencyObjectpropCount > 0)
-                {
-                    requestObject["urgency"] = urgencyObject;
-                    requestObjectpropCount++;
-                }
-
-                var impactObject = new JObject();
-                var impactObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestimpactname != null)
-                {
-                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestimpactname);
-                    impactObjectpropCount++;
-                }
-
-                if (impactObjectpropCount > 0)
-                {
-                    requestObject["impact"] = impactObject;
-                    requestObjectpropCount++;
-                }
-
-                var modeObject = new JObject();
-                var modeObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestmodename != null)
-                {
-                    modeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestmodename);
-                    modeObjectpropCount++;
-                }
-
-                if (modeObjectpropCount > 0)
-                {
-                    requestObject["mode"] = modeObject;
-                    requestObjectpropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestcategoryname != null)
-                {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestcategoryname);
-                    categoryObjectpropCount++;
-                }
-
-                if (categoryObjectpropCount > 0)
-                {
-                    requestObject["category"] = categoryObject;
-                    requestObjectpropCount++;
-                }
-
-                var subcategoryObject = new JObject();
-                var subcategoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestsubcategoryname != null)
-                {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubcategoryname);
-                    subcategoryObjectpropCount++;
-                }
-
-                if (subcategoryObjectpropCount > 0)
-                {
-                    requestObject["subcategory"] = subcategoryObject;
-                    requestObjectpropCount++;
-                }
-
-                var itemObject = new JObject();
-                var itemObjectpropCount = 0;
-                if (__workflow_bodyinputDatarequestitemname != null)
-                {
-                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestitemname);
-                    itemObjectpropCount++;
-                }
-
-                if (itemObjectpropCount > 0)
-                {
-                    requestObject["item"] = itemObject;
-                    requestObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatarequestassets != null)
-                {
-                    requestObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestassets);
-                    requestObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatarequestudfFields != null)
-                {
-                    requestObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestudfFields);
-                    requestObjectpropCount++;
-                }
-
-                if (requestObjectpropCount > 0)
-                {
-                    inputDataObject["request"] = requestObject;
-                    inputDataObjectpropCount++;
-                }
-
-                if (inputDataObjectpropCount > 0)
-                {
-                    body["input_data"] = inputDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateChangeResponse, ApiConnectionActionConfiguration> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatachangetitle, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
+        public IBodyWorkflowAction<CreateChangeResponse, ApiConnectionActionConfiguration> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateChangeInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            var __workflow_bodyinputDatachangetitle = WorkflowExpression.Compile(bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: true);
-            var __workflow_bodyinputDatachangecomment = WorkflowExpression.Compile(bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
-            var __workflow_bodyinputDatachangetemplatename = WorkflowExpression.Compile(bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
-            var __workflow_bodyinputDatachangechangeRequestername = WorkflowExpression.Compile(bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
-            var __workflow_bodyinputDatachangesitename = WorkflowExpression.Compile(bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
-            var __workflow_bodyinputDatachangegroupname = WorkflowExpression.Compile(bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
-            var __workflow_bodyinputDatachangedescription = WorkflowExpression.Compile(bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
-            var __workflow_bodyinputDatachangechangeOwneremailId = WorkflowExpression.Compile(bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
-            var __workflow_bodyinputDatachangechangeTypename = WorkflowExpression.Compile(bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
-            var __workflow_bodyinputDatachangepriorityname = WorkflowExpression.Compile(bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
-            var __workflow_bodyinputDatachangeurgencyname = WorkflowExpression.Compile(bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
-            var __workflow_bodyinputDatachangeimpactname = WorkflowExpression.Compile(bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
-            var __workflow_bodyinputDatachangeriskname = WorkflowExpression.Compile(bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
-            var __workflow_bodyinputDatachangereasonForChangename = WorkflowExpression.Compile(bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
-            var __workflow_bodyinputDatachangecategoryname = WorkflowExpression.Compile(bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
-            var __workflow_bodyinputDatachangesubcategoryname = WorkflowExpression.Compile(bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
-            var __workflow_bodyinputDatachangeitemname = WorkflowExpression.Compile(bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
-            var __workflow_bodyinputDatachangeassets = WorkflowExpression.Compile(bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
-            var __workflow_bodyinputDatachangeudfFields = WorkflowExpression.Compile(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateChangeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/changes", __workflow_serviceDeskInstance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputDataObject = new JObject();
-                var inputDataObjectpropCount = 0;
-                var changeObject = new JObject();
-                var changeObjectpropCount = 0;
-                changeObjectpropCount++;
-                changeObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetitle);
-                if (__workflow_bodyinputDatachangecomment != null)
-                {
-                    changeObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecomment);
-                    changeObjectpropCount++;
-                }
-
-                var templateObject = new JObject();
-                var templateObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangetemplatename != null)
-                {
-                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetemplatename);
-                    templateObjectpropCount++;
-                }
-
-                if (templateObjectpropCount > 0)
-                {
-                    changeObject["template"] = templateObject;
-                    changeObjectpropCount++;
-                }
-
-                var changeRequesterObject = new JObject();
-                var changeRequesterObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangechangeRequestername != null)
-                {
-                    changeRequesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeRequestername);
-                    changeRequesterObjectpropCount++;
-                }
-
-                if (changeRequesterObjectpropCount > 0)
-                {
-                    changeObject["change_requester"] = changeRequesterObject;
-                    changeObjectpropCount++;
-                }
-
-                var siteObject = new JObject();
-                var siteObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangesitename != null)
-                {
-                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesitename);
-                    siteObjectpropCount++;
-                }
-
-                if (siteObjectpropCount > 0)
-                {
-                    changeObject["site"] = siteObject;
-                    changeObjectpropCount++;
-                }
-
-                var groupObject = new JObject();
-                var groupObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangegroupname != null)
-                {
-                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangegroupname);
-                    groupObjectpropCount++;
-                }
-
-                if (groupObjectpropCount > 0)
-                {
-                    changeObject["group"] = groupObject;
-                    changeObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatachangedescription != null)
-                {
-                    changeObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangedescription);
-                    changeObjectpropCount++;
-                }
-
-                var changeOwnerObject = new JObject();
-                var changeOwnerObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangechangeOwneremailId != null)
-                {
-                    changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeOwneremailId);
-                    changeOwnerObjectpropCount++;
-                }
-
-                if (changeOwnerObjectpropCount > 0)
-                {
-                    changeObject["change_owner"] = changeOwnerObject;
-                    changeObjectpropCount++;
-                }
-
-                var changeTypeObject = new JObject();
-                var changeTypeObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangechangeTypename != null)
-                {
-                    changeTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeTypename);
-                    changeTypeObjectpropCount++;
-                }
-
-                if (changeTypeObjectpropCount > 0)
-                {
-                    changeObject["change_type"] = changeTypeObject;
-                    changeObjectpropCount++;
-                }
-
-                var priorityObject = new JObject();
-                var priorityObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangepriorityname != null)
-                {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangepriorityname);
-                    priorityObjectpropCount++;
-                }
-
-                if (priorityObjectpropCount > 0)
-                {
-                    changeObject["priority"] = priorityObject;
-                    changeObjectpropCount++;
-                }
-
-                var urgencyObject = new JObject();
-                var urgencyObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeurgencyname != null)
-                {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeurgencyname);
-                    urgencyObjectpropCount++;
-                }
-
-                if (urgencyObjectpropCount > 0)
-                {
-                    changeObject["urgency"] = urgencyObject;
-                    changeObjectpropCount++;
-                }
-
-                var impactObject = new JObject();
-                var impactObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeimpactname != null)
-                {
-                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeimpactname);
-                    impactObjectpropCount++;
-                }
-
-                if (impactObjectpropCount > 0)
-                {
-                    changeObject["impact"] = impactObject;
-                    changeObjectpropCount++;
-                }
-
-                var riskObject = new JObject();
-                var riskObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeriskname != null)
-                {
-                    riskObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeriskname);
-                    riskObjectpropCount++;
-                }
-
-                if (riskObjectpropCount > 0)
-                {
-                    changeObject["risk"] = riskObject;
-                    changeObjectpropCount++;
-                }
-
-                var reasonForChangeObject = new JObject();
-                var reasonForChangeObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangereasonForChangename != null)
-                {
-                    reasonForChangeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangereasonForChangename);
-                    reasonForChangeObjectpropCount++;
-                }
-
-                if (reasonForChangeObjectpropCount > 0)
-                {
-                    changeObject["reason_for_change"] = reasonForChangeObject;
-                    changeObjectpropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangecategoryname != null)
-                {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecategoryname);
-                    categoryObjectpropCount++;
-                }
-
-                if (categoryObjectpropCount > 0)
-                {
-                    changeObject["category"] = categoryObject;
-                    changeObjectpropCount++;
-                }
-
-                var subcategoryObject = new JObject();
-                var subcategoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangesubcategoryname != null)
-                {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesubcategoryname);
-                    subcategoryObjectpropCount++;
-                }
-
-                if (subcategoryObjectpropCount > 0)
-                {
-                    changeObject["subcategory"] = subcategoryObject;
-                    changeObjectpropCount++;
-                }
-
-                var itemObject = new JObject();
-                var itemObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeitemname != null)
-                {
-                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeitemname);
-                    itemObjectpropCount++;
-                }
-
-                if (itemObjectpropCount > 0)
-                {
-                    changeObject["item"] = itemObject;
-                    changeObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatachangeassets != null)
-                {
-                    changeObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeassets);
-                    changeObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatachangeudfFields != null)
-                {
-                    changeObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeudfFields);
-                    changeObjectpropCount++;
-                }
-
-                if (changeObjectpropCount > 0)
-                {
-                    inputDataObject["change"] = changeObject;
-                    inputDataObjectpropCount++;
-                }
-
-                if (inputDataObjectpropCount > 0)
-                {
-                    body["input_data"] = inputDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateChangeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateChangeResponse, ApiConnectionActionConfiguration> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatachangetitle = null, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
+        public IBodyWorkflowAction<UpdateChangeResponse, ApiConnectionActionConfiguration> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateChangeInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyinputDatachangetitle = WorkflowExpression.Compile(bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: false);
-            var __workflow_bodyinputDatachangecomment = WorkflowExpression.Compile(bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
-            var __workflow_bodyinputDatachangetemplatename = WorkflowExpression.Compile(bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
-            var __workflow_bodyinputDatachangechangeRequestername = WorkflowExpression.Compile(bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
-            var __workflow_bodyinputDatachangesitename = WorkflowExpression.Compile(bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
-            var __workflow_bodyinputDatachangegroupname = WorkflowExpression.Compile(bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
-            var __workflow_bodyinputDatachangedescription = WorkflowExpression.Compile(bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
-            var __workflow_bodyinputDatachangechangeOwneremailId = WorkflowExpression.Compile(bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
-            var __workflow_bodyinputDatachangechangeTypename = WorkflowExpression.Compile(bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
-            var __workflow_bodyinputDatachangepriorityname = WorkflowExpression.Compile(bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
-            var __workflow_bodyinputDatachangeurgencyname = WorkflowExpression.Compile(bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
-            var __workflow_bodyinputDatachangeimpactname = WorkflowExpression.Compile(bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
-            var __workflow_bodyinputDatachangeriskname = WorkflowExpression.Compile(bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
-            var __workflow_bodyinputDatachangereasonForChangename = WorkflowExpression.Compile(bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
-            var __workflow_bodyinputDatachangecategoryname = WorkflowExpression.Compile(bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
-            var __workflow_bodyinputDatachangesubcategoryname = WorkflowExpression.Compile(bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
-            var __workflow_bodyinputDatachangeitemname = WorkflowExpression.Compile(bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
-            var __workflow_bodyinputDatachangeassets = WorkflowExpression.Compile(bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
-            var __workflow_bodyinputDatachangeudfFields = WorkflowExpression.Compile(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateChangeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/changes/{1}", __workflow_serviceDeskInstance.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputDataObject = new JObject();
-                var inputDataObjectpropCount = 0;
-                var changeObject = new JObject();
-                var changeObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangetitle != null)
-                {
-                    changeObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetitle);
-                    changeObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatachangecomment != null)
-                {
-                    changeObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecomment);
-                    changeObjectpropCount++;
-                }
-
-                var templateObject = new JObject();
-                var templateObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangetemplatename != null)
-                {
-                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetemplatename);
-                    templateObjectpropCount++;
-                }
-
-                if (templateObjectpropCount > 0)
-                {
-                    changeObject["template"] = templateObject;
-                    changeObjectpropCount++;
-                }
-
-                var changeRequesterObject = new JObject();
-                var changeRequesterObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangechangeRequestername != null)
-                {
-                    changeRequesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeRequestername);
-                    changeRequesterObjectpropCount++;
-                }
-
-                if (changeRequesterObjectpropCount > 0)
-                {
-                    changeObject["change_requester"] = changeRequesterObject;
-                    changeObjectpropCount++;
-                }
-
-                var siteObject = new JObject();
-                var siteObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangesitename != null)
-                {
-                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesitename);
-                    siteObjectpropCount++;
-                }
-
-                if (siteObjectpropCount > 0)
-                {
-                    changeObject["site"] = siteObject;
-                    changeObjectpropCount++;
-                }
-
-                var groupObject = new JObject();
-                var groupObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangegroupname != null)
-                {
-                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangegroupname);
-                    groupObjectpropCount++;
-                }
-
-                if (groupObjectpropCount > 0)
-                {
-                    changeObject["group"] = groupObject;
-                    changeObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatachangedescription != null)
-                {
-                    changeObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangedescription);
-                    changeObjectpropCount++;
-                }
-
-                var changeOwnerObject = new JObject();
-                var changeOwnerObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangechangeOwneremailId != null)
-                {
-                    changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeOwneremailId);
-                    changeOwnerObjectpropCount++;
-                }
-
-                if (changeOwnerObjectpropCount > 0)
-                {
-                    changeObject["change_owner"] = changeOwnerObject;
-                    changeObjectpropCount++;
-                }
-
-                var changeTypeObject = new JObject();
-                var changeTypeObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangechangeTypename != null)
-                {
-                    changeTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeTypename);
-                    changeTypeObjectpropCount++;
-                }
-
-                if (changeTypeObjectpropCount > 0)
-                {
-                    changeObject["change_type"] = changeTypeObject;
-                    changeObjectpropCount++;
-                }
-
-                var priorityObject = new JObject();
-                var priorityObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangepriorityname != null)
-                {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangepriorityname);
-                    priorityObjectpropCount++;
-                }
-
-                if (priorityObjectpropCount > 0)
-                {
-                    changeObject["priority"] = priorityObject;
-                    changeObjectpropCount++;
-                }
-
-                var urgencyObject = new JObject();
-                var urgencyObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeurgencyname != null)
-                {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeurgencyname);
-                    urgencyObjectpropCount++;
-                }
-
-                if (urgencyObjectpropCount > 0)
-                {
-                    changeObject["urgency"] = urgencyObject;
-                    changeObjectpropCount++;
-                }
-
-                var impactObject = new JObject();
-                var impactObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeimpactname != null)
-                {
-                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeimpactname);
-                    impactObjectpropCount++;
-                }
-
-                if (impactObjectpropCount > 0)
-                {
-                    changeObject["impact"] = impactObject;
-                    changeObjectpropCount++;
-                }
-
-                var riskObject = new JObject();
-                var riskObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeriskname != null)
-                {
-                    riskObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeriskname);
-                    riskObjectpropCount++;
-                }
-
-                if (riskObjectpropCount > 0)
-                {
-                    changeObject["risk"] = riskObject;
-                    changeObjectpropCount++;
-                }
-
-                var reasonForChangeObject = new JObject();
-                var reasonForChangeObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangereasonForChangename != null)
-                {
-                    reasonForChangeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangereasonForChangename);
-                    reasonForChangeObjectpropCount++;
-                }
-
-                if (reasonForChangeObjectpropCount > 0)
-                {
-                    changeObject["reason_for_change"] = reasonForChangeObject;
-                    changeObjectpropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangecategoryname != null)
-                {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecategoryname);
-                    categoryObjectpropCount++;
-                }
-
-                if (categoryObjectpropCount > 0)
-                {
-                    changeObject["category"] = categoryObject;
-                    changeObjectpropCount++;
-                }
-
-                var subcategoryObject = new JObject();
-                var subcategoryObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangesubcategoryname != null)
-                {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesubcategoryname);
-                    subcategoryObjectpropCount++;
-                }
-
-                if (subcategoryObjectpropCount > 0)
-                {
-                    changeObject["subcategory"] = subcategoryObject;
-                    changeObjectpropCount++;
-                }
-
-                var itemObject = new JObject();
-                var itemObjectpropCount = 0;
-                if (__workflow_bodyinputDatachangeitemname != null)
-                {
-                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeitemname);
-                    itemObjectpropCount++;
-                }
-
-                if (itemObjectpropCount > 0)
-                {
-                    changeObject["item"] = itemObject;
-                    changeObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatachangeassets != null)
-                {
-                    changeObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeassets);
-                    changeObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputDatachangeudfFields != null)
-                {
-                    changeObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeudfFields);
-                    changeObjectpropCount++;
-                }
-
-                if (changeObjectpropCount > 0)
-                {
-                    inputDataObject["change"] = changeObject;
-                    inputDataObjectpropCount++;
-                }
-
-                if (inputDataObjectpropCount > 0)
-                {
-                    body["input_data"] = inputDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateChangeResponse>(callPayload);
             });
         }
@@ -1802,7 +764,160 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Id { get; set; }
     }
 
-    public class bodyinputDatarequestassetsInputItem
+    public class CreateRequestInput
+    {
+        [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRequestInputInputDataType InputData { get; set; }
+    }
+
+    public class CreateRequestInputInputDataType
+    {
+        [JsonProperty("request", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateRequestInputInputDataTypeRequestType Request { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestType
+    {
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("template")]
+        public CreateRequestInputInputDataTypeRequestTypeTemplateType Template { get; set; }
+
+        [JsonProperty("request_type")]
+        public CreateRequestInputInputDataTypeRequestTypeRequestTypeType RequestType { get; set; }
+
+        [JsonProperty("requester")]
+        public CreateRequestInputInputDataTypeRequestTypeRequesterType Requester { get; set; }
+
+        [JsonProperty("status")]
+        public CreateRequestInputInputDataTypeRequestTypeStatusType Status { get; set; }
+
+        [JsonProperty("technician")]
+        public CreateRequestInputInputDataTypeRequestTypeTechnicianType Technician { get; set; }
+
+        [JsonProperty("site")]
+        public CreateRequestInputInputDataTypeRequestTypeSiteType Site { get; set; }
+
+        [JsonProperty("group")]
+        public CreateRequestInputInputDataTypeRequestTypeGroupType Group { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("priority")]
+        public CreateRequestInputInputDataTypeRequestTypePriorityType Priority { get; set; }
+
+        [JsonProperty("urgency")]
+        public CreateRequestInputInputDataTypeRequestTypeUrgencyType Urgency { get; set; }
+
+        [JsonProperty("impact")]
+        public CreateRequestInputInputDataTypeRequestTypeImpactType Impact { get; set; }
+
+        [JsonProperty("mode")]
+        public CreateRequestInputInputDataTypeRequestTypeModeType Mode { get; set; }
+
+        [JsonProperty("category")]
+        public CreateRequestInputInputDataTypeRequestTypeCategoryType Category { get; set; }
+
+        [JsonProperty("subcategory")]
+        public CreateRequestInputInputDataTypeRequestTypeSubcategoryType Subcategory { get; set; }
+
+        [JsonProperty("item")]
+        public CreateRequestInputInputDataTypeRequestTypeItemType Item { get; set; }
+
+        [JsonProperty("assets")]
+        public CreateRequestInputInputDataTypeRequestTypeAssetsTypeItem[] Assets { get; set; }
+
+        [JsonProperty("udf_fields")]
+        public string UdfFields { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeTemplateType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeRequestTypeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeRequesterType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeStatusType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeTechnicianType
+    {
+        [JsonProperty("email_id")]
+        public string EmailId { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeSiteType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeGroupType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypePriorityType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeUrgencyType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeImpactType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeModeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeCategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeSubcategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeItemType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateRequestInputInputDataTypeRequestTypeAssetsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2487,6 +1602,165 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class UpdateRequestInput
+    {
+        [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateRequestInputInputDataType InputData { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataType
+    {
+        [JsonProperty("request", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateRequestInputInputDataTypeRequestType Request { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestType
+    {
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("template")]
+        public UpdateRequestInputInputDataTypeRequestTypeTemplateType Template { get; set; }
+
+        [JsonProperty("request_type")]
+        public UpdateRequestInputInputDataTypeRequestTypeRequestTypeType RequestType { get; set; }
+
+        [JsonProperty("requester")]
+        public UpdateRequestInputInputDataTypeRequestTypeRequesterType Requester { get; set; }
+
+        [JsonProperty("status")]
+        public UpdateRequestInputInputDataTypeRequestTypeStatusType Status { get; set; }
+
+        [JsonProperty("technician")]
+        public UpdateRequestInputInputDataTypeRequestTypeTechnicianType Technician { get; set; }
+
+        [JsonProperty("site")]
+        public UpdateRequestInputInputDataTypeRequestTypeSiteType Site { get; set; }
+
+        [JsonProperty("group")]
+        public UpdateRequestInputInputDataTypeRequestTypeGroupType Group { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("priority")]
+        public UpdateRequestInputInputDataTypeRequestTypePriorityType Priority { get; set; }
+
+        [JsonProperty("urgency")]
+        public UpdateRequestInputInputDataTypeRequestTypeUrgencyType Urgency { get; set; }
+
+        [JsonProperty("impact")]
+        public UpdateRequestInputInputDataTypeRequestTypeImpactType Impact { get; set; }
+
+        [JsonProperty("mode")]
+        public UpdateRequestInputInputDataTypeRequestTypeModeType Mode { get; set; }
+
+        [JsonProperty("category")]
+        public UpdateRequestInputInputDataTypeRequestTypeCategoryType Category { get; set; }
+
+        [JsonProperty("subcategory")]
+        public UpdateRequestInputInputDataTypeRequestTypeSubcategoryType Subcategory { get; set; }
+
+        [JsonProperty("item")]
+        public UpdateRequestInputInputDataTypeRequestTypeItemType Item { get; set; }
+
+        [JsonProperty("assets")]
+        public UpdateRequestInputInputDataTypeRequestTypeAssetsTypeItem[] Assets { get; set; }
+
+        [JsonProperty("udf_fields")]
+        public string UdfFields { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeTemplateType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeRequestTypeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeRequesterType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeStatusType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeTechnicianType
+    {
+        [JsonProperty("email_id")]
+        public string EmailId { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeSiteType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeGroupType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypePriorityType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeUrgencyType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeImpactType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeModeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeCategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeSubcategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeItemType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateRequestInputInputDataTypeRequestTypeAssetsTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class CreateChangeResponse
@@ -3686,7 +2960,163 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Id { get; set; }
     }
 
-    public class bodyinputDatachangeassetsInputItem
+    public class CreateChangeInput
+    {
+        [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateChangeInputInputDataType InputData { get; set; }
+    }
+
+    public class CreateChangeInputInputDataType
+    {
+        [JsonProperty("change", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateChangeInputInputDataTypeChangeType Change { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeType
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("template")]
+        public CreateChangeInputInputDataTypeChangeTypeTemplateType Template { get; set; }
+
+        [JsonProperty("change_requester")]
+        public CreateChangeInputInputDataTypeChangeTypeChangeRequesterType ChangeRequester { get; set; }
+
+        [JsonProperty("site")]
+        public CreateChangeInputInputDataTypeChangeTypeSiteType Site { get; set; }
+
+        [JsonProperty("group")]
+        public CreateChangeInputInputDataTypeChangeTypeGroupType Group { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("change_owner")]
+        public CreateChangeInputInputDataTypeChangeTypeChangeOwnerType ChangeOwner { get; set; }
+
+        [JsonProperty("change_type")]
+        public CreateChangeInputInputDataTypeChangeTypeChangeTypeType ChangeType { get; set; }
+
+        [JsonProperty("priority")]
+        public CreateChangeInputInputDataTypeChangeTypePriorityType Priority { get; set; }
+
+        [JsonProperty("urgency")]
+        public CreateChangeInputInputDataTypeChangeTypeUrgencyType Urgency { get; set; }
+
+        [JsonProperty("impact")]
+        public CreateChangeInputInputDataTypeChangeTypeImpactType Impact { get; set; }
+
+        [JsonProperty("risk")]
+        public CreateChangeInputInputDataTypeChangeTypeRiskType Risk { get; set; }
+
+        [JsonProperty("reason_for_change")]
+        public CreateChangeInputInputDataTypeChangeTypeReasonForChangeType ReasonForChange { get; set; }
+
+        [JsonProperty("category")]
+        public CreateChangeInputInputDataTypeChangeTypeCategoryType Category { get; set; }
+
+        [JsonProperty("subcategory")]
+        public CreateChangeInputInputDataTypeChangeTypeSubcategoryType Subcategory { get; set; }
+
+        [JsonProperty("item")]
+        public CreateChangeInputInputDataTypeChangeTypeItemType Item { get; set; }
+
+        [JsonProperty("assets")]
+        public CreateChangeInputInputDataTypeChangeTypeAssetsTypeItem[] Assets { get; set; }
+
+        [JsonProperty("udf_fields")]
+        public string UdfFields { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeTemplateType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeChangeRequesterType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeSiteType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeGroupType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeChangeOwnerType
+    {
+        [JsonProperty("email_id")]
+        public string EmailId { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeChangeTypeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypePriorityType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeUrgencyType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeImpactType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeRiskType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeReasonForChangeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeCategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeSubcategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeItemType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class CreateChangeInputInputDataTypeChangeTypeAssetsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4887,6 +4317,168 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class UpdateChangeInput
+    {
+        [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateChangeInputInputDataType InputData { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataType
+    {
+        [JsonProperty("change", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateChangeInputInputDataTypeChangeType Change { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeType
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("template")]
+        public UpdateChangeInputInputDataTypeChangeTypeTemplateType Template { get; set; }
+
+        [JsonProperty("change_requester")]
+        public UpdateChangeInputInputDataTypeChangeTypeChangeRequesterType ChangeRequester { get; set; }
+
+        [JsonProperty("site")]
+        public UpdateChangeInputInputDataTypeChangeTypeSiteType Site { get; set; }
+
+        [JsonProperty("group")]
+        public UpdateChangeInputInputDataTypeChangeTypeGroupType Group { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("change_owner")]
+        public UpdateChangeInputInputDataTypeChangeTypeChangeOwnerType ChangeOwner { get; set; }
+
+        [JsonProperty("change_type")]
+        public UpdateChangeInputInputDataTypeChangeTypeChangeTypeType ChangeType { get; set; }
+
+        [JsonProperty("priority")]
+        public UpdateChangeInputInputDataTypeChangeTypePriorityType Priority { get; set; }
+
+        [JsonProperty("urgency")]
+        public UpdateChangeInputInputDataTypeChangeTypeUrgencyType Urgency { get; set; }
+
+        [JsonProperty("impact")]
+        public UpdateChangeInputInputDataTypeChangeTypeImpactType Impact { get; set; }
+
+        [JsonProperty("risk")]
+        public UpdateChangeInputInputDataTypeChangeTypeRiskType Risk { get; set; }
+
+        [JsonProperty("reason_for_change")]
+        public UpdateChangeInputInputDataTypeChangeTypeReasonForChangeType ReasonForChange { get; set; }
+
+        [JsonProperty("category")]
+        public UpdateChangeInputInputDataTypeChangeTypeCategoryType Category { get; set; }
+
+        [JsonProperty("subcategory")]
+        public UpdateChangeInputInputDataTypeChangeTypeSubcategoryType Subcategory { get; set; }
+
+        [JsonProperty("item")]
+        public UpdateChangeInputInputDataTypeChangeTypeItemType Item { get; set; }
+
+        [JsonProperty("assets")]
+        public UpdateChangeInputInputDataTypeChangeTypeAssetsTypeItem[] Assets { get; set; }
+
+        [JsonProperty("udf_fields")]
+        public string UdfFields { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeTemplateType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeChangeRequesterType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeSiteType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeGroupType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeChangeOwnerType
+    {
+        [JsonProperty("email_id")]
+        public string EmailId { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeChangeTypeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypePriorityType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeUrgencyType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeImpactType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeRiskType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeReasonForChangeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeCategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeSubcategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeItemType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateChangeInputInputDataTypeChangeTypeAssetsTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }
 

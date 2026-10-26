@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "swaggerconverterip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ConvertByInput()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ConvertByInput(Expression<Func<object>> body)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert";
@@ -37,13 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

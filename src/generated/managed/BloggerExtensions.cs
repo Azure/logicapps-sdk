@@ -42,12 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post, ApiConnectionActionConfiguration> Create(Expression<Func<string>> blogId, Expression<Func<string>> posttitle, Expression<Func<string>> postcontent, Expression<Func<string[]>> postlabels = null, Expression<Func<bool>> isDraft = null)
+        public IBodyWorkflowAction<Post, ApiConnectionActionConfiguration> Create(Expression<Func<string>> blogId, Expression<Func<CreatePostInput>> post, Expression<Func<bool>> isDraft = null)
         {
             var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
-            var __workflow_posttitle = WorkflowExpression.Compile(posttitle, nameof(posttitle), required: true);
-            var __workflow_postcontent = WorkflowExpression.Compile(postcontent, nameof(postcontent), required: true);
-            var __workflow_postlabels = WorkflowExpression.Compile(postlabels, nameof(postlabels), required: false);
+            var __workflow_post = WorkflowExpression.Compile(post, nameof(post), required: true);
             var __workflow_isDraft = WorkflowExpression.Compile(isDraft, nameof(isDraft), required: false);
             return new DeferredBodyAction<Post, ApiConnectionActionConfiguration>(() =>
             {
@@ -57,23 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
                 callPayload.Queries["isDraft"] = Convert.ToString(false);
                 if (__workflow_isDraft != null)
                     callPayload.Queries["isDraft"] = ExpressionConverter.Convert(__workflow_isDraft);
-                var post = new JObject();
-                var postpropCount = 0;
-                postpropCount++;
-                post["title"] = ExpressionConverter.ConvertO(__workflow_posttitle);
-                postpropCount++;
-                post["content"] = ExpressionConverter.ConvertO(__workflow_postcontent);
-                if (__workflow_postlabels != null)
-                {
-                    post["labels"] = ExpressionConverter.ConvertO(__workflow_postlabels);
-                    postpropCount++;
-                }
-
-                if (postpropCount > 0)
-                {
-                    callPayload.Body = post;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_post);
                 return new ApiConnectionAction<Post>(callPayload);
             });
         }
@@ -93,43 +75,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
-        public IBodyWorkflowAction<Post, ApiConnectionActionConfiguration> Edit(Expression<Func<string>> blogId, Expression<Func<string>> postId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<string[]>> postlabels = null)
+        public IBodyWorkflowAction<Post, ApiConnectionActionConfiguration> Edit(Expression<Func<string>> blogId, Expression<Func<string>> postId, Expression<Func<EditPostInput>> post)
         {
             var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
-            var __workflow_posttitle = WorkflowExpression.Compile(posttitle, nameof(posttitle), required: false);
-            var __workflow_postcontent = WorkflowExpression.Compile(postcontent, nameof(postcontent), required: false);
-            var __workflow_postlabels = WorkflowExpression.Compile(postlabels, nameof(postlabels), required: false);
+            var __workflow_post = WorkflowExpression.Compile(post, nameof(post), required: true);
             return new DeferredBodyAction<Post, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blogs/{0}/posts/{1}", __workflow_blogId.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var post = new JObject();
-                var postpropCount = 0;
-                if (__workflow_posttitle != null)
-                {
-                    post["title"] = ExpressionConverter.ConvertO(__workflow_posttitle);
-                    postpropCount++;
-                }
-
-                if (__workflow_postcontent != null)
-                {
-                    post["content"] = ExpressionConverter.ConvertO(__workflow_postcontent);
-                    postpropCount++;
-                }
-
-                if (__workflow_postlabels != null)
-                {
-                    post["labels"] = ExpressionConverter.ConvertO(__workflow_postlabels);
-                    postpropCount++;
-                }
-
-                if (postpropCount > 0)
-                {
-                    callPayload.Body = post;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_post);
                 return new ApiConnectionAction<Post>(callPayload);
             });
         }
@@ -288,6 +244,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
 
         [JsonProperty("span")]
         public string LocationSpan { get; set; }
+    }
+
+    public class CreatePostInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
+
+        [JsonProperty("labels")]
+        public string[] Labels { get; set; }
+    }
+
+    public class EditPostInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("labels")]
+        public string[] Labels { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

@@ -28,42 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration> CreateAWorkspace(Expression<Func<string>> bodyworkspacename, Expression<Func<bodyworkspacetypeInput>> bodyworkspacetype, Expression<Func<string>> bodyworkspacedescription = null)
+        public IBodyWorkflowAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration> CreateAWorkspace(Expression<Func<CreateAWorkspaceInput>> body)
         {
-            var __workflow_bodyworkspacename = WorkflowExpression.Compile(bodyworkspacename, nameof(bodyworkspacename), required: true);
-            var __workflow_bodyworkspacetype = WorkflowExpression.Compile(bodyworkspacetype, nameof(bodyworkspacetype), required: true);
-            var __workflow_bodyworkspacedescription = WorkflowExpression.Compile(bodyworkspacedescription, nameof(bodyworkspacedescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspaces";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var workspaceObject = new JObject();
-                var workspaceObjectpropCount = 0;
-                workspaceObjectpropCount++;
-                workspaceObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyworkspacename);
-                if (__workflow_bodyworkspacedescription != null)
-                {
-                    workspaceObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyworkspacedescription);
-                    workspaceObjectpropCount++;
-                }
-
-                workspaceObjectpropCount++;
-                workspaceObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyworkspacetype);
-                if (workspaceObjectpropCount > 0)
-                {
-                    body["workspace"] = workspaceObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateAWorkspaceResponse>(callPayload);
             });
         }
@@ -153,8 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ImportOpenApiResponse, ApiConnectionActionConfiguration> ImportOpenApi(Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ImportOpenApiResponse, ApiConnectionActionConfiguration> ImportOpenApi(Expression<Func<ImportOpenApiInput>> body, Expression<Func<string>> workspace = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<ImportOpenApiResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -164,23 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
                 if (__workflow_workspace != null)
                     callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["type"] = "json";
-                bodypropCount++;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                if (inputObjectpropCount > 0)
-                {
-                    body["input"] = inputObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImportOpenApiResponse>(callPayload);
             });
         }
@@ -241,8 +200,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Name { get; set; }
     }
 
+    public class CreateAWorkspaceInput
+    {
+        [JsonProperty("workspace")]
+        public CreateAWorkspaceInputWorkspaceType Workspace { get; set; }
+    }
+
+    public class CreateAWorkspaceInputWorkspaceType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAWorkspaceInputWorkspaceTypeTypeType Type { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyworkspacetypeInput
+    public enum CreateAWorkspaceInputWorkspaceTypeTypeType
     {
         [EnumMember(Value = "personal")]
         Personal,
@@ -539,6 +516,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
 
         [JsonProperty("uid")]
         public string Uid { get; set; }
+    }
+
+    public class ImportOpenApiInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "json";
+
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Input { get; set; }
     }
 }
 

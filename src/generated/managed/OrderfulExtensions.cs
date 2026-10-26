@@ -25,20 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orderful")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTransaction()
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTransaction(Expression<Func<object>> body)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/transactions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -59,73 +54,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
 
     public class OrderfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration> CommunicationChannel(Expression<Func<bool>> communicationChannelRequestBodyisActive, Expression<Func<string>> communicationChannelRequestBodyname, Expression<Func<int>> communicationChannelRequestBodyownerId, Expression<Func<string>> communicationChannelRequestBodyconfigdestinationTypeName = null, Expression<Func<bool>> communicationChannelRequestBodyconfigguidelineFilter = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration> CommunicationChannel(Expression<Func<CommunicationChannelInput>> communicationChannelRequestBody = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_communicationChannelRequestBodyisActive = WorkflowExpression.Compile(communicationChannelRequestBodyisActive, nameof(communicationChannelRequestBodyisActive), required: true);
-            var __workflow_communicationChannelRequestBodyname = WorkflowExpression.Compile(communicationChannelRequestBodyname, nameof(communicationChannelRequestBodyname), required: true);
-            var __workflow_communicationChannelRequestBodyownerId = WorkflowExpression.Compile(communicationChannelRequestBodyownerId, nameof(communicationChannelRequestBodyownerId), required: true);
-            var __workflow_communicationChannelRequestBodyconfigdestinationTypeName = WorkflowExpression.Compile(communicationChannelRequestBodyconfigdestinationTypeName, nameof(communicationChannelRequestBodyconfigdestinationTypeName), required: false);
-            var __workflow_communicationChannelRequestBodyconfigguidelineFilter = WorkflowExpression.Compile(communicationChannelRequestBodyconfigguidelineFilter, nameof(communicationChannelRequestBodyconfigguidelineFilter), required: false);
+            var __workflow_communicationChannelRequestBody = WorkflowExpression.Compile(communicationChannelRequestBody, nameof(communicationChannelRequestBody), required: false);
             return new DeferredBodyTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/destinations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var communicationChannelRequestBody = new JObject();
-                var communicationChannelRequestBodypropCount = 0;
-                communicationChannelRequestBodypropCount++;
-                communicationChannelRequestBody["isActive"] = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBodyisActive);
-                communicationChannelRequestBodypropCount++;
-                communicationChannelRequestBody["name"] = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBodyname);
-                var configObject = new JObject();
-                var configObjectpropCount = 0;
-                if (__workflow_communicationChannelRequestBodyconfigdestinationTypeName != null)
-                {
-                    if (__workflow_communicationChannelRequestBodyconfigdestinationTypeName != null)
-                    {
-                        configObject["destinationTypeName"] = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBodyconfigdestinationTypeName);
-                        configObjectpropCount++;
-                    }
-
-                    configObjectpropCount++;
-                }
-                else
-                {
-                    configObject["destinationTypeName"] = "http";
-                    configObjectpropCount++;
-                }
-
-                if (__workflow_communicationChannelRequestBodyconfigguidelineFilter != null)
-                {
-                    if (__workflow_communicationChannelRequestBodyconfigguidelineFilter != null)
-                    {
-                        configObject["guidelineFilter"] = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBodyconfigguidelineFilter);
-                        configObjectpropCount++;
-                    }
-
-                    configObjectpropCount++;
-                }
-                else
-                {
-                    configObject["guidelineFilter"] = false;
-                    configObjectpropCount++;
-                }
-
-                configObject["url"] = "#{listCallbackUrl()}";
-                configObjectpropCount++;
-                if (configObjectpropCount > 0)
-                {
-                    communicationChannelRequestBody["config"] = configObject;
-                    communicationChannelRequestBodypropCount++;
-                }
-
-                communicationChannelRequestBodypropCount++;
-                communicationChannelRequestBody["ownerId"] = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBodyownerId);
-                if (communicationChannelRequestBodypropCount > 0)
-                {
-                    callPayload.Body = communicationChannelRequestBody;
-                }
-
+                if (__workflow_communicationChannelRequestBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_communicationChannelRequestBody);
                 return new ApiConnectionTrigger<CommunicationChannelCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -135,6 +73,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
     {
         [JsonProperty("id")]
         public int WebhookCommunicationChannelId { get; set; }
+    }
+
+    public class CommunicationChannelInput
+    {
+        [JsonProperty("isActive", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsActive { get; set; } = true;
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CommunicationChannelInputConfigType Config { get; set; }
+
+        [JsonProperty("ownerId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int OwnerId { get; set; }
+    }
+
+    public class CommunicationChannelInputConfigType
+    {
+        [JsonProperty("destinationTypeName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationTypeName { get; set; } = "http";
+
+        [JsonProperty("guidelineFilter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool GuidelineFilter { get; set; } = false;
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

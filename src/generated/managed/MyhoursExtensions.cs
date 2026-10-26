@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
     public class MyhoursActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> CreateClient(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> CreateClient(Expression<Func<CreateClientInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Client, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/clients/zapier";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Client>(callPayload);
             });
         }
@@ -49,46 +41,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> bodyname, Expression<Func<int>> bodyclientId = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyautoAssignUserId = null)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyautoAssignUserId = WorkflowExpression.Compile(bodyautoAssignUserId, nameof(bodyautoAssignUserId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Projects";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyclientId != null)
-                {
-                    body["clientId"] = ExpressionConverter.ConvertO(__workflow_bodyclientId);
-                    bodypropCount++;
-                }
-
-                body["invoiceMethod"] = 3;
-                bodypropCount++;
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautoAssignUserId != null)
-                {
-                    body["autoAssignUserId"] = ExpressionConverter.ConvertO(__workflow_bodyautoAssignUserId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Project>(callPayload);
             });
         }
@@ -108,49 +69,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ProjectTask, ApiConnectionActionConfiguration> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistName = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<ProjectTask, ApiConnectionActionConfiguration> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<CreateProjectTaskInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodylistName = WorkflowExpression.Compile(bodylistName, nameof(bodylistName), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProjectTask, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Projects/taskForPA";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylistName != null)
-                {
-                    if (__workflow_bodylistName != null)
-                    {
-                        body["listName"] = ExpressionConverter.ConvertO(__workflow_bodylistName);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["listName"] = "Task list";
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProjectTask>(callPayload);
             });
         }
@@ -172,26 +101,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Tag, ApiConnectionActionConfiguration> CreateTag(Expression<Func<string>> bodyname, Expression<Func<string>> bodyhexColor)
+        public IBodyWorkflowAction<Tag, ApiConnectionActionConfiguration> CreateTag(Expression<Func<CreateTagInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyhexColor = WorkflowExpression.Compile(bodyhexColor, nameof(bodyhexColor), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Tag, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/tags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["hexColor"] = ExpressionConverter.ConvertO(__workflow_bodyhexColor);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Tag>(callPayload);
             });
         }
@@ -211,72 +129,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<TimeLog, ApiConnectionActionConfiguration> CreateLog(Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodyduration = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytagId = null)
+        public IBodyWorkflowAction<TimeLog, ApiConnectionActionConfiguration> CreateLog(Expression<Func<CreateLogInput>> body)
         {
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
-            var __workflow_bodytagId = WorkflowExpression.Compile(bodytagId, nameof(bodytagId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TimeLog, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/logs/powerautomate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                if (__workflow_bodystartTime != null)
-                {
-                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyduration != null)
-                {
-                    body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["Note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["ProjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaskId != null)
-                {
-                    body["TaskId"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytagId != null)
-                {
-                    body["TagId"] = ExpressionConverter.ConvertO(__workflow_bodytagId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TimeLog>(callPayload);
             });
         }
@@ -361,6 +222,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
+    public class CreateClientInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
     public class Project
     {
         [JsonProperty("invoiceMethod")]
@@ -442,6 +309,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
+    public class CreateProjectInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("clientId")]
+        public int? ClientId { get; set; }
+
+        [JsonProperty("invoiceMethod", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int InvoiceMethod { get; set; } = 3;
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("autoAssignUserId")]
+        public int? AutoAssignUserId { get; set; }
+    }
+
     public class ProjectTask
     {
         [JsonProperty("name")]
@@ -502,6 +387,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
+    public class CreateProjectTaskInput
+    {
+        [JsonProperty("listName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ListName { get; set; } = "Task list";
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     public class Tag
     {
         [JsonProperty("name")]
@@ -518,6 +415,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
         [JsonProperty("id")]
         public int Id { get; set; }
+    }
+
+    public class CreateTagInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("hexColor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HexColor { get; set; } = "#007bff";
     }
 
     public class TimeLog
@@ -650,6 +556,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
         [JsonProperty("id")]
         public int Id { get; set; }
+    }
+
+    public class CreateLogInput
+    {
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("start")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("duration")]
+        public int? Duration { get; set; }
+        public string Note { get; set; }
+        public int? ProjectId { get; set; }
+        public int? TaskId { get; set; }
+        public int? TagId { get; set; }
     }
 
     public class ActivityReportResponse

@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     public class PdfblocksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeDocumentsArray(Expression<Func<bodydocumentsInputItem[]>> bodydocuments)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeDocumentsArray(Expression<Func<MergeDocumentsArrayInput>> body)
         {
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/merge_documents/array";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -39,9 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     {
     }
 
-    public class bodydocumentsInputItem
+    public class MergeDocumentsArrayInput
     {
-        [JsonProperty("fileContent")]
+        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MergeDocumentsArrayInputDocumentsTypeItem[] Documents { get; set; }
+    }
+
+    public class MergeDocumentsArrayInputDocumentsTypeItem
+    {
+        [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
 
         [JsonProperty("fileName")]

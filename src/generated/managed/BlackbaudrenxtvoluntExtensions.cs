@@ -78,42 +78,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerEmergencyContact(Expression<Func<string>> constituentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyrelationship = null, Expression<Func<string>> bodyphone = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerEmergencyContact(Expression<Func<string>> constituentId, Expression<Func<EditVolunteerEmergencyContactInput>> body)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyrelationship = WorkflowExpression.Compile(bodyrelationship, nameof(bodyrelationship), required: false);
-            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/volunteer/v1/volunteers/{0}/emergencycontact", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrelationship != null)
-                {
-                    body["relationship"] = ExpressionConverter.ConvertO(__workflow_bodyrelationship);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphone != null)
-                {
-                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -171,26 +145,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerInterest, ApiConnectionActionConfiguration> CreateVolunteerInterest(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyinterest)
+        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerInterest, ApiConnectionActionConfiguration> CreateVolunteerInterest(Expression<Func<CreateVolunteerInterestInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyinterest = WorkflowExpression.Compile(bodyinterest, nameof(bodyinterest), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VolunteerApiCreatedVolunteerInterest, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/volunteer/v1/volunteers/interests";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodyinterest);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<VolunteerApiCreatedVolunteerInterest>(callPayload);
             });
         }
@@ -209,76 +172,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerSkill, ApiConnectionActionConfiguration> CreateVolunteerSkill(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodydescription, Expression<Func<string>> bodyskillLevel = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<int>> bodyexpirationDateday = null, Expression<Func<int>> bodyexpirationDatemonth = null, Expression<Func<int>> bodyexpirationDateyear = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerSkill, ApiConnectionActionConfiguration> CreateVolunteerSkill(Expression<Func<CreateVolunteerSkillInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodyskillLevel = WorkflowExpression.Compile(bodyskillLevel, nameof(bodyskillLevel), required: false);
-            var __workflow_bodylicenseType = WorkflowExpression.Compile(bodylicenseType, nameof(bodylicenseType), required: false);
-            var __workflow_bodyexpirationDateday = WorkflowExpression.Compile(bodyexpirationDateday, nameof(bodyexpirationDateday), required: false);
-            var __workflow_bodyexpirationDatemonth = WorkflowExpression.Compile(bodyexpirationDatemonth, nameof(bodyexpirationDatemonth), required: false);
-            var __workflow_bodyexpirationDateyear = WorkflowExpression.Compile(bodyexpirationDateyear, nameof(bodyexpirationDateyear), required: false);
-            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VolunteerApiCreatedVolunteerSkill, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/volunteer/v1/volunteers/skills";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["skill_description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                if (__workflow_bodyskillLevel != null)
-                {
-                    body["skill_level"] = ExpressionConverter.ConvertO(__workflow_bodyskillLevel);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylicenseType != null)
-                {
-                    body["license_type"] = ExpressionConverter.ConvertO(__workflow_bodylicenseType);
-                    bodypropCount++;
-                }
-
-                var expirationDateObject = new JObject();
-                var expirationDateObjectpropCount = 0;
-                if (__workflow_bodyexpirationDateday != null)
-                {
-                    expirationDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDateday);
-                    expirationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpirationDatemonth != null)
-                {
-                    expirationDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDatemonth);
-                    expirationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpirationDateyear != null)
-                {
-                    expirationDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDateyear);
-                    expirationDateObjectpropCount++;
-                }
-
-                if (expirationDateObjectpropCount > 0)
-                {
-                    body["expiration_date"] = expirationDateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomments != null)
-                {
-                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<VolunteerApiCreatedVolunteerSkill>(callPayload);
             });
         }
@@ -297,175 +199,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerSkill(Expression<Func<string>> volunteerSkillId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyskillLevel = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<int>> bodyexpirationDateday = null, Expression<Func<int>> bodyexpirationDatemonth = null, Expression<Func<int>> bodyexpirationDateyear = null, Expression<Func<string>> bodycomments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerSkill(Expression<Func<string>> volunteerSkillId, Expression<Func<EditVolunteerSkillInput>> body)
         {
             var __workflow_volunteerSkillId = WorkflowExpression.Compile(volunteerSkillId, nameof(volunteerSkillId), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyskillLevel = WorkflowExpression.Compile(bodyskillLevel, nameof(bodyskillLevel), required: false);
-            var __workflow_bodylicenseType = WorkflowExpression.Compile(bodylicenseType, nameof(bodylicenseType), required: false);
-            var __workflow_bodyexpirationDateday = WorkflowExpression.Compile(bodyexpirationDateday, nameof(bodyexpirationDateday), required: false);
-            var __workflow_bodyexpirationDatemonth = WorkflowExpression.Compile(bodyexpirationDatemonth, nameof(bodyexpirationDatemonth), required: false);
-            var __workflow_bodyexpirationDateyear = WorkflowExpression.Compile(bodyexpirationDateyear, nameof(bodyexpirationDateyear), required: false);
-            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/volunteer/v1/volunteers/skills/{0}", __workflow_volunteerSkillId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["skill_description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyskillLevel != null)
-                {
-                    body["skill_level"] = ExpressionConverter.ConvertO(__workflow_bodyskillLevel);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylicenseType != null)
-                {
-                    body["license_type"] = ExpressionConverter.ConvertO(__workflow_bodylicenseType);
-                    bodypropCount++;
-                }
-
-                var expirationDateObject = new JObject();
-                var expirationDateObjectpropCount = 0;
-                if (__workflow_bodyexpirationDateday != null)
-                {
-                    expirationDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDateday);
-                    expirationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpirationDatemonth != null)
-                {
-                    expirationDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDatemonth);
-                    expirationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyexpirationDateyear != null)
-                {
-                    expirationDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDateyear);
-                    expirationDateObjectpropCount++;
-                }
-
-                if (expirationDateObjectpropCount > 0)
-                {
-                    body["expiration_date"] = expirationDateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomments != null)
-                {
-                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerType, ApiConnectionActionConfiguration> CreateVolunteerType(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodytype, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodydateStartedday = null, Expression<Func<int>> bodydateStartedmonth = null, Expression<Func<int>> bodydateStartedyear = null, Expression<Func<int>> bodydateFinishedday = null, Expression<Func<int>> bodydateFinishedmonth = null, Expression<Func<int>> bodydateFinishedyear = null, Expression<Func<string>> bodyreasonFinished = null)
+        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerType, ApiConnectionActionConfiguration> CreateVolunteerType(Expression<Func<CreateVolunteerTypeInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodydateStartedday = WorkflowExpression.Compile(bodydateStartedday, nameof(bodydateStartedday), required: false);
-            var __workflow_bodydateStartedmonth = WorkflowExpression.Compile(bodydateStartedmonth, nameof(bodydateStartedmonth), required: false);
-            var __workflow_bodydateStartedyear = WorkflowExpression.Compile(bodydateStartedyear, nameof(bodydateStartedyear), required: false);
-            var __workflow_bodydateFinishedday = WorkflowExpression.Compile(bodydateFinishedday, nameof(bodydateFinishedday), required: false);
-            var __workflow_bodydateFinishedmonth = WorkflowExpression.Compile(bodydateFinishedmonth, nameof(bodydateFinishedmonth), required: false);
-            var __workflow_bodydateFinishedyear = WorkflowExpression.Compile(bodydateFinishedyear, nameof(bodydateFinishedyear), required: false);
-            var __workflow_bodyreasonFinished = WorkflowExpression.Compile(bodyreasonFinished, nameof(bodyreasonFinished), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VolunteerApiCreatedVolunteerType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/volunteer/v1/volunteers/types";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var dateStartedObject = new JObject();
-                var dateStartedObjectpropCount = 0;
-                if (__workflow_bodydateStartedday != null)
-                {
-                    dateStartedObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateStartedday);
-                    dateStartedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateStartedmonth != null)
-                {
-                    dateStartedObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateStartedmonth);
-                    dateStartedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateStartedyear != null)
-                {
-                    dateStartedObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateStartedyear);
-                    dateStartedObjectpropCount++;
-                }
-
-                if (dateStartedObjectpropCount > 0)
-                {
-                    body["date_started"] = dateStartedObject;
-                    bodypropCount++;
-                }
-
-                var dateFinishedObject = new JObject();
-                var dateFinishedObjectpropCount = 0;
-                if (__workflow_bodydateFinishedday != null)
-                {
-                    dateFinishedObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateFinishedday);
-                    dateFinishedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateFinishedmonth != null)
-                {
-                    dateFinishedObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateFinishedmonth);
-                    dateFinishedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateFinishedyear != null)
-                {
-                    dateFinishedObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateFinishedyear);
-                    dateFinishedObjectpropCount++;
-                }
-
-                if (dateFinishedObjectpropCount > 0)
-                {
-                    body["date_finished"] = dateFinishedObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonFinished != null)
-                {
-                    body["reason_finished"] = ExpressionConverter.ConvertO(__workflow_bodyreasonFinished);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<VolunteerApiCreatedVolunteerType>(callPayload);
             });
         }
@@ -484,100 +241,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerType(Expression<Func<string>> volunteerTypeId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodydateStartedday = null, Expression<Func<int>> bodydateStartedmonth = null, Expression<Func<int>> bodydateStartedyear = null, Expression<Func<int>> bodydateFinishedday = null, Expression<Func<int>> bodydateFinishedmonth = null, Expression<Func<int>> bodydateFinishedyear = null, Expression<Func<string>> bodyreasonFinished = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerType(Expression<Func<string>> volunteerTypeId, Expression<Func<EditVolunteerTypeInput>> body)
         {
             var __workflow_volunteerTypeId = WorkflowExpression.Compile(volunteerTypeId, nameof(volunteerTypeId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodydateStartedday = WorkflowExpression.Compile(bodydateStartedday, nameof(bodydateStartedday), required: false);
-            var __workflow_bodydateStartedmonth = WorkflowExpression.Compile(bodydateStartedmonth, nameof(bodydateStartedmonth), required: false);
-            var __workflow_bodydateStartedyear = WorkflowExpression.Compile(bodydateStartedyear, nameof(bodydateStartedyear), required: false);
-            var __workflow_bodydateFinishedday = WorkflowExpression.Compile(bodydateFinishedday, nameof(bodydateFinishedday), required: false);
-            var __workflow_bodydateFinishedmonth = WorkflowExpression.Compile(bodydateFinishedmonth, nameof(bodydateFinishedmonth), required: false);
-            var __workflow_bodydateFinishedyear = WorkflowExpression.Compile(bodydateFinishedyear, nameof(bodydateFinishedyear), required: false);
-            var __workflow_bodyreasonFinished = WorkflowExpression.Compile(bodyreasonFinished, nameof(bodyreasonFinished), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/volunteer/v1/volunteers/types/{0}", __workflow_volunteerTypeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var dateStartedObject = new JObject();
-                var dateStartedObjectpropCount = 0;
-                if (__workflow_bodydateStartedday != null)
-                {
-                    dateStartedObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateStartedday);
-                    dateStartedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateStartedmonth != null)
-                {
-                    dateStartedObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateStartedmonth);
-                    dateStartedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateStartedyear != null)
-                {
-                    dateStartedObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateStartedyear);
-                    dateStartedObjectpropCount++;
-                }
-
-                if (dateStartedObjectpropCount > 0)
-                {
-                    body["date_started"] = dateStartedObject;
-                    bodypropCount++;
-                }
-
-                var dateFinishedObject = new JObject();
-                var dateFinishedObjectpropCount = 0;
-                if (__workflow_bodydateFinishedday != null)
-                {
-                    dateFinishedObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateFinishedday);
-                    dateFinishedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateFinishedmonth != null)
-                {
-                    dateFinishedObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateFinishedmonth);
-                    dateFinishedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateFinishedyear != null)
-                {
-                    dateFinishedObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateFinishedyear);
-                    dateFinishedObjectpropCount++;
-                }
-
-                if (dateFinishedObjectpropCount > 0)
-                {
-                    body["date_finished"] = dateFinishedObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonFinished != null)
-                {
-                    body["reason_finished"] = ExpressionConverter.ConvertO(__workflow_bodyreasonFinished);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -821,6 +494,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public string Phone { get; set; }
     }
 
+    public class EditVolunteerEmergencyContactInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("relationship")]
+        public string Relationship { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+    }
+
     public class VolunteerApiVolunteerInterestCollection
     {
         [JsonProperty("total_count")]
@@ -998,16 +683,175 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public int Id { get; set; }
     }
 
+    public class CreateVolunteerInterestInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Interest { get; set; }
+    }
+
     public class VolunteerApiCreatedVolunteerSkill
     {
         [JsonProperty("id")]
         public int Id { get; set; }
     }
 
+    public class CreateVolunteerSkillInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("skill_description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("skill_level")]
+        public string SkillLevel { get; set; }
+
+        [JsonProperty("license_type")]
+        public string LicenseType { get; set; }
+
+        [JsonProperty("expiration_date")]
+        public CreateVolunteerSkillInputExpirationDateType ExpirationDate { get; set; }
+
+        [JsonProperty("comments")]
+        public string Comments { get; set; }
+    }
+
+    public class CreateVolunteerSkillInputExpirationDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditVolunteerSkillInput
+    {
+        [JsonProperty("skill_description")]
+        public string Description { get; set; }
+
+        [JsonProperty("skill_level")]
+        public string SkillLevel { get; set; }
+
+        [JsonProperty("license_type")]
+        public string LicenseType { get; set; }
+
+        [JsonProperty("expiration_date")]
+        public EditVolunteerSkillInputExpirationDateType ExpirationDate { get; set; }
+
+        [JsonProperty("comments")]
+        public string Comments { get; set; }
+    }
+
+    public class EditVolunteerSkillInputExpirationDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
     public class VolunteerApiCreatedVolunteerType
     {
         [JsonProperty("id")]
         public int Id { get; set; }
+    }
+
+    public class CreateVolunteerTypeInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("date_started")]
+        public CreateVolunteerTypeInputDateStartedType DateStarted { get; set; }
+
+        [JsonProperty("date_finished")]
+        public CreateVolunteerTypeInputDateFinishedType DateFinished { get; set; }
+
+        [JsonProperty("reason_finished")]
+        public string ReasonFinished { get; set; }
+    }
+
+    public class CreateVolunteerTypeInputDateStartedType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateVolunteerTypeInputDateFinishedType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditVolunteerTypeInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("date_started")]
+        public EditVolunteerTypeInputDateStartedType DateStarted { get; set; }
+
+        [JsonProperty("date_finished")]
+        public EditVolunteerTypeInputDateFinishedType DateFinished { get; set; }
+
+        [JsonProperty("reason_finished")]
+        public string ReasonFinished { get; set; }
+    }
+
+    public class EditVolunteerTypeInputDateStartedType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditVolunteerTypeInputDateFinishedType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
     }
 }
 

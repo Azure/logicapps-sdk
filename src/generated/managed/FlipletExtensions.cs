@@ -91,22 +91,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDataSourceEntry(Expression<Func<int>> dataSourceId, Expression<Func<int>> dataSourceEntryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDataSourceEntry(Expression<Func<int>> dataSourceId, Expression<Func<int>> dataSourceEntryId, Expression<Func<object>> body)
         {
             var __workflow_dataSourceId = WorkflowExpression.Compile(dataSourceId, nameof(dataSourceId), required: true);
             var __workflow_dataSourceEntryId = WorkflowExpression.Compile(dataSourceEntryId, nameof(dataSourceEntryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/data-sources/{0}/data/{1}", __workflow_dataSourceId.WithUrlEncoding(1), __workflow_dataSourceEntryId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -125,27 +120,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateDataSourceRows(Expression<Func<int>> dataSourceId, Expression<Func<bool>> bodyappend, Expression<Func<JToken[]>> bodyentries)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateDataSourceRows(Expression<Func<int>> dataSourceId, Expression<Func<CreateDataSourceRowsInput>> body)
         {
             var __workflow_dataSourceId = WorkflowExpression.Compile(dataSourceId, nameof(dataSourceId), required: true);
-            var __workflow_bodyappend = WorkflowExpression.Compile(bodyappend, nameof(bodyappend), required: true);
-            var __workflow_bodyentries = WorkflowExpression.Compile(bodyentries, nameof(bodyentries), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/data-sources/{0}/data", __workflow_dataSourceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["append"] = ExpressionConverter.ConvertO(__workflow_bodyappend);
-                bodypropCount++;
-                body["entries"] = ExpressionConverter.ConvertO(__workflow_bodyentries);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -182,6 +166,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
     public class FetchedData
     {
         [JsonProperty("entries")]
+        public JToken[] Entries { get; set; }
+    }
+
+    public class CreateDataSourceRowsInput
+    {
+        [JsonProperty("append", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Append { get; set; }
+
+        [JsonProperty("entries", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Entries { get; set; }
     }
 }

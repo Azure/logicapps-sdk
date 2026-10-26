@@ -65,65 +65,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 
     public class ParseurTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewDocumentExpanded(Expression<Func<string>> mailboxId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewDocumentExpanded(Expression<Func<string>> mailboxId, Expression<Func<NewDocumentExpandedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_mailboxId = WorkflowExpression.Compile(mailboxId, nameof(mailboxId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/flow_webhook/document.processed", __workflow_mailboxId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> TemplateNeeded(Expression<Func<string>> mailboxId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> TemplateNeeded(Expression<Func<string>> mailboxId, Expression<Func<TemplateNeededInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_mailboxId = WorkflowExpression.Compile(mailboxId, nameof(mailboxId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/flow_webhook/document.template_needed", __workflow_mailboxId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> TableProcessed(Expression<Func<string>> tableId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> TableProcessed(Expression<Func<string>> tableId, Expression<Func<TableProcessedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/table/{0}/flow_webhook/table.processed", __workflow_tableId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
@@ -145,6 +124,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class NewDocumentExpandedInput
+    {
+        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Target { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class TemplateNeededInput
+    {
+        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Target { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class TableProcessedInput
+    {
+        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Target { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

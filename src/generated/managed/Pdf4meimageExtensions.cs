@@ -13,91 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     public class Pdf4meimageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodycompressionLevelInput>> bodycompressionLevel = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<CompressImageV1Input>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodycompressionLevel = WorkflowExpression.Compile(bodycompressionLevel, nameof(bodycompressionLevel), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CompressImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["imageType"] = ExpressionConverter.ConvertO(__workflow_bodyimageType);
-                if (__workflow_bodycompressionLevel != null)
-                {
-                    body["compressionLevel"] = ExpressionConverter.ConvertO(__workflow_bodycompressionLevel);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<string>> bodydocContent, Expression<Func<bodycurrentImageFormatInput>> bodycurrentImageFormat, Expression<Func<bodynewImageFormatInput>> bodynewImageFormat, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<ConvertImageFormatV1Input>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodycurrentImageFormat = WorkflowExpression.Compile(bodycurrentImageFormat, nameof(bodycurrentImageFormat), required: true);
-            var __workflow_bodynewImageFormat = WorkflowExpression.Compile(bodynewImageFormat, nameof(bodynewImageFormat), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertImageFormat";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["currentImageFormat"] = ExpressionConverter.ConvertO(__workflow_bodycurrentImageFormat);
-                bodypropCount++;
-                body["newImageFormat"] = ExpressionConverter.ConvertO(__workflow_bodynewImageFormat);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -115,7 +55,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 callPayload.Queries["schemaVal"] = Convert.ToString("Border");
                 if (__workflow_schemaVal != null)
                     callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
+                if (__workflow_operation != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -131,127 +72,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyorientationTypeInput>> bodyorientationType, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<FlipImageV1Input>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyorientationType = WorkflowExpression.Compile(bodyorientationType, nameof(bodyorientationType), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/FlipImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["orientationType"] = ExpressionConverter.ConvertO(__workflow_bodyorientationType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<ImageExtractTextV1Response, ApiConnectionActionConfiguration> ImageExtractText(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeExtractInput>> bodyimageTypeExtract, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<ImageExtractTextV1Response, ApiConnectionActionConfiguration> ImageExtractText(Expression<Func<ImageExtractTextV1Input>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyimageTypeExtract = WorkflowExpression.Compile(bodyimageTypeExtract, nameof(bodyimageTypeExtract), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ImageExtractTextV1Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ImageExtractText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["imageTypeExtract"] = ExpressionConverter.ConvertO(__workflow_bodyimageTypeExtract);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImageExtractTextV1Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<RemoveExifTagsFromImageV1Input>> body = null)
         {
-            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
-            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/RemoveEXIFTagsFromImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
-                var documentObject = new JObject();
-                var documentObjectpropCount = 0;
-                if (__workflow_bodydocumentname != null)
-                {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
-                    documentObjectpropCount++;
-                }
-
-                if (documentObjectpropCount > 0)
-                {
-                    body["document"] = documentObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["imageType"] = ExpressionConverter.ConvertO(__workflow_bodyimageType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -269,7 +136,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 callPayload.Queries["schemaVal"] = Convert.ToString("Percentage");
                 if (__workflow_schemaVal != null)
                     callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
+                if (__workflow_operation != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -279,23 +147,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     {
     }
 
+    public class CompressImageV1Input
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CompressImageV1InputDocumentType Document { get; set; }
+
+        [JsonProperty("imageType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CompressImageV1InputImageTypeType ImageType { get; set; }
+
+        [JsonProperty("compressionLevel")]
+        public CompressImageV1InputCompressionLevelType? CompressionLevel { get; set; }
+    }
+
+    public class CompressImageV1InputDocumentType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyimageTypeInput
+    public enum CompressImageV1InputImageTypeType
     {
         JPG,
         PNG
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycompressionLevelInput
+    public enum CompressImageV1InputCompressionLevelType
     {
         Max,
         Medium,
         Low
     }
 
+    public class ConvertImageFormatV1Input
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConvertImageFormatV1InputDocumentType Document { get; set; }
+
+        [JsonProperty("currentImageFormat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConvertImageFormatV1InputCurrentImageFormatType CurrentImageFormat { get; set; }
+
+        [JsonProperty("newImageFormat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConvertImageFormatV1InputNewImageFormatType NewImageFormat { get; set; }
+    }
+
+    public class ConvertImageFormatV1InputDocumentType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycurrentImageFormatInput
+    public enum ConvertImageFormatV1InputCurrentImageFormatType
     {
         BMP,
         JPG,
@@ -305,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodynewImageFormatInput
+    public enum ConvertImageFormatV1InputNewImageFormatType
     {
         BMP,
         JPG,
@@ -321,8 +231,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         Specific
     }
 
+    public class FlipImageV1Input
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public FlipImageV1InputDocumentType Document { get; set; }
+
+        [JsonProperty("orientationType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public FlipImageV1InputOrientationTypeType OrientationType { get; set; }
+    }
+
+    public class FlipImageV1InputDocumentType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyorientationTypeInput
+    public enum FlipImageV1InputOrientationTypeType
     {
         Horizontal,
         Vertical,
@@ -338,13 +266,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         public string DocText { get; set; }
     }
 
+    public class ImageExtractTextV1Input
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ImageExtractTextV1InputDocumentType Document { get; set; }
+
+        [JsonProperty("imageTypeExtract", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ImageExtractTextV1InputImageTypeExtractType ImageTypeExtract { get; set; } = ImageExtractTextV1InputImageTypeExtractType.JPG;
+    }
+
+    public class ImageExtractTextV1InputDocumentType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyimageTypeExtractInput
+    public enum ImageExtractTextV1InputImageTypeExtractType
     {
         JPG,
         PNG,
         TIFF,
         BMP
+    }
+
+    public class RemoveExifTagsFromImageV1Input
+    {
+        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocContent { get; set; }
+
+        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RemoveExifTagsFromImageV1InputDocumentType Document { get; set; }
+
+        [JsonProperty("imageType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RemoveExifTagsFromImageV1InputImageTypeType ImageType { get; set; }
+    }
+
+    public class RemoveExifTagsFromImageV1InputDocumentType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum RemoveExifTagsFromImageV1InputImageTypeType
+    {
+        JPG,
+        PNG
     }
 }
 

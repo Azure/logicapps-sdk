@@ -13,10 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
     public class DoctopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
-        public IBodyWorkflowAction<DocToPDFResponse, ApiConnectionActionConfiguration> DocToPDF(Expression<Func<string>> bodyfileName = null, Expression<Func<object>> bodyfileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
+        public IBodyWorkflowAction<DocToPDFResponse, ApiConnectionActionConfiguration> DocToPDF(Expression<Func<DocToPDFInput>> body, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
         {
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_publickey = WorkflowExpression.Compile(publickey, nameof(publickey), required: false);
             var __workflow_apikey = WorkflowExpression.Compile(apikey, nameof(apikey), required: false);
             return new DeferredBodyAction<DocToPDFResponse, ApiConnectionActionConfiguration>(() =>
@@ -30,25 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
                 callPayload.Headers["apikey"] = Convert.ToString("");
                 if (__workflow_apikey != null)
                     callPayload.Headers["apikey"] = ExpressionConverter.Convert(__workflow_apikey);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileName != null)
-                {
-                    body["File Name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileContent != null)
-                {
-                    body["File Content"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DocToPDFResponse>(callPayload);
             });
         }
@@ -63,6 +44,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [JsonProperty("File Name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("File Content")]
+        public JToken FileContent { get; set; }
+    }
+
+    public class DocToPDFInput
+    {
         [JsonProperty("File Name")]
         public string FileName { get; set; }
 

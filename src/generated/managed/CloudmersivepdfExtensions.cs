@@ -13,164 +13,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     public class CloudmersivepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfAddAnnotations(Expression<Func<PdfAnnotation[]>> requestannotationsToAdd = null, Expression<Func<string>> requestinputFileBytes = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfAddAnnotations(Expression<Func<EditPdfAddAnnotationsInput>> request)
         {
-            var __workflow_requestannotationsToAdd = WorkflowExpression.Compile(requestannotationsToAdd, nameof(requestannotationsToAdd), required: false);
-            var __workflow_requestinputFileBytes = WorkflowExpression.Compile(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/annotations/add-item";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestannotationsToAdd != null)
-                {
-                    request["AnnotationsToAdd"] = ExpressionConverter.ConvertO(__workflow_requestannotationsToAdd);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestinputFileBytes != null)
-                {
-                    request["InputFileBytes"] = ExpressionConverter.ConvertO(__workflow_requestinputFileBytes);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetFormFields(Expression<Func<SetFormFieldValue[]>> fieldValuesfieldValues = null, Expression<Func<string>> fieldValuesinputFileBytes = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetFormFields(Expression<Func<EditPdfSetFormFieldsInput>> fieldValues)
         {
-            var __workflow_fieldValuesfieldValues = WorkflowExpression.Compile(fieldValuesfieldValues, nameof(fieldValuesfieldValues), required: false);
-            var __workflow_fieldValuesinputFileBytes = WorkflowExpression.Compile(fieldValuesinputFileBytes, nameof(fieldValuesinputFileBytes), required: false);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/form/set-fields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var fieldValues = new JObject();
-                var fieldValuespropCount = 0;
-                if (__workflow_fieldValuesfieldValues != null)
-                {
-                    fieldValues["FieldValues"] = ExpressionConverter.ConvertO(__workflow_fieldValuesfieldValues);
-                    fieldValuespropCount++;
-                }
-
-                if (__workflow_fieldValuesinputFileBytes != null)
-                {
-                    fieldValues["InputFileBytes"] = ExpressionConverter.ConvertO(__workflow_fieldValuesinputFileBytes);
-                    fieldValuespropCount++;
-                }
-
-                if (fieldValuespropCount > 0)
-                {
-                    callPayload.Body = fieldValues;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fieldValues);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetMetadata(Expression<Func<string>> requestinputFileBytes = null, Expression<Func<string>> requestmetadataToSetauthor = null, Expression<Func<string>> requestmetadataToSetcreator = null, Expression<Func<string>> requestmetadataToSetdateCreated = null, Expression<Func<string>> requestmetadataToSetdateModified = null, Expression<Func<string>> requestmetadataToSetkeywords = null, Expression<Func<int>> requestmetadataToSetpageCount = null, Expression<Func<string>> requestmetadataToSetsubject = null, Expression<Func<bool>> requestmetadataToSetsuccessful = null, Expression<Func<string>> requestmetadataToSettitle = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetMetadata(Expression<Func<EditPdfSetMetadataInput>> request)
         {
-            var __workflow_requestinputFileBytes = WorkflowExpression.Compile(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
-            var __workflow_requestmetadataToSetauthor = WorkflowExpression.Compile(requestmetadataToSetauthor, nameof(requestmetadataToSetauthor), required: false);
-            var __workflow_requestmetadataToSetcreator = WorkflowExpression.Compile(requestmetadataToSetcreator, nameof(requestmetadataToSetcreator), required: false);
-            var __workflow_requestmetadataToSetdateCreated = WorkflowExpression.Compile(requestmetadataToSetdateCreated, nameof(requestmetadataToSetdateCreated), required: false);
-            var __workflow_requestmetadataToSetdateModified = WorkflowExpression.Compile(requestmetadataToSetdateModified, nameof(requestmetadataToSetdateModified), required: false);
-            var __workflow_requestmetadataToSetkeywords = WorkflowExpression.Compile(requestmetadataToSetkeywords, nameof(requestmetadataToSetkeywords), required: false);
-            var __workflow_requestmetadataToSetpageCount = WorkflowExpression.Compile(requestmetadataToSetpageCount, nameof(requestmetadataToSetpageCount), required: false);
-            var __workflow_requestmetadataToSetsubject = WorkflowExpression.Compile(requestmetadataToSetsubject, nameof(requestmetadataToSetsubject), required: false);
-            var __workflow_requestmetadataToSetsuccessful = WorkflowExpression.Compile(requestmetadataToSetsuccessful, nameof(requestmetadataToSetsuccessful), required: false);
-            var __workflow_requestmetadataToSettitle = WorkflowExpression.Compile(requestmetadataToSettitle, nameof(requestmetadataToSettitle), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/set-metadata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestinputFileBytes != null)
-                {
-                    request["InputFileBytes"] = ExpressionConverter.ConvertO(__workflow_requestinputFileBytes);
-                    requestpropCount++;
-                }
-
-                var metadataToSetObject = new JObject();
-                var metadataToSetObjectpropCount = 0;
-                if (__workflow_requestmetadataToSetauthor != null)
-                {
-                    metadataToSetObject["Author"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetauthor);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSetcreator != null)
-                {
-                    metadataToSetObject["Creator"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetcreator);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSetdateCreated != null)
-                {
-                    metadataToSetObject["DateCreated"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetdateCreated);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSetdateModified != null)
-                {
-                    metadataToSetObject["DateModified"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetdateModified);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSetkeywords != null)
-                {
-                    metadataToSetObject["Keywords"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetkeywords);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSetpageCount != null)
-                {
-                    metadataToSetObject["PageCount"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetpageCount);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSetsubject != null)
-                {
-                    metadataToSetObject["Subject"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetsubject);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSetsuccessful != null)
-                {
-                    metadataToSetObject["Successful"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSetsuccessful);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (__workflow_requestmetadataToSettitle != null)
-                {
-                    metadataToSetObject["Title"] = ExpressionConverter.ConvertO(__workflow_requestmetadataToSettitle);
-                    metadataToSetObjectpropCount++;
-                }
-
-                if (metadataToSetObjectpropCount > 0)
-                {
-                    request["MetadataToSet"] = metadataToSetObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -178,6 +57,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
 
     public class CloudmersivepdfTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class EditPdfAddAnnotationsInput
+    {
+        public PdfAnnotation[] AnnotationsToAdd { get; set; }
+        public string InputFileBytes { get; set; }
     }
 
     public class PdfAnnotation
@@ -196,12 +81,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         public double Width { get; set; }
     }
 
+    public class EditPdfSetFormFieldsInput
+    {
+        public SetFormFieldValue[] FieldValues { get; set; }
+        public string InputFileBytes { get; set; }
+    }
+
     public class SetFormFieldValue
     {
         public bool CheckboxValue { get; set; }
         public int ComboBoxSelectedIndex { get; set; }
         public string FieldName { get; set; }
         public string TextValue { get; set; }
+    }
+
+    public class EditPdfSetMetadataInput
+    {
+        public string InputFileBytes { get; set; }
+        public PdfMetadata MetadataToSet { get; set; }
+    }
+
+    public class PdfMetadata
+    {
+        public string Author { get; set; }
+        public string Creator { get; set; }
+        public string DateCreated { get; set; }
+        public string DateModified { get; set; }
+        public string Keywords { get; set; }
+        public int PageCount { get; set; }
+        public string Subject { get; set; }
+        public bool Successful { get; set; }
+        public string Title { get; set; }
     }
 }
 

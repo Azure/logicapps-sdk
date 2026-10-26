@@ -117,17 +117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCustomer(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodycustomerIdvalue = null, Expression<Func<string>> bodycustomerNamevalue = null, Expression<Func<string>> bodystatusvalue = null, Expression<Func<string>> bodyaccountRefvalue = null, Expression<Func<string>> bodycurrencyIdvalue = null, Expression<Func<string>> bodycustomerClassvalue = null, Expression<Func<string>> bodytermsvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCustomer(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingCustomerInput>> body)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_bodycustomerIdvalue = WorkflowExpression.Compile(bodycustomerIdvalue, nameof(bodycustomerIdvalue), required: false);
-            var __workflow_bodycustomerNamevalue = WorkflowExpression.Compile(bodycustomerNamevalue, nameof(bodycustomerNamevalue), required: false);
-            var __workflow_bodystatusvalue = WorkflowExpression.Compile(bodystatusvalue, nameof(bodystatusvalue), required: false);
-            var __workflow_bodyaccountRefvalue = WorkflowExpression.Compile(bodyaccountRefvalue, nameof(bodyaccountRefvalue), required: false);
-            var __workflow_bodycurrencyIdvalue = WorkflowExpression.Compile(bodycurrencyIdvalue, nameof(bodycurrencyIdvalue), required: false);
-            var __workflow_bodycustomerClassvalue = WorkflowExpression.Compile(bodycustomerClassvalue, nameof(bodycustomerClassvalue), required: false);
-            var __workflow_bodytermsvalue = WorkflowExpression.Compile(bodytermsvalue, nameof(bodytermsvalue), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatesOrUpdatesAnExistingCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/entity/Default/17.200.001/Customer";
@@ -135,111 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var customerIdObject = new JObject();
-                var customerIdObjectpropCount = 0;
-                if (__workflow_bodycustomerIdvalue != null)
-                {
-                    customerIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycustomerIdvalue);
-                    customerIdObjectpropCount++;
-                }
-
-                if (customerIdObjectpropCount > 0)
-                {
-                    body["CustomerID"] = customerIdObject;
-                    bodypropCount++;
-                }
-
-                var customerNameObject = new JObject();
-                var customerNameObjectpropCount = 0;
-                if (__workflow_bodycustomerNamevalue != null)
-                {
-                    customerNameObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycustomerNamevalue);
-                    customerNameObjectpropCount++;
-                }
-
-                if (customerNameObjectpropCount > 0)
-                {
-                    body["CustomerName"] = customerNameObject;
-                    bodypropCount++;
-                }
-
-                var statusObject = new JObject();
-                var statusObjectpropCount = 0;
-                if (__workflow_bodystatusvalue != null)
-                {
-                    statusObject["value"] = ExpressionConverter.ConvertO(__workflow_bodystatusvalue);
-                    statusObjectpropCount++;
-                }
-
-                if (statusObjectpropCount > 0)
-                {
-                    body["Status"] = statusObject;
-                    bodypropCount++;
-                }
-
-                var accountRefObject = new JObject();
-                var accountRefObjectpropCount = 0;
-                if (__workflow_bodyaccountRefvalue != null)
-                {
-                    accountRefObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyaccountRefvalue);
-                    accountRefObjectpropCount++;
-                }
-
-                if (accountRefObjectpropCount > 0)
-                {
-                    body["AccountRef"] = accountRefObject;
-                    bodypropCount++;
-                }
-
-                var currencyIdObject = new JObject();
-                var currencyIdObjectpropCount = 0;
-                if (__workflow_bodycurrencyIdvalue != null)
-                {
-                    currencyIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyIdvalue);
-                    currencyIdObjectpropCount++;
-                }
-
-                if (currencyIdObjectpropCount > 0)
-                {
-                    body["CurrencyID"] = currencyIdObject;
-                    bodypropCount++;
-                }
-
-                var customerClassObject = new JObject();
-                var customerClassObjectpropCount = 0;
-                if (__workflow_bodycustomerClassvalue != null)
-                {
-                    customerClassObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycustomerClassvalue);
-                    customerClassObjectpropCount++;
-                }
-
-                if (customerClassObjectpropCount > 0)
-                {
-                    body["CustomerClass"] = customerClassObject;
-                    bodypropCount++;
-                }
-
-                var termsObject = new JObject();
-                var termsObjectpropCount = 0;
-                if (__workflow_bodytermsvalue != null)
-                {
-                    termsObject["value"] = ExpressionConverter.ConvertO(__workflow_bodytermsvalue);
-                    termsObjectpropCount++;
-                }
-
-                if (termsObjectpropCount > 0)
-                {
-                    body["Terms"] = termsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatesOrUpdatesAnExistingCustomerResponse>(callPayload);
             });
         }
@@ -271,23 +161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingOpportunity(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyopportunityIdvalue = null, Expression<Func<string>> bodysubjectvalue = null, Expression<Func<string>> bodystatusvalue = null, Expression<Func<string>> bodystagevalue = null, Expression<Func<string>> bodycurrencyIdvalue = null, Expression<Func<string>> bodybusinessAccountvalue = null, Expression<Func<string>> bodycontactDisplayNamevalue = null, Expression<Func<double>> bodyamountvalue = null, Expression<Func<double>> bodydiscountvalue = null, Expression<Func<double>> bodytotalvalue = null, Expression<Func<string>> bodysourcevalue = null, Expression<Func<string>> bodyreasonvalue = null, Expression<Func<string>> bodyprojectvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingOpportunity(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingOpportunityInput>> body)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_bodyopportunityIdvalue = WorkflowExpression.Compile(bodyopportunityIdvalue, nameof(bodyopportunityIdvalue), required: false);
-            var __workflow_bodysubjectvalue = WorkflowExpression.Compile(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
-            var __workflow_bodystatusvalue = WorkflowExpression.Compile(bodystatusvalue, nameof(bodystatusvalue), required: false);
-            var __workflow_bodystagevalue = WorkflowExpression.Compile(bodystagevalue, nameof(bodystagevalue), required: false);
-            var __workflow_bodycurrencyIdvalue = WorkflowExpression.Compile(bodycurrencyIdvalue, nameof(bodycurrencyIdvalue), required: false);
-            var __workflow_bodybusinessAccountvalue = WorkflowExpression.Compile(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
-            var __workflow_bodycontactDisplayNamevalue = WorkflowExpression.Compile(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
-            var __workflow_bodyamountvalue = WorkflowExpression.Compile(bodyamountvalue, nameof(bodyamountvalue), required: false);
-            var __workflow_bodydiscountvalue = WorkflowExpression.Compile(bodydiscountvalue, nameof(bodydiscountvalue), required: false);
-            var __workflow_bodytotalvalue = WorkflowExpression.Compile(bodytotalvalue, nameof(bodytotalvalue), required: false);
-            var __workflow_bodysourcevalue = WorkflowExpression.Compile(bodysourcevalue, nameof(bodysourcevalue), required: false);
-            var __workflow_bodyreasonvalue = WorkflowExpression.Compile(bodyreasonvalue, nameof(bodyreasonvalue), required: false);
-            var __workflow_bodyprojectvalue = WorkflowExpression.Compile(bodyprojectvalue, nameof(bodyprojectvalue), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatesOrUpdatesAnExistingOpportunityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/entity/Default/17.200.001/Opportunity";
@@ -295,195 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var opportunityIdObject = new JObject();
-                var opportunityIdObjectpropCount = 0;
-                if (__workflow_bodyopportunityIdvalue != null)
-                {
-                    opportunityIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityIdvalue);
-                    opportunityIdObjectpropCount++;
-                }
-
-                if (opportunityIdObjectpropCount > 0)
-                {
-                    body["OpportunityID"] = opportunityIdObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectvalue != null)
-                {
-                    subjectObject["value"] = ExpressionConverter.ConvertO(__workflow_bodysubjectvalue);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["Subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var statusObject = new JObject();
-                var statusObjectpropCount = 0;
-                if (__workflow_bodystatusvalue != null)
-                {
-                    statusObject["value"] = ExpressionConverter.ConvertO(__workflow_bodystatusvalue);
-                    statusObjectpropCount++;
-                }
-
-                if (statusObjectpropCount > 0)
-                {
-                    body["Status"] = statusObject;
-                    bodypropCount++;
-                }
-
-                var stageObject = new JObject();
-                var stageObjectpropCount = 0;
-                if (__workflow_bodystagevalue != null)
-                {
-                    stageObject["value"] = ExpressionConverter.ConvertO(__workflow_bodystagevalue);
-                    stageObjectpropCount++;
-                }
-
-                if (stageObjectpropCount > 0)
-                {
-                    body["Stage"] = stageObject;
-                    bodypropCount++;
-                }
-
-                var currencyIdObject = new JObject();
-                var currencyIdObjectpropCount = 0;
-                if (__workflow_bodycurrencyIdvalue != null)
-                {
-                    currencyIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyIdvalue);
-                    currencyIdObjectpropCount++;
-                }
-
-                if (currencyIdObjectpropCount > 0)
-                {
-                    body["CurrencyID"] = currencyIdObject;
-                    bodypropCount++;
-                }
-
-                var businessAccountObject = new JObject();
-                var businessAccountObjectpropCount = 0;
-                if (__workflow_bodybusinessAccountvalue != null)
-                {
-                    businessAccountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodybusinessAccountvalue);
-                    businessAccountObjectpropCount++;
-                }
-
-                if (businessAccountObjectpropCount > 0)
-                {
-                    body["BusinessAccount"] = businessAccountObject;
-                    bodypropCount++;
-                }
-
-                var contactDisplayNameObject = new JObject();
-                var contactDisplayNameObjectpropCount = 0;
-                if (__workflow_bodycontactDisplayNamevalue != null)
-                {
-                    contactDisplayNameObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycontactDisplayNamevalue);
-                    contactDisplayNameObjectpropCount++;
-                }
-
-                if (contactDisplayNameObjectpropCount > 0)
-                {
-                    body["ContactDisplayName"] = contactDisplayNameObject;
-                    bodypropCount++;
-                }
-
-                var amountObject = new JObject();
-                var amountObjectpropCount = 0;
-                if (__workflow_bodyamountvalue != null)
-                {
-                    amountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyamountvalue);
-                    amountObjectpropCount++;
-                }
-
-                if (amountObjectpropCount > 0)
-                {
-                    body["Amount"] = amountObject;
-                    bodypropCount++;
-                }
-
-                var discountObject = new JObject();
-                var discountObjectpropCount = 0;
-                if (__workflow_bodydiscountvalue != null)
-                {
-                    discountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydiscountvalue);
-                    discountObjectpropCount++;
-                }
-
-                if (discountObjectpropCount > 0)
-                {
-                    body["Discount"] = discountObject;
-                    bodypropCount++;
-                }
-
-                var totalObject = new JObject();
-                var totalObjectpropCount = 0;
-                if (__workflow_bodytotalvalue != null)
-                {
-                    totalObject["value"] = ExpressionConverter.ConvertO(__workflow_bodytotalvalue);
-                    totalObjectpropCount++;
-                }
-
-                if (totalObjectpropCount > 0)
-                {
-                    body["Total"] = totalObject;
-                    bodypropCount++;
-                }
-
-                var sourceObject = new JObject();
-                var sourceObjectpropCount = 0;
-                if (__workflow_bodysourcevalue != null)
-                {
-                    sourceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodysourcevalue);
-                    sourceObjectpropCount++;
-                }
-
-                if (sourceObjectpropCount > 0)
-                {
-                    body["Source"] = sourceObject;
-                    bodypropCount++;
-                }
-
-                var reasonObject = new JObject();
-                var reasonObjectpropCount = 0;
-                if (__workflow_bodyreasonvalue != null)
-                {
-                    reasonObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyreasonvalue);
-                    reasonObjectpropCount++;
-                }
-
-                if (reasonObjectpropCount > 0)
-                {
-                    body["Reason"] = reasonObject;
-                    bodypropCount++;
-                }
-
-                var projectObject = new JObject();
-                var projectObjectpropCount = 0;
-                if (__workflow_bodyprojectvalue != null)
-                {
-                    projectObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyprojectvalue);
-                    projectObjectpropCount++;
-                }
-
-                if (projectObjectpropCount > 0)
-                {
-                    body["Project"] = projectObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatesOrUpdatesAnExistingOpportunityResponse>(callPayload);
             });
         }
@@ -515,20 +205,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCase(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodycaseIdvalue = null, Expression<Func<string>> bodysubjectvalue = null, Expression<Func<string>> bodyclassIdvalue = null, Expression<Func<string>> bodybusinessAccountvalue = null, Expression<Func<string>> bodydescriptionvalue = null, Expression<Func<string>> bodycontactDisplayNamevalue = null, Expression<Func<string>> bodystatusvalue = null, Expression<Func<string>> bodyreasonvalue = null, Expression<Func<string>> bodyseverityvalue = null, Expression<Func<string>> bodypriorityvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCase(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingCaseInput>> body)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_bodycaseIdvalue = WorkflowExpression.Compile(bodycaseIdvalue, nameof(bodycaseIdvalue), required: false);
-            var __workflow_bodysubjectvalue = WorkflowExpression.Compile(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
-            var __workflow_bodyclassIdvalue = WorkflowExpression.Compile(bodyclassIdvalue, nameof(bodyclassIdvalue), required: false);
-            var __workflow_bodybusinessAccountvalue = WorkflowExpression.Compile(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
-            var __workflow_bodydescriptionvalue = WorkflowExpression.Compile(bodydescriptionvalue, nameof(bodydescriptionvalue), required: false);
-            var __workflow_bodycontactDisplayNamevalue = WorkflowExpression.Compile(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
-            var __workflow_bodystatusvalue = WorkflowExpression.Compile(bodystatusvalue, nameof(bodystatusvalue), required: false);
-            var __workflow_bodyreasonvalue = WorkflowExpression.Compile(bodyreasonvalue, nameof(bodyreasonvalue), required: false);
-            var __workflow_bodyseverityvalue = WorkflowExpression.Compile(bodyseverityvalue, nameof(bodyseverityvalue), required: false);
-            var __workflow_bodypriorityvalue = WorkflowExpression.Compile(bodypriorityvalue, nameof(bodypriorityvalue), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatesOrUpdatesAnExistingCaseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/entity/Default/17.200.001/Case";
@@ -536,153 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var caseIdObject = new JObject();
-                var caseIdObjectpropCount = 0;
-                if (__workflow_bodycaseIdvalue != null)
-                {
-                    caseIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycaseIdvalue);
-                    caseIdObjectpropCount++;
-                }
-
-                if (caseIdObjectpropCount > 0)
-                {
-                    body["CaseID"] = caseIdObject;
-                    bodypropCount++;
-                }
-
-                var subjectObject = new JObject();
-                var subjectObjectpropCount = 0;
-                if (__workflow_bodysubjectvalue != null)
-                {
-                    subjectObject["value"] = ExpressionConverter.ConvertO(__workflow_bodysubjectvalue);
-                    subjectObjectpropCount++;
-                }
-
-                if (subjectObjectpropCount > 0)
-                {
-                    body["Subject"] = subjectObject;
-                    bodypropCount++;
-                }
-
-                var classIdObject = new JObject();
-                var classIdObjectpropCount = 0;
-                if (__workflow_bodyclassIdvalue != null)
-                {
-                    classIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyclassIdvalue);
-                    classIdObjectpropCount++;
-                }
-
-                if (classIdObjectpropCount > 0)
-                {
-                    body["ClassID"] = classIdObject;
-                    bodypropCount++;
-                }
-
-                var businessAccountObject = new JObject();
-                var businessAccountObjectpropCount = 0;
-                if (__workflow_bodybusinessAccountvalue != null)
-                {
-                    businessAccountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodybusinessAccountvalue);
-                    businessAccountObjectpropCount++;
-                }
-
-                if (businessAccountObjectpropCount > 0)
-                {
-                    body["BusinessAccount"] = businessAccountObject;
-                    bodypropCount++;
-                }
-
-                var descriptionObject = new JObject();
-                var descriptionObjectpropCount = 0;
-                if (__workflow_bodydescriptionvalue != null)
-                {
-                    descriptionObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydescriptionvalue);
-                    descriptionObjectpropCount++;
-                }
-
-                if (descriptionObjectpropCount > 0)
-                {
-                    body["Description"] = descriptionObject;
-                    bodypropCount++;
-                }
-
-                var contactDisplayNameObject = new JObject();
-                var contactDisplayNameObjectpropCount = 0;
-                if (__workflow_bodycontactDisplayNamevalue != null)
-                {
-                    contactDisplayNameObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycontactDisplayNamevalue);
-                    contactDisplayNameObjectpropCount++;
-                }
-
-                if (contactDisplayNameObjectpropCount > 0)
-                {
-                    body["ContactDisplayName"] = contactDisplayNameObject;
-                    bodypropCount++;
-                }
-
-                var statusObject = new JObject();
-                var statusObjectpropCount = 0;
-                if (__workflow_bodystatusvalue != null)
-                {
-                    statusObject["value"] = ExpressionConverter.ConvertO(__workflow_bodystatusvalue);
-                    statusObjectpropCount++;
-                }
-
-                if (statusObjectpropCount > 0)
-                {
-                    body["Status"] = statusObject;
-                    bodypropCount++;
-                }
-
-                var reasonObject = new JObject();
-                var reasonObjectpropCount = 0;
-                if (__workflow_bodyreasonvalue != null)
-                {
-                    reasonObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyreasonvalue);
-                    reasonObjectpropCount++;
-                }
-
-                if (reasonObjectpropCount > 0)
-                {
-                    body["Reason"] = reasonObject;
-                    bodypropCount++;
-                }
-
-                var severityObject = new JObject();
-                var severityObjectpropCount = 0;
-                if (__workflow_bodyseverityvalue != null)
-                {
-                    severityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyseverityvalue);
-                    severityObjectpropCount++;
-                }
-
-                if (severityObjectpropCount > 0)
-                {
-                    body["Severity"] = severityObject;
-                    bodypropCount++;
-                }
-
-                var priorityObject = new JObject();
-                var priorityObjectpropCount = 0;
-                if (__workflow_bodypriorityvalue != null)
-                {
-                    priorityObject["value"] = ExpressionConverter.ConvertO(__workflow_bodypriorityvalue);
-                    priorityObjectpropCount++;
-                }
-
-                if (priorityObjectpropCount > 0)
-                {
-                    body["Priority"] = priorityObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatesOrUpdatesAnExistingCaseResponse>(callPayload);
             });
         }
@@ -1049,6 +584,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
+    public class CreatesOrUpdatesAnExistingCustomerInput
+    {
+        [JsonProperty("CustomerID")]
+        public CreatesOrUpdatesAnExistingCustomerInputCustomerIdType CustomerId { get; set; }
+        public CreatesOrUpdatesAnExistingCustomerInputCustomerNameType CustomerName { get; set; }
+        public CreatesOrUpdatesAnExistingCustomerInputStatusType Status { get; set; }
+        public CreatesOrUpdatesAnExistingCustomerInputAccountRefType AccountRef { get; set; }
+
+        [JsonProperty("CurrencyID")]
+        public CreatesOrUpdatesAnExistingCustomerInputCurrencyIdType CurrencyId { get; set; }
+        public CreatesOrUpdatesAnExistingCustomerInputCustomerClassType CustomerClass { get; set; }
+        public CreatesOrUpdatesAnExistingCustomerInputTermsType Terms { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCustomerInputCustomerIdType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCustomerInputCustomerNameType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCustomerInputStatusType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCustomerInputAccountRefType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCustomerInputCurrencyIdType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCustomerInputCustomerClassType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCustomerInputTermsType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
     public class RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem
     {
         [JsonProperty("OpportunityID")]
@@ -1245,6 +836,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
+    public class CreatesOrUpdatesAnExistingOpportunityInput
+    {
+        [JsonProperty("OpportunityID")]
+        public CreatesOrUpdatesAnExistingOpportunityInputOpportunityIdType OpportunityId { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputSubjectType Subject { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputStatusType Status { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputStageType Stage { get; set; }
+
+        [JsonProperty("CurrencyID")]
+        public CreatesOrUpdatesAnExistingOpportunityInputCurrencyIdType CurrencyId { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputBusinessAccountType BusinessAccount { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputContactDisplayNameType ContactDisplayName { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputAmountType Amount { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputDiscountType Discount { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputTotalType Total { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputSourceType Source { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputReasonType Reason { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityInputProjectType Project { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputOpportunityIdType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputSubjectType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputStatusType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputStageType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputCurrencyIdType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputBusinessAccountType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputContactDisplayNameType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputDiscountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputTotalType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputSourceType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputReasonType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingOpportunityInputProjectType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
     public class RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem
     {
         [JsonProperty("CaseID")]
@@ -1422,6 +1111,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
     }
 
     public class CreatesOrUpdatesAnExistingCaseResponseLastActivityDateType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInput
+    {
+        [JsonProperty("CaseID")]
+        public CreatesOrUpdatesAnExistingCaseInputCaseIdType CaseId { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputSubjectType Subject { get; set; }
+
+        [JsonProperty("ClassID")]
+        public CreatesOrUpdatesAnExistingCaseInputClassIdType ClassId { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputBusinessAccountType BusinessAccount { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputDescriptionType Description { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputContactDisplayNameType ContactDisplayName { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputStatusType Status { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputReasonType Reason { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputSeverityType Severity { get; set; }
+        public CreatesOrUpdatesAnExistingCaseInputPriorityType Priority { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputCaseIdType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputSubjectType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputClassIdType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputBusinessAccountType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputDescriptionType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputContactDisplayNameType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputStatusType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputReasonType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputSeverityType
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class CreatesOrUpdatesAnExistingCaseInputPriorityType
     {
         [JsonProperty("value")]
         public string Value { get; set; }

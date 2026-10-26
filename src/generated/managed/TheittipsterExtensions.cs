@@ -13,53 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
     public class TheittipsterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration> GenerateBarcode(Expression<Func<string>> bodybarcodeNumber = null)
+        public IBodyWorkflowAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration> GenerateBarcode(Expression<Func<GenerateBarcodeInput>> body = null)
         {
-            var __workflow_bodybarcodeNumber = WorkflowExpression.Compile(bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/generateBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodybarcodeNumber != null)
-                {
-                    body["barcodeNumber"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerateBarcodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration> GenerateQRCode(Expression<Func<string>> bodyqrcodeText = null)
+        public IBodyWorkflowAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration> GenerateQRCode(Expression<Func<GenerateQRCodeInput>> body = null)
         {
-            var __workflow_bodyqrcodeText = WorkflowExpression.Compile(bodyqrcodeText, nameof(bodyqrcodeText), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/generateQRCode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyqrcodeText != null)
-                {
-                    body["qrcodeText"] = ExpressionConverter.ConvertO(__workflow_bodyqrcodeText);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerateQRCodeResponse>(callPayload);
             });
         }
@@ -75,10 +53,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         public string Body { get; set; }
     }
 
+    public class GenerateBarcodeInput
+    {
+        [JsonProperty("barcodeNumber")]
+        public string BarcodeNumber { get; set; }
+    }
+
     public class GenerateQRCodeResponse
     {
         [JsonProperty("body")]
         public string Body { get; set; }
+    }
+
+    public class GenerateQRCodeInput
+    {
+        [JsonProperty("qrcodeText")]
+        public string QrcodeText { get; set; }
     }
 }
 

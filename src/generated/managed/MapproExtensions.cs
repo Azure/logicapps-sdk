@@ -41,41 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> UpdatePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> UpdatePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId, Expression<Func<UpdatePlaceInput>> body)
         {
             var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
             var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
-            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: true);
-            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Place, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places/{1}", __workflow_mapId.WithUrlEncoding(1), __workflow_placeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
-                bodypropCount++;
-                body["lat"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
-                bodypropCount++;
-                body["lng"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Place>(callPayload);
             });
         }
@@ -94,40 +70,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> CreateNewPlace(Expression<Func<string>> mapId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> CreateNewPlace(Expression<Func<string>> mapId, Expression<Func<CreateNewPlaceInput>> body)
         {
             var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
-            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: true);
-            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Place, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places", __workflow_mapId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
-                bodypropCount++;
-                body["lat"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
-                bodypropCount++;
-                body["lng"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Place>(callPayload);
             });
         }
@@ -158,6 +110,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         public double Latitude { get; set; }
 
         [JsonProperty("lng")]
+        public double Longitude { get; set; }
+    }
+
+    public class UpdatePlaceInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("lat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Latitude { get; set; }
+
+        [JsonProperty("lng", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Longitude { get; set; }
+    }
+
+    public class CreateNewPlaceInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("lat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Latitude { get; set; }
+
+        [JsonProperty("lng", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Longitude { get; set; }
     }
 }

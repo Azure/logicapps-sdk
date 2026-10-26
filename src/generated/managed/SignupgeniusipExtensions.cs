@@ -64,30 +64,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<GroupUserAddResponse, ApiConnectionActionConfiguration> GroupUserAdd(Expression<Func<string>> groupId, Expression<Func<string>> bodyemailaddress, Expression<Func<string>> bodyfirstname, Expression<Func<string>> bodylastname)
+        public IBodyWorkflowAction<GroupUserAddResponse, ApiConnectionActionConfiguration> GroupUserAdd(Expression<Func<string>> groupId, Expression<Func<GroupUserAddInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodyemailaddress = WorkflowExpression.Compile(bodyemailaddress, nameof(bodyemailaddress), required: true);
-            var __workflow_bodyfirstname = WorkflowExpression.Compile(bodyfirstname, nameof(bodyfirstname), required: true);
-            var __workflow_bodylastname = WorkflowExpression.Compile(bodylastname, nameof(bodylastname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupUserAddResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/members/create/", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["emailaddress"] = ExpressionConverter.ConvertO(__workflow_bodyemailaddress);
-                bodypropCount++;
-                body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
-                bodypropCount++;
-                body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GroupUserAddResponse>(callPayload);
             });
         }
@@ -419,6 +405,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
 
         [JsonProperty("success")]
         public bool Success { get; set; }
+    }
+
+    public class GroupUserAddInput
+    {
+        [JsonProperty("emailaddress", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Emailaddress { get; set; }
+
+        [JsonProperty("firstname", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Firstname { get; set; }
+
+        [JsonProperty("lastname", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Lastname { get; set; }
     }
 
     public class SignUpActiveResponse

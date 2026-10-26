@@ -38,174 +38,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteLightResponse, ApiConnectionActionConfiguration> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<string>> bodymetadataname = null, Expression<Func<bool>> bodyonon = null, Expression<Func<double>> bodydimmingbrightness = null, Expression<Func<int>> bodycolorTemperaturemirek = null, Expression<Func<double>> bodycolorxyx = null, Expression<Func<double>> bodycolorxyy = null, Expression<Func<double>> bodydynamicsspeed = null, Expression<Func<int>> bodydynamicsduration = null, Expression<Func<string>> bodyalertaction = null, Expression<Func<bodygradientpointsInputItem[]>> bodygradientpoints = null)
+        public IBodyWorkflowAction<ExecuteLightResponse, ApiConnectionActionConfiguration> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<ExecuteLightInput>> body = null)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
-            var __workflow_bodymetadataname = WorkflowExpression.Compile(bodymetadataname, nameof(bodymetadataname), required: false);
-            var __workflow_bodyonon = WorkflowExpression.Compile(bodyonon, nameof(bodyonon), required: false);
-            var __workflow_bodydimmingbrightness = WorkflowExpression.Compile(bodydimmingbrightness, nameof(bodydimmingbrightness), required: false);
-            var __workflow_bodycolorTemperaturemirek = WorkflowExpression.Compile(bodycolorTemperaturemirek, nameof(bodycolorTemperaturemirek), required: false);
-            var __workflow_bodycolorxyx = WorkflowExpression.Compile(bodycolorxyx, nameof(bodycolorxyx), required: false);
-            var __workflow_bodycolorxyy = WorkflowExpression.Compile(bodycolorxyy, nameof(bodycolorxyy), required: false);
-            var __workflow_bodydynamicsspeed = WorkflowExpression.Compile(bodydynamicsspeed, nameof(bodydynamicsspeed), required: false);
-            var __workflow_bodydynamicsduration = WorkflowExpression.Compile(bodydynamicsduration, nameof(bodydynamicsduration), required: false);
-            var __workflow_bodyalertaction = WorkflowExpression.Compile(bodyalertaction, nameof(bodyalertaction), required: false);
-            var __workflow_bodygradientpoints = WorkflowExpression.Compile(bodygradientpoints, nameof(bodygradientpoints), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExecuteLightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/light/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (__workflow_bodymetadataname != null)
-                {
-                    metadataObject["name"] = ExpressionConverter.ConvertO(__workflow_bodymetadataname);
-                    metadataObjectpropCount++;
-                }
-
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                var onObject = new JObject();
-                var onObjectpropCount = 0;
-                if (__workflow_bodyonon != null)
-                {
-                    onObject["on"] = ExpressionConverter.ConvertO(__workflow_bodyonon);
-                    onObjectpropCount++;
-                }
-
-                if (onObjectpropCount > 0)
-                {
-                    body["on"] = onObject;
-                    bodypropCount++;
-                }
-
-                var dimmingObject = new JObject();
-                var dimmingObjectpropCount = 0;
-                if (__workflow_bodydimmingbrightness != null)
-                {
-                    dimmingObject["brightness"] = ExpressionConverter.ConvertO(__workflow_bodydimmingbrightness);
-                    dimmingObjectpropCount++;
-                }
-
-                if (dimmingObjectpropCount > 0)
-                {
-                    body["dimming"] = dimmingObject;
-                    bodypropCount++;
-                }
-
-                var colorTemperatureObject = new JObject();
-                var colorTemperatureObjectpropCount = 0;
-                if (__workflow_bodycolorTemperaturemirek != null)
-                {
-                    colorTemperatureObject["mirek"] = ExpressionConverter.ConvertO(__workflow_bodycolorTemperaturemirek);
-                    colorTemperatureObjectpropCount++;
-                }
-
-                if (colorTemperatureObjectpropCount > 0)
-                {
-                    body["color_temperature"] = colorTemperatureObject;
-                    bodypropCount++;
-                }
-
-                var colorObject = new JObject();
-                var colorObjectpropCount = 0;
-                var xyObject = new JObject();
-                var xyObjectpropCount = 0;
-                if (__workflow_bodycolorxyx != null)
-                {
-                    xyObject["x"] = ExpressionConverter.ConvertO(__workflow_bodycolorxyx);
-                    xyObjectpropCount++;
-                }
-
-                if (__workflow_bodycolorxyy != null)
-                {
-                    xyObject["y"] = ExpressionConverter.ConvertO(__workflow_bodycolorxyy);
-                    xyObjectpropCount++;
-                }
-
-                if (xyObjectpropCount > 0)
-                {
-                    colorObject["xy"] = xyObject;
-                    colorObjectpropCount++;
-                }
-
-                if (colorObjectpropCount > 0)
-                {
-                    body["color"] = colorObject;
-                    bodypropCount++;
-                }
-
-                var dynamicsObject = new JObject();
-                var dynamicsObjectpropCount = 0;
-                if (__workflow_bodydynamicsspeed != null)
-                {
-                    dynamicsObject["speed"] = ExpressionConverter.ConvertO(__workflow_bodydynamicsspeed);
-                    dynamicsObjectpropCount++;
-                }
-
-                if (__workflow_bodydynamicsduration != null)
-                {
-                    dynamicsObject["duration"] = ExpressionConverter.ConvertO(__workflow_bodydynamicsduration);
-                    dynamicsObjectpropCount++;
-                }
-
-                if (dynamicsObjectpropCount > 0)
-                {
-                    body["dynamics"] = dynamicsObject;
-                    bodypropCount++;
-                }
-
-                var alertObject = new JObject();
-                var alertObjectpropCount = 0;
-                if (__workflow_bodyalertaction != null)
-                {
-                    if (__workflow_bodyalertaction != null)
-                    {
-                        alertObject["action"] = ExpressionConverter.ConvertO(__workflow_bodyalertaction);
-                        alertObjectpropCount++;
-                    }
-
-                    alertObjectpropCount++;
-                }
-                else
-                {
-                    alertObject["action"] = "breathe";
-                    alertObjectpropCount++;
-                }
-
-                if (alertObjectpropCount > 0)
-                {
-                    body["alert"] = alertObject;
-                    bodypropCount++;
-                }
-
-                var gradientObject = new JObject();
-                var gradientObjectpropCount = 0;
-                if (__workflow_bodygradientpoints != null)
-                {
-                    gradientObject["points"] = ExpressionConverter.ConvertO(__workflow_bodygradientpoints);
-                    gradientObjectpropCount++;
-                }
-
-                if (gradientObjectpropCount > 0)
-                {
-                    body["gradient"] = gradientObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExecuteLightResponse>(callPayload);
             });
         }
@@ -236,69 +80,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteDeviceResponse, ApiConnectionActionConfiguration> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<bodymetadataarchetypeInput>> bodymetadataarchetype = null, Expression<Func<string>> bodymetadataname = null, Expression<Func<string>> bodyidentifyaction = null)
+        public IBodyWorkflowAction<ExecuteDeviceResponse, ApiConnectionActionConfiguration> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<ExecuteDeviceInput>> body = null)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
-            var __workflow_bodymetadataarchetype = WorkflowExpression.Compile(bodymetadataarchetype, nameof(bodymetadataarchetype), required: false);
-            var __workflow_bodymetadataname = WorkflowExpression.Compile(bodymetadataname, nameof(bodymetadataname), required: false);
-            var __workflow_bodyidentifyaction = WorkflowExpression.Compile(bodyidentifyaction, nameof(bodyidentifyaction), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExecuteDeviceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/device/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (__workflow_bodymetadataarchetype != null)
-                {
-                    metadataObject["archetype"] = ExpressionConverter.ConvertO(__workflow_bodymetadataarchetype);
-                    metadataObjectpropCount++;
-                }
-
-                if (__workflow_bodymetadataname != null)
-                {
-                    metadataObject["name"] = ExpressionConverter.ConvertO(__workflow_bodymetadataname);
-                    metadataObjectpropCount++;
-                }
-
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                var identifyObject = new JObject();
-                var identifyObjectpropCount = 0;
-                if (__workflow_bodyidentifyaction != null)
-                {
-                    if (__workflow_bodyidentifyaction != null)
-                    {
-                        identifyObject["action"] = ExpressionConverter.ConvertO(__workflow_bodyidentifyaction);
-                        identifyObjectpropCount++;
-                    }
-
-                    identifyObjectpropCount++;
-                }
-                else
-                {
-                    identifyObject["action"] = "identify";
-                    identifyObjectpropCount++;
-                }
-
-                if (identifyObjectpropCount > 0)
-                {
-                    body["identify"] = identifyObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExecuteDeviceResponse>(callPayload);
             });
         }
@@ -760,25 +553,112 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         public string Description { get; set; }
     }
 
-    public class bodygradientpointsInputItem
+    public class ExecuteLightInput
     {
+        [JsonProperty("metadata")]
+        public ExecuteLightInputMetadataType Metadata { get; set; }
+
+        [JsonProperty("on")]
+        public ExecuteLightInputOnType On { get; set; }
+
+        [JsonProperty("dimming")]
+        public ExecuteLightInputDimmingType Dimming { get; set; }
+
+        [JsonProperty("color_temperature")]
+        public ExecuteLightInputColorTemperatureType ColorTemperature { get; set; }
+
         [JsonProperty("color")]
-        public bodygradientpointsInputItemColorType Color { get; set; }
+        public ExecuteLightInputColorType Color { get; set; }
+
+        [JsonProperty("dynamics")]
+        public ExecuteLightInputDynamicsType Dynamics { get; set; }
+
+        [JsonProperty("alert")]
+        public ExecuteLightInputAlertType Alert { get; set; }
+
+        [JsonProperty("gradient")]
+        public ExecuteLightInputGradientType Gradient { get; set; }
     }
 
-    public class bodygradientpointsInputItemColorType
+    public class ExecuteLightInputMetadataType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class ExecuteLightInputOnType
+    {
+        [JsonProperty("on")]
+        public bool? On { get; set; }
+    }
+
+    public class ExecuteLightInputDimmingType
+    {
+        [JsonProperty("brightness")]
+        public double? Brightness { get; set; }
+    }
+
+    public class ExecuteLightInputColorTemperatureType
+    {
+        [JsonProperty("mirek")]
+        public int? Mirek { get; set; }
+    }
+
+    public class ExecuteLightInputColorType
     {
         [JsonProperty("xy")]
-        public bodygradientpointsInputItemColorTypeXyType Xy { get; set; }
+        public ExecuteLightInputColorTypeXyType Xy { get; set; }
     }
 
-    public class bodygradientpointsInputItemColorTypeXyType
+    public class ExecuteLightInputColorTypeXyType
     {
         [JsonProperty("x")]
-        public double X { get; set; }
+        public double? X { get; set; }
 
         [JsonProperty("y")]
-        public double Y { get; set; }
+        public double? Y { get; set; }
+    }
+
+    public class ExecuteLightInputDynamicsType
+    {
+        [JsonProperty("speed")]
+        public double? Speed { get; set; }
+
+        [JsonProperty("duration")]
+        public int? Duration { get; set; }
+    }
+
+    public class ExecuteLightInputAlertType
+    {
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Action { get; set; } = "breathe";
+    }
+
+    public class ExecuteLightInputGradientType
+    {
+        [JsonProperty("points")]
+        public ExecuteLightInputGradientTypePointsTypeItem[] Points { get; set; }
+    }
+
+    public class ExecuteLightInputGradientTypePointsTypeItem
+    {
+        [JsonProperty("color")]
+        public ExecuteLightInputGradientTypePointsTypeItemColorType Color { get; set; }
+    }
+
+    public class ExecuteLightInputGradientTypePointsTypeItemColorType
+    {
+        [JsonProperty("xy")]
+        public ExecuteLightInputGradientTypePointsTypeItemColorTypeXyType Xy { get; set; }
+    }
+
+    public class ExecuteLightInputGradientTypePointsTypeItemColorTypeXyType
+    {
+        [JsonProperty("x")]
+        public double? X { get; set; }
+
+        [JsonProperty("y")]
+        public double? Y { get; set; }
     }
 
     public class GetDevicesResponse
@@ -955,8 +835,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         public string Description { get; set; }
     }
 
+    public class ExecuteDeviceInput
+    {
+        [JsonProperty("metadata")]
+        public ExecuteDeviceInputMetadataType Metadata { get; set; }
+
+        [JsonProperty("identify")]
+        public ExecuteDeviceInputIdentifyType Identify { get; set; }
+    }
+
+    public class ExecuteDeviceInputMetadataType
+    {
+        [JsonProperty("archetype")]
+        public ExecuteDeviceInputMetadataTypeArchetypeType? Archetype { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymetadataarchetypeInput
+    public enum ExecuteDeviceInputMetadataTypeArchetypeType
     {
         [EnumMember(Value = "bridge_v2")]
         BridgeV2,
@@ -1036,6 +934,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         HueTube,
         [EnumMember(Value = "hue_signe")]
         HueSigne
+    }
+
+    public class ExecuteDeviceInputIdentifyType
+    {
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Action { get; set; } = "identify";
     }
 
     public class GetRoomsResponse

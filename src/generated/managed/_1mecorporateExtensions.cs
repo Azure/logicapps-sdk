@@ -25,67 +25,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> SendInvitation(Expression<Func<string>> bodycardTemplateId, Expression<Func<string>> bodyjobtitle, Expression<Func<string>> bodyworkEmail, Expression<Func<string>> bodynameOnCard = null, Expression<Func<string>> bodyextension = null)
+        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> SendInvitation(Expression<Func<SendInvitationInput>> body)
         {
-            var __workflow_bodycardTemplateId = WorkflowExpression.Compile(bodycardTemplateId, nameof(bodycardTemplateId), required: true);
-            var __workflow_bodyjobtitle = WorkflowExpression.Compile(bodyjobtitle, nameof(bodyjobtitle), required: true);
-            var __workflow_bodyworkEmail = WorkflowExpression.Compile(bodyworkEmail, nameof(bodyworkEmail), required: true);
-            var __workflow_bodynameOnCard = WorkflowExpression.Compile(bodynameOnCard, nameof(bodynameOnCard), required: false);
-            var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Invitation/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["CardTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodycardTemplateId);
-                if (__workflow_bodynameOnCard != null)
-                {
-                    body["NameOnCard"] = ExpressionConverter.ConvertO(__workflow_bodynameOnCard);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["Jobtitle"] = ExpressionConverter.ConvertO(__workflow_bodyjobtitle);
-                bodypropCount++;
-                body["WorkEmail"] = ExpressionConverter.ConvertO(__workflow_bodyworkEmail);
-                if (__workflow_bodyextension != null)
-                {
-                    body["Extension"] = ExpressionConverter.ConvertO(__workflow_bodyextension);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ApiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<DisassociateMemberInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Invitation/Disassociate";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ApiResponse>(callPayload);
             });
         }
@@ -124,6 +89,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         public bool IsSuccess { get; set; }
         public int Status { get; set; }
         public string Message { get; set; }
+    }
+
+    public class SendInvitationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CardTemplateId { get; set; }
+        public string NameOnCard { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Jobtitle { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkEmail { get; set; }
+        public string Extension { get; set; }
+    }
+
+    public class DisassociateMemberInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
     }
 
     public class AccountInvitationsItem

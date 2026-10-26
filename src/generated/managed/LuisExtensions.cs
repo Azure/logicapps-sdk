@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
-        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse, ApiConnectionActionConfiguration> GetTopScoringMatchingEntity(Expression<Func<string>> appId, Expression<Func<string>> desiredEntity, Expression<Func<string>> versionId = null, Expression<Func<string>> luisPredictionObject = null)
+        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse, ApiConnectionActionConfiguration> GetTopScoringMatchingEntity(Expression<Func<string>> appId, Expression<Func<string>> desiredEntity, Expression<Func<string>> luisPredictionObject, Expression<Func<string>> versionId = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_desiredEntity = WorkflowExpression.Compile(desiredEntity, nameof(desiredEntity), required: true);
+            var __workflow_luisPredictionObject = WorkflowExpression.Compile(luisPredictionObject, nameof(luisPredictionObject), required: true);
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
-            var __workflow_luisPredictionObject = WorkflowExpression.Compile(luisPredictionObject, nameof(luisPredictionObject), required: false);
             return new DeferredBodyAction<GetTopScoringMatchingEntityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";

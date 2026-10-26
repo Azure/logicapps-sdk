@@ -48,23 +48,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<CreateaRecordResponse, ApiConnectionActionConfiguration> CreateaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table)
+        public IBodyWorkflowAction<CreateaRecordResponse, ApiConnectionActionConfiguration> CreateaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table, Expression<Func<object>> body)
         {
             var __workflow_baseId = WorkflowExpression.Compile(baseId, nameof(baseId), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateaRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_baseId.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateaRecordResponse>(callPayload);
             });
         }
@@ -100,11 +95,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<UpdateaRecordResponse, ApiConnectionActionConfiguration> UpdateaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table, Expression<Func<string>> recordId, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<UpdateaRecordResponse, ApiConnectionActionConfiguration> UpdateaRecord(Expression<Func<string>> baseId, Expression<Func<string>> table, Expression<Func<string>> recordId, Expression<Func<object>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_baseId = WorkflowExpression.Compile(baseId, nameof(baseId), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<UpdateaRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -113,13 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateaRecordResponse>(callPayload);
             });
         }

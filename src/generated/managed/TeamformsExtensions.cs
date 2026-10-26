@@ -123,9 +123,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<SubscribeResponseInput>> requestBody, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: false);
             var __workflow_triggers = WorkflowExpression.Compile(triggers, nameof(triggers), required: false);
@@ -141,22 +142,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                     callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
                 if (__workflow_triggers != null)
                     callPayload.Queries["triggers"] = ExpressionConverter.Convert(__workflow_triggers);
-                var requestBody = new JObject();
-                var requestBodypropCount = 0;
-                requestBody["webHookUrl"] = "#{listCallbackUrl()}";
-                requestBodypropCount++;
-                if (requestBodypropCount > 0)
-                {
-                    callPayload.Body = requestBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<SubscribeResponseDeletionInput>> requestBody, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -166,15 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 if (__workflow_formId != null)
                     callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
-                var requestBody = new JObject();
-                var requestBodypropCount = 0;
-                requestBody["webHookUrl"] = "#{listCallbackUrl()}";
-                requestBodypropCount++;
-                if (requestBodypropCount > 0)
-                {
-                    callPayload.Body = requestBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -402,6 +388,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         public JToken ItemId { get; set; }
     }
 
+    public class SubscribeResponseInput
+    {
+        [JsonProperty("webHookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum environmentInput
     {
@@ -418,6 +410,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         Resubmitted,
         [EnumMember(Value = "Submitted and Resubmitted")]
         SubmittedAndResubmitted
+    }
+
+    public class SubscribeResponseDeletionInput
+    {
+        [JsonProperty("webHookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebHookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

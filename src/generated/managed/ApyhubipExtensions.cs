@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
     public class ApyhubipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<ArchiveFilePostResponse, ApiConnectionActionConfiguration> ArchiveFile(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<ArchiveFilePostResponse, ApiConnectionActionConfiguration> ArchiveFile(Expression<Func<string>> output = null, Expression<Func<ArchiveFilePostInput>> body = null)
         {
-            var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ArchiveFilePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate/archive/file-urls/archive-file";
@@ -24,24 +24,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_output != null)
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ArchiveFilePostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<ArchiveURLPostResponse, ApiConnectionActionConfiguration> ArchiveURL(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<ArchiveURLPostResponse, ApiConnectionActionConfiguration> ArchiveURL(Expression<Func<string>> output = null, Expression<Func<ArchiveURLPostInput>> body = null)
         {
-            var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ArchiveURLPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate/archive/file-urls/archive-url";
@@ -49,37 +42,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_output != null)
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ArchiveURLPostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<UnarchiveURLPostResponse, ApiConnectionActionConfiguration> UnarchiveURL(Expression<Func<string>> bodyurl)
+        public IBodyWorkflowAction<UnarchiveURLPostResponse, ApiConnectionActionConfiguration> UnarchiveURL(Expression<Func<UnarchiveURLPostInput>> body = null)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UnarchiveURLPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/extract/archive/url/file-urls";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UnarchiveURLPostResponse>(callPayload);
             });
         }
@@ -98,16 +77,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
         public string Content { get; set; }
     }
 
+    public class ArchiveFilePostInput
+    {
+        [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Urls { get; set; }
+    }
+
     public class ArchiveURLPostResponse
     {
         [JsonProperty("data")]
         public string Data { get; set; }
     }
 
+    public class ArchiveURLPostInput
+    {
+        [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Urls { get; set; }
+    }
+
     public class UnarchiveURLPostResponse
     {
         [JsonProperty("data")]
         public string[] Data { get; set; }
+    }
+
+    public class UnarchiveURLPostInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
     }
 }
 

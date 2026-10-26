@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     public class SquarepaymentsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<ApplePayRegisterResponse, ApiConnectionActionConfiguration> ApplePayRegister(Expression<Func<string>> bodydomainName)
+        public IBodyWorkflowAction<ApplePayRegisterResponse, ApiConnectionActionConfiguration> ApplePayRegister(Expression<Func<ApplePayRegisterInput>> body)
         {
-            var __workflow_bodydomainName = WorkflowExpression.Compile(bodydomainName, nameof(bodydomainName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApplePayRegisterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/apple-pay/domains";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["domain_name"] = ExpressionConverter.ConvertO(__workflow_bodydomainName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ApplePayRegisterResponse>(callPayload);
             });
         }
@@ -63,113 +55,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CardCreateResponse, ApiConnectionActionConfiguration> CardCreate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodysourceId = null, Expression<Func<string>> bodycardbillingAddressaddressLine1 = null, Expression<Func<string>> bodycardbillingAddressaddressLine2 = null, Expression<Func<string>> bodycardbillingAddresslocality = null, Expression<Func<string>> bodycardbillingAddressadministrativeDistrictLevel1 = null, Expression<Func<string>> bodycardbillingAddresspostalCode = null, Expression<Func<string>> bodycardbillingAddresscountry = null, Expression<Func<string>> bodycardcardholderName = null, Expression<Func<string>> bodycardcustomerId = null, Expression<Func<string>> bodycardreferenceId = null)
+        public IBodyWorkflowAction<CardCreateResponse, ApiConnectionActionConfiguration> CardCreate(Expression<Func<CardCreateInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodysourceId = WorkflowExpression.Compile(bodysourceId, nameof(bodysourceId), required: false);
-            var __workflow_bodycardbillingAddressaddressLine1 = WorkflowExpression.Compile(bodycardbillingAddressaddressLine1, nameof(bodycardbillingAddressaddressLine1), required: false);
-            var __workflow_bodycardbillingAddressaddressLine2 = WorkflowExpression.Compile(bodycardbillingAddressaddressLine2, nameof(bodycardbillingAddressaddressLine2), required: false);
-            var __workflow_bodycardbillingAddresslocality = WorkflowExpression.Compile(bodycardbillingAddresslocality, nameof(bodycardbillingAddresslocality), required: false);
-            var __workflow_bodycardbillingAddressadministrativeDistrictLevel1 = WorkflowExpression.Compile(bodycardbillingAddressadministrativeDistrictLevel1, nameof(bodycardbillingAddressadministrativeDistrictLevel1), required: false);
-            var __workflow_bodycardbillingAddresspostalCode = WorkflowExpression.Compile(bodycardbillingAddresspostalCode, nameof(bodycardbillingAddresspostalCode), required: false);
-            var __workflow_bodycardbillingAddresscountry = WorkflowExpression.Compile(bodycardbillingAddresscountry, nameof(bodycardbillingAddresscountry), required: false);
-            var __workflow_bodycardcardholderName = WorkflowExpression.Compile(bodycardcardholderName, nameof(bodycardcardholderName), required: false);
-            var __workflow_bodycardcustomerId = WorkflowExpression.Compile(bodycardcustomerId, nameof(bodycardcustomerId), required: false);
-            var __workflow_bodycardreferenceId = WorkflowExpression.Compile(bodycardreferenceId, nameof(bodycardreferenceId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CardCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysourceId != null)
-                {
-                    body["source_id"] = ExpressionConverter.ConvertO(__workflow_bodysourceId);
-                    bodypropCount++;
-                }
-
-                var cardObject = new JObject();
-                var cardObjectpropCount = 0;
-                var billingAddressObject = new JObject();
-                var billingAddressObjectpropCount = 0;
-                if (__workflow_bodycardbillingAddressaddressLine1 != null)
-                {
-                    billingAddressObject["address_line_1"] = ExpressionConverter.ConvertO(__workflow_bodycardbillingAddressaddressLine1);
-                    billingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodycardbillingAddressaddressLine2 != null)
-                {
-                    billingAddressObject["address_line_2"] = ExpressionConverter.ConvertO(__workflow_bodycardbillingAddressaddressLine2);
-                    billingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodycardbillingAddresslocality != null)
-                {
-                    billingAddressObject["locality"] = ExpressionConverter.ConvertO(__workflow_bodycardbillingAddresslocality);
-                    billingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodycardbillingAddressadministrativeDistrictLevel1 != null)
-                {
-                    billingAddressObject["administrative_district_level_1"] = ExpressionConverter.ConvertO(__workflow_bodycardbillingAddressadministrativeDistrictLevel1);
-                    billingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodycardbillingAddresspostalCode != null)
-                {
-                    billingAddressObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodycardbillingAddresspostalCode);
-                    billingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodycardbillingAddresscountry != null)
-                {
-                    billingAddressObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycardbillingAddresscountry);
-                    billingAddressObjectpropCount++;
-                }
-
-                if (billingAddressObjectpropCount > 0)
-                {
-                    cardObject["billing_address"] = billingAddressObject;
-                    cardObjectpropCount++;
-                }
-
-                if (__workflow_bodycardcardholderName != null)
-                {
-                    cardObject["cardholder_name"] = ExpressionConverter.ConvertO(__workflow_bodycardcardholderName);
-                    cardObjectpropCount++;
-                }
-
-                if (__workflow_bodycardcustomerId != null)
-                {
-                    cardObject["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodycardcustomerId);
-                    cardObjectpropCount++;
-                }
-
-                if (__workflow_bodycardreferenceId != null)
-                {
-                    cardObject["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodycardreferenceId);
-                    cardObjectpropCount++;
-                }
-
-                if (cardObjectpropCount > 0)
-                {
-                    body["card"] = cardObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CardCreateResponse>(callPayload);
             });
         }
@@ -201,100 +95,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogBatchDeleteResponse, ApiConnectionActionConfiguration> CatalogBatchDelete(Expression<Func<string[]>> bodyobjectIds = null)
+        public IBodyWorkflowAction<CatalogBatchDeleteResponse, ApiConnectionActionConfiguration> CatalogBatchDelete(Expression<Func<CatalogBatchDeleteInput>> body = null)
         {
-            var __workflow_bodyobjectIds = WorkflowExpression.Compile(bodyobjectIds, nameof(bodyobjectIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CatalogBatchDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/catalog/batch-delete";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyobjectIds != null)
-                {
-                    body["object_ids"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CatalogBatchDeleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogBatchRetrieveResponse, ApiConnectionActionConfiguration> CatalogBatchRetrieve(Expression<Func<string[]>> bodyobjectIds = null, Expression<Func<int>> bodycatalogVersion = null, Expression<Func<bool>> bodyincludeRelatedObjects = null)
+        public IBodyWorkflowAction<CatalogBatchRetrieveResponse, ApiConnectionActionConfiguration> CatalogBatchRetrieve(Expression<Func<CatalogBatchRetrieveInput>> body)
         {
-            var __workflow_bodyobjectIds = WorkflowExpression.Compile(bodyobjectIds, nameof(bodyobjectIds), required: false);
-            var __workflow_bodycatalogVersion = WorkflowExpression.Compile(bodycatalogVersion, nameof(bodycatalogVersion), required: false);
-            var __workflow_bodyincludeRelatedObjects = WorkflowExpression.Compile(bodyincludeRelatedObjects, nameof(bodyincludeRelatedObjects), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogBatchRetrieveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/catalog/batch-retrieve";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyobjectIds != null)
-                {
-                    body["object_ids"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycatalogVersion != null)
-                {
-                    body["catalog_version"] = ExpressionConverter.ConvertO(__workflow_bodycatalogVersion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincludeRelatedObjects != null)
-                {
-                    body["include_related_objects"] = ExpressionConverter.ConvertO(__workflow_bodyincludeRelatedObjects);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CatalogBatchRetrieveResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogBatchUpsertResponse, ApiConnectionActionConfiguration> CatalogBatchUpsert(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<bodybatchesInputItem[]>> bodybatches = null)
+        public IBodyWorkflowAction<CatalogBatchUpsertResponse, ApiConnectionActionConfiguration> CatalogBatchUpsert(Expression<Func<CatalogBatchUpsertInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodybatches = WorkflowExpression.Compile(bodybatches, nameof(bodybatches), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogBatchUpsertResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/catalog/batch-upsert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybatches != null)
-                {
-                    body["batches"] = ExpressionConverter.ConvertO(__workflow_bodybatches);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CatalogBatchUpsertResponse>(callPayload);
             });
         }
@@ -330,85 +168,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogUpsertResponse, ApiConnectionActionConfiguration> CatalogUpsert(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodyObjectid = null, Expression<Func<string>> bodyObjecttype = null, Expression<Func<string>> bodyObjectitemDataabbreviation = null, Expression<Func<string>> bodyObjectitemDatatitle = null, Expression<Func<string>> bodyObjectitemDataname = null, Expression<Func<bodyObjectitemDatavariationsInputItem[]>> bodyObjectitemDatavariations = null)
+        public IBodyWorkflowAction<CatalogUpsertResponse, ApiConnectionActionConfiguration> CatalogUpsert(Expression<Func<CatalogUpsertInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyObjectid = WorkflowExpression.Compile(bodyObjectid, nameof(bodyObjectid), required: false);
-            var __workflow_bodyObjecttype = WorkflowExpression.Compile(bodyObjecttype, nameof(bodyObjecttype), required: false);
-            var __workflow_bodyObjectitemDataabbreviation = WorkflowExpression.Compile(bodyObjectitemDataabbreviation, nameof(bodyObjectitemDataabbreviation), required: false);
-            var __workflow_bodyObjectitemDatatitle = WorkflowExpression.Compile(bodyObjectitemDatatitle, nameof(bodyObjectitemDatatitle), required: false);
-            var __workflow_bodyObjectitemDataname = WorkflowExpression.Compile(bodyObjectitemDataname, nameof(bodyObjectitemDataname), required: false);
-            var __workflow_bodyObjectitemDatavariations = WorkflowExpression.Compile(bodyObjectitemDatavariations, nameof(bodyObjectitemDatavariations), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogUpsertResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/catalog/object";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var @objectObject = new JObject();
-                var @objectObjectpropCount = 0;
-                if (__workflow_bodyObjectid != null)
-                {
-                    @objectObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyObjectid);
-                    @objectObjectpropCount++;
-                }
-
-                if (__workflow_bodyObjecttype != null)
-                {
-                    @objectObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyObjecttype);
-                    @objectObjectpropCount++;
-                }
-
-                var itemDataObject = new JObject();
-                var itemDataObjectpropCount = 0;
-                if (__workflow_bodyObjectitemDataabbreviation != null)
-                {
-                    itemDataObject["abbreviation"] = ExpressionConverter.ConvertO(__workflow_bodyObjectitemDataabbreviation);
-                    itemDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyObjectitemDatatitle != null)
-                {
-                    itemDataObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyObjectitemDatatitle);
-                    itemDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyObjectitemDataname != null)
-                {
-                    itemDataObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyObjectitemDataname);
-                    itemDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyObjectitemDatavariations != null)
-                {
-                    itemDataObject["variations"] = ExpressionConverter.ConvertO(__workflow_bodyObjectitemDatavariations);
-                    itemDataObjectpropCount++;
-                }
-
-                if (itemDataObjectpropCount > 0)
-                {
-                    @objectObject["item_data"] = itemDataObject;
-                    @objectObjectpropCount++;
-                }
-
-                if (@objectObjectpropCount > 0)
-                {
-                    body["object"] = @objectObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CatalogUpsertResponse>(callPayload);
             });
         }
@@ -443,144 +211,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogSearchResponse, ApiConnectionActionConfiguration> CatalogSearch(Expression<Func<string[]>> bodyobjectTypes = null, Expression<Func<string>> bodyqueryprefixQueryattributeName = null, Expression<Func<string>> bodyqueryprefixQueryattributePrefix = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<CatalogSearchResponse, ApiConnectionActionConfiguration> CatalogSearch(Expression<Func<CatalogSearchInput>> body)
         {
-            var __workflow_bodyobjectTypes = WorkflowExpression.Compile(bodyobjectTypes, nameof(bodyobjectTypes), required: false);
-            var __workflow_bodyqueryprefixQueryattributeName = WorkflowExpression.Compile(bodyqueryprefixQueryattributeName, nameof(bodyqueryprefixQueryattributeName), required: false);
-            var __workflow_bodyqueryprefixQueryattributePrefix = WorkflowExpression.Compile(bodyqueryprefixQueryattributePrefix, nameof(bodyqueryprefixQueryattributePrefix), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/catalog/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyobjectTypes != null)
-                {
-                    body["object_types"] = ExpressionConverter.ConvertO(__workflow_bodyobjectTypes);
-                    bodypropCount++;
-                }
-
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var prefixQueryObject = new JObject();
-                var prefixQueryObjectpropCount = 0;
-                if (__workflow_bodyqueryprefixQueryattributeName != null)
-                {
-                    prefixQueryObject["attribute_name"] = ExpressionConverter.ConvertO(__workflow_bodyqueryprefixQueryattributeName);
-                    prefixQueryObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryprefixQueryattributePrefix != null)
-                {
-                    prefixQueryObject["attribute_prefix"] = ExpressionConverter.ConvertO(__workflow_bodyqueryprefixQueryattributePrefix);
-                    prefixQueryObjectpropCount++;
-                }
-
-                if (prefixQueryObjectpropCount > 0)
-                {
-                    queryObject["prefix_query"] = prefixQueryObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CatalogSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogUpdateModifierResponse, ApiConnectionActionConfiguration> CatalogUpdateModifier(Expression<Func<string[]>> bodyitemIds = null, Expression<Func<string[]>> bodymodifierListsToEnable = null, Expression<Func<string[]>> bodymodifierListsToDisable = null)
+        public IBodyWorkflowAction<CatalogUpdateModifierResponse, ApiConnectionActionConfiguration> CatalogUpdateModifier(Expression<Func<CatalogUpdateModifierInput>> body)
         {
-            var __workflow_bodyitemIds = WorkflowExpression.Compile(bodyitemIds, nameof(bodyitemIds), required: false);
-            var __workflow_bodymodifierListsToEnable = WorkflowExpression.Compile(bodymodifierListsToEnable, nameof(bodymodifierListsToEnable), required: false);
-            var __workflow_bodymodifierListsToDisable = WorkflowExpression.Compile(bodymodifierListsToDisable, nameof(bodymodifierListsToDisable), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogUpdateModifierResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/catalog/update-item-modifier-lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyitemIds != null)
-                {
-                    body["item_ids"] = ExpressionConverter.ConvertO(__workflow_bodyitemIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymodifierListsToEnable != null)
-                {
-                    body["modifier_lists_to_enable"] = ExpressionConverter.ConvertO(__workflow_bodymodifierListsToEnable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymodifierListsToDisable != null)
-                {
-                    body["modifier_lists_to_disable"] = ExpressionConverter.ConvertO(__workflow_bodymodifierListsToDisable);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CatalogUpdateModifierResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogUpdateTaxesResponse, ApiConnectionActionConfiguration> CatalogUpdateTaxes(Expression<Func<string[]>> bodyitemIds = null, Expression<Func<string[]>> bodytaxesToEnable = null, Expression<Func<string[]>> bodytaxesToDisable = null)
+        public IBodyWorkflowAction<CatalogUpdateTaxesResponse, ApiConnectionActionConfiguration> CatalogUpdateTaxes(Expression<Func<CatalogUpdateTaxesInput>> body)
         {
-            var __workflow_bodyitemIds = WorkflowExpression.Compile(bodyitemIds, nameof(bodyitemIds), required: false);
-            var __workflow_bodytaxesToEnable = WorkflowExpression.Compile(bodytaxesToEnable, nameof(bodytaxesToEnable), required: false);
-            var __workflow_bodytaxesToDisable = WorkflowExpression.Compile(bodytaxesToDisable, nameof(bodytaxesToDisable), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogUpdateTaxesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/catalog/update-item-taxes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyitemIds != null)
-                {
-                    body["item_ids"] = ExpressionConverter.ConvertO(__workflow_bodyitemIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaxesToEnable != null)
-                {
-                    body["taxes_to_enable"] = ExpressionConverter.ConvertO(__workflow_bodytaxesToEnable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaxesToDisable != null)
-                {
-                    body["taxes_to_disable"] = ExpressionConverter.ConvertO(__workflow_bodytaxesToDisable);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CatalogUpdateTaxesResponse>(callPayload);
             });
         }
@@ -598,35 +265,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomGroupCreateResponse, ApiConnectionActionConfiguration> CustomGroupCreate(Expression<Func<string>> bodygroupname = null)
+        public IBodyWorkflowAction<CustomGroupCreateResponse, ApiConnectionActionConfiguration> CustomGroupCreate(Expression<Func<CustomGroupCreateInput>> body = null)
         {
-            var __workflow_bodygroupname = WorkflowExpression.Compile(bodygroupname, nameof(bodygroupname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CustomGroupCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/customers/groups";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var groupObject = new JObject();
-                var groupObjectpropCount = 0;
-                if (__workflow_bodygroupname != null)
-                {
-                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodygroupname);
-                    groupObjectpropCount++;
-                }
-
-                if (groupObjectpropCount > 0)
-                {
-                    body["group"] = groupObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomGroupCreateResponse>(callPayload);
             });
         }
@@ -658,36 +306,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomerGroupUpdateResponse, ApiConnectionActionConfiguration> CustomerGroupUpdate(Expression<Func<string>> groupId, Expression<Func<string>> bodygroupname = null)
+        public IBodyWorkflowAction<CustomerGroupUpdateResponse, ApiConnectionActionConfiguration> CustomerGroupUpdate(Expression<Func<string>> groupId, Expression<Func<CustomerGroupUpdateInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodygroupname = WorkflowExpression.Compile(bodygroupname, nameof(bodygroupname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CustomerGroupUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/customers/groups/{0}", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var groupObject = new JObject();
-                var groupObjectpropCount = 0;
-                if (__workflow_bodygroupname != null)
-                {
-                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodygroupname);
-                    groupObjectpropCount++;
-                }
-
-                if (groupObjectpropCount > 0)
-                {
-                    body["group"] = groupObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomerGroupUpdateResponse>(callPayload);
             });
         }
@@ -750,271 +379,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomerCreateResponse, ApiConnectionActionConfiguration> CustomerCreate(Expression<Func<string>> bodygivenName = null, Expression<Func<string>> bodyfamilyName = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodynickname = null, Expression<Func<string>> bodyaddressaddressLine1 = null, Expression<Func<string>> bodyaddressaddressLine2 = null, Expression<Func<string>> bodyaddresslocality = null, Expression<Func<string>> bodyaddressadministrativeDistrictLevel1 = null, Expression<Func<string>> bodyaddresspostalCode = null, Expression<Func<string>> bodyaddresscountry = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodybirthday = null)
+        public IBodyWorkflowAction<CustomerCreateResponse, ApiConnectionActionConfiguration> CustomerCreate(Expression<Func<CustomerCreateInput>> body)
         {
-            var __workflow_bodygivenName = WorkflowExpression.Compile(bodygivenName, nameof(bodygivenName), required: false);
-            var __workflow_bodyfamilyName = WorkflowExpression.Compile(bodyfamilyName, nameof(bodyfamilyName), required: false);
-            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            var __workflow_bodycompanyName = WorkflowExpression.Compile(bodycompanyName, nameof(bodycompanyName), required: false);
-            var __workflow_bodynickname = WorkflowExpression.Compile(bodynickname, nameof(bodynickname), required: false);
-            var __workflow_bodyaddressaddressLine1 = WorkflowExpression.Compile(bodyaddressaddressLine1, nameof(bodyaddressaddressLine1), required: false);
-            var __workflow_bodyaddressaddressLine2 = WorkflowExpression.Compile(bodyaddressaddressLine2, nameof(bodyaddressaddressLine2), required: false);
-            var __workflow_bodyaddresslocality = WorkflowExpression.Compile(bodyaddresslocality, nameof(bodyaddresslocality), required: false);
-            var __workflow_bodyaddressadministrativeDistrictLevel1 = WorkflowExpression.Compile(bodyaddressadministrativeDistrictLevel1, nameof(bodyaddressadministrativeDistrictLevel1), required: false);
-            var __workflow_bodyaddresspostalCode = WorkflowExpression.Compile(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            var __workflow_bodyaddresscountry = WorkflowExpression.Compile(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodybirthday = WorkflowExpression.Compile(bodybirthday, nameof(bodybirthday), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomerCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/customers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodygivenName != null)
-                {
-                    body["given_name"] = ExpressionConverter.ConvertO(__workflow_bodygivenName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfamilyName != null)
-                {
-                    body["family_name"] = ExpressionConverter.ConvertO(__workflow_bodyfamilyName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemailAddress != null)
-                {
-                    body["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyemailAddress);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompanyName != null)
-                {
-                    body["company_name"] = ExpressionConverter.ConvertO(__workflow_bodycompanyName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynickname != null)
-                {
-                    body["nickname"] = ExpressionConverter.ConvertO(__workflow_bodynickname);
-                    bodypropCount++;
-                }
-
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                if (__workflow_bodyaddressaddressLine1 != null)
-                {
-                    addressObject["address_line_1"] = ExpressionConverter.ConvertO(__workflow_bodyaddressaddressLine1);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressaddressLine2 != null)
-                {
-                    addressObject["address_line_2"] = ExpressionConverter.ConvertO(__workflow_bodyaddressaddressLine2);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresslocality != null)
-                {
-                    addressObject["locality"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslocality);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressadministrativeDistrictLevel1 != null)
-                {
-                    addressObject["administrative_district_level_1"] = ExpressionConverter.ConvertO(__workflow_bodyaddressadministrativeDistrictLevel1);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresspostalCode != null)
-                {
-                    addressObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyaddresspostalCode);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresscountry != null)
-                {
-                    addressObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyaddresscountry);
-                    addressObjectpropCount++;
-                }
-
-                if (addressObjectpropCount > 0)
-                {
-                    body["address"] = addressObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphoneNumber != null)
-                {
-                    body["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreferenceId != null)
-                {
-                    body["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybirthday != null)
-                {
-                    body["birthday"] = ExpressionConverter.ConvertO(__workflow_bodybirthday);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomerCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomerSearchResponse, ApiConnectionActionConfiguration> CustomerSearch(Expression<Func<string>> bodyqueryfilteremailAddressfuzzy = null, Expression<Func<string[]>> bodyqueryfiltercreationSourcevalues = null, Expression<Func<string>> bodyqueryfiltercreationSourcerule = null, Expression<Func<string>> bodyqueryfiltercreatedAtstartAt = null, Expression<Func<string>> bodyqueryfiltercreatedAtendAt = null, Expression<Func<string[]>> bodyqueryfiltergroupIdsall = null, Expression<Func<string>> bodyquerysortfield = null, Expression<Func<string>> bodyquerysortorder = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<CustomerSearchResponse, ApiConnectionActionConfiguration> CustomerSearch(Expression<Func<CustomerSearchInput>> body)
         {
-            var __workflow_bodyqueryfilteremailAddressfuzzy = WorkflowExpression.Compile(bodyqueryfilteremailAddressfuzzy, nameof(bodyqueryfilteremailAddressfuzzy), required: false);
-            var __workflow_bodyqueryfiltercreationSourcevalues = WorkflowExpression.Compile(bodyqueryfiltercreationSourcevalues, nameof(bodyqueryfiltercreationSourcevalues), required: false);
-            var __workflow_bodyqueryfiltercreationSourcerule = WorkflowExpression.Compile(bodyqueryfiltercreationSourcerule, nameof(bodyqueryfiltercreationSourcerule), required: false);
-            var __workflow_bodyqueryfiltercreatedAtstartAt = WorkflowExpression.Compile(bodyqueryfiltercreatedAtstartAt, nameof(bodyqueryfiltercreatedAtstartAt), required: false);
-            var __workflow_bodyqueryfiltercreatedAtendAt = WorkflowExpression.Compile(bodyqueryfiltercreatedAtendAt, nameof(bodyqueryfiltercreatedAtendAt), required: false);
-            var __workflow_bodyqueryfiltergroupIdsall = WorkflowExpression.Compile(bodyqueryfiltergroupIdsall, nameof(bodyqueryfiltergroupIdsall), required: false);
-            var __workflow_bodyquerysortfield = WorkflowExpression.Compile(bodyquerysortfield, nameof(bodyquerysortfield), required: false);
-            var __workflow_bodyquerysortorder = WorkflowExpression.Compile(bodyquerysortorder, nameof(bodyquerysortorder), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomerSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/customers/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                var emailAddressObject = new JObject();
-                var emailAddressObjectpropCount = 0;
-                if (__workflow_bodyqueryfilteremailAddressfuzzy != null)
-                {
-                    emailAddressObject["fuzzy"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilteremailAddressfuzzy);
-                    emailAddressObjectpropCount++;
-                }
-
-                if (emailAddressObjectpropCount > 0)
-                {
-                    filterObject["email_address"] = emailAddressObject;
-                    filterObjectpropCount++;
-                }
-
-                var creationSourceObject = new JObject();
-                var creationSourceObjectpropCount = 0;
-                if (__workflow_bodyqueryfiltercreationSourcevalues != null)
-                {
-                    creationSourceObject["values"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltercreationSourcevalues);
-                    creationSourceObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfiltercreationSourcerule != null)
-                {
-                    creationSourceObject["rule"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltercreationSourcerule);
-                    creationSourceObjectpropCount++;
-                }
-
-                if (creationSourceObjectpropCount > 0)
-                {
-                    filterObject["creation_source"] = creationSourceObject;
-                    filterObjectpropCount++;
-                }
-
-                var createdAtObject = new JObject();
-                var createdAtObjectpropCount = 0;
-                if (__workflow_bodyqueryfiltercreatedAtstartAt != null)
-                {
-                    createdAtObject["start_at"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltercreatedAtstartAt);
-                    createdAtObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfiltercreatedAtendAt != null)
-                {
-                    createdAtObject["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltercreatedAtendAt);
-                    createdAtObjectpropCount++;
-                }
-
-                if (createdAtObjectpropCount > 0)
-                {
-                    filterObject["created_at"] = createdAtObject;
-                    filterObjectpropCount++;
-                }
-
-                var groupIdsObject = new JObject();
-                var groupIdsObjectpropCount = 0;
-                if (__workflow_bodyqueryfiltergroupIdsall != null)
-                {
-                    groupIdsObject["all"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltergroupIdsall);
-                    groupIdsObjectpropCount++;
-                }
-
-                if (groupIdsObjectpropCount > 0)
-                {
-                    filterObject["group_ids"] = groupIdsObject;
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                var sortObject = new JObject();
-                var sortObjectpropCount = 0;
-                if (__workflow_bodyquerysortfield != null)
-                {
-                    sortObject["field"] = ExpressionConverter.ConvertO(__workflow_bodyquerysortfield);
-                    sortObjectpropCount++;
-                }
-
-                if (__workflow_bodyquerysortorder != null)
-                {
-                    sortObject["order"] = ExpressionConverter.ConvertO(__workflow_bodyquerysortorder);
-                    sortObjectpropCount++;
-                }
-
-                if (sortObjectpropCount > 0)
-                {
-                    queryObject["sort"] = sortObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomerSearchResponse>(callPayload);
             });
         }
@@ -1147,42 +534,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<DisputeCreateEvidenceTextResponse, ApiConnectionActionConfiguration> DisputeCreateEvidenceText(Expression<Func<string>> disputeId, Expression<Func<bodyevidenceTypeInput>> bodyevidenceType = null, Expression<Func<string>> bodyevidenceText = null, Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<DisputeCreateEvidenceTextResponse, ApiConnectionActionConfiguration> DisputeCreateEvidenceText(Expression<Func<string>> disputeId, Expression<Func<DisputeCreateEvidenceTextInput>> body = null)
         {
             var __workflow_disputeId = WorkflowExpression.Compile(disputeId, nameof(disputeId), required: true);
-            var __workflow_bodyevidenceType = WorkflowExpression.Compile(bodyevidenceType, nameof(bodyevidenceType), required: false);
-            var __workflow_bodyevidenceText = WorkflowExpression.Compile(bodyevidenceText, nameof(bodyevidenceText), required: false);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DisputeCreateEvidenceTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/disputes/{0}/evidence-text", __workflow_disputeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyevidenceType != null)
-                {
-                    body["evidence_type"] = ExpressionConverter.ConvertO(__workflow_bodyevidenceType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyevidenceText != null)
-                {
-                    body["evidence_text"] = ExpressionConverter.ConvertO(__workflow_bodyevidenceText);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DisputeCreateEvidenceTextResponse>(callPayload);
             });
         }
@@ -1242,142 +604,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InventoryBatchChangeResponse, ApiConnectionActionConfiguration> InventoryBatchChange(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<bodychangesInputItem[]>> bodychanges = null, Expression<Func<bool>> bodyignoreUnchangedCounts = null)
+        public IBodyWorkflowAction<InventoryBatchChangeResponse, ApiConnectionActionConfiguration> InventoryBatchChange(Expression<Func<InventoryBatchChangeInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodychanges = WorkflowExpression.Compile(bodychanges, nameof(bodychanges), required: false);
-            var __workflow_bodyignoreUnchangedCounts = WorkflowExpression.Compile(bodyignoreUnchangedCounts, nameof(bodyignoreUnchangedCounts), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InventoryBatchChangeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/inventory/changes/batch-create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodychanges != null)
-                {
-                    body["changes"] = ExpressionConverter.ConvertO(__workflow_bodychanges);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyignoreUnchangedCounts != null)
-                {
-                    body["ignore_unchanged_counts"] = ExpressionConverter.ConvertO(__workflow_bodyignoreUnchangedCounts);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InventoryBatchChangeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InventoryBatchRetrieveChangesResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveChanges(Expression<Func<string[]>> bodycatalogObjectIds = null, Expression<Func<string[]>> bodylocationIds = null, Expression<Func<string[]>> bodytypes = null, Expression<Func<string[]>> bodystates = null, Expression<Func<string>> bodyupdatedAfter = null, Expression<Func<string>> bodyupdatedBefore = null)
+        public IBodyWorkflowAction<InventoryBatchRetrieveChangesResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveChanges(Expression<Func<InventoryBatchRetrieveChangesInput>> body)
         {
-            var __workflow_bodycatalogObjectIds = WorkflowExpression.Compile(bodycatalogObjectIds, nameof(bodycatalogObjectIds), required: false);
-            var __workflow_bodylocationIds = WorkflowExpression.Compile(bodylocationIds, nameof(bodylocationIds), required: false);
-            var __workflow_bodytypes = WorkflowExpression.Compile(bodytypes, nameof(bodytypes), required: false);
-            var __workflow_bodystates = WorkflowExpression.Compile(bodystates, nameof(bodystates), required: false);
-            var __workflow_bodyupdatedAfter = WorkflowExpression.Compile(bodyupdatedAfter, nameof(bodyupdatedAfter), required: false);
-            var __workflow_bodyupdatedBefore = WorkflowExpression.Compile(bodyupdatedBefore, nameof(bodyupdatedBefore), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InventoryBatchRetrieveChangesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/inventory/changes/batch-retrieve";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycatalogObjectIds != null)
-                {
-                    body["catalog_object_ids"] = ExpressionConverter.ConvertO(__workflow_bodycatalogObjectIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationIds != null)
-                {
-                    body["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodylocationIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytypes != null)
-                {
-                    body["types"] = ExpressionConverter.ConvertO(__workflow_bodytypes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystates != null)
-                {
-                    body["states"] = ExpressionConverter.ConvertO(__workflow_bodystates);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedAfter != null)
-                {
-                    body["updated_after"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedAfter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedBefore != null)
-                {
-                    body["updated_before"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedBefore);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InventoryBatchRetrieveChangesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InventoryBatchRetrieveCountsResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveCounts(Expression<Func<string[]>> bodycatalogObjectIds = null, Expression<Func<string[]>> bodylocationIds = null, Expression<Func<string>> bodyupdatedAfter = null)
+        public IBodyWorkflowAction<InventoryBatchRetrieveCountsResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveCounts(Expression<Func<InventoryBatchRetrieveCountsInput>> body)
         {
-            var __workflow_bodycatalogObjectIds = WorkflowExpression.Compile(bodycatalogObjectIds, nameof(bodycatalogObjectIds), required: false);
-            var __workflow_bodylocationIds = WorkflowExpression.Compile(bodylocationIds, nameof(bodylocationIds), required: false);
-            var __workflow_bodyupdatedAfter = WorkflowExpression.Compile(bodyupdatedAfter, nameof(bodyupdatedAfter), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InventoryBatchRetrieveCountsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/inventory/counts/batch-retrieve";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycatalogObjectIds != null)
-                {
-                    body["catalog_object_ids"] = ExpressionConverter.ConvertO(__workflow_bodycatalogObjectIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationIds != null)
-                {
-                    body["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodylocationIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedAfter != null)
-                {
-                    body["updated_after"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedAfter);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InventoryBatchRetrieveCountsResponse>(callPayload);
             });
         }
@@ -1449,227 +712,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceCreateResponse, ApiConnectionActionConfiguration> InvoiceCreate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodyinvoicelocationId = null, Expression<Func<string>> bodyinvoiceorderId = null, Expression<Func<string>> bodyinvoicescheduledAt = null, Expression<Func<string>> bodyinvoiceprimaryRecipientcustomerId = null, Expression<Func<string>> bodyinvoicedeliveryMethod = null, Expression<Func<bodyinvoicepaymentRequestsInputItem[]>> bodyinvoicepaymentRequests = null, Expression<Func<string>> bodyinvoiceinvoiceNumber = null, Expression<Func<string>> bodyinvoicetitle = null, Expression<Func<string>> bodyinvoicedescription = null, Expression<Func<bool>> bodyinvoiceacceptedPaymentMethodscard = null, Expression<Func<bool>> bodyinvoiceacceptedPaymentMethodssquareGiftCard = null, Expression<Func<bool>> bodyinvoiceacceptedPaymentMethodsbankAccount = null, Expression<Func<bodyinvoicecustomFieldsInputItem[]>> bodyinvoicecustomFields = null, Expression<Func<string>> bodyinvoicesaleOrServiceDate = null)
+        public IBodyWorkflowAction<InvoiceCreateResponse, ApiConnectionActionConfiguration> InvoiceCreate(Expression<Func<InvoiceCreateInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyinvoicelocationId = WorkflowExpression.Compile(bodyinvoicelocationId, nameof(bodyinvoicelocationId), required: false);
-            var __workflow_bodyinvoiceorderId = WorkflowExpression.Compile(bodyinvoiceorderId, nameof(bodyinvoiceorderId), required: false);
-            var __workflow_bodyinvoicescheduledAt = WorkflowExpression.Compile(bodyinvoicescheduledAt, nameof(bodyinvoicescheduledAt), required: false);
-            var __workflow_bodyinvoiceprimaryRecipientcustomerId = WorkflowExpression.Compile(bodyinvoiceprimaryRecipientcustomerId, nameof(bodyinvoiceprimaryRecipientcustomerId), required: false);
-            var __workflow_bodyinvoicedeliveryMethod = WorkflowExpression.Compile(bodyinvoicedeliveryMethod, nameof(bodyinvoicedeliveryMethod), required: false);
-            var __workflow_bodyinvoicepaymentRequests = WorkflowExpression.Compile(bodyinvoicepaymentRequests, nameof(bodyinvoicepaymentRequests), required: false);
-            var __workflow_bodyinvoiceinvoiceNumber = WorkflowExpression.Compile(bodyinvoiceinvoiceNumber, nameof(bodyinvoiceinvoiceNumber), required: false);
-            var __workflow_bodyinvoicetitle = WorkflowExpression.Compile(bodyinvoicetitle, nameof(bodyinvoicetitle), required: false);
-            var __workflow_bodyinvoicedescription = WorkflowExpression.Compile(bodyinvoicedescription, nameof(bodyinvoicedescription), required: false);
-            var __workflow_bodyinvoiceacceptedPaymentMethodscard = WorkflowExpression.Compile(bodyinvoiceacceptedPaymentMethodscard, nameof(bodyinvoiceacceptedPaymentMethodscard), required: false);
-            var __workflow_bodyinvoiceacceptedPaymentMethodssquareGiftCard = WorkflowExpression.Compile(bodyinvoiceacceptedPaymentMethodssquareGiftCard, nameof(bodyinvoiceacceptedPaymentMethodssquareGiftCard), required: false);
-            var __workflow_bodyinvoiceacceptedPaymentMethodsbankAccount = WorkflowExpression.Compile(bodyinvoiceacceptedPaymentMethodsbankAccount, nameof(bodyinvoiceacceptedPaymentMethodsbankAccount), required: false);
-            var __workflow_bodyinvoicecustomFields = WorkflowExpression.Compile(bodyinvoicecustomFields, nameof(bodyinvoicecustomFields), required: false);
-            var __workflow_bodyinvoicesaleOrServiceDate = WorkflowExpression.Compile(bodyinvoicesaleOrServiceDate, nameof(bodyinvoicesaleOrServiceDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InvoiceCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoices";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var invoiceObject = new JObject();
-                var invoiceObjectpropCount = 0;
-                if (__workflow_bodyinvoicelocationId != null)
-                {
-                    invoiceObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicelocationId);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoiceorderId != null)
-                {
-                    invoiceObject["order_id"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceorderId);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicescheduledAt != null)
-                {
-                    invoiceObject["scheduled_at"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicescheduledAt);
-                    invoiceObjectpropCount++;
-                }
-
-                var primaryRecipientObject = new JObject();
-                var primaryRecipientObjectpropCount = 0;
-                if (__workflow_bodyinvoiceprimaryRecipientcustomerId != null)
-                {
-                    primaryRecipientObject["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceprimaryRecipientcustomerId);
-                    primaryRecipientObjectpropCount++;
-                }
-
-                if (primaryRecipientObjectpropCount > 0)
-                {
-                    invoiceObject["primary_recipient"] = primaryRecipientObject;
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicedeliveryMethod != null)
-                {
-                    invoiceObject["delivery_method"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedeliveryMethod);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicepaymentRequests != null)
-                {
-                    invoiceObject["payment_requests"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicepaymentRequests);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoiceinvoiceNumber != null)
-                {
-                    invoiceObject["invoice_number"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceinvoiceNumber);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicetitle != null)
-                {
-                    invoiceObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicetitle);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicedescription != null)
-                {
-                    invoiceObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedescription);
-                    invoiceObjectpropCount++;
-                }
-
-                var acceptedPaymentMethodsObject = new JObject();
-                var acceptedPaymentMethodsObjectpropCount = 0;
-                if (__workflow_bodyinvoiceacceptedPaymentMethodscard != null)
-                {
-                    acceptedPaymentMethodsObject["card"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceacceptedPaymentMethodscard);
-                    acceptedPaymentMethodsObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoiceacceptedPaymentMethodssquareGiftCard != null)
-                {
-                    acceptedPaymentMethodsObject["square_gift_card"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceacceptedPaymentMethodssquareGiftCard);
-                    acceptedPaymentMethodsObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoiceacceptedPaymentMethodsbankAccount != null)
-                {
-                    acceptedPaymentMethodsObject["bank_account"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceacceptedPaymentMethodsbankAccount);
-                    acceptedPaymentMethodsObjectpropCount++;
-                }
-
-                if (acceptedPaymentMethodsObjectpropCount > 0)
-                {
-                    invoiceObject["accepted_payment_methods"] = acceptedPaymentMethodsObject;
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicecustomFields != null)
-                {
-                    invoiceObject["custom_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicecustomFields);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicesaleOrServiceDate != null)
-                {
-                    invoiceObject["sale_or_service_date"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicesaleOrServiceDate);
-                    invoiceObjectpropCount++;
-                }
-
-                if (invoiceObjectpropCount > 0)
-                {
-                    body["invoice"] = invoiceObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvoiceCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceSearchResponse, ApiConnectionActionConfiguration> InvoiceSearch(Expression<Func<string[]>> bodyqueryfilterlocationIds = null, Expression<Func<string[]>> bodyqueryfiltercustomerIds = null, Expression<Func<string>> bodyquerysortfield = null, Expression<Func<string>> bodyquerysortorder = null, Expression<Func<int>> bodyquerylimit = null)
+        public IBodyWorkflowAction<InvoiceSearchResponse, ApiConnectionActionConfiguration> InvoiceSearch(Expression<Func<InvoiceSearchInput>> body)
         {
-            var __workflow_bodyqueryfilterlocationIds = WorkflowExpression.Compile(bodyqueryfilterlocationIds, nameof(bodyqueryfilterlocationIds), required: false);
-            var __workflow_bodyqueryfiltercustomerIds = WorkflowExpression.Compile(bodyqueryfiltercustomerIds, nameof(bodyqueryfiltercustomerIds), required: false);
-            var __workflow_bodyquerysortfield = WorkflowExpression.Compile(bodyquerysortfield, nameof(bodyquerysortfield), required: false);
-            var __workflow_bodyquerysortorder = WorkflowExpression.Compile(bodyquerysortorder, nameof(bodyquerysortorder), required: false);
-            var __workflow_bodyquerylimit = WorkflowExpression.Compile(bodyquerylimit, nameof(bodyquerylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InvoiceSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoices/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterlocationIds != null)
-                {
-                    filterObject["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterlocationIds);
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfiltercustomerIds != null)
-                {
-                    filterObject["customer_ids"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltercustomerIds);
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                var sortObject = new JObject();
-                var sortObjectpropCount = 0;
-                if (__workflow_bodyquerysortfield != null)
-                {
-                    sortObject["field"] = ExpressionConverter.ConvertO(__workflow_bodyquerysortfield);
-                    sortObjectpropCount++;
-                }
-
-                if (__workflow_bodyquerysortorder != null)
-                {
-                    sortObject["order"] = ExpressionConverter.ConvertO(__workflow_bodyquerysortorder);
-                    sortObjectpropCount++;
-                }
-
-                if (sortObjectpropCount > 0)
-                {
-                    queryObject["sort"] = sortObject;
-                    queryObjectpropCount++;
-                }
-
-                if (__workflow_bodyquerylimit != null)
-                {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyquerylimit);
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvoiceSearchResponse>(callPayload);
             });
         }
@@ -1704,431 +769,119 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceUpdateResponse, ApiConnectionActionConfiguration> InvoiceUpdate(Expression<Func<string>> invoiceId, Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<bodyinvoicepaymentRequestsInputItem2[]>> bodyinvoicepaymentRequests = null, Expression<Func<string[]>> bodyfieldsToClear = null)
+        public IBodyWorkflowAction<InvoiceUpdateResponse, ApiConnectionActionConfiguration> InvoiceUpdate(Expression<Func<string>> invoiceId, Expression<Func<InvoiceUpdateInput>> body = null)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyinvoicepaymentRequests = WorkflowExpression.Compile(bodyinvoicepaymentRequests, nameof(bodyinvoicepaymentRequests), required: false);
-            var __workflow_bodyfieldsToClear = WorkflowExpression.Compile(bodyfieldsToClear, nameof(bodyfieldsToClear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InvoiceUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoices/{0}", __workflow_invoiceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var invoiceObject = new JObject();
-                var invoiceObjectpropCount = 0;
-                if (__workflow_bodyinvoicepaymentRequests != null)
-                {
-                    invoiceObject["payment_requests"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicepaymentRequests);
-                    invoiceObjectpropCount++;
-                }
-
-                if (invoiceObjectpropCount > 0)
-                {
-                    body["invoice"] = invoiceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfieldsToClear != null)
-                {
-                    body["fields_to_clear"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsToClear);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvoiceUpdateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceCancelResponse, ApiConnectionActionConfiguration> InvoiceCancel(Expression<Func<string>> invoiceId, Expression<Func<int>> bodyversion = null)
+        public IBodyWorkflowAction<InvoiceCancelResponse, ApiConnectionActionConfiguration> InvoiceCancel(Expression<Func<string>> invoiceId, Expression<Func<InvoiceCancelInput>> body = null)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InvoiceCancelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoices/{0}/cancel", __workflow_invoiceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvoiceCancelResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoicePublishResponse, ApiConnectionActionConfiguration> InvoicePublish(Expression<Func<string>> invoiceId, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<InvoicePublishResponse, ApiConnectionActionConfiguration> InvoicePublish(Expression<Func<string>> invoiceId, Expression<Func<InvoicePublishInput>> body)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InvoicePublishResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoices/{0}/publish", __workflow_invoiceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvoicePublishResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderCreateResponse, ApiConnectionActionConfiguration> OrderCreate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodyorderreferenceId = null, Expression<Func<string>> bodyorderlocationId = null, Expression<Func<bodyorderlineItemsInputItem[]>> bodyorderlineItems = null, Expression<Func<bodyordertaxesInputItem[]>> bodyordertaxes = null, Expression<Func<bodyorderdiscountsInputItem[]>> bodyorderdiscounts = null)
+        public IBodyWorkflowAction<OrderCreateResponse, ApiConnectionActionConfiguration> OrderCreate(Expression<Func<OrderCreateInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyorderreferenceId = WorkflowExpression.Compile(bodyorderreferenceId, nameof(bodyorderreferenceId), required: false);
-            var __workflow_bodyorderlocationId = WorkflowExpression.Compile(bodyorderlocationId, nameof(bodyorderlocationId), required: false);
-            var __workflow_bodyorderlineItems = WorkflowExpression.Compile(bodyorderlineItems, nameof(bodyorderlineItems), required: false);
-            var __workflow_bodyordertaxes = WorkflowExpression.Compile(bodyordertaxes, nameof(bodyordertaxes), required: false);
-            var __workflow_bodyorderdiscounts = WorkflowExpression.Compile(bodyorderdiscounts, nameof(bodyorderdiscounts), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/orders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var orderObject = new JObject();
-                var orderObjectpropCount = 0;
-                if (__workflow_bodyorderreferenceId != null)
-                {
-                    orderObject["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderreferenceId);
-                    orderObjectpropCount++;
-                }
-
-                if (__workflow_bodyorderlocationId != null)
-                {
-                    orderObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderlocationId);
-                    orderObjectpropCount++;
-                }
-
-                if (__workflow_bodyorderlineItems != null)
-                {
-                    orderObject["line_items"] = ExpressionConverter.ConvertO(__workflow_bodyorderlineItems);
-                    orderObjectpropCount++;
-                }
-
-                if (__workflow_bodyordertaxes != null)
-                {
-                    orderObject["taxes"] = ExpressionConverter.ConvertO(__workflow_bodyordertaxes);
-                    orderObjectpropCount++;
-                }
-
-                if (__workflow_bodyorderdiscounts != null)
-                {
-                    orderObject["discounts"] = ExpressionConverter.ConvertO(__workflow_bodyorderdiscounts);
-                    orderObjectpropCount++;
-                }
-
-                if (orderObjectpropCount > 0)
-                {
-                    body["order"] = orderObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrderCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderBatchRetrieveResponse, ApiConnectionActionConfiguration> OrderBatchRetrieve(Expression<Func<string>> bodylocationId = null, Expression<Func<string[]>> bodyorderIds = null)
+        public IBodyWorkflowAction<OrderBatchRetrieveResponse, ApiConnectionActionConfiguration> OrderBatchRetrieve(Expression<Func<OrderBatchRetrieveInput>> body = null)
         {
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodyorderIds = WorkflowExpression.Compile(bodyorderIds, nameof(bodyorderIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OrderBatchRetrieveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/orders/batch-retrieve";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylocationId != null)
-                {
-                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorderIds != null)
-                {
-                    body["order_ids"] = ExpressionConverter.ConvertO(__workflow_bodyorderIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrderBatchRetrieveResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderCalculateResponse, ApiConnectionActionConfiguration> OrderCalculate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodyorderlocationId = null, Expression<Func<bodyorderdiscountsInputItem2[]>> bodyorderdiscounts = null, Expression<Func<bodyorderlineItemsInputItem2[]>> bodyorderlineItems = null)
+        public IBodyWorkflowAction<OrderCalculateResponse, ApiConnectionActionConfiguration> OrderCalculate(Expression<Func<OrderCalculateInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyorderlocationId = WorkflowExpression.Compile(bodyorderlocationId, nameof(bodyorderlocationId), required: false);
-            var __workflow_bodyorderdiscounts = WorkflowExpression.Compile(bodyorderdiscounts, nameof(bodyorderdiscounts), required: false);
-            var __workflow_bodyorderlineItems = WorkflowExpression.Compile(bodyorderlineItems, nameof(bodyorderlineItems), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderCalculateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/orders/calculate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var orderObject = new JObject();
-                var orderObjectpropCount = 0;
-                if (__workflow_bodyorderlocationId != null)
-                {
-                    orderObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderlocationId);
-                    orderObjectpropCount++;
-                }
-
-                if (__workflow_bodyorderdiscounts != null)
-                {
-                    orderObject["discounts"] = ExpressionConverter.ConvertO(__workflow_bodyorderdiscounts);
-                    orderObjectpropCount++;
-                }
-
-                if (__workflow_bodyorderlineItems != null)
-                {
-                    orderObject["line_items"] = ExpressionConverter.ConvertO(__workflow_bodyorderlineItems);
-                    orderObjectpropCount++;
-                }
-
-                if (orderObjectpropCount > 0)
-                {
-                    body["order"] = orderObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrderCalculateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderCloneResponse, ApiConnectionActionConfiguration> OrderClone(Expression<Func<string>> bodyorderId = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<OrderCloneResponse, ApiConnectionActionConfiguration> OrderClone(Expression<Func<OrderCloneInput>> body)
         {
-            var __workflow_bodyorderId = WorkflowExpression.Compile(bodyorderId, nameof(bodyorderId), required: false);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderCloneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/orders/clone";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyorderId != null)
-                {
-                    body["order_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrderCloneResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderSearchResponse, ApiConnectionActionConfiguration> OrderSearch(Expression<Func<bool>> bodyreturnEntries = null, Expression<Func<int>> bodylimit = null, Expression<Func<string[]>> bodylocationIds = null, Expression<Func<string>> bodyqueryfilterdateTimeFilterclosedAtstartAt = null, Expression<Func<string>> bodyqueryfilterdateTimeFilterclosedAtendAt = null, Expression<Func<string[]>> bodyqueryfilterstateFilterstates = null, Expression<Func<string>> bodyquerysortsortField = null, Expression<Func<string>> bodyquerysortsortOrder = null)
+        public IBodyWorkflowAction<OrderSearchResponse, ApiConnectionActionConfiguration> OrderSearch(Expression<Func<OrderSearchInput>> body)
         {
-            var __workflow_bodyreturnEntries = WorkflowExpression.Compile(bodyreturnEntries, nameof(bodyreturnEntries), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodylocationIds = WorkflowExpression.Compile(bodylocationIds, nameof(bodylocationIds), required: false);
-            var __workflow_bodyqueryfilterdateTimeFilterclosedAtstartAt = WorkflowExpression.Compile(bodyqueryfilterdateTimeFilterclosedAtstartAt, nameof(bodyqueryfilterdateTimeFilterclosedAtstartAt), required: false);
-            var __workflow_bodyqueryfilterdateTimeFilterclosedAtendAt = WorkflowExpression.Compile(bodyqueryfilterdateTimeFilterclosedAtendAt, nameof(bodyqueryfilterdateTimeFilterclosedAtendAt), required: false);
-            var __workflow_bodyqueryfilterstateFilterstates = WorkflowExpression.Compile(bodyqueryfilterstateFilterstates, nameof(bodyqueryfilterstateFilterstates), required: false);
-            var __workflow_bodyquerysortsortField = WorkflowExpression.Compile(bodyquerysortsortField, nameof(bodyquerysortsortField), required: false);
-            var __workflow_bodyquerysortsortOrder = WorkflowExpression.Compile(bodyquerysortsortOrder, nameof(bodyquerysortsortOrder), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/orders/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyreturnEntries != null)
-                {
-                    body["return_entries"] = ExpressionConverter.ConvertO(__workflow_bodyreturnEntries);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationIds != null)
-                {
-                    body["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodylocationIds);
-                    bodypropCount++;
-                }
-
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                var dateTimeFilterObject = new JObject();
-                var dateTimeFilterObjectpropCount = 0;
-                var closedAtObject = new JObject();
-                var closedAtObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterdateTimeFilterclosedAtstartAt != null)
-                {
-                    closedAtObject["start_at"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterdateTimeFilterclosedAtstartAt);
-                    closedAtObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfilterdateTimeFilterclosedAtendAt != null)
-                {
-                    closedAtObject["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterdateTimeFilterclosedAtendAt);
-                    closedAtObjectpropCount++;
-                }
-
-                if (closedAtObjectpropCount > 0)
-                {
-                    dateTimeFilterObject["closed_at"] = closedAtObject;
-                    dateTimeFilterObjectpropCount++;
-                }
-
-                if (dateTimeFilterObjectpropCount > 0)
-                {
-                    filterObject["date_time_filter"] = dateTimeFilterObject;
-                    filterObjectpropCount++;
-                }
-
-                var stateFilterObject = new JObject();
-                var stateFilterObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterstateFilterstates != null)
-                {
-                    stateFilterObject["states"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterstateFilterstates);
-                    stateFilterObjectpropCount++;
-                }
-
-                if (stateFilterObjectpropCount > 0)
-                {
-                    filterObject["state_filter"] = stateFilterObject;
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                var sortObject = new JObject();
-                var sortObjectpropCount = 0;
-                if (__workflow_bodyquerysortsortField != null)
-                {
-                    sortObject["sort_field"] = ExpressionConverter.ConvertO(__workflow_bodyquerysortsortField);
-                    sortObjectpropCount++;
-                }
-
-                if (__workflow_bodyquerysortsortOrder != null)
-                {
-                    sortObject["sort_order"] = ExpressionConverter.ConvertO(__workflow_bodyquerysortsortOrder);
-                    sortObjectpropCount++;
-                }
-
-                if (sortObjectpropCount > 0)
-                {
-                    queryObject["sort"] = sortObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrderSearchResponse>(callPayload);
             });
         }
@@ -2147,91 +900,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderUpdateResponse, ApiConnectionActionConfiguration> OrderUpdate(Expression<Func<string>> orderId, Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<int>> bodyorderversion = null, Expression<Func<bodyorderlineItemsInputItem22[]>> bodyorderlineItems = null, Expression<Func<string[]>> bodyfieldsToClear = null)
+        public IBodyWorkflowAction<OrderUpdateResponse, ApiConnectionActionConfiguration> OrderUpdate(Expression<Func<string>> orderId, Expression<Func<OrderUpdateInput>> body)
         {
             var __workflow_orderId = WorkflowExpression.Compile(orderId, nameof(orderId), required: true);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyorderversion = WorkflowExpression.Compile(bodyorderversion, nameof(bodyorderversion), required: false);
-            var __workflow_bodyorderlineItems = WorkflowExpression.Compile(bodyorderlineItems, nameof(bodyorderlineItems), required: false);
-            var __workflow_bodyfieldsToClear = WorkflowExpression.Compile(bodyfieldsToClear, nameof(bodyfieldsToClear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/orders/{0}", __workflow_orderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var orderObject = new JObject();
-                var orderObjectpropCount = 0;
-                if (__workflow_bodyorderversion != null)
-                {
-                    orderObject["version"] = ExpressionConverter.ConvertO(__workflow_bodyorderversion);
-                    orderObjectpropCount++;
-                }
-
-                if (__workflow_bodyorderlineItems != null)
-                {
-                    orderObject["line_items"] = ExpressionConverter.ConvertO(__workflow_bodyorderlineItems);
-                    orderObjectpropCount++;
-                }
-
-                if (orderObjectpropCount > 0)
-                {
-                    body["order"] = orderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfieldsToClear != null)
-                {
-                    body["fields_to_clear"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsToClear);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrderUpdateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderPayResponse, ApiConnectionActionConfiguration> OrderPay(Expression<Func<string>> orderId, Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string[]>> bodypaymentIds = null)
+        public IBodyWorkflowAction<OrderPayResponse, ApiConnectionActionConfiguration> OrderPay(Expression<Func<string>> orderId, Expression<Func<OrderPayInput>> body)
         {
             var __workflow_orderId = WorkflowExpression.Compile(orderId, nameof(orderId), required: true);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodypaymentIds = WorkflowExpression.Compile(bodypaymentIds, nameof(bodypaymentIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderPayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/orders/{0}/pay", __workflow_orderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypaymentIds != null)
-                {
-                    body["payment_ids"] = ExpressionConverter.ConvertO(__workflow_bodypaymentIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OrderPayResponse>(callPayload);
             });
         }
@@ -2277,139 +970,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<PaymentCreateResponse, ApiConnectionActionConfiguration> PaymentCreate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<int>> bodyamountMoneyamount = null, Expression<Func<string>> bodyamountMoneycurrency = null, Expression<Func<string>> bodysourceId = null, Expression<Func<bool>> bodyautocomplete = null, Expression<Func<string>> bodycustomerId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyappFeeMoneyamount = null, Expression<Func<string>> bodyappFeeMoneycurrency = null)
+        public IBodyWorkflowAction<PaymentCreateResponse, ApiConnectionActionConfiguration> PaymentCreate(Expression<Func<PaymentCreateInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyamountMoneyamount = WorkflowExpression.Compile(bodyamountMoneyamount, nameof(bodyamountMoneyamount), required: false);
-            var __workflow_bodyamountMoneycurrency = WorkflowExpression.Compile(bodyamountMoneycurrency, nameof(bodyamountMoneycurrency), required: false);
-            var __workflow_bodysourceId = WorkflowExpression.Compile(bodysourceId, nameof(bodysourceId), required: false);
-            var __workflow_bodyautocomplete = WorkflowExpression.Compile(bodyautocomplete, nameof(bodyautocomplete), required: false);
-            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodyappFeeMoneyamount = WorkflowExpression.Compile(bodyappFeeMoneyamount, nameof(bodyappFeeMoneyamount), required: false);
-            var __workflow_bodyappFeeMoneycurrency = WorkflowExpression.Compile(bodyappFeeMoneycurrency, nameof(bodyappFeeMoneycurrency), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PaymentCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/payments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var amountMoneyObject = new JObject();
-                var amountMoneyObjectpropCount = 0;
-                if (__workflow_bodyamountMoneyamount != null)
-                {
-                    amountMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamountMoneyamount);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodyamountMoneycurrency != null)
-                {
-                    amountMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyamountMoneycurrency);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (amountMoneyObjectpropCount > 0)
-                {
-                    body["amount_money"] = amountMoneyObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysourceId != null)
-                {
-                    body["source_id"] = ExpressionConverter.ConvertO(__workflow_bodysourceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautocomplete != null)
-                {
-                    body["autocomplete"] = ExpressionConverter.ConvertO(__workflow_bodyautocomplete);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomerId != null)
-                {
-                    body["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationId != null)
-                {
-                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreferenceId != null)
-                {
-                    body["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                var appFeeMoneyObject = new JObject();
-                var appFeeMoneyObjectpropCount = 0;
-                if (__workflow_bodyappFeeMoneyamount != null)
-                {
-                    appFeeMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyappFeeMoneyamount);
-                    appFeeMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodyappFeeMoneycurrency != null)
-                {
-                    appFeeMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyappFeeMoneycurrency);
-                    appFeeMoneyObjectpropCount++;
-                }
-
-                if (appFeeMoneyObjectpropCount > 0)
-                {
-                    body["app_fee_money"] = appFeeMoneyObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PaymentCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PaymentCancelIdempotency(Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PaymentCancelIdempotency(Expression<Func<PaymentCancelIdempotencyInput>> body = null)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/payments/cancel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -2428,87 +1012,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<PaymentUpdateResponse, ApiConnectionActionConfiguration> PaymentUpdate(Expression<Func<string>> paymentId, Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<int>> bodypaymentamountMoneyamount = null, Expression<Func<string>> bodypaymentamountMoneycurrency = null, Expression<Func<int>> bodypaymenttipMoneyamount = null, Expression<Func<string>> bodypaymenttipMoneycurrency = null, Expression<Func<string>> bodypaymentversionToken = null)
+        public IBodyWorkflowAction<PaymentUpdateResponse, ApiConnectionActionConfiguration> PaymentUpdate(Expression<Func<string>> paymentId, Expression<Func<PaymentUpdateInput>> body)
         {
             var __workflow_paymentId = WorkflowExpression.Compile(paymentId, nameof(paymentId), required: true);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodypaymentamountMoneyamount = WorkflowExpression.Compile(bodypaymentamountMoneyamount, nameof(bodypaymentamountMoneyamount), required: false);
-            var __workflow_bodypaymentamountMoneycurrency = WorkflowExpression.Compile(bodypaymentamountMoneycurrency, nameof(bodypaymentamountMoneycurrency), required: false);
-            var __workflow_bodypaymenttipMoneyamount = WorkflowExpression.Compile(bodypaymenttipMoneyamount, nameof(bodypaymenttipMoneyamount), required: false);
-            var __workflow_bodypaymenttipMoneycurrency = WorkflowExpression.Compile(bodypaymenttipMoneycurrency, nameof(bodypaymenttipMoneycurrency), required: false);
-            var __workflow_bodypaymentversionToken = WorkflowExpression.Compile(bodypaymentversionToken, nameof(bodypaymentversionToken), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PaymentUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/payments/{0}", __workflow_paymentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var paymentObject = new JObject();
-                var paymentObjectpropCount = 0;
-                var amountMoneyObject = new JObject();
-                var amountMoneyObjectpropCount = 0;
-                if (__workflow_bodypaymentamountMoneyamount != null)
-                {
-                    amountMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodypaymentamountMoneyamount);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentamountMoneycurrency != null)
-                {
-                    amountMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodypaymentamountMoneycurrency);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (amountMoneyObjectpropCount > 0)
-                {
-                    paymentObject["amount_money"] = amountMoneyObject;
-                    paymentObjectpropCount++;
-                }
-
-                var tipMoneyObject = new JObject();
-                var tipMoneyObjectpropCount = 0;
-                if (__workflow_bodypaymenttipMoneyamount != null)
-                {
-                    tipMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodypaymenttipMoneyamount);
-                    tipMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymenttipMoneycurrency != null)
-                {
-                    tipMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodypaymenttipMoneycurrency);
-                    tipMoneyObjectpropCount++;
-                }
-
-                if (tipMoneyObjectpropCount > 0)
-                {
-                    paymentObject["tip_money"] = tipMoneyObject;
-                    paymentObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentversionToken != null)
-                {
-                    paymentObject["version_token"] = ExpressionConverter.ConvertO(__workflow_bodypaymentversionToken);
-                    paymentObjectpropCount++;
-                }
-
-                if (paymentObjectpropCount > 0)
-                {
-                    body["payment"] = paymentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PaymentUpdateResponse>(callPayload);
             });
         }
@@ -2577,85 +1090,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<RefundPaymentResponse, ApiConnectionActionConfiguration> RefundPayment(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodypaymentId = null, Expression<Func<int>> bodyamountMoneyamount = null, Expression<Func<string>> bodyamountMoneycurrency = null, Expression<Func<int>> bodyappFeeMoneyamount = null, Expression<Func<string>> bodyappFeeMoneycurrency = null, Expression<Func<string>> bodyreason = null)
+        public IBodyWorkflowAction<RefundPaymentResponse, ApiConnectionActionConfiguration> RefundPayment(Expression<Func<RefundPaymentInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodypaymentId = WorkflowExpression.Compile(bodypaymentId, nameof(bodypaymentId), required: false);
-            var __workflow_bodyamountMoneyamount = WorkflowExpression.Compile(bodyamountMoneyamount, nameof(bodyamountMoneyamount), required: false);
-            var __workflow_bodyamountMoneycurrency = WorkflowExpression.Compile(bodyamountMoneycurrency, nameof(bodyamountMoneycurrency), required: false);
-            var __workflow_bodyappFeeMoneyamount = WorkflowExpression.Compile(bodyappFeeMoneyamount, nameof(bodyappFeeMoneyamount), required: false);
-            var __workflow_bodyappFeeMoneycurrency = WorkflowExpression.Compile(bodyappFeeMoneycurrency, nameof(bodyappFeeMoneycurrency), required: false);
-            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RefundPaymentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/refunds";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypaymentId != null)
-                {
-                    body["payment_id"] = ExpressionConverter.ConvertO(__workflow_bodypaymentId);
-                    bodypropCount++;
-                }
-
-                var amountMoneyObject = new JObject();
-                var amountMoneyObjectpropCount = 0;
-                if (__workflow_bodyamountMoneyamount != null)
-                {
-                    amountMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamountMoneyamount);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodyamountMoneycurrency != null)
-                {
-                    amountMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyamountMoneycurrency);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (amountMoneyObjectpropCount > 0)
-                {
-                    body["amount_money"] = amountMoneyObject;
-                    bodypropCount++;
-                }
-
-                var appFeeMoneyObject = new JObject();
-                var appFeeMoneyObjectpropCount = 0;
-                if (__workflow_bodyappFeeMoneyamount != null)
-                {
-                    appFeeMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyappFeeMoneyamount);
-                    appFeeMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodyappFeeMoneycurrency != null)
-                {
-                    appFeeMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyappFeeMoneycurrency);
-                    appFeeMoneyObjectpropCount++;
-                }
-
-                if (appFeeMoneyObjectpropCount > 0)
-                {
-                    body["app_fee_money"] = appFeeMoneyObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreason != null)
-                {
-                    body["reason"] = ExpressionConverter.ConvertO(__workflow_bodyreason);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RefundPaymentResponse>(callPayload);
             });
         }
@@ -2674,169 +1117,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<SubscriptionCreateResponse, ApiConnectionActionConfiguration> SubscriptionCreate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyplanId = null, Expression<Func<string>> bodycustomerId = null, Expression<Func<string>> bodycardId = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodytaxPercentage = null, Expression<Func<int>> bodypriceOverrideMoneyamount = null, Expression<Func<string>> bodypriceOverrideMoneycurrency = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodysourcename = null)
+        public IBodyWorkflowAction<SubscriptionCreateResponse, ApiConnectionActionConfiguration> SubscriptionCreate(Expression<Func<SubscriptionCreateInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: false);
-            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
-            var __workflow_bodycardId = WorkflowExpression.Compile(bodycardId, nameof(bodycardId), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodytaxPercentage = WorkflowExpression.Compile(bodytaxPercentage, nameof(bodytaxPercentage), required: false);
-            var __workflow_bodypriceOverrideMoneyamount = WorkflowExpression.Compile(bodypriceOverrideMoneyamount, nameof(bodypriceOverrideMoneyamount), required: false);
-            var __workflow_bodypriceOverrideMoneycurrency = WorkflowExpression.Compile(bodypriceOverrideMoneycurrency, nameof(bodypriceOverrideMoneycurrency), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodysourcename = WorkflowExpression.Compile(bodysourcename, nameof(bodysourcename), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriptionCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationId != null)
-                {
-                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplanId != null)
-                {
-                    body["plan_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomerId != null)
-                {
-                    body["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycardId != null)
-                {
-                    body["card_id"] = ExpressionConverter.ConvertO(__workflow_bodycardId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytaxPercentage != null)
-                {
-                    body["tax_percentage"] = ExpressionConverter.ConvertO(__workflow_bodytaxPercentage);
-                    bodypropCount++;
-                }
-
-                var priceOverrideMoneyObject = new JObject();
-                var priceOverrideMoneyObjectpropCount = 0;
-                if (__workflow_bodypriceOverrideMoneyamount != null)
-                {
-                    priceOverrideMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodypriceOverrideMoneyamount);
-                    priceOverrideMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodypriceOverrideMoneycurrency != null)
-                {
-                    priceOverrideMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodypriceOverrideMoneycurrency);
-                    priceOverrideMoneyObjectpropCount++;
-                }
-
-                if (priceOverrideMoneyObjectpropCount > 0)
-                {
-                    body["price_override_money"] = priceOverrideMoneyObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                var sourceObject = new JObject();
-                var sourceObjectpropCount = 0;
-                if (__workflow_bodysourcename != null)
-                {
-                    sourceObject["name"] = ExpressionConverter.ConvertO(__workflow_bodysourcename);
-                    sourceObjectpropCount++;
-                }
-
-                if (sourceObjectpropCount > 0)
-                {
-                    body["source"] = sourceObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriptionCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<SubscriptionSearchResponse, ApiConnectionActionConfiguration> SubscriptionSearch(Expression<Func<string[]>> bodyqueryfilterlocationIds = null, Expression<Func<string[]>> bodyqueryfiltercustomerIds = null, Expression<Func<string[]>> bodyqueryfiltersourceNames = null)
+        public IBodyWorkflowAction<SubscriptionSearchResponse, ApiConnectionActionConfiguration> SubscriptionSearch(Expression<Func<SubscriptionSearchInput>> body)
         {
-            var __workflow_bodyqueryfilterlocationIds = WorkflowExpression.Compile(bodyqueryfilterlocationIds, nameof(bodyqueryfilterlocationIds), required: false);
-            var __workflow_bodyqueryfiltercustomerIds = WorkflowExpression.Compile(bodyqueryfiltercustomerIds, nameof(bodyqueryfiltercustomerIds), required: false);
-            var __workflow_bodyqueryfiltersourceNames = WorkflowExpression.Compile(bodyqueryfiltersourceNames, nameof(bodyqueryfiltersourceNames), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriptionSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscriptions/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterlocationIds != null)
-                {
-                    filterObject["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterlocationIds);
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfiltercustomerIds != null)
-                {
-                    filterObject["customer_ids"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltercustomerIds);
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfiltersourceNames != null)
-                {
-                    filterObject["source_names"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltersourceNames);
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriptionSearchResponse>(callPayload);
             });
         }
@@ -2855,65 +1158,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<SubscriptionUpdateResponse, ApiConnectionActionConfiguration> SubscriptionUpdate(Expression<Func<string>> subscriptionId, Expression<Func<int>> bodysubscriptionversion = null, Expression<Func<string>> bodysubscriptiontaxPercentage = null, Expression<Func<int>> bodysubscriptionpriceOverrideMoneyamount = null, Expression<Func<string>> bodysubscriptionpriceOverrideMoneycurrency = null)
+        public IBodyWorkflowAction<SubscriptionUpdateResponse, ApiConnectionActionConfiguration> SubscriptionUpdate(Expression<Func<string>> subscriptionId, Expression<Func<SubscriptionUpdateInput>> body)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_bodysubscriptionversion = WorkflowExpression.Compile(bodysubscriptionversion, nameof(bodysubscriptionversion), required: false);
-            var __workflow_bodysubscriptiontaxPercentage = WorkflowExpression.Compile(bodysubscriptiontaxPercentage, nameof(bodysubscriptiontaxPercentage), required: false);
-            var __workflow_bodysubscriptionpriceOverrideMoneyamount = WorkflowExpression.Compile(bodysubscriptionpriceOverrideMoneyamount, nameof(bodysubscriptionpriceOverrideMoneyamount), required: false);
-            var __workflow_bodysubscriptionpriceOverrideMoneycurrency = WorkflowExpression.Compile(bodysubscriptionpriceOverrideMoneycurrency, nameof(bodysubscriptionpriceOverrideMoneycurrency), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriptionUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}", __workflow_subscriptionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var subscriptionObject = new JObject();
-                var subscriptionObjectpropCount = 0;
-                if (__workflow_bodysubscriptionversion != null)
-                {
-                    subscriptionObject["version"] = ExpressionConverter.ConvertO(__workflow_bodysubscriptionversion);
-                    subscriptionObjectpropCount++;
-                }
-
-                if (__workflow_bodysubscriptiontaxPercentage != null)
-                {
-                    subscriptionObject["tax_percentage"] = ExpressionConverter.ConvertO(__workflow_bodysubscriptiontaxPercentage);
-                    subscriptionObjectpropCount++;
-                }
-
-                var priceOverrideMoneyObject = new JObject();
-                var priceOverrideMoneyObjectpropCount = 0;
-                if (__workflow_bodysubscriptionpriceOverrideMoneyamount != null)
-                {
-                    priceOverrideMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodysubscriptionpriceOverrideMoneyamount);
-                    priceOverrideMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodysubscriptionpriceOverrideMoneycurrency != null)
-                {
-                    priceOverrideMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodysubscriptionpriceOverrideMoneycurrency);
-                    priceOverrideMoneyObjectpropCount++;
-                }
-
-                if (priceOverrideMoneyObjectpropCount > 0)
-                {
-                    subscriptionObject["price_override_money"] = priceOverrideMoneyObject;
-                    subscriptionObjectpropCount++;
-                }
-
-                if (subscriptionObjectpropCount > 0)
-                {
-                    body["subscription"] = subscriptionObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriptionUpdateResponse>(callPayload);
             });
         }
@@ -2945,155 +1199,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<SubscriptionResumeResponse, ApiConnectionActionConfiguration> SubscriptionResume(Expression<Func<string>> subscriptionId)
+        public IBodyWorkflowAction<SubscriptionResumeResponse, ApiConnectionActionConfiguration> SubscriptionResume(Expression<Func<string>> subscriptionId, Expression<Func<object>> body = null)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SubscriptionResumeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resume", __workflow_subscriptionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SubscriptionResumeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalCreateCheckoutResponse, ApiConnectionActionConfiguration> TerminalCreateCheckout(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<int>> bodycheckoutamountMoneyamount = null, Expression<Func<string>> bodycheckoutamountMoneycurrency = null, Expression<Func<string>> bodycheckoutreferenceId = null, Expression<Func<string>> bodycheckoutdeviceOptionsdeviceId = null, Expression<Func<string>> bodycheckoutnote = null)
+        public IBodyWorkflowAction<TerminalCreateCheckoutResponse, ApiConnectionActionConfiguration> TerminalCreateCheckout(Expression<Func<TerminalCreateCheckoutInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodycheckoutamountMoneyamount = WorkflowExpression.Compile(bodycheckoutamountMoneyamount, nameof(bodycheckoutamountMoneyamount), required: false);
-            var __workflow_bodycheckoutamountMoneycurrency = WorkflowExpression.Compile(bodycheckoutamountMoneycurrency, nameof(bodycheckoutamountMoneycurrency), required: false);
-            var __workflow_bodycheckoutreferenceId = WorkflowExpression.Compile(bodycheckoutreferenceId, nameof(bodycheckoutreferenceId), required: false);
-            var __workflow_bodycheckoutdeviceOptionsdeviceId = WorkflowExpression.Compile(bodycheckoutdeviceOptionsdeviceId, nameof(bodycheckoutdeviceOptionsdeviceId), required: false);
-            var __workflow_bodycheckoutnote = WorkflowExpression.Compile(bodycheckoutnote, nameof(bodycheckoutnote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TerminalCreateCheckoutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/terminals/checkouts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var checkoutObject = new JObject();
-                var checkoutObjectpropCount = 0;
-                var amountMoneyObject = new JObject();
-                var amountMoneyObjectpropCount = 0;
-                if (__workflow_bodycheckoutamountMoneyamount != null)
-                {
-                    amountMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodycheckoutamountMoneyamount);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodycheckoutamountMoneycurrency != null)
-                {
-                    amountMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodycheckoutamountMoneycurrency);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (amountMoneyObjectpropCount > 0)
-                {
-                    checkoutObject["amount_money"] = amountMoneyObject;
-                    checkoutObjectpropCount++;
-                }
-
-                if (__workflow_bodycheckoutreferenceId != null)
-                {
-                    checkoutObject["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodycheckoutreferenceId);
-                    checkoutObjectpropCount++;
-                }
-
-                var deviceOptionsObject = new JObject();
-                var deviceOptionsObjectpropCount = 0;
-                if (__workflow_bodycheckoutdeviceOptionsdeviceId != null)
-                {
-                    deviceOptionsObject["device_id"] = ExpressionConverter.ConvertO(__workflow_bodycheckoutdeviceOptionsdeviceId);
-                    deviceOptionsObjectpropCount++;
-                }
-
-                if (deviceOptionsObjectpropCount > 0)
-                {
-                    checkoutObject["device_options"] = deviceOptionsObject;
-                    checkoutObjectpropCount++;
-                }
-
-                if (__workflow_bodycheckoutnote != null)
-                {
-                    checkoutObject["note"] = ExpressionConverter.ConvertO(__workflow_bodycheckoutnote);
-                    checkoutObjectpropCount++;
-                }
-
-                if (checkoutObjectpropCount > 0)
-                {
-                    body["checkout"] = checkoutObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TerminalCreateCheckoutResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalSearchCheckoutsResponse, ApiConnectionActionConfiguration> TerminalSearchCheckouts(Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyqueryfilterstatus = null)
+        public IBodyWorkflowAction<TerminalSearchCheckoutsResponse, ApiConnectionActionConfiguration> TerminalSearchCheckouts(Expression<Func<TerminalSearchCheckoutsInput>> body)
         {
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyqueryfilterstatus = WorkflowExpression.Compile(bodyqueryfilterstatus, nameof(bodyqueryfilterstatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TerminalSearchCheckoutsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/terminals/checkouts/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterstatus != null)
-                {
-                    filterObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterstatus);
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TerminalSearchCheckoutsResponse>(callPayload);
             });
         }
@@ -3112,147 +1256,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalCancelCheckoutResponse, ApiConnectionActionConfiguration> TerminalCancelCheckout(Expression<Func<string>> checkoutId)
+        public IBodyWorkflowAction<TerminalCancelCheckoutResponse, ApiConnectionActionConfiguration> TerminalCancelCheckout(Expression<Func<string>> checkoutId, Expression<Func<object>> body = null)
         {
             var __workflow_checkoutId = WorkflowExpression.Compile(checkoutId, nameof(checkoutId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TerminalCancelCheckoutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/terminals/checkouts/{0}/cancel", __workflow_checkoutId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TerminalCancelCheckoutResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalCreateRefundResponse, ApiConnectionActionConfiguration> TerminalCreateRefund(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<int>> bodyrefundamountMoneyamount = null, Expression<Func<string>> bodyrefundamountMoneycurrency = null, Expression<Func<string>> bodyrefunddeviceId = null, Expression<Func<string>> bodyrefundreason = null, Expression<Func<string>> bodyrefundpaymentId = null)
+        public IBodyWorkflowAction<TerminalCreateRefundResponse, ApiConnectionActionConfiguration> TerminalCreateRefund(Expression<Func<TerminalCreateRefundInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyrefundamountMoneyamount = WorkflowExpression.Compile(bodyrefundamountMoneyamount, nameof(bodyrefundamountMoneyamount), required: false);
-            var __workflow_bodyrefundamountMoneycurrency = WorkflowExpression.Compile(bodyrefundamountMoneycurrency, nameof(bodyrefundamountMoneycurrency), required: false);
-            var __workflow_bodyrefunddeviceId = WorkflowExpression.Compile(bodyrefunddeviceId, nameof(bodyrefunddeviceId), required: false);
-            var __workflow_bodyrefundreason = WorkflowExpression.Compile(bodyrefundreason, nameof(bodyrefundreason), required: false);
-            var __workflow_bodyrefundpaymentId = WorkflowExpression.Compile(bodyrefundpaymentId, nameof(bodyrefundpaymentId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TerminalCreateRefundResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/terminals/refunds";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var refundObject = new JObject();
-                var refundObjectpropCount = 0;
-                var amountMoneyObject = new JObject();
-                var amountMoneyObjectpropCount = 0;
-                if (__workflow_bodyrefundamountMoneyamount != null)
-                {
-                    amountMoneyObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyrefundamountMoneyamount);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (__workflow_bodyrefundamountMoneycurrency != null)
-                {
-                    amountMoneyObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyrefundamountMoneycurrency);
-                    amountMoneyObjectpropCount++;
-                }
-
-                if (amountMoneyObjectpropCount > 0)
-                {
-                    refundObject["amount_money"] = amountMoneyObject;
-                    refundObjectpropCount++;
-                }
-
-                if (__workflow_bodyrefunddeviceId != null)
-                {
-                    refundObject["device_id"] = ExpressionConverter.ConvertO(__workflow_bodyrefunddeviceId);
-                    refundObjectpropCount++;
-                }
-
-                if (__workflow_bodyrefundreason != null)
-                {
-                    refundObject["reason"] = ExpressionConverter.ConvertO(__workflow_bodyrefundreason);
-                    refundObjectpropCount++;
-                }
-
-                if (__workflow_bodyrefundpaymentId != null)
-                {
-                    refundObject["payment_id"] = ExpressionConverter.ConvertO(__workflow_bodyrefundpaymentId);
-                    refundObjectpropCount++;
-                }
-
-                if (refundObjectpropCount > 0)
-                {
-                    body["refund"] = refundObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TerminalCreateRefundResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalSearchRefundsResponse, ApiConnectionActionConfiguration> TerminalSearchRefunds(Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyqueryfilterstatus = null)
+        public IBodyWorkflowAction<TerminalSearchRefundsResponse, ApiConnectionActionConfiguration> TerminalSearchRefunds(Expression<Func<TerminalSearchRefundsInput>> body = null)
         {
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyqueryfilterstatus = WorkflowExpression.Compile(bodyqueryfilterstatus, nameof(bodyqueryfilterstatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TerminalSearchRefundsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/terminals/refunds/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterstatus != null)
-                {
-                    filterObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterstatus);
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TerminalSearchRefundsResponse>(callPayload);
             });
         }
@@ -3271,21 +1314,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalCancelRefundResponse, ApiConnectionActionConfiguration> TerminalCancelRefund(Expression<Func<string>> terminalRefundId)
+        public IBodyWorkflowAction<TerminalCancelRefundResponse, ApiConnectionActionConfiguration> TerminalCancelRefund(Expression<Func<string>> terminalRefundId, Expression<Func<object>> body = null)
         {
             var __workflow_terminalRefundId = WorkflowExpression.Compile(terminalRefundId, nameof(terminalRefundId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TerminalCancelRefundResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/terminals/refunds/{0}/cancel", __workflow_terminalRefundId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TerminalCancelRefundResponse>(callPayload);
             });
         }
@@ -3299,6 +1338,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     {
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class ApplePayRegisterInput
+    {
+        [JsonProperty("domain_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DomainName { get; set; }
     }
 
     public class CardListResponse
@@ -3444,6 +1489,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     }
 
     public class CardCreateResponseCardTypeBillingAddressType
+    {
+        [JsonProperty("address_line_1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("address_line_2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("locality")]
+        public string Locality { get; set; }
+
+        [JsonProperty("administrative_district_level_1")]
+        public string AdministrativeDistrictLevel1 { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+    }
+
+    public class CardCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("source_id")]
+        public string SourceId { get; set; }
+
+        [JsonProperty("card")]
+        public CardCreateInputCardType Card { get; set; }
+    }
+
+    public class CardCreateInputCardType
+    {
+        [JsonProperty("billing_address")]
+        public CardCreateInputCardTypeBillingAddressType BillingAddress { get; set; }
+
+        [JsonProperty("cardholder_name")]
+        public string CardholderName { get; set; }
+
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+    }
+
+    public class CardCreateInputCardTypeBillingAddressType
     {
         [JsonProperty("address_line_1")]
         public string AddressLine1 { get; set; }
@@ -3623,6 +1716,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string DeletedAt { get; set; }
     }
 
+    public class CatalogBatchDeleteInput
+    {
+        [JsonProperty("object_ids")]
+        public string[] ObjectIds { get; set; }
+    }
+
     public class CatalogBatchRetrieveResponse
     {
         [JsonProperty("objects")]
@@ -3776,6 +1875,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool Enabled { get; set; }
     }
 
+    public class CatalogBatchRetrieveInput
+    {
+        [JsonProperty("object_ids")]
+        public string[] ObjectIds { get; set; }
+
+        [JsonProperty("catalog_version")]
+        public int? CatalogVersion { get; set; }
+
+        [JsonProperty("include_related_objects")]
+        public bool? IncludeRelatedObjects { get; set; }
+    }
+
     public class CatalogBatchUpsertResponse
     {
         [JsonProperty("objects")]
@@ -3920,13 +2031,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ObjectId { get; set; }
     }
 
-    public class bodybatchesInputItem
+    public class CatalogBatchUpsertInput
     {
-        [JsonProperty("objects")]
-        public bodybatchesInputItemObjectsTypeItem[] Objects { get; set; }
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("batches")]
+        public CatalogBatchUpsertInputBatchesTypeItem[] Batches { get; set; }
     }
 
-    public class bodybatchesInputItemObjectsTypeItem
+    public class CatalogBatchUpsertInputBatchesTypeItem
+    {
+        [JsonProperty("objects")]
+        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItem[] Objects { get; set; }
+    }
+
+    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3935,19 +2055,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Id { get; set; }
 
         [JsonProperty("present_at_all_locations")]
-        public bool PresentAtAllLocations { get; set; }
+        public bool? PresentAtAllLocations { get; set; }
 
         [JsonProperty("item_data")]
-        public bodybatchesInputItemObjectsTypeItemItemDataType ItemData { get; set; }
+        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataType ItemData { get; set; }
 
         [JsonProperty("category_data")]
-        public bodybatchesInputItemObjectsTypeItemCategoryDataType CategoryData { get; set; }
+        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemCategoryDataType CategoryData { get; set; }
 
         [JsonProperty("tax_data")]
-        public bodybatchesInputItemObjectsTypeItemTaxDataType TaxData { get; set; }
+        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemTaxDataType TaxData { get; set; }
     }
 
-    public class bodybatchesInputItemObjectsTypeItemItemDataType
+    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3962,10 +2082,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string[] TaxIds { get; set; }
 
         [JsonProperty("variations")]
-        public bodybatchesInputItemObjectsTypeItemItemDataTypeVariationsTypeItem[] Variations { get; set; }
+        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItem[] Variations { get; set; }
     }
 
-    public class bodybatchesInputItemObjectsTypeItemItemDataTypeVariationsTypeItem
+    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3974,13 +2094,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Id { get; set; }
 
         [JsonProperty("present_at_all_locations")]
-        public bool PresentAtAllLocations { get; set; }
+        public bool? PresentAtAllLocations { get; set; }
 
         [JsonProperty("item_variation_data")]
-        public bodybatchesInputItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType ItemVariationData { get; set; }
+        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType ItemVariationData { get; set; }
     }
 
-    public class bodybatchesInputItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType
+    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType
     {
         [JsonProperty("item_id")]
         public string ItemId { get; set; }
@@ -3992,25 +2112,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string PricingType { get; set; }
 
         [JsonProperty("price_money")]
-        public bodybatchesInputItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
+        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
     }
 
-    public class bodybatchesInputItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType
+    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
     }
 
-    public class bodybatchesInputItemObjectsTypeItemCategoryDataType
+    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemCategoryDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class bodybatchesInputItemObjectsTypeItemTaxDataType
+    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemTaxDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4025,10 +2145,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Percentage { get; set; }
 
         [JsonProperty("applies_to_custom_amounts")]
-        public bool AppliesToCustomAmounts { get; set; }
+        public bool? AppliesToCustomAmounts { get; set; }
 
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
     }
 
     public class CatalogInfoResponse
@@ -4244,7 +2364,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ObjectId { get; set; }
     }
 
-    public class bodyObjectitemDatavariationsInputItem
+    public class CatalogUpsertInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("object")]
+        public CatalogUpsertInputObjectEntityType ObjectEntity { get; set; }
+    }
+
+    public class CatalogUpsertInputObjectEntityType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("item_data")]
+        public CatalogUpsertInputObjectEntityTypeItemDataType ItemData { get; set; }
+    }
+
+    public class CatalogUpsertInputObjectEntityTypeItemDataType
+    {
+        [JsonProperty("abbreviation")]
+        public string Abbreviation { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("variations")]
+        public CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItem[] Variations { get; set; }
+    }
+
+    public class CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4253,10 +2409,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Type { get; set; }
 
         [JsonProperty("item_variation_data")]
-        public bodyObjectitemDatavariationsInputItemItemVariationDataType ItemVariationData { get; set; }
+        public CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataType ItemVariationData { get; set; }
     }
 
-    public class bodyObjectitemDatavariationsInputItemItemVariationDataType
+    public class CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataType
     {
         [JsonProperty("item_id")]
         public string ItemId { get; set; }
@@ -4268,13 +2424,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string PricingType { get; set; }
 
         [JsonProperty("price_money")]
-        public bodyObjectitemDatavariationsInputItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
+        public CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
     }
 
-    public class bodyObjectitemDatavariationsInputItemItemVariationDataTypePriceMoneyType
+    public class CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -4493,16 +2649,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
+    public class CatalogSearchInput
+    {
+        [JsonProperty("object_types")]
+        public string[] ObjectTypes { get; set; }
+
+        [JsonProperty("query")]
+        public CatalogSearchInputQueryType Query { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
+    public class CatalogSearchInputQueryType
+    {
+        [JsonProperty("prefix_query")]
+        public CatalogSearchInputQueryTypePrefixQueryType PrefixQuery { get; set; }
+    }
+
+    public class CatalogSearchInputQueryTypePrefixQueryType
+    {
+        [JsonProperty("attribute_name")]
+        public string AttributeName { get; set; }
+
+        [JsonProperty("attribute_prefix")]
+        public string AttributePrefix { get; set; }
+    }
+
     public class CatalogUpdateModifierResponse
     {
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
     }
 
+    public class CatalogUpdateModifierInput
+    {
+        [JsonProperty("item_ids")]
+        public string[] ItemIds { get; set; }
+
+        [JsonProperty("modifier_lists_to_enable")]
+        public string[] ModifierListsToEnable { get; set; }
+
+        [JsonProperty("modifier_lists_to_disable")]
+        public string[] ModifierListsToDisable { get; set; }
+    }
+
     public class CatalogUpdateTaxesResponse
     {
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class CatalogUpdateTaxesInput
+    {
+        [JsonProperty("item_ids")]
+        public string[] ItemIds { get; set; }
+
+        [JsonProperty("taxes_to_enable")]
+        public string[] TaxesToEnable { get; set; }
+
+        [JsonProperty("taxes_to_disable")]
+        public string[] TaxesToDisable { get; set; }
     }
 
     public class CustomerGroupListResponse
@@ -4547,6 +2754,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string UpdatedAt { get; set; }
     }
 
+    public class CustomGroupCreateInput
+    {
+        [JsonProperty("group")]
+        public CustomGroupCreateInputGroupType Group { get; set; }
+    }
+
+    public class CustomGroupCreateInputGroupType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     public class CustomerGroupRetrieveResponse
     {
         [JsonProperty("group")]
@@ -4587,6 +2806,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class CustomerGroupUpdateInput
+    {
+        [JsonProperty("group")]
+        public CustomerGroupUpdateInputGroupType Group { get; set; }
+    }
+
+    public class CustomerGroupUpdateInputGroupType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class CustomerSegmentListResponse
@@ -4804,6 +3035,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool EmailUnsubscribed { get; set; }
     }
 
+    public class CustomerCreateInput
+    {
+        [JsonProperty("given_name")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("company_name")]
+        public string CompanyName { get; set; }
+
+        [JsonProperty("nickname")]
+        public string Nickname { get; set; }
+
+        [JsonProperty("address")]
+        public CustomerCreateInputAddressType Address { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("birthday")]
+        public string Birthday { get; set; }
+    }
+
+    public class CustomerCreateInputAddressType
+    {
+        [JsonProperty("address_line_1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("address_line_2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("locality")]
+        public string Locality { get; set; }
+
+        [JsonProperty("administrative_district_level_1")]
+        public string AdministrativeDistrictLevel1 { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+    }
+
     public class CustomerSearchResponse
     {
         [JsonProperty("customers")]
@@ -4886,6 +3171,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     {
         [JsonProperty("email_unsubscribed")]
         public bool EmailUnsubscribed { get; set; }
+    }
+
+    public class CustomerSearchInput
+    {
+        [JsonProperty("query")]
+        public CustomerSearchInputQueryType Query { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
+    public class CustomerSearchInputQueryType
+    {
+        [JsonProperty("filter")]
+        public CustomerSearchInputQueryTypeFilterType Filter { get; set; }
+
+        [JsonProperty("sort")]
+        public CustomerSearchInputQueryTypeSortType Sort { get; set; }
+    }
+
+    public class CustomerSearchInputQueryTypeFilterType
+    {
+        [JsonProperty("email_address")]
+        public CustomerSearchInputQueryTypeFilterTypeEmailAddressType EmailAddress { get; set; }
+
+        [JsonProperty("creation_source")]
+        public CustomerSearchInputQueryTypeFilterTypeCreationSourceType CreationSource { get; set; }
+
+        [JsonProperty("created_at")]
+        public CustomerSearchInputQueryTypeFilterTypeCreatedAtType CreatedAt { get; set; }
+
+        [JsonProperty("group_ids")]
+        public CustomerSearchInputQueryTypeFilterTypeGroupIdsType GroupIds { get; set; }
+    }
+
+    public class CustomerSearchInputQueryTypeFilterTypeEmailAddressType
+    {
+        [JsonProperty("fuzzy")]
+        public string Fuzzy { get; set; }
+    }
+
+    public class CustomerSearchInputQueryTypeFilterTypeCreationSourceType
+    {
+        [JsonProperty("values")]
+        public string[] Values { get; set; }
+
+        [JsonProperty("rule")]
+        public string Rule { get; set; }
+    }
+
+    public class CustomerSearchInputQueryTypeFilterTypeCreatedAtType
+    {
+        [JsonProperty("start_at")]
+        public string StartAt { get; set; }
+
+        [JsonProperty("end_at")]
+        public string EndAt { get; set; }
+    }
+
+    public class CustomerSearchInputQueryTypeFilterTypeGroupIdsType
+    {
+        [JsonProperty("all")]
+        public string[] All { get; set; }
+    }
+
+    public class CustomerSearchInputQueryTypeSortType
+    {
+        [JsonProperty("field")]
+        public string Field { get; set; }
+
+        [JsonProperty("order")]
+        public string Order { get; set; }
     }
 
     public class CustomerRetrieveResponse
@@ -5293,8 +3650,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string UploadedAt { get; set; }
     }
 
+    public class DisputeCreateEvidenceTextInput
+    {
+        [JsonProperty("evidence_type")]
+        public DisputeCreateEvidenceTextInputEvidenceTypeType? EvidenceType { get; set; }
+
+        [JsonProperty("evidence_text")]
+        public string EvidenceText { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyevidenceTypeInput
+    public enum DisputeCreateEvidenceTextInputEvidenceTypeType
     {
         [EnumMember(Value = "GENERIC_EVIDENCE")]
         GENERICEVIdENCE,
@@ -5510,16 +3879,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string CalculatedAt { get; set; }
     }
 
-    public class bodychangesInputItem
+    public class InventoryBatchChangeInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("changes")]
+        public InventoryBatchChangeInputChangesTypeItem[] Changes { get; set; }
+
+        [JsonProperty("ignore_unchanged_counts")]
+        public bool? IgnoreUnchangedCounts { get; set; }
+    }
+
+    public class InventoryBatchChangeInputChangesTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("physical_count")]
-        public bodychangesInputItemPhysicalCountType PhysicalCount { get; set; }
+        public InventoryBatchChangeInputChangesTypeItemPhysicalCountType PhysicalCount { get; set; }
     }
 
-    public class bodychangesInputItemPhysicalCountType
+    public class InventoryBatchChangeInputChangesTypeItemPhysicalCountType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -5606,6 +3987,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
+    public class InventoryBatchRetrieveChangesInput
+    {
+        [JsonProperty("catalog_object_ids")]
+        public string[] CatalogObjectIds { get; set; }
+
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("types")]
+        public string[] Types { get; set; }
+
+        [JsonProperty("states")]
+        public string[] States { get; set; }
+
+        [JsonProperty("updated_after")]
+        public string UpdatedAfter { get; set; }
+
+        [JsonProperty("updated_before")]
+        public string UpdatedBefore { get; set; }
+    }
+
     public class InventoryBatchRetrieveCountsResponse
     {
         [JsonProperty("counts")]
@@ -5631,6 +4033,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("calculated_at")]
         public string CalculatedAt { get; set; }
+    }
+
+    public class InventoryBatchRetrieveCountsInput
+    {
+        [JsonProperty("catalog_object_ids")]
+        public string[] CatalogObjectIds { get; set; }
+
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("updated_after")]
+        public string UpdatedAfter { get; set; }
     }
 
     public class InventoryRetrievePhysicalCountResponse
@@ -6125,7 +4539,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Placement { get; set; }
     }
 
-    public class bodyinvoicepaymentRequestsInputItem
+    public class InvoiceCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("invoice")]
+        public InvoiceCreateInputInvoiceType Invoice { get; set; }
+    }
+
+    public class InvoiceCreateInputInvoiceType
+    {
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
+
+        [JsonProperty("scheduled_at")]
+        public string ScheduledAt { get; set; }
+
+        [JsonProperty("primary_recipient")]
+        public InvoiceCreateInputInvoiceTypePrimaryRecipientType PrimaryRecipient { get; set; }
+
+        [JsonProperty("delivery_method")]
+        public string DeliveryMethod { get; set; }
+
+        [JsonProperty("payment_requests")]
+        public InvoiceCreateInputInvoiceTypePaymentRequestsTypeItem[] PaymentRequests { get; set; }
+
+        [JsonProperty("invoice_number")]
+        public string InvoiceNumber { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("accepted_payment_methods")]
+        public InvoiceCreateInputInvoiceTypeAcceptedPaymentMethodsType AcceptedPaymentMethods { get; set; }
+
+        [JsonProperty("custom_fields")]
+        public InvoiceCreateInputInvoiceTypeCustomFieldsTypeItem[] CustomFields { get; set; }
+
+        [JsonProperty("sale_or_service_date")]
+        public string SaleOrServiceDate { get; set; }
+    }
+
+    public class InvoiceCreateInputInvoiceTypePrimaryRecipientType
+    {
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+    }
+
+    public class InvoiceCreateInputInvoiceTypePaymentRequestsTypeItem
     {
         [JsonProperty("request_type")]
         public string RequestType { get; set; }
@@ -6134,25 +4602,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string DueDate { get; set; }
 
         [JsonProperty("tipping_enabled")]
-        public bool TippingEnabled { get; set; }
+        public bool? TippingEnabled { get; set; }
 
         [JsonProperty("automatic_payment_source")]
         public string AutomaticPaymentSource { get; set; }
 
         [JsonProperty("reminders")]
-        public bodyinvoicepaymentRequestsInputItemRemindersTypeItem[] Reminders { get; set; }
+        public InvoiceCreateInputInvoiceTypePaymentRequestsTypeItemRemindersTypeItem[] Reminders { get; set; }
     }
 
-    public class bodyinvoicepaymentRequestsInputItemRemindersTypeItem
+    public class InvoiceCreateInputInvoiceTypePaymentRequestsTypeItemRemindersTypeItem
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("relative_scheduled_days")]
-        public int RelativeScheduledDays { get; set; }
+        public int? RelativeScheduledDays { get; set; }
     }
 
-    public class bodyinvoicecustomFieldsInputItem
+    public class InvoiceCreateInputInvoiceTypeAcceptedPaymentMethodsType
+    {
+        [JsonProperty("card")]
+        public bool? Card { get; set; }
+
+        [JsonProperty("square_gift_card")]
+        public bool? SquareGiftCard { get; set; }
+
+        [JsonProperty("bank_account")]
+        public bool? BankAccount { get; set; }
+    }
+
+    public class InvoiceCreateInputInvoiceTypeCustomFieldsTypeItem
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -6351,6 +4831,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class InvoiceSearchInput
+    {
+        [JsonProperty("query")]
+        public InvoiceSearchInputQueryType Query { get; set; }
+    }
+
+    public class InvoiceSearchInputQueryType
+    {
+        [JsonProperty("filter")]
+        public InvoiceSearchInputQueryTypeFilterType Filter { get; set; }
+
+        [JsonProperty("sort")]
+        public InvoiceSearchInputQueryTypeSortType Sort { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
+    public class InvoiceSearchInputQueryTypeFilterType
+    {
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("customer_ids")]
+        public string[] CustomerIds { get; set; }
+    }
+
+    public class InvoiceSearchInputQueryTypeSortType
+    {
+        [JsonProperty("field")]
+        public string Field { get; set; }
+
+        [JsonProperty("order")]
+        public string Order { get; set; }
     }
 
     public class InvoiceGetResponse
@@ -6677,13 +5193,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Placement { get; set; }
     }
 
-    public class bodyinvoicepaymentRequestsInputItem2
+    public class InvoiceUpdateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("invoice")]
+        public InvoiceUpdateInputInvoiceType Invoice { get; set; }
+
+        [JsonProperty("fields_to_clear")]
+        public string[] FieldsToClear { get; set; }
+    }
+
+    public class InvoiceUpdateInputInvoiceType
+    {
+        [JsonProperty("payment_requests")]
+        public InvoiceUpdateInputInvoiceTypePaymentRequestsTypeItem[] PaymentRequests { get; set; }
+    }
+
+    public class InvoiceUpdateInputInvoiceTypePaymentRequestsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
 
         [JsonProperty("tipping_enabled")]
-        public bool TippingEnabled { get; set; }
+        public bool? TippingEnabled { get; set; }
     }
 
     public class InvoiceCancelResponse
@@ -6849,6 +5383,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("placement")]
         public string Placement { get; set; }
+    }
+
+    public class InvoiceCancelInput
+    {
+        [JsonProperty("version")]
+        public int? Version { get; set; }
     }
 
     public class InvoicePublishResponse
@@ -7017,6 +5557,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("placement")]
         public string Placement { get; set; }
+    }
+
+    public class InvoicePublishInput
+    {
+        [JsonProperty("version")]
+        public int? Version { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
     }
 
     public class OrderCreateResponse
@@ -7445,7 +5994,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
-    public class bodyorderlineItemsInputItem
+    public class OrderCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("order")]
+        public OrderCreateInputOrderType Order { get; set; }
+    }
+
+    public class OrderCreateInputOrderType
+    {
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("line_items")]
+        public OrderCreateInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+
+        [JsonProperty("taxes")]
+        public OrderCreateInputOrderTypeTaxesTypeItem[] Taxes { get; set; }
+
+        [JsonProperty("discounts")]
+        public OrderCreateInputOrderTypeDiscountsTypeItem[] Discounts { get; set; }
+    }
+
+    public class OrderCreateInputOrderTypeLineItemsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -7454,40 +6030,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Quantity { get; set; }
 
         [JsonProperty("base_price_money")]
-        public bodyorderlineItemsInputItemBasePriceMoneyType BasePriceMoney { get; set; }
+        public OrderCreateInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
 
         [JsonProperty("catalog_object_id")]
         public string CatalogObjectId { get; set; }
 
         [JsonProperty("modifiers")]
-        public bodyorderlineItemsInputItemModifiersTypeItem[] Modifiers { get; set; }
+        public OrderCreateInputOrderTypeLineItemsTypeItemModifiersTypeItem[] Modifiers { get; set; }
 
         [JsonProperty("applied_discounts")]
-        public bodyorderlineItemsInputItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
+        public OrderCreateInputOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
     }
 
-    public class bodyorderlineItemsInputItemBasePriceMoneyType
+    public class OrderCreateInputOrderTypeLineItemsTypeItemBasePriceMoneyType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
     }
 
-    public class bodyorderlineItemsInputItemModifiersTypeItem
+    public class OrderCreateInputOrderTypeLineItemsTypeItemModifiersTypeItem
     {
         [JsonProperty("catalog_object_id")]
         public string CatalogObjectId { get; set; }
     }
 
-    public class bodyorderlineItemsInputItemAppliedDiscountsTypeItem
+    public class OrderCreateInputOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem
     {
         [JsonProperty("discount_uid")]
         public string DiscountUid { get; set; }
     }
 
-    public class bodyordertaxesInputItem
+    public class OrderCreateInputOrderTypeTaxesTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -7502,7 +6078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Scope { get; set; }
     }
 
-    public class bodyorderdiscountsInputItem
+    public class OrderCreateInputOrderTypeDiscountsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -7520,13 +6096,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string CatalogObjectId { get; set; }
 
         [JsonProperty("amount_money")]
-        public bodyorderdiscountsInputItemAmountMoneyType AmountMoney { get; set; }
+        public OrderCreateInputOrderTypeDiscountsTypeItemAmountMoneyType AmountMoney { get; set; }
     }
 
-    public class bodyorderdiscountsInputItemAmountMoneyType
+    public class OrderCreateInputOrderTypeDiscountsTypeItemAmountMoneyType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -7599,6 +6175,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class OrderBatchRetrieveInput
+    {
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("order_ids")]
+        public string[] OrderIds { get; set; }
     }
 
     public class OrderCalculateResponse
@@ -7895,7 +6480,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class bodyorderdiscountsInputItem2
+    public class OrderCalculateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("order")]
+        public OrderCalculateInputOrderType Order { get; set; }
+    }
+
+    public class OrderCalculateInputOrderType
+    {
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("discounts")]
+        public OrderCalculateInputOrderTypeDiscountsTypeItem[] Discounts { get; set; }
+
+        [JsonProperty("line_items")]
+        public OrderCalculateInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+    }
+
+    public class OrderCalculateInputOrderTypeDiscountsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -7907,7 +6513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Scope { get; set; }
     }
 
-    public class bodyorderlineItemsInputItem2
+    public class OrderCalculateInputOrderTypeLineItemsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -7916,7 +6522,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Quantity { get; set; }
 
         [JsonProperty("base_price_money")]
-        public bodyorderlineItemsInputItemBasePriceMoneyType BasePriceMoney { get; set; }
+        public OrderCalculateInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
+    }
+
+    public class OrderCalculateInputOrderTypeLineItemsTypeItemBasePriceMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
     }
 
     public class OrderCloneResponse
@@ -8345,6 +6960,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
+    public class OrderCloneInput
+    {
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
+
+        [JsonProperty("version")]
+        public int? Version { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+    }
+
     public class OrderSearchResponse
     {
         [JsonProperty("order_entries")]
@@ -8364,6 +6991,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("version")]
         public int Version { get; set; }
+    }
+
+    public class OrderSearchInput
+    {
+        [JsonProperty("return_entries")]
+        public bool? ReturnEntries { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("query")]
+        public OrderSearchInputQueryType Query { get; set; }
+    }
+
+    public class OrderSearchInputQueryType
+    {
+        [JsonProperty("filter")]
+        public OrderSearchInputQueryTypeFilterType Filter { get; set; }
+
+        [JsonProperty("sort")]
+        public OrderSearchInputQueryTypeSortType Sort { get; set; }
+    }
+
+    public class OrderSearchInputQueryTypeFilterType
+    {
+        [JsonProperty("date_time_filter")]
+        public OrderSearchInputQueryTypeFilterTypeDateTimeFilterType DateTimeFilter { get; set; }
+
+        [JsonProperty("state_filter")]
+        public OrderSearchInputQueryTypeFilterTypeStateFilterType StateFilter { get; set; }
+    }
+
+    public class OrderSearchInputQueryTypeFilterTypeDateTimeFilterType
+    {
+        [JsonProperty("closed_at")]
+        public OrderSearchInputQueryTypeFilterTypeDateTimeFilterTypeClosedAtType ClosedAt { get; set; }
+    }
+
+    public class OrderSearchInputQueryTypeFilterTypeDateTimeFilterTypeClosedAtType
+    {
+        [JsonProperty("start_at")]
+        public string StartAt { get; set; }
+
+        [JsonProperty("end_at")]
+        public string EndAt { get; set; }
+    }
+
+    public class OrderSearchInputQueryTypeFilterTypeStateFilterType
+    {
+        [JsonProperty("states")]
+        public string[] States { get; set; }
+    }
+
+    public class OrderSearchInputQueryTypeSortType
+    {
+        [JsonProperty("sort_field")]
+        public string SortField { get; set; }
+
+        [JsonProperty("sort_order")]
+        public string SortOrder { get; set; }
     }
 
     public class OrderRetrieveResponse
@@ -8888,7 +7578,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public int Amount { get; set; }
     }
 
-    public class bodyorderlineItemsInputItem22
+    public class OrderUpdateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("order")]
+        public OrderUpdateInputOrderType Order { get; set; }
+
+        [JsonProperty("fields_to_clear")]
+        public string[] FieldsToClear { get; set; }
+    }
+
+    public class OrderUpdateInputOrderType
+    {
+        [JsonProperty("version")]
+        public int? Version { get; set; }
+
+        [JsonProperty("line_items")]
+        public OrderUpdateInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+    }
+
+    public class OrderUpdateInputOrderTypeLineItemsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -8900,7 +7611,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
 
         [JsonProperty("base_price_money")]
-        public bodyorderlineItemsInputItemBasePriceMoneyType BasePriceMoney { get; set; }
+        public OrderUpdateInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
+    }
+
+    public class OrderUpdateInputOrderTypeLineItemsTypeItemBasePriceMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
     }
 
     public class OrderPayResponse
@@ -9198,6 +7918,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     {
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class OrderPayInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("payment_ids")]
+        public string[] PaymentIds { get; set; }
     }
 
     public class PaymentListResponse
@@ -9587,6 +8316,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ApplicationId { get; set; }
     }
 
+    public class PaymentCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("amount_money")]
+        public PaymentCreateInputAmountMoneyType AmountMoney { get; set; }
+
+        [JsonProperty("source_id")]
+        public string SourceId { get; set; }
+
+        [JsonProperty("autocomplete")]
+        public bool? Autocomplete { get; set; }
+
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("app_fee_money")]
+        public PaymentCreateInputAppFeeMoneyType AppFeeMoney { get; set; }
+    }
+
+    public class PaymentCreateInputAmountMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class PaymentCreateInputAppFeeMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class PaymentCancelIdempotencyInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+    }
+
     public class PaymentGetResponse
     {
         [JsonProperty("payment")]
@@ -9969,6 +8752,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("application_id")]
         public string ApplicationId { get; set; }
+    }
+
+    public class PaymentUpdateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("payment")]
+        public PaymentUpdateInputPaymentType Payment { get; set; }
+    }
+
+    public class PaymentUpdateInputPaymentType
+    {
+        [JsonProperty("amount_money")]
+        public PaymentUpdateInputPaymentTypeAmountMoneyType AmountMoney { get; set; }
+
+        [JsonProperty("tip_money")]
+        public PaymentUpdateInputPaymentTypeTipMoneyType TipMoney { get; set; }
+
+        [JsonProperty("version_token")]
+        public string VersionToken { get; set; }
+    }
+
+    public class PaymentUpdateInputPaymentTypeAmountMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class PaymentUpdateInputPaymentTypeTipMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
     }
 
     public class PaymentCancelResponse
@@ -10481,6 +9303,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
+    public class RefundPaymentInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("payment_id")]
+        public string PaymentId { get; set; }
+
+        [JsonProperty("amount_money")]
+        public RefundPaymentInputAmountMoneyType AmountMoney { get; set; }
+
+        [JsonProperty("app_fee_money")]
+        public RefundPaymentInputAppFeeMoneyType AppFeeMoney { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+    }
+
+    public class RefundPaymentInputAmountMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class RefundPaymentInputAppFeeMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
     public class RefundGetResponse
     {
         [JsonProperty("refund")]
@@ -10613,6 +9471,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
+    public class SubscriptionCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("plan_id")]
+        public string PlanId { get; set; }
+
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("card_id")]
+        public string CardId { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("tax_percentage")]
+        public string TaxPercentage { get; set; }
+
+        [JsonProperty("price_override_money")]
+        public SubscriptionCreateInputPriceOverrideMoneyType PriceOverrideMoney { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("source")]
+        public SubscriptionCreateInputSourceType Source { get; set; }
+    }
+
+    public class SubscriptionCreateInputPriceOverrideMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class SubscriptionCreateInputSourceType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     public class SubscriptionSearchResponse
     {
         [JsonProperty("subscriptions")]
@@ -10686,6 +9592,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class SubscriptionSearchInput
+    {
+        [JsonProperty("query")]
+        public SubscriptionSearchInputQueryType Query { get; set; }
+    }
+
+    public class SubscriptionSearchInputQueryType
+    {
+        [JsonProperty("filter")]
+        public SubscriptionSearchInputQueryTypeFilterType Filter { get; set; }
+    }
+
+    public class SubscriptionSearchInputQueryTypeFilterType
+    {
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("customer_ids")]
+        public string[] CustomerIds { get; set; }
+
+        [JsonProperty("source_names")]
+        public string[] SourceNames { get; set; }
     }
 
     public class SubscriptionRetrieveResponse
@@ -10803,6 +9733,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     {
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class SubscriptionUpdateInput
+    {
+        [JsonProperty("subscription")]
+        public SubscriptionUpdateInputSubscriptionType Subscription { get; set; }
+    }
+
+    public class SubscriptionUpdateInputSubscriptionType
+    {
+        [JsonProperty("version")]
+        public int? Version { get; set; }
+
+        [JsonProperty("tax_percentage")]
+        public string TaxPercentage { get; set; }
+
+        [JsonProperty("price_override_money")]
+        public SubscriptionUpdateInputSubscriptionTypePriceOverrideMoneyType PriceOverrideMoney { get; set; }
+    }
+
+    public class SubscriptionUpdateInputSubscriptionTypePriceOverrideMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
     }
 
     public class SubscriptionCancelResponse
@@ -11003,6 +9960,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool AllowTipping { get; set; }
     }
 
+    public class TerminalCreateCheckoutInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("checkout")]
+        public TerminalCreateCheckoutInputCheckoutType Checkout { get; set; }
+    }
+
+    public class TerminalCreateCheckoutInputCheckoutType
+    {
+        [JsonProperty("amount_money")]
+        public TerminalCreateCheckoutInputCheckoutTypeAmountMoneyType AmountMoney { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("device_options")]
+        public TerminalCreateCheckoutInputCheckoutTypeDeviceOptionsType DeviceOptions { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+    }
+
+    public class TerminalCreateCheckoutInputCheckoutTypeAmountMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class TerminalCreateCheckoutInputCheckoutTypeDeviceOptionsType
+    {
+        [JsonProperty("device_id")]
+        public string DeviceId { get; set; }
+    }
+
     public class TerminalSearchCheckoutsResponse
     {
         [JsonProperty("checkouts")]
@@ -11073,6 +10069,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     {
         [JsonProperty("allow_tipping")]
         public bool AllowTipping { get; set; }
+    }
+
+    public class TerminalSearchCheckoutsInput
+    {
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("query")]
+        public TerminalSearchCheckoutsInputQueryType Query { get; set; }
+    }
+
+    public class TerminalSearchCheckoutsInputQueryType
+    {
+        [JsonProperty("filter")]
+        public TerminalSearchCheckoutsInputQueryTypeFilterType Filter { get; set; }
+    }
+
+    public class TerminalSearchCheckoutsInputQueryTypeFilterType
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 
     public class TerminalGetCheckoutResponse
@@ -11288,6 +10305,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Bin { get; set; }
     }
 
+    public class TerminalCreateRefundInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("refund")]
+        public TerminalCreateRefundInputRefundType Refund { get; set; }
+    }
+
+    public class TerminalCreateRefundInputRefundType
+    {
+        [JsonProperty("amount_money")]
+        public TerminalCreateRefundInputRefundTypeAmountMoneyType AmountMoney { get; set; }
+
+        [JsonProperty("device_id")]
+        public string DeviceId { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("payment_id")]
+        public string PaymentId { get; set; }
+    }
+
+    public class TerminalCreateRefundInputRefundTypeAmountMoneyType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
     public class TerminalSearchRefundsResponse
     {
         [JsonProperty("refunds")]
@@ -11370,6 +10420,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("bin")]
         public string Bin { get; set; }
+    }
+
+    public class TerminalSearchRefundsInput
+    {
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+
+        [JsonProperty("query")]
+        public TerminalSearchRefundsInputQueryType Query { get; set; }
+    }
+
+    public class TerminalSearchRefundsInputQueryType
+    {
+        [JsonProperty("filter")]
+        public TerminalSearchRefundsInputQueryTypeFilterType Filter { get; set; }
+    }
+
+    public class TerminalSearchRefundsInputQueryTypeFilterType
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 
     public class TerminalGetRefundResponse

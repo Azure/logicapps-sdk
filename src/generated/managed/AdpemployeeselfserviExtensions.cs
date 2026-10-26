@@ -13,114 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
     public class AdpemployeeselfserviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body = null)
         {
-            var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: true);
-            var __workflow_bodyrelation = WorkflowExpression.Compile(bodyrelation, nameof(bodyrelation), required: true);
-            var __workflow_bodyisPrimary = WorkflowExpression.Compile(bodyisPrimary, nameof(bodyisPrimary), required: true);
-            var __workflow_bodyaddressLine1 = WorkflowExpression.Compile(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            var __workflow_bodyaddressLine2 = WorkflowExpression.Compile(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            var __workflow_bodyaddressLine3 = WorkflowExpression.Compile(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
-            var __workflow_bodyaddressCity = WorkflowExpression.Compile(bodyaddressCity, nameof(bodyaddressCity), required: false);
-            var __workflow_bodyaddressState = WorkflowExpression.Compile(bodyaddressState, nameof(bodyaddressState), required: false);
-            var __workflow_bodyaddressCountry = WorkflowExpression.Compile(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            var __workflow_bodyaddressPostalCode = WorkflowExpression.Compile(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            var __workflow_bodyphones = WorkflowExpression.Compile(bodyphones, nameof(bodyphones), required: false);
-            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/create-emergency-contact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["contactName"] = ExpressionConverter.ConvertO(__workflow_bodycontactName);
-                if (__workflow_bodyaddressLine1 != null)
-                {
-                    body["addressLine1"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine1);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLine2 != null)
-                {
-                    body["addressLine2"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLine3 != null)
-                {
-                    body["addressLine3"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine3);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressCity != null)
-                {
-                    body["addressCity"] = ExpressionConverter.ConvertO(__workflow_bodyaddressCity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressState != null)
-                {
-                    body["addressState"] = ExpressionConverter.ConvertO(__workflow_bodyaddressState);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressCountry != null)
-                {
-                    body["addressCountry"] = ExpressionConverter.ConvertO(__workflow_bodyaddressCountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressPostalCode != null)
-                {
-                    body["addressPostalCode"] = ExpressionConverter.ConvertO(__workflow_bodyaddressPostalCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphones != null)
-                {
-                    body["phones"] = ExpressionConverter.ConvertO(__workflow_bodyphones);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemails != null)
-                {
-                    body["emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["relation"] = ExpressionConverter.ConvertO(__workflow_bodyrelation);
-                bodypropCount++;
-                body["isPrimary"] = ExpressionConverter.ConvertO(__workflow_bodyisPrimary);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<DeleteContactsResponse, ApiConnectionActionConfiguration> DeleteContacts(Expression<Func<string[]>> bodyitemIds)
+        public IBodyWorkflowAction<DeleteContactsResponse, ApiConnectionActionConfiguration> DeleteContacts(Expression<Func<DeleteContactsInput>> body = null)
         {
-            var __workflow_bodyitemIds = WorkflowExpression.Compile(bodyitemIds, nameof(bodyitemIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/delete-emergency-contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["itemIds"] = ExpressionConverter.ConvertO(__workflow_bodyitemIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteContactsResponse>(callPayload);
             });
         }
@@ -174,149 +91,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem2[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<UpdateContactInput>> body = null)
         {
-            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: true);
-            var __workflow_bodyrelation = WorkflowExpression.Compile(bodyrelation, nameof(bodyrelation), required: true);
-            var __workflow_bodyisPrimary = WorkflowExpression.Compile(bodyisPrimary, nameof(bodyisPrimary), required: true);
-            var __workflow_bodyaddressLine1 = WorkflowExpression.Compile(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            var __workflow_bodyaddressLine2 = WorkflowExpression.Compile(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            var __workflow_bodyaddressLine3 = WorkflowExpression.Compile(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
-            var __workflow_bodyaddressCity = WorkflowExpression.Compile(bodyaddressCity, nameof(bodyaddressCity), required: false);
-            var __workflow_bodyaddressState = WorkflowExpression.Compile(bodyaddressState, nameof(bodyaddressState), required: false);
-            var __workflow_bodyaddressCountry = WorkflowExpression.Compile(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            var __workflow_bodyaddressPostalCode = WorkflowExpression.Compile(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            var __workflow_bodyphones = WorkflowExpression.Compile(bodyphones, nameof(bodyphones), required: false);
-            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/update-emergency-contact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["itemId"] = ExpressionConverter.ConvertO(__workflow_bodyitemId);
-                bodypropCount++;
-                body["contactName"] = ExpressionConverter.ConvertO(__workflow_bodycontactName);
-                if (__workflow_bodyaddressLine1 != null)
-                {
-                    body["addressLine1"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine1);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLine2 != null)
-                {
-                    body["addressLine2"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLine3 != null)
-                {
-                    body["addressLine3"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine3);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressCity != null)
-                {
-                    body["addressCity"] = ExpressionConverter.ConvertO(__workflow_bodyaddressCity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressState != null)
-                {
-                    body["addressState"] = ExpressionConverter.ConvertO(__workflow_bodyaddressState);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressCountry != null)
-                {
-                    body["addressCountry"] = ExpressionConverter.ConvertO(__workflow_bodyaddressCountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressPostalCode != null)
-                {
-                    body["addressPostalCode"] = ExpressionConverter.ConvertO(__workflow_bodyaddressPostalCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphones != null)
-                {
-                    body["phones"] = ExpressionConverter.ConvertO(__workflow_bodyphones);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemails != null)
-                {
-                    body["emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["relation"] = ExpressionConverter.ConvertO(__workflow_bodyrelation);
-                bodypropCount++;
-                body["isPrimary"] = ExpressionConverter.ConvertO(__workflow_bodyisPrimary);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateUserResponse, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobileCountry = null, Expression<Func<string>> bodymobileArea = null, Expression<Func<string>> bodymobileNumber = null)
+        public IBodyWorkflowAction<UpdateUserResponse, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<UpdateUserInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodymobileCountry = WorkflowExpression.Compile(bodymobileCountry, nameof(bodymobileCountry), required: false);
-            var __workflow_bodymobileArea = WorkflowExpression.Compile(bodymobileArea, nameof(bodymobileArea), required: false);
-            var __workflow_bodymobileNumber = WorkflowExpression.Compile(bodymobileNumber, nameof(bodymobileNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/update-profile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymobileCountry != null)
-                {
-                    body["mobileCountry"] = ExpressionConverter.ConvertO(__workflow_bodymobileCountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymobileArea != null)
-                {
-                    body["mobileArea"] = ExpressionConverter.ConvertO(__workflow_bodymobileArea);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymobileNumber != null)
-                {
-                    body["mobileNumber"] = ExpressionConverter.ConvertO(__workflow_bodymobileNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateUserResponse>(callPayload);
             });
         }
@@ -338,8 +137,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string ItemId { get; set; }
     }
 
+    public class CreateContactInput
+    {
+        [JsonProperty("contactName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContactName { get; set; }
+
+        [JsonProperty("addressLine1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("addressLine2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("addressLine3")]
+        public string AddressLine3 { get; set; }
+
+        [JsonProperty("addressCity")]
+        public string AddressCity { get; set; }
+
+        [JsonProperty("addressState")]
+        public string AddressState { get; set; }
+
+        [JsonProperty("addressCountry")]
+        public string AddressCountry { get; set; }
+
+        [JsonProperty("addressPostalCode")]
+        public string AddressPostalCode { get; set; }
+
+        [JsonProperty("phones")]
+        public CreateContactInputPhonesTypeItem[] Phones { get; set; }
+
+        [JsonProperty("emails")]
+        public CreateContactInputEmailsTypeItem[] Emails { get; set; }
+
+        [JsonProperty("relation", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateContactInputRelationType Relation { get; set; }
+
+        [JsonProperty("isPrimary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsPrimary { get; set; }
+    }
+
+    public class CreateContactInputPhonesTypeItem
+    {
+        [JsonProperty("phoneType")]
+        public CreateContactInputPhonesTypeItemPhoneTypeType? PhoneType { get; set; }
+
+        [JsonProperty("countryCode")]
+        public int? CountryCode { get; set; }
+
+        [JsonProperty("areaCode")]
+        public int? AreaCode { get; set; }
+
+        [JsonProperty("number")]
+        public int? Number { get; set; }
+
+        [JsonProperty("extension")]
+        public int? Extension { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrelationInput
+    public enum CreateContactInputPhonesTypeItemPhoneTypeType
+    {
+        [EnumMember(Value = "home")]
+        Home,
+        [EnumMember(Value = "work")]
+        Work,
+        [EnumMember(Value = "alternate")]
+        Alternate,
+        [EnumMember(Value = "mobile")]
+        Mobile
+    }
+
+    public class CreateContactInputEmailsTypeItem
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateContactInputRelationType
     {
         [EnumMember(Value = "spouse")]
         Spouse,
@@ -353,43 +228,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         Parent,
         [EnumMember(Value = "other")]
         Other
-    }
-
-    public class bodyphonesInputItem
-    {
-        [JsonProperty("phoneType")]
-        public bodyphonesInputItemPhoneTypeType PhoneType { get; set; }
-
-        [JsonProperty("countryCode")]
-        public int CountryCode { get; set; }
-
-        [JsonProperty("areaCode")]
-        public int AreaCode { get; set; }
-
-        [JsonProperty("number")]
-        public int Number { get; set; }
-
-        [JsonProperty("extension")]
-        public int Extension { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyphonesInputItemPhoneTypeType
-    {
-        [EnumMember(Value = "home")]
-        Home,
-        [EnumMember(Value = "work")]
-        Work,
-        [EnumMember(Value = "alternate")]
-        Alternate,
-        [EnumMember(Value = "mobile")]
-        Mobile
-    }
-
-    public class bodyemailsInputItem
-    {
-        [JsonProperty("address")]
-        public string Address { get; set; }
     }
 
     public class DeleteContactsResponse
@@ -408,6 +246,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
 
         [JsonProperty("error")]
         public string Error { get; set; }
+    }
+
+    public class DeleteContactsInput
+    {
+        [JsonProperty("itemIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] ItemIds { get; set; }
     }
 
     public class GetContactsResponse
@@ -572,22 +416,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string Message { get; set; }
     }
 
-    public class bodyphonesInputItem2
+    public class UpdateContactInput
+    {
+        [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ItemId { get; set; }
+
+        [JsonProperty("contactName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContactName { get; set; }
+
+        [JsonProperty("addressLine1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("addressLine2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("addressLine3")]
+        public string AddressLine3 { get; set; }
+
+        [JsonProperty("addressCity")]
+        public string AddressCity { get; set; }
+
+        [JsonProperty("addressState")]
+        public string AddressState { get; set; }
+
+        [JsonProperty("addressCountry")]
+        public string AddressCountry { get; set; }
+
+        [JsonProperty("addressPostalCode")]
+        public string AddressPostalCode { get; set; }
+
+        [JsonProperty("phones")]
+        public UpdateContactInputPhonesTypeItem[] Phones { get; set; }
+
+        [JsonProperty("emails")]
+        public UpdateContactInputEmailsTypeItem[] Emails { get; set; }
+
+        [JsonProperty("relation", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateContactInputRelationType Relation { get; set; }
+
+        [JsonProperty("isPrimary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsPrimary { get; set; }
+    }
+
+    public class UpdateContactInputPhonesTypeItem
     {
         [JsonProperty("phoneType")]
-        public bodyphonesInputItemPhoneTypeType PhoneType { get; set; }
+        public UpdateContactInputPhonesTypeItemPhoneTypeType? PhoneType { get; set; }
 
         [JsonProperty("countryCode")]
-        public int CountryCode { get; set; }
+        public int? CountryCode { get; set; }
 
         [JsonProperty("areaCode")]
-        public int AreaCode { get; set; }
+        public int? AreaCode { get; set; }
 
         [JsonProperty("number")]
-        public int Number { get; set; }
+        public int? Number { get; set; }
 
         [JsonProperty("extension")]
-        public int Extension { get; set; }
+        public int? Extension { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateContactInputPhonesTypeItemPhoneTypeType
+    {
+        [EnumMember(Value = "home")]
+        Home,
+        [EnumMember(Value = "work")]
+        Work,
+        [EnumMember(Value = "alternate")]
+        Alternate,
+        [EnumMember(Value = "mobile")]
+        Mobile
+    }
+
+    public class UpdateContactInputEmailsTypeItem
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateContactInputRelationType
+    {
+        [EnumMember(Value = "spouse")]
+        Spouse,
+        [EnumMember(Value = "partner")]
+        Partner,
+        [EnumMember(Value = "child")]
+        Child,
+        [EnumMember(Value = "sibling")]
+        Sibling,
+        [EnumMember(Value = "parent")]
+        Parent,
+        [EnumMember(Value = "other")]
+        Other
     }
 
     public class UpdateUserResponse
@@ -606,6 +528,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
 
         [JsonProperty("error")]
         public string Error { get; set; }
+    }
+
+    public class UpdateUserInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("mobileCountry")]
+        public string MobileCountry { get; set; }
+
+        [JsonProperty("mobileArea")]
+        public string MobileArea { get; set; }
+
+        [JsonProperty("mobileNumber")]
+        public string MobileNumber { get; set; }
     }
 }
 

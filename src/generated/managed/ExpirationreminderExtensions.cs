@@ -35,111 +35,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IBodyWorkflowAction<RenewExpirationResponse, ApiConnectionActionConfiguration> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodydetails = null)
+        public IBodyWorkflowAction<RenewExpirationResponse, ApiConnectionActionConfiguration> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<RenewExpirationInput>> body)
         {
             var __workflow_expirationItemId = WorkflowExpression.Compile(expirationItemId, nameof(expirationItemId), required: true);
-            var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            var __workflow_bodydetails = WorkflowExpression.Compile(bodydetails, nameof(bodydetails), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RenewExpirationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/expirationitems/{0}/renew", __workflow_expirationItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyexpirationDate != null)
-                {
-                    body["expiration_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydetails != null)
-                {
-                    body["details"] = ExpressionConverter.ConvertO(__workflow_bodydetails);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RenewExpirationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IBodyWorkflowAction<CreateExpirationItemResponse, ApiConnectionActionConfiguration> CreateExpirationItem(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycategoryName = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<CreateExpirationItemResponse, ApiConnectionActionConfiguration> CreateExpirationItem(Expression<Func<CreateExpirationItemInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycategoryName = WorkflowExpression.Compile(bodycategoryName, nameof(bodycategoryName), required: false);
-            var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateExpirationItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/expirationitems";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategoryName != null)
-                {
-                    body["category_name"] = ExpressionConverter.ConvertO(__workflow_bodycategoryName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpirationDate != null)
-                {
-                    body["expiration_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateExpirationItemResponse>(callPayload);
             });
         }
@@ -221,6 +157,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         public string TeamId { get; set; }
     }
 
+    public class CreateContactInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
     public class RenewExpirationResponse
     {
         [JsonProperty("id")]
@@ -276,6 +221,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
 
         [JsonProperty("team_id")]
         public string TeamId { get; set; }
+    }
+
+    public class RenewExpirationInput
+    {
+        [JsonProperty("expiration_date")]
+        public string ExpirationDate { get; set; }
+
+        [JsonProperty("details")]
+        public string Details { get; set; }
     }
 
     public class CreateExpirationItemResponse
@@ -336,6 +290,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
 
         [JsonProperty("team_id")]
         public string TeamId { get; set; }
+    }
+
+    public class CreateExpirationItemInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("category_name")]
+        public string CategoryName { get; set; }
+
+        [JsonProperty("expiration_date")]
+        public string ExpirationDate { get; set; }
     }
 }
 

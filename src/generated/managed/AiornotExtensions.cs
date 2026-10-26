@@ -25,23 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
-        public IBodyWorkflowAction<ImageReportResponse, ApiConnectionActionConfiguration> ImageReport(Expression<Func<string>> bodyObject)
+        public IBodyWorkflowAction<ImageReportResponse, ApiConnectionActionConfiguration> ImageReport(Expression<Func<ImageReportInput>> body)
         {
-            var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/reports/image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImageReportResponse>(callPayload);
             });
         }
@@ -154,6 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
 
         [JsonProperty("is_detected")]
         public bool IsDetected { get; set; }
+    }
+
+    public class ImageReportInput
+    {
+        [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ObjectEntity { get; set; }
     }
 }
 

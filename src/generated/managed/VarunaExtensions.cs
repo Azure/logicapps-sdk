@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["document_type"] = ExpressionConverter.Convert(__workflow_documentType);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createSchema);
+                if (__workflow_createSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_createSchema);
                 return new ApiConnectionAction<CreateADocumentResponse>(callPayload);
             });
         }
@@ -73,7 +74,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["document_type"] = ExpressionConverter.Convert(__workflow_documentType);
                 callPayload.Headers["document_id"] = ExpressionConverter.Convert(__workflow_documentId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateSchema);
+                if (__workflow_updateSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateSchema);
                 return new ApiConnectionAction<UpdateADocumentResponse>(callPayload);
             });
         }
@@ -95,38 +97,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 
     public class VarunaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodywhen = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeTrigger(Expression<Func<SubscribeTriggerInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
-            var __workflow_bodywhen = WorkflowExpression.Compile(bodywhen, nameof(bodywhen), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscribewebhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["Acknowledge"] = "FireAndForget";
-                bodypropCount++;
-                body["SubscriptionMode"] = "WebHookHttpEndpoint";
-                bodypropCount++;
-                body["MessageTemplateFormat"] = "Json";
-                bodypropCount++;
-                bodypropCount++;
-                body["Name"] = ExpressionConverter.ConvertO(__workflow_bodytriggerName);
-                if (__workflow_bodywhen != null)
-                {
-                    body["When"] = ExpressionConverter.ConvertO(__workflow_bodywhen);
-                    bodypropCount++;
-                }
-
-                body["Endpoint"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
@@ -145,6 +124,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
     public class UpdateADocumentResponse
     {
         public string DocumentId { get; set; }
+    }
+
+    public class SubscribeTriggerInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Acknowledge { get; set; } = "FireAndForget";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string SubscriptionMode { get; set; } = "WebHookHttpEndpoint";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string MessageTemplateFormat { get; set; } = "Json";
+
+        [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TriggerName { get; set; }
+        public int? When { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -106,116 +106,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<PlantResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null, Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyspeciesId = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<PlantResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<PlantInput>> body)
         {
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
-            var __workflow_bodyplanterId = WorkflowExpression.Compile(bodyplanterId, nameof(bodyplanterId), required: false);
-            var __workflow_bodyspeciesId = WorkflowExpression.Compile(bodyspeciesId, nameof(bodyspeciesId), required: false);
-            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlantResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/plant";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyrecipients != null)
-                {
-                    body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplanterId != null)
-                {
-                    body["planter_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanterId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyspeciesId != null)
-                {
-                    body["species_id"] = ExpressionConverter.ConvertO(__workflow_bodyspeciesId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyquantity != null)
-                {
-                    body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlantResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyresponsibleName = null, Expression<Func<string>> bodyorganizationWebsite = null)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyresponsibleName = WorkflowExpression.Compile(bodyresponsibleName, nameof(bodyresponsibleName), required: false);
-            var __workflow_bodyorganizationWebsite = WorkflowExpression.Compile(bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/user/b2b";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresponsibleName != null)
-                {
-                    body["responsible_name"] = ExpressionConverter.ConvertO(__workflow_bodyresponsibleName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorganizationWebsite != null)
-                {
-                    body["organization_website"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationWebsite);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUserResponse>(callPayload);
             });
         }
@@ -234,61 +147,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<UpdateTreeTemplateResponse, ApiConnectionActionConfiguration> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<UpdateTreeTemplateResponse, ApiConnectionActionConfiguration> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<UpdateTreeTemplateInput>> body)
         {
             var __workflow_planterId = WorkflowExpression.Compile(planterId, nameof(planterId), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateTreeTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tree_templates/{0}", __workflow_planterId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateTreeTemplateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<BuyCreditResponse, ApiConnectionActionConfiguration> BuyCredit(Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyamount = null)
+        public IBodyWorkflowAction<BuyCreditResponse, ApiConnectionActionConfiguration> BuyCredit(Expression<Func<BuyCreditInput>> body)
         {
-            var __workflow_bodyplanterId = WorkflowExpression.Compile(bodyplanterId, nameof(bodyplanterId), required: false);
-            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BuyCreditResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/credit";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyplanterId != null)
-                {
-                    body["planter_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanterId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyamount != null)
-                {
-                    body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BuyCreditResponse>(callPayload);
             });
         }
@@ -547,7 +429,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         public string CertificateUrl { get; set; }
     }
 
-    public class bodyrecipientsInputItem
+    public class PlantInput
+    {
+        [JsonProperty("recipients")]
+        public PlantInputRecipientsTypeItem[] Recipients { get; set; }
+
+        [JsonProperty("planter_id")]
+        public int? PlanterId { get; set; }
+
+        [JsonProperty("species_id")]
+        public int? SpeciesId { get; set; }
+
+        [JsonProperty("quantity")]
+        public int? Quantity { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
+
+    public class PlantInputRecipientsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -572,6 +472,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
 
         [JsonProperty("forest_url")]
         public string ForestUrl { get; set; }
+    }
+
+    public class CreateUserInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("responsible_name")]
+        public string ResponsibleName { get; set; }
+
+        [JsonProperty("organization_website")]
+        public string OrganizationWebsite { get; set; }
     }
 
     public class TreeTemplateDetailsResponse
@@ -634,6 +555,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         public string Image { get; set; }
     }
 
+    public class UpdateTreeTemplateInput
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
+
     public class BuyCreditResponse
     {
         [JsonProperty("status")]
@@ -641,6 +568,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
 
         [JsonProperty("payment_id")]
         public int PaymentId { get; set; }
+    }
+
+    public class BuyCreditInput
+    {
+        [JsonProperty("planter_id")]
+        public int? PlanterId { get; set; }
+
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
     }
 }
 

@@ -203,12 +203,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsCombineBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<int>> boundary, Expression<Func<string[]>> boothNumbers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsCombineBooths(Expression<Func<string>> clientName, Expression<Func<string[]>> boothNumbers, Expression<Func<string>> databaseName, Expression<Func<int>> boundary)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_boundary = WorkflowExpression.Compile(boundary, nameof(boundary), required: true);
-            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/combine", __workflow_clientName.WithUrlEncoding(1)));
@@ -239,11 +239,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsDeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsDeleteBooths(Expression<Func<string>> clientName, Expression<Func<string[]>> boothNumbers, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/delete", __workflow_clientName.WithUrlEncoding(1)));
@@ -256,11 +256,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsUndeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsUndeleteBooths(Expression<Func<string>> clientName, Expression<Func<string[]>> boothNumbers, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/undelete", __workflow_clientName.WithUrlEncoding(1)));
@@ -436,77 +436,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
+        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<ClassesCreateInput>> boothClass, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
-            var __workflow_boothClassid = WorkflowExpression.Compile(boothClassid, nameof(boothClassid), required: true);
-            var __workflow_boothClasskeepWhenCombined = WorkflowExpression.Compile(boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
-            var __workflow_boothClasscountAsInventory = WorkflowExpression.Compile(boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
+            var __workflow_boothClass = WorkflowExpression.Compile(boothClass, nameof(boothClass), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            var __workflow_boothClassname = WorkflowExpression.Compile(boothClassname, nameof(boothClassname), required: false);
-            var __workflow_boothClassdescription = WorkflowExpression.Compile(boothClassdescription, nameof(boothClassdescription), required: false);
-            var __workflow_boothClassprioritity = WorkflowExpression.Compile(boothClassprioritity, nameof(boothClassprioritity), required: false);
-            var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
             return new DeferredBodyAction<BoothClass, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
-                var boothClass = new JObject();
-                var boothClasspropCount = 0;
-                boothClasspropCount++;
-                boothClass["Id"] = ExpressionConverter.ConvertO(__workflow_boothClassid);
-                if (__workflow_boothClassname != null)
-                {
-                    boothClass["Name"] = ExpressionConverter.ConvertO(__workflow_boothClassname);
-                    boothClasspropCount++;
-                }
-
-                if (__workflow_boothClassdescription != null)
-                {
-                    boothClass["Description"] = ExpressionConverter.ConvertO(__workflow_boothClassdescription);
-                    boothClasspropCount++;
-                }
-
-                boothClasspropCount++;
-                boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(__workflow_boothClasskeepWhenCombined);
-                boothClasspropCount++;
-                boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(__workflow_boothClasscountAsInventory);
-                if (__workflow_boothClassprioritity != null)
-                {
-                    boothClass["Prioritity"] = ExpressionConverter.ConvertO(__workflow_boothClassprioritity);
-                    boothClasspropCount++;
-                }
-
-                if (__workflow_boothClasscolor != null)
-                {
-                    boothClass["Color"] = ExpressionConverter.ConvertO(__workflow_boothClasscolor);
-                    boothClasspropCount++;
-                }
-
-                if (boothClasspropCount > 0)
-                {
-                    callPayload.Body = boothClass;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothClass);
                 return new ApiConnectionAction<BoothClass>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> classId, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
+        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<ClassesUpdateInput>> boothClass, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
-            var __workflow_boothClassid = WorkflowExpression.Compile(boothClassid, nameof(boothClassid), required: true);
-            var __workflow_boothClasskeepWhenCombined = WorkflowExpression.Compile(boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
-            var __workflow_boothClasscountAsInventory = WorkflowExpression.Compile(boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
+            var __workflow_boothClass = WorkflowExpression.Compile(boothClass, nameof(boothClass), required: true);
             var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            var __workflow_boothClassname = WorkflowExpression.Compile(boothClassname, nameof(boothClassname), required: false);
-            var __workflow_boothClassdescription = WorkflowExpression.Compile(boothClassdescription, nameof(boothClassdescription), required: false);
-            var __workflow_boothClassprioritity = WorkflowExpression.Compile(boothClassprioritity, nameof(boothClassprioritity), required: false);
-            var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
             return new DeferredBodyAction<BoothClass, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/update", __workflow_clientName.WithUrlEncoding(1)));
@@ -514,43 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
-                var boothClass = new JObject();
-                var boothClasspropCount = 0;
-                boothClasspropCount++;
-                boothClass["Id"] = ExpressionConverter.ConvertO(__workflow_boothClassid);
-                if (__workflow_boothClassname != null)
-                {
-                    boothClass["Name"] = ExpressionConverter.ConvertO(__workflow_boothClassname);
-                    boothClasspropCount++;
-                }
-
-                if (__workflow_boothClassdescription != null)
-                {
-                    boothClass["Description"] = ExpressionConverter.ConvertO(__workflow_boothClassdescription);
-                    boothClasspropCount++;
-                }
-
-                boothClasspropCount++;
-                boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(__workflow_boothClasskeepWhenCombined);
-                boothClasspropCount++;
-                boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(__workflow_boothClasscountAsInventory);
-                if (__workflow_boothClassprioritity != null)
-                {
-                    boothClass["Prioritity"] = ExpressionConverter.ConvertO(__workflow_boothClassprioritity);
-                    boothClasspropCount++;
-                }
-
-                if (__workflow_boothClasscolor != null)
-                {
-                    boothClass["Color"] = ExpressionConverter.ConvertO(__workflow_boothClasscolor);
-                    boothClasspropCount++;
-                }
-
-                if (boothClasspropCount > 0)
-                {
-                    callPayload.Body = boothClass;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothClass);
                 return new ApiConnectionAction<BoothClass>(callPayload);
             });
         }
@@ -648,309 +564,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
+        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<ExhibitorsAddExhibitorInput>> exhibitor, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
-            var __workflow_exhibitorexhibitorId = WorkflowExpression.Compile(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
+            var __workflow_exhibitor = WorkflowExpression.Compile(exhibitor, nameof(exhibitor), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            var __workflow_exhibitoraddress1 = WorkflowExpression.Compile(exhibitoraddress1, nameof(exhibitoraddress1), required: false);
-            var __workflow_exhibitoraddress2 = WorkflowExpression.Compile(exhibitoraddress2, nameof(exhibitoraddress2), required: false);
-            var __workflow_exhibitorcity = WorkflowExpression.Compile(exhibitorcity, nameof(exhibitorcity), required: false);
-            var __workflow_exhibitorcomments = WorkflowExpression.Compile(exhibitorcomments, nameof(exhibitorcomments), required: false);
-            var __workflow_exhibitorcomments2 = WorkflowExpression.Compile(exhibitorcomments2, nameof(exhibitorcomments2), required: false);
-            var __workflow_exhibitorcontact = WorkflowExpression.Compile(exhibitorcontact, nameof(exhibitorcontact), required: false);
-            var __workflow_exhibitorcountry = WorkflowExpression.Compile(exhibitorcountry, nameof(exhibitorcountry), required: false);
-            var __workflow_exhibitorcellPhone = WorkflowExpression.Compile(exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
-            var __workflow_exhibitordisplayOnDrawing = WorkflowExpression.Compile(exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
-            var __workflow_exhibitordoingBusinessAs = WorkflowExpression.Compile(exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
-            var __workflow_exhibitordoingBusinessAsDisplayOnDrawing = WorkflowExpression.Compile(exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
-            var __workflow_exhibitoremail = WorkflowExpression.Compile(exhibitoremail, nameof(exhibitoremail), required: false);
-            var __workflow_exhibitorexhibitorName = WorkflowExpression.Compile(exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
-            var __workflow_exhibitorexhibitorNameLine2 = WorkflowExpression.Compile(exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
-            var __workflow_exhibitorfax = WorkflowExpression.Compile(exhibitorfax, nameof(exhibitorfax), required: false);
-            var __workflow_exhibitorfield1 = WorkflowExpression.Compile(exhibitorfield1, nameof(exhibitorfield1), required: false);
-            var __workflow_exhibitorfield2 = WorkflowExpression.Compile(exhibitorfield2, nameof(exhibitorfield2), required: false);
-            var __workflow_exhibitorfield3 = WorkflowExpression.Compile(exhibitorfield3, nameof(exhibitorfield3), required: false);
-            var __workflow_exhibitorfield4 = WorkflowExpression.Compile(exhibitorfield4, nameof(exhibitorfield4), required: false);
-            var __workflow_exhibitorfield5 = WorkflowExpression.Compile(exhibitorfield5, nameof(exhibitorfield5), required: false);
-            var __workflow_exhibitorfield6 = WorkflowExpression.Compile(exhibitorfield6, nameof(exhibitorfield6), required: false);
-            var __workflow_exhibitorfield7 = WorkflowExpression.Compile(exhibitorfield7, nameof(exhibitorfield7), required: false);
-            var __workflow_exhibitorfield8 = WorkflowExpression.Compile(exhibitorfield8, nameof(exhibitorfield8), required: false);
-            var __workflow_exhibitorfield9 = WorkflowExpression.Compile(exhibitorfield9, nameof(exhibitorfield9), required: false);
-            var __workflow_exhibitornickName = WorkflowExpression.Compile(exhibitornickName, nameof(exhibitornickName), required: false);
-            var __workflow_exhibitorsalutation = WorkflowExpression.Compile(exhibitorsalutation, nameof(exhibitorsalutation), required: false);
-            var __workflow_exhibitortitle = WorkflowExpression.Compile(exhibitortitle, nameof(exhibitortitle), required: false);
-            var __workflow_exhibitorphone = WorkflowExpression.Compile(exhibitorphone, nameof(exhibitorphone), required: false);
-            var __workflow_exhibitorpostalCode = WorkflowExpression.Compile(exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
-            var __workflow_exhibitorprimaryGroup = WorkflowExpression.Compile(exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
-            var __workflow_exhibitorpriorityPoints = WorkflowExpression.Compile(exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
-            var __workflow_exhibitorproductDescription = WorkflowExpression.Compile(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
-            var __workflow_exhibitorstate = WorkflowExpression.Compile(exhibitorstate, nameof(exhibitorstate), required: false);
-            var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             return new DeferredBodyAction<Exhibitor, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
-                var exhibitor = new JObject();
-                var exhibitorpropCount = 0;
-                if (__workflow_exhibitoraddress1 != null)
-                {
-                    exhibitor["Address1"] = ExpressionConverter.ConvertO(__workflow_exhibitoraddress1);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitoraddress2 != null)
-                {
-                    exhibitor["Address2"] = ExpressionConverter.ConvertO(__workflow_exhibitoraddress2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcity != null)
-                {
-                    exhibitor["City"] = ExpressionConverter.ConvertO(__workflow_exhibitorcity);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcomments != null)
-                {
-                    exhibitor["Comments"] = ExpressionConverter.ConvertO(__workflow_exhibitorcomments);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcomments2 != null)
-                {
-                    exhibitor["Comments2"] = ExpressionConverter.ConvertO(__workflow_exhibitorcomments2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcontact != null)
-                {
-                    exhibitor["Contact"] = ExpressionConverter.ConvertO(__workflow_exhibitorcontact);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcountry != null)
-                {
-                    exhibitor["Country"] = ExpressionConverter.ConvertO(__workflow_exhibitorcountry);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcellPhone != null)
-                {
-                    exhibitor["CellPhone"] = ExpressionConverter.ConvertO(__workflow_exhibitorcellPhone);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitordisplayOnDrawing != null)
-                {
-                    exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(__workflow_exhibitordisplayOnDrawing);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitordoingBusinessAs != null)
-                {
-                    exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(__workflow_exhibitordoingBusinessAs);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitordoingBusinessAsDisplayOnDrawing != null)
-                {
-                    exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(__workflow_exhibitordoingBusinessAsDisplayOnDrawing);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitoremail != null)
-                {
-                    exhibitor["Email"] = ExpressionConverter.ConvertO(__workflow_exhibitoremail);
-                    exhibitorpropCount++;
-                }
-
-                exhibitorpropCount++;
-                exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(__workflow_exhibitorexhibitorId);
-                if (__workflow_exhibitorexhibitorName != null)
-                {
-                    exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(__workflow_exhibitorexhibitorName);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorexhibitorNameLine2 != null)
-                {
-                    exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(__workflow_exhibitorexhibitorNameLine2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfax != null)
-                {
-                    exhibitor["Fax"] = ExpressionConverter.ConvertO(__workflow_exhibitorfax);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield1 != null)
-                {
-                    exhibitor["Field1"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield1);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield2 != null)
-                {
-                    exhibitor["Field2"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield3 != null)
-                {
-                    exhibitor["Field3"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield3);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield4 != null)
-                {
-                    exhibitor["Field4"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield4);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield5 != null)
-                {
-                    exhibitor["Field5"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield5);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield6 != null)
-                {
-                    exhibitor["Field6"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield6);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield7 != null)
-                {
-                    exhibitor["Field7"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield7);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield8 != null)
-                {
-                    exhibitor["Field8"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield8);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield9 != null)
-                {
-                    exhibitor["Field9"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield9);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitornickName != null)
-                {
-                    exhibitor["NickName"] = ExpressionConverter.ConvertO(__workflow_exhibitornickName);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorsalutation != null)
-                {
-                    exhibitor["Salutation"] = ExpressionConverter.ConvertO(__workflow_exhibitorsalutation);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitortitle != null)
-                {
-                    exhibitor["Title"] = ExpressionConverter.ConvertO(__workflow_exhibitortitle);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorphone != null)
-                {
-                    exhibitor["Phone"] = ExpressionConverter.ConvertO(__workflow_exhibitorphone);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorpostalCode != null)
-                {
-                    exhibitor["PostalCode"] = ExpressionConverter.ConvertO(__workflow_exhibitorpostalCode);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorprimaryGroup != null)
-                {
-                    exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(__workflow_exhibitorprimaryGroup);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorpriorityPoints != null)
-                {
-                    exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(__workflow_exhibitorpriorityPoints);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorproductDescription != null)
-                {
-                    exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(__workflow_exhibitorproductDescription);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorstate != null)
-                {
-                    exhibitor["State"] = ExpressionConverter.ConvertO(__workflow_exhibitorstate);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorwebSite != null)
-                {
-                    exhibitor["WebSite"] = ExpressionConverter.ConvertO(__workflow_exhibitorwebSite);
-                    exhibitorpropCount++;
-                }
-
-                if (exhibitorpropCount > 0)
-                {
-                    callPayload.Body = exhibitor;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_exhibitor);
                 return new ApiConnectionAction<Exhibitor>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> id, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
+        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<ExhibitorsUpdateExhibitorInput>> exhibitor, Expression<Func<string>> id, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
-            var __workflow_exhibitorexhibitorId = WorkflowExpression.Compile(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
+            var __workflow_exhibitor = WorkflowExpression.Compile(exhibitor, nameof(exhibitor), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            var __workflow_exhibitoraddress1 = WorkflowExpression.Compile(exhibitoraddress1, nameof(exhibitoraddress1), required: false);
-            var __workflow_exhibitoraddress2 = WorkflowExpression.Compile(exhibitoraddress2, nameof(exhibitoraddress2), required: false);
-            var __workflow_exhibitorcity = WorkflowExpression.Compile(exhibitorcity, nameof(exhibitorcity), required: false);
-            var __workflow_exhibitorcomments = WorkflowExpression.Compile(exhibitorcomments, nameof(exhibitorcomments), required: false);
-            var __workflow_exhibitorcomments2 = WorkflowExpression.Compile(exhibitorcomments2, nameof(exhibitorcomments2), required: false);
-            var __workflow_exhibitorcontact = WorkflowExpression.Compile(exhibitorcontact, nameof(exhibitorcontact), required: false);
-            var __workflow_exhibitorcountry = WorkflowExpression.Compile(exhibitorcountry, nameof(exhibitorcountry), required: false);
-            var __workflow_exhibitorcellPhone = WorkflowExpression.Compile(exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
-            var __workflow_exhibitordisplayOnDrawing = WorkflowExpression.Compile(exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
-            var __workflow_exhibitordoingBusinessAs = WorkflowExpression.Compile(exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
-            var __workflow_exhibitordoingBusinessAsDisplayOnDrawing = WorkflowExpression.Compile(exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
-            var __workflow_exhibitoremail = WorkflowExpression.Compile(exhibitoremail, nameof(exhibitoremail), required: false);
-            var __workflow_exhibitorexhibitorName = WorkflowExpression.Compile(exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
-            var __workflow_exhibitorexhibitorNameLine2 = WorkflowExpression.Compile(exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
-            var __workflow_exhibitorfax = WorkflowExpression.Compile(exhibitorfax, nameof(exhibitorfax), required: false);
-            var __workflow_exhibitorfield1 = WorkflowExpression.Compile(exhibitorfield1, nameof(exhibitorfield1), required: false);
-            var __workflow_exhibitorfield2 = WorkflowExpression.Compile(exhibitorfield2, nameof(exhibitorfield2), required: false);
-            var __workflow_exhibitorfield3 = WorkflowExpression.Compile(exhibitorfield3, nameof(exhibitorfield3), required: false);
-            var __workflow_exhibitorfield4 = WorkflowExpression.Compile(exhibitorfield4, nameof(exhibitorfield4), required: false);
-            var __workflow_exhibitorfield5 = WorkflowExpression.Compile(exhibitorfield5, nameof(exhibitorfield5), required: false);
-            var __workflow_exhibitorfield6 = WorkflowExpression.Compile(exhibitorfield6, nameof(exhibitorfield6), required: false);
-            var __workflow_exhibitorfield7 = WorkflowExpression.Compile(exhibitorfield7, nameof(exhibitorfield7), required: false);
-            var __workflow_exhibitorfield8 = WorkflowExpression.Compile(exhibitorfield8, nameof(exhibitorfield8), required: false);
-            var __workflow_exhibitorfield9 = WorkflowExpression.Compile(exhibitorfield9, nameof(exhibitorfield9), required: false);
-            var __workflow_exhibitornickName = WorkflowExpression.Compile(exhibitornickName, nameof(exhibitornickName), required: false);
-            var __workflow_exhibitorsalutation = WorkflowExpression.Compile(exhibitorsalutation, nameof(exhibitorsalutation), required: false);
-            var __workflow_exhibitortitle = WorkflowExpression.Compile(exhibitortitle, nameof(exhibitortitle), required: false);
-            var __workflow_exhibitorphone = WorkflowExpression.Compile(exhibitorphone, nameof(exhibitorphone), required: false);
-            var __workflow_exhibitorpostalCode = WorkflowExpression.Compile(exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
-            var __workflow_exhibitorprimaryGroup = WorkflowExpression.Compile(exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
-            var __workflow_exhibitorpriorityPoints = WorkflowExpression.Compile(exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
-            var __workflow_exhibitorproductDescription = WorkflowExpression.Compile(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
-            var __workflow_exhibitorstate = WorkflowExpression.Compile(exhibitorstate, nameof(exhibitorstate), required: false);
-            var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             return new DeferredBodyAction<Exhibitor, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/update", __workflow_clientName.WithUrlEncoding(1)));
@@ -958,219 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
-                var exhibitor = new JObject();
-                var exhibitorpropCount = 0;
-                if (__workflow_exhibitoraddress1 != null)
-                {
-                    exhibitor["Address1"] = ExpressionConverter.ConvertO(__workflow_exhibitoraddress1);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitoraddress2 != null)
-                {
-                    exhibitor["Address2"] = ExpressionConverter.ConvertO(__workflow_exhibitoraddress2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcity != null)
-                {
-                    exhibitor["City"] = ExpressionConverter.ConvertO(__workflow_exhibitorcity);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcomments != null)
-                {
-                    exhibitor["Comments"] = ExpressionConverter.ConvertO(__workflow_exhibitorcomments);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcomments2 != null)
-                {
-                    exhibitor["Comments2"] = ExpressionConverter.ConvertO(__workflow_exhibitorcomments2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcontact != null)
-                {
-                    exhibitor["Contact"] = ExpressionConverter.ConvertO(__workflow_exhibitorcontact);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcountry != null)
-                {
-                    exhibitor["Country"] = ExpressionConverter.ConvertO(__workflow_exhibitorcountry);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorcellPhone != null)
-                {
-                    exhibitor["CellPhone"] = ExpressionConverter.ConvertO(__workflow_exhibitorcellPhone);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitordisplayOnDrawing != null)
-                {
-                    exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(__workflow_exhibitordisplayOnDrawing);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitordoingBusinessAs != null)
-                {
-                    exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(__workflow_exhibitordoingBusinessAs);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitordoingBusinessAsDisplayOnDrawing != null)
-                {
-                    exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(__workflow_exhibitordoingBusinessAsDisplayOnDrawing);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitoremail != null)
-                {
-                    exhibitor["Email"] = ExpressionConverter.ConvertO(__workflow_exhibitoremail);
-                    exhibitorpropCount++;
-                }
-
-                exhibitorpropCount++;
-                exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(__workflow_exhibitorexhibitorId);
-                if (__workflow_exhibitorexhibitorName != null)
-                {
-                    exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(__workflow_exhibitorexhibitorName);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorexhibitorNameLine2 != null)
-                {
-                    exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(__workflow_exhibitorexhibitorNameLine2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfax != null)
-                {
-                    exhibitor["Fax"] = ExpressionConverter.ConvertO(__workflow_exhibitorfax);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield1 != null)
-                {
-                    exhibitor["Field1"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield1);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield2 != null)
-                {
-                    exhibitor["Field2"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield2);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield3 != null)
-                {
-                    exhibitor["Field3"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield3);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield4 != null)
-                {
-                    exhibitor["Field4"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield4);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield5 != null)
-                {
-                    exhibitor["Field5"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield5);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield6 != null)
-                {
-                    exhibitor["Field6"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield6);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield7 != null)
-                {
-                    exhibitor["Field7"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield7);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield8 != null)
-                {
-                    exhibitor["Field8"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield8);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorfield9 != null)
-                {
-                    exhibitor["Field9"] = ExpressionConverter.ConvertO(__workflow_exhibitorfield9);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitornickName != null)
-                {
-                    exhibitor["NickName"] = ExpressionConverter.ConvertO(__workflow_exhibitornickName);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorsalutation != null)
-                {
-                    exhibitor["Salutation"] = ExpressionConverter.ConvertO(__workflow_exhibitorsalutation);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitortitle != null)
-                {
-                    exhibitor["Title"] = ExpressionConverter.ConvertO(__workflow_exhibitortitle);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorphone != null)
-                {
-                    exhibitor["Phone"] = ExpressionConverter.ConvertO(__workflow_exhibitorphone);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorpostalCode != null)
-                {
-                    exhibitor["PostalCode"] = ExpressionConverter.ConvertO(__workflow_exhibitorpostalCode);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorprimaryGroup != null)
-                {
-                    exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(__workflow_exhibitorprimaryGroup);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorpriorityPoints != null)
-                {
-                    exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(__workflow_exhibitorpriorityPoints);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorproductDescription != null)
-                {
-                    exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(__workflow_exhibitorproductDescription);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorstate != null)
-                {
-                    exhibitor["State"] = ExpressionConverter.ConvertO(__workflow_exhibitorstate);
-                    exhibitorpropCount++;
-                }
-
-                if (__workflow_exhibitorwebSite != null)
-                {
-                    exhibitor["WebSite"] = ExpressionConverter.ConvertO(__workflow_exhibitorwebSite);
-                    exhibitorpropCount++;
-                }
-
-                if (exhibitorpropCount > 0)
-                {
-                    callPayload.Body = exhibitor;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_exhibitor);
                 return new ApiConnectionAction<Exhibitor>(callPayload);
             });
         }
@@ -1449,41 +873,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan, ApiConnectionActionConfiguration> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlanname, Expression<Func<string>> ratePlanshortCode, Expression<Func<double>> ratePlangrossRate, Expression<Func<double>> ratePlanfixedDiscountRate, Expression<Func<double>> ratePlanpercentDiscountRate, Expression<Func<bool>> ratePlanisFixed)
+        public IBodyWorkflowAction<RatePlan, ApiConnectionActionConfiguration> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<RatePlansAddRatePlanInput>> ratePlan)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            var __workflow_ratePlanname = WorkflowExpression.Compile(ratePlanname, nameof(ratePlanname), required: true);
-            var __workflow_ratePlanshortCode = WorkflowExpression.Compile(ratePlanshortCode, nameof(ratePlanshortCode), required: true);
-            var __workflow_ratePlangrossRate = WorkflowExpression.Compile(ratePlangrossRate, nameof(ratePlangrossRate), required: true);
-            var __workflow_ratePlanfixedDiscountRate = WorkflowExpression.Compile(ratePlanfixedDiscountRate, nameof(ratePlanfixedDiscountRate), required: true);
-            var __workflow_ratePlanpercentDiscountRate = WorkflowExpression.Compile(ratePlanpercentDiscountRate, nameof(ratePlanpercentDiscountRate), required: true);
-            var __workflow_ratePlanisFixed = WorkflowExpression.Compile(ratePlanisFixed, nameof(ratePlanisFixed), required: true);
+            var __workflow_ratePlan = WorkflowExpression.Compile(ratePlan, nameof(ratePlan), required: true);
             return new DeferredBodyAction<RatePlan, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
-                var ratePlan = new JObject();
-                var ratePlanpropCount = 0;
-                ratePlanpropCount++;
-                ratePlan["Name"] = ExpressionConverter.ConvertO(__workflow_ratePlanname);
-                ratePlanpropCount++;
-                ratePlan["ShortCode"] = ExpressionConverter.ConvertO(__workflow_ratePlanshortCode);
-                ratePlanpropCount++;
-                ratePlan["GrossRate"] = ExpressionConverter.ConvertO(__workflow_ratePlangrossRate);
-                ratePlanpropCount++;
-                ratePlan["FixedDiscountRate"] = ExpressionConverter.ConvertO(__workflow_ratePlanfixedDiscountRate);
-                ratePlanpropCount++;
-                ratePlan["PercentDiscountRate"] = ExpressionConverter.ConvertO(__workflow_ratePlanpercentDiscountRate);
-                ratePlanpropCount++;
-                ratePlan["IsFixed"] = ExpressionConverter.ConvertO(__workflow_ratePlanisFixed);
-                if (ratePlanpropCount > 0)
-                {
-                    callPayload.Body = ratePlan;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_ratePlan);
                 return new ApiConnectionAction<RatePlan>(callPayload);
             });
         }
@@ -1553,6 +954,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public int Color { get; set; }
     }
 
+    public class ClassesCreateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int KeepWhenCombined { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CountAsInventory { get; set; }
+        public string Prioritity { get; set; }
+        public int? Color { get; set; }
+    }
+
+    public class ClassesUpdateInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int KeepWhenCombined { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CountAsInventory { get; set; }
+        public string Prioritity { get; set; }
+        public int? Color { get; set; }
+    }
+
     public class ExpocadEvent
     {
         public string EventName { get; set; }
@@ -1606,6 +1039,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public string DoingBusinessAs { get; set; }
         public string DoingBusinessAsDisplayOnDrawing { get; set; }
         public string Email { get; set; }
+        public string ExhibitorId { get; set; }
+        public string ExhibitorName { get; set; }
+        public string ExhibitorNameLine2 { get; set; }
+        public string Fax { get; set; }
+        public string Field1 { get; set; }
+        public string Field2 { get; set; }
+        public string Field3 { get; set; }
+        public string Field4 { get; set; }
+        public string Field5 { get; set; }
+        public string Field6 { get; set; }
+        public string Field7 { get; set; }
+        public string Field8 { get; set; }
+        public string Field9 { get; set; }
+        public string NickName { get; set; }
+        public string Salutation { get; set; }
+        public string Title { get; set; }
+        public string Phone { get; set; }
+        public string PostalCode { get; set; }
+        public string PrimaryGroup { get; set; }
+        public string PriorityPoints { get; set; }
+        public string ProductDescription { get; set; }
+        public string State { get; set; }
+        public string WebSite { get; set; }
+    }
+
+    public class ExhibitorsAddExhibitorInput
+    {
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string Comments { get; set; }
+        public string Comments2 { get; set; }
+        public string Contact { get; set; }
+        public string Country { get; set; }
+        public string CellPhone { get; set; }
+        public string DisplayOnDrawing { get; set; }
+        public string DoingBusinessAs { get; set; }
+        public string DoingBusinessAsDisplayOnDrawing { get; set; }
+        public string Email { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ExhibitorId { get; set; }
+        public string ExhibitorName { get; set; }
+        public string ExhibitorNameLine2 { get; set; }
+        public string Fax { get; set; }
+        public string Field1 { get; set; }
+        public string Field2 { get; set; }
+        public string Field3 { get; set; }
+        public string Field4 { get; set; }
+        public string Field5 { get; set; }
+        public string Field6 { get; set; }
+        public string Field7 { get; set; }
+        public string Field8 { get; set; }
+        public string Field9 { get; set; }
+        public string NickName { get; set; }
+        public string Salutation { get; set; }
+        public string Title { get; set; }
+        public string Phone { get; set; }
+        public string PostalCode { get; set; }
+        public string PrimaryGroup { get; set; }
+        public string PriorityPoints { get; set; }
+        public string ProductDescription { get; set; }
+        public string State { get; set; }
+        public string WebSite { get; set; }
+    }
+
+    public class ExhibitorsUpdateExhibitorInput
+    {
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string Comments { get; set; }
+        public string Comments2 { get; set; }
+        public string Contact { get; set; }
+        public string Country { get; set; }
+        public string CellPhone { get; set; }
+        public string DisplayOnDrawing { get; set; }
+        public string DoingBusinessAs { get; set; }
+        public string DoingBusinessAsDisplayOnDrawing { get; set; }
+        public string Email { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExhibitorId { get; set; }
         public string ExhibitorName { get; set; }
         public string ExhibitorNameLine2 { get; set; }
@@ -1764,6 +1279,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public double GrossRate { get; set; }
         public double FixedDiscountRate { get; set; }
         public double PercentDiscountRate { get; set; }
+        public bool IsFixed { get; set; }
+    }
+
+    public class RatePlansAddRatePlanInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ShortCode { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double GrossRate { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double FixedDiscountRate { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public double PercentDiscountRate { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsFixed { get; set; }
     }
 

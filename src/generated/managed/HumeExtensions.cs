@@ -43,188 +43,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<JobPostResponse, ApiConnectionActionConfiguration> Job(Expression<Func<double>> bodymodelsfacefpsPred = null, Expression<Func<double>> bodymodelsfaceprobThreshold = null, Expression<Func<bool>> bodymodelsfaceidentifyFaces = null, Expression<Func<int>> bodymodelsfaceminFaceSize = null, Expression<Func<bool>> bodymodelsfacesaveFaces = null, Expression<Func<string>> bodymodelsprosodygranularity = null, Expression<Func<bool>> bodymodelsprosodyidentifySpeakers = null, Expression<Func<int>> bodymodelsprosodywindowlength = null, Expression<Func<int>> bodymodelsprosodywindowstep = null, Expression<Func<string>> bodymodelslanguagegranularity = null, Expression<Func<bool>> bodymodelslanguageidentifySpeakers = null, Expression<Func<bool>> bodymodelsneridentifySpeakers = null, Expression<Func<string>> bodytranscriptionlanguage = null, Expression<Func<string[]>> bodyurls = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bool>> bodynotify = null)
+        public IBodyWorkflowAction<JobPostResponse, ApiConnectionActionConfiguration> Job(Expression<Func<JobPostInput>> body = null)
         {
-            var __workflow_bodymodelsfacefpsPred = WorkflowExpression.Compile(bodymodelsfacefpsPred, nameof(bodymodelsfacefpsPred), required: false);
-            var __workflow_bodymodelsfaceprobThreshold = WorkflowExpression.Compile(bodymodelsfaceprobThreshold, nameof(bodymodelsfaceprobThreshold), required: false);
-            var __workflow_bodymodelsfaceidentifyFaces = WorkflowExpression.Compile(bodymodelsfaceidentifyFaces, nameof(bodymodelsfaceidentifyFaces), required: false);
-            var __workflow_bodymodelsfaceminFaceSize = WorkflowExpression.Compile(bodymodelsfaceminFaceSize, nameof(bodymodelsfaceminFaceSize), required: false);
-            var __workflow_bodymodelsfacesaveFaces = WorkflowExpression.Compile(bodymodelsfacesaveFaces, nameof(bodymodelsfacesaveFaces), required: false);
-            var __workflow_bodymodelsprosodygranularity = WorkflowExpression.Compile(bodymodelsprosodygranularity, nameof(bodymodelsprosodygranularity), required: false);
-            var __workflow_bodymodelsprosodyidentifySpeakers = WorkflowExpression.Compile(bodymodelsprosodyidentifySpeakers, nameof(bodymodelsprosodyidentifySpeakers), required: false);
-            var __workflow_bodymodelsprosodywindowlength = WorkflowExpression.Compile(bodymodelsprosodywindowlength, nameof(bodymodelsprosodywindowlength), required: false);
-            var __workflow_bodymodelsprosodywindowstep = WorkflowExpression.Compile(bodymodelsprosodywindowstep, nameof(bodymodelsprosodywindowstep), required: false);
-            var __workflow_bodymodelslanguagegranularity = WorkflowExpression.Compile(bodymodelslanguagegranularity, nameof(bodymodelslanguagegranularity), required: false);
-            var __workflow_bodymodelslanguageidentifySpeakers = WorkflowExpression.Compile(bodymodelslanguageidentifySpeakers, nameof(bodymodelslanguageidentifySpeakers), required: false);
-            var __workflow_bodymodelsneridentifySpeakers = WorkflowExpression.Compile(bodymodelsneridentifySpeakers, nameof(bodymodelsneridentifySpeakers), required: false);
-            var __workflow_bodytranscriptionlanguage = WorkflowExpression.Compile(bodytranscriptionlanguage, nameof(bodytranscriptionlanguage), required: false);
-            var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: false);
-            var __workflow_bodycallbackUrl = WorkflowExpression.Compile(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
-            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JobPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/batch/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var modelsObject = new JObject();
-                var modelsObjectpropCount = 0;
-                var faceObject = new JObject();
-                var faceObjectpropCount = 0;
-                if (__workflow_bodymodelsfacefpsPred != null)
-                {
-                    faceObject["fps_pred"] = ExpressionConverter.ConvertO(__workflow_bodymodelsfacefpsPred);
-                    faceObjectpropCount++;
-                }
-
-                if (__workflow_bodymodelsfaceprobThreshold != null)
-                {
-                    faceObject["prob_threshold"] = ExpressionConverter.ConvertO(__workflow_bodymodelsfaceprobThreshold);
-                    faceObjectpropCount++;
-                }
-
-                if (__workflow_bodymodelsfaceidentifyFaces != null)
-                {
-                    faceObject["identify_faces"] = ExpressionConverter.ConvertO(__workflow_bodymodelsfaceidentifyFaces);
-                    faceObjectpropCount++;
-                }
-
-                if (__workflow_bodymodelsfaceminFaceSize != null)
-                {
-                    faceObject["min_face_size"] = ExpressionConverter.ConvertO(__workflow_bodymodelsfaceminFaceSize);
-                    faceObjectpropCount++;
-                }
-
-                if (__workflow_bodymodelsfacesaveFaces != null)
-                {
-                    faceObject["save_faces"] = ExpressionConverter.ConvertO(__workflow_bodymodelsfacesaveFaces);
-                    faceObjectpropCount++;
-                }
-
-                if (faceObjectpropCount > 0)
-                {
-                    modelsObject["face"] = faceObject;
-                    modelsObjectpropCount++;
-                }
-
-                var prosodyObject = new JObject();
-                var prosodyObjectpropCount = 0;
-                if (__workflow_bodymodelsprosodygranularity != null)
-                {
-                    prosodyObject["granularity"] = ExpressionConverter.ConvertO(__workflow_bodymodelsprosodygranularity);
-                    prosodyObjectpropCount++;
-                }
-
-                if (__workflow_bodymodelsprosodyidentifySpeakers != null)
-                {
-                    prosodyObject["identify_speakers"] = ExpressionConverter.ConvertO(__workflow_bodymodelsprosodyidentifySpeakers);
-                    prosodyObjectpropCount++;
-                }
-
-                var windowObject = new JObject();
-                var windowObjectpropCount = 0;
-                if (__workflow_bodymodelsprosodywindowlength != null)
-                {
-                    windowObject["length"] = ExpressionConverter.ConvertO(__workflow_bodymodelsprosodywindowlength);
-                    windowObjectpropCount++;
-                }
-
-                if (__workflow_bodymodelsprosodywindowstep != null)
-                {
-                    windowObject["step"] = ExpressionConverter.ConvertO(__workflow_bodymodelsprosodywindowstep);
-                    windowObjectpropCount++;
-                }
-
-                if (windowObjectpropCount > 0)
-                {
-                    prosodyObject["window"] = windowObject;
-                    prosodyObjectpropCount++;
-                }
-
-                if (prosodyObjectpropCount > 0)
-                {
-                    modelsObject["prosody"] = prosodyObject;
-                    modelsObjectpropCount++;
-                }
-
-                var languageObject = new JObject();
-                var languageObjectpropCount = 0;
-                if (__workflow_bodymodelslanguagegranularity != null)
-                {
-                    languageObject["granularity"] = ExpressionConverter.ConvertO(__workflow_bodymodelslanguagegranularity);
-                    languageObjectpropCount++;
-                }
-
-                if (__workflow_bodymodelslanguageidentifySpeakers != null)
-                {
-                    languageObject["identify_speakers"] = ExpressionConverter.ConvertO(__workflow_bodymodelslanguageidentifySpeakers);
-                    languageObjectpropCount++;
-                }
-
-                if (languageObjectpropCount > 0)
-                {
-                    modelsObject["language"] = languageObject;
-                    modelsObjectpropCount++;
-                }
-
-                var nerObject = new JObject();
-                var nerObjectpropCount = 0;
-                if (__workflow_bodymodelsneridentifySpeakers != null)
-                {
-                    nerObject["identify_speakers"] = ExpressionConverter.ConvertO(__workflow_bodymodelsneridentifySpeakers);
-                    nerObjectpropCount++;
-                }
-
-                if (nerObjectpropCount > 0)
-                {
-                    modelsObject["ner"] = nerObject;
-                    modelsObjectpropCount++;
-                }
-
-                if (modelsObjectpropCount > 0)
-                {
-                    body["models"] = modelsObject;
-                    bodypropCount++;
-                }
-
-                var transcriptionObject = new JObject();
-                var transcriptionObjectpropCount = 0;
-                if (__workflow_bodytranscriptionlanguage != null)
-                {
-                    transcriptionObject["language"] = ExpressionConverter.ConvertO(__workflow_bodytranscriptionlanguage);
-                    transcriptionObjectpropCount++;
-                }
-
-                if (transcriptionObjectpropCount > 0)
-                {
-                    body["transcription"] = transcriptionObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurls != null)
-                {
-                    body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallbackUrl != null)
-                {
-                    body["callback_url"] = ExpressionConverter.ConvertO(__workflow_bodycallbackUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotify != null)
-                {
-                    body["notify"] = ExpressionConverter.ConvertO(__workflow_bodynotify);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JobPostResponse>(callPayload);
             });
         }
@@ -464,6 +292,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     {
         [JsonProperty("job_id")]
         public string JobId { get; set; }
+    }
+
+    public class JobPostInput
+    {
+        [JsonProperty("models")]
+        public JobPostInputModelsType Models { get; set; }
+
+        [JsonProperty("transcription")]
+        public JobPostInputTranscriptionType Transcription { get; set; }
+
+        [JsonProperty("urls")]
+        public string[] Urls { get; set; }
+
+        [JsonProperty("callback_url")]
+        public string CallbackUrl { get; set; }
+
+        [JsonProperty("notify")]
+        public bool? Notify { get; set; }
+    }
+
+    public class JobPostInputModelsType
+    {
+        [JsonProperty("face")]
+        public JobPostInputModelsTypeFaceType Face { get; set; }
+
+        [JsonProperty("prosody")]
+        public JobPostInputModelsTypeProsodyType Prosody { get; set; }
+
+        [JsonProperty("language")]
+        public JobPostInputModelsTypeLanguageType Language { get; set; }
+
+        [JsonProperty("ner")]
+        public JobPostInputModelsTypeNerType Ner { get; set; }
+    }
+
+    public class JobPostInputModelsTypeFaceType
+    {
+        [JsonProperty("fps_pred")]
+        public double? FpsPred { get; set; }
+
+        [JsonProperty("prob_threshold")]
+        public double? ProbThreshold { get; set; }
+
+        [JsonProperty("identify_faces")]
+        public bool? IdentifyFaces { get; set; }
+
+        [JsonProperty("min_face_size")]
+        public int? MinFaceSize { get; set; }
+
+        [JsonProperty("save_faces")]
+        public bool? SaveFaces { get; set; }
+    }
+
+    public class JobPostInputModelsTypeProsodyType
+    {
+        [JsonProperty("granularity")]
+        public string Granularity { get; set; }
+
+        [JsonProperty("identify_speakers")]
+        public bool? IdentifySpeakers { get; set; }
+
+        [JsonProperty("window")]
+        public JobPostInputModelsTypeProsodyTypeWindowType Window { get; set; }
+    }
+
+    public class JobPostInputModelsTypeProsodyTypeWindowType
+    {
+        [JsonProperty("length")]
+        public int? Length { get; set; }
+
+        [JsonProperty("step")]
+        public int? Step { get; set; }
+    }
+
+    public class JobPostInputModelsTypeLanguageType
+    {
+        [JsonProperty("granularity")]
+        public string Granularity { get; set; }
+
+        [JsonProperty("identify_speakers")]
+        public bool? IdentifySpeakers { get; set; }
+    }
+
+    public class JobPostInputModelsTypeNerType
+    {
+        [JsonProperty("identify_speakers")]
+        public bool? IdentifySpeakers { get; set; }
+    }
+
+    public class JobPostInputTranscriptionType
+    {
+        [JsonProperty("language")]
+        public string Language { get; set; }
     }
 
     public class JobPredictionsGetResponseItem

@@ -25,34 +25,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<AccountUpdateResponse, ApiConnectionActionConfiguration> AccountUpdate(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<AccountUpdateResponse, ApiConnectionActionConfiguration> AccountUpdate(Expression<Func<AccountUpdateInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AccountUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/account/update";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AccountUpdateResponse>(callPayload);
             });
         }
@@ -76,71 +58,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainCreateResponse, ApiConnectionActionConfiguration> DomainCreate(Expression<Func<string>> bodydomain, Expression<Func<string>> bodyredirectroot = null, Expression<Func<string>> bodyredirect404 = null)
+        public IBodyWorkflowAction<DomainCreateResponse, ApiConnectionActionConfiguration> DomainCreate(Expression<Func<DomainCreateInput>> body)
         {
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodyredirectroot = WorkflowExpression.Compile(bodyredirectroot, nameof(bodyredirectroot), required: false);
-            var __workflow_bodyredirect404 = WorkflowExpression.Compile(bodyredirect404, nameof(bodyredirect404), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DomainCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/domain/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                if (__workflow_bodyredirectroot != null)
-                {
-                    body["redirectroot"] = ExpressionConverter.ConvertO(__workflow_bodyredirectroot);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirect404 != null)
-                {
-                    body["redirect404"] = ExpressionConverter.ConvertO(__workflow_bodyredirect404);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DomainCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainUpdateResponse, ApiConnectionActionConfiguration> DomainUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyredirectroot = null, Expression<Func<string>> bodyredirect404 = null)
+        public IBodyWorkflowAction<DomainUpdateResponse, ApiConnectionActionConfiguration> DomainUpdate(Expression<Func<string>> id, Expression<Func<DomainUpdateInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyredirectroot = WorkflowExpression.Compile(bodyredirectroot, nameof(bodyredirectroot), required: false);
-            var __workflow_bodyredirect404 = WorkflowExpression.Compile(bodyredirect404, nameof(bodyredirect404), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DomainUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domain/{0}/update", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyredirectroot != null)
-                {
-                    body["redirectroot"] = ExpressionConverter.ConvertO(__workflow_bodyredirectroot);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirect404 != null)
-                {
-                    body["redirect404"] = ExpressionConverter.ConvertO(__workflow_bodyredirect404);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DomainUpdateResponse>(callPayload);
             });
         }
@@ -229,148 +171,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkShortenResponse, ApiConnectionActionConfiguration> LinkShorten(Expression<Func<string>> bodyurl, Expression<Func<string>> bodycustom = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodytype = null, Expression<Func<bodygeotargetInputItem[]>> bodygeotarget = null, Expression<Func<bodydevicetargetInputItem[]>> bodydevicetarget = null, Expression<Func<bodyparametersInputItem[]>> bodyparameters = null)
+        public IBodyWorkflowAction<LinkShortenResponse, ApiConnectionActionConfiguration> LinkShorten(Expression<Func<LinkShortenInput>> body)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodycustom = WorkflowExpression.Compile(bodycustom, nameof(bodycustom), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyexpiry = WorkflowExpression.Compile(bodyexpiry, nameof(bodyexpiry), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodygeotarget = WorkflowExpression.Compile(bodygeotarget, nameof(bodygeotarget), required: false);
-            var __workflow_bodydevicetarget = WorkflowExpression.Compile(bodydevicetarget, nameof(bodydevicetarget), required: false);
-            var __workflow_bodyparameters = WorkflowExpression.Compile(bodyparameters, nameof(bodyparameters), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LinkShortenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/url/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                if (__workflow_bodycustom != null)
-                {
-                    body["custom"] = ExpressionConverter.ConvertO(__workflow_bodycustom);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiry != null)
-                {
-                    body["expiry"] = ExpressionConverter.ConvertO(__workflow_bodyexpiry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygeotarget != null)
-                {
-                    body["geotarget"] = ExpressionConverter.ConvertO(__workflow_bodygeotarget);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydevicetarget != null)
-                {
-                    body["devicetarget"] = ExpressionConverter.ConvertO(__workflow_bodydevicetarget);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparameters != null)
-                {
-                    body["parameters"] = ExpressionConverter.ConvertO(__workflow_bodyparameters);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LinkShortenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkUpdateResponse, ApiConnectionActionConfiguration> LinkUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycustom = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodytype = null, Expression<Func<bodygeotargetInputItem[]>> bodygeotarget = null, Expression<Func<bodydevicetargetInputItem[]>> bodydevicetarget = null, Expression<Func<bodyparametersInputItem[]>> bodyparameters = null)
+        public IBodyWorkflowAction<LinkUpdateResponse, ApiConnectionActionConfiguration> LinkUpdate(Expression<Func<string>> id, Expression<Func<LinkUpdateInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodycustom = WorkflowExpression.Compile(bodycustom, nameof(bodycustom), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyexpiry = WorkflowExpression.Compile(bodyexpiry, nameof(bodyexpiry), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodygeotarget = WorkflowExpression.Compile(bodygeotarget, nameof(bodygeotarget), required: false);
-            var __workflow_bodydevicetarget = WorkflowExpression.Compile(bodydevicetarget, nameof(bodydevicetarget), required: false);
-            var __workflow_bodyparameters = WorkflowExpression.Compile(bodyparameters, nameof(bodyparameters), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LinkUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/url/{0}/update", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustom != null)
-                {
-                    body["custom"] = ExpressionConverter.ConvertO(__workflow_bodycustom);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiry != null)
-                {
-                    body["expiry"] = ExpressionConverter.ConvertO(__workflow_bodyexpiry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygeotarget != null)
-                {
-                    body["geotarget"] = ExpressionConverter.ConvertO(__workflow_bodygeotarget);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydevicetarget != null)
-                {
-                    body["devicetarget"] = ExpressionConverter.ConvertO(__workflow_bodydevicetarget);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparameters != null)
-                {
-                    body["parameters"] = ExpressionConverter.ConvertO(__workflow_bodyparameters);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LinkUpdateResponse>(callPayload);
             });
         }
@@ -407,59 +231,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelCreateResponse, ApiConnectionActionConfiguration> PixelCreate(Expression<Func<string>> bodytype, Expression<Func<string>> bodyname, Expression<Func<string>> bodytag)
+        public IBodyWorkflowAction<PixelCreateResponse, ApiConnectionActionConfiguration> PixelCreate(Expression<Func<PixelCreateInput>> body)
         {
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PixelCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pixel/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["tag"] = ExpressionConverter.ConvertO(__workflow_bodytag);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PixelCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelUpdateResponse, ApiConnectionActionConfiguration> PixelUpdate(Expression<Func<string>> id, Expression<Func<string>> bodytag, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<PixelUpdateResponse, ApiConnectionActionConfiguration> PixelUpdate(Expression<Func<string>> id, Expression<Func<PixelUpdateInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PixelUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pixel/{0}/update", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["tag"] = ExpressionConverter.ConvertO(__workflow_bodytag);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PixelUpdateResponse>(callPayload);
             });
         }
@@ -509,106 +304,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRCreateResponse, ApiConnectionActionConfiguration> QRCreate(Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodybackground = null, Expression<Func<string>> bodyforeground = null, Expression<Func<string>> bodylogo = null)
+        public IBodyWorkflowAction<QRCreateResponse, ApiConnectionActionConfiguration> QRCreate(Expression<Func<QRCreateInput>> body = null)
         {
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            var __workflow_bodybackground = WorkflowExpression.Compile(bodybackground, nameof(bodybackground), required: false);
-            var __workflow_bodyforeground = WorkflowExpression.Compile(bodyforeground, nameof(bodyforeground), required: false);
-            var __workflow_bodylogo = WorkflowExpression.Compile(bodylogo, nameof(bodylogo), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QRCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qr/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybackground != null)
-                {
-                    body["background"] = ExpressionConverter.ConvertO(__workflow_bodybackground);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyforeground != null)
-                {
-                    body["foreground"] = ExpressionConverter.ConvertO(__workflow_bodyforeground);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylogo != null)
-                {
-                    body["logo"] = ExpressionConverter.ConvertO(__workflow_bodylogo);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QRCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRUpdateResponse, ApiConnectionActionConfiguration> QRUpdate(Expression<Func<string>> id, Expression<Func<string>> bodydata, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodybackground = null, Expression<Func<string>> bodyforeground = null, Expression<Func<string>> bodylogo = null)
+        public IBodyWorkflowAction<QRUpdateResponse, ApiConnectionActionConfiguration> QRUpdate(Expression<Func<string>> id, Expression<Func<QRUpdateInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodybackground = WorkflowExpression.Compile(bodybackground, nameof(bodybackground), required: false);
-            var __workflow_bodyforeground = WorkflowExpression.Compile(bodyforeground, nameof(bodyforeground), required: false);
-            var __workflow_bodylogo = WorkflowExpression.Compile(bodylogo, nameof(bodylogo), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QRUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qr/{0}/update", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (__workflow_bodybackground != null)
-                {
-                    body["background"] = ExpressionConverter.ConvertO(__workflow_bodybackground);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyforeground != null)
-                {
-                    body["foreground"] = ExpressionConverter.ConvertO(__workflow_bodyforeground);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylogo != null)
-                {
-                    body["logo"] = ExpressionConverter.ConvertO(__workflow_bodylogo);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QRUpdateResponse>(callPayload);
             });
         }
@@ -639,36 +359,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PlanSubscribeResponse, ApiConnectionActionConfiguration> PlanSubscribe(Expression<Func<string>> planid, Expression<Func<string>> userid, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyexpiration = null)
+        public IBodyWorkflowAction<PlanSubscribeResponse, ApiConnectionActionConfiguration> PlanSubscribe(Expression<Func<string>> planid, Expression<Func<string>> userid, Expression<Func<PlanSubscribeInput>> body = null)
         {
             var __workflow_planid = WorkflowExpression.Compile(planid, nameof(planid), required: true);
             var __workflow_userid = WorkflowExpression.Compile(userid, nameof(userid), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PlanSubscribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/plan/{0}/user/{1}", __workflow_planid.WithUrlEncoding(1), __workflow_userid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlanSubscribeResponse>(callPayload);
             });
         }
@@ -702,43 +404,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<UserCreateResponse, ApiConnectionActionConfiguration> UserCreate(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyemail, Expression<Func<int>> bodyplanid = null, Expression<Func<string>> bodyexpiration = null)
+        public IBodyWorkflowAction<UserCreateResponse, ApiConnectionActionConfiguration> UserCreate(Expression<Func<UserCreateInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyplanid = WorkflowExpression.Compile(bodyplanid, nameof(bodyplanid), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/user/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyplanid != null)
-                {
-                    body["planid"] = ExpressionConverter.ConvertO(__workflow_bodyplanid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UserCreateResponse>(callPayload);
             });
         }
@@ -803,6 +477,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Message { get; set; }
     }
 
+    public class AccountUpdateInput
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+    }
+
     public class DomainListResponse
     {
         [JsonProperty("error")]
@@ -857,6 +540,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public int Id { get; set; }
     }
 
+    public class DomainCreateInput
+    {
+        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Domain { get; set; }
+
+        [JsonProperty("redirectroot")]
+        public string Redirectroot { get; set; }
+
+        [JsonProperty("redirect404")]
+        public string Redirect404 { get; set; }
+    }
+
     public class DomainUpdateResponse
     {
         [JsonProperty("error")]
@@ -864,6 +559,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class DomainUpdateInput
+    {
+        [JsonProperty("redirectroot")]
+        public string Redirectroot { get; set; }
+
+        [JsonProperty("redirect404")]
+        public string Redirect404 { get; set; }
     }
 
     public class DomainDeleteResponse
@@ -1127,7 +831,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Shorturl { get; set; }
     }
 
-    public class bodygeotargetInputItem
+    public class LinkShortenInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("custom")]
+        public string Custom { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("expiry")]
+        public string Expiry { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("geotarget")]
+        public LinkShortenInputGeotargetTypeItem[] Geotarget { get; set; }
+
+        [JsonProperty("devicetarget")]
+        public LinkShortenInputDevicetargetTypeItem[] Devicetarget { get; set; }
+
+        [JsonProperty("parameters")]
+        public LinkShortenInputParametersTypeItem[] Parameters { get; set; }
+    }
+
+    public class LinkShortenInputGeotargetTypeItem
     {
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -1136,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Link { get; set; }
     }
 
-    public class bodydevicetargetInputItem
+    public class LinkShortenInputDevicetargetTypeItem
     {
         [JsonProperty("device")]
         public string Device { get; set; }
@@ -1145,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Link { get; set; }
     }
 
-    public class bodyparametersInputItem
+    public class LinkShortenInputParametersTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1170,6 +901,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
         [JsonProperty("short")]
         public string Short { get; set; }
+    }
+
+    public class LinkUpdateInput
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("custom")]
+        public string Custom { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("expiry")]
+        public string Expiry { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("geotarget")]
+        public LinkUpdateInputGeotargetTypeItem[] Geotarget { get; set; }
+
+        [JsonProperty("devicetarget")]
+        public LinkUpdateInputDevicetargetTypeItem[] Devicetarget { get; set; }
+
+        [JsonProperty("parameters")]
+        public LinkUpdateInputParametersTypeItem[] Parameters { get; set; }
+    }
+
+    public class LinkUpdateInputGeotargetTypeItem
+    {
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+    }
+
+    public class LinkUpdateInputDevicetargetTypeItem
+    {
+        [JsonProperty("device")]
+        public string Device { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+    }
+
+    public class LinkUpdateInputParametersTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+        [JsonProperty("device")]
+        public string Device { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
     }
 
     public class LinkDeleteResponse
@@ -1238,6 +1029,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public int Id { get; set; }
     }
 
+    public class PixelCreateInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("tag", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Tag { get; set; }
+    }
+
     public class PixelUpdateResponse
     {
         [JsonProperty("error")]
@@ -1245,6 +1048,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class PixelUpdateInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("tag", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Tag { get; set; }
     }
 
     public class PixelDeleteResponse
@@ -1404,6 +1216,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Link { get; set; }
     }
 
+    public class QRCreateInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("data")]
+        public string Data { get; set; }
+
+        [JsonProperty("background")]
+        public string Background { get; set; }
+
+        [JsonProperty("foreground")]
+        public string Foreground { get; set; }
+
+        [JsonProperty("logo")]
+        public string Logo { get; set; }
+    }
+
     public class QRUpdateResponse
     {
         [JsonProperty("error")]
@@ -1411,6 +1241,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class QRUpdateInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+
+        [JsonProperty("background")]
+        public string Background { get; set; }
+
+        [JsonProperty("foreground")]
+        public string Foreground { get; set; }
+
+        [JsonProperty("logo")]
+        public string Logo { get; set; }
     }
 
     public class QRDeleteResponse
@@ -1611,6 +1459,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Message { get; set; }
     }
 
+    public class PlanSubscribeInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("expiration")]
+        public string Expiration { get; set; }
+    }
+
     public class UserListResponse
     {
         [JsonProperty("error")]
@@ -1722,6 +1579,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 
         [JsonProperty("username")]
         public string Username { get; set; }
+    }
+
+    public class UserCreateInput
+    {
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("planid")]
+        public int? Planid { get; set; }
+
+        [JsonProperty("expiration")]
+        public string Expiration { get; set; }
     }
 
     public class UserDeleteResponse

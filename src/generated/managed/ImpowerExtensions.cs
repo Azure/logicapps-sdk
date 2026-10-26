@@ -38,35 +38,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<ConnectionDto, ApiConnectionActionConfiguration> UpdateConnectionUsingPUT(Expression<Func<int>> connectionIdX, Expression<Func<string>> connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication = null, Expression<Func<string>> connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE = null)
+        public IBodyWorkflowAction<ConnectionDto, ApiConnectionActionConfiguration> UpdateConnectionUsingPUT(Expression<Func<int>> connectionIdX, Expression<Func<UpdateConnectionUsingPUTInput>> connectionUpdateDto = null)
         {
             var __workflow_connectionIdX = WorkflowExpression.Compile(connectionIdX, nameof(connectionIdX), required: true);
-            var __workflow_connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication = WorkflowExpression.Compile(connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication, nameof(connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication), required: false);
-            var __workflow_connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE = WorkflowExpression.Compile(connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE, nameof(connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE), required: false);
+            var __workflow_connectionUpdateDto = WorkflowExpression.Compile(connectionUpdateDto, nameof(connectionUpdateDto), required: false);
             return new DeferredBodyAction<ConnectionDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/connections/{0}", __workflow_connectionIdX.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var connectionUpdateDto = new JObject();
-                var connectionUpdateDtopropCount = 0;
-                if (__workflow_connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication != null)
-                {
-                    connectionUpdateDto["name"] = ExpressionConverter.ConvertO(__workflow_connectionUpdateDtonameOfTheConnectionAsItShallBePresentedInTheUIIfNotSpecifiedWillBeDefaultedToTheNameOfTheApplication);
-                    connectionUpdateDtopropCount++;
-                }
-
-                if (__workflow_connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE != null)
-                {
-                    connectionUpdateDto["webhookUrl"] = ExpressionConverter.ConvertO(__workflow_connectionUpdateDtotheURLWillBeCalledWithAnAuthorizationTokenYouMayValidateAndTheFollowingBodyConnectionId123EntityTypePropertiesEntityId123EventTypeUPDATE);
-                    connectionUpdateDtopropCount++;
-                }
-
-                if (connectionUpdateDtopropCount > 0)
-                {
-                    callPayload.Body = connectionUpdateDto;
-                }
-
+                if (__workflow_connectionUpdateDto != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_connectionUpdateDto);
                 return new ApiConnectionAction<ConnectionDto>(callPayload);
             });
         }
@@ -214,68 +196,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> CreateDocumentTagUsingPOST(Expression<Func<string>> createDtodescriptionOfTheNewlyCreatedDocumentTag = null, Expression<Func<string>> createDtonameOfTheNewlyCreatedDocumentTag = null)
+        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> CreateDocumentTagUsingPOST(Expression<Func<CreateDocumentTagUsingPOSTInput>> createDto)
         {
-            var __workflow_createDtodescriptionOfTheNewlyCreatedDocumentTag = WorkflowExpression.Compile(createDtodescriptionOfTheNewlyCreatedDocumentTag, nameof(createDtodescriptionOfTheNewlyCreatedDocumentTag), required: false);
-            var __workflow_createDtonameOfTheNewlyCreatedDocumentTag = WorkflowExpression.Compile(createDtonameOfTheNewlyCreatedDocumentTag, nameof(createDtonameOfTheNewlyCreatedDocumentTag), required: false);
+            var __workflow_createDto = WorkflowExpression.Compile(createDto, nameof(createDto), required: true);
             return new DeferredBodyAction<DocumentTagDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/document-tags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var createDto = new JObject();
-                var createDtopropCount = 0;
-                if (__workflow_createDtodescriptionOfTheNewlyCreatedDocumentTag != null)
-                {
-                    createDto["description"] = ExpressionConverter.ConvertO(__workflow_createDtodescriptionOfTheNewlyCreatedDocumentTag);
-                    createDtopropCount++;
-                }
-
-                if (__workflow_createDtonameOfTheNewlyCreatedDocumentTag != null)
-                {
-                    createDto["name"] = ExpressionConverter.ConvertO(__workflow_createDtonameOfTheNewlyCreatedDocumentTag);
-                    createDtopropCount++;
-                }
-
-                if (createDtopropCount > 0)
-                {
-                    callPayload.Body = createDto;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createDto);
                 return new ApiConnectionAction<DocumentTagDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> UpdateDocumentTagUsingPUT(Expression<Func<int>> tagId, Expression<Func<string>> updateDtonewDescriptionOfTheDocumentTag = null, Expression<Func<string>> updateDtonewNameOfTheDocumentTag = null)
+        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> UpdateDocumentTagUsingPUT(Expression<Func<int>> tagId, Expression<Func<UpdateDocumentTagUsingPUTInput>> updateDto)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            var __workflow_updateDtonewDescriptionOfTheDocumentTag = WorkflowExpression.Compile(updateDtonewDescriptionOfTheDocumentTag, nameof(updateDtonewDescriptionOfTheDocumentTag), required: false);
-            var __workflow_updateDtonewNameOfTheDocumentTag = WorkflowExpression.Compile(updateDtonewNameOfTheDocumentTag, nameof(updateDtonewNameOfTheDocumentTag), required: false);
+            var __workflow_updateDto = WorkflowExpression.Compile(updateDto, nameof(updateDto), required: true);
             return new DeferredBodyAction<DocumentTagDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/document-tags/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var updateDto = new JObject();
-                var updateDtopropCount = 0;
-                if (__workflow_updateDtonewDescriptionOfTheDocumentTag != null)
-                {
-                    updateDto["description"] = ExpressionConverter.ConvertO(__workflow_updateDtonewDescriptionOfTheDocumentTag);
-                    updateDtopropCount++;
-                }
-
-                if (__workflow_updateDtonewNameOfTheDocumentTag != null)
-                {
-                    updateDto["name"] = ExpressionConverter.ConvertO(__workflow_updateDtonewNameOfTheDocumentTag);
-                    updateDtopropCount++;
-                }
-
-                if (updateDtopropCount > 0)
-                {
-                    callPayload.Body = updateDto;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateDto);
                 return new ApiConnectionAction<DocumentTagDto>(callPayload);
             });
         }
@@ -369,9 +313,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<DocumentDto[], ApiConnectionActionConfiguration> UpdateDocumentsUsingPUT(Expression<Func<DocumentUpdateDto[]>> documentUpdateDtos = null)
+        public IBodyWorkflowAction<DocumentDto[], ApiConnectionActionConfiguration> UpdateDocumentsUsingPUT(Expression<Func<DocumentUpdateDto[]>> documentUpdateDtos)
         {
-            var __workflow_documentUpdateDtos = WorkflowExpression.Compile(documentUpdateDtos, nameof(documentUpdateDtos), required: false);
+            var __workflow_documentUpdateDtos = WorkflowExpression.Compile(documentUpdateDtos, nameof(documentUpdateDtos), required: true);
             return new DeferredBodyAction<DocumentDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/documents";
@@ -472,28 +416,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<InvoiceItemDto, ApiConnectionActionConfiguration> UpdateInvoiceItemUsingPUT(Expression<Func<int>> invoiceItemId, Expression<Func<string>> updateDtobookingTextOfTheInvoiceItem = null)
+        public IBodyWorkflowAction<InvoiceItemDto, ApiConnectionActionConfiguration> UpdateInvoiceItemUsingPUT(Expression<Func<int>> invoiceItemId, Expression<Func<UpdateInvoiceItemUsingPUTInput>> updateDto)
         {
             var __workflow_invoiceItemId = WorkflowExpression.Compile(invoiceItemId, nameof(invoiceItemId), required: true);
-            var __workflow_updateDtobookingTextOfTheInvoiceItem = WorkflowExpression.Compile(updateDtobookingTextOfTheInvoiceItem, nameof(updateDtobookingTextOfTheInvoiceItem), required: false);
+            var __workflow_updateDto = WorkflowExpression.Compile(updateDto, nameof(updateDto), required: true);
             return new DeferredBodyAction<InvoiceItemDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/invoice-items/{0}", __workflow_invoiceItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var updateDto = new JObject();
-                var updateDtopropCount = 0;
-                if (__workflow_updateDtobookingTextOfTheInvoiceItem != null)
-                {
-                    updateDto["bookingText"] = ExpressionConverter.ConvertO(__workflow_updateDtobookingTextOfTheInvoiceItem);
-                    updateDtopropCount++;
-                }
-
-                if (updateDtopropCount > 0)
-                {
-                    callPayload.Body = updateDto;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateDto);
                 return new ApiConnectionAction<InvoiceItemDto>(callPayload);
             });
         }
@@ -548,35 +480,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<InvoiceDto, ApiConnectionActionConfiguration> UpdateInvoiceUsingPUT(Expression<Func<int>> invoiceId, Expression<Func<string>> updateDtonewIssuedDateOfTheInvoice = null, Expression<Func<string>> updateDtonewNameOfTheInvoice = null)
+        public IBodyWorkflowAction<InvoiceDto, ApiConnectionActionConfiguration> UpdateInvoiceUsingPUT(Expression<Func<int>> invoiceId, Expression<Func<UpdateInvoiceUsingPUTInput>> updateDto)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
-            var __workflow_updateDtonewIssuedDateOfTheInvoice = WorkflowExpression.Compile(updateDtonewIssuedDateOfTheInvoice, nameof(updateDtonewIssuedDateOfTheInvoice), required: false);
-            var __workflow_updateDtonewNameOfTheInvoice = WorkflowExpression.Compile(updateDtonewNameOfTheInvoice, nameof(updateDtonewNameOfTheInvoice), required: false);
+            var __workflow_updateDto = WorkflowExpression.Compile(updateDto, nameof(updateDto), required: true);
             return new DeferredBodyAction<InvoiceDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/invoices/{0}", __workflow_invoiceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var updateDto = new JObject();
-                var updateDtopropCount = 0;
-                if (__workflow_updateDtonewIssuedDateOfTheInvoice != null)
-                {
-                    updateDto["issuedDate"] = ExpressionConverter.ConvertO(__workflow_updateDtonewIssuedDateOfTheInvoice);
-                    updateDtopropCount++;
-                }
-
-                if (__workflow_updateDtonewNameOfTheInvoice != null)
-                {
-                    updateDto["name"] = ExpressionConverter.ConvertO(__workflow_updateDtonewNameOfTheInvoice);
-                    updateDtopropCount++;
-                }
-
-                if (updateDtopropCount > 0)
-                {
-                    callPayload.Body = updateDto;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateDto);
                 return new ApiConnectionAction<InvoiceDto>(callPayload);
             });
         }
@@ -681,26 +594,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
 
     public class ImpowerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ConnectionDto, ApiConnectionTriggerConfiguration> CreateConnectionUsingPOST(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ConnectionDto, ApiConnectionTriggerConfiguration> CreateConnectionUsingPOST(Expression<Func<CreateConnectionUsingPOSTInput>> connectionCreateDto, FlowRecurrence recurrence = null)
         {
+            var __workflow_connectionCreateDto = WorkflowExpression.Compile(connectionCreateDto, nameof(connectionCreateDto), required: true);
             return new DeferredBodyTrigger<ConnectionDto, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/connections";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var connectionCreateDto = new JObject();
-                var connectionCreateDtopropCount = 0;
-                connectionCreateDto["appId"] = 4;
-                connectionCreateDtopropCount++;
-                connectionCreateDto["name"] = "Powerautomate webhook";
-                connectionCreateDtopropCount++;
-                connectionCreateDto["webhookUrl"] = "#{listCallbackUrl()}";
-                connectionCreateDtopropCount++;
-                if (connectionCreateDtopropCount > 0)
-                {
-                    callPayload.Body = connectionCreateDto;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_connectionCreateDto);
                 return new ApiConnectionTrigger<ConnectionDto>(callPayload, recurrence: recurrence);
             });
         }
@@ -820,6 +722,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
 
         [JsonProperty("updated")]
         public string LastUpdateTimeOfTheEntity { get; set; }
+
+        [JsonProperty("webhookUrl")]
+        public string WebhookUrl { get; set; }
+    }
+
+    public class UpdateConnectionUsingPUTInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
 
         [JsonProperty("webhookUrl")]
         public string WebhookUrl { get; set; }
@@ -1096,6 +1007,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         public string NameOfTheDocumentTag { get; set; }
     }
 
+    public class CreateDocumentTagUsingPOSTInput
+    {
+        [JsonProperty("description")]
+        public string DescriptionOfTheNewlyCreatedDocumentTag { get; set; }
+
+        [JsonProperty("name")]
+        public string NameOfTheNewlyCreatedDocumentTag { get; set; }
+    }
+
+    public class UpdateDocumentTagUsingPUTInput
+    {
+        [JsonProperty("description")]
+        public string NewDescriptionOfTheDocumentTag { get; set; }
+
+        [JsonProperty("name")]
+        public string NewNameOfTheDocumentTag { get; set; }
+    }
+
     public class PageOfDocumentDto
     {
         [JsonProperty("content")]
@@ -1368,6 +1297,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         INSURABLEEMPLOYMENT
     }
 
+    public class UpdateInvoiceItemUsingPUTInput
+    {
+        [JsonProperty("bookingText")]
+        public string BookingTextOfTheInvoiceItem { get; set; }
+    }
+
     public class PageOfInvoiceDto
     {
         [JsonProperty("content")]
@@ -1488,6 +1423,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         BOOKED,
         SCHEDULED,
         REVERSED
+    }
+
+    public class UpdateInvoiceUsingPUTInput
+    {
+        [JsonProperty("issuedDate")]
+        public string NewIssuedDateOfTheInvoice { get; set; }
+
+        [JsonProperty("name")]
+        public string NewNameOfTheInvoice { get; set; }
     }
 
     public class PageOfPropertyDto
@@ -1718,6 +1662,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         [EnumMember(Value = "RECURRING_STOPPED")]
         RECURRINGSTOPPED,
         DELETED
+    }
+
+    public class CreateConnectionUsingPOSTInput
+    {
+        [JsonProperty("appId", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int IdOfTheApplicationToConnectToTheDomain { get; set; } = 4;
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Powerautomate webhook";
+
+        [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

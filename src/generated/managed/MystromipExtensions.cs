@@ -58,11 +58,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
-        public IBodyWorkflowAction<CreateWebhookResponse, ApiConnectionActionConfiguration> CreateWebhook(Expression<Func<string>> deviceId, Expression<Func<string>> webhook, Expression<Func<string>> authToken)
+        public IBodyWorkflowAction<CreateWebhookResponse, ApiConnectionActionConfiguration> CreateWebhook(Expression<Func<string>> deviceId, Expression<Func<string>> webhook, Expression<Func<string>> authToken, Expression<Func<object>> body = null)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: true);
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateWebhookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/{0}", __workflow_deviceId.WithUrlEncoding(1)));
@@ -71,13 +72,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
                 callPayload.Queries["webhook"] = ExpressionConverter.Convert(__workflow_webhook);
                 callPayload.Queries["authToken"] = ExpressionConverter.Convert(__workflow_authToken);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateWebhookResponse>(callPayload);
             });
         }

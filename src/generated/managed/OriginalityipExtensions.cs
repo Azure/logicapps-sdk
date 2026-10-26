@@ -55,53 +55,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostAIDetectionResponse, ApiConnectionActionConfiguration> PostAIDetection(Expression<Func<string>> bodycontent = null)
+        public IBodyWorkflowAction<PostAIDetectionResponse, ApiConnectionActionConfiguration> PostAIDetection(Expression<Func<PostAIDetectionInput>> body)
         {
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostAIDetectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/scan/ai";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostAIDetectionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostUrlAIDetectionResponse, ApiConnectionActionConfiguration> PostUrlAIDetection(Expression<Func<string>> bodyurl = null)
+        public IBodyWorkflowAction<PostUrlAIDetectionResponse, ApiConnectionActionConfiguration> PostUrlAIDetection(Expression<Func<PostUrlAIDetectionInput>> body)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostUrlAIDetectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/scan/url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostUrlAIDetectionResponse>(callPayload);
             });
         }
@@ -181,6 +157,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
 
         [JsonProperty("ai")]
         public double Ai { get; set; }
+    }
+
+    public class PostAIDetectionInput
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
     }
 
     public class PostUrlAIDetectionResponse
@@ -328,6 +310,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
 
         [JsonProperty("real")]
         public double Real { get; set; }
+    }
+
+    public class PostUrlAIDetectionInput
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }
 

@@ -137,26 +137,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendMessageOperationalUnit(Expression<Func<int>> sendMessageidOperationalUnit, Expression<Func<string>> sendMessagemessage)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendMessageOperationalUnit(Expression<Func<SendMessageOperationalUnitInput>> sendMessage)
         {
-            var __workflow_sendMessageidOperationalUnit = WorkflowExpression.Compile(sendMessageidOperationalUnit, nameof(sendMessageidOperationalUnit), required: true);
-            var __workflow_sendMessagemessage = WorkflowExpression.Compile(sendMessagemessage, nameof(sendMessagemessage), required: true);
+            var __workflow_sendMessage = WorkflowExpression.Compile(sendMessage, nameof(sendMessage), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/OperationalUnit/SendMessage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendMessage = new JObject();
-                var sendMessagepropCount = 0;
-                sendMessagepropCount++;
-                sendMessage["IdOperationalUnit"] = ExpressionConverter.ConvertO(__workflow_sendMessageidOperationalUnit);
-                sendMessagepropCount++;
-                sendMessage["Message"] = ExpressionConverter.ConvertO(__workflow_sendMessagemessage);
-                if (sendMessagepropCount > 0)
-                {
-                    callPayload.Body = sendMessage;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendMessage);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -164,32 +153,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
 
     public class EmigoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, Expression<Func<NewODataItemInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             var __workflow_feed = WorkflowExpression.Compile(feed, nameof(feed), required: true);
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/{0}/feeds/{1}/newItem", __workflow_endpoint.WithUrlEncoding(2), __workflow_feed.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                var configObject = new JObject();
-                var configObjectpropCount = 0;
-                configObject["url"] = "#{listCallbackUrl()}";
-                configObjectpropCount++;
-                if (configObjectpropCount > 0)
-                {
-                    requestBodyOfWebhook["config"] = configObject;
-                    requestBodyOfWebhookpropCount++;
-                }
-
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
                 return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -347,6 +321,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         public string OpuStatus { get; set; }
     }
 
+    public class SendMessageOperationalUnitInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int IdOperationalUnit { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+    }
+
     public class WebhookCreationResponse
     {
         [JsonProperty("config")]
@@ -357,6 +340,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     {
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class NewODataItemInput
+    {
+        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewODataItemInputConfigType Config { get; set; }
+    }
+
+    public class NewODataItemInputConfigType
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

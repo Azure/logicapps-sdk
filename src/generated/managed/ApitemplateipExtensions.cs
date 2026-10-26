@@ -13,9 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
     public class ApitemplateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessPDFFile, ApiConnectionActionConfiguration> PDF(Expression<Func<string>> templateId, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
+        public IBodyWorkflowAction<ResponseSuccessPDFFile, ApiConnectionActionConfiguration> PDF(Expression<Func<string>> templateId, Expression<Func<object>> body, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_exportType = WorkflowExpression.Compile(exportType, nameof(exportType), required: false);
             var __workflow_expiration = WorkflowExpression.Compile(expiration, nameof(expiration), required: false);
             var __workflow_outputHtml = WorkflowExpression.Compile(outputHtml, nameof(outputHtml), required: false);
@@ -55,21 +56,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                     callPayload.Queries["async"] = ExpressionConverter.Convert(__workflow_async);
                 if (__workflow_webhookUrl != null)
                     callPayload.Queries["webhook_url"] = ExpressionConverter.Convert(__workflow_webhookUrl);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessPDFFile>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessImageFile, ApiConnectionActionConfiguration> Image(Expression<Func<string>> templateId, Expression<Func<int>> expiration = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> outputImageType = null, Expression<Func<string>> meta = null)
+        public IBodyWorkflowAction<ResponseSuccessImageFile, ApiConnectionActionConfiguration> Image(Expression<Func<string>> templateId, Expression<Func<object>> body, Expression<Func<int>> expiration = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> outputImageType = null, Expression<Func<string>> meta = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_expiration = WorkflowExpression.Compile(expiration, nameof(expiration), required: false);
             var __workflow_cloudStorage = WorkflowExpression.Compile(cloudStorage, nameof(cloudStorage), required: false);
             var __workflow_outputImageType = WorkflowExpression.Compile(outputImageType, nameof(outputImageType), required: false);
@@ -88,13 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                     callPayload.Queries["output_image_type"] = ExpressionConverter.Convert(__workflow_outputImageType);
                 if (__workflow_meta != null)
                     callPayload.Queries["meta"] = ExpressionConverter.Convert(__workflow_meta);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessImageFile>(callPayload);
             });
         }
@@ -183,49 +173,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccess, ApiConnectionActionConfiguration> TemplateUpdate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodycss = null)
+        public IBodyWorkflowAction<ResponseSuccess, ApiConnectionActionConfiguration> TemplateUpdate(Expression<Func<TemplateUpdateInput>> body)
         {
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
-            var __workflow_bodycss = WorkflowExpression.Compile(bodycss, nameof(bodycss), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccess, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/update-template";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                if (__workflow_bodybody != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycss != null)
-                {
-                    body["css"] = ExpressionConverter.ConvertO(__workflow_bodycss);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccess>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<string[]>> bodyurls, Expression<Func<string>> meta = null, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<int>> bodycloudStorage = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<PDFMergeInput>> body, Expression<Func<string>> meta = null)
         {
-            var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
-            var __workflow_bodyexportType = WorkflowExpression.Compile(bodyexportType, nameof(bodyexportType), required: false);
-            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodycloudStorage = WorkflowExpression.Compile(bodycloudStorage, nameof(bodycloudStorage), required: false);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/merge-pdfs";
@@ -233,33 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_meta != null)
                     callPayload.Queries["meta"] = ExpressionConverter.Convert(__workflow_meta);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
-                if (__workflow_bodyexportType != null)
-                {
-                    body["export_type"] = ExpressionConverter.ConvertO(__workflow_bodyexportType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiration != null)
-                {
-                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycloudStorage != null)
-                {
-                    body["cloud_storage"] = ExpressionConverter.ConvertO(__workflow_bodycloudStorage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
             });
         }
@@ -356,6 +295,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         public string Status { get; set; }
     }
 
+    public class TemplateUpdateInput
+    {
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("body")]
+        public string Body { get; set; }
+
+        [JsonProperty("css")]
+        public string Css { get; set; }
+    }
+
     public class ResponseSuccessSingleFile
     {
         [JsonProperty("status")]
@@ -366,6 +317,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
 
         [JsonProperty("transaction_ref")]
         public string TransactionRef { get; set; }
+    }
+
+    public class PDFMergeInput
+    {
+        [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Urls { get; set; }
+
+        [JsonProperty("export_type")]
+        public string ExportType { get; set; }
+
+        [JsonProperty("expiration")]
+        public int? Expiration { get; set; }
+
+        [JsonProperty("cloud_storage")]
+        public int? CloudStorage { get; set; }
     }
 }
 

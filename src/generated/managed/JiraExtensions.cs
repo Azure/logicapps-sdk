@@ -79,229 +79,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTransition(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<string>> bodyfieldsassigneename = null, Expression<Func<string>> bodyfieldsresolutionname = null, Expression<Func<string>> bodyhistoryMetadataactivityDescription = null, Expression<Func<string>> bodyhistoryMetadataactoravatarUrl = null, Expression<Func<string>> bodyhistoryMetadataactordisplayName = null, Expression<Func<string>> bodyhistoryMetadataactorid = null, Expression<Func<string>> bodyhistoryMetadataactortype = null, Expression<Func<string>> bodyhistoryMetadataactorurl = null, Expression<Func<string>> bodyhistoryMetadatacauseid = null, Expression<Func<string>> bodyhistoryMetadatacausetype = null, Expression<Func<string>> bodyhistoryMetadatadescription = null, Expression<Func<string>> bodyhistoryMetadataextraDataiteration = null, Expression<Func<string>> bodyhistoryMetadataextraDatastep = null, Expression<Func<string>> bodyhistoryMetadatageneratorid = null, Expression<Func<string>> bodyhistoryMetadatageneratortype = null, Expression<Func<string>> bodyhistoryMetadatatype = null, Expression<Func<string>> bodytransitionid = null, Expression<Func<bodyupdatecommentInputItem[]>> bodyupdatecomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTransition(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<UpdateTransitionInput>> body)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_issueIdOrKey = WorkflowExpression.Compile(issueIdOrKey, nameof(issueIdOrKey), required: true);
-            var __workflow_bodyfieldsassigneename = WorkflowExpression.Compile(bodyfieldsassigneename, nameof(bodyfieldsassigneename), required: false);
-            var __workflow_bodyfieldsresolutionname = WorkflowExpression.Compile(bodyfieldsresolutionname, nameof(bodyfieldsresolutionname), required: false);
-            var __workflow_bodyhistoryMetadataactivityDescription = WorkflowExpression.Compile(bodyhistoryMetadataactivityDescription, nameof(bodyhistoryMetadataactivityDescription), required: false);
-            var __workflow_bodyhistoryMetadataactoravatarUrl = WorkflowExpression.Compile(bodyhistoryMetadataactoravatarUrl, nameof(bodyhistoryMetadataactoravatarUrl), required: false);
-            var __workflow_bodyhistoryMetadataactordisplayName = WorkflowExpression.Compile(bodyhistoryMetadataactordisplayName, nameof(bodyhistoryMetadataactordisplayName), required: false);
-            var __workflow_bodyhistoryMetadataactorid = WorkflowExpression.Compile(bodyhistoryMetadataactorid, nameof(bodyhistoryMetadataactorid), required: false);
-            var __workflow_bodyhistoryMetadataactortype = WorkflowExpression.Compile(bodyhistoryMetadataactortype, nameof(bodyhistoryMetadataactortype), required: false);
-            var __workflow_bodyhistoryMetadataactorurl = WorkflowExpression.Compile(bodyhistoryMetadataactorurl, nameof(bodyhistoryMetadataactorurl), required: false);
-            var __workflow_bodyhistoryMetadatacauseid = WorkflowExpression.Compile(bodyhistoryMetadatacauseid, nameof(bodyhistoryMetadatacauseid), required: false);
-            var __workflow_bodyhistoryMetadatacausetype = WorkflowExpression.Compile(bodyhistoryMetadatacausetype, nameof(bodyhistoryMetadatacausetype), required: false);
-            var __workflow_bodyhistoryMetadatadescription = WorkflowExpression.Compile(bodyhistoryMetadatadescription, nameof(bodyhistoryMetadatadescription), required: false);
-            var __workflow_bodyhistoryMetadataextraDataiteration = WorkflowExpression.Compile(bodyhistoryMetadataextraDataiteration, nameof(bodyhistoryMetadataextraDataiteration), required: false);
-            var __workflow_bodyhistoryMetadataextraDatastep = WorkflowExpression.Compile(bodyhistoryMetadataextraDatastep, nameof(bodyhistoryMetadataextraDatastep), required: false);
-            var __workflow_bodyhistoryMetadatageneratorid = WorkflowExpression.Compile(bodyhistoryMetadatageneratorid, nameof(bodyhistoryMetadatageneratorid), required: false);
-            var __workflow_bodyhistoryMetadatageneratortype = WorkflowExpression.Compile(bodyhistoryMetadatageneratortype, nameof(bodyhistoryMetadatageneratortype), required: false);
-            var __workflow_bodyhistoryMetadatatype = WorkflowExpression.Compile(bodyhistoryMetadatatype, nameof(bodyhistoryMetadatatype), required: false);
-            var __workflow_bodytransitionid = WorkflowExpression.Compile(bodytransitionid, nameof(bodytransitionid), required: false);
-            var __workflow_bodyupdatecomment = WorkflowExpression.Compile(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/3/issue/{0}/transitions", __workflow_issueIdOrKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var fieldsObject = new JObject();
-                var fieldsObjectpropCount = 0;
-                var assigneeObject = new JObject();
-                var assigneeObjectpropCount = 0;
-                if (__workflow_bodyfieldsassigneename != null)
-                {
-                    assigneeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsassigneename);
-                    assigneeObjectpropCount++;
-                }
-
-                if (assigneeObjectpropCount > 0)
-                {
-                    fieldsObject["assignee"] = assigneeObject;
-                    fieldsObjectpropCount++;
-                }
-
-                var resolutionObject = new JObject();
-                var resolutionObjectpropCount = 0;
-                if (__workflow_bodyfieldsresolutionname != null)
-                {
-                    resolutionObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsresolutionname);
-                    resolutionObjectpropCount++;
-                }
-
-                if (resolutionObjectpropCount > 0)
-                {
-                    fieldsObject["resolution"] = resolutionObject;
-                    fieldsObjectpropCount++;
-                }
-
-                if (fieldsObjectpropCount > 0)
-                {
-                    body["fields"] = fieldsObject;
-                    bodypropCount++;
-                }
-
-                var historyMetadataObject = new JObject();
-                var historyMetadataObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadataactivityDescription != null)
-                {
-                    historyMetadataObject["activityDescription"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactivityDescription);
-                    historyMetadataObjectpropCount++;
-                }
-
-                var actorObject = new JObject();
-                var actorObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadataactoravatarUrl != null)
-                {
-                    actorObject["avatarUrl"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactoravatarUrl);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactordisplayName != null)
-                {
-                    actorObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactordisplayName);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactorid != null)
-                {
-                    actorObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactorid);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactortype != null)
-                {
-                    actorObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactortype);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactorurl != null)
-                {
-                    actorObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactorurl);
-                    actorObjectpropCount++;
-                }
-
-                if (actorObjectpropCount > 0)
-                {
-                    historyMetadataObject["actor"] = actorObject;
-                    historyMetadataObjectpropCount++;
-                }
-
-                var causeObject = new JObject();
-                var causeObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadatacauseid != null)
-                {
-                    causeObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacauseid);
-                    causeObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatacausetype != null)
-                {
-                    causeObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacausetype);
-                    causeObjectpropCount++;
-                }
-
-                if (causeObjectpropCount > 0)
-                {
-                    historyMetadataObject["cause"] = causeObject;
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatadescription != null)
-                {
-                    historyMetadataObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatadescription);
-                    historyMetadataObjectpropCount++;
-                }
-
-                var extraDataObject = new JObject();
-                var extraDataObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadataextraDataiteration != null)
-                {
-                    extraDataObject["Iteration"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataextraDataiteration);
-                    extraDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataextraDatastep != null)
-                {
-                    extraDataObject["Step"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataextraDatastep);
-                    extraDataObjectpropCount++;
-                }
-
-                if (extraDataObjectpropCount > 0)
-                {
-                    historyMetadataObject["extraData"] = extraDataObject;
-                    historyMetadataObjectpropCount++;
-                }
-
-                var generatorObject = new JObject();
-                var generatorObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadatageneratorid != null)
-                {
-                    generatorObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratorid);
-                    generatorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatageneratortype != null)
-                {
-                    generatorObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratortype);
-                    generatorObjectpropCount++;
-                }
-
-                if (generatorObjectpropCount > 0)
-                {
-                    historyMetadataObject["generator"] = generatorObject;
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatatype != null)
-                {
-                    historyMetadataObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatatype);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (historyMetadataObjectpropCount > 0)
-                {
-                    body["historyMetadata"] = historyMetadataObject;
-                    bodypropCount++;
-                }
-
-                var transitionObject = new JObject();
-                var transitionObjectpropCount = 0;
-                if (__workflow_bodytransitionid != null)
-                {
-                    transitionObject["id"] = ExpressionConverter.ConvertO(__workflow_bodytransitionid);
-                    transitionObjectpropCount++;
-                }
-
-                if (transitionObjectpropCount > 0)
-                {
-                    body["transition"] = transitionObject;
-                    bodypropCount++;
-                }
-
-                var updateObject = new JObject();
-                var updateObjectpropCount = 0;
-                if (__workflow_bodyupdatecomment != null)
-                {
-                    updateObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodyupdatecomment);
-                    updateObjectpropCount++;
-                }
-
-                if (updateObjectpropCount > 0)
-                {
-                    body["update"] = updateObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -324,11 +113,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpJiraIssueManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpJiraIssueManagement(Expression<Func<McpJiraIssueManagementInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -337,80 +124,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
-                var queryRequest = new JObject();
-                var queryRequestpropCount = 0;
-                if (__workflow_queryRequestjsonrpc != null)
-                {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestid != null)
-                {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
-                    queryRequestpropCount++;
-                }
-
-                if (__workflow_queryRequestmethod != null)
-                {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
-                    queryRequestpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    queryRequest["params"] = @paramsObject;
-                    queryRequestpropCount++;
-                }
-
-                var resultObject = new JObject();
-                var resultObjectpropCount = 0;
-                if (resultObjectpropCount > 0)
-                {
-                    queryRequest["result"] = resultObject;
-                    queryRequestpropCount++;
-                }
-
-                var errorObject = new JObject();
-                var errorObjectpropCount = 0;
-                if (errorObjectpropCount > 0)
-                {
-                    queryRequest["error"] = errorObject;
-                    queryRequestpropCount++;
-                }
-
-                if (queryRequestpropCount > 0)
-                {
-                    callPayload.Body = queryRequest;
-                }
-
+                if (__workflow_queryRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
                 return new ApiConnectionAction<MCPQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueKey, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueKey, Expression<Func<AddCommentV2Input>> body)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_issueKey = WorkflowExpression.Compile(issueKey, nameof(issueKey), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CommentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/issue/{0}/comment", __workflow_issueKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CommentResponse>(callPayload);
             });
         }
@@ -430,82 +162,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 callPayload.Queries["projectKey"] = ExpressionConverter.Convert(__workflow_projectKey);
                 callPayload.Queries["issueTypeIds"] = ExpressionConverter.Convert(__workflow_issueTypeIds);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
+                if (__workflow_item != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<CreateIssueResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> projectprojectKey, Expression<Func<string>> projectname, Expression<Func<projecttypeInput>> projecttype, Expression<Func<string>> projectleadId, Expression<Func<string>> projectdescription = null)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<CreateProjectV2Input>> project)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            var __workflow_projectprojectKey = WorkflowExpression.Compile(projectprojectKey, nameof(projectprojectKey), required: true);
-            var __workflow_projectname = WorkflowExpression.Compile(projectname, nameof(projectname), required: true);
-            var __workflow_projecttype = WorkflowExpression.Compile(projecttype, nameof(projecttype), required: true);
-            var __workflow_projectleadId = WorkflowExpression.Compile(projectleadId, nameof(projectleadId), required: true);
-            var __workflow_projectdescription = WorkflowExpression.Compile(projectdescription, nameof(projectdescription), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/project";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                var project = new JObject();
-                var projectpropCount = 0;
-                projectpropCount++;
-                project["key"] = ExpressionConverter.ConvertO(__workflow_projectprojectKey);
-                projectpropCount++;
-                project["name"] = ExpressionConverter.ConvertO(__workflow_projectname);
-                projectpropCount++;
-                project["projectTypeKey"] = ExpressionConverter.ConvertO(__workflow_projecttype);
-                projectpropCount++;
-                project["leadAccountId"] = ExpressionConverter.ConvertO(__workflow_projectleadId);
-                if (__workflow_projectdescription != null)
-                {
-                    project["description"] = ExpressionConverter.ConvertO(__workflow_projectdescription);
-                    projectpropCount++;
-                }
-
-                if (projectpropCount > 0)
-                {
-                    callPayload.Body = project;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_project);
                 return new ApiConnectionAction<CreateProjectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateProjectCategory(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateProjectCategory(Expression<Func<string>> xRequestJirainstance, Expression<Func<CreateProjectCategoryV2Input>> body = null)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/projectCategory";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -530,42 +221,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditIssue(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<bool>> notifyUsers = null, Expression<Func<bool>> overrideScreenSecurity = null, Expression<Func<bool>> overrideEditableFlag = null, Expression<Func<string>> bodytransitiontransitionId = null, Expression<Func<string>> bodytransitiontransitionLooped = null, Expression<Func<string>> bodyhistoryMetadatametadataType = null, Expression<Func<string>> bodyhistoryMetadatametadataDescription = null, Expression<Func<string>> bodyhistoryMetadatametadataDescriptionKey = null, Expression<Func<string>> bodyhistoryMetadatametadataActivityDescription = null, Expression<Func<string>> bodyhistoryMetadatametadataActivityDescriptionKey = null, Expression<Func<string>> bodyhistoryMetadatametadataEmailDescription = null, Expression<Func<string>> bodyhistoryMetadatametadataEmailDescriptionKey = null, Expression<Func<string>> bodyhistoryMetadataactoractorId = null, Expression<Func<string>> bodyhistoryMetadataactoractorDisplayName = null, Expression<Func<string>> bodyhistoryMetadataactoractorDisplayNameKey = null, Expression<Func<string>> bodyhistoryMetadataactoractorType = null, Expression<Func<string>> bodyhistoryMetadataactoractorAvatarUrl = null, Expression<Func<string>> bodyhistoryMetadataactoractorUrl = null, Expression<Func<string>> bodyhistoryMetadatageneratorgeneratorId = null, Expression<Func<string>> bodyhistoryMetadatageneratorgeneratorDisplayName = null, Expression<Func<string>> bodyhistoryMetadatageneratorgeneratorDisplayNameKey = null, Expression<Func<string>> bodyhistoryMetadatageneratorgeneratorType = null, Expression<Func<string>> bodyhistoryMetadatageneratorgeneratorAvatarUrl = null, Expression<Func<string>> bodyhistoryMetadatageneratorgeneratorUrl = null, Expression<Func<string>> bodyhistoryMetadatacausecauseId = null, Expression<Func<string>> bodyhistoryMetadatacausecauseDisplayName = null, Expression<Func<string>> bodyhistoryMetadatacausecauseDisplayNameKey = null, Expression<Func<string>> bodyhistoryMetadatacausecauseType = null, Expression<Func<string>> bodyhistoryMetadatacausecauseAvatarUrl = null, Expression<Func<string>> bodyhistoryMetadatacausecauseUrl = null, Expression<Func<string>> bodyhistoryMetadataextraData = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditIssue(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<bool>> notifyUsers = null, Expression<Func<bool>> overrideScreenSecurity = null, Expression<Func<bool>> overrideEditableFlag = null, Expression<Func<EditIssueV2Input>> body = null)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_issueIdOrKey = WorkflowExpression.Compile(issueIdOrKey, nameof(issueIdOrKey), required: true);
             var __workflow_notifyUsers = WorkflowExpression.Compile(notifyUsers, nameof(notifyUsers), required: false);
             var __workflow_overrideScreenSecurity = WorkflowExpression.Compile(overrideScreenSecurity, nameof(overrideScreenSecurity), required: false);
             var __workflow_overrideEditableFlag = WorkflowExpression.Compile(overrideEditableFlag, nameof(overrideEditableFlag), required: false);
-            var __workflow_bodytransitiontransitionId = WorkflowExpression.Compile(bodytransitiontransitionId, nameof(bodytransitiontransitionId), required: false);
-            var __workflow_bodytransitiontransitionLooped = WorkflowExpression.Compile(bodytransitiontransitionLooped, nameof(bodytransitiontransitionLooped), required: false);
-            var __workflow_bodyhistoryMetadatametadataType = WorkflowExpression.Compile(bodyhistoryMetadatametadataType, nameof(bodyhistoryMetadatametadataType), required: false);
-            var __workflow_bodyhistoryMetadatametadataDescription = WorkflowExpression.Compile(bodyhistoryMetadatametadataDescription, nameof(bodyhistoryMetadatametadataDescription), required: false);
-            var __workflow_bodyhistoryMetadatametadataDescriptionKey = WorkflowExpression.Compile(bodyhistoryMetadatametadataDescriptionKey, nameof(bodyhistoryMetadatametadataDescriptionKey), required: false);
-            var __workflow_bodyhistoryMetadatametadataActivityDescription = WorkflowExpression.Compile(bodyhistoryMetadatametadataActivityDescription, nameof(bodyhistoryMetadatametadataActivityDescription), required: false);
-            var __workflow_bodyhistoryMetadatametadataActivityDescriptionKey = WorkflowExpression.Compile(bodyhistoryMetadatametadataActivityDescriptionKey, nameof(bodyhistoryMetadatametadataActivityDescriptionKey), required: false);
-            var __workflow_bodyhistoryMetadatametadataEmailDescription = WorkflowExpression.Compile(bodyhistoryMetadatametadataEmailDescription, nameof(bodyhistoryMetadatametadataEmailDescription), required: false);
-            var __workflow_bodyhistoryMetadatametadataEmailDescriptionKey = WorkflowExpression.Compile(bodyhistoryMetadatametadataEmailDescriptionKey, nameof(bodyhistoryMetadatametadataEmailDescriptionKey), required: false);
-            var __workflow_bodyhistoryMetadataactoractorId = WorkflowExpression.Compile(bodyhistoryMetadataactoractorId, nameof(bodyhistoryMetadataactoractorId), required: false);
-            var __workflow_bodyhistoryMetadataactoractorDisplayName = WorkflowExpression.Compile(bodyhistoryMetadataactoractorDisplayName, nameof(bodyhistoryMetadataactoractorDisplayName), required: false);
-            var __workflow_bodyhistoryMetadataactoractorDisplayNameKey = WorkflowExpression.Compile(bodyhistoryMetadataactoractorDisplayNameKey, nameof(bodyhistoryMetadataactoractorDisplayNameKey), required: false);
-            var __workflow_bodyhistoryMetadataactoractorType = WorkflowExpression.Compile(bodyhistoryMetadataactoractorType, nameof(bodyhistoryMetadataactoractorType), required: false);
-            var __workflow_bodyhistoryMetadataactoractorAvatarUrl = WorkflowExpression.Compile(bodyhistoryMetadataactoractorAvatarUrl, nameof(bodyhistoryMetadataactoractorAvatarUrl), required: false);
-            var __workflow_bodyhistoryMetadataactoractorUrl = WorkflowExpression.Compile(bodyhistoryMetadataactoractorUrl, nameof(bodyhistoryMetadataactoractorUrl), required: false);
-            var __workflow_bodyhistoryMetadatageneratorgeneratorId = WorkflowExpression.Compile(bodyhistoryMetadatageneratorgeneratorId, nameof(bodyhistoryMetadatageneratorgeneratorId), required: false);
-            var __workflow_bodyhistoryMetadatageneratorgeneratorDisplayName = WorkflowExpression.Compile(bodyhistoryMetadatageneratorgeneratorDisplayName, nameof(bodyhistoryMetadatageneratorgeneratorDisplayName), required: false);
-            var __workflow_bodyhistoryMetadatageneratorgeneratorDisplayNameKey = WorkflowExpression.Compile(bodyhistoryMetadatageneratorgeneratorDisplayNameKey, nameof(bodyhistoryMetadatageneratorgeneratorDisplayNameKey), required: false);
-            var __workflow_bodyhistoryMetadatageneratorgeneratorType = WorkflowExpression.Compile(bodyhistoryMetadatageneratorgeneratorType, nameof(bodyhistoryMetadatageneratorgeneratorType), required: false);
-            var __workflow_bodyhistoryMetadatageneratorgeneratorAvatarUrl = WorkflowExpression.Compile(bodyhistoryMetadatageneratorgeneratorAvatarUrl, nameof(bodyhistoryMetadatageneratorgeneratorAvatarUrl), required: false);
-            var __workflow_bodyhistoryMetadatageneratorgeneratorUrl = WorkflowExpression.Compile(bodyhistoryMetadatageneratorgeneratorUrl, nameof(bodyhistoryMetadatageneratorgeneratorUrl), required: false);
-            var __workflow_bodyhistoryMetadatacausecauseId = WorkflowExpression.Compile(bodyhistoryMetadatacausecauseId, nameof(bodyhistoryMetadatacausecauseId), required: false);
-            var __workflow_bodyhistoryMetadatacausecauseDisplayName = WorkflowExpression.Compile(bodyhistoryMetadatacausecauseDisplayName, nameof(bodyhistoryMetadatacausecauseDisplayName), required: false);
-            var __workflow_bodyhistoryMetadatacausecauseDisplayNameKey = WorkflowExpression.Compile(bodyhistoryMetadatacausecauseDisplayNameKey, nameof(bodyhistoryMetadatacausecauseDisplayNameKey), required: false);
-            var __workflow_bodyhistoryMetadatacausecauseType = WorkflowExpression.Compile(bodyhistoryMetadatacausecauseType, nameof(bodyhistoryMetadatacausecauseType), required: false);
-            var __workflow_bodyhistoryMetadatacausecauseAvatarUrl = WorkflowExpression.Compile(bodyhistoryMetadatacausecauseAvatarUrl, nameof(bodyhistoryMetadatacausecauseAvatarUrl), required: false);
-            var __workflow_bodyhistoryMetadatacausecauseUrl = WorkflowExpression.Compile(bodyhistoryMetadatacausecauseUrl, nameof(bodyhistoryMetadatacausecauseUrl), required: false);
-            var __workflow_bodyhistoryMetadataextraData = WorkflowExpression.Compile(bodyhistoryMetadataextraData, nameof(bodyhistoryMetadataextraData), required: false);
-            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/3/issue/{0}", __workflow_issueIdOrKey.WithUrlEncoding(1)));
@@ -578,243 +241,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
                 if (__workflow_overrideEditableFlag != null)
                     callPayload.Queries["overrideEditableFlag"] = ExpressionConverter.Convert(__workflow_overrideEditableFlag);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var transitionObject = new JObject();
-                var transitionObjectpropCount = 0;
-                if (__workflow_bodytransitiontransitionId != null)
-                {
-                    transitionObject["id"] = ExpressionConverter.ConvertO(__workflow_bodytransitiontransitionId);
-                    transitionObjectpropCount++;
-                }
-
-                if (__workflow_bodytransitiontransitionLooped != null)
-                {
-                    transitionObject["looped"] = ExpressionConverter.ConvertO(__workflow_bodytransitiontransitionLooped);
-                    transitionObjectpropCount++;
-                }
-
-                if (transitionObjectpropCount > 0)
-                {
-                    body["transition"] = transitionObject;
-                    bodypropCount++;
-                }
-
-                var fieldsObject = new JObject();
-                var fieldsObjectpropCount = 0;
-                if (fieldsObjectpropCount > 0)
-                {
-                    body["fields"] = fieldsObject;
-                    bodypropCount++;
-                }
-
-                var updateObject = new JObject();
-                var updateObjectpropCount = 0;
-                if (updateObjectpropCount > 0)
-                {
-                    body["update"] = updateObject;
-                    bodypropCount++;
-                }
-
-                var historyMetadataObject = new JObject();
-                var historyMetadataObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadatametadataType != null)
-                {
-                    historyMetadataObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatametadataType);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatametadataDescription != null)
-                {
-                    historyMetadataObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatametadataDescription);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatametadataDescriptionKey != null)
-                {
-                    historyMetadataObject["descriptionKey"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatametadataDescriptionKey);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatametadataActivityDescription != null)
-                {
-                    historyMetadataObject["activityDescription"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatametadataActivityDescription);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatametadataActivityDescriptionKey != null)
-                {
-                    historyMetadataObject["activityDescriptionKey"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatametadataActivityDescriptionKey);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatametadataEmailDescription != null)
-                {
-                    historyMetadataObject["emailDescription"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatametadataEmailDescription);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatametadataEmailDescriptionKey != null)
-                {
-                    historyMetadataObject["emailDescriptionKey"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatametadataEmailDescriptionKey);
-                    historyMetadataObjectpropCount++;
-                }
-
-                var actorObject = new JObject();
-                var actorObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadataactoractorId != null)
-                {
-                    actorObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactoractorId);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactoractorDisplayName != null)
-                {
-                    actorObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactoractorDisplayName);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactoractorDisplayNameKey != null)
-                {
-                    actorObject["displayNameKey"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactoractorDisplayNameKey);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactoractorType != null)
-                {
-                    actorObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactoractorType);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactoractorAvatarUrl != null)
-                {
-                    actorObject["avatarUrl"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactoractorAvatarUrl);
-                    actorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataactoractorUrl != null)
-                {
-                    actorObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataactoractorUrl);
-                    actorObjectpropCount++;
-                }
-
-                if (actorObjectpropCount > 0)
-                {
-                    historyMetadataObject["actor"] = actorObject;
-                    historyMetadataObjectpropCount++;
-                }
-
-                var generatorObject = new JObject();
-                var generatorObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadatageneratorgeneratorId != null)
-                {
-                    generatorObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratorgeneratorId);
-                    generatorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatageneratorgeneratorDisplayName != null)
-                {
-                    generatorObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratorgeneratorDisplayName);
-                    generatorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatageneratorgeneratorDisplayNameKey != null)
-                {
-                    generatorObject["displayNameKey"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratorgeneratorDisplayNameKey);
-                    generatorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatageneratorgeneratorType != null)
-                {
-                    generatorObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratorgeneratorType);
-                    generatorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatageneratorgeneratorAvatarUrl != null)
-                {
-                    generatorObject["avatarUrl"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratorgeneratorAvatarUrl);
-                    generatorObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatageneratorgeneratorUrl != null)
-                {
-                    generatorObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatageneratorgeneratorUrl);
-                    generatorObjectpropCount++;
-                }
-
-                if (generatorObjectpropCount > 0)
-                {
-                    historyMetadataObject["generator"] = generatorObject;
-                    historyMetadataObjectpropCount++;
-                }
-
-                var causeObject = new JObject();
-                var causeObjectpropCount = 0;
-                if (__workflow_bodyhistoryMetadatacausecauseId != null)
-                {
-                    causeObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacausecauseId);
-                    causeObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatacausecauseDisplayName != null)
-                {
-                    causeObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacausecauseDisplayName);
-                    causeObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatacausecauseDisplayNameKey != null)
-                {
-                    causeObject["displayNameKey"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacausecauseDisplayNameKey);
-                    causeObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatacausecauseType != null)
-                {
-                    causeObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacausecauseType);
-                    causeObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatacausecauseAvatarUrl != null)
-                {
-                    causeObject["avatarUrl"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacausecauseAvatarUrl);
-                    causeObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadatacausecauseUrl != null)
-                {
-                    causeObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadatacausecauseUrl);
-                    causeObjectpropCount++;
-                }
-
-                if (causeObjectpropCount > 0)
-                {
-                    historyMetadataObject["cause"] = causeObject;
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (__workflow_bodyhistoryMetadataextraData != null)
-                {
-                    historyMetadataObject["extraData"] = ExpressionConverter.ConvertO(__workflow_bodyhistoryMetadataextraData);
-                    historyMetadataObjectpropCount++;
-                }
-
-                if (historyMetadataObjectpropCount > 0)
-                {
-                    body["historyMetadata"] = historyMetadataObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyproperties != null)
-                {
-                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -942,121 +370,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> projectIdOrKey, Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectTypeKey = null, Expression<Func<string>> bodyprojectTemplateKey = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylead = null, Expression<Func<string>> bodyleadAccountId = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyassigneeType = null, Expression<Func<string>> bodyavatarId = null, Expression<Func<string>> bodyissueSecurityScheme = null, Expression<Func<string>> bodypermissionScheme = null, Expression<Func<string>> bodynotificationScheme = null, Expression<Func<string>> bodycategoryId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> projectIdOrKey, Expression<Func<UpdateProjectV2Input>> body = null)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_projectIdOrKey = WorkflowExpression.Compile(projectIdOrKey, nameof(projectIdOrKey), required: true);
-            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyprojectTypeKey = WorkflowExpression.Compile(bodyprojectTypeKey, nameof(bodyprojectTypeKey), required: false);
-            var __workflow_bodyprojectTemplateKey = WorkflowExpression.Compile(bodyprojectTemplateKey, nameof(bodyprojectTemplateKey), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodylead = WorkflowExpression.Compile(bodylead, nameof(bodylead), required: false);
-            var __workflow_bodyleadAccountId = WorkflowExpression.Compile(bodyleadAccountId, nameof(bodyleadAccountId), required: false);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodyassigneeType = WorkflowExpression.Compile(bodyassigneeType, nameof(bodyassigneeType), required: false);
-            var __workflow_bodyavatarId = WorkflowExpression.Compile(bodyavatarId, nameof(bodyavatarId), required: false);
-            var __workflow_bodyissueSecurityScheme = WorkflowExpression.Compile(bodyissueSecurityScheme, nameof(bodyissueSecurityScheme), required: false);
-            var __workflow_bodypermissionScheme = WorkflowExpression.Compile(bodypermissionScheme, nameof(bodypermissionScheme), required: false);
-            var __workflow_bodynotificationScheme = WorkflowExpression.Compile(bodynotificationScheme, nameof(bodynotificationScheme), required: false);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/project/{0}", __workflow_projectIdOrKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodykey != null)
-                {
-                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectTypeKey != null)
-                {
-                    body["projectTypeKey"] = ExpressionConverter.ConvertO(__workflow_bodyprojectTypeKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectTemplateKey != null)
-                {
-                    body["projectTemplateKey"] = ExpressionConverter.ConvertO(__workflow_bodyprojectTemplateKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylead != null)
-                {
-                    body["lead"] = ExpressionConverter.ConvertO(__workflow_bodylead);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyleadAccountId != null)
-                {
-                    body["leadAccountId"] = ExpressionConverter.ConvertO(__workflow_bodyleadAccountId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassigneeType != null)
-                {
-                    body["assigneeType"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarId != null)
-                {
-                    body["avatarId"] = ExpressionConverter.ConvertO(__workflow_bodyavatarId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyissueSecurityScheme != null)
-                {
-                    body["issueSecurityScheme"] = ExpressionConverter.ConvertO(__workflow_bodyissueSecurityScheme);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypermissionScheme != null)
-                {
-                    body["permissionScheme"] = ExpressionConverter.ConvertO(__workflow_bodypermissionScheme);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotificationScheme != null)
-                {
-                    body["notificationScheme"] = ExpressionConverter.ConvertO(__workflow_bodynotificationScheme);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategoryId != null)
-                {
-                    body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1227,19 +553,154 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Name { get; set; }
     }
 
-    public class bodyupdatecommentInputItem
+    public class UpdateTransitionInput
     {
-        [JsonProperty("add")]
-        public bodyupdatecommentInputItemAddType Add { get; set; }
+        [JsonProperty("fields")]
+        public UpdateTransitionInputFieldsType Fields { get; set; }
+
+        [JsonProperty("historyMetadata")]
+        public UpdateTransitionInputHistoryMetadataType HistoryMetadata { get; set; }
+
+        [JsonProperty("transition")]
+        public UpdateTransitionInputTransitionType Transition { get; set; }
+
+        [JsonProperty("update")]
+        public UpdateTransitionInputUpdateType Update { get; set; }
     }
 
-    public class bodyupdatecommentInputItemAddType
+    public class UpdateTransitionInputFieldsType
+    {
+        [JsonProperty("assignee")]
+        public UpdateTransitionInputFieldsTypeAssigneeType Assignee { get; set; }
+
+        [JsonProperty("resolution")]
+        public UpdateTransitionInputFieldsTypeResolutionType Resolution { get; set; }
+    }
+
+    public class UpdateTransitionInputFieldsTypeAssigneeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateTransitionInputFieldsTypeResolutionType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateTransitionInputHistoryMetadataType
+    {
+        [JsonProperty("activityDescription")]
+        public string ActivityDescription { get; set; }
+
+        [JsonProperty("actor")]
+        public UpdateTransitionInputHistoryMetadataTypeActorType Actor { get; set; }
+
+        [JsonProperty("cause")]
+        public UpdateTransitionInputHistoryMetadataTypeCauseType Cause { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("extraData")]
+        public UpdateTransitionInputHistoryMetadataTypeExtraDataType ExtraData { get; set; }
+
+        [JsonProperty("generator")]
+        public UpdateTransitionInputHistoryMetadataTypeGeneratorType Generator { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class UpdateTransitionInputHistoryMetadataTypeActorType
+    {
+        [JsonProperty("avatarUrl")]
+        public string AvatarUrl { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class UpdateTransitionInputHistoryMetadataTypeCauseType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class UpdateTransitionInputHistoryMetadataTypeExtraDataType
+    {
+        public string Iteration { get; set; }
+        public string Step { get; set; }
+    }
+
+    public class UpdateTransitionInputHistoryMetadataTypeGeneratorType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class UpdateTransitionInputTransitionType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class UpdateTransitionInputUpdateType
+    {
+        [JsonProperty("comment")]
+        public UpdateTransitionInputUpdateTypeCommentTypeItem[] Comment { get; set; }
+    }
+
+    public class UpdateTransitionInputUpdateTypeCommentTypeItem
+    {
+        [JsonProperty("add")]
+        public UpdateTransitionInputUpdateTypeCommentTypeItemAddType Add { get; set; }
+    }
+
+    public class UpdateTransitionInputUpdateTypeCommentTypeItemAddType
     {
         [JsonProperty("body")]
         public string Body { get; set; }
     }
 
     public class MCPQueryResponse
+    {
+        [JsonProperty("jsonrpc")]
+        public string Jsonrpc { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("method")]
+        public string Method { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
+
+        [JsonProperty("result")]
+        public JToken Result { get; set; }
+
+        [JsonProperty("error")]
+        public JToken Error { get; set; }
+    }
+
+    public class McpJiraIssueManagementInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -1272,6 +733,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string CreatedDateTime { get; set; }
     }
 
+    public class AddCommentV2Input
+    {
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+    }
+
     public class CreateIssueResponse
     {
         [JsonProperty("id")]
@@ -1290,8 +757,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string ProjectKey { get; set; }
     }
 
+    public class CreateProjectV2Input
+    {
+        [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProjectKey { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("projectTypeKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateProjectV2InputTypeType Type { get; set; }
+
+        [JsonProperty("leadAccountId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LeadId { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum projecttypeInput
+    public enum CreateProjectV2InputTypeType
     {
         [EnumMember(Value = "Software - Scrum software development")]
         SoftwareScrumSoftwareDevelopment,
@@ -1307,7 +792,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         BusinessProcessManagement
     }
 
-    public class bodypropertiesInputItem
+    public class CreateProjectCategoryV2Input
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class EditIssueV2Input
+    {
+        [JsonProperty("transition")]
+        public EditIssueV2InputTransitionType Transition { get; set; }
+
+        [JsonProperty("fields")]
+        public JToken Fields { get; set; }
+
+        [JsonProperty("update")]
+        public JToken Update { get; set; }
+
+        [JsonProperty("historyMetadata")]
+        public EditIssueV2InputHistoryMetadataType HistoryMetadata { get; set; }
+
+        [JsonProperty("properties")]
+        public EditIssueV2InputPropertiesTypeItem[] Properties { get; set; }
+    }
+
+    public class EditIssueV2InputTransitionType
+    {
+        [JsonProperty("id")]
+        public string TransitionId { get; set; }
+
+        [JsonProperty("looped")]
+        public string TransitionLooped { get; set; }
+    }
+
+    public class EditIssueV2InputHistoryMetadataType
+    {
+        [JsonProperty("type")]
+        public string MetadataType { get; set; }
+
+        [JsonProperty("description")]
+        public string MetadataDescription { get; set; }
+
+        [JsonProperty("descriptionKey")]
+        public string MetadataDescriptionKey { get; set; }
+
+        [JsonProperty("activityDescription")]
+        public string MetadataActivityDescription { get; set; }
+
+        [JsonProperty("activityDescriptionKey")]
+        public string MetadataActivityDescriptionKey { get; set; }
+
+        [JsonProperty("emailDescription")]
+        public string MetadataEmailDescription { get; set; }
+
+        [JsonProperty("emailDescriptionKey")]
+        public string MetadataEmailDescriptionKey { get; set; }
+
+        [JsonProperty("actor")]
+        public EditIssueV2InputHistoryMetadataTypeActorType Actor { get; set; }
+
+        [JsonProperty("generator")]
+        public EditIssueV2InputHistoryMetadataTypeGeneratorType Generator { get; set; }
+
+        [JsonProperty("cause")]
+        public EditIssueV2InputHistoryMetadataTypeCauseType Cause { get; set; }
+
+        [JsonProperty("extraData")]
+        public string ExtraData { get; set; }
+    }
+
+    public class EditIssueV2InputHistoryMetadataTypeActorType
+    {
+        [JsonProperty("id")]
+        public string ActorId { get; set; }
+
+        [JsonProperty("displayName")]
+        public string ActorDisplayName { get; set; }
+
+        [JsonProperty("displayNameKey")]
+        public string ActorDisplayNameKey { get; set; }
+
+        [JsonProperty("type")]
+        public string ActorType { get; set; }
+
+        [JsonProperty("avatarUrl")]
+        public string ActorAvatarUrl { get; set; }
+
+        [JsonProperty("url")]
+        public string ActorUrl { get; set; }
+    }
+
+    public class EditIssueV2InputHistoryMetadataTypeGeneratorType
+    {
+        [JsonProperty("id")]
+        public string GeneratorId { get; set; }
+
+        [JsonProperty("displayName")]
+        public string GeneratorDisplayName { get; set; }
+
+        [JsonProperty("displayNameKey")]
+        public string GeneratorDisplayNameKey { get; set; }
+
+        [JsonProperty("type")]
+        public string GeneratorType { get; set; }
+
+        [JsonProperty("avatarUrl")]
+        public string GeneratorAvatarUrl { get; set; }
+
+        [JsonProperty("url")]
+        public string GeneratorUrl { get; set; }
+    }
+
+    public class EditIssueV2InputHistoryMetadataTypeCauseType
+    {
+        [JsonProperty("id")]
+        public string CauseId { get; set; }
+
+        [JsonProperty("displayName")]
+        public string CauseDisplayName { get; set; }
+
+        [JsonProperty("displayNameKey")]
+        public string CauseDisplayNameKey { get; set; }
+
+        [JsonProperty("type")]
+        public string CauseType { get; set; }
+
+        [JsonProperty("avatarUrl")]
+        public string CauseAvatarUrl { get; set; }
+
+        [JsonProperty("url")]
+        public string CauseUrl { get; set; }
+    }
+
+    public class EditIssueV2InputPropertiesTypeItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -1647,6 +1267,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
+    }
+
+    public class UpdateProjectV2Input
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("projectTypeKey")]
+        public string ProjectTypeKey { get; set; }
+
+        [JsonProperty("projectTemplateKey")]
+        public string ProjectTemplateKey { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("lead")]
+        public string Lead { get; set; }
+
+        [JsonProperty("leadAccountId")]
+        public string LeadAccountId { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("assigneeType")]
+        public string AssigneeType { get; set; }
+
+        [JsonProperty("avatarId")]
+        public string AvatarId { get; set; }
+
+        [JsonProperty("issueSecurityScheme")]
+        public string IssueSecurityScheme { get; set; }
+
+        [JsonProperty("permissionScheme")]
+        public string PermissionScheme { get; set; }
+
+        [JsonProperty("notificationScheme")]
+        public string NotificationScheme { get; set; }
+
+        [JsonProperty("categoryId")]
+        public string CategoryId { get; set; }
     }
 }
 

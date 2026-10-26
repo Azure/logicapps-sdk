@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
     public class ClevertapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadProfiles(Expression<Func<bodydInputItem[]>> bodyd)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadProfiles(Expression<Func<UploadProfilesInput>> body)
         {
-            var __workflow_bodyd = WorkflowExpression.Compile(bodyd, nameof(bodyd), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/upload";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["d"] = ExpressionConverter.ConvertO(__workflow_bodyd);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -39,22 +31,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
     {
     }
 
-    public class bodydInputItem
+    public class UploadProfilesInput
     {
-        [JsonProperty("type")]
-        public string RecordType { get; set; }
-
-        [JsonProperty("identity")]
-        public string CleverTapIdentity { get; set; }
-
-        [JsonProperty("$source")]
-        public string DataSource { get; set; }
-
-        [JsonProperty("profileData")]
-        public bodydInputItemProfileDataType ProfileData { get; set; }
+        [JsonProperty("d", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UploadProfilesInputDTypeItem[] D { get; set; }
     }
 
-    public class bodydInputItemProfileDataType
+    public class UploadProfilesInputDTypeItem
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string RecordType { get; set; } = "profile";
+
+        [JsonProperty("identity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CleverTapIdentity { get; set; }
+
+        [JsonProperty("$source", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string DataSource { get; set; } = "Dynamics_CRM";
+
+        [JsonProperty("profileData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UploadProfilesInputDTypeItemProfileDataType ProfileData { get; set; }
+    }
+
+    public class UploadProfilesInputDTypeItemProfileDataType
     {
         public string Email { get; set; }
         public string Phone { get; set; }

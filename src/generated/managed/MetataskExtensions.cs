@@ -16,42 +16,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 
     public class MetataskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSubscriptionProcessCompleted(Expression<Func<string>> webhookRequestBodyconditionstemplate = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSubscriptionProcessCompleted(Expression<Func<CreateSubscriptionProcessCompletedInput>> webhookRequestBody, FlowRecurrence recurrence = null)
         {
-            var __workflow_webhookRequestBodyconditionstemplate = WorkflowExpression.Compile(webhookRequestBodyconditionstemplate, nameof(webhookRequestBodyconditionstemplate), required: false);
+            var __workflow_webhookRequestBody = WorkflowExpression.Compile(webhookRequestBody, nameof(webhookRequestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/oauth/subscription/process_completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhookRequestBody = new JObject();
-                var webhookRequestBodypropCount = 0;
-                webhookRequestBody["event"] = "PROCESS_COMPLETED";
-                webhookRequestBodypropCount++;
-                webhookRequestBody["target_url"] = "#{listCallbackUrl()}";
-                webhookRequestBodypropCount++;
-                var conditionsObject = new JObject();
-                var conditionsObjectpropCount = 0;
-                if (__workflow_webhookRequestBodyconditionstemplate != null)
-                {
-                    conditionsObject["templateId"] = ExpressionConverter.ConvertO(__workflow_webhookRequestBodyconditionstemplate);
-                    conditionsObjectpropCount++;
-                }
-
-                if (conditionsObjectpropCount > 0)
-                {
-                    webhookRequestBody["conditions"] = conditionsObject;
-                    webhookRequestBodypropCount++;
-                }
-
-                if (webhookRequestBodypropCount > 0)
-                {
-                    callPayload.Body = webhookRequestBody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookRequestBody);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class CreateSubscriptionProcessCompletedInput
+    {
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "PROCESS_COMPLETED";
+
+        [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("conditions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateSubscriptionProcessCompletedInputConditionsType Conditions { get; set; }
+    }
+
+    public class CreateSubscriptionProcessCompletedInputConditionsType
+    {
+        [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Template { get; set; }
     }
 }
 

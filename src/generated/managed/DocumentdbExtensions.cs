@@ -13,11 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
     public class DocumentdbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<PostDocumentsResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> xMsDocumentdbIsUpsert = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<PostDocumentsResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<object>> body, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> xMsDocumentdbIsUpsert = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xMsMaxItemCount = WorkflowExpression.Compile(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
             var __workflow_xMsContinuation = WorkflowExpression.Compile(xMsContinuation, nameof(xMsContinuation), required: false);
             var __workflow_xMsConsistencyLevel = WorkflowExpression.Compile(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
@@ -50,25 +51,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                     callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPostTriggerInclude);
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostDocumentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration> CreateStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration> CreateStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<CreateStoredProcedureV2Input>> body, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
-            var __workflow_bodyfunctionDefinition = WorkflowExpression.Compile(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -77,25 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfunctionDefinition != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodyfunctionDefinition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
             });
         }
@@ -181,7 +157,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                     callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbRawPartitionkey);
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
+                if (__workflow_parameters != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -329,12 +306,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<PutDocumentResponse, ApiConnectionActionConfiguration> ReplaceDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<PutDocumentResponse, ApiConnectionActionConfiguration> ReplaceDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<object>> body, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xMsDocumentdbRawPartitionkey = WorkflowExpression.Compile(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
             var __workflow_xMsMaxItemCount = WorkflowExpression.Compile(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
             var __workflow_xMsContinuation = WorkflowExpression.Compile(xMsContinuation, nameof(xMsContinuation), required: false);
@@ -367,26 +345,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                     callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPostTriggerInclude);
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PutDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration> ReplaceStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration> ReplaceStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<ReplaceStoredProcedureV2Input>> body, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
             var __workflow_sprocId = WorkflowExpression.Compile(sprocId, nameof(sprocId), required: true);
-            var __workflow_bodyfunctionDefinition = WorkflowExpression.Compile(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -395,25 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfunctionDefinition != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodyfunctionDefinition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
             });
         }
@@ -478,6 +431,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
 
         [JsonProperty("body")]
         public string Body { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class CreateStoredProcedureV2Input
+    {
+        [JsonProperty("body")]
+        public string FunctionDefinition { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -602,6 +564,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
     {
         [JsonProperty("_rid")]
         public string Rid { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class ReplaceStoredProcedureV2Input
+    {
+        [JsonProperty("body")]
+        public string FunctionDefinition { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }

@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/contentProperties/{0}/values", __workflow_contentPropertyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SeismicContentManagerDomainOfValues[]>(callPayload);
             });
         }
@@ -60,32 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration> AddContentProperty(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string[]>> bodycontentPropertyValues, Expression<Func<SeismicContentManagerContentPropertyTeamSiteInfo[]>> bodyteamsiteIds)
+        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration> AddContentProperty(Expression<Func<AddContentPropertyInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodycontentPropertyValues = WorkflowExpression.Compile(bodycontentPropertyValues, nameof(bodycontentPropertyValues), required: true);
-            var __workflow_bodyteamsiteIds = WorkflowExpression.Compile(bodyteamsiteIds, nameof(bodyteamsiteIds), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v2/contentProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["domainOfValues"] = ExpressionConverter.ConvertO(__workflow_bodycontentPropertyValues);
-                bodypropCount++;
-                body["teamSites"] = ExpressionConverter.ConvertO(__workflow_bodyteamsiteIds);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SeismicContentManagerAddContentPropertyResponse>(callPayload);
             });
         }
@@ -229,8 +214,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         public string ContentPropertyId { get; set; }
     }
 
+    public class AddContentPropertyInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddContentPropertyInputTypeType Type { get; set; }
+
+        [JsonProperty("domainOfValues", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] ContentPropertyValues { get; set; }
+
+        [JsonProperty("teamSites", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SeismicContentManagerContentPropertyTeamSiteInfo[] TeamsiteIds { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum AddContentPropertyInputTypeType
     {
         [EnumMember(Value = "string")]
         String,

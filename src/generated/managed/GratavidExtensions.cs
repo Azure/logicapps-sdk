@@ -13,17 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     public class GratavidActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodyemail, Expression<Func<string>> bodycomments, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null, Expression<Func<string>> bodyassignedTo = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodycustomUserId = WorkflowExpression.Compile(bodycustomUserId, nameof(bodycustomUserId), required: false);
-            var __workflow_bodycustomAccountId = WorkflowExpression.Compile(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
-            var __workflow_bodytextOptIn = WorkflowExpression.Compile(bodytextOptIn, nameof(bodytextOptIn), required: false);
-            var __workflow_bodycellNumber = WorkflowExpression.Compile(bodycellNumber, nameof(bodycellNumber), required: false);
-            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -31,74 +23,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
                 callPayload.Queries["event"] = Convert.ToString("createTask");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomUserId != null)
-                {
-                    body["customUserId"] = ExpressionConverter.ConvertO(__workflow_bodycustomUserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomAccountId != null)
-                {
-                    body["customAccountId"] = ExpressionConverter.ConvertO(__workflow_bodycustomAccountId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextOptIn != null)
-                {
-                    body["textOptIn"] = ExpressionConverter.ConvertO(__workflow_bodytextOptIn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycellNumber != null)
-                {
-                    body["cellNumber"] = ExpressionConverter.ConvertO(__workflow_bodycellNumber);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
-                if (__workflow_bodyassignedTo != null)
-                {
-                    body["assignedTo"] = ExpressionConverter.ConvertO(__workflow_bodyassignedTo);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<SendNoteResponse, ApiConnectionActionConfiguration> SendNote(Expression<Func<string>> bodynoteId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null)
+        public IBodyWorkflowAction<SendNoteResponse, ApiConnectionActionConfiguration> SendNote(Expression<Func<SendNoteInput>> body = null)
         {
-            var __workflow_bodynoteId = WorkflowExpression.Compile(bodynoteId, nameof(bodynoteId), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodycustomUserId = WorkflowExpression.Compile(bodycustomUserId, nameof(bodycustomUserId), required: false);
-            var __workflow_bodycustomAccountId = WorkflowExpression.Compile(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
-            var __workflow_bodytextOptIn = WorkflowExpression.Compile(bodytextOptIn, nameof(bodytextOptIn), required: false);
-            var __workflow_bodycellNumber = WorkflowExpression.Compile(bodycellNumber, nameof(bodycellNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -106,53 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
                 callPayload.Queries["event"] = Convert.ToString("sendNote");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["noteId"] = ExpressionConverter.ConvertO(__workflow_bodynoteId);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomUserId != null)
-                {
-                    body["customUserId"] = ExpressionConverter.ConvertO(__workflow_bodycustomUserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustomAccountId != null)
-                {
-                    body["customAccountId"] = ExpressionConverter.ConvertO(__workflow_bodycustomAccountId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextOptIn != null)
-                {
-                    body["textOptIn"] = ExpressionConverter.ConvertO(__workflow_bodytextOptIn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycellNumber != null)
-                {
-                    body["cellNumber"] = ExpressionConverter.ConvertO(__workflow_bodycellNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendNoteResponse>(callPayload);
             });
         }
@@ -160,9 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 
     public class GratavidTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, Expression<Func<NewEventInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_webookHookEvent = WorkflowExpression.Compile(webookHookEvent, nameof(webookHookEvent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/manageIntegrations";
@@ -171,15 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
                 callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
                 callPayload.Queries["webookHookEvent"] = ExpressionConverter.Convert(__workflow_webookHookEvent);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookURL"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -197,6 +80,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         public string ViewInGratavidLink { get; set; }
     }
 
+    public class CreateTaskInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("customUserId")]
+        public string CustomUserId { get; set; }
+
+        [JsonProperty("customAccountId")]
+        public string CustomAccountId { get; set; }
+
+        [JsonProperty("textOptIn")]
+        public string TextOptIn { get; set; }
+
+        [JsonProperty("cellNumber")]
+        public string CellNumber { get; set; }
+
+        [JsonProperty("comments", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comments { get; set; }
+
+        [JsonProperty("assignedTo")]
+        public string AssignedTo { get; set; }
+    }
+
     public class SendNoteResponse
     {
         [JsonProperty("message")]
@@ -212,6 +125,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         public string ViewInGratavidLink { get; set; }
     }
 
+    public class SendNoteInput
+    {
+        [JsonProperty("noteId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NoteId { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("customUserId")]
+        public string CustomUserId { get; set; }
+
+        [JsonProperty("customAccountId")]
+        public string CustomAccountId { get; set; }
+
+        [JsonProperty("textOptIn")]
+        public string TextOptIn { get; set; }
+
+        [JsonProperty("cellNumber")]
+        public string CellNumber { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webookHookEventInput
     {
@@ -225,6 +165,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         ContactUnsubscribesFromEmailAfterReceivingGratavidEmail,
         [EnumMember(Value = "stopText")]
         ContactOptOutOfTextRepliesSTOPAfterReceivingGratavid
+    }
+
+    public class NewEventInput
+    {
+        [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -58,67 +58,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerGroup, ApiConnectionActionConfiguration> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> resourceid = null, Expression<Func<string>> resourcename = null, Expression<Func<string>> resourcetype = null, Expression<Func<string>> resourcelocation = null, Expression<Func<string[]>> resourcezones = null)
+        public IBodyWorkflowAction<ContainerGroup, ApiConnectionActionConfiguration> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<ContainerGroupsUpdateInput>> resource)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
-            var __workflow_resourceid = WorkflowExpression.Compile(resourceid, nameof(resourceid), required: false);
-            var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: false);
-            var __workflow_resourcetype = WorkflowExpression.Compile(resourcetype, nameof(resourcetype), required: false);
-            var __workflow_resourcelocation = WorkflowExpression.Compile(resourcelocation, nameof(resourcelocation), required: false);
-            var __workflow_resourcezones = WorkflowExpression.Compile(resourcezones, nameof(resourcezones), required: false);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
             return new DeferredBodyAction<ContainerGroup, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-                var resource = new JObject();
-                var resourcepropCount = 0;
-                if (__workflow_resourceid != null)
-                {
-                    resource["id"] = ExpressionConverter.ConvertO(__workflow_resourceid);
-                    resourcepropCount++;
-                }
-
-                if (__workflow_resourcename != null)
-                {
-                    resource["name"] = ExpressionConverter.ConvertO(__workflow_resourcename);
-                    resourcepropCount++;
-                }
-
-                if (__workflow_resourcetype != null)
-                {
-                    resource["type"] = ExpressionConverter.ConvertO(__workflow_resourcetype);
-                    resourcepropCount++;
-                }
-
-                if (__workflow_resourcelocation != null)
-                {
-                    resource["location"] = ExpressionConverter.ConvertO(__workflow_resourcelocation);
-                    resourcepropCount++;
-                }
-
-                var tagsObject = new JObject();
-                var tagsObjectpropCount = 0;
-                if (tagsObjectpropCount > 0)
-                {
-                    resource["tags"] = tagsObject;
-                    resourcepropCount++;
-                }
-
-                if (__workflow_resourcezones != null)
-                {
-                    resource["zones"] = ExpressionConverter.ConvertO(__workflow_resourcezones);
-                    resourcepropCount++;
-                }
-
-                if (resourcepropCount > 0)
-                {
-                    callPayload.Body = resource;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_resource);
                 return new ApiConnectionAction<ContainerGroup>(callPayload);
             });
         }
@@ -223,54 +175,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerExecResponse, ApiConnectionActionConfiguration> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<string>> containerExecRequestcommand = null, Expression<Func<int>> containerExecRequestterminalSizerows = null, Expression<Func<int>> containerExecRequestterminalSizecols = null)
+        public IBodyWorkflowAction<ContainerExecResponse, ApiConnectionActionConfiguration> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<ContainersExecuteCommandInput>> containerExecRequest)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
-            var __workflow_containerExecRequestcommand = WorkflowExpression.Compile(containerExecRequestcommand, nameof(containerExecRequestcommand), required: false);
-            var __workflow_containerExecRequestterminalSizerows = WorkflowExpression.Compile(containerExecRequestterminalSizerows, nameof(containerExecRequestterminalSizerows), required: false);
-            var __workflow_containerExecRequestterminalSizecols = WorkflowExpression.Compile(containerExecRequestterminalSizecols, nameof(containerExecRequestterminalSizecols), required: false);
+            var __workflow_containerExecRequest = WorkflowExpression.Compile(containerExecRequest, nameof(containerExecRequest), required: true);
             return new DeferredBodyAction<ContainerExecResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1), __workflow_containerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-                var containerExecRequest = new JObject();
-                var containerExecRequestpropCount = 0;
-                if (__workflow_containerExecRequestcommand != null)
-                {
-                    containerExecRequest["command"] = ExpressionConverter.ConvertO(__workflow_containerExecRequestcommand);
-                    containerExecRequestpropCount++;
-                }
-
-                var terminalSizeObject = new JObject();
-                var terminalSizeObjectpropCount = 0;
-                if (__workflow_containerExecRequestterminalSizerows != null)
-                {
-                    terminalSizeObject["rows"] = ExpressionConverter.ConvertO(__workflow_containerExecRequestterminalSizerows);
-                    terminalSizeObjectpropCount++;
-                }
-
-                if (__workflow_containerExecRequestterminalSizecols != null)
-                {
-                    terminalSizeObject["cols"] = ExpressionConverter.ConvertO(__workflow_containerExecRequestterminalSizecols);
-                    terminalSizeObjectpropCount++;
-                }
-
-                if (terminalSizeObjectpropCount > 0)
-                {
-                    containerExecRequest["terminalSize"] = terminalSizeObject;
-                    containerExecRequestpropCount++;
-                }
-
-                if (containerExecRequestpropCount > 0)
-                {
-                    callPayload.Body = containerExecRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_containerExecRequest);
                 return new ApiConnectionAction<ContainerExecResponse>(callPayload);
             });
         }
@@ -1052,6 +970,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         Spot
     }
 
+    public class ContainerGroupsUpdateInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("tags")]
+        public JToken Tags { get; set; }
+
+        [JsonProperty("zones")]
+        public string[] Zones { get; set; }
+    }
+
     public class UsageListResult
     {
         [JsonProperty("value")]
@@ -1098,6 +1037,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
 
         [JsonProperty("password")]
         public string Password { get; set; }
+    }
+
+    public class ContainersExecuteCommandInput
+    {
+        [JsonProperty("command")]
+        public string Command { get; set; }
+
+        [JsonProperty("terminalSize")]
+        public ContainersExecuteCommandInputTerminalSizeType TerminalSize { get; set; }
+    }
+
+    public class ContainersExecuteCommandInputTerminalSizeType
+    {
+        [JsonProperty("rows")]
+        public int? Rows { get; set; }
+
+        [JsonProperty("cols")]
+        public int? Cols { get; set; }
     }
 
     public class ContainerAttachResponse

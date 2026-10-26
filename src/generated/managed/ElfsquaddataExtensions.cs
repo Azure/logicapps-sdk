@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostEntityById(Expression<Func<string>> entityName, Expression<Func<object>> entity = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostEntityById(Expression<Func<string>> entityName, Expression<Func<object>> entity)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
-            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/data/1/{0}", __workflow_entityName.WithUrlEncoding(1)));
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutEntityById(Expression<Func<string>> entityName, Expression<Func<string>> id, Expression<Func<object>> entity = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutEntityById(Expression<Func<string>> entityName, Expression<Func<string>> id, Expression<Func<object>> entity)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/data/1/{0}({1})", __workflow_entityName.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
@@ -106,10 +106,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elfsquaddata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeFunction(Expression<Func<string>> functionPath, Expression<Func<object>> functionInputSchema = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeFunction(Expression<Func<string>> functionPath, Expression<Func<object>> functionInputSchema)
         {
             var __workflow_functionPath = WorkflowExpression.Compile(functionPath, nameof(functionPath), required: true);
-            var __workflow_functionInputSchema = WorkflowExpression.Compile(functionInputSchema, nameof(functionInputSchema), required: false);
+            var __workflow_functionInputSchema = WorkflowExpression.Compile(functionInputSchema, nameof(functionInputSchema), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_functionPath.WithUrlEncoding(1)));
@@ -123,23 +123,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
 
     public class ElfsquaddataTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTrigger(Expression<Func<string>> triggerName, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTrigger(Expression<Func<string>> triggerName, Expression<Func<CreateTriggerInput>> webHooksSubscription = null, FlowRecurrence recurrence = null)
         {
             var __workflow_triggerName = WorkflowExpression.Compile(triggerName, nameof(triggerName), required: true);
+            var __workflow_webHooksSubscription = WorkflowExpression.Compile(webHooksSubscription, nameof(webHooksSubscription), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/2/webhooks/{0}", __workflow_triggerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webHooksSubscription = new JObject();
-                var webHooksSubscriptionpropCount = 0;
-                webHooksSubscription["callbackUrl"] = "#{listCallbackUrl()}";
-                webHooksSubscriptionpropCount++;
-                if (webHooksSubscriptionpropCount > 0)
-                {
-                    callPayload.Body = webHooksSubscription;
-                }
-
+                if (__workflow_webHooksSubscription != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHooksSubscription);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -152,6 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
 
         [JsonProperty("@odata.nextLink")]
         public string NextLink { get; set; }
+    }
+
+    public class CreateTriggerInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

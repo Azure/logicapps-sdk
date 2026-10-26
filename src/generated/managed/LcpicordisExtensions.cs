@@ -45,28 +45,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lcpicordis")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> TriggerUnsubscribe(Expression<Func<int>> formid, Expression<Func<string>> bodywebhookurl = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> TriggerUnsubscribe(Expression<Func<int>> formid, Expression<Func<TriggerUnsubscribeInput>> body = null)
         {
             var __workflow_formid = WorkflowExpression.Compile(formid, nameof(formid), required: true);
-            var __workflow_bodywebhookurl = WorkflowExpression.Compile(bodywebhookurl, nameof(bodywebhookurl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/export/eloket/{0}/unsubscribe", __workflow_formid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodywebhookurl != null)
-                {
-                    body["webhookurl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookurl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<bool>(callPayload);
             });
         }
@@ -74,23 +63,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
 
     public class LcpicordisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<bool, ApiConnectionTriggerConfiguration> NewEntry(Expression<Func<int>> formid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<bool, ApiConnectionTriggerConfiguration> NewEntry(Expression<Func<int>> formid, Expression<Func<NewEntryInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_formid = WorkflowExpression.Compile(formid, nameof(formid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<bool, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/export/eloket/{0}/hooks", __workflow_formid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookURL"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<bool>(callPayload, recurrence: recurrence);
             });
         }
@@ -130,6 +112,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
 
         [JsonProperty("fieldDescription")]
         public string FieldDescription { get; set; }
+    }
+
+    public class TriggerUnsubscribeInput
+    {
+        [JsonProperty("webhookurl")]
+        public string Webhookurl { get; set; }
+    }
+
+    public class NewEntryInput
+    {
+        [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

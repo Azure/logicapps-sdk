@@ -13,13 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
     public class CognitiveservicesqnamakerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
-        public IBodyWorkflowAction<GenerateAnswerResponse, ApiConnectionActionConfiguration> GenerateAnswer(Expression<Func<string>> knowledgeBaseId, Expression<Func<string>> serviceHost, Expression<Func<string>> endpointKey, Expression<Func<string>> bodyquestion, Expression<Func<int>> bodytop = null)
+        public IBodyWorkflowAction<GenerateAnswerResponse, ApiConnectionActionConfiguration> GenerateAnswer(Expression<Func<string>> knowledgeBaseId, Expression<Func<string>> serviceHost, Expression<Func<string>> endpointKey, Expression<Func<GenerateAnswerInput>> body)
         {
             var __workflow_knowledgeBaseId = WorkflowExpression.Compile(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
             var __workflow_serviceHost = WorkflowExpression.Compile(serviceHost, nameof(serviceHost), required: true);
             var __workflow_endpointKey = WorkflowExpression.Compile(endpointKey, nameof(endpointKey), required: true);
-            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
-            var __workflow_bodytop = WorkflowExpression.Compile(bodytop, nameof(bodytop), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateAnswerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/knowledgebases/{0}/generateAnswer", __workflow_knowledgeBaseId.WithUrlEncoding(1)));
@@ -27,31 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["ServiceHost"] = ExpressionConverter.Convert(__workflow_serviceHost);
                 callPayload.Headers["EndpointKey"] = ExpressionConverter.Convert(__workflow_endpointKey);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
-                if (__workflow_bodytop != null)
-                {
-                    if (__workflow_bodytop != null)
-                    {
-                        body["top"] = ExpressionConverter.ConvertO(__workflow_bodytop);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["top"] = 1;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerateAnswerResponse>(callPayload);
             });
         }
@@ -94,6 +69,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
 
         [JsonProperty("source")]
         public string Source { get; set; }
+    }
+
+    public class GenerateAnswerInput
+    {
+        [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Question { get; set; }
+
+        [JsonProperty("top", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Top { get; set; } = 1;
     }
 
     public class DownloadKnowledgeBaseResponse

@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
     public class TdoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProductImport(Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProductImport(Expression<Func<bodyInputItem[]>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Products/Import/";
@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CustomerImport(Expression<Func<bodyInputItem2[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CustomerImport(Expression<Func<bodyInputItem2[]>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Customers/Import/";
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListImport(Expression<Func<bodyInputItem22[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListImport(Expression<Func<bodyInputItem22[]>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ListItems/Import/";

@@ -13,34 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
     public class IntellihrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
-        public IBodyWorkflowAction<SingleJob, ApiConnectionActionConfiguration> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
+        public IBodyWorkflowAction<SingleJob, ApiConnectionActionConfiguration> EndJob(Expression<Func<string>> id, Expression<Func<EndJobInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
-            var __workflow_bodyturnoverType = WorkflowExpression.Compile(bodyturnoverType, nameof(bodyturnoverType), required: true);
-            var __workflow_bodyturnoverReason = WorkflowExpression.Compile(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SingleJob, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/job-end/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                bodypropCount++;
-                body["turnoverType"] = ExpressionConverter.ConvertO(__workflow_bodyturnoverType);
-                if (__workflow_bodyturnoverReason != null)
-                {
-                    body["turnoverReason"] = ExpressionConverter.ConvertO(__workflow_bodyturnoverReason);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SingleJob>(callPayload);
             });
         }
@@ -378,6 +360,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class EndJobInput
+    {
+        [JsonProperty("endDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndDate { get; set; }
+
+        [JsonProperty("turnoverType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TurnoverType { get; set; }
+
+        [JsonProperty("turnoverReason")]
+        public string TurnoverReason { get; set; }
     }
 }
 

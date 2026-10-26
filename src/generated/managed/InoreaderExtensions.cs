@@ -13,51 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
     public class InoreaderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IBodyWorkflowAction<AddSubscriptionResponse, ApiConnectionActionConfiguration> AddSubscription(Expression<Func<string>> bodyquickadd = null)
+        public IBodyWorkflowAction<AddSubscriptionResponse, ApiConnectionActionConfiguration> AddSubscription(Expression<Func<AddSubscriptionInput>> body)
         {
-            var __workflow_bodyquickadd = WorkflowExpression.Compile(bodyquickadd, nameof(bodyquickadd), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddSubscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscription/quickadd";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyquickadd != null)
-                {
-                    body["quickadd"] = ExpressionConverter.ConvertO(__workflow_bodyquickadd);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddSubscriptionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditSubscription(Expression<Func<string>> streamId, Expression<Func<string>> bodyt)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditSubscription(Expression<Func<string>> streamId, Expression<Func<EditSubscriptionInput>> body)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
-            var __workflow_bodyt = WorkflowExpression.Compile(bodyt, nameof(bodyt), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscription/edit";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["t"] = ExpressionConverter.ConvertO(__workflow_bodyt);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -204,6 +184,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 
         [JsonProperty("streamName")]
         public string StreamName { get; set; }
+    }
+
+    public class AddSubscriptionInput
+    {
+        [JsonProperty("quickadd")]
+        public string Quickadd { get; set; }
+    }
+
+    public class EditSubscriptionInput
+    {
+        [JsonProperty("t", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string T { get; set; }
     }
 
     public class UnreadCount

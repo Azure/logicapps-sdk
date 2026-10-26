@@ -30,13 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "objectiveconnect")]
-        public IBodyWorkflowAction<AddParticipantResponseItem[], ApiConnectionActionConfiguration> AddParticipant(Expression<Func<string[]>> bodyemails, Expression<Func<string>> bodyshareUuid, Expression<Func<string>> bodymessage = null, Expression<Func<bodyrolesInputItem[]>> bodyroles = null, Expression<Func<bodytypeInput>> bodytype = null)
+        public IBodyWorkflowAction<AddParticipantResponseItem[], ApiConnectionActionConfiguration> AddParticipant(Expression<Func<AddParticipantInput>> body)
         {
-            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: true);
-            var __workflow_bodyshareUuid = WorkflowExpression.Compile(bodyshareUuid, nameof(bodyshareUuid), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodyroles = WorkflowExpression.Compile(bodyroles, nameof(bodyroles), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddParticipantResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/participants/batch";
@@ -45,45 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
                 callPayload.Queries["noContentReplacesSeeOther"] = Convert.ToString(true);
                 callPayload.Headers["Accept"] = Convert.ToString("application/hal+json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/hal+json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyroles != null)
-                {
-                    body["roles"] = ExpressionConverter.ConvertO(__workflow_bodyroles);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["shareUuid"] = ExpressionConverter.ConvertO(__workflow_bodyshareUuid);
-                if (__workflow_bodytype != null)
-                {
-                    if (__workflow_bodytype != null)
-                    {
-                        body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["type"] = "STANDARD";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddParticipantResponseItem[]>(callPayload);
             });
         }
@@ -232,8 +190,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         public string Uuid { get; set; }
     }
 
+    public class AddParticipantInput
+    {
+        [JsonProperty("emails", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Emails { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("roles")]
+        public AddParticipantInputRolesTypeItem[] Roles { get; set; }
+
+        [JsonProperty("shareUuid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ShareUuid { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddParticipantInputTypeType? Type { get; set; } = AddParticipantInputTypeType.STANDARD;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrolesInputItem
+    public enum AddParticipantInputRolesTypeItem
     {
         READER,
         DOWNLOADER,
@@ -247,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum AddParticipantInputTypeType
     {
         STANDARD,
         BCC

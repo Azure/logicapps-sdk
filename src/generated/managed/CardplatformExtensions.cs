@@ -13,29 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
     public class CardplatformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string[]>> cardbodyrecipients, Expression<Func<string>> cardbodyheading, Expression<Func<string>> cardbodyadaptiveCard)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> cardbody)
         {
-            var __workflow_cardbodyrecipients = WorkflowExpression.Compile(cardbodyrecipients, nameof(cardbodyrecipients), required: true);
-            var __workflow_cardbodyheading = WorkflowExpression.Compile(cardbodyheading, nameof(cardbodyheading), required: true);
-            var __workflow_cardbodyadaptiveCard = WorkflowExpression.Compile(cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
+            var __workflow_cardbody = WorkflowExpression.Compile(cardbody, nameof(cardbody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sendmessage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var cardbody = new JObject();
-                var cardbodypropCount = 0;
-                cardbodypropCount++;
-                cardbody["recipients"] = ExpressionConverter.ConvertO(__workflow_cardbodyrecipients);
-                cardbodypropCount++;
-                cardbody["heading"] = ExpressionConverter.ConvertO(__workflow_cardbodyheading);
-                cardbodypropCount++;
-                cardbody["card"] = ExpressionConverter.ConvertO(__workflow_cardbodyadaptiveCard);
-                if (cardbodypropCount > 0)
-                {
-                    callPayload.Body = cardbody;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_cardbody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -55,22 +41,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PrivateTemplatesUpdate(Expression<Func<string>> name)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PrivateTemplatesUpdate(Expression<Func<string>> name, Expression<Func<object>> body = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PrivateTemplates";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -78,6 +60,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
 
     public class CardplatformTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class SendMessageInput
+    {
+        [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Recipients { get; set; }
+
+        [JsonProperty("heading", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Heading { get; set; }
+
+        [JsonProperty("card", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AdaptiveCard { get; set; }
     }
 }
 

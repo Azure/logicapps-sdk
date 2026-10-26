@@ -13,44 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
     public class HuddleActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse, ApiConnectionActionConfiguration> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodytextContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse, ApiConnectionActionConfiguration> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<UploadFormSubmissionAsNewFileInput>> requestBody = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_requestBodytextContent = WorkflowExpression.Compile(requestBodytextContent, nameof(requestBodytextContent), required: false);
-            var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: false);
-            var __workflow_requestBodytitle = WorkflowExpression.Compile(requestBodytitle, nameof(requestBodytitle), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<UploadFormSubmissionAsNewFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/file/upload/folder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
-                var requestBody = new JObject();
-                var requestBodypropCount = 0;
-                if (__workflow_requestBodytextContent != null)
-                {
-                    requestBody["content"] = ExpressionConverter.ConvertO(__workflow_requestBodytextContent);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodydescription != null)
-                {
-                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodytitle != null)
-                {
-                    requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
-                    requestBodypropCount++;
-                }
-
-                if (requestBodypropCount > 0)
-                {
-                    callPayload.Body = requestBody;
-                }
-
+                if (__workflow_requestBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<UploadFormSubmissionAsNewFileResponse>(callPayload);
             });
         }
@@ -82,74 +57,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<Folder, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> folderId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodydescription = null)
+        public IBodyWorkflowAction<Folder, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> folderId, Expression<Func<CreateFolderInput>> requestBody = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_requestBodytitle = WorkflowExpression.Compile(requestBodytitle, nameof(requestBodytitle), required: true);
-            var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<Folder, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/folder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBody = new JObject();
-                var requestBodypropCount = 0;
-                requestBodypropCount++;
-                requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
-                if (__workflow_requestBodydescription != null)
-                {
-                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
-                    requestBodypropCount++;
-                }
-
-                if (requestBodypropCount > 0)
-                {
-                    callPayload.Body = requestBody;
-                }
-
+                if (__workflow_requestBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<Folder>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodyfileContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<UploadFileInput>> requestBody = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_requestBodyfileContent = WorkflowExpression.Compile(requestBodyfileContent, nameof(requestBodyfileContent), required: false);
-            var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: false);
-            var __workflow_requestBodytitle = WorkflowExpression.Compile(requestBodytitle, nameof(requestBodytitle), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<UploadFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/folder/{0}/upload", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
-                var requestBody = new JObject();
-                var requestBodypropCount = 0;
-                if (__workflow_requestBodyfileContent != null)
-                {
-                    requestBody["content"] = ExpressionConverter.ConvertO(__workflow_requestBodyfileContent);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodydescription != null)
-                {
-                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodytitle != null)
-                {
-                    requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
-                    requestBodypropCount++;
-                }
-
-                if (requestBodypropCount > 0)
-                {
-                    callPayload.Body = requestBody;
-                }
-
+                if (__workflow_requestBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<UploadFileResponse>(callPayload);
             });
         }
@@ -168,66 +104,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodyassignee = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodydueDate = null, Expression<Func<string>> requestBodyfileId = null, Expression<Func<string>> requestBodytaskId = null, Expression<Func<string>> requestBodystatus = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<CreateWorkspaceTaskInput>> requestBody = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_requestBodytitle = WorkflowExpression.Compile(requestBodytitle, nameof(requestBodytitle), required: true);
-            var __workflow_requestBodyassignee = WorkflowExpression.Compile(requestBodyassignee, nameof(requestBodyassignee), required: false);
-            var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: false);
-            var __workflow_requestBodydueDate = WorkflowExpression.Compile(requestBodydueDate, nameof(requestBodydueDate), required: false);
-            var __workflow_requestBodyfileId = WorkflowExpression.Compile(requestBodyfileId, nameof(requestBodyfileId), required: false);
-            var __workflow_requestBodytaskId = WorkflowExpression.Compile(requestBodytaskId, nameof(requestBodytaskId), required: false);
-            var __workflow_requestBodystatus = WorkflowExpression.Compile(requestBodystatus, nameof(requestBodystatus), required: false);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workspace/{0}/task", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBody = new JObject();
-                var requestBodypropCount = 0;
-                if (__workflow_requestBodyassignee != null)
-                {
-                    requestBody["assignee"] = ExpressionConverter.ConvertO(__workflow_requestBodyassignee);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodydescription != null)
-                {
-                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodydueDate != null)
-                {
-                    requestBody["dueDate"] = ExpressionConverter.ConvertO(__workflow_requestBodydueDate);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodyfileId != null)
-                {
-                    requestBody["fileId"] = ExpressionConverter.ConvertO(__workflow_requestBodyfileId);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodytaskId != null)
-                {
-                    requestBody["id"] = ExpressionConverter.ConvertO(__workflow_requestBodytaskId);
-                    requestBodypropCount++;
-                }
-
-                if (__workflow_requestBodystatus != null)
-                {
-                    requestBody["status"] = ExpressionConverter.ConvertO(__workflow_requestBodystatus);
-                    requestBodypropCount++;
-                }
-
-                requestBodypropCount++;
-                requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
-                if (requestBodypropCount > 0)
-                {
-                    callPayload.Body = requestBody;
-                }
-
+                if (__workflow_requestBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<CreateWorkspaceTaskResponse>(callPayload);
             });
         }
@@ -298,6 +185,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string WorkspaceId { get; set; }
     }
 
+    public class UploadFormSubmissionAsNewFileInput
+    {
+        [JsonProperty("content")]
+        public string TextContent { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
     public class DeleteFolderResponse
     {
         [JsonProperty("deleted")]
@@ -322,10 +221,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         public string Title { get; set; }
     }
 
+    public class CreateFolderInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     public class UploadFileResponse
     {
         [JsonProperty("file")]
         public File File { get; set; }
+    }
+
+    public class UploadFileInput
+    {
+        [JsonProperty("content")]
+        public string FileContent { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
     }
 
     public class TaskObject
@@ -362,6 +282,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateWorkspaceTaskInput
+    {
+        [JsonProperty("assignee")]
+        public string Assignee { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("dueDate")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("fileId")]
+        public string FileId { get; set; }
+
+        [JsonProperty("id")]
+        public string TaskId { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
     }
 
     public class PollFolderForFileUploadResponse

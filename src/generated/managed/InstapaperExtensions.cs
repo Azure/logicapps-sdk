@@ -13,60 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     public class InstapaperActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksLiked(Expression<Func<string>> readFilterreadFilter = null)
+        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksLiked(Expression<Func<ListBookmarksLikedInput>> readFilter = null)
         {
-            var __workflow_readFilterreadFilter = WorkflowExpression.Compile(readFilterreadFilter, nameof(readFilterreadFilter), required: false);
+            var __workflow_readFilter = WorkflowExpression.Compile(readFilter, nameof(readFilter), required: false);
             return new DeferredBodyAction<BookmarksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/starred";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var readFilter = new JObject();
-                var readFilterpropCount = 0;
-                if (__workflow_readFilterreadFilter != null)
-                {
-                    readFilter["readFilter"] = ExpressionConverter.ConvertO(__workflow_readFilterreadFilter);
-                    readFilterpropCount++;
-                }
-
-                if (readFilterpropCount > 0)
-                {
-                    callPayload.Body = readFilter;
-                }
-
+                if (__workflow_readFilter != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_readFilter);
                 return new ApiConnectionAction<BookmarksResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksArchived(Expression<Func<filterslikedFilterDefaultAllInput>> filterslikedFilterDefaultAll = null, Expression<Func<filtersreadFilterDefaultAllInput>> filtersreadFilterDefaultAll = null)
+        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksArchived(Expression<Func<ListBookmarksArchivedInput>> filters = null)
         {
-            var __workflow_filterslikedFilterDefaultAll = WorkflowExpression.Compile(filterslikedFilterDefaultAll, nameof(filterslikedFilterDefaultAll), required: false);
-            var __workflow_filtersreadFilterDefaultAll = WorkflowExpression.Compile(filtersreadFilterDefaultAll, nameof(filtersreadFilterDefaultAll), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             return new DeferredBodyAction<BookmarksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var filters = new JObject();
-                var filterspropCount = 0;
-                if (__workflow_filterslikedFilterDefaultAll != null)
-                {
-                    filters["likedFilter"] = ExpressionConverter.ConvertO(__workflow_filterslikedFilterDefaultAll);
-                    filterspropCount++;
-                }
-
-                if (__workflow_filtersreadFilterDefaultAll != null)
-                {
-                    filters["readFilter"] = ExpressionConverter.ConvertO(__workflow_filtersreadFilterDefaultAll);
-                    filterspropCount++;
-                }
-
-                if (filterspropCount > 0)
-                {
-                    callPayload.Body = filters;
-                }
-
+                if (__workflow_filters != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_filters);
                 return new ApiConnectionAction<BookmarksResponse>(callPayload);
             });
         }
@@ -375,8 +346,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         public double ReadProgress { get; set; }
     }
 
+    public class ListBookmarksLikedInput
+    {
+        [JsonProperty("readFilter")]
+        public string ReadFilter { get; set; }
+    }
+
+    public class ListBookmarksArchivedInput
+    {
+        [JsonProperty("likedFilter")]
+        public ListBookmarksArchivedInputLikedFilterDefaultAllType? LikedFilterDefaultAll { get; set; }
+
+        [JsonProperty("readFilter")]
+        public ListBookmarksArchivedInputReadFilterDefaultAllType? ReadFilterDefaultAll { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterslikedFilterDefaultAllInput
+    public enum ListBookmarksArchivedInputLikedFilterDefaultAllType
     {
         Liked,
         [EnumMember(Value = "Not liked")]
@@ -384,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filtersreadFilterDefaultAllInput
+    public enum ListBookmarksArchivedInputReadFilterDefaultAllType
     {
         Unread,
         [EnumMember(Value = "Unread or partially read")]

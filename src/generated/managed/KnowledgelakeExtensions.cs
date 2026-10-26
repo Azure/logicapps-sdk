@@ -13,32 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
     public class KnowledgelakeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
-        public IBodyWorkflowAction<ImportJobsPostResponse, ApiConnectionActionConfiguration> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
+        public IBodyWorkflowAction<ImportJobsPostResponse, ApiConnectionActionConfiguration> ImportJobs(Expression<Func<ImportJobsPostInput>> batch)
         {
-            var __workflow_batchimportData = WorkflowExpression.Compile(batchimportData, nameof(batchimportData), required: true);
-            var __workflow_batchnameForImport = WorkflowExpression.Compile(batchnameForImport, nameof(batchnameForImport), required: true);
-            var __workflow_batchsecurityToken = WorkflowExpression.Compile(batchsecurityToken, nameof(batchsecurityToken), required: true);
-            var __workflow_batchrPAEnvironment = WorkflowExpression.Compile(batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
+            var __workflow_batch = WorkflowExpression.Compile(batch, nameof(batch), required: true);
             return new DeferredBodyAction<ImportJobsPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ImportJobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var batch = new JObject();
-                var batchpropCount = 0;
-                batchpropCount++;
-                batch["Data"] = ExpressionConverter.ConvertO(__workflow_batchimportData);
-                batchpropCount++;
-                batch["FileName"] = ExpressionConverter.ConvertO(__workflow_batchnameForImport);
-                batchpropCount++;
-                batch["SecurityKey"] = ExpressionConverter.ConvertO(__workflow_batchsecurityToken);
-                batchpropCount++;
-                batch["Version"] = ExpressionConverter.ConvertO(__workflow_batchrPAEnvironment);
-                if (batchpropCount > 0)
-                {
-                    callPayload.Body = batch;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_batch);
                 return new ApiConnectionAction<ImportJobsPostResponse>(callPayload);
             });
         }
@@ -65,8 +48,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         public string JobId { get; set; }
     }
 
+    public class ImportJobsPostInput
+    {
+        [JsonProperty("Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ImportData { get; set; }
+
+        [JsonProperty("FileName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NameForImport { get; set; }
+
+        [JsonProperty("SecurityKey", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SecurityToken { get; set; }
+
+        [JsonProperty("Version", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ImportJobsPostInputRPAEnvironmentType RPAEnvironment { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum batchrPAEnvironmentInput
+    public enum ImportJobsPostInputRPAEnvironmentType
     {
         [EnumMember(Value = "0")]
         _0,

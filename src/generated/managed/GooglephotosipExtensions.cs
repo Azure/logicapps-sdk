@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAlbum(Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAlbum(Expression<Func<string>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/albums";

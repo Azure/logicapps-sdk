@@ -13,63 +13,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     public class BlackbaudlistsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<string>> bodylist, Expression<Func<string[]>> bodyidS)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListInput>> body = null)
         {
-            var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
-            var __workflow_bodylist = WorkflowExpression.Compile(bodylist, nameof(bodylist), required: true);
-            var __workflow_bodyidS = WorkflowExpression.Compile(bodyidS, nameof(bodyidS), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/appendidstolist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["list_type"] = ExpressionConverter.ConvertO(__workflow_bodylistType);
-                bodypropCount++;
-                body["list_id"] = ExpressionConverter.ConvertO(__workflow_bodylist);
-                bodypropCount++;
-                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyidS);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription, Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<bodypermissionsInput>> bodypermissions, Expression<Func<string[]>> bodyidS)
+        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<CreateListFromIDsInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
-            var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: true);
-            var __workflow_bodyidS = WorkflowExpression.Compile(bodyidS, nameof(bodyidS), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListApiCreatedList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/createlistfromids";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                bodypropCount++;
-                body["list_type"] = ExpressionConverter.ConvertO(__workflow_bodylistType);
-                bodypropCount++;
-                body["list_permissions"] = ExpressionConverter.ConvertO(__workflow_bodypermissions);
-                bodypropCount++;
-                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyidS);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ListApiCreatedList>(callPayload);
             });
         }
@@ -79,8 +46,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     {
     }
 
+    public class AppendIDsToListInput
+    {
+        [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AppendIDsToListInputListTypeType ListType { get; set; }
+
+        [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string List { get; set; }
+
+        [JsonProperty("ids", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] IdS { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylistTypeInput
+    public enum AppendIDsToListInputListTypeType
     {
         Constituent,
         Gift,
@@ -94,8 +73,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         public string Id { get; set; }
     }
 
+    public class CreateListFromIDsInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateListFromIDsInputListTypeType ListType { get; set; }
+
+        [JsonProperty("list_permissions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateListFromIDsInputPermissionsType Permissions { get; set; }
+
+        [JsonProperty("ids", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] IdS { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypermissionsInput
+    public enum CreateListFromIDsInputListTypeType
+    {
+        Constituent,
+        Gift,
+        Action,
+        Opportunity
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateListFromIDsInputPermissionsType
     {
         OnlyOwnerCanAccess,
         OthersCanView,

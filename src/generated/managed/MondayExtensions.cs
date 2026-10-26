@@ -13,399 +13,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     public class MondayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<CreateItemInput>> body)
         {
-            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: true);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
-            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyboardId != null)
-                {
-                    body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
-                bodypropCount++;
-                body["itemName"] = ExpressionConverter.ConvertO(__workflow_bodyitemName);
-                if (__workflow_bodycolumnValues != null)
-                {
-                    body["columnValues"] = ExpressionConverter.ConvertO(__workflow_bodycolumnValues);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateItemResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<DuplicateBoardResponse, ApiConnectionActionConfiguration> DuplicateBoard(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceBoardId, Expression<Func<bodyduplicationTypeInput>> bodyduplicationType, Expression<Func<bool>> bodykeepBoardSubscribers, Expression<Func<string>> bodyduplicatedBoardName = null, Expression<Func<string>> bodydestinationWorkspaceId = null, Expression<Func<string>> bodydestinationFolder = null)
+        public IBodyWorkflowAction<DuplicateBoardResponse, ApiConnectionActionConfiguration> DuplicateBoard(Expression<Func<DuplicateBoardInput>> body)
         {
-            var __workflow_bodysourceWorkspaceId = WorkflowExpression.Compile(bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
-            var __workflow_bodysourceBoardId = WorkflowExpression.Compile(bodysourceBoardId, nameof(bodysourceBoardId), required: true);
-            var __workflow_bodyduplicationType = WorkflowExpression.Compile(bodyduplicationType, nameof(bodyduplicationType), required: true);
-            var __workflow_bodykeepBoardSubscribers = WorkflowExpression.Compile(bodykeepBoardSubscribers, nameof(bodykeepBoardSubscribers), required: true);
-            var __workflow_bodyduplicatedBoardName = WorkflowExpression.Compile(bodyduplicatedBoardName, nameof(bodyduplicatedBoardName), required: false);
-            var __workflow_bodydestinationWorkspaceId = WorkflowExpression.Compile(bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: false);
-            var __workflow_bodydestinationFolder = WorkflowExpression.Compile(bodydestinationFolder, nameof(bodydestinationFolder), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DuplicateBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/DuplicateBoard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["sourceWorkspaceId"] = ExpressionConverter.ConvertO(__workflow_bodysourceWorkspaceId);
-                bodypropCount++;
-                body["sourceBoardId"] = ExpressionConverter.ConvertO(__workflow_bodysourceBoardId);
-                if (__workflow_bodyduplicatedBoardName != null)
-                {
-                    body["duplicatedBoardName"] = ExpressionConverter.ConvertO(__workflow_bodyduplicatedBoardName);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["duplicationType"] = ExpressionConverter.ConvertO(__workflow_bodyduplicationType);
-                if (__workflow_bodydestinationWorkspaceId != null)
-                {
-                    body["destinationWorkspaceId"] = ExpressionConverter.ConvertO(__workflow_bodydestinationWorkspaceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydestinationFolder != null)
-                {
-                    body["destinationFolder"] = ExpressionConverter.ConvertO(__workflow_bodydestinationFolder);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["keepBoardSubscribers"] = ExpressionConverter.ConvertO(__workflow_bodykeepBoardSubscribers);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DuplicateBoardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardName)
+        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardInput>> body)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardName = WorkflowExpression.Compile(bodyboardName, nameof(bodyboardName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateBoard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardName"] = ExpressionConverter.ConvertO(__workflow_bodyboardName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateBoardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateColumnResponse, ApiConnectionActionConfiguration> CreateColumn(Expression<Func<string>> bodytitle, Expression<Func<bodycolumnTypeInput>> bodycolumnType, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateColumnResponse, ApiConnectionActionConfiguration> CreateColumn(Expression<Func<CreateColumnInput>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodycolumnType = WorkflowExpression.Compile(bodycolumnType, nameof(bodycolumnType), required: true);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateColumn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyboardId != null)
-                {
-                    body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["columnType"] = ExpressionConverter.ConvertO(__workflow_bodycolumnType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateColumnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<CreateGroupInput>> body)
         {
-            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateGroup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyboardId != null)
-                {
-                    body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["groupName"] = ExpressionConverter.ConvertO(__workflow_bodygroupName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateGroupResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration> UpdateItemColumn(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycolumnId = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration> UpdateItemColumn(Expression<Func<UpdateItemColumnInput>> body)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: false);
-            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateItemColumn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                if (__workflow_bodycolumnId != null)
-                {
-                    body["columnId"] = ExpressionConverter.ConvertO(__workflow_bodycolumnId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["itemId"] = ExpressionConverter.ConvertO(__workflow_bodyitemId);
-                if (__workflow_bodycolumnValues != null)
-                {
-                    body["columnValues"] = ExpressionConverter.ConvertO(__workflow_bodycolumnValues);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateItemColumnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration> UpdateMultipleItemColumns(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyitemName = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration> UpdateMultipleItemColumns(Expression<Func<UpdateMultipleItemColumnsInput>> body)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: false);
-            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateMultipleItemColumns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                bodypropCount++;
-                body["itemId"] = ExpressionConverter.ConvertO(__workflow_bodyitemId);
-                if (__workflow_bodyitemName != null)
-                {
-                    body["itemName"] = ExpressionConverter.ConvertO(__workflow_bodyitemName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycolumnValues != null)
-                {
-                    body["columnValues"] = ExpressionConverter.ConvertO(__workflow_bodycolumnValues);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateMultipleItemColumnsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration> MoveItemToGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
+        public IBodyWorkflowAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration> MoveItemToGroup(Expression<Func<MoveItemToGroupInput>> body)
         {
-            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/MoveItemToGroup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyboardId != null)
-                {
-                    body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
-                bodypropCount++;
-                body["itemId"] = ExpressionConverter.ConvertO(__workflow_bodyitemId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MoveItemToGroupResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateNotificationResponse, ApiConnectionActionConfiguration> CreateNotification(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodytargetId, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<CreateNotificationResponse, ApiConnectionActionConfiguration> CreateNotification(Expression<Func<CreateNotificationInput>> body)
         {
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodytargetId = WorkflowExpression.Compile(bodytargetId, nameof(bodytargetId), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateNotificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                bodypropCount++;
-                body["targetId"] = ExpressionConverter.ConvertO(__workflow_bodytargetId);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateNotificationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateSubitemResponse, ApiConnectionActionConfiguration> CreateSubitem(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyparentItemId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<CreateSubitemResponse, ApiConnectionActionConfiguration> CreateSubitem(Expression<Func<CreateSubitemInput>> body)
         {
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyparentItemId = WorkflowExpression.Compile(bodyparentItemId, nameof(bodyparentItemId), required: true);
-            var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: true);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSubitemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateSubitem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                bodypropCount++;
-                body["parentItemId"] = ExpressionConverter.ConvertO(__workflow_bodyparentItemId);
-                bodypropCount++;
-                body["itemName"] = ExpressionConverter.ConvertO(__workflow_bodyitemName);
-                if (__workflow_bodycolumnValues != null)
-                {
-                    body["columnValues"] = ExpressionConverter.ConvertO(__workflow_bodycolumnValues);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSubitemResponse>(callPayload);
             });
         }
@@ -429,43 +171,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodybody, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
+        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<CreateUpdateInput>> body)
         {
-            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateUpdate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyworkspaceId != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyboardId != null)
-                {
-                    body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
-                bodypropCount++;
-                body["itemId"] = ExpressionConverter.ConvertO(__workflow_bodyitemId);
-                bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
             });
         }
@@ -489,30 +203,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateWorkspaceV2Response, ApiConnectionActionConfiguration> CreateWorkspace(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateWorkspaceV2Response, ApiConnectionActionConfiguration> CreateWorkspace(Expression<Func<CreateWorkspaceV2Input>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateWorkspaceV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateWorkspaceV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateWorkspaceV2Response>(callPayload);
             });
         }
@@ -598,213 +297,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class MondayTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateItem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateItem(Expression<Func<WebhookCreateItemInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateUpdate(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateUpdate(Expression<Func<WebhookCreateUpdateInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateUpdate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeName(Expression<Func<WebhookChangeNameInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/ChangeName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeSubitemName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeSubitemName(Expression<Func<WebhookChangeSubitemNameInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/ChangeSubitemName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateSubitem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateSubitem(Expression<Func<WebhookCreateSubitemInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateSubitem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodycolumnId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookColumnChanges(Expression<Func<WebhookColumnChangesInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/ColumnChanges";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                bodypropCount++;
-                body["columnId"] = ExpressionConverter.ConvertO(__workflow_bodycolumnId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookAnyColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookAnyColumnChanges(Expression<Func<WebhookAnyColumnChangesInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/AnyColumnChanges";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookSubitemColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookSubitemColumnChanges(Expression<Func<WebhookSubitemColumnChangesInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/SubitemColumnChanges";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                bodypropCount++;
-                body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboardId);
-                body["callbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
@@ -828,14 +420,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    public class CreateItemInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("groupId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GroupId { get; set; }
+
+        [JsonProperty("itemName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ItemName { get; set; }
+
+        [JsonProperty("columnValues")]
+        public JToken ColumnValues { get; set; }
+    }
+
     public class DuplicateBoardResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
+    public class DuplicateBoardInput
+    {
+        [JsonProperty("sourceWorkspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceWorkspaceId { get; set; }
+
+        [JsonProperty("sourceBoardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceBoardId { get; set; }
+
+        [JsonProperty("duplicatedBoardName")]
+        public string DuplicatedBoardName { get; set; }
+
+        [JsonProperty("duplicationType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DuplicateBoardInputDuplicationTypeType DuplicationType { get; set; } = DuplicateBoardInputDuplicationTypeType.DuplicateBoardWithStructure;
+
+        [JsonProperty("destinationWorkspaceId")]
+        public string DestinationWorkspaceId { get; set; }
+
+        [JsonProperty("destinationFolder")]
+        public string DestinationFolder { get; set; }
+
+        [JsonProperty("keepBoardSubscribers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool KeepBoardSubscribers { get; set; } = false;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyduplicationTypeInput
+    public enum DuplicateBoardInputDuplicationTypeType
     {
         [EnumMember(Value = "Duplicate board with structure")]
         DuplicateBoardWithStructure,
@@ -863,6 +497,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    public class CreateBoardInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardName { get; set; }
+    }
+
     public class CreateColumnResponse
     {
         [JsonProperty("data")]
@@ -887,8 +530,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Description { get; set; }
     }
 
+    public class CreateColumnInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("columnType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateColumnInputColumnTypeType ColumnType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycolumnTypeInput
+    public enum CreateColumnInputColumnTypeType
     {
         [EnumMember(Value = "auto_number")]
         AutoNumber,
@@ -970,6 +631,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    public class CreateGroupInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GroupName { get; set; }
+    }
+
     public class UpdateItemColumnResponse
     {
         [JsonProperty("data")]
@@ -986,6 +659,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class UpdateItemColumnInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("columnId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ColumnId { get; set; }
+
+        [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ItemId { get; set; }
+
+        [JsonProperty("columnValues", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken ColumnValues { get; set; }
     }
 
     public class UpdateMultipleItemColumnsResponse
@@ -1006,6 +697,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    public class UpdateMultipleItemColumnsInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ItemId { get; set; }
+
+        [JsonProperty("itemName")]
+        public string ItemName { get; set; }
+
+        [JsonProperty("columnValues")]
+        public JToken ColumnValues { get; set; }
+    }
+
     public class MoveItemToGroupResponse
     {
         [JsonProperty("data")]
@@ -1024,6 +733,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    public class MoveItemToGroupInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("groupId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GroupId { get; set; }
+
+        [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ItemId { get; set; }
+    }
+
     public class CreateNotificationResponse
     {
         [JsonProperty("data")]
@@ -1039,6 +763,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     public class CreateNotificationResponseDataTypeCreateNotificationType
     {
         [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class CreateNotificationInput
+    {
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserId { get; set; }
+
+        [JsonProperty("targetId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetId { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
 
@@ -1069,6 +805,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    public class CreateSubitemInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("parentItemId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ParentItemId { get; set; }
+
+        [JsonProperty("itemName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ItemName { get; set; }
+
+        [JsonProperty("columnValues")]
+        public JToken ColumnValues { get; set; }
+    }
+
     public class CreateUpdateResponse
     {
         [JsonProperty("data")]
@@ -1087,6 +841,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    public class CreateUpdateInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("groupId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GroupId { get; set; }
+
+        [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ItemId { get; set; }
+
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+    }
+
     public class CreateWorkspaceV2Response
     {
         [JsonProperty("data")]
@@ -1103,6 +875,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateWorkspaceV2Input
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 
     public class GetTagsV2Response
@@ -1148,6 +929,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         [JsonProperty("email")]
         public string Email { get; set; }
+    }
+
+    public class WebhookCreateItemInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WebhookCreateUpdateInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WebhookChangeNameInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WebhookChangeSubitemNameInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WebhookCreateSubitemInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WebhookColumnChangesInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("columnId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ColumnId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WebhookAnyColumnChangesInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WebhookSubitemColumnChangesInput
+    {
+        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BoardId { get; set; }
+
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

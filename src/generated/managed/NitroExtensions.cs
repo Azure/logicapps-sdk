@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}/signature-requests", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicSchema);
+                if (__workflow_dynamicSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicSchema);
                 return new ApiConnectionAction<Error>(callPayload);
             });
         }
@@ -30,24 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 
     public class NitroTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Error, ApiConnectionTriggerConfiguration> WebhookDocumentSignedTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Error, ApiConnectionTriggerConfiguration> WebhookDocumentSignedTrigger(Expression<Func<WebhookDocumentSignedTriggerV2Input>> request, FlowRecurrence recurrence = null)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyTrigger<Error, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                request["endpoint"] = "#{listCallbackUrl()}";
-                requestpropCount++;
-                request["event"] = "esign.request.completed";
-                requestpropCount++;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionTrigger<Error>(callPayload, recurrence: recurrence);
             });
         }
@@ -60,6 +52,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class WebhookDocumentSignedTriggerV2Input
+    {
+        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "esign.request.completed";
     }
 }
 

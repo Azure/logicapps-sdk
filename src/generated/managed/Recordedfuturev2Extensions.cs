@@ -179,83 +179,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<PlaybookAlertSearchItem[], ApiConnectionActionConfiguration> PlaybookAlertSearch(Expression<Func<string>> bodylimit = null, Expression<Func<bodyentitiesInputItem[]>> bodyentities = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null, Expression<Func<bodyprioritiesInputItem[]>> bodypriorities = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null, Expression<Func<bodycreatedFromRelativeInput>> bodycreatedFromRelative = null, Expression<Func<bodycreatedUntilRelativeInput>> bodycreatedUntilRelative = null, Expression<Func<bodyupdatedFromRelativeInput>> bodyupdatedFromRelative = null, Expression<Func<bodyupdatedUntilRelativeInput>> bodyupdatedUntilRelative = null)
+        public IBodyWorkflowAction<PlaybookAlertSearchItem[], ApiConnectionActionConfiguration> PlaybookAlertSearch(Expression<Func<PlaybookAlertSearchInput>> body)
         {
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyentities = WorkflowExpression.Compile(bodyentities, nameof(bodyentities), required: false);
-            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            var __workflow_bodypriorities = WorkflowExpression.Compile(bodypriorities, nameof(bodypriorities), required: false);
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodycreatedFromRelative = WorkflowExpression.Compile(bodycreatedFromRelative, nameof(bodycreatedFromRelative), required: false);
-            var __workflow_bodycreatedUntilRelative = WorkflowExpression.Compile(bodycreatedUntilRelative, nameof(bodycreatedUntilRelative), required: false);
-            var __workflow_bodyupdatedFromRelative = WorkflowExpression.Compile(bodyupdatedFromRelative, nameof(bodyupdatedFromRelative), required: false);
-            var __workflow_bodyupdatedUntilRelative = WorkflowExpression.Compile(bodyupdatedUntilRelative, nameof(bodyupdatedUntilRelative), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlaybookAlertSearchItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/playbook-alert/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyentities != null)
-                {
-                    body["entities"] = ExpressionConverter.ConvertO(__workflow_bodyentities);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatuses != null)
-                {
-                    body["statuses"] = ExpressionConverter.ConvertO(__workflow_bodystatuses);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriorities != null)
-                {
-                    body["priorities"] = ExpressionConverter.ConvertO(__workflow_bodypriorities);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategories != null)
-                {
-                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedFromRelative != null)
-                {
-                    body["created_from_relative"] = ExpressionConverter.ConvertO(__workflow_bodycreatedFromRelative);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedUntilRelative != null)
-                {
-                    body["created_until_relative"] = ExpressionConverter.ConvertO(__workflow_bodycreatedUntilRelative);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedFromRelative != null)
-                {
-                    body["updated_from_relative"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedFromRelative);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedUntilRelative != null)
-                {
-                    body["updated_until_relative"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedUntilRelative);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlaybookAlertSearchItem[]>(callPayload);
             });
         }
@@ -274,63 +206,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration> DetectionRuleSearch(Expression<Func<bodytypesInputItem[]>> bodytypes = null, Expression<Func<bodyentitiesInputItem[]>> bodyentities = null, Expression<Func<string>> bodycreatedbefore = null, Expression<Func<string>> bodycreatedafter = null, Expression<Func<bodylimitInput>> bodylimit = null)
+        public IBodyWorkflowAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration> DetectionRuleSearch(Expression<Func<DetectionRuleSearchInput>> body = null)
         {
-            var __workflow_bodytypes = WorkflowExpression.Compile(bodytypes, nameof(bodytypes), required: false);
-            var __workflow_bodyentities = WorkflowExpression.Compile(bodyentities, nameof(bodyentities), required: false);
-            var __workflow_bodycreatedbefore = WorkflowExpression.Compile(bodycreatedbefore, nameof(bodycreatedbefore), required: false);
-            var __workflow_bodycreatedafter = WorkflowExpression.Compile(bodycreatedafter, nameof(bodycreatedafter), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detection-rules/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytypes != null)
-                {
-                    body["types"] = ExpressionConverter.ConvertO(__workflow_bodytypes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyentities != null)
-                {
-                    body["entities"] = ExpressionConverter.ConvertO(__workflow_bodyentities);
-                    bodypropCount++;
-                }
-
-                var createdObject = new JObject();
-                var createdObjectpropCount = 0;
-                if (__workflow_bodycreatedbefore != null)
-                {
-                    createdObject["before"] = ExpressionConverter.ConvertO(__workflow_bodycreatedbefore);
-                    createdObjectpropCount++;
-                }
-
-                if (__workflow_bodycreatedafter != null)
-                {
-                    createdObject["after"] = ExpressionConverter.ConvertO(__workflow_bodycreatedafter);
-                    createdObjectpropCount++;
-                }
-
-                if (createdObjectpropCount > 0)
-                {
-                    body["created"] = createdObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DetectionRuleSearchResponse>(callPayload);
             });
         }
@@ -350,275 +235,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<SoarBulkLookupResponse, ApiConnectionActionConfiguration> SoarBulkLookup(Expression<Func<string[]>> bodyip = null, Expression<Func<string[]>> bodyurl = null, Expression<Func<string[]>> bodydomain = null, Expression<Func<string[]>> bodyhash = null, Expression<Func<string[]>> bodyvulnerability = null)
+        public IBodyWorkflowAction<SoarBulkLookupResponse, ApiConnectionActionConfiguration> SoarBulkLookup(Expression<Func<SoarBulkLookupInput>> body = null)
         {
-            var __workflow_bodyip = WorkflowExpression.Compile(bodyip, nameof(bodyip), required: false);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodyhash = WorkflowExpression.Compile(bodyhash, nameof(bodyhash), required: false);
-            var __workflow_bodyvulnerability = WorkflowExpression.Compile(bodyvulnerability, nameof(bodyvulnerability), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SoarBulkLookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/soar/lookup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyip != null)
-                {
-                    body["ip"] = ExpressionConverter.ConvertO(__workflow_bodyip);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydomain != null)
-                {
-                    body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhash != null)
-                {
-                    body["hash"] = ExpressionConverter.ConvertO(__workflow_bodyhash);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvulnerability != null)
-                {
-                    body["vulnerability"] = ExpressionConverter.ConvertO(__workflow_bodyvulnerability);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SoarBulkLookupResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<ThreatMapActorsResponse, ApiConnectionActionConfiguration> ThreatMapActors(Expression<Func<string[]>> bodyactors, Expression<Func<string[]>> bodycategories, Expression<Func<string[]>> bodywatchlists)
+        public IBodyWorkflowAction<ThreatMapActorsResponse, ApiConnectionActionConfiguration> ThreatMapActors(Expression<Func<ThreatMapActorsInput>> body)
         {
-            var __workflow_bodyactors = WorkflowExpression.Compile(bodyactors, nameof(bodyactors), required: true);
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: true);
-            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ThreatMapActorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threat/map/actors";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["actors"] = ExpressionConverter.ConvertO(__workflow_bodyactors);
-                bodypropCount++;
-                body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                bodypropCount++;
-                body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ThreatMapActorsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<ThreatMapMalwareResponse, ApiConnectionActionConfiguration> ThreatMapMalware(Expression<Func<string[]>> bodymalware, Expression<Func<string[]>> bodycategories, Expression<Func<string[]>> bodywatchlists)
+        public IBodyWorkflowAction<ThreatMapMalwareResponse, ApiConnectionActionConfiguration> ThreatMapMalware(Expression<Func<ThreatMapMalwareInput>> body)
         {
-            var __workflow_bodymalware = WorkflowExpression.Compile(bodymalware, nameof(bodymalware), required: true);
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: true);
-            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ThreatMapMalwareResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threat/map/malware";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["malware"] = ExpressionConverter.ConvertO(__workflow_bodymalware);
-                bodypropCount++;
-                body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                bodypropCount++;
-                body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ThreatMapMalwareResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration> STIXIndicators(Expression<Func<string[]>> bodyactors = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<string[]>> bodywatchlists = null, Expression<Func<int>> bodytriggerScoreIp = null, Expression<Func<int>> bodytriggerScoreUrl = null, Expression<Func<int>> bodytriggerScoreDomain = null, Expression<Func<int>> bodytriggerScoreHash = null, Expression<Func<int>> bodyvalidUntilDeltaHours = null, Expression<Func<string>> bodythreatHuntDescription = null)
+        public IBodyWorkflowAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration> STIXIndicators(Expression<Func<STIXIndicatorsInput>> body)
         {
-            var __workflow_bodyactors = WorkflowExpression.Compile(bodyactors, nameof(bodyactors), required: false);
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: false);
-            var __workflow_bodytriggerScoreIp = WorkflowExpression.Compile(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            var __workflow_bodytriggerScoreUrl = WorkflowExpression.Compile(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            var __workflow_bodytriggerScoreDomain = WorkflowExpression.Compile(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            var __workflow_bodytriggerScoreHash = WorkflowExpression.Compile(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            var __workflow_bodyvalidUntilDeltaHours = WorkflowExpression.Compile(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            var __workflow_bodythreatHuntDescription = WorkflowExpression.Compile(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threat/indicators/actors";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyactors != null)
-                {
-                    body["actors"] = ExpressionConverter.ConvertO(__workflow_bodyactors);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategories != null)
-                {
-                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywatchlists != null)
-                {
-                    body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreIp != null)
-                {
-                    body["trigger_score_ip"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreIp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreUrl != null)
-                {
-                    body["trigger_score_url"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreDomain != null)
-                {
-                    body["trigger_score_domain"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreDomain);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreHash != null)
-                {
-                    body["trigger_score_hash"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreHash);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidUntilDeltaHours != null)
-                {
-                    body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(__workflow_bodyvalidUntilDeltaHours);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythreatHuntDescription != null)
-                {
-                    body["threat_hunt_description"] = ExpressionConverter.ConvertO(__workflow_bodythreatHuntDescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<STIXIndicatorsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration> STIXMalwareIndicators(Expression<Func<string[]>> bodymalware = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<string[]>> bodywatchlists = null, Expression<Func<int>> bodytriggerScoreIp = null, Expression<Func<int>> bodytriggerScoreUrl = null, Expression<Func<int>> bodytriggerScoreDomain = null, Expression<Func<int>> bodytriggerScoreHash = null, Expression<Func<int>> bodyvalidUntilDeltaHours = null, Expression<Func<string>> bodythreatHuntDescription = null)
+        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration> STIXMalwareIndicators(Expression<Func<STIXMalwareIndicatorsInput>> body)
         {
-            var __workflow_bodymalware = WorkflowExpression.Compile(bodymalware, nameof(bodymalware), required: false);
-            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: false);
-            var __workflow_bodytriggerScoreIp = WorkflowExpression.Compile(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            var __workflow_bodytriggerScoreUrl = WorkflowExpression.Compile(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            var __workflow_bodytriggerScoreDomain = WorkflowExpression.Compile(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            var __workflow_bodytriggerScoreHash = WorkflowExpression.Compile(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            var __workflow_bodyvalidUntilDeltaHours = WorkflowExpression.Compile(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            var __workflow_bodythreatHuntDescription = WorkflowExpression.Compile(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threat/indicators/malware";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymalware != null)
-                {
-                    body["malware"] = ExpressionConverter.ConvertO(__workflow_bodymalware);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategories != null)
-                {
-                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywatchlists != null)
-                {
-                    body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreIp != null)
-                {
-                    body["trigger_score_ip"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreIp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreUrl != null)
-                {
-                    body["trigger_score_url"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreDomain != null)
-                {
-                    body["trigger_score_domain"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreDomain);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerScoreHash != null)
-                {
-                    body["trigger_score_hash"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreHash);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidUntilDeltaHours != null)
-                {
-                    body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(__workflow_bodyvalidUntilDeltaHours);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythreatHuntDescription != null)
-                {
-                    body["threat_hunt_description"] = ExpressionConverter.ConvertO(__workflow_bodythreatHuntDescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<STIXMalwareIndicatorsResponse>(callPayload);
             });
         }
@@ -1343,17 +1025,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string OrganisationName { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyentitiesInputItem
+    public class PlaybookAlertSearchInput
     {
-        [EnumMember(Value = "CVE-2000-01")]
-        CVE200001,
-        [EnumMember(Value = "mitre:TA0001")]
-        MitreTA0001
+        [JsonProperty("limit")]
+        public string Limit { get; set; }
+
+        [JsonProperty("entities")]
+        public PlaybookAlertSearchInputEntitiesTypeItem[] Entities { get; set; }
+
+        [JsonProperty("statuses")]
+        public PlaybookAlertSearchInputStatusesTypeItem[] Statuses { get; set; }
+
+        [JsonProperty("priorities")]
+        public PlaybookAlertSearchInputPrioritiesTypeItem[] Priorities { get; set; }
+
+        [JsonProperty("categories")]
+        public PlaybookAlertSearchInputCategoriesTypeItem[] Categories { get; set; }
+
+        [JsonProperty("created_from_relative")]
+        public PlaybookAlertSearchInputCreatedFromRelativeType? CreatedFromRelative { get; set; }
+
+        [JsonProperty("created_until_relative")]
+        public PlaybookAlertSearchInputCreatedUntilRelativeType? CreatedUntilRelative { get; set; }
+
+        [JsonProperty("updated_from_relative")]
+        public PlaybookAlertSearchInputUpdatedFromRelativeType? UpdatedFromRelative { get; set; }
+
+        [JsonProperty("updated_until_relative")]
+        public PlaybookAlertSearchInputUpdatedUntilRelativeType? UpdatedUntilRelative { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusesInputItem
+    public enum PlaybookAlertSearchInputEntitiesTypeItem
+    {
+        [EnumMember(Value = "ip:8.8.8.8")]
+        Ip8888,
+        [EnumMember(Value = "idn:google.com")]
+        IdnGoogleCom,
+        [EnumMember(Value = "url:https://google.com")]
+        UrlHttpsGoogleCom
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PlaybookAlertSearchInputStatusesTypeItem
     {
         New,
         InProgress,
@@ -1362,7 +1076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyprioritiesInputItem
+    public enum PlaybookAlertSearchInputPrioritiesTypeItem
     {
         High,
         Moderate,
@@ -1370,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycategoriesInputItem
+    public enum PlaybookAlertSearchInputCategoriesTypeItem
     {
         [EnumMember(Value = "domain_abuse")]
         DomainAbuse,
@@ -1381,7 +1095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycreatedFromRelativeInput
+    public enum PlaybookAlertSearchInputCreatedFromRelativeType
     {
         [EnumMember(Value = "-5m")]
         _5m,
@@ -1392,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycreatedUntilRelativeInput
+    public enum PlaybookAlertSearchInputCreatedUntilRelativeType
     {
         [EnumMember(Value = "-0m")]
         _0m,
@@ -1403,7 +1117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyupdatedFromRelativeInput
+    public enum PlaybookAlertSearchInputUpdatedFromRelativeType
     {
         [EnumMember(Value = "-5m")]
         _5m,
@@ -1414,7 +1128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyupdatedUntilRelativeInput
+    public enum PlaybookAlertSearchInputUpdatedUntilRelativeType
     {
         [EnumMember(Value = "-0m")]
         _0m,
@@ -1532,8 +1246,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string DisplayName { get; set; }
     }
 
+    public class DetectionRuleSearchInput
+    {
+        [JsonProperty("types")]
+        public DetectionRuleSearchInputTypesTypeItem[] Types { get; set; }
+
+        [JsonProperty("entities")]
+        public DetectionRuleSearchInputEntitiesTypeItem[] Entities { get; set; }
+
+        [JsonProperty("created")]
+        public DetectionRuleSearchInputCreatedType Created { get; set; }
+
+        [JsonProperty("limit")]
+        public DetectionRuleSearchInputLimitType? Limit { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypesInputItem
+    public enum DetectionRuleSearchInputTypesTypeItem
     {
         [EnumMember(Value = "sigma")]
         Sigma,
@@ -1543,7 +1272,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         Snort
     }
 
-    public enum bodylimitInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DetectionRuleSearchInputEntitiesTypeItem
+    {
+        [EnumMember(Value = "CVE-2000-01")]
+        CVE200001,
+        [EnumMember(Value = "mitre:TA0001")]
+        MitreTA0001
+    }
+
+    public class DetectionRuleSearchInputCreatedType
+    {
+        [JsonProperty("before")]
+        public string Before { get; set; }
+
+        [JsonProperty("after")]
+        public string After { get; set; }
+    }
+
+    public enum DetectionRuleSearchInputLimitType
     {
         _1 = 1,
         _10 = 10,
@@ -1700,6 +1447,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public double Score { get; set; }
     }
 
+    public class SoarBulkLookupInput
+    {
+        [JsonProperty("ip")]
+        public string[] Ip { get; set; }
+
+        [JsonProperty("url")]
+        public string[] Url { get; set; }
+
+        [JsonProperty("domain")]
+        public string[] Domain { get; set; }
+
+        [JsonProperty("hash")]
+        public string[] Hash { get; set; }
+
+        [JsonProperty("vulnerability")]
+        public string[] Vulnerability { get; set; }
+    }
+
     public class ThreatMapActorsResponse
     {
         [JsonProperty("data")]
@@ -1788,6 +1553,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class ThreatMapActorsInput
+    {
+        [JsonProperty("actors", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Actors { get; set; }
+
+        [JsonProperty("categories", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Categories { get; set; }
+
+        [JsonProperty("watchlists", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Watchlists { get; set; }
     }
 
     public class ThreatMapMalwareResponse
@@ -1880,6 +1657,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Name { get; set; }
     }
 
+    public class ThreatMapMalwareInput
+    {
+        [JsonProperty("malware", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Malware { get; set; }
+
+        [JsonProperty("categories", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Categories { get; set; }
+
+        [JsonProperty("watchlists", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Watchlists { get; set; }
+    }
+
     public class STIXIndicatorsResponse
     {
         [JsonProperty("data")]
@@ -1949,6 +1738,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Url { get; set; }
     }
 
+    public class STIXIndicatorsInput
+    {
+        [JsonProperty("actors")]
+        public string[] Actors { get; set; }
+
+        [JsonProperty("categories")]
+        public string[] Categories { get; set; }
+
+        [JsonProperty("watchlists")]
+        public string[] Watchlists { get; set; }
+
+        [JsonProperty("trigger_score_ip")]
+        public int? TriggerScoreIp { get; set; }
+
+        [JsonProperty("trigger_score_url")]
+        public int? TriggerScoreUrl { get; set; }
+
+        [JsonProperty("trigger_score_domain")]
+        public int? TriggerScoreDomain { get; set; }
+
+        [JsonProperty("trigger_score_hash")]
+        public int? TriggerScoreHash { get; set; }
+
+        [JsonProperty("valid_until_delta_hours")]
+        public int? ValidUntilDeltaHours { get; set; }
+
+        [JsonProperty("threat_hunt_description")]
+        public string ThreatHuntDescription { get; set; }
+    }
+
     public class STIXMalwareIndicatorsResponse
     {
         [JsonProperty("data")]
@@ -2016,6 +1835,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class STIXMalwareIndicatorsInput
+    {
+        [JsonProperty("malware")]
+        public string[] Malware { get; set; }
+
+        [JsonProperty("categories")]
+        public string[] Categories { get; set; }
+
+        [JsonProperty("watchlists")]
+        public string[] Watchlists { get; set; }
+
+        [JsonProperty("trigger_score_ip")]
+        public int? TriggerScoreIp { get; set; }
+
+        [JsonProperty("trigger_score_url")]
+        public int? TriggerScoreUrl { get; set; }
+
+        [JsonProperty("trigger_score_domain")]
+        public int? TriggerScoreDomain { get; set; }
+
+        [JsonProperty("trigger_score_hash")]
+        public int? TriggerScoreHash { get; set; }
+
+        [JsonProperty("valid_until_delta_hours")]
+        public int? ValidUntilDeltaHours { get; set; }
+
+        [JsonProperty("threat_hunt_description")]
+        public string ThreatHuntDescription { get; set; }
     }
 
     public class AlertSearchV2Response

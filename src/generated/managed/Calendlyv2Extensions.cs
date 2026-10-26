@@ -38,23 +38,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration> CreateInviteeNoShow(Expression<Func<string>> bodyinvitee)
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration> CreateInviteeNoShow(Expression<Func<CreateInviteeNoShowInput>> body = null)
         {
-            var __workflow_bodyinvitee = WorkflowExpression.Compile(bodyinvitee, nameof(bodyinvitee), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invitee_no_shows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["invitee"] = ExpressionConverter.ConvertO(__workflow_bodyinvitee);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInviteeNoShowResponse>(callPayload);
             });
         }
@@ -88,52 +81,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscription(Expression<Func<CreateWebhookSubscriptionInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodyevents);
-                body["scope"] = "organization";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<CreateWebhookSubscriptionRoutingFormSubmissionInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions/routing_form_submission";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodyevents);
-                body["scope"] = "organization";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -286,6 +257,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string CreatedAt { get; set; }
     }
 
+    public class CreateInviteeNoShowInput
+    {
+        [JsonProperty("invitee", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Invitee { get; set; }
+    }
+
     public class GetEventTypeResponse
     {
         [JsonProperty("resource")]
@@ -382,11 +359,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string SalesforceUuid { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventsInputItem
+    public class CreateWebhookSubscriptionInput
     {
-        [EnumMember(Value = "routing_form_submission.created")]
-        RoutingFormSubmissionCreated
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateWebhookSubscriptionInputEventsTypeItem[] Events { get; set; }
+
+        [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Scope { get; set; } = "organization";
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateWebhookSubscriptionInputEventsTypeItem
+    {
+        [EnumMember(Value = "invitee.created")]
+        InviteeCreated,
+        [EnumMember(Value = "invitee.canceled")]
+        InviteeCanceled,
+        [EnumMember(Value = "invitee_no_show.created")]
+        InviteeNoShowCreated,
+        [EnumMember(Value = "invitee_no_show.deleted")]
+        InviteeNoShowDeleted
     }
 
     public class CreateWebhookSubscriptionRoutingFormSubmissionResponse
@@ -477,6 +472,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
         [JsonProperty("salesforce_uuid")]
         public string SalesforceUuid { get; set; }
+    }
+
+    public class CreateWebhookSubscriptionRoutingFormSubmissionInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateWebhookSubscriptionRoutingFormSubmissionInputEventsTypeItem[] Events { get; set; }
+
+        [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Scope { get; set; } = "organization";
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateWebhookSubscriptionRoutingFormSubmissionInputEventsTypeItem
+    {
+        [EnumMember(Value = "routing_form_submission.created")]
+        RoutingFormSubmissionCreated
     }
 }
 

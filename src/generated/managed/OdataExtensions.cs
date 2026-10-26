@@ -91,7 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                if (__workflow_entryInput != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -109,7 +110,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                if (__workflow_entryInput != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -127,7 +129,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                if (__workflow_entryInput != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -145,7 +148,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
+                if (__workflow_entryInput != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

@@ -13,10 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
     public class DiffcheckeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckTextResponse, ApiConnectionActionConfiguration> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
+        public IBodyWorkflowAction<CheckTextResponse, ApiConnectionActionConfiguration> CheckText(Expression<Func<CheckTextInput>> body, Expression<Func<diffLevelInput>> diffLevel = null)
         {
-            var __workflow_bodyleft = WorkflowExpression.Compile(bodyleft, nameof(bodyleft), required: true);
-            var __workflow_bodyright = WorkflowExpression.Compile(bodyright, nameof(bodyright), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_diffLevel = WorkflowExpression.Compile(diffLevel, nameof(diffLevel), required: false);
             return new DeferredBodyAction<CheckTextResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -28,26 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
                 if (__workflow_diffLevel != null)
                     callPayload.Queries["diff_level"] = ExpressionConverter.Convert(__workflow_diffLevel);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["left"] = ExpressionConverter.ConvertO(__workflow_bodyleft);
-                bodypropCount++;
-                body["right"] = ExpressionConverter.ConvertO(__workflow_bodyright);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CheckTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckImageResponse, ApiConnectionActionConfiguration> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
+        public IBodyWorkflowAction<CheckImageResponse, ApiConnectionActionConfiguration> CheckImage(Expression<Func<CheckImageInput>> body)
         {
-            var __workflow_bodyleftImage = WorkflowExpression.Compile(bodyleftImage, nameof(bodyleftImage), required: true);
-            var __workflow_bodyrightImage = WorkflowExpression.Compile(bodyrightImage, nameof(bodyrightImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CheckImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/image";
@@ -56,17 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
                 callPayload.Queries["input_type"] = Convert.ToString("json");
                 callPayload.Queries["output_type"] = Convert.ToString("json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["left_image"] = ExpressionConverter.ConvertO(__workflow_bodyleftImage);
-                bodypropCount++;
-                body["right_image"] = ExpressionConverter.ConvertO(__workflow_bodyrightImage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CheckImageResponse>(callPayload);
             });
         }
@@ -142,6 +120,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         public string Type { get; set; }
     }
 
+    public class CheckTextInput
+    {
+        [JsonProperty("left", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Left { get; set; }
+
+        [JsonProperty("right", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Right { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum diffLevelInput
     {
@@ -155,6 +142,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
     {
         [JsonProperty("dataUrl")]
         public string DataUrl { get; set; }
+    }
+
+    public class CheckImageInput
+    {
+        [JsonProperty("left_image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LeftImage { get; set; }
+
+        [JsonProperty("right_image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RightImage { get; set; }
     }
 }
 

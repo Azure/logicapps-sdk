@@ -108,24 +108,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<GetMemberGroupsResponse, ApiConnectionActionConfiguration> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<bool>> bodysecurityEnabledOnly)
+        public IBodyWorkflowAction<GetMemberGroupsResponse, ApiConnectionActionConfiguration> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<GetMemberGroupsInput>> body)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
-            var __workflow_bodysecurityEnabledOnly = WorkflowExpression.Compile(bodysecurityEnabledOnly, nameof(bodysecurityEnabledOnly), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetMemberGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/users/{0}/getMemberGroups", __workflow_memberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["securityEnabledOnly"] = ExpressionConverter.ConvertO(__workflow_bodysecurityEnabledOnly);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetMemberGroupsResponse>(callPayload);
             });
         }
@@ -556,6 +548,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
 
         [JsonProperty("value")]
         public string[] Value { get; set; }
+    }
+
+    public class GetMemberGroupsInput
+    {
+        [JsonProperty("securityEnabledOnly", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool SecurityEnabledOnly { get; set; } = false;
     }
 }
 

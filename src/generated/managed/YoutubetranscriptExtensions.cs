@@ -13,43 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
     public class YoutubetranscriptActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
-        public IBodyWorkflowAction<TranscriptResponse, ApiConnectionActionConfiguration> GetTranscript(Expression<Func<string>> bodyyouTubeVideoId)
+        public IBodyWorkflowAction<TranscriptResponse, ApiConnectionActionConfiguration> GetTranscript(Expression<Func<GetTranscriptInput>> body)
         {
-            var __workflow_bodyyouTubeVideoId = WorkflowExpression.Compile(bodyyouTubeVideoId, nameof(bodyyouTubeVideoId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TranscriptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/youtubei/v1/get_transcript";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var contextObject = new JObject();
-                var contextObjectpropCount = 0;
-                var clientObject = new JObject();
-                var clientObjectpropCount = 0;
-                clientObject["clientName"] = "WEB";
-                clientObjectpropCount++;
-                clientObject["clientVersion"] = "2.20250923.08.00";
-                clientObjectpropCount++;
-                if (clientObjectpropCount > 0)
-                {
-                    contextObject["client"] = clientObject;
-                    contextObjectpropCount++;
-                }
-
-                if (contextObjectpropCount > 0)
-                {
-                    body["context"] = contextObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["externalVideoId"] = ExpressionConverter.ConvertO(__workflow_bodyyouTubeVideoId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TranscriptResponse>(callPayload);
             });
         }
@@ -120,6 +92,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
 
         [JsonProperty("characterCount")]
         public int CharacterCount { get; set; }
+    }
+
+    public class GetTranscriptInput
+    {
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestContext Context { get; set; }
+
+        [JsonProperty("externalVideoId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string YouTubeVideoId { get; set; }
+    }
+
+    public class RequestContext
+    {
+        [JsonProperty("client")]
+        public ClientInfo Client { get; set; }
+    }
+
+    public class ClientInfo
+    {
+        [JsonProperty("clientName")]
+        public string ClientName { get; set; }
+
+        [JsonProperty("clientVersion")]
+        public string ClientVersion { get; set; }
     }
 }
 

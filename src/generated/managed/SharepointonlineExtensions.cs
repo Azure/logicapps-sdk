@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     public class SharepointonlineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateAgreementsSolutionDocument(Expression<Func<string>> dataset, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> documentName = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateAgreementsSolutionDocument(Expression<Func<string>> dataset, Expression<Func<string>> template, Expression<Func<object>> item, Expression<Func<string>> documentName = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_documentName = WorkflowExpression.Compile(documentName, nameof(documentName), required: false);
             return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -76,36 +76,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SharingLinkPermission, ApiConnectionActionConfiguration> CreateSharingLink(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> permissionlinkType, Expression<Func<string>> permissionlinkScope, Expression<Func<string>> permissionlinkExpiration = null)
+        public IBodyWorkflowAction<SharingLinkPermission, ApiConnectionActionConfiguration> CreateSharingLink(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<CreateSharingLinkInput>> permission)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_permissionlinkType = WorkflowExpression.Compile(permissionlinkType, nameof(permissionlinkType), required: true);
-            var __workflow_permissionlinkScope = WorkflowExpression.Compile(permissionlinkScope, nameof(permissionlinkScope), required: true);
-            var __workflow_permissionlinkExpiration = WorkflowExpression.Compile(permissionlinkExpiration, nameof(permissionlinkExpiration), required: false);
+            var __workflow_permission = WorkflowExpression.Compile(permission, nameof(permission), required: true);
             return new DeferredBodyAction<SharingLinkPermission, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/codeless/_api/v2.0/sites/root/lists/{1}/items/{2}/driveItem/createLink", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var permission = new JObject();
-                var permissionpropCount = 0;
-                permissionpropCount++;
-                permission["type"] = ExpressionConverter.ConvertO(__workflow_permissionlinkType);
-                permissionpropCount++;
-                permission["scope"] = ExpressionConverter.ConvertO(__workflow_permissionlinkScope);
-                if (__workflow_permissionlinkExpiration != null)
-                {
-                    permission["expirationDateTime"] = ExpressionConverter.ConvertO(__workflow_permissionlinkExpiration);
-                    permissionpropCount++;
-                }
-
-                if (permissionpropCount > 0)
-                {
-                    callPayload.Body = permission;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_permission);
                 return new ApiConnectionAction<SharingLinkPermission>(callPayload);
             });
         }
@@ -133,76 +115,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CopyFileAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfileToCopy, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFileIsAlreadyThere)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CopyFileAsync(Expression<Func<string>> dataset, Expression<Func<CopyFileAsyncInput>> parameters)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            var __workflow_parametersfileToCopy = WorkflowExpression.Compile(parametersfileToCopy, nameof(parametersfileToCopy), required: true);
-            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFileIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/copyFileAsync", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["sourceFileId"] = ExpressionConverter.ConvertO(__workflow_parametersfileToCopy);
-                parameterspropCount++;
-                parameters["destinationDataset"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationSiteAddress);
-                parameterspropCount++;
-                parameters["destinationFolderPath"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationFolder);
-                parameterspropCount++;
-                parameters["nameConflictBehavior"] = ExpressionConverter.ConvertO(__workflow_parametersifAnotherFileIsAlreadyThere);
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CopyFolderAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfolderToCopy, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFolderIsAlreadyThere)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CopyFolderAsync(Expression<Func<string>> dataset, Expression<Func<CopyFolderAsyncInput>> parameters)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            var __workflow_parametersfolderToCopy = WorkflowExpression.Compile(parametersfolderToCopy, nameof(parametersfolderToCopy), required: true);
-            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFolderIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/copyFolderAsync", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["sourceFolderId"] = ExpressionConverter.ConvertO(__workflow_parametersfolderToCopy);
-                parameterspropCount++;
-                parameters["destinationDataset"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationSiteAddress);
-                parameterspropCount++;
-                parameters["destinationFolderPath"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationFolder);
-                parameterspropCount++;
-                parameters["nameConflictBehavior"] = ExpressionConverter.ConvertO(__workflow_parametersifAnotherFolderIsAlreadyThere);
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/files", __workflow_dataset.WithUrlEncoding(2)));
@@ -231,11 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadataResponse, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<BlobMetadataResponse, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/files/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
@@ -362,42 +310,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> dataset, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> dataset, Expression<Func<HttpRequestInput>> parameters)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
-            var __workflow_parametersuri = WorkflowExpression.Compile(parametersuri, nameof(parametersuri), required: true);
-            var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/httprequest", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["method"] = ExpressionConverter.ConvertO(__workflow_parametersmethod);
-                parameterspropCount++;
-                parameters["uri"] = ExpressionConverter.ConvertO(__workflow_parametersuri);
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    parameters["headers"] = headersObject;
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parametersbody != null)
-                {
-                    parameters["body"] = ExpressionConverter.ConvertO(__workflow_parametersbody);
-                    parameterspropCount++;
-                }
-
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -424,65 +346,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> MoveFileAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfileToMove, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFileIsAlreadyThere)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> MoveFileAsync(Expression<Func<string>> dataset, Expression<Func<MoveFileAsyncInput>> parameters)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            var __workflow_parametersfileToMove = WorkflowExpression.Compile(parametersfileToMove, nameof(parametersfileToMove), required: true);
-            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFileIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/moveFileAsync", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["sourceFileId"] = ExpressionConverter.ConvertO(__workflow_parametersfileToMove);
-                parameterspropCount++;
-                parameters["destinationDataset"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationSiteAddress);
-                parameterspropCount++;
-                parameters["destinationFolderPath"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationFolder);
-                parameterspropCount++;
-                parameters["nameConflictBehavior"] = ExpressionConverter.ConvertO(__workflow_parametersifAnotherFileIsAlreadyThere);
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> MoveFolderAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfolderToMove, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFolderIsAlreadyThere)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> MoveFolderAsync(Expression<Func<string>> dataset, Expression<Func<MoveFolderAsyncInput>> parameters)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            var __workflow_parametersfolderToMove = WorkflowExpression.Compile(parametersfolderToMove, nameof(parametersfolderToMove), required: true);
-            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFolderIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/moveFolderAsync", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["sourceFolderId"] = ExpressionConverter.ConvertO(__workflow_parametersfolderToMove);
-                parameterspropCount++;
-                parameters["destinationDataset"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationSiteAddress);
-                parameterspropCount++;
-                parameters["destinationFolderPath"] = ExpressionConverter.ConvertO(__workflow_parametersdestinationFolder);
-                parameterspropCount++;
-                parameters["nameConflictBehavior"] = ExpressionConverter.ConvertO(__workflow_parametersifAnotherFolderIsAlreadyThere);
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
             });
         }
@@ -517,45 +405,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateNewDocumentSet(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> parametersdocumentSetPath, Expression<Func<string>> parameterscontentTypeId, Expression<Func<object>> parametersdynamicProperties = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateNewDocumentSet(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<CreateNewDocumentSetInput>> parameters)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_parametersdocumentSetPath = WorkflowExpression.Compile(parametersdocumentSetPath, nameof(parametersdocumentSetPath), required: true);
-            var __workflow_parameterscontentTypeId = WorkflowExpression.Compile(parameterscontentTypeId, nameof(parameterscontentTypeId), required: true);
-            var __workflow_parametersdynamicProperties = WorkflowExpression.Compile(parametersdynamicProperties, nameof(parametersdynamicProperties), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/createnewdocumentset", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["path"] = ExpressionConverter.ConvertO(__workflow_parametersdocumentSetPath);
-                parameterspropCount++;
-                parameters["contentTypeId"] = ExpressionConverter.ConvertO(__workflow_parameterscontentTypeId);
-                if (__workflow_parametersdynamicProperties != null)
-                {
-                    parameters["DynamicProperties"] = ExpressionConverter.ConvertO(__workflow_parametersdynamicProperties);
-                    parameterspropCount++;
-                }
-
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateNewFolder(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> parametersfolderPath, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateNewFolder(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<CreateNewFolderInput>> parameters, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_parametersfolderPath = WorkflowExpression.Compile(parametersfolderPath, nameof(parametersfolderPath), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -564,15 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                parameterspropCount++;
-                parameters["path"] = ExpressionConverter.ConvertO(__workflow_parametersfolderPath);
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -613,12 +475,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> SubmitDocGenForm(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> form, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> SubmitDocGenForm(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> form, Expression<Func<object>> item, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_form = WorkflowExpression.Compile(form, nameof(form), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -697,11 +559,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -749,12 +611,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -769,13 +631,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<ApprovalData, ApiConnectionActionConfiguration> CreateApprovalRequest(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<int>> approvalType, Expression<Func<object>> approvalSchema = null)
+        public IBodyWorkflowAction<ApprovalData, ApiConnectionActionConfiguration> CreateApprovalRequest(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<int>> approvalType, Expression<Func<object>> approvalSchema)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_approvalType = WorkflowExpression.Compile(approvalType, nameof(approvalType), required: true);
-            var __workflow_approvalSchema = WorkflowExpression.Compile(approvalSchema, nameof(approvalSchema), required: false);
+            var __workflow_approvalSchema = WorkflowExpression.Compile(approvalSchema, nameof(approvalSchema), required: true);
             return new DeferredBodyAction<ApprovalData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}/approval", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
@@ -815,29 +677,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CheckInFile(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parametercomments, Expression<Func<int>> parametercheckInType)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CheckInFile(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<CheckInFileInput>> parameter)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_parametercomments = WorkflowExpression.Compile(parametercomments, nameof(parametercomments), required: true);
-            var __workflow_parametercheckInType = WorkflowExpression.Compile(parametercheckInType, nameof(parametercheckInType), required: true);
+            var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}/checkinfile", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameter = new JObject();
-                var parameterpropCount = 0;
-                parameterpropCount++;
-                parameter["comment"] = ExpressionConverter.ConvertO(__workflow_parametercomments);
-                parameterpropCount++;
-                parameter["checkinType"] = ExpressionConverter.ConvertO(__workflow_parametercheckInType);
-                if (parameterpropCount > 0)
-                {
-                    callPayload.Body = parameter;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameter);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -891,54 +742,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GrantAccess(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parameterrecipients, Expression<Func<string>> parameterroles, Expression<Func<string>> parametermessage = null, Expression<Func<bool>> parameternotifyRecipients = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GrantAccess(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<GrantAccessInput>> parameter)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_parameterrecipients = WorkflowExpression.Compile(parameterrecipients, nameof(parameterrecipients), required: true);
-            var __workflow_parameterroles = WorkflowExpression.Compile(parameterroles, nameof(parameterroles), required: true);
-            var __workflow_parametermessage = WorkflowExpression.Compile(parametermessage, nameof(parametermessage), required: false);
-            var __workflow_parameternotifyRecipients = WorkflowExpression.Compile(parameternotifyRecipients, nameof(parameternotifyRecipients), required: false);
+            var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}/grantaccess", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameter = new JObject();
-                var parameterpropCount = 0;
-                parameterpropCount++;
-                parameter["recipients"] = ExpressionConverter.ConvertO(__workflow_parameterrecipients);
-                parameterpropCount++;
-                parameter["roleValue"] = ExpressionConverter.ConvertO(__workflow_parameterroles);
-                if (__workflow_parametermessage != null)
-                {
-                    parameter["emailBody"] = ExpressionConverter.ConvertO(__workflow_parametermessage);
-                    parameterpropCount++;
-                }
-
-                if (__workflow_parameternotifyRecipients != null)
-                {
-                    parameter["sendEmail"] = ExpressionConverter.ConvertO(__workflow_parameternotifyRecipients);
-                    parameterpropCount++;
-                }
-
-                if (parameterpropCount > 0)
-                {
-                    callPayload.Body = parameter;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameter);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchFileItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchFileItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -953,37 +779,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchFileItemWithPredictedValues(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parametersmodelId = null, Expression<Func<string>> parameterspredictResult = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchFileItemWithPredictedValues(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<PatchFileItemWithPredictedValuesInput>> parameters)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_parametersmodelId = WorkflowExpression.Compile(parametersmodelId, nameof(parametersmodelId), required: false);
-            var __workflow_parameterspredictResult = WorkflowExpression.Compile(parameterspredictResult, nameof(parameterspredictResult), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}/patchfileitemwithpredictedvalues", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                if (__workflow_parametersmodelId != null)
-                {
-                    parameters["modelId"] = ExpressionConverter.ConvertO(__workflow_parametersmodelId);
-                    parameterspropCount++;
-                }
-
-                if (__workflow_parameterspredictResult != null)
-                {
-                    parameters["predictResult"] = ExpressionConverter.ConvertO(__workflow_parameterspredictResult);
-                    parameterspropCount++;
-                }
-
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<Item>(callPayload);
             });
         }
@@ -1044,13 +851,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPListItemAttachment, ApiConnectionActionConfiguration> CreateAttachment(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> displayName, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<SPListItemAttachment, ApiConnectionActionConfiguration> CreateAttachment(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> displayName, Expression<Func<string>> body)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
             var __workflow_displayName = WorkflowExpression.Compile(displayName, nameof(displayName), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SPListItemAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_itemId.WithUrlEncoding(2)));
@@ -1095,12 +902,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateContentAssemblyDocument(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> folderPath = null, Expression<Func<string>> fileName = null, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateContentAssemblyDocument(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> template, Expression<Func<object>> item, Expression<Func<string>> folderPath = null, Expression<Func<string>> fileName = null, Expression<Func<string>> view = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
@@ -1427,6 +1234,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         public string SharingLink { get; set; }
     }
 
+    public class CreateSharingLinkInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LinkType { get; set; }
+
+        [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LinkScope { get; set; }
+
+        [JsonProperty("expirationDateTime")]
+        public string LinkExpiration { get; set; }
+    }
+
     public class BlobMetadata
     {
         public string Id { get; set; }
@@ -1439,6 +1258,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         public bool IsFolder { get; set; }
         public string ETag { get; set; }
         public string FileLocator { get; set; }
+    }
+
+    public class CopyFileAsyncInput
+    {
+        [JsonProperty("sourceFileId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileToCopy { get; set; }
+
+        [JsonProperty("destinationDataset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationSiteAddress { get; set; }
+
+        [JsonProperty("destinationFolderPath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationFolder { get; set; }
+
+        [JsonProperty("nameConflictBehavior", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int IfAnotherFileIsAlreadyThere { get; set; }
+    }
+
+    public class CopyFolderAsyncInput
+    {
+        [JsonProperty("sourceFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderToCopy { get; set; }
+
+        [JsonProperty("destinationDataset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationSiteAddress { get; set; }
+
+        [JsonProperty("destinationFolderPath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationFolder { get; set; }
+
+        [JsonProperty("nameConflictBehavior", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int IfAnotherFolderIsAlreadyThere { get; set; }
     }
 
     public class BlobMetadataResponse
@@ -1455,14 +1304,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         public string FileLocator { get; set; }
     }
 
+    public class HttpRequestInput
+    {
+        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HttpRequestInputMethodType Method { get; set; } = HttpRequestInputMethodType.GET;
+
+        [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Uri { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("body")]
+        public string Body { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum parametersmethodInput
+    public enum HttpRequestInputMethodType
     {
         GET,
         PUT,
         POST,
         PATCH,
         DELETE
+    }
+
+    public class MoveFileAsyncInput
+    {
+        [JsonProperty("sourceFileId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileToMove { get; set; }
+
+        [JsonProperty("destinationDataset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationSiteAddress { get; set; }
+
+        [JsonProperty("destinationFolderPath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationFolder { get; set; }
+
+        [JsonProperty("nameConflictBehavior", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int IfAnotherFileIsAlreadyThere { get; set; }
+    }
+
+    public class MoveFolderAsyncInput
+    {
+        [JsonProperty("sourceFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderToMove { get; set; }
+
+        [JsonProperty("destinationDataset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationSiteAddress { get; set; }
+
+        [JsonProperty("destinationFolderPath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationFolder { get; set; }
+
+        [JsonProperty("nameConflictBehavior", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int IfAnotherFolderIsAlreadyThere { get; set; }
+    }
+
+    public class CreateNewDocumentSetInput
+    {
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentSetPath { get; set; }
+
+        [JsonProperty("contentTypeId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentTypeId { get; set; }
+        public JToken DynamicProperties { get; set; }
+    }
+
+    public class CreateNewFolderInput
+    {
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderPath { get; set; }
     }
 
     public class SPListExpandedUser
@@ -1519,6 +1429,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     {
         [JsonProperty("ApprovalId")]
         public string ApprovalRequestId { get; set; }
+    }
+
+    public class CheckInFileInput
+    {
+        [JsonProperty("comment", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comments { get; set; }
+
+        [JsonProperty("checkinType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CheckInType { get; set; }
+    }
+
+    public class GrantAccessInput
+    {
+        [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Recipients { get; set; }
+
+        [JsonProperty("roleValue", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Roles { get; set; }
+
+        [JsonProperty("emailBody")]
+        public string Message { get; set; }
+
+        [JsonProperty("sendEmail")]
+        public bool? NotifyRecipients { get; set; }
+    }
+
+    public class PatchFileItemWithPredictedValuesInput
+    {
+        [JsonProperty("modelId")]
+        public string ModelId { get; set; }
+
+        [JsonProperty("predictResult")]
+        public string PredictResult { get; set; }
     }
 
     public class SetApprovalStatusOutput

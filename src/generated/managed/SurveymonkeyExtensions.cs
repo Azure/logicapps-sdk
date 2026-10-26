@@ -26,31 +26,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
-        public IBodyWorkflowAction<SurveyMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<string>> bodyscheduledDate = null)
+        public IBodyWorkflowAction<SurveyMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<SendMessageInput>> body = null)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_collectorId = WorkflowExpression.Compile(collectorId, nameof(collectorId), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SurveyMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collectors/{0}/messages/{1}/send", __workflow_collectorId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyscheduledDate != null)
-                {
-                    body["scheduled_date"] = ExpressionConverter.ConvertO(__workflow_bodyscheduledDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SurveyMessageResponse>(callPayload);
             });
         }
@@ -229,6 +218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         [JsonProperty("type")]
         public string Type { get; set; }
+    }
+
+    public class SendMessageInput
+    {
+        [JsonProperty("scheduled_date")]
+        public string ScheduledDate { get; set; }
     }
 
     public class GetResponseDetailsResponse

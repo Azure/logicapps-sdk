@@ -27,15 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 callPayload.Queries["drive"] = ExpressionConverter.Convert(__workflow_drive);
                 callPayload.Queries["file"] = ExpressionConverter.Convert(__workflow_file);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicFileSchema);
+                if (__workflow_dynamicFileSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicFileSchema);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateWordFileWithContent(Expression<Func<string>> contentcontent, Expression<Func<string>> fileName = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateWordFileWithContent(Expression<Func<CreateWordFileWithContentInput>> content, Expression<Func<string>> fileName = null)
         {
-            var __workflow_contentcontent = WorkflowExpression.Compile(contentcontent, nameof(contentcontent), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
@@ -45,15 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
                 callPayload.Queries["fileName"] = Convert.ToString("");
                 if (__workflow_fileName != null)
                     callPayload.Queries["fileName"] = ExpressionConverter.Convert(__workflow_fileName);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["content"] = ExpressionConverter.ConvertO(__workflow_contentcontent);
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -86,6 +79,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
 
     public class WordonlinebusinessTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class CreateWordFileWithContentInput
+    {
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
     }
 }
 

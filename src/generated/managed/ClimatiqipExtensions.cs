@@ -13,212 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
     public class ClimatiqipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateResponse, ApiConnectionActionConfiguration> EmissionEstimate(Expression<Func<string>> bodyemissionFactoruuid = null, Expression<Func<string>> bodyemissionFactoractivityId = null, Expression<Func<string>> bodyemissionFactorsource = null, Expression<Func<string>> bodyemissionFactorregion = null, Expression<Func<bool>> bodyemissionFactorregionFallback = null, Expression<Func<string>> bodyemissionFactoryear = null, Expression<Func<string>> bodyemissionFactorlcaActivity = null, Expression<Func<string>> bodyemissionFactorcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        public IBodyWorkflowAction<EmissionEstimateResponse, ApiConnectionActionConfiguration> EmissionEstimate(Expression<Func<EmissionEstimateInput>> body)
         {
-            var __workflow_bodyemissionFactoruuid = WorkflowExpression.Compile(bodyemissionFactoruuid, nameof(bodyemissionFactoruuid), required: false);
-            var __workflow_bodyemissionFactoractivityId = WorkflowExpression.Compile(bodyemissionFactoractivityId, nameof(bodyemissionFactoractivityId), required: false);
-            var __workflow_bodyemissionFactorsource = WorkflowExpression.Compile(bodyemissionFactorsource, nameof(bodyemissionFactorsource), required: false);
-            var __workflow_bodyemissionFactorregion = WorkflowExpression.Compile(bodyemissionFactorregion, nameof(bodyemissionFactorregion), required: false);
-            var __workflow_bodyemissionFactorregionFallback = WorkflowExpression.Compile(bodyemissionFactorregionFallback, nameof(bodyemissionFactorregionFallback), required: false);
-            var __workflow_bodyemissionFactoryear = WorkflowExpression.Compile(bodyemissionFactoryear, nameof(bodyemissionFactoryear), required: false);
-            var __workflow_bodyemissionFactorlcaActivity = WorkflowExpression.Compile(bodyemissionFactorlcaActivity, nameof(bodyemissionFactorlcaActivity), required: false);
-            var __workflow_bodyemissionFactorcalculationMethod = WorkflowExpression.Compile(bodyemissionFactorcalculationMethod, nameof(bodyemissionFactorcalculationMethod), required: false);
-            var __workflow_bodyparametersenergy = WorkflowExpression.Compile(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            var __workflow_bodyparametersenergyUnit = WorkflowExpression.Compile(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            var __workflow_bodyparametersdata = WorkflowExpression.Compile(bodyparametersdata, nameof(bodyparametersdata), required: false);
-            var __workflow_bodyparametersdataUnit = WorkflowExpression.Compile(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            var __workflow_bodyparametersdistance = WorkflowExpression.Compile(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            var __workflow_bodyparametersdistanceUnit = WorkflowExpression.Compile(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            var __workflow_bodyparametersmoney = WorkflowExpression.Compile(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            var __workflow_bodyparametersmoneyUnit = WorkflowExpression.Compile(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            var __workflow_bodyparametersnumber = WorkflowExpression.Compile(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            var __workflow_bodyparameterstime = WorkflowExpression.Compile(bodyparameterstime, nameof(bodyparameterstime), required: false);
-            var __workflow_bodyparameterstimeUnit = WorkflowExpression.Compile(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            var __workflow_bodyparameterspassengers = WorkflowExpression.Compile(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            var __workflow_bodyparametersvolume = WorkflowExpression.Compile(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
-            var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmissionEstimateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/estimate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var emissionFactorObject = new JObject();
-                var emissionFactorObjectpropCount = 0;
-                if (__workflow_bodyemissionFactoruuid != null)
-                {
-                    emissionFactorObject["uuid"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactoruuid);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (__workflow_bodyemissionFactoractivityId != null)
-                {
-                    emissionFactorObject["activity_id"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactoractivityId);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (__workflow_bodyemissionFactorsource != null)
-                {
-                    emissionFactorObject["source"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactorsource);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (__workflow_bodyemissionFactorregion != null)
-                {
-                    emissionFactorObject["region"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactorregion);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (__workflow_bodyemissionFactorregionFallback != null)
-                {
-                    emissionFactorObject["region_fallback"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactorregionFallback);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (__workflow_bodyemissionFactoryear != null)
-                {
-                    emissionFactorObject["year"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactoryear);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (__workflow_bodyemissionFactorlcaActivity != null)
-                {
-                    emissionFactorObject["lca_activity"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactorlcaActivity);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (__workflow_bodyemissionFactorcalculationMethod != null)
-                {
-                    emissionFactorObject["calculation_method"] = ExpressionConverter.ConvertO(__workflow_bodyemissionFactorcalculationMethod);
-                    emissionFactorObjectpropCount++;
-                }
-
-                if (emissionFactorObjectpropCount > 0)
-                {
-                    body["emission_factor"] = emissionFactorObject;
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparametersenergy != null)
-                {
-                    parametersObject["energy"] = ExpressionConverter.ConvertO(__workflow_bodyparametersenergy);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersenergyUnit != null)
-                {
-                    parametersObject["energy_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersenergyUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdata != null)
-                {
-                    parametersObject["data"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdata);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdataUnit != null)
-                {
-                    parametersObject["data_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdataUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdistance != null)
-                {
-                    parametersObject["distance"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdistance);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdistanceUnit != null)
-                {
-                    parametersObject["distance_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdistanceUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmoney != null)
-                {
-                    parametersObject["money"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmoney);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmoneyUnit != null)
-                {
-                    parametersObject["money_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmoneyUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersnumber != null)
-                {
-                    parametersObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyparametersnumber);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstime != null)
-                {
-                    parametersObject["time"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstime);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstimeUnit != null)
-                {
-                    parametersObject["time_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstimeUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterspassengers != null)
-                {
-                    parametersObject["passengers"] = ExpressionConverter.ConvertO(__workflow_bodyparameterspassengers);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersvolume != null)
-                {
-                    parametersObject["volume"] = ExpressionConverter.ConvertO(__workflow_bodyparametersvolume);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersvolumeUnit != null)
-                {
-                    parametersObject["volume_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersvolumeUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersweight != null)
-                {
-                    parametersObject["weight"] = ExpressionConverter.ConvertO(__workflow_bodyparametersweight);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersweightUnit != null)
-                {
-                    parametersObject["weight_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersweightUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmissionEstimateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration> EmissionEstimateBulk(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration> EmissionEstimateBulk(Expression<Func<bodyInputItem[]>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/batch";
@@ -230,45 +41,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<TravelFlightResponse, ApiConnectionActionConfiguration> TravelFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
+        public IBodyWorkflowAction<TravelFlightResponse, ApiConnectionActionConfiguration> TravelFlight(Expression<Func<TravelFlightInput>> body)
         {
-            var __workflow_bodylegs = WorkflowExpression.Compile(bodylegs, nameof(bodylegs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TravelFlightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/travel/flights";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["legs"] = ExpressionConverter.ConvertO(__workflow_bodylegs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TravelFlightResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<FreightFlightResponse, ApiConnectionActionConfiguration> FreightFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
+        public IBodyWorkflowAction<FreightFlightResponse, ApiConnectionActionConfiguration> FreightFlight(Expression<Func<FreightFlightInput>> body)
         {
-            var __workflow_bodylegs = WorkflowExpression.Compile(bodylegs, nameof(bodylegs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FreightFlightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/freight/flights";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["legs"] = ExpressionConverter.ConvertO(__workflow_bodylegs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FreightFlightResponse>(callPayload);
             });
         }
@@ -286,536 +81,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeCPUResponse, ApiConnectionActionConfiguration> ComputeCPU(Expression<Func<string>> provider, Expression<Func<int>> bodycpuCount, Expression<Func<string>> bodyregion, Expression<Func<int>> bodycpuLoad, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydurationUnit = null)
+        public IBodyWorkflowAction<ComputeCPUResponse, ApiConnectionActionConfiguration> ComputeCPU(Expression<Func<string>> provider, Expression<Func<ComputeCPUInput>> body)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
-            var __workflow_bodycpuCount = WorkflowExpression.Compile(bodycpuCount, nameof(bodycpuCount), required: true);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
-            var __workflow_bodycpuLoad = WorkflowExpression.Compile(bodycpuLoad, nameof(bodycpuLoad), required: true);
-            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
-            var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ComputeCPUResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/cpu", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["cpu_count"] = ExpressionConverter.ConvertO(__workflow_bodycpuCount);
-                bodypropCount++;
-                body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                bodypropCount++;
-                body["cpu_load"] = ExpressionConverter.ConvertO(__workflow_bodycpuLoad);
-                bodypropCount++;
-                body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
-                if (__workflow_bodydurationUnit != null)
-                {
-                    body["duration_unit"] = ExpressionConverter.ConvertO(__workflow_bodydurationUnit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ComputeCPUResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeStorageResponse, ApiConnectionActionConfiguration> ComputeStorage(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<bodystorageTypeInput>> bodystorageType, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
+        public IBodyWorkflowAction<ComputeStorageResponse, ApiConnectionActionConfiguration> ComputeStorage(Expression<Func<string>> provider, Expression<Func<ComputeStorageInput>> body)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
-            var __workflow_bodystorageType = WorkflowExpression.Compile(bodystorageType, nameof(bodystorageType), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
-            var __workflow_bodydataUnit = WorkflowExpression.Compile(bodydataUnit, nameof(bodydataUnit), required: false);
-            var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ComputeStorageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/storage", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                bodypropCount++;
-                body["storage_type"] = ExpressionConverter.ConvertO(__workflow_bodystorageType);
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (__workflow_bodydataUnit != null)
-                {
-                    body["data_unit"] = ExpressionConverter.ConvertO(__workflow_bodydataUnit);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
-                if (__workflow_bodydurationUnit != null)
-                {
-                    body["duration_unit"] = ExpressionConverter.ConvertO(__workflow_bodydurationUnit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ComputeStorageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeMemoryResponse, ApiConnectionActionConfiguration> ComputeMemory(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
+        public IBodyWorkflowAction<ComputeMemoryResponse, ApiConnectionActionConfiguration> ComputeMemory(Expression<Func<string>> provider, Expression<Func<ComputeMemoryInput>> body)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
-            var __workflow_bodydataUnit = WorkflowExpression.Compile(bodydataUnit, nameof(bodydataUnit), required: false);
-            var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ComputeMemoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/memory", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (__workflow_bodydataUnit != null)
-                {
-                    body["data_unit"] = ExpressionConverter.ConvertO(__workflow_bodydataUnit);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
-                if (__workflow_bodydurationUnit != null)
-                {
-                    body["duration_unit"] = ExpressionConverter.ConvertO(__workflow_bodydurationUnit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ComputeMemoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ClassificationResponse, ApiConnectionActionConfiguration> Classification(Expression<Func<string>> bodyclassificationclassificationType = null, Expression<Func<string>> bodyclassificationclassificationCode = null, Expression<Func<string>> bodyclassificationsource = null, Expression<Func<string>> bodyclassificationregion = null, Expression<Func<bool>> bodyclassificationregionFallback = null, Expression<Func<string>> bodyclassificationyear = null, Expression<Func<string>> bodyclassificationlcaActivity = null, Expression<Func<string>> bodyclassificationcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        public IBodyWorkflowAction<ClassificationResponse, ApiConnectionActionConfiguration> Classification(Expression<Func<ClassificationInput>> body = null)
         {
-            var __workflow_bodyclassificationclassificationType = WorkflowExpression.Compile(bodyclassificationclassificationType, nameof(bodyclassificationclassificationType), required: false);
-            var __workflow_bodyclassificationclassificationCode = WorkflowExpression.Compile(bodyclassificationclassificationCode, nameof(bodyclassificationclassificationCode), required: false);
-            var __workflow_bodyclassificationsource = WorkflowExpression.Compile(bodyclassificationsource, nameof(bodyclassificationsource), required: false);
-            var __workflow_bodyclassificationregion = WorkflowExpression.Compile(bodyclassificationregion, nameof(bodyclassificationregion), required: false);
-            var __workflow_bodyclassificationregionFallback = WorkflowExpression.Compile(bodyclassificationregionFallback, nameof(bodyclassificationregionFallback), required: false);
-            var __workflow_bodyclassificationyear = WorkflowExpression.Compile(bodyclassificationyear, nameof(bodyclassificationyear), required: false);
-            var __workflow_bodyclassificationlcaActivity = WorkflowExpression.Compile(bodyclassificationlcaActivity, nameof(bodyclassificationlcaActivity), required: false);
-            var __workflow_bodyclassificationcalculationMethod = WorkflowExpression.Compile(bodyclassificationcalculationMethod, nameof(bodyclassificationcalculationMethod), required: false);
-            var __workflow_bodyparametersenergy = WorkflowExpression.Compile(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            var __workflow_bodyparametersenergyUnit = WorkflowExpression.Compile(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            var __workflow_bodyparametersdata = WorkflowExpression.Compile(bodyparametersdata, nameof(bodyparametersdata), required: false);
-            var __workflow_bodyparametersdataUnit = WorkflowExpression.Compile(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            var __workflow_bodyparametersdistance = WorkflowExpression.Compile(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            var __workflow_bodyparametersdistanceUnit = WorkflowExpression.Compile(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            var __workflow_bodyparametersmoney = WorkflowExpression.Compile(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            var __workflow_bodyparametersmoneyUnit = WorkflowExpression.Compile(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            var __workflow_bodyparametersnumber = WorkflowExpression.Compile(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            var __workflow_bodyparameterstime = WorkflowExpression.Compile(bodyparameterstime, nameof(bodyparameterstime), required: false);
-            var __workflow_bodyparameterstimeUnit = WorkflowExpression.Compile(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            var __workflow_bodyparameterspassengers = WorkflowExpression.Compile(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            var __workflow_bodyparametersvolume = WorkflowExpression.Compile(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
-            var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ClassificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/classifications/estimate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var classificationObject = new JObject();
-                var classificationObjectpropCount = 0;
-                if (__workflow_bodyclassificationclassificationType != null)
-                {
-                    classificationObject["classification_type"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationclassificationType);
-                    classificationObjectpropCount++;
-                }
-
-                if (__workflow_bodyclassificationclassificationCode != null)
-                {
-                    classificationObject["classification_code"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationclassificationCode);
-                    classificationObjectpropCount++;
-                }
-
-                if (__workflow_bodyclassificationsource != null)
-                {
-                    classificationObject["source"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationsource);
-                    classificationObjectpropCount++;
-                }
-
-                if (__workflow_bodyclassificationregion != null)
-                {
-                    classificationObject["region"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationregion);
-                    classificationObjectpropCount++;
-                }
-
-                if (__workflow_bodyclassificationregionFallback != null)
-                {
-                    classificationObject["region_fallback"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationregionFallback);
-                    classificationObjectpropCount++;
-                }
-
-                if (__workflow_bodyclassificationyear != null)
-                {
-                    classificationObject["year"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationyear);
-                    classificationObjectpropCount++;
-                }
-
-                if (__workflow_bodyclassificationlcaActivity != null)
-                {
-                    classificationObject["lca_activity"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationlcaActivity);
-                    classificationObjectpropCount++;
-                }
-
-                if (__workflow_bodyclassificationcalculationMethod != null)
-                {
-                    classificationObject["calculation_method"] = ExpressionConverter.ConvertO(__workflow_bodyclassificationcalculationMethod);
-                    classificationObjectpropCount++;
-                }
-
-                if (classificationObjectpropCount > 0)
-                {
-                    body["classification"] = classificationObject;
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparametersenergy != null)
-                {
-                    parametersObject["energy"] = ExpressionConverter.ConvertO(__workflow_bodyparametersenergy);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersenergyUnit != null)
-                {
-                    parametersObject["energy_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersenergyUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdata != null)
-                {
-                    parametersObject["data"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdata);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdataUnit != null)
-                {
-                    parametersObject["data_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdataUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdistance != null)
-                {
-                    parametersObject["distance"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdistance);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdistanceUnit != null)
-                {
-                    parametersObject["distance_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdistanceUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmoney != null)
-                {
-                    parametersObject["money"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmoney);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmoneyUnit != null)
-                {
-                    parametersObject["money_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmoneyUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersnumber != null)
-                {
-                    parametersObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyparametersnumber);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstime != null)
-                {
-                    parametersObject["time"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstime);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstimeUnit != null)
-                {
-                    parametersObject["time_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstimeUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterspassengers != null)
-                {
-                    parametersObject["passengers"] = ExpressionConverter.ConvertO(__workflow_bodyparameterspassengers);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersvolume != null)
-                {
-                    parametersObject["volume"] = ExpressionConverter.ConvertO(__workflow_bodyparametersvolume);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersvolumeUnit != null)
-                {
-                    parametersObject["volume_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersvolumeUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersweight != null)
-                {
-                    parametersObject["weight"] = ExpressionConverter.ConvertO(__workflow_bodyparametersweight);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersweightUnit != null)
-                {
-                    parametersObject["weight_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersweightUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ClassificationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomResponse, ApiConnectionActionConfiguration> Custom(Expression<Func<string>> bodycustomActivitylabel = null, Expression<Func<string>> bodycustomActivitysource = null, Expression<Func<string>> bodycustomActivityregion = null, Expression<Func<bool>> bodycustomActivityregionFallback = null, Expression<Func<string>> bodycustomActivityyear = null, Expression<Func<string>> bodycustomActivitylcaActivity = null, Expression<Func<string>> bodycustomActivitycalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        public IBodyWorkflowAction<CustomResponse, ApiConnectionActionConfiguration> Custom(Expression<Func<CustomInput>> body)
         {
-            var __workflow_bodycustomActivitylabel = WorkflowExpression.Compile(bodycustomActivitylabel, nameof(bodycustomActivitylabel), required: false);
-            var __workflow_bodycustomActivitysource = WorkflowExpression.Compile(bodycustomActivitysource, nameof(bodycustomActivitysource), required: false);
-            var __workflow_bodycustomActivityregion = WorkflowExpression.Compile(bodycustomActivityregion, nameof(bodycustomActivityregion), required: false);
-            var __workflow_bodycustomActivityregionFallback = WorkflowExpression.Compile(bodycustomActivityregionFallback, nameof(bodycustomActivityregionFallback), required: false);
-            var __workflow_bodycustomActivityyear = WorkflowExpression.Compile(bodycustomActivityyear, nameof(bodycustomActivityyear), required: false);
-            var __workflow_bodycustomActivitylcaActivity = WorkflowExpression.Compile(bodycustomActivitylcaActivity, nameof(bodycustomActivitylcaActivity), required: false);
-            var __workflow_bodycustomActivitycalculationMethod = WorkflowExpression.Compile(bodycustomActivitycalculationMethod, nameof(bodycustomActivitycalculationMethod), required: false);
-            var __workflow_bodyparametersenergy = WorkflowExpression.Compile(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            var __workflow_bodyparametersenergyUnit = WorkflowExpression.Compile(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            var __workflow_bodyparametersdata = WorkflowExpression.Compile(bodyparametersdata, nameof(bodyparametersdata), required: false);
-            var __workflow_bodyparametersdataUnit = WorkflowExpression.Compile(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            var __workflow_bodyparametersdistance = WorkflowExpression.Compile(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            var __workflow_bodyparametersdistanceUnit = WorkflowExpression.Compile(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            var __workflow_bodyparametersmoney = WorkflowExpression.Compile(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            var __workflow_bodyparametersmoneyUnit = WorkflowExpression.Compile(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            var __workflow_bodyparametersnumber = WorkflowExpression.Compile(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            var __workflow_bodyparameterstime = WorkflowExpression.Compile(bodyparameterstime, nameof(bodyparameterstime), required: false);
-            var __workflow_bodyparameterstimeUnit = WorkflowExpression.Compile(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            var __workflow_bodyparameterspassengers = WorkflowExpression.Compile(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            var __workflow_bodyparametersvolume = WorkflowExpression.Compile(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
-            var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/custom-activities/estimate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var customActivityObject = new JObject();
-                var customActivityObjectpropCount = 0;
-                if (__workflow_bodycustomActivitylabel != null)
-                {
-                    customActivityObject["label"] = ExpressionConverter.ConvertO(__workflow_bodycustomActivitylabel);
-                    customActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodycustomActivitysource != null)
-                {
-                    customActivityObject["source"] = ExpressionConverter.ConvertO(__workflow_bodycustomActivitysource);
-                    customActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodycustomActivityregion != null)
-                {
-                    customActivityObject["region"] = ExpressionConverter.ConvertO(__workflow_bodycustomActivityregion);
-                    customActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodycustomActivityregionFallback != null)
-                {
-                    customActivityObject["region_fallback"] = ExpressionConverter.ConvertO(__workflow_bodycustomActivityregionFallback);
-                    customActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodycustomActivityyear != null)
-                {
-                    customActivityObject["year"] = ExpressionConverter.ConvertO(__workflow_bodycustomActivityyear);
-                    customActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodycustomActivitylcaActivity != null)
-                {
-                    customActivityObject["lca_activity"] = ExpressionConverter.ConvertO(__workflow_bodycustomActivitylcaActivity);
-                    customActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodycustomActivitycalculationMethod != null)
-                {
-                    customActivityObject["calculation_method"] = ExpressionConverter.ConvertO(__workflow_bodycustomActivitycalculationMethod);
-                    customActivityObjectpropCount++;
-                }
-
-                if (customActivityObjectpropCount > 0)
-                {
-                    body["custom_activity"] = customActivityObject;
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparametersenergy != null)
-                {
-                    parametersObject["energy"] = ExpressionConverter.ConvertO(__workflow_bodyparametersenergy);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersenergyUnit != null)
-                {
-                    parametersObject["energy_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersenergyUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdata != null)
-                {
-                    parametersObject["data"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdata);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdataUnit != null)
-                {
-                    parametersObject["data_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdataUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdistance != null)
-                {
-                    parametersObject["distance"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdistance);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersdistanceUnit != null)
-                {
-                    parametersObject["distance_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdistanceUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmoney != null)
-                {
-                    parametersObject["money"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmoney);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmoneyUnit != null)
-                {
-                    parametersObject["money_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmoneyUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersnumber != null)
-                {
-                    parametersObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyparametersnumber);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstime != null)
-                {
-                    parametersObject["time"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstime);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstimeUnit != null)
-                {
-                    parametersObject["time_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstimeUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterspassengers != null)
-                {
-                    parametersObject["passengers"] = ExpressionConverter.ConvertO(__workflow_bodyparameterspassengers);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersvolume != null)
-                {
-                    parametersObject["volume"] = ExpressionConverter.ConvertO(__workflow_bodyparametersvolume);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersvolumeUnit != null)
-                {
-                    parametersObject["volume_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersvolumeUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersweight != null)
-                {
-                    parametersObject["weight"] = ExpressionConverter.ConvertO(__workflow_bodyparametersweight);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersweightUnit != null)
-                {
-                    parametersObject["weight_unit"] = ExpressionConverter.ConvertO(__workflow_bodyparametersweightUnit);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomBatchResponse, ApiConnectionActionConfiguration> CustomBatch(Expression<Func<bodyInputItem2[]>> body = null)
+        public IBodyWorkflowAction<CustomBatchResponse, ApiConnectionActionConfiguration> CustomBatch(Expression<Func<bodyInputItem2[]>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomBatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/custom-activities/batch";
@@ -1209,6 +551,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
+    public class EmissionEstimateInput
+    {
+        [JsonProperty("emission_factor")]
+        public EmissionEstimateInputEmissionFactorType EmissionFactor { get; set; }
+
+        [JsonProperty("parameters")]
+        public EmissionEstimateInputParametersType Parameters { get; set; }
+    }
+
+    public class EmissionEstimateInputEmissionFactorType
+    {
+        [JsonProperty("uuid")]
+        public string Uuid { get; set; }
+
+        [JsonProperty("activity_id")]
+        public string ActivityId { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("region_fallback")]
+        public bool? RegionFallback { get; set; }
+
+        [JsonProperty("year")]
+        public string Year { get; set; }
+
+        [JsonProperty("lca_activity")]
+        public string LcaActivity { get; set; }
+
+        [JsonProperty("calculation_method")]
+        public string CalculationMethod { get; set; }
+    }
+
+    public class EmissionEstimateInputParametersType
+    {
+        [JsonProperty("energy")]
+        public int? Energy { get; set; }
+
+        [JsonProperty("energy_unit")]
+        public string EnergyUnit { get; set; }
+
+        [JsonProperty("data")]
+        public int? Data { get; set; }
+
+        [JsonProperty("data_unit")]
+        public string DataUnit { get; set; }
+
+        [JsonProperty("distance")]
+        public int? Distance { get; set; }
+
+        [JsonProperty("distance_unit")]
+        public string DistanceUnit { get; set; }
+
+        [JsonProperty("money")]
+        public int? Money { get; set; }
+
+        [JsonProperty("money_unit")]
+        public string MoneyUnit { get; set; }
+
+        [JsonProperty("number")]
+        public int? Number { get; set; }
+
+        [JsonProperty("time")]
+        public int? Time { get; set; }
+
+        [JsonProperty("time_unit")]
+        public string TimeUnit { get; set; }
+
+        [JsonProperty("passengers")]
+        public int? Passengers { get; set; }
+
+        [JsonProperty("volume")]
+        public int? Volume { get; set; }
+
+        [JsonProperty("volume_unit")]
+        public string VolumeUnit { get; set; }
+
+        [JsonProperty("weight")]
+        public int? Weight { get; set; }
+
+        [JsonProperty("weight_unit")]
+        public string WeightUnit { get; set; }
+    }
+
     public class EmissionEstimateBulkResponse
     {
         [JsonProperty("results")]
@@ -1443,16 +872,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class bodylegsInputItem
+    public class TravelFlightInput
     {
-        [JsonProperty("from")]
+        [JsonProperty("legs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TravelFlightInputLegsTypeItem[] Legs { get; set; }
+    }
+
+    public class TravelFlightInputLegsTypeItem
+    {
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
 
-        [JsonProperty("to")]
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
         [JsonProperty("passengers")]
-        public int Passengers { get; set; }
+        public int? Passengers { get; set; }
 
         [JsonProperty("class")]
         public string Class { get; set; }
@@ -1540,6 +975,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
         [JsonProperty("n2o")]
         public double N2o { get; set; }
+    }
+
+    public class FreightFlightInput
+    {
+        [JsonProperty("legs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public FreightFlightInputLegsTypeItem[] Legs { get; set; }
+    }
+
+    public class FreightFlightInputLegsTypeItem
+    {
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty("passengers")]
+        public int? Passengers { get; set; }
+
+        [JsonProperty("class")]
+        public string Class { get; set; }
     }
 
     public class ComputeMetadataResponse
@@ -1686,6 +1142,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
+    public class ComputeCPUInput
+    {
+        [JsonProperty("cpu_count", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CpuCount { get; set; }
+
+        [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Region { get; set; }
+
+        [JsonProperty("cpu_load", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CpuLoad { get; set; }
+
+        [JsonProperty("duration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Duration { get; set; }
+
+        [JsonProperty("duration_unit")]
+        public string DurationUnit { get; set; }
+    }
+
     public class ComputeStorageResponse
     {
         [JsonProperty("co2e")]
@@ -1758,8 +1232,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
+    public class ComputeStorageInput
+    {
+        [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Region { get; set; }
+
+        [JsonProperty("storage_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ComputeStorageInputStorageTypeType StorageType { get; set; } = ComputeStorageInputStorageTypeType.Ssd;
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Data { get; set; }
+
+        [JsonProperty("data_unit")]
+        public string DataUnit { get; set; }
+
+        [JsonProperty("duration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Duration { get; set; }
+
+        [JsonProperty("duration_unit")]
+        public string DurationUnit { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystorageTypeInput
+    public enum ComputeStorageInputStorageTypeType
     {
         [EnumMember(Value = "ssd")]
         Ssd,
@@ -1839,6 +1334,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
+    public class ComputeMemoryInput
+    {
+        [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Region { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Data { get; set; }
+
+        [JsonProperty("data_unit")]
+        public string DataUnit { get; set; }
+
+        [JsonProperty("duration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Duration { get; set; }
+
+        [JsonProperty("duration_unit")]
+        public string DurationUnit { get; set; }
+    }
+
     public class ClassificationResponse
     {
         [JsonProperty("co2e")]
@@ -1911,6 +1424,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
+    public class ClassificationInput
+    {
+        [JsonProperty("classification")]
+        public ClassificationInputClassificationType Classification { get; set; }
+
+        [JsonProperty("parameters")]
+        public ClassificationInputParametersType Parameters { get; set; }
+    }
+
+    public class ClassificationInputClassificationType
+    {
+        [JsonProperty("classification_type")]
+        public string ClassificationType { get; set; }
+
+        [JsonProperty("classification_code")]
+        public string ClassificationCode { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("region_fallback")]
+        public bool? RegionFallback { get; set; }
+
+        [JsonProperty("year")]
+        public string Year { get; set; }
+
+        [JsonProperty("lca_activity")]
+        public string LcaActivity { get; set; }
+
+        [JsonProperty("calculation_method")]
+        public string CalculationMethod { get; set; }
+    }
+
+    public class ClassificationInputParametersType
+    {
+        [JsonProperty("energy")]
+        public int? Energy { get; set; }
+
+        [JsonProperty("energy_unit")]
+        public string EnergyUnit { get; set; }
+
+        [JsonProperty("data")]
+        public int? Data { get; set; }
+
+        [JsonProperty("data_unit")]
+        public string DataUnit { get; set; }
+
+        [JsonProperty("distance")]
+        public int? Distance { get; set; }
+
+        [JsonProperty("distance_unit")]
+        public string DistanceUnit { get; set; }
+
+        [JsonProperty("money")]
+        public int? Money { get; set; }
+
+        [JsonProperty("money_unit")]
+        public string MoneyUnit { get; set; }
+
+        [JsonProperty("number")]
+        public int? Number { get; set; }
+
+        [JsonProperty("time")]
+        public int? Time { get; set; }
+
+        [JsonProperty("time_unit")]
+        public string TimeUnit { get; set; }
+
+        [JsonProperty("passengers")]
+        public int? Passengers { get; set; }
+
+        [JsonProperty("volume")]
+        public int? Volume { get; set; }
+
+        [JsonProperty("volume_unit")]
+        public string VolumeUnit { get; set; }
+
+        [JsonProperty("weight")]
+        public int? Weight { get; set; }
+
+        [JsonProperty("weight_unit")]
+        public string WeightUnit { get; set; }
+    }
+
     public class CustomResponse
     {
         [JsonProperty("co2e")]
@@ -1981,6 +1581,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
         [JsonProperty("n2o")]
         public double N2o { get; set; }
+    }
+
+    public class CustomInput
+    {
+        [JsonProperty("custom_activity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CustomInputCustomActivityType CustomActivity { get; set; }
+
+        [JsonProperty("parameters")]
+        public CustomInputParametersType Parameters { get; set; }
+    }
+
+    public class CustomInputCustomActivityType
+    {
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Label { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("region_fallback")]
+        public bool? RegionFallback { get; set; }
+
+        [JsonProperty("year")]
+        public string Year { get; set; }
+
+        [JsonProperty("lca_activity")]
+        public string LcaActivity { get; set; }
+
+        [JsonProperty("calculation_method")]
+        public string CalculationMethod { get; set; }
+    }
+
+    public class CustomInputParametersType
+    {
+        [JsonProperty("energy")]
+        public int? Energy { get; set; }
+
+        [JsonProperty("energy_unit")]
+        public string EnergyUnit { get; set; }
+
+        [JsonProperty("data")]
+        public int? Data { get; set; }
+
+        [JsonProperty("data_unit")]
+        public string DataUnit { get; set; }
+
+        [JsonProperty("distance")]
+        public int? Distance { get; set; }
+
+        [JsonProperty("distance_unit")]
+        public string DistanceUnit { get; set; }
+
+        [JsonProperty("money")]
+        public int? Money { get; set; }
+
+        [JsonProperty("money_unit")]
+        public string MoneyUnit { get; set; }
+
+        [JsonProperty("number")]
+        public int? Number { get; set; }
+
+        [JsonProperty("time")]
+        public int? Time { get; set; }
+
+        [JsonProperty("time_unit")]
+        public string TimeUnit { get; set; }
+
+        [JsonProperty("passengers")]
+        public int? Passengers { get; set; }
+
+        [JsonProperty("volume")]
+        public int? Volume { get; set; }
+
+        [JsonProperty("volume_unit")]
+        public string VolumeUnit { get; set; }
+
+        [JsonProperty("weight")]
+        public int? Weight { get; set; }
+
+        [JsonProperty("weight_unit")]
+        public string WeightUnit { get; set; }
     }
 
     public class CustomBatchResponse

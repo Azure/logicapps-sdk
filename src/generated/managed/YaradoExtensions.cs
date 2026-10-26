@@ -37,26 +37,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateScheduleTaskRun(Expression<Func<CreateScheduleTaskRunInput>> body)
         {
-            var __workflow_bodyrobotId = WorkflowExpression.Compile(bodyrobotId, nameof(bodyrobotId), required: true);
-            var __workflow_bodytaskFileId = WorkflowExpression.Compile(bodytaskFileId, nameof(bodytaskFileId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/task-schedules";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["robot_id"] = ExpressionConverter.ConvertO(__workflow_bodyrobotId);
-                bodypropCount++;
-                body["task_file_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskFileId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -94,6 +83,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+    }
+
+    public class CreateScheduleTaskRunInput
+    {
+        [JsonProperty("robot_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RobotId { get; set; }
+
+        [JsonProperty("task_file_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TaskFileId { get; set; }
     }
 }
 

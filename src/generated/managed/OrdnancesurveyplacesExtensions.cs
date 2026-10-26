@@ -234,11 +234,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<PolygonResponse, ApiConnectionActionConfiguration> Polygon(Expression<Func<string>> contentType, Expression<Func<string>> bodytype, Expression<Func<string>> bodygeometry, Expression<Func<int>> referencepoint = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> dataset = null, Expression<Func<int>> offset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<PolygonResponse, ApiConnectionActionConfiguration> Polygon(Expression<Func<string>> contentType, Expression<Func<PolygonInput>> body, Expression<Func<int>> referencepoint = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> dataset = null, Expression<Func<int>> offset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodygeometry = WorkflowExpression.Compile(bodygeometry, nameof(bodygeometry), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_referencepoint = WorkflowExpression.Compile(referencepoint, nameof(referencepoint), required: false);
             var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
@@ -269,17 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
                 if (__workflow_srs != null)
                     callPayload.Queries["srs"] = ExpressionConverter.Convert(__workflow_srs);
                 callPayload.Headers["Content-type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["geometry"] = ExpressionConverter.ConvertO(__workflow_bodygeometry);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PolygonResponse>(callPayload);
             });
         }
@@ -1785,6 +1774,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
         [JsonProperty("MATCH_DESCRIPTION")]
         public string MATCHDESCRIPTION { get; set; }
+    }
+
+    public class PolygonInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; } = "Feature";
+
+        [JsonProperty("geometry", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Geometry { get; set; }
     }
 }
 

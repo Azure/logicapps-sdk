@@ -67,13 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartAdHocQueryExecutionJob(Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<string>> bodyfilename = null, Expression<Func<int>> bodytimeZoneOffset = null, Expression<Func<bool>> bodyuseLongDescriptions = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartAdHocQueryExecutionJob(Expression<Func<StartAdHocQueryExecutionJobInput>> body)
         {
-            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            var __workflow_bodyformattingMode = WorkflowExpression.Compile(bodyformattingMode, nameof(bodyformattingMode), required: false);
-            var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: false);
-            var __workflow_bodytimeZoneOffset = WorkflowExpression.Compile(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            var __workflow_bodyuseLongDescriptions = WorkflowExpression.Compile(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/queries/execute";
@@ -81,90 +77,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["product"] = Convert.ToString("RE");
                 callPayload.Queries["module"] = Convert.ToString("None");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputFormat != null)
-                {
-                    if (__workflow_bodyoutputFormat != null)
-                    {
-                        body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["output_format"] = "Csv";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformattingMode != null)
-                {
-                    if (__workflow_bodyformattingMode != null)
-                    {
-                        body["formatting_mode"] = ExpressionConverter.ConvertO(__workflow_bodyformattingMode);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["formatting_mode"] = "None";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilename != null)
-                {
-                    body["results_file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfilename);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimeZoneOffset != null)
-                {
-                    body["time_zone_offset_in_minutes"] = ExpressionConverter.ConvertO(__workflow_bodytimeZoneOffset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuseLongDescriptions != null)
-                {
-                    body["display_code_table_long_description"] = ExpressionConverter.ConvertO(__workflow_bodyuseLongDescriptions);
-                    bodypropCount++;
-                }
-
-                body["ux_mode"] = "Asynchronous";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartQueryExecutionJob(Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<bodysQLGenerationModeInput>> bodysQLGenerationMode = null, Expression<Func<bool>> bodyuseStaticQuery = null, Expression<Func<string>> bodyfilename = null, Expression<Func<int>> bodytimeZoneOffset = null, Expression<Func<bool>> bodyuseLongDescriptions = null, Expression<Func<QueryApiAskFieldInformation[]>> bodyaskField = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartQueryExecutionJob(Expression<Func<StartQueryExecutionJobInput>> body)
         {
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            var __workflow_bodyformattingMode = WorkflowExpression.Compile(bodyformattingMode, nameof(bodyformattingMode), required: false);
-            var __workflow_bodysQLGenerationMode = WorkflowExpression.Compile(bodysQLGenerationMode, nameof(bodysQLGenerationMode), required: false);
-            var __workflow_bodyuseStaticQuery = WorkflowExpression.Compile(bodyuseStaticQuery, nameof(bodyuseStaticQuery), required: false);
-            var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: false);
-            var __workflow_bodytimeZoneOffset = WorkflowExpression.Compile(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            var __workflow_bodyuseLongDescriptions = WorkflowExpression.Compile(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
-            var __workflow_bodyaskField = WorkflowExpression.Compile(bodyaskField, nameof(bodyaskField), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/queries/executebyid";
@@ -172,109 +93,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["product"] = Convert.ToString("RE");
                 callPayload.Queries["module"] = Convert.ToString("None");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["v_query_type_id"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                if (__workflow_bodyoutputFormat != null)
-                {
-                    if (__workflow_bodyoutputFormat != null)
-                    {
-                        body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["output_format"] = "Csv";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformattingMode != null)
-                {
-                    if (__workflow_bodyformattingMode != null)
-                    {
-                        body["formatting_mode"] = ExpressionConverter.ConvertO(__workflow_bodyformattingMode);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["formatting_mode"] = "None";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysQLGenerationMode != null)
-                {
-                    if (__workflow_bodysQLGenerationMode != null)
-                    {
-                        body["sql_generation_mode"] = ExpressionConverter.ConvertO(__workflow_bodysQLGenerationMode);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["sql_generation_mode"] = "Query";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuseStaticQuery != null)
-                {
-                    body["use_static_query_id_set"] = ExpressionConverter.ConvertO(__workflow_bodyuseStaticQuery);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfilename != null)
-                {
-                    body["results_file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfilename);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimeZoneOffset != null)
-                {
-                    body["time_zone_offset_in_minutes"] = ExpressionConverter.ConvertO(__workflow_bodytimeZoneOffset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuseLongDescriptions != null)
-                {
-                    body["display_code_table_long_description"] = ExpressionConverter.ConvertO(__workflow_bodyuseLongDescriptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaskField != null)
-                {
-                    body["ask_fields"] = ExpressionConverter.ConvertO(__workflow_bodyaskField);
-                    bodypropCount++;
-                }
-
-                body["ux_mode"] = "Asynchronous";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartRefreshStaticQueryExecutionJob(Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery, Expression<Func<int>> bodytimeZoneOffset = null, Expression<Func<bool>> bodyuseLongDescriptions = null, Expression<Func<QueryApiAskFieldInformation[]>> bodyaskField = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartRefreshStaticQueryExecutionJob(Expression<Func<StartRefreshStaticQueryExecutionJobInput>> body)
         {
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodytimeZoneOffset = WorkflowExpression.Compile(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            var __workflow_bodyuseLongDescriptions = WorkflowExpression.Compile(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
-            var __workflow_bodyaskField = WorkflowExpression.Compile(bodyaskField, nameof(bodyaskField), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/queries/refreshstaticquery";
@@ -282,37 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["product"] = Convert.ToString("RE");
                 callPayload.Queries["module"] = Convert.ToString("None");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["v_query_type_id"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                if (__workflow_bodytimeZoneOffset != null)
-                {
-                    body["time_zone_offset_in_minutes"] = ExpressionConverter.ConvertO(__workflow_bodytimeZoneOffset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuseLongDescriptions != null)
-                {
-                    body["display_code_table_long_description"] = ExpressionConverter.ConvertO(__workflow_bodyuseLongDescriptions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaskField != null)
-                {
-                    body["ask_fields"] = ExpressionConverter.ConvertO(__workflow_bodyaskField);
-                    bodypropCount++;
-                }
-
-                body["ux_mode"] = "Asynchronous";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
             });
         }
@@ -447,8 +244,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         Throttled
     }
 
+    public class StartAdHocQueryExecutionJobInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken QueryDefinition { get; set; }
+
+        [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartAdHocQueryExecutionJobInputOutputFormatType? OutputFormat { get; set; } = StartAdHocQueryExecutionJobInputOutputFormatType.Csv;
+
+        [JsonProperty("formatting_mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartAdHocQueryExecutionJobInputFormattingModeType? FormattingMode { get; set; } = StartAdHocQueryExecutionJobInputFormattingModeType.None;
+
+        [JsonProperty("results_file_name")]
+        public string Filename { get; set; }
+
+        [JsonProperty("time_zone_offset_in_minutes")]
+        public int? TimeZoneOffset { get; set; }
+
+        [JsonProperty("display_code_table_long_description")]
+        public bool? UseLongDescriptions { get; set; }
+
+        [JsonProperty("ux_mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal StartAdHocQueryExecutionJobInputUXModeType UXMode { get; set; } = StartAdHocQueryExecutionJobInputUXModeType.Asynchronous;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutputFormatInput
+    public enum StartAdHocQueryExecutionJobInputOutputFormatType
     {
         Csv,
         Json,
@@ -457,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyformattingModeInput
+    public enum StartAdHocQueryExecutionJobInputFormattingModeType
     {
         None,
         UI,
@@ -465,7 +286,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysQLGenerationModeInput
+    public enum StartAdHocQueryExecutionJobInputUXModeType
+    {
+        Synchronous,
+        Asynchronous
+    }
+
+    public class StartQueryExecutionJobInput
+    {
+        [JsonProperty("v_query_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Type { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Query { get; set; }
+
+        [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartQueryExecutionJobInputOutputFormatType? OutputFormat { get; set; } = StartQueryExecutionJobInputOutputFormatType.Csv;
+
+        [JsonProperty("formatting_mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartQueryExecutionJobInputFormattingModeType? FormattingMode { get; set; } = StartQueryExecutionJobInputFormattingModeType.None;
+
+        [JsonProperty("sql_generation_mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartQueryExecutionJobInputSQLGenerationModeType? SQLGenerationMode { get; set; } = StartQueryExecutionJobInputSQLGenerationModeType.Query;
+
+        [JsonProperty("use_static_query_id_set")]
+        public bool? UseStaticQuery { get; set; }
+
+        [JsonProperty("results_file_name")]
+        public string Filename { get; set; }
+
+        [JsonProperty("time_zone_offset_in_minutes")]
+        public int? TimeZoneOffset { get; set; }
+
+        [JsonProperty("display_code_table_long_description")]
+        public bool? UseLongDescriptions { get; set; }
+
+        [JsonProperty("ask_fields")]
+        public QueryApiAskFieldInformation[] AskField { get; set; }
+
+        [JsonProperty("ux_mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal StartQueryExecutionJobInputUXModeType UXMode { get; set; } = StartQueryExecutionJobInputUXModeType.Asynchronous;
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum StartQueryExecutionJobInputOutputFormatType
+    {
+        Csv,
+        Json,
+        Jsonl,
+        Xlsx
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum StartQueryExecutionJobInputFormattingModeType
+    {
+        None,
+        UI,
+        Export
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum StartQueryExecutionJobInputSQLGenerationModeType
     {
         Query,
         Export,
@@ -506,6 +387,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         SoundsLike,
         Any,
         OneOfEach
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum StartQueryExecutionJobInputUXModeType
+    {
+        Synchronous,
+        Asynchronous
+    }
+
+    public class StartRefreshStaticQueryExecutionJobInput
+    {
+        [JsonProperty("v_query_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Type { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Query { get; set; }
+
+        [JsonProperty("time_zone_offset_in_minutes")]
+        public int? TimeZoneOffset { get; set; }
+
+        [JsonProperty("display_code_table_long_description")]
+        public bool? UseLongDescriptions { get; set; }
+
+        [JsonProperty("ask_fields")]
+        public QueryApiAskFieldInformation[] AskField { get; set; }
+
+        [JsonProperty("ux_mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal StartRefreshStaticQueryExecutionJobInputUXModeType UXMode { get; set; } = StartRefreshStaticQueryExecutionJobInputUXModeType.Asynchronous;
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum StartRefreshStaticQueryExecutionJobInputUXModeType
+    {
+        Synchronous,
+        Asynchronous
     }
 
     public class QueryApiQuerySummaryV2Collection

@@ -13,48 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     public class SolosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateHMAC(Expression<Func<string>> bodyrequestString, Expression<Func<string>> bodysecretKey, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyencodeTypeInput>> bodyencodeType = null, Expression<Func<bodyhashAlgorithmInput>> bodyhashAlgorithm = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateHMAC(Expression<Func<CreateHMACInput>> body = null)
         {
-            var __workflow_bodyrequestString = WorkflowExpression.Compile(bodyrequestString, nameof(bodyrequestString), required: true);
-            var __workflow_bodysecretKey = WorkflowExpression.Compile(bodysecretKey, nameof(bodysecretKey), required: true);
-            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            var __workflow_bodyencodeType = WorkflowExpression.Compile(bodyencodeType, nameof(bodyencodeType), required: false);
-            var __workflow_bodyhashAlgorithm = WorkflowExpression.Compile(bodyhashAlgorithm, nameof(bodyhashAlgorithm), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate-hmac";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["request_string"] = ExpressionConverter.ConvertO(__workflow_bodyrequestString);
-                bodypropCount++;
-                body["secret_key"] = ExpressionConverter.ConvertO(__workflow_bodysecretKey);
-                if (__workflow_bodyoutputFormat != null)
-                {
-                    body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyencodeType != null)
-                {
-                    body["encode_type"] = ExpressionConverter.ConvertO(__workflow_bodyencodeType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhashAlgorithm != null)
-                {
-                    body["hash_algorithm"] = ExpressionConverter.ConvertO(__workflow_bodyhashAlgorithm);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -64,8 +33,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     {
     }
 
+    public class CreateHMACInput
+    {
+        [JsonProperty("request_string", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RequestString { get; set; }
+
+        [JsonProperty("secret_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SecretKey { get; set; }
+
+        [JsonProperty("output_format")]
+        public CreateHMACInputOutputFormatType? OutputFormat { get; set; }
+
+        [JsonProperty("encode_type")]
+        public CreateHMACInputEncodeTypeType? EncodeType { get; set; }
+
+        [JsonProperty("hash_algorithm")]
+        public CreateHMACInputHashAlgorithmType? HashAlgorithm { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutputFormatInput
+    public enum CreateHMACInputOutputFormatType
     {
         [EnumMember(Value = "hex")]
         Hex,
@@ -80,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyencodeTypeInput
+    public enum CreateHMACInputEncodeTypeType
     {
         [EnumMember(Value = "utf-7")]
         Utf7,
@@ -95,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyhashAlgorithmInput
+    public enum CreateHMACInputHashAlgorithmType
     {
         [EnumMember(Value = "sha1")]
         Sha1,

@@ -28,41 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BoardCreate(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytemplateId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BoardCreate(Expression<Func<BoardCreateInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/board";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemplateId != null)
-                {
-                    body["sourceId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -134,55 +109,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NodeCreate(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyboard = null, Expression<Func<string>> bodyparent = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodydescription = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NodeCreate(Expression<Func<NodeCreateInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyboard = WorkflowExpression.Compile(bodyboard, nameof(bodyboard), required: false);
-            var __workflow_bodyparent = WorkflowExpression.Compile(bodyparent, nameof(bodyparent), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/node";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyboard != null)
-                {
-                    body["boardId"] = ExpressionConverter.ConvertO(__workflow_bodyboard);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparent != null)
-                {
-                    body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -201,28 +137,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Assign(Expression<Func<string>> nodeId, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Assign(Expression<Func<string>> nodeId, Expression<Func<AssignInput>> body = null)
         {
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/assign", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyuserId != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -254,28 +179,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAComment(Expression<Func<string>> nodeId, Expression<Func<string>> bodydescription = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAComment(Expression<Func<string>> nodeId, Expression<Func<CreateACommentInput>> body)
         {
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/comments", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -307,42 +220,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NodeDate(Expression<Func<string>> nodeId, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodydue = null, Expression<Func<string>> bodyend = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NodeDate(Expression<Func<string>> nodeId, Expression<Func<NodeDateInput>> body)
         {
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
-            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
-            var __workflow_bodydue = WorkflowExpression.Compile(bodydue, nameof(bodydue), required: false);
-            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/dates", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystart != null)
-                {
-                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystart);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydue != null)
-                {
-                    body["due"] = ExpressionConverter.ConvertO(__workflow_bodydue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyend != null)
-                {
-                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyend);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -394,104 +281,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
     public class HuddoboardsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AddedToBoard(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AddedToBoard(Expression<Func<AddedToBoardInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/added-to-board";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AssignedTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AssignedTask(Expression<Func<AssignedTaskInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/assigned-task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> BoardTaskCompleted(Expression<Func<string>> boardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> BoardTaskCompleted(Expression<Func<string>> boardId, Expression<Func<BoardTaskCompletedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/board-task-completed/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> CreatedNode(Expression<Func<string>> boardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> CreatedNode(Expression<Func<string>> boardId, Expression<Func<CreatedNodeInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/created-node/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> MyTaskCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> MyTaskCompleted(Expression<Func<MyTaskCompletedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/my-task-completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
             });
         }
@@ -519,6 +371,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         [JsonProperty("completed")]
         public bool Completed { get; set; }
+    }
+
+    public class BoardCreateInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("sourceId")]
+        public string TemplateId { get; set; }
     }
 
     public class Board
@@ -646,8 +510,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         public string Provider { get; set; }
     }
 
+    public class NodeCreateInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("boardId")]
+        public string Board { get; set; }
+
+        [JsonProperty("parentId")]
+        public string Parent { get; set; }
+
+        [JsonProperty("type")]
+        public NodeCreateInputTypeType? Type { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum NodeCreateInputTypeType
     {
         [EnumMember(Value = "task")]
         TaskObject,
@@ -655,6 +537,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         Entry,
         [EnumMember(Value = "list")]
         List
+    }
+
+    public class AssignInput
+    {
+        [JsonProperty("id")]
+        public string UserId { get; set; }
+    }
+
+    public class CreateACommentInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class NodeDateInput
+    {
+        [JsonProperty("start")]
+        public string Start { get; set; }
+
+        [JsonProperty("due")]
+        public string Due { get; set; }
+
+        [JsonProperty("end")]
+        public string End { get; set; }
     }
 
     public class User
@@ -685,6 +591,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         [JsonProperty("providerURL")]
         public string ProviderURL { get; set; }
+    }
+
+    public class AddedToBoardInput
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class AssignedTaskInput
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class BoardTaskCompletedInput
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class CreatedNodeInput
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class MyTaskCompletedInput
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

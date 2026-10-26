@@ -13,10 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
     public class AzuretablesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<InsertEntityResponse, ApiConnectionActionConfiguration> CreateEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<InsertEntityResponse, ApiConnectionActionConfiguration> CreateEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<string>> xMsClientRequestId = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<InsertEntityResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -25,22 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
-                var entity = new JObject();
-                var entitypropCount = 0;
-                if (entitypropCount > 0)
-                {
-                    callPayload.Body = entity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entity);
                 return new ApiConnectionAction<InsertEntityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetTableResponse, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName = null, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<GetTableResponse, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<GetTableResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -172,12 +167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InsertMergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InsertMergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<object>> entity, Expression<Func<string>> xMsClientRequestId = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
             var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -186,24 +182,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
-                var entity = new JObject();
-                var entitypropCount = 0;
-                if (entitypropCount > 0)
-                {
-                    callPayload.Body = entity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entity);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InsertReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InsertReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<object>> entity, Expression<Func<string>> xMsClientRequestId = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
             var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -212,24 +203,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
-                var entity = new JObject();
-                var entitypropCount = 0;
-                if (entitypropCount > 0)
-                {
-                    callPayload.Body = entity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entity);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<object>> entity, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
             var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: true);
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -240,25 +226,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 callPayload.Headers["If-Match"] = ExpressionConverter.Convert(__workflow_ifMatch);
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
-                var entity = new JObject();
-                var entitypropCount = 0;
-                if (entitypropCount > 0)
-                {
-                    callPayload.Body = entity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entity);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<object>> entity, Expression<Func<string>> xMsClientRequestId = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
             var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -268,13 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 callPayload.Headers["If-Match"] = ExpressionConverter.Convert(__workflow_ifMatch);
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
-                var entity = new JObject();
-                var entitypropCount = 0;
-                if (entitypropCount > 0)
-                {
-                    callPayload.Body = entity;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entity);
                 return new ApiConnectionAction(callPayload);
             });
         }

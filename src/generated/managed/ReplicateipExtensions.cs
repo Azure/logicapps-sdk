@@ -25,108 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<PredictionPostResponse, ApiConnectionActionConfiguration> Prediction(Expression<Func<string>> bodyversion, Expression<Func<string>> bodyinputtext = null, Expression<Func<string>> bodyinputprompt = null, Expression<Func<string>> bodyinputpromptStrength = null, Expression<Func<int>> bodyinputwidth = null, Expression<Func<int>> bodyinputheight = null, Expression<Func<string>> bodyinputscale = null, Expression<Func<int>> bodyinputnumOutputs = null, Expression<Func<int>> bodyinputnumInferenceSteps = null, Expression<Func<string>> bodyinputguidanceScale = null, Expression<Func<int>> bodyinputseed = null, Expression<Func<string>> bodywebhookCompleted = null)
+        public IBodyWorkflowAction<PredictionPostResponse, ApiConnectionActionConfiguration> Prediction(Expression<Func<PredictionPostInput>> body)
         {
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: true);
-            var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
-            var __workflow_bodyinputprompt = WorkflowExpression.Compile(bodyinputprompt, nameof(bodyinputprompt), required: false);
-            var __workflow_bodyinputpromptStrength = WorkflowExpression.Compile(bodyinputpromptStrength, nameof(bodyinputpromptStrength), required: false);
-            var __workflow_bodyinputwidth = WorkflowExpression.Compile(bodyinputwidth, nameof(bodyinputwidth), required: false);
-            var __workflow_bodyinputheight = WorkflowExpression.Compile(bodyinputheight, nameof(bodyinputheight), required: false);
-            var __workflow_bodyinputscale = WorkflowExpression.Compile(bodyinputscale, nameof(bodyinputscale), required: false);
-            var __workflow_bodyinputnumOutputs = WorkflowExpression.Compile(bodyinputnumOutputs, nameof(bodyinputnumOutputs), required: false);
-            var __workflow_bodyinputnumInferenceSteps = WorkflowExpression.Compile(bodyinputnumInferenceSteps, nameof(bodyinputnumInferenceSteps), required: false);
-            var __workflow_bodyinputguidanceScale = WorkflowExpression.Compile(bodyinputguidanceScale, nameof(bodyinputguidanceScale), required: false);
-            var __workflow_bodyinputseed = WorkflowExpression.Compile(bodyinputseed, nameof(bodyinputseed), required: false);
-            var __workflow_bodywebhookCompleted = WorkflowExpression.Compile(bodywebhookCompleted, nameof(bodywebhookCompleted), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PredictionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/predictions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                if (__workflow_bodyinputtext != null)
-                {
-                    inputObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputtext);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputprompt != null)
-                {
-                    inputObject["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyinputprompt);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputpromptStrength != null)
-                {
-                    inputObject["prompt_strength"] = ExpressionConverter.ConvertO(__workflow_bodyinputpromptStrength);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputwidth != null)
-                {
-                    inputObject["width"] = ExpressionConverter.ConvertO(__workflow_bodyinputwidth);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputheight != null)
-                {
-                    inputObject["height"] = ExpressionConverter.ConvertO(__workflow_bodyinputheight);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputscale != null)
-                {
-                    inputObject["scale"] = ExpressionConverter.ConvertO(__workflow_bodyinputscale);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputnumOutputs != null)
-                {
-                    inputObject["num_outputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputnumOutputs);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputnumInferenceSteps != null)
-                {
-                    inputObject["num_inference_steps"] = ExpressionConverter.ConvertO(__workflow_bodyinputnumInferenceSteps);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputguidanceScale != null)
-                {
-                    inputObject["guidance_scale"] = ExpressionConverter.ConvertO(__workflow_bodyinputguidanceScale);
-                    inputObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputseed != null)
-                {
-                    inputObject["seed"] = ExpressionConverter.ConvertO(__workflow_bodyinputseed);
-                    inputObjectpropCount++;
-                }
-
-                if (inputObjectpropCount > 0)
-                {
-                    body["input"] = inputObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywebhookCompleted != null)
-                {
-                    body["webhook_completed"] = ExpressionConverter.ConvertO(__workflow_bodywebhookCompleted);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PredictionPostResponse>(callPayload);
             });
         }
@@ -307,6 +214,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
 
         [JsonProperty("seed")]
         public int Seed { get; set; }
+    }
+
+    public class PredictionPostInput
+    {
+        [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Version { get; set; }
+
+        [JsonProperty("input")]
+        public PredictionPostInputInputType Input { get; set; }
+
+        [JsonProperty("webhook_completed")]
+        public string WebhookCompleted { get; set; }
+    }
+
+    public class PredictionPostInputInputType
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("prompt")]
+        public string Prompt { get; set; }
+
+        [JsonProperty("prompt_strength")]
+        public string PromptStrength { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("scale")]
+        public string Scale { get; set; }
+
+        [JsonProperty("num_outputs")]
+        public int? NumOutputs { get; set; }
+
+        [JsonProperty("num_inference_steps")]
+        public int? NumInferenceSteps { get; set; }
+
+        [JsonProperty("guidance_scale")]
+        public string GuidanceScale { get; set; }
+
+        [JsonProperty("seed")]
+        public int? Seed { get; set; }
     }
 
     public class PredictionGetResponse

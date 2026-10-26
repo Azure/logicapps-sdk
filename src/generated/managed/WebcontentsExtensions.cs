@@ -27,41 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeHttp(Expression<Func<InvokeHttpInput>> request)
         {
-            var __workflow_requestmethod = WorkflowExpression.Compile(requestmethod, nameof(requestmethod), required: true);
-            var __workflow_requesturlOfTheRequest = WorkflowExpression.Compile(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
-            var __workflow_requestbodyOfTheRequest = WorkflowExpression.Compile(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/InvokeHttp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["method"] = ExpressionConverter.ConvertO(__workflow_requestmethod);
-                requestpropCount++;
-                request["url"] = ExpressionConverter.ConvertO(__workflow_requesturlOfTheRequest);
-                var headersObject = new JObject();
-                var headersObjectpropCount = 0;
-                if (headersObjectpropCount > 0)
-                {
-                    request["headers"] = headersObject;
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestbodyOfTheRequest != null)
-                {
-                    request["body"] = ExpressionConverter.ConvertO(__workflow_requestbodyOfTheRequest);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -71,8 +45,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
     {
     }
 
+    public class InvokeHttpInput
+    {
+        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InvokeHttpInputMethodType Method { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UrlOfTheRequest { get; set; }
+
+        [JsonProperty("headers")]
+        public JToken Headers { get; set; }
+
+        [JsonProperty("body")]
+        public string BodyOfTheRequest { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestmethodInput
+    public enum InvokeHttpInputMethodType
     {
         GET,
         DELETE,

@@ -13,22 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     public class ServicebusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> entityName, Expression<Func<string>> messagecontent = null, Expression<Func<string>> messagecontentType = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messageto = null, Expression<Func<string>> messagereplyTo = null, Expression<Func<string>> messagereplyToSessionId = null, Expression<Func<string>> messagelabel = null, Expression<Func<string>> messagescheduledEnqueueTimeUtc = null, Expression<Func<string>> messagesessionId = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<int>> messagesequenceNumber = null, Expression<Func<string>> messagelockToken = null, Expression<Func<string>> messagetimeToLive = null, Expression<Func<string>> systemProperties = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> entityName, Expression<Func<SendMessageInput>> message, Expression<Func<string>> systemProperties = null)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
-            var __workflow_messagecontent = WorkflowExpression.Compile(messagecontent, nameof(messagecontent), required: false);
-            var __workflow_messagecontentType = WorkflowExpression.Compile(messagecontentType, nameof(messagecontentType), required: false);
-            var __workflow_messagemessageId = WorkflowExpression.Compile(messagemessageId, nameof(messagemessageId), required: false);
-            var __workflow_messageto = WorkflowExpression.Compile(messageto, nameof(messageto), required: false);
-            var __workflow_messagereplyTo = WorkflowExpression.Compile(messagereplyTo, nameof(messagereplyTo), required: false);
-            var __workflow_messagereplyToSessionId = WorkflowExpression.Compile(messagereplyToSessionId, nameof(messagereplyToSessionId), required: false);
-            var __workflow_messagelabel = WorkflowExpression.Compile(messagelabel, nameof(messagelabel), required: false);
-            var __workflow_messagescheduledEnqueueTimeUtc = WorkflowExpression.Compile(messagescheduledEnqueueTimeUtc, nameof(messagescheduledEnqueueTimeUtc), required: false);
-            var __workflow_messagesessionId = WorkflowExpression.Compile(messagesessionId, nameof(messagesessionId), required: false);
-            var __workflow_messagecorrelationId = WorkflowExpression.Compile(messagecorrelationId, nameof(messagecorrelationId), required: false);
-            var __workflow_messagesequenceNumber = WorkflowExpression.Compile(messagesequenceNumber, nameof(messagesequenceNumber), required: false);
-            var __workflow_messagelockToken = WorkflowExpression.Compile(messagelockToken, nameof(messagelockToken), required: false);
-            var __workflow_messagetimeToLive = WorkflowExpression.Compile(messagetimeToLive, nameof(messagetimeToLive), required: false);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_systemProperties = WorkflowExpression.Compile(systemProperties, nameof(systemProperties), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -38,108 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["systemProperties"] = Convert.ToString("None");
                 if (__workflow_systemProperties != null)
                     callPayload.Queries["systemProperties"] = ExpressionConverter.Convert(__workflow_systemProperties);
-                var message = new JObject();
-                var messagepropCount = 0;
-                if (__workflow_messagecontent != null)
-                {
-                    message["ContentData"] = ExpressionConverter.ConvertO(__workflow_messagecontent);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagecontentType != null)
-                {
-                    message["ContentType"] = ExpressionConverter.ConvertO(__workflow_messagecontentType);
-                    messagepropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    message["Properties"] = propertiesObject;
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagemessageId != null)
-                {
-                    message["MessageId"] = ExpressionConverter.ConvertO(__workflow_messagemessageId);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messageto != null)
-                {
-                    message["To"] = ExpressionConverter.ConvertO(__workflow_messageto);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagereplyTo != null)
-                {
-                    message["ReplyTo"] = ExpressionConverter.ConvertO(__workflow_messagereplyTo);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagereplyToSessionId != null)
-                {
-                    message["ReplyToSessionId"] = ExpressionConverter.ConvertO(__workflow_messagereplyToSessionId);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagelabel != null)
-                {
-                    message["Label"] = ExpressionConverter.ConvertO(__workflow_messagelabel);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagescheduledEnqueueTimeUtc != null)
-                {
-                    message["ScheduledEnqueueTimeUtc"] = ExpressionConverter.ConvertO(__workflow_messagescheduledEnqueueTimeUtc);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagesessionId != null)
-                {
-                    message["SessionId"] = ExpressionConverter.ConvertO(__workflow_messagesessionId);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagecorrelationId != null)
-                {
-                    message["CorrelationId"] = ExpressionConverter.ConvertO(__workflow_messagecorrelationId);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagesequenceNumber != null)
-                {
-                    message["SequenceNumber"] = ExpressionConverter.ConvertO(__workflow_messagesequenceNumber);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagelockToken != null)
-                {
-                    message["LockToken"] = ExpressionConverter.ConvertO(__workflow_messagelockToken);
-                    messagepropCount++;
-                }
-
-                if (__workflow_messagetimeToLive != null)
-                {
-                    message["TimeToLive"] = ExpressionConverter.ConvertO(__workflow_messagetimeToLive);
-                    messagepropCount++;
-                }
-
-                if (messagepropCount > 0)
-                {
-                    callPayload.Body = message;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_message);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessages(Expression<Func<string>> entityName, Expression<Func<ServiceBusMessage[]>> messages = null, Expression<Func<string>> systemProperties = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessages(Expression<Func<string>> entityName, Expression<Func<ServiceBusMessage[]>> messages, Expression<Func<string>> systemProperties = null)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
-            var __workflow_messages = WorkflowExpression.Compile(messages, nameof(messages), required: false);
+            var __workflow_messages = WorkflowExpression.Compile(messages, nameof(messages), required: true);
             var __workflow_systemProperties = WorkflowExpression.Compile(systemProperties, nameof(systemProperties), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -490,11 +386,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IBodyWorkflowAction<Subscription, ApiConnectionActionConfiguration> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<object>> subscriptionFilter = null, Expression<Func<subscriptionFilterTypeInput>> subscriptionFilterType = null)
+        public IBodyWorkflowAction<Subscription, ApiConnectionActionConfiguration> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<object>> subscriptionFilter, Expression<Func<subscriptionFilterTypeInput>> subscriptionFilterType = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
-            var __workflow_subscriptionFilter = WorkflowExpression.Compile(subscriptionFilter, nameof(subscriptionFilter), required: false);
+            var __workflow_subscriptionFilter = WorkflowExpression.Compile(subscriptionFilter, nameof(subscriptionFilter), required: true);
             var __workflow_subscriptionFilterType = WorkflowExpression.Compile(subscriptionFilterType, nameof(subscriptionFilterType), required: false);
             return new DeferredBodyAction<Subscription, ApiConnectionActionConfiguration>(() =>
             {
@@ -745,6 +641,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class SendMessageInput
+    {
+        [JsonProperty("ContentData")]
+        public string Content { get; set; }
+        public string ContentType { get; set; }
+        public JToken Properties { get; set; }
+        public string MessageId { get; set; }
+        public string To { get; set; }
+        public string ReplyTo { get; set; }
+        public string ReplyToSessionId { get; set; }
+        public string Label { get; set; }
+        public string ScheduledEnqueueTimeUtc { get; set; }
+        public string SessionId { get; set; }
+        public string CorrelationId { get; set; }
+        public int? SequenceNumber { get; set; }
+        public string LockToken { get; set; }
+        public string TimeToLive { get; set; }
     }
 
     public class ServiceBusMessage

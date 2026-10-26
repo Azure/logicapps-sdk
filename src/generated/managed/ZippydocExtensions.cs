@@ -26,62 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippydoc")]
-        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> UploadTable(Expression<Func<string>> bodyname = null, Expression<Func<JToken[]>> bodycontent = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<bool>> bodyreplace = null, Expression<Func<JToken[]>> bodytags = null)
+        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> UploadTable(Expression<Func<UploadTableInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
-            var __workflow_bodyreplace = WorkflowExpression.Compile(bodyreplace, nameof(bodyreplace), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<int, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/excel/table/power-automate/upload";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentName != null)
-                {
-                    body["documentName"] = ExpressionConverter.ConvertO(__workflow_bodydocumentName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreplace != null)
-                {
-                    body["replace"] = ExpressionConverter.ConvertO(__workflow_bodyreplace);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<int>(callPayload);
             });
         }
@@ -115,36 +69,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
 
     public class ZippydocTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnTableChange(Expression<Func<bodytypeInput>> bodytype = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnTableChange(Expression<Func<OnTableChangeInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/power-automate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["x-ms-notification-url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
+    public class UploadTableInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("content")]
+        public JToken[] Content { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("documentName")]
+        public string DocumentName { get; set; }
+
+        [JsonProperty("replace")]
+        public bool? Replace { get; set; }
+
+        [JsonProperty("tags")]
+        public JToken[] Tags { get; set; }
+    }
+
+    public class OnTableChangeInput
+    {
+        [JsonProperty("x-ms-notification-url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string XMsNotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type")]
+        public OnTableChangeInputTypeType? Type { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum OnTableChangeInputTypeType
     {
         [EnumMember(Value = "ON_TABLE_CHANGE")]
         ONTABLECHANGE

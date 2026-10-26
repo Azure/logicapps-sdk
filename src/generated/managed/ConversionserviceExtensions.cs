@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
     public class ConversionserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "conversionservice")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> HtmlToText(Expression<Func<string>> content = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> HtmlToText(Expression<Func<string>> content)
         {
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/html2text";

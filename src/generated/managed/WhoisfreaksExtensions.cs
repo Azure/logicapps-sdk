@@ -138,10 +138,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainAvailabilityLookup(Expression<Func<formatInput>> format, Expression<Func<string[]>> bodydomainNames, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainAvailabilityLookup(Expression<Func<formatInput>> format, Expression<Func<BulkDomainAvailabilityLookupInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_bodydomainNames = WorkflowExpression.Compile(bodydomainNames, nameof(bodydomainNames), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -152,15 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["domainNames"] = ExpressionConverter.ConvertO(__workflow_bodydomainNames);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -218,9 +210,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpGeolocationLookup(Expression<Func<string[]>> bodyips, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpGeolocationLookup(Expression<Func<BulkIpGeolocationLookupInput>> body, Expression<Func<string>> contentType = null)
         {
-            var __workflow_bodyips = WorkflowExpression.Compile(bodyips, nameof(bodyips), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -230,15 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["ips"] = ExpressionConverter.ConvertO(__workflow_bodyips);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -278,9 +262,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpReputationLookup(Expression<Func<string[]>> bodyips, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpReputationLookup(Expression<Func<BulkIpReputationLookupInput>> body, Expression<Func<string>> contentType = null)
         {
-            var __workflow_bodyips = WorkflowExpression.Compile(bodyips, nameof(bodyips), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -290,15 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["ips"] = ExpressionConverter.ConvertO(__workflow_bodyips);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -334,10 +310,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkWhoisLookup(Expression<Func<formatInput>> format, Expression<Func<string[]>> bodydomainNames, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkWhoisLookup(Expression<Func<formatInput>> format, Expression<Func<BulkWhoisLookupInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_bodydomainNames = WorkflowExpression.Compile(bodydomainNames, nameof(bodydomainNames), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -348,27 +324,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["domainNames"] = ExpressionConverter.ConvertO(__workflow_bodydomainNames);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainLookup(Expression<Func<formatInput>> format, Expression<Func<string[]>> bodydomainNames, Expression<Func<string>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string[]>> bodyipAddresses = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainLookup(Expression<Func<formatInput>> format, Expression<Func<BulkDomainLookupInput>> body, Expression<Func<string>> type = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_bodydomainNames = WorkflowExpression.Compile(bodydomainNames, nameof(bodydomainNames), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_bodyipAddresses = WorkflowExpression.Compile(bodyipAddresses, nameof(bodyipAddresses), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/dns/bulk/live";
@@ -381,21 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["domainNames"] = ExpressionConverter.ConvertO(__workflow_bodydomainNames);
-                if (__workflow_bodyipAddresses != null)
-                {
-                    body["ipAddresses"] = ExpressionConverter.ConvertO(__workflow_bodyipAddresses);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -478,6 +431,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         Xml,
         [EnumMember(Value = "json")]
         Json
+    }
+
+    public class BulkDomainAvailabilityLookupInput
+    {
+        [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] DomainNames { get; set; }
+    }
+
+    public class BulkIpGeolocationLookupInput
+    {
+        [JsonProperty("ips", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Ips { get; set; }
+    }
+
+    public class BulkIpReputationLookupInput
+    {
+        [JsonProperty("ips", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Ips { get; set; }
+    }
+
+    public class BulkWhoisLookupInput
+    {
+        [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] DomainNames { get; set; }
+    }
+
+    public class BulkDomainLookupInput
+    {
+        [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] DomainNames { get; set; }
+
+        [JsonProperty("ipAddresses")]
+        public string[] IpAddresses { get; set; }
     }
 }
 

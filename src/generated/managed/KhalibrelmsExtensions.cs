@@ -92,43 +92,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BookCourse(Expression<Func<int>> bodycommunityId, Expression<Func<int>> bodycourseId, Expression<Func<string>> bodylearnerEmail, Expression<Func<string>> bodylearnerFirstname = null, Expression<Func<string>> bodylearnerLastname = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BookCourse(Expression<Func<BookCourseInput>> body = null)
         {
-            var __workflow_bodycommunityId = WorkflowExpression.Compile(bodycommunityId, nameof(bodycommunityId), required: true);
-            var __workflow_bodycourseId = WorkflowExpression.Compile(bodycourseId, nameof(bodycourseId), required: true);
-            var __workflow_bodylearnerEmail = WorkflowExpression.Compile(bodylearnerEmail, nameof(bodylearnerEmail), required: true);
-            var __workflow_bodylearnerFirstname = WorkflowExpression.Compile(bodylearnerFirstname, nameof(bodylearnerFirstname), required: false);
-            var __workflow_bodylearnerLastname = WorkflowExpression.Compile(bodylearnerLastname, nameof(bodylearnerLastname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/o/kh-gateway/lms/v1.1/course/booking";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["communityId"] = ExpressionConverter.ConvertO(__workflow_bodycommunityId);
-                bodypropCount++;
-                body["courseId"] = ExpressionConverter.ConvertO(__workflow_bodycourseId);
-                bodypropCount++;
-                body["learnerEmail"] = ExpressionConverter.ConvertO(__workflow_bodylearnerEmail);
-                if (__workflow_bodylearnerFirstname != null)
-                {
-                    body["learnerFirstname"] = ExpressionConverter.ConvertO(__workflow_bodylearnerFirstname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylearnerLastname != null)
-                {
-                    body["learnerLastname"] = ExpressionConverter.ConvertO(__workflow_bodylearnerLastname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -508,6 +481,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class BookCourseInput
+    {
+        [JsonProperty("communityId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CommunityId { get; set; }
+
+        [JsonProperty("courseId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int CourseId { get; set; }
+
+        [JsonProperty("learnerEmail", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LearnerEmail { get; set; }
+
+        [JsonProperty("learnerFirstname")]
+        public string LearnerFirstname { get; set; }
+
+        [JsonProperty("learnerLastname")]
+        public string LearnerLastname { get; set; }
     }
 }
 

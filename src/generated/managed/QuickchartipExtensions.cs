@@ -13,183 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     public class QuickchartipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartPostResponse, ApiConnectionActionConfiguration> Chart(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
+        public IBodyWorkflowAction<ChartPostResponse, ApiConnectionActionConfiguration> Chart(Expression<Func<ChartPostInput>> body)
         {
-            var __workflow_bodychart = WorkflowExpression.Compile(bodychart, nameof(bodychart), required: true);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodydevicePixelRatio = WorkflowExpression.Compile(bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
-            var __workflow_bodybackgroundColor = WorkflowExpression.Compile(bodybackgroundColor, nameof(bodybackgroundColor), required: false);
-            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChartPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chart";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["chart"] = ExpressionConverter.ConvertO(__workflow_bodychart);
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydevicePixelRatio != null)
-                {
-                    body["devicePixelRatio"] = ExpressionConverter.ConvertO(__workflow_bodydevicePixelRatio);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybackgroundColor != null)
-                {
-                    body["backgroundColor"] = ExpressionConverter.ConvertO(__workflow_bodybackgroundColor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformat != null)
-                {
-                    if (__workflow_bodyformat != null)
-                    {
-                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["format"] = "png";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyencoding != null)
-                {
-                    if (__workflow_bodyencoding != null)
-                    {
-                        body["encoding"] = ExpressionConverter.ConvertO(__workflow_bodyencoding);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["encoding"] = "url";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChartPostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartURLResponse, ApiConnectionActionConfiguration> ChartURL(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
+        public IBodyWorkflowAction<ChartURLResponse, ApiConnectionActionConfiguration> ChartURL(Expression<Func<ChartURLInput>> body)
         {
-            var __workflow_bodychart = WorkflowExpression.Compile(bodychart, nameof(bodychart), required: true);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodydevicePixelRatio = WorkflowExpression.Compile(bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
-            var __workflow_bodybackgroundColor = WorkflowExpression.Compile(bodybackgroundColor, nameof(bodybackgroundColor), required: false);
-            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChartURLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chart/create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["chart"] = ExpressionConverter.ConvertO(__workflow_bodychart);
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydevicePixelRatio != null)
-                {
-                    body["devicePixelRatio"] = ExpressionConverter.ConvertO(__workflow_bodydevicePixelRatio);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybackgroundColor != null)
-                {
-                    body["backgroundColor"] = ExpressionConverter.ConvertO(__workflow_bodybackgroundColor);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformat != null)
-                {
-                    if (__workflow_bodyformat != null)
-                    {
-                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["format"] = "png";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyencoding != null)
-                {
-                    if (__workflow_bodyencoding != null)
-                    {
-                        body["encoding"] = ExpressionConverter.ConvertO(__workflow_bodyencoding);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["encoding"] = "url";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChartURLResponse>(callPayload);
             });
         }
@@ -271,71 +117,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<GraphVizResponse, ApiConnectionActionConfiguration> GraphViz(Expression<Func<string>> bodygraph, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<GraphVizResponse, ApiConnectionActionConfiguration> GraphViz(Expression<Func<GraphVizInput>> body)
         {
-            var __workflow_bodygraph = WorkflowExpression.Compile(bodygraph, nameof(bodygraph), required: true);
-            var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: false);
-            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GraphVizResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphviz";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["graph"] = ExpressionConverter.ConvertO(__workflow_bodygraph);
-                if (__workflow_bodylayout != null)
-                {
-                    if (__workflow_bodylayout != null)
-                    {
-                        body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["layout"] = "dot";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformat != null)
-                {
-                    if (__workflow_bodyformat != null)
-                    {
-                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["format"] = "svg";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GraphVizResponse>(callPayload);
             });
         }
@@ -433,17 +223,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyformatInput
+    public class ChartPostInput
     {
-        [EnumMember(Value = "svg")]
-        Svg,
-        [EnumMember(Value = "png")]
-        Png
+        [JsonProperty("chart", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Chart { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("devicePixelRatio")]
+        public string DevicePixelRatio { get; set; }
+
+        [JsonProperty("backgroundColor")]
+        public string BackgroundColor { get; set; }
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ChartPostInputFormatType? Format { get; set; } = ChartPostInputFormatType.Png;
+
+        [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ChartPostInputEncodingType? Encoding { get; set; } = ChartPostInputEncodingType.Url;
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyencodingInput
+    public enum ChartPostInputFormatType
+    {
+        [EnumMember(Value = "png")]
+        Png,
+        [EnumMember(Value = "webp")]
+        Webp,
+        [EnumMember(Value = "svg")]
+        Svg,
+        [EnumMember(Value = "pdf")]
+        Pdf
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ChartPostInputEncodingType
     {
         [EnumMember(Value = "url")]
         Url,
@@ -458,6 +279,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class ChartURLInput
+    {
+        [JsonProperty("chart", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Chart { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("devicePixelRatio")]
+        public string DevicePixelRatio { get; set; }
+
+        [JsonProperty("backgroundColor")]
+        public string BackgroundColor { get; set; }
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ChartURLInputFormatType? Format { get; set; } = ChartURLInputFormatType.Png;
+
+        [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ChartURLInputEncodingType? Encoding { get; set; } = ChartURLInputEncodingType.Url;
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ChartURLInputFormatType
+    {
+        [EnumMember(Value = "png")]
+        Png,
+        [EnumMember(Value = "webp")]
+        Webp,
+        [EnumMember(Value = "svg")]
+        Svg,
+        [EnumMember(Value = "pdf")]
+        Pdf
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ChartURLInputEncodingType
+    {
+        [EnumMember(Value = "url")]
+        Url,
+        [EnumMember(Value = "base64")]
+        Base64
     }
 
     public class ChartTemplateResponse
@@ -505,8 +375,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
+    public class GraphVizInput
+    {
+        [JsonProperty("graph", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Graph { get; set; }
+
+        [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GraphVizInputLayoutType? Layout { get; set; } = GraphVizInputLayoutType.Dot;
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GraphVizInputFormatType? Format { get; set; } = GraphVizInputFormatType.Svg;
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylayoutInput
+    public enum GraphVizInputLayoutType
     {
         [EnumMember(Value = "dot")]
         Dot,
@@ -520,6 +408,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         Twopi,
         [EnumMember(Value = "osage")]
         Osage
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum GraphVizInputFormatType
+    {
+        [EnumMember(Value = "svg")]
+        Svg,
+        [EnumMember(Value = "png")]
+        Png
     }
 
     public class WordCloudResponse

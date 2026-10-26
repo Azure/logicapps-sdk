@@ -13,13 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
     public class SendansmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<SendSmsInput>> body = null)
         {
             var __workflow_xTopMessageKey = WorkflowExpression.Compile(xTopMessageKey, nameof(xTopMessageKey), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_bodydatafrom = WorkflowExpression.Compile(bodydatafrom, nameof(bodydatafrom), required: false);
-            var __workflow_bodydatato = WorkflowExpression.Compile(bodydatato, nameof(bodydatato), required: false);
-            var __workflow_bodydatatext = WorkflowExpression.Compile(bodydatatext, nameof(bodydatatext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
@@ -28,39 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
                 callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(__workflow_xTopMessageKey);
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (__workflow_bodydatafrom != null)
-                {
-                    dataObject["from"] = ExpressionConverter.ConvertO(__workflow_bodydatafrom);
-                    dataObjectpropCount++;
-                }
-
-                if (__workflow_bodydatato != null)
-                {
-                    dataObject["to"] = ExpressionConverter.ConvertO(__workflow_bodydatato);
-                    dataObjectpropCount++;
-                }
-
-                if (__workflow_bodydatatext != null)
-                {
-                    dataObject["text"] = ExpressionConverter.ConvertO(__workflow_bodydatatext);
-                    dataObjectpropCount++;
-                }
-
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -68,6 +35,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
 
     public class SendansmsTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class SendSmsInput
+    {
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendSmsInputDataType Data { get; set; }
+    }
+
+    public class SendSmsInputDataType
+    {
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] To { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
     }
 }
 

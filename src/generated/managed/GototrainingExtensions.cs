@@ -39,30 +39,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<AddRegistrantResponse, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> bodyregistrantEmail, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName)
+        public IBodyWorkflowAction<AddRegistrantResponse, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<AddRegistrantInput>> body)
         {
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
-            var __workflow_bodyregistrantEmail = WorkflowExpression.Compile(bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddRegistrantResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", __workflow_trainingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyregistrantEmail);
-                bodypropCount++;
-                body["givenName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                bodypropCount++;
-                body["surname"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddRegistrantResponse>(callPayload);
             });
         }
@@ -180,6 +166,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
 
         [JsonProperty("registrantKey")]
         public string RegistrantKey { get; set; }
+    }
+
+    public class AddRegistrantInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RegistrantEmail { get; set; }
+
+        [JsonProperty("givenName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstName { get; set; }
+
+        [JsonProperty("surname", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
     }
 }
 
